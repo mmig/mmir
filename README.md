@@ -1,7 +1,12 @@
-mmir
+[mmir][11]
 ====
 
-Overview for MMIR (Mobile Multimodal Interaction and Rendering) Framework.
+<p align="center">
+<img width="20%" src="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png">
+</p>
+
+Overview for the MMIR (Mobile Multimodal Interaction and Rendering) Framework. 
+
 
 ##### Related repositories
 
@@ -69,3 +74,4 @@ See the [wiki][8] for documentation.
 [8]: https://github.com/mmig/mmir/wiki
 [9]: https://github.com/mmig/mmir-cordova
 [10]: https://github.com/mmig/mmir-starter-kit
+[11]: https://github.com/mmig/mmir
