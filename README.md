@@ -60,7 +60,9 @@ integration with an event queue.
 
 ## Documentation
 
-See the [wiki][8] for documentation.
+See the [wiki][8] for the main documentation **currently out of date!**.
+
+See the README in [mmir-cordova][9] for step-by-step instruction on how to (1) create a new Cordova project and (2) add the MMIR framework
 
 
 [0]: http://cordova.apache.org/
