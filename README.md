@@ -11,13 +11,13 @@ Overview for the MMIR (Mobile Multimodal Interaction and Rendering) Framework.
 ##### Related repositories
 
 - core
- * [mmir-lib][4]: the core library (this is usually included in the directory `mmirf/` of MMIR-based applications)
- * [mmir-tooling][5]: scripts and resources for building and generating resources (e.g. compiling JSON grammars)
+ * [mmir-lib][4]: the core library _(this is usually included in the directory `mmirf/` of MMIR-based applications)_
+ * [mmir-tooling][5]: scripts and resources for building and generating resources _(e.g. compiling JSON grammars)_
 - tools
- * [scion-queue-plugin][6]: a Cordova 3.x plugin that provides an even-queue for SCION
+ * [scion-queue-plugin][6]: a Cordova 3.x plugin that provides an event-queue for SCION
 - examples
- * [mmir-cordova][9]: resources / example for creating a minimal MMIR-based application (for Cordova 3.x)
- * [mmir-starter-kit][10]: a small MMIR-based example application (for Cordova 3.x)
+ * [mmir-cordova][9]: resources / example for creating a minimal MMIR-based application _(for Cordova 3.x)_
+ * [mmir-starter-kit][10]: a small MMIR-based example application _(for Cordova 3.x)_
 
 ## Introduction
 
