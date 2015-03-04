@@ -60,7 +60,9 @@ integration with an event queue.
 
 ## Documentation
 
-See the [wiki][8] for the main documentation **currently out of date!**.
+See the [wiki][8] for the main documentation **parts may be out of date!**.
+
+See [API][12] documentation for information about the `mmir-lib` interface.
 
 See the README in [mmir-cordova][9] for step-by-step instruction on how to (1) create a new Cordova project and (2) add the MMIR framework
 
@@ -77,3 +79,5 @@ See the README in [mmir-cordova][9] for step-by-step instruction on how to (1) c
 [9]: https://github.com/mmig/mmir-cordova
 [10]: https://github.com/mmig/mmir-starter-kit
 [11]: https://github.com/mmig/mmir
+[12]: https://mmig.github.io/mmir
+
