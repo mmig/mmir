@@ -1,0 +1,2495 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - mmir.PresentationManager</title>
+
+		<style type="text/css">
+			/* INSERTED START */
+/* Generic box styles. */
+.box {
+    border: 1px solid;
+    border-radius: 3px;
+    margin: 1em 0;
+    padding: 0 1em;
+}
+.box.important {
+/*    background: #CCCCFF;
+    background: #FFE2CE; */
+    background: #FF8533;
+	padding: 10px;
+}
+.box.usedby {
+/*    background: #CCCCFF;
+    background: #FFE2CE; */
+    background: #FFFFC2;
+	padding: 10px;
+}
+/* INSERTED END */
+
+/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+/*	width: 800px;*/
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	position: absolute;
+	margin-top: 24px;
+/*	float: left;*/
+	left: 0%;
+	width: 15.5%;
+/*	width: 160px;*/
+/*	position: absolute;*/
+	left: 8px;
+	background-color: #E6E9EF;
+	padding: 8px;
+}
+
+#content
+{
+/*	margin-left: 190px;*/
+/*	width: 600px;*/
+/*	float:left; */
+	position: absolute;
+	left: 17.5%;
+	width: 81%;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+
+
+.label-singleton {
+	font-size: 10.998px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	white-space: nowrap;
+	padding: 1px 4px 2px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #c3325f;
+	vertical-align: middle;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/AudioCordovaImpl.html">AudioCordovaImpl</a></li>
+	
+	<li><a href="../symbols/AudioHtml5Impl.html">AudioHtml5Impl</a></li>
+	
+	<li><a href="../symbols/ContentElement.html">ContentElement</a></li>
+	
+	<li><a href="../symbols/Controller.html">Controller</a></li>
+	
+	<li><a href="../symbols/Dictionary.html">Dictionary</a></li>
+	
+	<li><a href="../symbols/DisabledLogger.html">DisabledLogger</a></li>
+	
+	<li><a href="../symbols/GrammarConverter.html">GrammarConverter</a></li>
+	
+	<li><a href="../symbols/Helper.html">Helper</a></li>
+	
+	<li><a href="../symbols/Layout.html">Layout</a></li>
+	
+	<li><a href="../symbols/Logger.html">Logger</a></li>
+	
+	<li><a href="../symbols/mmir.html">mmir</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.html">mmir.CommonUtils</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html">mmir.CommonUtils.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.ConfigurationManager.html">mmir.ConfigurationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.Constants.html">mmir.Constants</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.ControllerManager.html">mmir.ControllerManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.DialogManager.html">mmir.DialogManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.DisabledLogging.html">mmir.DisabledLogging</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JisonGenerator.html">mmir.env.grammar.JisonGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JsccGenerator.html">mmir.env.grammar.JsccGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.PegJsGenerator.html">mmir.env.grammar.PegJsGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.view.JqmViewEngine.html">mmir.env.view.JqmViewEngine</a></li>
+	
+	<li><a href="../symbols/mmir.InputManager.html">mmir.InputManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.html">mmir.LanguageManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.setToCompatibilityModeExtension.html">mmir.LanguageManager.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.Logging.html">mmir.Logging</a></li>
+	
+	<li><a href="../symbols/mmir.main.html">mmir.main</a></li>
+	
+	<li><a href="../symbols/mmir.MediaManager.html">mmir.MediaManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.ModelManager.html">mmir.ModelManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.NotificationManager.html">mmir.NotificationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.html">mmir.parser</a></li>
+	
+	<li><a href="../symbols/mmir.parser.ParserUtils.html">mmir.parser.ParserUtils</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.ParsingResult.html">mmir.parser.ParsingResult</a></li>
+	
+	<li><a href="../symbols/mmir.parser.RenderUtils.html">mmir.parser.RenderUtils</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.TemplateProcessor.html">mmir.parser.TemplateProcessor</a></li>
+	
+	<li><a href="../symbols/mmir.PresentationManager.html">mmir.PresentationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.SemanticInterpreter.html">mmir.SemanticInterpreter</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.tools.ChecksumUtils.html">mmir.tools.ChecksumUtils</a></li>
+	
+	<li><a href="../symbols/Partial.html">Partial</a></li>
+	
+	<li><a href="../symbols/String.html">String</a></li>
+	
+	<li><a href="../symbols/View.html">View</a></li>
+	
+	<li><a href="../symbols/YieldDeclaration.html">YieldDeclaration</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Namespace mmir.PresentationManager
+				<span class="label-singleton">Singleton</span>
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/www_mmirf_manager_presentationManager.js.html">presentationManager.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class mmir.PresentationManager.">
+				<caption>Namespace Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#constructor">mmir.PresentationManager</a></b>
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class mmir.PresentationManager.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_currentDialog">_currentDialog</a></b>
+								</div>
+								<div class="description">The currently displayed dialog object, if a dialog is displayed.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_currentDialog#_currentDialog">_currentDialog#_currentDialog</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_currentView">_currentView</a></b>
+								</div>
+								<div class="description">An object containing data for the currently displayed view.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_currentView#_currentView">_currentView#_currentView</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_layouts">_layouts</a></b>
+								</div>
+								<div class="description">Array of layouts of the application</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_layouts#_layouts">_layouts#_layouts</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_pageIndex">_pageIndex</a></b>
+								</div>
+								<div class="description">Counter that keeps track of the number of times, that a view is renderedNOTE: for implementation specific reasons, jQuery Mobile requires that		 each page has a different ID.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_pageIndex#_pageIndex">_pageIndex#_pageIndex</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_partials">_partials</a></b>
+								</div>
+								<div class="description">Array of all the partials of the application</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_partials#_partials">_partials#_partials</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_previousView">_previousView</a></b>
+								</div>
+								<div class="description">An object containing data for the previously displayed view - the onedisplayed before the current view.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_previousView#_previousView">_previousView#_previousView</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_renderEngine">_renderEngine</a></b>
+								</div>
+								<div class="description">Default implementation for the rendering-engine:does nothing but writing an error message to the console,if any of its functions is invoked.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_renderEngine#_renderEngine">_renderEngine#_renderEngine</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_renderEngine._engine">_renderEngine._engine</a></b>
+								</div>
+								<div class="description">Reference to the rendering-engine implementation / instance.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_renderEngine._engine#_engine">_renderEngine._engine#_engine</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_views">_views</a></b>
+								</div>
+								<div class="description">Array of all the views of the application</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#_views#_views">_views#_views</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &lt;constant&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#CONFIG_PRECOMPILED_VIEWS_MODE">CONFIG_PRECOMPILED_VIEWS_MODE</a></b>
+								</div>
+								<div class="description">Name of the configuration property that specifies whether or not to use pre-compiled views, i.e.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#CONFIG_PRECOMPILED_VIEWS_MODE#CONFIG_PRECOMPILED_VIEWS_MODE">CONFIG_PRECOMPILED_VIEWS_MODE#CONFIG_PRECOMPILED_VIEWS_MODE</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &lt;constant&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#DEFAULT_LAYOUT_NAME">DEFAULT_LAYOUT_NAME</a></b>
+								</div>
+								<div class="description">Name for the default layout.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.PresentationManager.html#DEFAULT_LAYOUT_NAME#DEFAULT_LAYOUT_NAME">DEFAULT_LAYOUT_NAME#DEFAULT_LAYOUT_NAME</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class mmir.PresentationManager.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#_renderEngine.render">_renderEngine.render</a></b>(ctrlName, viewName, view, ctrl, data)
+								</div>
+								<div class="description">The function that actually renders the View.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#callRenderEngine">callRenderEngine</a></b>(funcName, args)
+								</div>
+								<div class="description">This function allows to call custom functions of the rendering-enginethat was set via <a href="../symbols/mmir.PresentationManager.html#setRenderEngine">#setRenderEngine</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#checkCompletion">checkCompletion</a></b>(status)
+								</div>
+								<div class="description">HELPER for checking the loading status.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#doLoadTemplateFile">doLoadTemplateFile</a></b>(controller, templateInfo, createConfig, loadStatus)
+								</div>
+								<div class="description">HELPER that loads a single template file asynchronously and creates a corresponding template-class instance(depending on <code>createConfig</code>).</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#doParseTemplate">doParseTemplate</a></b>(controller, templateName, createConfig, status, status)
+								</div>
+								<div class="description">HELPER: creates a template-object (e.g.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#doProcessTemplateList">doProcessTemplateList</a></b>(createConfig)
+								</div>
+								<div class="description">Generic helper for loading a list of template files (*.ehtml)that correspond to a specific template type (e.g.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#getInstance">getInstance</a></b>()
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#getLayout">getLayout</a></b>(layoutName, doUseDefaultIfMissing)
+								</div>
+								<div class="description">This function returns a layout object by name.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#getPartial">getPartial</a></b>(controllerName, viewName)
+								</div>
+								<div class="description">This function returns a partial object by name.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#getView">getView</a></b>(controllerName, viewName)
+								</div>
+								<div class="description">This function returns a view object by name.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#hideCurrentDialog">hideCurrentDialog</a></b>()
+								</div>
+								<div class="description">Closes a modal window / dialog (if one is open).</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#hideWaitDialog">hideWaitDialog</a></b>()
+								</div>
+								<div class="description">Hides / closes the "wait" dialog.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#isUpToDate">isUpToDate</a></b>(viewContent, preCompiledViewPath)
+								</div>
+								<div class="description">Read the checksum file that was created when the pre-compiled view was created:it contains the view's template size (the length of its String representation) and MD5 hash.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#loadLayouts">loadLayouts</a></b>()
+								</div>
+								<div class="description">This function loads the layouts for every controller and puts thename of the layouts into the <b>_layouts</b> array.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#loadPartials">loadPartials</a></b>()
+								</div>
+								<div class="description">This function actually loads the partials for every controller,creates an instance of a partial class and puts the partial instancein the <b>_partials</b> array.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#loadPrecompiledView">loadPrecompiledView</a></b>(rawViewData, targetPath, success, fail)
+								</div>
+								<div class="description">Checks if a pre-compiled view is up-to-date:loads the view, if it is current.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#loadViews">loadViews</a></b>()
+								</div>
+								<div class="description">This function actually loads the views for every controller, createsan instance of a view class and puts the view instance in the<b>_views</b> array.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#renderPreviousView">renderPreviousView</a></b>()
+								</div>
+								<div class="description">Renders the previous view again, using the<a href="../symbols/mmir.DialogManager.html#render">mmir.DialogManager#render</a> method.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#renderView">renderView</a></b>(ctrlName, viewName, data)
+								</div>
+								<div class="description">Gets the view for a controller, then executes helper methods onthe view data.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#reRenderView">reRenderView</a></b>()
+								</div>
+								<div class="description">Renders the current view again, using the#render method.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#setRenderEngine">setRenderEngine</a></b>(theRenderEngine)
+								</div>
+								<div class="description">Sets the <em>rendering engine</em> for the views.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#showDialog">showDialog</a></b>(ctrlName, dialogId, data)
+								</div>
+								<div class="description">Opens the dialog for ID <code>dialogId</code>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#showWaitDialog">showWaitDialog</a></b>(text, data)
+								</div>
+								<div class="description">Shows a "wait" dialog, i.e.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.PresentationManager.html#updateLoadStatus">updateLoadStatus</a></b>(status, hasLoadingFailed)
+								</div>
+								<div class="description">HELPER for updating the loading status.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Namespace Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>mmir.PresentationManager</b>
+				</div>
+				
+				<div class="description">
+					
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+						<dl class="detailList">
+						<dt class="heading">Requires:</dt>
+						
+							<dd>document (DOM object)</dd>
+						
+							<dd>jQuery.Deferred</dd>
+						
+							<dd>jQuery.ajax</dd>
+						
+							<dd>jQuery.each</dd>
+						
+						</dl>
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name="_currentDialog"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Object}</span>
+					<b>_currentDialog</b>
+					
+					</div>
+					<div class="description">
+						The currently displayed dialog object, if a dialog is displayed. Usedmainly to close the dialog.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd>#_instance#showDialog</dd>
+							
+							<dd>#_instance#hideCurrentDialog</dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="_currentDialog#_currentDialog"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_currentDialog#_currentDialog</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_currentView"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Object}</span>
+					<b>_currentView</b>
+					
+					</div>
+					<div class="description">
+						An object containing data for the currently displayed view.<br>It contains: name of the corresponding controller, name of the viewand optionally data for the view
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_currentView#_currentView"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_currentView#_currentView</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_layouts"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{<a href="../symbols/Dictionary.html">Dictionary</a>}</span>
+					<b>_layouts</b>
+					
+					</div>
+					<div class="description">
+						Array of layouts of the application
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_layouts#_layouts"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_layouts#_layouts</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_pageIndex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Integer}</span>
+					<b>_pageIndex</b>
+					
+					</div>
+					<div class="description">
+						Counter that keeps track of the number of times, that a view is renderedNOTE: for implementation specific reasons, jQuery Mobile requires that		 each page has a different ID. This pageIndex is used to generating		 such a unique ID, by increasing the number on each page-change		 (i.e. by rendering a view) and appending it to the page's ID/name.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_pageIndex#_pageIndex"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_pageIndex#_pageIndex</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_partials"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{<a href="../symbols/Dictionary.html">Dictionary</a>}</span>
+					<b>_partials</b>
+					
+					</div>
+					<div class="description">
+						Array of all the partials of the application
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_partials#_partials"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_partials#_partials</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_previousView"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Object}</span>
+					<b>_previousView</b>
+					
+					</div>
+					<div class="description">
+						An object containing data for the previously displayed view - the onedisplayed before the current view.<br>It contains: name of the corresponding controller, name of the viewand optionally data for the view
+						
+						
+					</div>
+					
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								do not use
+							</dt>
+							</dl>
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_previousView#_previousView"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_previousView#_previousView</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_renderEngine"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Object}</span>
+					<b>_renderEngine</b>
+					
+					</div>
+					<div class="description">
+						Default implementation for the rendering-engine:does nothing but writing an error message to the console,if any of its functions is invoked.The rendering engine can be set via <a href="../symbols/mmir.PresentationManager.html#setRenderEngine">mmir.PresentationManager#setRenderEngine</a>.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_renderEngine#_renderEngine"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_renderEngine#_renderEngine</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_renderEngine._engine"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Object}</span>
+					<b>_renderEngine._engine</b>
+					
+					</div>
+					<div class="description">
+						Reference to the rendering-engine implementation / instance.This reference should not be accessed directly.Custom functions of the rendering implementation can beinvoked via <a href="../symbols/mmir.PresentationManager.html#callRenderEngine">mmir.PresentationManager#callRenderEngine</a>.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_renderEngine._engine#_engine"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_renderEngine._engine#_engine</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_views"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{<a href="../symbols/Dictionary.html">Dictionary</a>}</span>
+					<b>_views</b>
+					
+					</div>
+					<div class="description">
+						Array of all the views of the application
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_views#_views"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_views#_views</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="CONFIG_PRECOMPILED_VIEWS_MODE"> </a>
+					<div class="fixedFont">&lt;private&gt; &lt;constant&gt; 
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>CONFIG_PRECOMPILED_VIEWS_MODE</b>
+					
+					</div>
+					<div class="description">
+						Name of the configuration property that specifies whether or not to use pre-compiled views, i.e. whether to use generated JavaScript filesinstead of parsing & compiling the "raw" templates (eHTML files).<p>NOTE: the configuration value, that can be retrieved by querying this configuration-property	  has is either a Boolean, or a String representation of a Boolean value:		<code>[true|false|"true"|"false"]</code><br>NOTE2: There may be no value set at all in the configuration for this property.	   In this case you should assume that it was set to <code>false</code>.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">var isUsePrecompiledViews = mmir.Constants.get(CONFIG_PRECOMPILED_VIEWS_MODE);</pre>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="CONFIG_PRECOMPILED_VIEWS_MODE#CONFIG_PRECOMPILED_VIEWS_MODE"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>CONFIG_PRECOMPILED_VIEWS_MODE#CONFIG_PRECOMPILED_VIEWS_MODE</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="DEFAULT_LAYOUT_NAME"> </a>
+					<div class="fixedFont">&lt;private&gt; &lt;constant&gt; 
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>DEFAULT_LAYOUT_NAME</b>
+					
+					</div>
+					<div class="description">
+						Name for the default layout.<p>There must exist a layout definition bythis name, i.e.<pre>views/layout/<DEFAULT_LAYOUT_NAME>.ehtml</pre>NOTE: while the name begins with an upper case      letter, the file name for the layout must      start with a lower case letter, e.g. for      name <code>Default</code>, the file name      must be <code>default.ehtml</code>.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="DEFAULT_LAYOUT_NAME#DEFAULT_LAYOUT_NAME"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>DEFAULT_LAYOUT_NAME#DEFAULT_LAYOUT_NAME</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="_renderEngine.render"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>_renderEngine.render</b>(ctrlName, viewName, view, ctrl, data)
+					
+					</div>
+					<div class="description">
+						The function that actually renders the View.<br>The function will be invoked in context of the PresentationManager instance(i.e. the manager will be the <em>this</em> context).Implementations of this function should adhere to the following procedure:<br>First this function fetches the <em>layout</em> for the <em>controller</em>(or uses the <code>dialogManager.DEFAULT_LAYOUT<code>).Then the <code>before_page_prepare</code> of the <em>controller</em> is invoked (if it exists).Then renders the <em>view</em> into thelayout-template; <em>partials</em>, <em>helpers</em> etc.that are referenced in the <em>view</em> will be processed,executed etc.; during this, localized Strings should be processed and rendered by<a href="../symbols/mmir.LanguageManager.html#getText">mmir.LanguageManager#getText</a>. Then <em>dialogs</em> are created and the <code>dialogManager.pageIndex</code> is updated.The new content is inserted into the document/page (invisibly).Then the <code>before_page_load</code> of the <em>controller</em> is invoked (if it exists).The new content/page is made visible, and the old one invisible and / or is removed.At the end the <b>on_page_load</b> action of the <em>controller</em> is performed.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ctrlName</b>
+									
+								</dt>
+								<dd>Name of the controller</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>viewName</b>
+									
+								</dt>
+								<dd>Name of the view to render</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>view</b>
+									
+								</dt>
+								<dd>View object that is to be rendered</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>ctrl</b>
+									
+								</dt>
+								<dd>Controller object of the view to render</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>data</b>
+									<i>Optional</i>
+								</dt>
+								<dd>optional data for the view.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="callRenderEngine"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>callRenderEngine</b>(funcName, args)
+					
+					</div>
+					<div class="description">
+						This function allows to call custom functions of the rendering-enginethat was set via <a href="../symbols/mmir.PresentationManager.html#setRenderEngine">#setRenderEngine</a>.IMPORTANT:note that the function will be invoked in context of rendering-engine(i.e. <code>this</code> references will refer to rendering-engineand not to the PresentationManager instance.For example, when <code>mmir.PresentationManager.callRenderEngine('hideWaitDialog')</code>is called, any <code>this</code> references within the <code>hideWaitDialog</code>implementation would refer to object, that was set in <code>setRenderEngine(object)</code>.In comparison, when called as <code>mmir.PresentationManager.hideWaitDialog()</code> the<code>this</code> references refer to the mmir.PresentationManager instance.<br>NOTE that calling non-existing functions on the rendering-engine      will cause an error.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>funcName</b>
+									
+								</dt>
+								<dd>the name of the function, that should be invoked on the rendering			engine.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array<any>}</span> <b>args</b>
+									<i>Optional</i>
+								</dt>
+								<dd>OPTIONAL			the arguments for <code>funcName</code> invoked         via <code>Function.apply(renderingEngine, args)</code>, e.g.			for <code>args = [param1, param2, param3]</code> the			function will be called with			<code>funcName(param1, param2, param3)</code>			(note that the function receives 3 arguments, and          not 1 Array-argument).</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="checkCompletion"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>checkCompletion</b>(status)
+					
+					</div>
+					<div class="description">
+						HELPER for checking the loading status.As long as the Deferred <code>status.loader</code> isstill pending, the loading status will be checked:Depending on <code>status.currentLoadCount</code> and<code>status.remainingCtrlCount</code> the completionof the loading process is checked.If loading is completed, the Deferred <code>status.loader</code>will be resolved.If OPTIONAL <code>status.loader</code> (Function) exists, intead of resolving<code>status.loader</code>, this function is invoked in case of completionwith <code>status</code> as argument.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{PlainObject}</span> <b>status</b>
+									
+								</dt>
+								<dd>the object for managing the laoding status.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doLoadTemplateFile"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>doLoadTemplateFile</b>(controller, templateInfo, createConfig, loadStatus)
+					
+					</div>
+					<div class="description">
+						HELPER that loads a single template file asynchronously and creates a corresponding template-class instance(depending on <code>createConfig</code>).The <code>status</code> is updated on successful loading or on error (see updateLoadStatus).
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">//EXAMPLE for createConfig for loading template contents into a Partialvar theCreateConfig = {  constructor: Partial,        // the class constructor that takes the loaded template data  typeName: 'Partial',         // the name of the class that will be created  collection: _partials,        // the map/dictionary to which the created class-instance will be added  keyGen: createPartialKey,    // the function for creating the lookup-key (for the dictionary)  accessorName: 'getPartials'  // the accessor-function's name for accessing the info-objects on the controller-instance};doLoadTemplateFiles(theCreateConfig).then(function(){	//do something that depends on loading of the template files... });//EXAMPLE for createConfig for loading template contents into a Layoutvar theCreateLayoutConfig = {  constructor: Layout,        // the class constructor that takes the loaded template data  typeName: 'Layout',         // the name of the class that will be created  collection: _layouts,        // the map/dictionary to which the created class-instance will be added};doLoadTemplateFiles(theCreateLayoutConfig).then(function(){	//do something that depends on loading of the template files... });//for createConfig for loading template contents into a Partial</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Controller.html">Controller</a>}</span> <b>controller</b>
+									
+								</dt>
+								<dd>the controller to which the template files belong.		May be <code>null</code>: see doParseTemplate.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{PlainObject}</span> <b>templateInfo</b>
+									
+								</dt>
+								<dd>the JSON-like object containing information for the template		(e.g. <code>name</code>, <code>file-path</code> etc.; see		 <a href="../symbols/mmir.ControllerManager.html#getControllerResources">mmir.ControllerManager#getControllerResources</a> for          more information).</dd>
+							
+								<dt>
+									<span class="light fixedFont">{PlainObject}</span> <b>createConfig</b>
+									
+								</dt>
+								<dd>configuration that is used to create a corresponding template-object		for the loaded template-contents.		The created object will be added to <code>createConfig.collection</code>		(Dictionary; with controller's name as key).</dd>
+							
+								<dt>
+									<span class="light fixedFont">{PlainObject}</span> <b>loadStatus</b>
+									
+								</dt>
+								<dd>Object for managing the loading-status. The status is updated and used to		determine, if all templates (e.g. from a list) have been (asynchronously)		loaded.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doParseTemplate"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>doParseTemplate</b>(controller, templateName, createConfig, status, status)
+					
+					</div>
+					<div class="description">
+						HELPER: creates a template-object (e.g. a View or a Partial) for the         raw template conent.                If necessary, the parser-classes (module 'parseUtils') are loaded,        which are necessary to process the raw template content.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Controller.html">Controller</a>}</span> <b>controller</b>
+									
+								</dt>
+								<dd>the controller to which the template files belong.		May be <code>null</code>: in this case, this argument will be omitted when		creating the template object and creating the lookup-key (e.g. in case of a Layout).</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>templateName</b>
+									
+								</dt>
+								<dd>the name for the template (e.g. file-name without extension)</dd>
+							
+								<dt>
+									<span class="light fixedFont">{PlainObject}</span> <b>createConfig</b>
+									
+								</dt>
+								<dd>configuration that is used to create the template-object		for the template-contents:		<code>createConfig.constructor</code>: the constructor function                   IF controller IS NOT null: <code>(controller, templateName, templateContent)</code>                    							 (e.g. View, Partial)                   IF controller IS null:     <code>(templateName, templateContent)</code>                   							 (e.g. Layout)                   		<code>createConfig.collection</code>: the Dictionary to which the created											 template-object will be added		<code>createConfig.keyGen</code>: a generator function for creating the lookup-key when adding										the template-object to the collection.										This function is invoked with <code>(controller.getName(), templateName)</code>,										that is <code>(String, String)</code>.																				NOTE: if controller IS null, the keyGen function will not be used, and											  instead the template-object will be added with the											  created template-object's name as lookup-key.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{PlainObject}</span> <b>status</b>
+									
+								</dt>
+								<dd>the object for managing the loading status.			After creating and adding the template-object to the collection, the loading			status will be updated via updateLoadStatus</dd>
+							
+								<dt>
+									<b>status</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doProcessTemplateList"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Promise}</span>
+					<b>doProcessTemplateList</b>(createConfig)
+					
+					</div>
+					<div class="description">
+						Generic helper for loading a list of template files (*.ehtml)that correspond to a specific template type (e.g. <code>View</code>s, or <code>Partial</code>s). If compiled representations of the template file exist AND is up-to-date AND the configuration is set to load the compiled files rather than the raw template file (see <code>isUsePreCompiledViews</code>), then the compiled template is used.  This function uses an asynchronous method for loading the template-files.<br><b>If you want to make sure, that all templates have indeed been loaded, beforeproceeding with the subsequent program flow, you should have a look at thefunction mmir.ControllerManager#foundControllersCallBack: use the returnedDeferred.Promise for executing code that depends on the templates being loaded.</b><p>Uses doloadTemplateFile for loading single template files.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{PlainObject}</span> <b>createConfig</b>
+									
+								</dt>
+								<dd>configuration object that determines which templates are loaded, and how			the loaded data is processed.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Promise}</span> a Deferred.promise, that resolves after all partials have been loaded					NOTE: loading failures will generate a warning message (on the console)						  but will not cause the Promise to fail.</dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd>doLoadTemplateFile</dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="getInstance"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getInstance</b>()
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								instead: use mmir.PresentationManager directly
+							</dt>
+							</dl>
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="getLayout"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Object}</span>
+					<b>getLayout</b>(layoutName, doUseDefaultIfMissing)
+					
+					</div>
+					<div class="description">
+						This function returns a layout object by name.<br>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>layoutName</b>
+									
+								</dt>
+								<dd>Name of the layout which should be returned</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>doUseDefaultIfMissing</b>
+									<i>Optional</i>
+								</dt>
+								<dd>if supplied and           <code>true</code>, the default controller's layout           will be used as a fallback, in case no corresponding           layout could be found</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> The requested layout, "false" if not found</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getPartial"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Object}</span>
+					<b>getPartial</b>(controllerName, viewName)
+					
+					</div>
+					<div class="description">
+						This function returns a partial object by name.<br>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>controllerName</b>
+									
+								</dt>
+								<dd>Name of the controller for the view</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>viewName</b>
+									
+								</dt>
+								<dd>Name of the partial which should be returned</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> The requested partial, "false" if not found</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getView"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Object}</span>
+					<b>getView</b>(controllerName, viewName)
+					
+					</div>
+					<div class="description">
+						This function returns a view object by name.<br>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>controllerName</b>
+									
+								</dt>
+								<dd>Name of the controller for the view</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>viewName</b>
+									
+								</dt>
+								<dd>Name of the view which should be returned</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> The requested view, <tt>false</tt> if not         found</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="hideCurrentDialog"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>hideCurrentDialog</b>()
+					
+					</div>
+					<div class="description">
+						Closes a modal window / dialog (if one is open).<br>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="hideWaitDialog"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>hideWaitDialog</b>()
+					
+					</div>
+					<div class="description">
+						Hides / closes the "wait" dialog.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/mmir.PresentationManager.html#showWaitDialog">#showWaitDialog</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="isUpToDate"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>isUpToDate</b>(viewContent, preCompiledViewPath)
+					
+					</div>
+					<div class="description">
+						Read the checksum file that was created when the pre-compiled view was created:it contains the view's template size (the length of its String representation) and MD5 hash.-> by calculating the viewContent's size and MD5 hash, we can determine, if it has changed   by comparing it with the data of the checksum file.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>viewContent</b>
+									
+								</dt>
+								<dd>the content of the view template (i.e. loaded eHTML file)</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>preCompiledViewPath</b>
+									
+								</dt>
+								<dd>the path to the corresponding pre-compiled view file</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="loadLayouts"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Promise}</span>
+					<b>loadLayouts</b>()
+					
+					</div>
+					<div class="description">
+						This function loads the layouts for every controller and puts thename of the layouts into the <b>_layouts</b> array.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Promise}</span> a Deferred.promise that gets resolved upon loading all layouts; fails/is rejected, if not at least 1 layout was loaded</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="loadPartials"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Promise}</span>
+					<b>loadPartials</b>()
+					
+					</div>
+					<div class="description">
+						This function actually loads the partials for every controller,creates an instance of a partial class and puts the partial instancein the <b>_partials</b> array.<br>It uses a asynchronous way of loading the partials-files one afteranother.<br><b>If you want to make sure, that all partials are indeed loaded,before proceeding with the subsequent instructions, you could look atthe functionmmir.ControllerManager#foundControllersCallBack forreference of a function which loads the files one after another - notasynchronously.</b>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Promise}</span> a Deferred.promise, that resolves after all partials have been loaded					NOTE: loading failures will generate a warning message (on the console)						  but will not cause the Promise to fail.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="loadPrecompiledView"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>loadPrecompiledView</b>(rawViewData, targetPath, success, fail)
+					
+					</div>
+					<div class="description">
+						Checks if a pre-compiled view is up-to-date:loads the view, if it is current.If the pre-compiled view is not current, or loading-errorsoccur, the fail-callback will be triggered (the callback argument may contain information about the cause).
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>rawViewData</b>
+									
+								</dt>
+								<dd>the text content of the view template (i.e. content of a eHTML file "as is")</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>targetPath</b>
+									
+								</dt>
+								<dd>the path to the pre-compiled view file</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>success</b>
+									
+								</dt>
+								<dd>callback that will be triggered, if pre-compiled view file was loaded					NOTE: the JS code of the loaded file may not have been fully executed yet!</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>fail</b>
+									
+								</dt>
+								<dd>callback that will be triggered, if pre-compiled view is not up-to-date or					an error occurs while loading the file</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="loadViews"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Promise}</span>
+					<b>loadViews</b>()
+					
+					</div>
+					<div class="description">
+						This function actually loads the views for every controller, createsan instance of a view class and puts the view instance in the<b>_views</b> array.<br>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Promise}</span> a Deferred.promise that gets resolved upon loading all views</dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd>doProcessTemplateList</dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="renderPreviousView"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>renderPreviousView</b>()
+					
+					</div>
+					<div class="description">
+						Renders the previous view again, using the<a href="../symbols/mmir.DialogManager.html#render">mmir.DialogManager#render</a> method.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								you should use #render with appropriate parameters instead.
+							</dt>
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Requires:</dt>
+							
+								<dd>mmir.DialogManager</dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="renderView"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>renderView</b>(ctrlName, viewName, data)
+					
+					</div>
+					<div class="description">
+						Gets the view for a controller, then executes helper methods onthe view data. The Rendering of the view is done by the#doRenderView method. Alsostores the previous and current view with parameters.<br>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ctrlName</b>
+									
+								</dt>
+								<dd>Name of the controller</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>viewName</b>
+									
+								</dt>
+								<dd>Name of the view to render</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>data</b>
+									<i>Optional</i>
+								</dt>
+								<dd>optional data for the view.           Currently same jQuery Mobile specific properties are supported: <br>           When these are present, they will be used for animating the            page transition upon rendering.                      <pre>{transition: STRING, reverse: BOOLEAN}</pre>           where<br>           <code>transition</code>: the name for the transition (see jQuery Mobile Doc for possible values)           							DEFAULT: "none".           <code>reverse</code>: whether the animation should in "forward" (FALSE) direction, or "backwards" (TRUE)           						DEFAULT: FALSE</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="reRenderView"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>reRenderView</b>()
+					
+					</div>
+					<div class="description">
+						Renders the current view again, using the#render method.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								you should use #render with appropriate parameters instead.
+							</dt>
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Requires:</dt>
+							
+								<dd>mmir.DialogManager</dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="setRenderEngine"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setRenderEngine</b>(theRenderEngine)
+					
+					</div>
+					<div class="description">
+						Sets the <em>rendering engine</em> for the views.The render engine <b>must</b> implement a function <em>render</em>and <i>may</i> implement functions <em>showDialog</em>,<em>hideCurrentDialog</em>, <em>showWaitDialog</em>, and <em>hideWaitDialog</em>:<ul>	<li><b>theRenderEngine.<code>render(ctrlName : String, viewName : String, view : View, ctrl : Controller, data : Object) : void</code></b></li>	<li>theRenderEngine.<code>showDialog(ctrlName : String, dialogId : String, data : Object) : Dialog</code></li>	<li>theRenderEngine.<code>hideCurrentDialog(): void</code></li>	<li>theRenderEngine.<code>showWaitDialog(text : String, data : Object): void</code></li>	<li>theRenderEngine.<code>hideWaitDialog(): void</code></li></ul>The functions of <code>theRenderEngine</code> will be called incontext of the PresentationManager.Custom functions of the specific rendering engine implementation (i.e. non-standard functions) can be call via <a href="../symbols/mmir.PresentationManager.html#callRenderEngine">#callRenderEngine</a>.<br>By default, the rendering-engine as defined by the module ID/path in<code>core.viewEngine</code> will be loaded and set during initializationof the DialogManager.<br>The implementation of the default view-engine is at<code>mmirf/env/view/presentation/jqmViewEngine.js</code>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>theRenderEngine</b>
+									
+								</dt>
+								<dd>the render-engine for views</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd>#render</dd>
+							
+								<dd><a href="../symbols/mmir.PresentationManager.html#showDialog">#showDialog</a></dd>
+							
+								<dd><a href="../symbols/mmir.PresentationManager.html#hideCurrentDialog">#hideCurrentDialog</a></dd>
+							
+								<dd><a href="../symbols/mmir.PresentationManager.html#showWaitDialog">#showWaitDialog</a></dd>
+							
+								<dd><a href="../symbols/mmir.PresentationManager.html#hideWaitDialog">#hideWaitDialog</a></dd>
+							
+								<dd><a href="../symbols/mmir.PresentationManager.html#callRenderEngine">#callRenderEngine</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="showDialog"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Object}</span>
+					<b>showDialog</b>(ctrlName, dialogId, data)
+					
+					</div>
+					<div class="description">
+						Opens the dialog for ID <code>dialogId</code>.<br>
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>ctrlName</b>
+									
+								</dt>
+								<dd>the Name of the controller</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>dialogId</b>
+									
+								</dt>
+								<dd>the ID of the dialog</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>data</b>
+									<i>Optional</i>
+								</dt>
+								<dd>OPTIONAL           a data / options object</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> the instance of the opened dialog (void or falsy dialog was not opened)</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="showWaitDialog"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>showWaitDialog</b>(text, data)
+					
+					</div>
+					<div class="description">
+						Shows a "wait" dialog, i.e. "work in progress" notification.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>text</b>
+									<i>Optional</i>
+								</dt>
+								<dd>OPTIONAL				the text that should be displayed.				If omitted the language setting for <code>loadingText</code>				will be used instead (from dictionary.json)</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>data</b>
+									<i>Optional</i>
+								</dt>
+								<dd>OPTIONAL				a data / options object</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/mmir.PresentationManager.html#hideWaitDialog">#hideWaitDialog</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="updateLoadStatus"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>updateLoadStatus</b>(status, hasLoadingFailed)
+					
+					</div>
+					<div class="description">
+						HELPER for updating the loading status.Invokes checkCompletion with <code>status</code> as argument.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{PlainObject}</span> <b>status</b>
+									
+								</dt>
+								<dd>the object for managing the laoding status:		<code>status.currentLoadCount</code> (Integer): this property will be decreased by 1.											This value should initially be set to the count											of files, that will / should be loaded.		OPTIONAL <code>status.extLoadStatusFunc</code> (Function): if this property is set, the											function will be invoked with <code>status</code>											and <code>hasLoadingFailed</code> as arguments.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>hasLoadingFailed</b>
+									<i>Optional</i>
+								</dt>
+								<dd>OPTIONAL		if present and <code>true</code>: this indicates that the loading process for the current		template file (*.ehtml) has failed. NOTE that this is NOT used, when loading of a 		_compiled_ template file (*.js) fails!</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Mar 09 2015 22:18:44 GMT+0100 (MEZ)
+		</div>
+	</body>
+</html>

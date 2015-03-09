@@ -1,0 +1,296 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="PUNC">(</span><span class="WHIT">
+<span class='line'>  2</span> </span><span class="COMM">/**
+<span class='line'>  3</span>  * Main module / namespace for the MMIR framework.
+<span class='line'>  4</span>  * 
+<span class='line'>  5</span>  * On initialization, a global module &lt;code>window.mmir&lt;/code> is created.
+<span class='line'>  6</span>  * 
+<span class='line'>  7</span>  * If called multiple times, the existing module instance is returned.
+<span class='line'>  8</span>  * 
+<span class='line'>  9</span>  * If a function &lt;code>require&lt;/code> exists, the module tries to registers itself
+<span class='line'> 10</span>  * according to the &lt;em>RequireJS&lt;/em> interface (using the default as its module name, i.e. "core").
+<span class='line'> 11</span>  * 
+<span class='line'> 12</span>  * @name mmir
+<span class='line'> 13</span>  * @export initMmir as mmir
+<span class='line'> 14</span>  * @class
+<span class='line'> 15</span>  * 
+<span class='line'> 16</span>  * @returns the module instance &lt;code>mmir&lt;/code>
+<span class='line'> 17</span>  * 
+<span class='line'> 18</span>  */</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">initMmir</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">window.mmir</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">define</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">			</span><span class="NAME">define</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">window.mmir</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">window.mmir</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">    </span><span class="COMM">//STATE: state variable for indicating "doc is already loaded" (this needs to be set/reset manually)</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_isReady</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_funcList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">dequeue</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">_funcList.shift</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">isEmpty</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">_funcList.length</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">	</span><span class="COMM">//param func OPTIONAL</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">	</span><span class="COMM">//			if func is present, func will be used instead of dequeueing a callback from the queue</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">deqExex</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">func</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">			</span><span class="NAME">func</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">dequeue</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 40</span> 
+<span class='line'> 41</span> </span><span class="WHIT">		</span><span class="COMM">//run function in context of the document (whith jQuery as argument)</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">		</span><span class="NAME">func.call</span><span class="PUNC">(</span><span class="NAME">mmir</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">	</span><span class="COMM">//STATE: state variable for indicating "configs for requirejs are already applied"</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_isApplied</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_configList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">applyConfigs</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">require</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">		</span><span class="NAME">_isApplied</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">		</span><span class="KEYW">while</span><span class="PUNC">(</span><span class="NAME">_configList.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">			</span><span class="NAME">require.config</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">_configList.shift</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">mmir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">			</span><span class="NAME">setInitialized</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">				</span><span class="NAME">_isReady</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 66</span> 
+<span class='line'> 67</span> </span><span class="WHIT">				</span><span class="COMM">//apply configurations to requirejs instance:</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">				</span><span class="NAME">applyConfigs</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">				</span><span class="COMM">//execute all callbacks in queue</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">				</span><span class="KEYW">while</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">isEmpty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">					</span><span class="NAME">deqExex</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'> 77</span> 			 * Register callbacks for initialization-event of framework.
+<span class='line'> 78</span> 			 * 
+<span class='line'> 79</span> 			 * If used after framework has been initialized, the callback is invoked immediately.
+<span class='line'> 80</span> 			 * 
+<span class='line'> 81</span> 			 * @memberOf mmir
+<span class='line'> 82</span> 			 * @name ready
+<span class='line'> 83</span> 			 * @function
+<span class='line'> 84</span> 			 * @public
+<span class='line'> 85</span> 			 * 
+<span class='line'> 86</span> 			 * @param {Function} func
+<span class='line'> 87</span> 			 * 				callback Function that will be triggered when the framework has been initialized 
+<span class='line'> 88</span> 			 */</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">			</span><span class="NAME">ready</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">func</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">				</span><span class="COMM">//SPECIAL MODE: if already active, execute the callback </span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">				</span><span class="COMM">//				(if queue is not empty yet: queue function call in order to preserve the execution ordering)</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">_isReady</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="WHIT"> </span><span class="NAME">isEmpty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">					</span><span class="NAME">deqExec</span><span class="PUNC">(</span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">					</span><span class="NAME">_funcList.push</span><span class="PUNC">(</span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>102</span> 			 * Set options / settings for overwriting the default
+<span class='line'>103</span> 			 * configuration for RequireJS:
+<span class='line'>104</span> 			 * 
+<span class='line'>105</span> 			 * &lt;br>
+<span class='line'>106</span> 			 * Options / configurations that are added by this
+<span class='line'>107</span> 			 * method will overwrite settings specified in
+<span class='line'>108</span> 			 * &lt;code>mainConfig.js&lt;/code>.
+<span class='line'>109</span> 			 * 
+<span class='line'>110</span> 			 * &lt;p>
+<span class='line'>111</span> 			 * NOTE: the options added here will be applied in the order
+<span class='line'>112</span> 			 *       the were added, i.e. if a later option specifies
+<span class='line'>113</span> 			 *       settings that were already set by a previous call,
+<span class='line'>114</span> 			 *       then these later options will overwrite the earlier
+<span class='line'>115</span> 			 *       ones.
+<span class='line'>116</span> 			 * 
+<span class='line'>117</span> 			 * @memberOf mmir
+<span class='line'>118</span> 			 * @name config
+<span class='line'>119</span> 			 * @function
+<span class='line'>120</span> 			 * @param {PlainObject} options
+<span class='line'>121</span> 			 * 			options for RequireJS
+<span class='line'>122</span> 			 * @public
+<span class='line'>123</span> 			 */</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">			</span><span class="NAME">config</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">_isApplied</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">require</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">					</span><span class="NAME">require.config</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">					</span><span class="NAME">_configList.push</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>134</span> 			 * Applies settings that were added via
+<span class='line'>135</span> 			 * {@link #config}.
+<span class='line'>136</span> 			 * 
+<span class='line'>137</span> 			 * &lt;p>
+<span class='line'>138</span> 			 * WARNING: use this only, if you know what
+<span class='line'>139</span> 			 *          you are doing -- normally this
+<span class='line'>140</span> 			 *          functions is only called once
+<span class='line'>141</span> 			 *          during initialization by the
+<span class='line'>142</span> 			 *          framework, after the default
+<span class='line'>143</span> 			 *          configuration settings for 
+<span class='line'>144</span> 			 *          RequireJS in &lt;code>mainConfig.js&lt;/code>
+<span class='line'>145</span> 			 *          were applied.
+<span class='line'>146</span> 			 * 
+<span class='line'>147</span> 			 * @memberOf mmir
+<span class='line'>148</span> 			 * @name applyConfigs
+<span class='line'>149</span> 			 * @function
+<span class='line'>150</span> 			 * @private this is a semi-private function that 
+<span class='line'>151</span> 			 *          should only be used by the initialization
+<span class='line'>152</span> 			 *          process.
+<span class='line'>153</span> 			 */</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">			</span><span class="NAME">applyConfig</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">applyConfigs</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>157</span> 			 * The name / ID of the RequireJS module that will
+<span class='line'>158</span> 			 * be loaded, after the configuration in
+<span class='line'>159</span> 			 * &lt;code>mainConfig.js&lt;/code> was applied.
+<span class='line'>160</span> 			 * 
+<span class='line'>161</span> 			 * &lt;p>
+<span class='line'>162</span> 			 * This module should first start-up the framework and
+<span class='line'>163</span> 			 * then signal the application (via {@link #setInitialized}
+<span class='line'>164</span> 			 * that it is ready to be used, i.e. fully initialized now.
+<span class='line'>165</span> 			 * 
+<span class='line'>166</span> 			 * &lt;p>
+<span class='line'>167</span> 			 * NOTE: If set to &lt;code>undefined&lt;/code>, no module will be 
+<span class='line'>168</span> 			 * loaded after configuration in &lt;code>mainConfig.js&lt;/code>
+<span class='line'>169</span> 			 * was applied.
+<span class='line'>170</span> 			 * 
+<span class='line'>171</span> 			 * @memberOf mmir
+<span class='line'>172</span> 			 * @name startModule
+<span class='line'>173</span> 			 * @property
+<span class='line'>174</span> 			 * @type String
+<span class='line'>175</span> 			 * @default {String} "main" will load the module specified in main.js
+<span class='line'>176</span> 			 * @public
+<span class='line'>177</span> 			 */</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">			</span><span class="NAME">startModule</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'main'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>179</span> 
+<span class='line'>180</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>181</span> 			 * Name / ID / load-path (requirejs) for the module
+<span class='line'>182</span> 			 * that handles the views (i.e. "rendering" that is
+<span class='line'>183</span> 			 * change from one view to the next).
+<span class='line'>184</span> 			 * 			 
+<span class='line'>185</span> 			 * @memberOf mmir
+<span class='line'>186</span> 			 * @name viewEngine
+<span class='line'>187</span> 			 * @property
+<span class='line'>188</span> 			 * @type String
+<span class='line'>189</span> 			 * @default "jqmViewEngine" will load the default view-engine that uses jQuery Mobile
+<span class='line'>190</span> 			 * @public
+<span class='line'>191</span> 			 */</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">			</span><span class="NAME">viewEngine</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'jqmViewEngine'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>196</span> 			 * Property for enabling / disabling logging:
+<span class='line'>197</span> 			 * if set to &lt;code>true&lt;/code> (or omitted), the default Logger implementation &lt;code>tools/logger.js&lt;/code>
+<span class='line'>198</span> 			 * will be loaded as "logger" module.
+<span class='line'>199</span> 			 * 
+<span class='line'>200</span> 			 * If set to &lt;code>false&lt;/code> the "dummy" Logger implementation &lt;code>tools/loggerDisabled.js&lt;/code> will
+<span class='line'>201</span> 			 * be loaded as "logger" module which essentially will create no logging output.
+<span class='line'>202</span> 			 * 			 
+<span class='line'>203</span> 			 * @memberOf mmir
+<span class='line'>204</span> 			 * @name debug
+<span class='line'>205</span> 			 * @property
+<span class='line'>206</span> 			 * @type Boolean
+<span class='line'>207</span> 			 * @default true
+<span class='line'>208</span> 			 * @public
+<span class='line'>209</span> 			 * 
+<span class='line'>210</span> 			 * @see #logLevel
+<span class='line'>211</span> 			 */</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">			</span><span class="NAME">debug</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>215</span> 			 * Property for the log-level of the Logger module:
+<span class='line'>216</span> 			 * if set, and property &lt;code>debug&lt;/code> is &lt;code>true&lt;/code>, then the logger module
+<span class='line'>217</span> 			 * will use the log-level as default log-level.
+<span class='line'>218</span> 			 * 
+<span class='line'>219</span> 			 * If omitted, the Logger's implementation defaults will be used.
+<span class='line'>220</span> 			 * 
+<span class='line'>221</span> 			 * If set, the property must be either a Number or a String with one of the following values:
+<span class='line'>222</span> 			 * 
+<span class='line'>223</span> 			 * 0: "verbose"
+<span class='line'>224</span> 			 * 1: "debug"
+<span class='line'>225</span> 			 * 2: "info"
+<span class='line'>226</span> 			 * 3: "warn"
+<span class='line'>227</span> 			 * 4: "error"
+<span class='line'>228</span> 			 * 5: "critical"
+<span class='line'>229</span> 			 * 6: "disabled"
+<span class='line'>230</span> 			 * 
+<span class='line'>231</span> 			 * NOTE: if you want to disable logging completely, use {@link #debug}.
+<span class='line'>232</span> 			 *       Setting the logLevel to "disabled" will still allow specific module's to create logging output
+<span class='line'>233</span> 			 *       (if their log-level is set appropriately)
+<span class='line'>234</span> 			 * 			 
+<span class='line'>235</span> 			 * @memberOf mmir
+<span class='line'>236</span> 			 * @name logLevel
+<span class='line'>237</span> 			 * @property
+<span class='line'>238</span> 			 * @type Integer | String
+<span class='line'>239</span> 			 * @default "debug"
+<span class='line'>240</span> 			 * @public
+<span class='line'>241</span> 			 * 
+<span class='line'>242</span> 			 * @see #debug
+<span class='line'>243</span> 			 */</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="WHIT">			</span><span class="NAME">logLevel</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'debug'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>247</span> 			 * Property for enabling / disabling trace output in the Logger module:
+<span class='line'>248</span> 			 * if set to &lt;code>true&lt;/code>, and property &lt;code>debug&lt;/code> is &lt;code>true&lt;/code>, then 
+<span class='line'>249</span> 			 * the logger module will print a stack-trace for each log-message.
+<span class='line'>250</span> 			 * 
+<span class='line'>251</span> 			 * If set to a configuration object:
+<span class='line'>252</span> 			 * &lt;pre>
+<span class='line'>253</span> 			 * {
+<span class='line'>254</span> 			 * 		"trace": [true | false],	//same as the Boolean primitive for logTrace
+<span class='line'>255</span> 			 * 		"depth": ["full" | other]	//OPTIONAL: if "full" then the complete stack trace is printed,
+<span class='line'>256</span> 			 * 									// otherwise only the first stack-entry (i.e. the calling function)
+<span class='line'>257</span> 			 * 									// is printed.
+<span class='line'>258</span> 			 * 									//DEFAULT: other
+<span class='line'>259</span> 			 * }
+<span class='line'>260</span> 			 * &lt;/pre>
+<span class='line'>261</span> 			 * 
+<span class='line'>262</span> 			 * i.e. &lt;code>{trace: true}&lt;/code> would be the same as using &lt;code>true&lt;/code> (or omitting this property).
+<span class='line'>263</span> 			 * 
+<span class='line'>264</span> 			 * 
+<span class='line'>265</span> 			 * The default value (also if omitted!) is &lt;code>true&lt;/code>.
+<span class='line'>266</span> 			 * 			 
+<span class='line'>267</span> 			 * @memberOf mmir
+<span class='line'>268</span> 			 * @name logTrace
+<span class='line'>269</span> 			 * @property
+<span class='line'>270</span> 			 * @type Boolean | PlainObject
+<span class='line'>271</span> 			 * @default true
+<span class='line'>272</span> 			 * @public
+<span class='line'>273</span> 			 * 
+<span class='line'>274</span> 			 * @see #debug
+<span class='line'>275</span> 			 * @see #logLevel
+<span class='line'>276</span> 			 */</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">			</span><span class="NAME">logTrace</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="WHIT">	</span><span class="COMM">//{trace: true, depth: 'full'}</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">define</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">		</span><span class="NAME">define</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">mmir</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">	</span><span class="COMM">//export as global namespace:</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">	</span><span class="NAME">window.mmir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">mmir</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">mmir</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="PUNC">}</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>289</span> </span></pre></body></html>

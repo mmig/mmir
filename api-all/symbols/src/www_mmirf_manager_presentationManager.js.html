@@ -1,0 +1,1299 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="TOKN">﻿</span><span class="COMM">/*
+<span class='line'>  2</span>  * 	Copyright (C) 2012-2013 DFKI GmbH
+<span class='line'>  3</span>  * 	Deutsches Forschungszentrum fuer Kuenstliche Intelligenz
+<span class='line'>  4</span>  * 	German Research Center for Artificial Intelligence
+<span class='line'>  5</span>  * 	http://www.dfki.de
+<span class='line'>  6</span>  * 
+<span class='line'>  7</span>  * 	Permission is hereby granted, free of charge, to any person obtaining a 
+<span class='line'>  8</span>  * 	copy of this software and associated documentation files (the 
+<span class='line'>  9</span>  * 	"Software"), to deal in the Software without restriction, including 
+<span class='line'> 10</span>  * 	without limitation the rights to use, copy, modify, merge, publish, 
+<span class='line'> 11</span>  * 	distribute, sublicense, and/or sell copies of the Software, and to 
+<span class='line'> 12</span>  * 	permit persons to whom the Software is furnished to do so, subject to 
+<span class='line'> 13</span>  * 	the following conditions:
+<span class='line'> 14</span>  * 
+<span class='line'> 15</span>  * 	The above copyright notice and this permission notice shall be included 
+<span class='line'> 16</span>  * 	in all copies or substantial portions of the Software.
+<span class='line'> 17</span>  * 
+<span class='line'> 18</span>  * 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+<span class='line'> 19</span>  * 	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+<span class='line'> 20</span>  * 	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+<span class='line'> 21</span>  * 	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+<span class='line'> 22</span>  * 	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+<span class='line'> 23</span>  * 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+<span class='line'> 24</span>  * 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> 
+<span class='line'> 27</span> 
+<span class='line'> 28</span> 
+<span class='line'> 29</span> </span><span class="NAME">define</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="WHIT"> </span><span class="STRN">'controllerManager'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'constants'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'commonUtils'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'configurationManager'</span><span class="COMM">//DISABLED: now loaded on-demand (see init()) -> 'renderUtils'</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">         </span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'layout'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'view'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'partial'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'dictionary'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'checksumUtils'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'languageManager'</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">         </span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'jquery'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'core'</span><span class="COMM">//, 'module'</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">         </span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'stringExtension'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'parserModule'</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">    </span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 36</span>      * @class
+<span class='line'> 37</span>      * @name mmir.PresentationManager
+<span class='line'> 38</span>      * @static 
+<span class='line'> 39</span>      *  
+<span class='line'> 40</span>      * Libraries:
+<span class='line'> 41</span>      *  - jQuery (>= v1.6.2); ajax, each
+<span class='line'> 42</span>      *  
+<span class='line'> 43</span>      *  @requires document (DOM object)
+<span class='line'> 44</span>      *  
+<span class='line'> 45</span>      *  @requires jQuery.Deferred
+<span class='line'> 46</span>      *  @requires jQuery.ajax
+<span class='line'> 47</span>      *  @requires jQuery.each
+<span class='line'> 48</span>      *  
+<span class='line'> 49</span>      */</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">controllerManager</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">constants</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">commonUtils</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">configurationManager</span><span class="COMM">//, renderUtils</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">    		</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Layout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">View</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Partial</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Dictionary</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">checksumUtils</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">languageManager</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">            </span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">core</span><span class="COMM">//, module</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">	</span><span class="COMM">//next 2 comments are needed by JSDoc so that all functions etc. can</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">	</span><span class="COMM">// be mapped to the correct class description</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">	</span><span class="COMM">/** @scope mmir.PresentationManager.prototype */</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 59</span> 	 * #@+
+<span class='line'> 60</span> 	 * @memberOf mmir.PresentationManager.prototype 
+<span class='line'> 61</span> 	 */</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 64</span>      * Counter that keeps track of the number of times, that a view is rendered
+<span class='line'> 65</span>      * 
+<span class='line'> 66</span>      * NOTE: for implementation specific reasons, jQuery Mobile requires that
+<span class='line'> 67</span>      * 		 each page has a different ID. This pageIndex is used to generating
+<span class='line'> 68</span>      * 		 such a unique ID, by increasing the number on each page-change
+<span class='line'> 69</span>      * 		 (i.e. by rendering a view) and appending it to the page's ID/name.
+<span class='line'> 70</span>      * 
+<span class='line'> 71</span>      * @property _pageIndex
+<span class='line'> 72</span>      * @type Integer
+<span class='line'> 73</span>      * @public
+<span class='line'> 74</span> 	 * @memberOf mmir.PresentationManager#
+<span class='line'> 75</span>      */</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_pageIndex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> 
+<span class='line'> 78</span> </span><span class="WHIT">	 </span><span class="COMM">/**
+<span class='line'> 79</span> 	  * Name for the default layout.
+<span class='line'> 80</span> 	  * 
+<span class='line'> 81</span> 	  * &lt;p>
+<span class='line'> 82</span> 	  * There must exist a layout definition by
+<span class='line'> 83</span> 	  * this name, i.e.
+<span class='line'> 84</span> 	  * &lt;pre>views/layout/&lt;DEFAULT_LAYOUT_NAME>.ehtml&lt;/pre>
+<span class='line'> 85</span> 	  * 
+<span class='line'> 86</span> 	  * NOTE: while the name begins with an upper case
+<span class='line'> 87</span> 	  *       letter, the file name for the layout must
+<span class='line'> 88</span> 	  *       start with a lower case letter, e.g. for
+<span class='line'> 89</span> 	  *       name &lt;code>Default&lt;/code>, the file name
+<span class='line'> 90</span> 	  *       must be &lt;code>default.ehtml&lt;/code>.
+<span class='line'> 91</span> 	  * 
+<span class='line'> 92</span> 	  * @property DEFAULT_LAYOUT_NAME
+<span class='line'> 93</span> 	  * @type String
+<span class='line'> 94</span> 	  * @private
+<span class='line'> 95</span> 	  * @constant
+<span class='line'> 96</span> 	  * @memberOf mmir.PresentationManager#
+<span class='line'> 97</span> 	  */</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">	 </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">DEFAULT_LAYOUT_NAME</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'Default'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">	 </span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">	 </span><span class="COMM">/**
+<span class='line'>101</span> 	  * Name of the configuration property that specifies whether or not to use 
+<span class='line'>102</span> 	  * pre-compiled views, i.e. whether to use generated JavaScript files
+<span class='line'>103</span> 	  * instead of parsing & compiling the "raw" templates (eHTML files).
+<span class='line'>104</span> 	  * 
+<span class='line'>105</span> 	  * &lt;p>
+<span class='line'>106</span> 	  * NOTE: the configuration value, that can be retrieved by querying this configuration-property
+<span class='line'>107</span> 	  * 	  has is either a Boolean, or a String representation of a Boolean value:
+<span class='line'>108</span> 	  * 		&lt;code>[true|false|"true"|"false"]&lt;/code>
+<span class='line'>109</span> 	  * &lt;br>
+<span class='line'>110</span> 	  * NOTE2: There may be no value set at all in the configuration for this property.
+<span class='line'>111</span> 	  * 	   In this case you should assume that it was set to &lt;code>false&lt;/code>. 
+<span class='line'>112</span> 	  * 
+<span class='line'>113</span> 	  * @property CONFIG_PRECOMPILED_VIEWS_MODE
+<span class='line'>114</span> 	  * @type String
+<span class='line'>115</span> 	  * @private
+<span class='line'>116</span> 	  * @constant
+<span class='line'>117</span> 	  * @memberOf mmir.PresentationManager#
+<span class='line'>118</span> 	  * 
+<span class='line'>119</span> 	  * @example var isUsePrecompiledViews = mmir.Constants.get(CONFIG_PRECOMPILED_VIEWS_MODE);
+<span class='line'>120</span> 	  * 
+<span class='line'>121</span> 	  */</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">	 </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">CONFIG_PRECOMPILED_VIEWS_MODE</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'usePrecompiledViews'</span><span class="PUNC">;</span><span class="COMM">//TODO move this to somewhere else (collected config-vars?)? this should be a public CONSTANT...</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">	 </span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">	 </span><span class="COMM">// private members</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">	 </span><span class="COMM">/**
+<span class='line'>126</span> 	  * Array of layouts of the application
+<span class='line'>127</span> 	  * 
+<span class='line'>128</span> 	  * @property _layouts
+<span class='line'>129</span> 	  * @type Dictionary
+<span class='line'>130</span> 	  * @private
+<span class='line'>131</span> 	  * @memberOf mmir.PresentationManager#
+<span class='line'>132</span> 	  */</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">	 </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_layouts</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dictionary</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> 
+<span class='line'>135</span> </span><span class="WHIT">	 </span><span class="COMM">/**
+<span class='line'>136</span> 	  * Array of all the views of the application
+<span class='line'>137</span> 	  * 
+<span class='line'>138</span> 	  * @property _views
+<span class='line'>139</span> 	  * @type Dictionary
+<span class='line'>140</span> 	  * @private
+<span class='line'>141</span> 	  * @memberOf mmir.PresentationManager#
+<span class='line'>142</span> 	  */</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">	 </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_views</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dictionary</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> 
+<span class='line'>145</span> </span><span class="WHIT">	 </span><span class="COMM">/**
+<span class='line'>146</span> 	  * Array of all the partials of the application
+<span class='line'>147</span> 	  * 
+<span class='line'>148</span> 	  * @property _partials
+<span class='line'>149</span> 	  * @type Dictionary
+<span class='line'>150</span> 	  * @private
+<span class='line'>151</span> 	  * @memberOf mmir.PresentationManager#
+<span class='line'>152</span> 	  */</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">	 </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_partials</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dictionary</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>154</span> 
+<span class='line'>155</span> </span><span class="WHIT">	 </span><span class="COMM">/**
+<span class='line'>156</span> 	  * An object containing data for the currently displayed view.&lt;br>
+<span class='line'>157</span> 	  * It contains: name of the corresponding controller, name of the view
+<span class='line'>158</span> 	  * and optionally data for the view
+<span class='line'>159</span> 	  * 
+<span class='line'>160</span> 	  * @property _currentView
+<span class='line'>161</span> 	  * @type Object
+<span class='line'>162</span> 	  * @private
+<span class='line'>163</span> 	  * @memberOf mmir.PresentationManager#
+<span class='line'>164</span> 	  */</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">	 </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_currentView</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>166</span> 
+<span class='line'>167</span> </span><span class="WHIT">	 </span><span class="COMM">/**
+<span class='line'>168</span> 	  * An object containing data for the previously displayed view - the one
+<span class='line'>169</span> 	  * displayed before the current view.&lt;br>
+<span class='line'>170</span> 	  * It contains: name of the corresponding controller, name of the view
+<span class='line'>171</span> 	  * and optionally data for the view
+<span class='line'>172</span> 	  * 
+<span class='line'>173</span> 	  * @property _previousView
+<span class='line'>174</span> 	  * @type Object
+<span class='line'>175</span> 	  * @private
+<span class='line'>176</span> 	  * @memberOf mmir.PresentationManager#
+<span class='line'>177</span> 	  * 
+<span class='line'>178</span> 	  * @deprecated do not use
+<span class='line'>179</span> 	  */</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">	 </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_previousView</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>181</span> 
+<span class='line'>182</span> </span><span class="WHIT">	 </span><span class="COMM">/**
+<span class='line'>183</span> 	  * The currently displayed dialog object, if a dialog is displayed. Used
+<span class='line'>184</span> 	  * mainly to close the dialog.
+<span class='line'>185</span> 	  * 
+<span class='line'>186</span> 	  * @property _currentDialog
+<span class='line'>187</span> 	  * @type Object
+<span class='line'>188</span> 	  * @private
+<span class='line'>189</span> 	  * @memberOf mmir.PresentationManager#
+<span class='line'>190</span> 	  * 
+<span class='line'>191</span> 	  * @see #_instance#showDialog
+<span class='line'>192</span> 	  * @see #_instance#hideCurrentDialog
+<span class='line'>193</span> 	  */</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">	 </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_currentDialog</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">	 </span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">	 </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">viewSeparator</span><span class="WHIT"> 		</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'#'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">     </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">partialSeparator</span><span class="WHIT"> 	</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">commonUtils.getPartialsPrefix</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">     </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">createLookupKey</span><span class="PUNC">(</span><span class="NAME">ctrl</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">viewObj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">separator</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">     	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">ctrl.getName</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">     		</span><span class="NAME">ctrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ctrl.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">     	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">     	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">viewObj.getName</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">     		</span><span class="NAME">viewObj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">viewObj.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">     	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">     	</span><span class="COMM">//TODO remove all >partialSeparator&lt; from partial-string beginning</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">     	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ctrl</span><span class="PUNC">+</span><span class="NAME">separator</span><span class="PUNC">+</span><span class="NAME">viewObj</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">     </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">     </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">createViewKey</span><span class="PUNC">(</span><span class="NAME">ctrl</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">view</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">     	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">createLookupKey</span><span class="PUNC">(</span><span class="NAME">ctrl</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">view</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">viewSeparator</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">     </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">     </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">createPartialKey</span><span class="PUNC">(</span><span class="NAME">ctrl</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">partial</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">     	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">createLookupKey</span><span class="PUNC">(</span><span class="NAME">ctrl</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">partial</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">partialSeparator</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">     </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">     </span><span class="WHIT">
+<span class='line'>215</span> 
+<span class='line'>216</span> </span><span class="WHIT">	 </span><span class="COMM">/**
+<span class='line'>217</span> 	  * Default implementation for the rendering-engine:
+<span class='line'>218</span> 	  * 
+<span class='line'>219</span> 	  * does nothing but writing an error message to the console,
+<span class='line'>220</span> 	  * if any of its functions is invoked.
+<span class='line'>221</span> 	  * 
+<span class='line'>222</span> 	  * The rendering engine can be set via {@link mmir.PresentationManager#setRenderEngine}.
+<span class='line'>223</span> 	  * 
+<span class='line'>224</span> 	  * @property _renderEngine
+<span class='line'>225</span> 	  * @type Object
+<span class='line'>226</span> 	  * @private
+<span class='line'>227</span> 	  * @memberOf mmir.PresentationManager#
+<span class='line'>228</span> 	  */</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">     </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_renderEngine</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">    		 </span><span class="COMM">/**
+<span class='line'>231</span>     		  * The function that actually renders the View.&lt;br>
+<span class='line'>232</span>     		  * 
+<span class='line'>233</span>     		  * The function will be invoked in context of the PresentationManager instance
+<span class='line'>234</span>     		  * (i.e. the manager will be the &lt;em>this&lt;/em> context).
+<span class='line'>235</span>     		  * 
+<span class='line'>236</span>     		  * Implementations of this function should adhere to the following procedure:
+<span class='line'>237</span>     		  * 
+<span class='line'>238</span>     		  * &lt;br>
+<span class='line'>239</span>     		  * 
+<span class='line'>240</span>     		  * First this function fetches the &lt;em>layout&lt;/em> for the &lt;em>controller&lt;/em>
+<span class='line'>241</span>     		  * (or uses the &lt;code>dialogManager.DEFAULT_LAYOUT&lt;code>).
+<span class='line'>242</span>     		  * 
+<span class='line'>243</span>     		  * Then the &lt;code>before_page_prepare&lt;/code> of the &lt;em>controller&lt;/em> is invoked (if it exists).
+<span class='line'>244</span>     		  * 
+<span class='line'>245</span>     		  * Then renders the &lt;em>view&lt;/em> into the
+<span class='line'>246</span>     		  * layout-template; &lt;em>partials&lt;/em>, &lt;em>helpers&lt;/em> etc.
+<span class='line'>247</span>     		  * that are referenced in the &lt;em>view&lt;/em> will be processed,
+<span class='line'>248</span>     		  * executed etc.; during this, localized Strings should be processed and rendered by
+<span class='line'>249</span>     		  * {@link mmir.LanguageManager#getText}. 
+<span class='line'>250</span>     		  * 
+<span class='line'>251</span>     		  * Then &lt;em>dialogs&lt;/em> are created and the &lt;code>dialogManager.pageIndex&lt;/code> is updated.
+<span class='line'>252</span>     		  * 
+<span class='line'>253</span>     		  * The new content is inserted into the document/page (invisibly).
+<span class='line'>254</span>     		  * 
+<span class='line'>255</span>     		  * Then the &lt;code>before_page_load&lt;/code> of the &lt;em>controller&lt;/em> is invoked (if it exists).
+<span class='line'>256</span>     		  * 
+<span class='line'>257</span>     		  * The new content/page is made visible, and the old one invisible and / or is removed.
+<span class='line'>258</span>     		  * 
+<span class='line'>259</span>     		  * At the end the &lt;b>on_page_load&lt;/b> action of the &lt;em>controller&lt;/em> is performed.
+<span class='line'>260</span>     		  * 
+<span class='line'>261</span>     		  * @function render
+<span class='line'>262</span>     		  * @memberOf mmir.PresentationManager._renderingEngine
+<span class='line'>263</span>     		  * 
+<span class='line'>264</span>     		  * @param {String}
+<span class='line'>265</span>     		  *            ctrlName Name of the controller
+<span class='line'>266</span>     		  * @param {String}
+<span class='line'>267</span>     		  *            viewName Name of the view to render
+<span class='line'>268</span>     		  * @param {Object}
+<span class='line'>269</span>     		  *            view View object that is to be rendered
+<span class='line'>270</span>     		  * @param {Object}
+<span class='line'>271</span>     		  *            ctrl Controller object of the view to render
+<span class='line'>272</span>     		  * @param {Object}
+<span class='line'>273</span>     		  *            [data] optional data for the view.
+<span class='line'>274</span>     		  */</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="WHIT">    		 </span><span class="NAME">render</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">viewName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">view</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ctrl</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">    			 </span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'PresentationManager.render: no rendering engine set!'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">    		 </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">    		 </span><span class="NAME">showDialog</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">dialogId</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">    			 </span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'PresentationManager.showDialog: no rendering engine set!'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">    		 </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">    		 </span><span class="NAME">hideCurrentDialog</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">    			 </span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'PresentationManager.hideCurrentDialog: no rendering engine set!'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">    		 </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">    		 </span><span class="NAME">showWaitDialog</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">text</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">    			 </span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'PresentationManager.showWaitDialog: no rendering engine set!'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="WHIT">    		 </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="WHIT">    		 </span><span class="NAME">hideWaitDialog</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">    			 </span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'PresentationManager.hideWaitDialog: no rendering engine set!'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">    		 </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">     </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">	 </span><span class="COMM">/**
+<span class='line'>292</span> 	  * Reference to the rendering-engine implementation / instance.
+<span class='line'>293</span> 	  * 
+<span class='line'>294</span> 	  * This reference should not be accessed directly.
+<span class='line'>295</span> 	  * Custom functions of the rendering implementation can be
+<span class='line'>296</span> 	  * invoked via {@link mmir.PresentationManager#callRenderEngine}.
+<span class='line'>297</span> 	  * 
+<span class='line'>298</span> 	  * @property _engine
+<span class='line'>299</span> 	  * @type Object
+<span class='line'>300</span> 	  * @private
+<span class='line'>301</span> 	  */</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">     </span><span class="NAME">_renderEngine._engine</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_renderEngine</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">	 </span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">	 </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_instance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">			</span><span class="COMM">/** @scope mmir.PresentationManager.prototype  */</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">			 </span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>308</span> 			 * @deprecated instead: use mmir.PresentationManager directly
+<span class='line'>309</span> 			 * 
+<span class='line'>310</span> 			 * @memberOf mmir.PresentationManager.prototype
+<span class='line'>311</span> 			 */</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">			</span><span class="NAME">getInstance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>315</span> 
+<span class='line'>316</span> </span><span class="WHIT">           </span><span class="COMM">// public members</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">            </span><span class="NAME">addLayout</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">layout</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">                </span><span class="NAME">_layouts.put</span><span class="PUNC">(</span><span class="NAME">layout.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">layout</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>321</span>              * This function returns a layout object by name.&lt;br>
+<span class='line'>322</span>              * 
+<span class='line'>323</span>              * @function getLayout
+<span class='line'>324</span>              * @param {String}
+<span class='line'>325</span>              *            layoutName Name of the layout which should be returned
+<span class='line'>326</span>              * @param {Boolean}
+<span class='line'>327</span>              *            [doUseDefaultIfMissing] if supplied and
+<span class='line'>328</span>              *            &lt;code>true&lt;/code>, the default controller's layout
+<span class='line'>329</span>              *            will be used as a fallback, in case no corresponding
+<span class='line'>330</span>              *            layout could be found
+<span class='line'>331</span>              * @returns {Object} The requested layout, "false" if not found
+<span class='line'>332</span>              * @public
+<span class='line'>333</span>              */</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">            </span><span class="NAME">getLayout</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">layoutName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">doUseDefaultIfMissing</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">layout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">                </span><span class="NAME">layout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_layouts.get</span><span class="PUNC">(</span><span class="NAME">layoutName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">layout</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">doUseDefaultIfMissing</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">                        </span><span class="NAME">layout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_instance.getLayout</span><span class="PUNC">(</span><span class="NAME">DEFAULT_LAYOUT_NAME</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">                    </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>342</span> </span><span class="WHIT">                        </span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'[PresentationManager.getLayout]: could not find layout "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">layoutName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="STRN">'"'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">                        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">layout</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>348</span> 
+<span class='line'>349</span> </span><span class="WHIT">            </span><span class="NAME">addView</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">view</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">                </span><span class="NAME">_views.put</span><span class="PUNC">(</span><span class="NAME">createViewKey</span><span class="PUNC">(</span><span class="NAME">ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">view</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">view</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>353</span>              * This function returns a view object by name.&lt;br>
+<span class='line'>354</span>              * 
+<span class='line'>355</span>              * @function getView
+<span class='line'>356</span>              * @param {String}
+<span class='line'>357</span>              *            controllerName Name of the controller for the view
+<span class='line'>358</span>              * @param {String}
+<span class='line'>359</span>              *            viewName Name of the view which should be returned
+<span class='line'>360</span>              * @returns {Object} The requested view, &lt;tt>false&lt;/tt> if not
+<span class='line'>361</span>              *          found
+<span class='line'>362</span>              * @public
+<span class='line'>363</span>              */</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">            </span><span class="NAME">getView</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">controllerName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">viewName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">                </span><span class="NAME">viewName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">createViewKey</span><span class="PUNC">(</span><span class="NAME">controllerName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">viewName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>366</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">view</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="WHIT">                </span><span class="NAME">view</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_views.get</span><span class="PUNC">(</span><span class="NAME">viewName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>368</span> 
+<span class='line'>369</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">view</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">                    </span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'[PresentationManager.getView]: could not find view "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">viewName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'"'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">view</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>374</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">            </span><span class="WHIT">
+<span class='line'>376</span> </span><span class="WHIT">            </span><span class="NAME">addPartial</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">partial</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>377</span> </span><span class="WHIT">            	</span><span class="NAME">_partials.put</span><span class="PUNC">(</span><span class="NAME">createPartialKey</span><span class="PUNC">(</span><span class="NAME">ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">partial</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">partial</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>378</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>379</span> 
+<span class='line'>380</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>381</span>              * This function returns a partial object by name.&lt;br>
+<span class='line'>382</span>              * 
+<span class='line'>383</span>              * @function getPartial
+<span class='line'>384</span>              * @param {String}
+<span class='line'>385</span>              *            controllerName Name of the controller for the view
+<span class='line'>386</span>              * @param {String}
+<span class='line'>387</span>              *            viewName Name of the partial which should be returned
+<span class='line'>388</span>              * @returns {Object} The requested partial, "false" if not found
+<span class='line'>389</span>              * @public
+<span class='line'>390</span>              */</span><span class="WHIT">
+<span class='line'>391</span> </span><span class="WHIT">            </span><span class="NAME">getPartial</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">controllerName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">partialName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>392</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">partial</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>393</span> 
+<span class='line'>394</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">partialKey</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>395</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">controllerName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>396</span> </span><span class="WHIT">                    </span><span class="NAME">partialKey</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">createPartialKey</span><span class="PUNC">(</span><span class="NAME">controllerName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">partialName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>397</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>398</span> </span><span class="WHIT">                </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>399</span> </span><span class="WHIT">                    </span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'[PresentationManager.getPartial]: requested partial "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">partialName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" for unknown controller: "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">controllerName</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">controllerName.getName</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">controllerName.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">controllerName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>400</span> </span><span class="WHIT">                            </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'"'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>403</span> 
+<span class='line'>404</span> </span><span class="WHIT">                </span><span class="NAME">partial</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_partials.get</span><span class="PUNC">(</span><span class="NAME">partialKey</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">partial</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>406</span> </span><span class="WHIT">                    </span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'[PresentationManager.getPartial]: could not find partial "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">partialName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'" for controller "'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">controllerName</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">controllerName.getName</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">controllerName.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">controllerName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'"!'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>407</span> </span><span class="WHIT">                    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">partial</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>411</span> 
+<span class='line'>412</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>413</span>              * Closes a modal window / dialog (if one is open).
+<span class='line'>414</span>              * &lt;br>
+<span class='line'>415</span>              * 
+<span class='line'>416</span>              * @function hideCurrentDialog
+<span class='line'>417</span>              * @public
+<span class='line'>418</span>              */</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">            </span><span class="NAME">hideCurrentDialog</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">				</span><span class="NAME">_renderEngine.hideCurrentDialog.apply</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>422</span> 
+<span class='line'>423</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>424</span>              * Opens the dialog for ID &lt;code>dialogId&lt;/code>.
+<span class='line'>425</span>              * &lt;br>
+<span class='line'>426</span>              * 
+<span class='line'>427</span>              * @function showDialog
+<span class='line'>428</span>              * @param {String} ctrlName
+<span class='line'>429</span>              *            the Name of the controller
+<span class='line'>430</span>              * @param {String} dialogId
+<span class='line'>431</span>              *            the ID of the dialog
+<span class='line'>432</span>              * @param {Object} [data] OPTIONAL
+<span class='line'>433</span>              *            a data / options object
+<span class='line'>434</span>              *            
+<span class='line'>435</span>              * @returns {Object} the instance of the opened dialog (void or falsy dialog was not opened)
+<span class='line'>436</span>              * 
+<span class='line'>437</span>              * @public
+<span class='line'>438</span>              */</span><span class="WHIT">
+<span class='line'>439</span> </span><span class="WHIT">            </span><span class="NAME">showDialog</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">dialogId</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>440</span> </span><span class="WHIT">            	</span><span class="NAME">_currentDialog</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_renderEngine.showDialog.apply</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>441</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">_currentDialog</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>442</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>443</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>444</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>445</span> 			 * Shows a "wait" dialog, i.e. "work in progress" notification.
+<span class='line'>446</span> 			 * 
+<span class='line'>447</span> 			 * @function showWaitDialog
+<span class='line'>448</span> 			 * 
+<span class='line'>449</span> 			 * @param {String} [text] OPTIONAL
+<span class='line'>450</span> 			 * 				the text that should be displayed.
+<span class='line'>451</span> 			 * 				If omitted the language setting for &lt;code>loadingText&lt;/code>
+<span class='line'>452</span> 			 * 				will be used instead (from dictionary.json)
+<span class='line'>453</span> 			 * @param {Object} [data] OPTIONAL
+<span class='line'>454</span> 			 * 				a data / options object
+<span class='line'>455</span> 			 * 
+<span class='line'>456</span> 			 * @public
+<span class='line'>457</span> 			 * 
+<span class='line'>458</span> 			 * @see #hideWaitDialog
+<span class='line'>459</span> 			 */</span><span class="WHIT">
+<span class='line'>460</span> </span><span class="WHIT">			</span><span class="NAME">showWaitDialog</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">text</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>461</span> </span><span class="WHIT">				</span><span class="NAME">_renderEngine.showWaitDialog.apply</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>462</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>463</span> 
+<span class='line'>464</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>465</span> 			 * Hides / closes the "wait" dialog.
+<span class='line'>466</span> 			 * 
+<span class='line'>467</span> 			 * @function hideWaitDialog
+<span class='line'>468</span> 			 * @public
+<span class='line'>469</span> 			 * 
+<span class='line'>470</span> 			 * @see #showWaitDialog
+<span class='line'>471</span> 			 */</span><span class="WHIT">
+<span class='line'>472</span> </span><span class="WHIT">			</span><span class="NAME">hideWaitDialog</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>473</span> </span><span class="WHIT">				</span><span class="NAME">_renderEngine.hideWaitDialog.apply</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>474</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>475</span> 
+<span class='line'>476</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>477</span> 			 * Gets the view for a controller, then executes helper methods on
+<span class='line'>478</span> 			 * the view data. The Rendering of the view is done by the
+<span class='line'>479</span> 			 * {@link #doRenderView} method. Also
+<span class='line'>480</span> 			 * stores the previous and current view with parameters.&lt;br>
+<span class='line'>481</span> 			 * 
+<span class='line'>482</span> 			 * @function renderView
+<span class='line'>483</span> 			 * @param {String}
+<span class='line'>484</span> 			 *            ctrlName Name of the controller
+<span class='line'>485</span> 			 * @param {String}
+<span class='line'>486</span> 			 *            viewName Name of the view to render
+<span class='line'>487</span> 			 * @param {Object}
+<span class='line'>488</span> 			 *            [data] optional data for the view.
+<span class='line'>489</span> 			 *            Currently same jQuery Mobile specific properties are supported: &lt;br>
+<span class='line'>490</span> 			 *            When these are present, they will be used for animating the 
+<span class='line'>491</span> 			 *            page transition upon rendering.
+<span class='line'>492</span> 			 *            
+<span class='line'>493</span> 			 *            &lt;pre>{transition: STRING, reverse: BOOLEAN}&lt;/pre>
+<span class='line'>494</span> 			 *            where&lt;br>
+<span class='line'>495</span> 			 *            &lt;code>transition&lt;/code>: the name for the transition (see jQuery Mobile Doc for possible values)
+<span class='line'>496</span> 			 *            							DEFAULT: "none".
+<span class='line'>497</span> 			 *            &lt;code>reverse&lt;/code>: whether the animation should in "forward" (FALSE) direction, or "backwards" (TRUE)
+<span class='line'>498</span> 			 *            						DEFAULT: FALSE
+<span class='line'>499</span> 			 * @public
+<span class='line'>500</span> 			 */</span><span class="WHIT">
+<span class='line'>501</span> </span><span class="WHIT">            </span><span class="NAME">renderView</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">viewName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>502</span> </span><span class="WHIT">            	</span><span class="WHIT">
+<span class='line'>503</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ctrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">controllerManager.getController</span><span class="PUNC">(</span><span class="NAME">ctrlName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>504</span> 
+<span class='line'>505</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ctrl</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>506</span> </span><span class="WHIT">                    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">view</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getView</span><span class="PUNC">(</span><span class="NAME">ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">viewName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>507</span> </span><span class="WHIT">                    </span><span class="WHIT">
+<span class='line'>508</span> </span><span class="WHIT">                    </span><span class="NAME">_renderEngine.render.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">viewName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">view</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ctrl</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>509</span> 
+<span class='line'>510</span> </span><span class="WHIT">                    </span><span class="COMM">//TODO russa: _previousView is deprecated (should use a history instead, i.e. application level)</span><span class="WHIT">
+<span class='line'>511</span> </span><span class="WHIT">                    </span><span class="COMM">// Only overwrite previous state if and only if the view is not re-rendered!</span><span class="WHIT">
+<span class='line'>512</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">ctrlName</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">_currentView.ctrlName</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">viewName</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">_currentView.viewName</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">_currentView.data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>513</span> </span><span class="WHIT">						</span><span class="NAME">_previousView.ctrlName</span><span class="PUNC">=</span><span class="NAME">_currentView.ctrlName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>514</span> </span><span class="WHIT">						</span><span class="NAME">_previousView.viewName</span><span class="PUNC">=</span><span class="NAME">_currentView.viewName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>515</span> </span><span class="WHIT">						</span><span class="NAME">_previousView.data</span><span class="PUNC">=</span><span class="NAME">_currentView.data</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>516</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>517</span> </span><span class="WHIT">					</span><span class="WHIT">
+<span class='line'>518</span> </span><span class="WHIT">					</span><span class="NAME">_currentView.ctrlName</span><span class="PUNC">=</span><span class="NAME">ctrlName</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>519</span> </span><span class="WHIT">					</span><span class="NAME">_currentView.viewName</span><span class="PUNC">=</span><span class="NAME">viewName</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>520</span> </span><span class="WHIT">					</span><span class="NAME">_currentView.data</span><span class="PUNC">=</span><span class="NAME">data</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>521</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>522</span> </span><span class="WHIT">                </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>523</span> </span><span class="WHIT">                	</span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="STRN">'PresentationManager.renderView: could not retrieve controller "'</span><span class="PUNC">+</span><span class="NAME">ctrlName</span><span class="PUNC">+</span><span class="STRN">'"'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>524</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>525</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>526</span> 
+<span class='line'>527</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>528</span>              * Renders the current view again, using the
+<span class='line'>529</span>              * {@link #render} method.
+<span class='line'>530</span>              * 
+<span class='line'>531</span>              * @deprecated you should use {@link #render} with appropriate parameters instead.
+<span class='line'>532</span>              * 
+<span class='line'>533</span>              * @requires mmir.DialogManager
+<span class='line'>534</span>              * 
+<span class='line'>535</span>              * @function reRenderView
+<span class='line'>536</span>              * @public
+<span class='line'>537</span>              */</span><span class="WHIT">
+<span class='line'>538</span> </span><span class="WHIT">            </span><span class="NAME">reRenderView</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>539</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">_currentView</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>540</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">_currentView.ctrlName</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">_currentView.viewName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>541</span> </span><span class="WHIT">                        </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">'dialogManager'</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">render</span><span class="PUNC">(</span><span class="NAME">_currentView.ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">_currentView.viewName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">_currentView.data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>542</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>543</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>544</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>545</span> 
+<span class='line'>546</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>547</span>              * Renders the previous view again, using the
+<span class='line'>548</span>              * {@link mmir.DialogManager#render} method.
+<span class='line'>549</span>              * 
+<span class='line'>550</span>              * 
+<span class='line'>551</span>              * @deprecated you should use {@link #render} with appropriate parameters instead.
+<span class='line'>552</span>              * 
+<span class='line'>553</span>              * @requires mmir.DialogManager
+<span class='line'>554</span>              * 
+<span class='line'>555</span>              * @function renderPreviousView
+<span class='line'>556</span>              * @public
+<span class='line'>557</span>              */</span><span class="WHIT">
+<span class='line'>558</span> </span><span class="WHIT">            </span><span class="NAME">renderPreviousView</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>559</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">_previousView</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>560</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">_previousView.ctrlName</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">_previousView.viewName</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>561</span> </span><span class="WHIT">                    	</span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">'dialogManager'</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">render</span><span class="PUNC">(</span><span class="NAME">_previousView.ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">_previousView.viewName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">_previousView.data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>562</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>563</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>564</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">        </span><span class="WHIT">
+<span class='line'>565</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>566</span> </span><span class="WHIT">            </span><span class="NAME">init</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">init</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>567</span> </span><span class="WHIT">            </span><span class="WHIT">
+<span class='line'>568</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>569</span>              * Sets the &lt;em>rendering engine&lt;/em> for the views.
+<span class='line'>570</span>              * 
+<span class='line'>571</span>              * The render engine &lt;b>must&lt;/b> implement a function &lt;em>render&lt;/em>
+<span class='line'>572</span>              * and &lt;i>may&lt;/i> implement functions &lt;em>showDialog&lt;/em>,
+<span class='line'>573</span>              * &lt;em>hideCurrentDialog&lt;/em>, &lt;em>showWaitDialog&lt;/em>, and &lt;em>hideWaitDialog&lt;/em>:
+<span class='line'>574</span>              * 
+<span class='line'>575</span>              * &lt;ul>
+<span class='line'>576</span>              * 	&lt;li>&lt;b>theRenderEngine.&lt;code>render(ctrlName : String, viewName : String, view : View, ctrl : Controller, data : Object) : void&lt;/code>&lt;/b>&lt;/li>
+<span class='line'>577</span>              * 	&lt;li>theRenderEngine.&lt;code>showDialog(ctrlName : String, dialogId : String, data : Object) : Dialog&lt;/code>&lt;/li>
+<span class='line'>578</span>              * 	&lt;li>theRenderEngine.&lt;code>hideCurrentDialog(): void&lt;/code>&lt;/li>
+<span class='line'>579</span>              * 	&lt;li>theRenderEngine.&lt;code>showWaitDialog(text : String, data : Object): void&lt;/code>&lt;/li>
+<span class='line'>580</span>              * 	&lt;li>theRenderEngine.&lt;code>hideWaitDialog(): void&lt;/code>&lt;/li>
+<span class='line'>581</span>              * &lt;/ul>
+<span class='line'>582</span>              * 
+<span class='line'>583</span>              * The functions of &lt;code>theRenderEngine&lt;/code> will be called in
+<span class='line'>584</span>              * context of the PresentationManager.
+<span class='line'>585</span>              * 
+<span class='line'>586</span>              * Custom functions of the specific rendering engine implementation 
+<span class='line'>587</span>              * (i.e. non-standard functions) can be call via {@link #callRenderEngine}.
+<span class='line'>588</span>              * 
+<span class='line'>589</span>              * 
+<span class='line'>590</span>              * &lt;br>
+<span class='line'>591</span>              * By default, the rendering-engine as defined by the module ID/path in
+<span class='line'>592</span>              * &lt;code>core.viewEngine&lt;/code> will be loaded and set during initialization
+<span class='line'>593</span>              * of the DialogManager.
+<span class='line'>594</span>              * 
+<span class='line'>595</span>              * &lt;br>
+<span class='line'>596</span>              * The implementation of the default view-engine is at
+<span class='line'>597</span>              * &lt;code>mmirf/env/view/presentation/jqmViewEngine.js&lt;/code>.
+<span class='line'>598</span>              * 
+<span class='line'>599</span>              * @param {Object} theRenderEngine
+<span class='line'>600</span>              * 			the render-engine for views
+<span class='line'>601</span>              * 
+<span class='line'>602</span>              * @function setRenderEngine
+<span class='line'>603</span>              * @public
+<span class='line'>604</span>              * 
+<span class='line'>605</span>              * @see #render
+<span class='line'>606</span>              * @see #showDialog
+<span class='line'>607</span>              * @see #hideCurrentDialog
+<span class='line'>608</span>              * @see #showWaitDialog
+<span class='line'>609</span>              * @see #hideWaitDialog
+<span class='line'>610</span>              * 
+<span class='line'>611</span>              * @see #callRenderEngine
+<span class='line'>612</span>              * 
+<span class='line'>613</span>              */</span><span class="WHIT">
+<span class='line'>614</span> </span><span class="WHIT">            </span><span class="NAME">setRenderEngine</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">theRenderEngine</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>615</span> </span><span class="WHIT">            	</span><span class="NAME">_renderEngine.render</span><span class="WHIT"> 			</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">theRenderEngine.render</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>616</span> </span><span class="WHIT">            	</span><span class="NAME">_renderEngine.showDialog</span><span class="WHIT">		</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">theRenderEngine.showDialog</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>617</span> </span><span class="WHIT">            	</span><span class="NAME">_renderEngine.hideCurrentDialog</span><span class="WHIT">	</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">theRenderEngine.hideCurrentDialog</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>618</span> </span><span class="WHIT">            	</span><span class="NAME">_renderEngine.showWaitDialog</span><span class="WHIT">	</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">theRenderEngine.showWaitDialog</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>619</span> </span><span class="WHIT">            	</span><span class="NAME">_renderEngine.hideWaitDialog</span><span class="WHIT">	</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">theRenderEngine.hideWaitDialog</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>620</span> </span><span class="WHIT">            	</span><span class="NAME">_renderEngine._engine</span><span class="WHIT">			</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">theRenderEngine</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>621</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>622</span> </span><span class="WHIT">            </span><span class="COMM">/**
+<span class='line'>623</span>              * This function allows to call custom functions of the rendering-engine
+<span class='line'>624</span>              * that was set via {@link #setRenderEngine}.
+<span class='line'>625</span>              * 
+<span class='line'>626</span>              * IMPORTANT:
+<span class='line'>627</span>              * note that the function will be invoked in context of rendering-engine
+<span class='line'>628</span>              * (i.e. &lt;code>this&lt;/code> references will refer to rendering-engine
+<span class='line'>629</span>              * and not to the PresentationManager instance.
+<span class='line'>630</span>              * For example, when &lt;code>mmir.PresentationManager.callRenderEngine('hideWaitDialog')&lt;/code>
+<span class='line'>631</span>              * is called, any &lt;code>this&lt;/code> references within the &lt;code>hideWaitDialog&lt;/code>
+<span class='line'>632</span>              * implementation would refer to object, that was set in &lt;code>setRenderEngine(object)&lt;/code>.
+<span class='line'>633</span>              * In comparison, when called as &lt;code>mmir.PresentationManager.hideWaitDialog()&lt;/code> the
+<span class='line'>634</span>              * &lt;code>this&lt;/code> references refer to the mmir.PresentationManager instance.
+<span class='line'>635</span>              * 
+<span class='line'>636</span>              * &lt;br>
+<span class='line'>637</span>              * NOTE that calling non-existing functions on the rendering-engine 
+<span class='line'>638</span>              *      will cause an error.
+<span class='line'>639</span>              * 
+<span class='line'>640</span>              * @param {String} funcName
+<span class='line'>641</span>              * 			the name of the function, that should be invoked on the rendering
+<span class='line'>642</span>              * 			engine.
+<span class='line'>643</span>              * @param {Array&lt;any>} [args] OPTIONAL
+<span class='line'>644</span>              * 			the arguments for &lt;code>funcName&lt;/code> invoked
+<span class='line'>645</span>              *          via &lt;code>Function.apply(renderingEngine, args)&lt;/code>, e.g.
+<span class='line'>646</span>              * 			for &lt;code>args = [param1, param2, param3]&lt;/code> the
+<span class='line'>647</span>              * 			function will be called with
+<span class='line'>648</span>              * 			&lt;code>funcName(param1, param2, param3)&lt;/code>
+<span class='line'>649</span>              * 			(note that the function receives 3 arguments, and
+<span class='line'>650</span>              *           not 1 Array-argument).
+<span class='line'>651</span>              * 
+<span class='line'>652</span>              * @function callRenderEngine
+<span class='line'>653</span>              * @public
+<span class='line'>654</span>              */</span><span class="WHIT">
+<span class='line'>655</span> </span><span class="WHIT">            </span><span class="NAME">callRenderEngine</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">funcName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">args</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>656</span> </span><span class="WHIT">            	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">_renderEngine._engine</span><span class="PUNC">[</span><span class="NAME">funcName</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">apply</span><span class="PUNC">(</span><span class="NAME">_renderEngine._engine</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">args</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>657</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>658</span> </span><span class="WHIT">            </span><span class="WHIT">
+<span class='line'>659</span> </span><span class="WHIT">            </span><span class="COMM">//exported properties / constants:</span><span class="WHIT">
+<span class='line'>660</span> </span><span class="WHIT">            </span><span class="NAME">pageIndex</span><span class="PUNC">:</span><span class="WHIT">		</span><span class="NAME">_pageIndex</span><span class="WHIT">
+<span class='line'>661</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="COMM">//END:  return{...</span><span class="WHIT">
+<span class='line'>662</span> </span><span class="COMM">//	})();//END: (function(){...</span><span class="WHIT">
+<span class='line'>663</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>664</span> 
+<span class='line'>665</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">_instance</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>666</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>667</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">init</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>668</span> 
+<span class='line'>669</span> </span><span class="WHIT">		</span><span class="COMM">/** @scope mmir.MediaManager.prototype */</span><span class="WHIT">
+<span class='line'>670</span> 
+<span class='line'>671</span> </span><span class="WHIT">		</span><span class="KEYW">delete</span><span class="WHIT"> </span><span class="NAME">_instance.init</span><span class="PUNC">;</span><span class="COMM">//FIXME should init be deleted?</span><span class="WHIT">
+<span class='line'>672</span> 
+<span class='line'>673</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>674</span> 		 * Checks if a pre-compiled view is up-to-date:
+<span class='line'>675</span> 		 * loads the view, if it is current.
+<span class='line'>676</span> 		 * 
+<span class='line'>677</span> 		 * If the pre-compiled view is not current, or loading-errors
+<span class='line'>678</span> 		 * occur, the fail-callback will be triggered 
+<span class='line'>679</span> 		 * (the callback argument may contain information about the cause).
+<span class='line'>680</span> 		 * 
+<span class='line'>681</span> 		 * @async
+<span class='line'>682</span> 		 * @private
+<span class='line'>683</span> 		 * 
+<span class='line'>684</span> 		 * @param {String} rawViewData
+<span class='line'>685</span> 		 * 					the text content of the view template (i.e. content of a eHTML file "as is")
+<span class='line'>686</span> 		 * @param {String} targetPath
+<span class='line'>687</span> 		 * 					the path to the pre-compiled view file
+<span class='line'>688</span> 		 * @param {Function} success
+<span class='line'>689</span> 		 * 					callback that will be triggered, if pre-compiled view file was loaded
+<span class='line'>690</span> 		 * 					NOTE: the JS code of the loaded file may not have been fully executed yet!
+<span class='line'>691</span> 		 * @param {Function} fail
+<span class='line'>692</span> 		 * 					callback that will be triggered, if pre-compiled view is not up-to-date or
+<span class='line'>693</span> 		 * 					an error occurs while loading the file
+<span class='line'>694</span> 		 */</span><span class="WHIT">
+<span class='line'>695</span> </span><span class="WHIT">		</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">loadPrecompiledView</span><span class="PUNC">(</span><span class="NAME">rawViewData</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">targetpath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">success</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fail</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>696</span> 
+<span class='line'>697</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="WHIT"> </span><span class="NAME">isUpToDate</span><span class="PUNC">(</span><span class="NAME">rawViewData</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">targetpath</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>698</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">fail</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">fail</span><span class="PUNC">(</span><span class="STRN">'Precompiled view file is outdated!'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>699</span> </span><span class="WHIT">				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="STRN">'Outdated pre-compiled view at: '</span><span class="PUNC">+</span><span class="NAME">targetpath</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>700</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>701</span> 
+<span class='line'>702</span> </span><span class="WHIT">			</span><span class="NAME">commonUtils.getLocalScript</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="COMM">//scriptUrl, success, fail)</span><span class="WHIT">
+<span class='line'>703</span> </span><span class="WHIT">					</span><span class="NAME">targetpath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">success</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fail</span><span class="WHIT">
+<span class='line'>704</span> </span><span class="WHIT">			</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>705</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>706</span> 
+<span class='line'>707</span> </span><span class="WHIT">		</span><span class="COMM">//determine if pre-compiled views (*.js) should be used</span><span class="WHIT">
+<span class='line'>708</span> </span><span class="WHIT">		</span><span class="COMM">//DEFAULT: use templates files (*.ehtml) and compile them (freshly) on-the-fly</span><span class="WHIT">
+<span class='line'>709</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isUsePreCompiledViews</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">configurationManager.getBoolean</span><span class="PUNC">(</span><span class="NAME">CONFIG_PRECOMPILED_VIEWS_MODE</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>710</span> 
+<span class='line'>711</span> </span><span class="WHIT">		</span><span class="COMM">//util for checking if pre-compiled views are up-to-date</span><span class="WHIT">
+<span class='line'>712</span> </span><span class="WHIT">		</span><span class="COMM">// (i.e.: can we use the pre-compiled view, or do we need to use the template file and compile it on-the-fly)</span><span class="WHIT">
+<span class='line'>713</span> </span><span class="WHIT">		</span><span class="COMM">//TODO should this also be configurable -> up-to-date check (e.g. use pre-compiled views without checking for changes)</span><span class="WHIT">
+<span class='line'>714</span> </span><span class="WHIT">		</span><span class="NAME">checksumUtils</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">checksumUtils.init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>715</span> 
+<span class='line'>716</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>717</span> 		 * Read the checksum file that was created when the pre-compiled view was created:
+<span class='line'>718</span> 		 * 
+<span class='line'>719</span> 		 * it contains the view's template size (the length of its String representation) and MD5 hash.
+<span class='line'>720</span> 		 * 
+<span class='line'>721</span> 		 * -> by calculating the viewContent's size and MD5 hash, we can determine, if it has changed
+<span class='line'>722</span> 		 *    by comparing it with the data of the checksum file.
+<span class='line'>723</span> 		 *    
+<span class='line'>724</span> 		 * @sync the checksum file is loaded in synchronous mode
+<span class='line'>725</span> 		 * @private
+<span class='line'>726</span> 		 * 
+<span class='line'>727</span> 		 * @param {String} viewContent
+<span class='line'>728</span> 		 * 						the content of the view template (i.e. loaded eHTML file)
+<span class='line'>729</span> 		 * @param {String} preCompiledViewPath
+<span class='line'>730</span> 		 * 						the path to the corresponding pre-compiled view file
+<span class='line'>731</span> 		 * 
+<span class='line'>732</span> 		 */</span><span class="WHIT">
+<span class='line'>733</span> </span><span class="WHIT">		</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">isUpToDate</span><span class="PUNC">(</span><span class="NAME">viewContent</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">preCompiledViewPath</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>734</span> </span><span class="WHIT">			</span><span class="COMM">//replace file extension with the checksum-file's one: '.js' -> '.checksum.txt'</span><span class="WHIT">
+<span class='line'>735</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT">  </span><span class="NAME">viewVerificationInfoPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>736</span> </span><span class="WHIT">					</span><span class="NAME">preCompiledViewPath.substring</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">preCompiledViewPath.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>737</span> </span><span class="WHIT">						</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">checksumUtils.getFileExt</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>738</span> 
+<span class='line'>739</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isCompiledViewUpToDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>740</span> 
+<span class='line'>741</span> </span><span class="WHIT">			</span><span class="NAME">$.ajax</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>742</span> </span><span class="WHIT">				</span><span class="NAME">async</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="COMM">//&lt;-- use "SYNC" modus here (NOTE: we win nothing with async here, because the following step (loading/not loading the pre-compiled view) strictly depends on the result of this)</span><span class="WHIT">
+<span class='line'>743</span> </span><span class="WHIT">				</span><span class="NAME">dataType</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"text"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>744</span> </span><span class="WHIT">				</span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">viewVerificationInfoPath</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>745</span> </span><span class="WHIT">				</span><span class="NAME">success</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>746</span> 
+<span class='line'>747</span> </span><span class="WHIT">					</span><span class="COMM">//compare raw String to checksum-data from file</span><span class="WHIT">
+<span class='line'>748</span> </span><span class="WHIT">					</span><span class="NAME">isCompiledViewUpToDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">checksumUtils.isSame</span><span class="PUNC">(</span><span class="NAME">viewContent</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>749</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>750</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">fail</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">jqxhr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">err</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>751</span> </span><span class="WHIT">				</span><span class="COMM">// print out an error message</span><span class="WHIT">
+<span class='line'>752</span> </span><span class="WHIT">				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">errMsg</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">err</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">err.stack</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">err.stack</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">err</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>753</span> </span><span class="WHIT">				</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"["</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">status</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"] Could not load '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">viewVerificationInfoPath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"': "</span><span class="PUNC">+</span><span class="NAME">errMsg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">//failure</span><span class="WHIT">
+<span class='line'>754</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>755</span> 
+<span class='line'>756</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">isCompiledViewUpToDate</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>757</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>758</span> 
+<span class='line'>759</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>760</span> 		 * This function loads the layouts for every controller and puts the
+<span class='line'>761</span> 		 * name of the layouts into the &lt;b>_layouts&lt;/b> array.
+<span class='line'>762</span> 		 * 
+<span class='line'>763</span> 		 * @function loadLayouts
+<span class='line'>764</span> 		 * @private
+<span class='line'>765</span> 		 * 
+<span class='line'>766</span> 		 * @returns {Promise} a Deferred.promise that gets resolved upon loading all layouts; fails/is rejected, if not at least 1 layout was loaded
+<span class='line'>767</span> 		 */</span><span class="WHIT">
+<span class='line'>768</span> </span><span class="WHIT">		</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">loadLayouts</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>769</span> </span><span class="WHIT">			</span><span class="COMM">// Load application's layouts. </span><span class="WHIT">
+<span class='line'>770</span> 
+<span class='line'>771</span> 
+<span class='line'>772</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">defer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$.Deferred</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>773</span> 
+<span class='line'>774</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ctrlNameList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">controllerManager.getControllerNames</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>775</span> 
+<span class='line'>776</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">loadStatus</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>777</span> </span><span class="WHIT">					</span><span class="NAME">loader</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">defer</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>778</span> </span><span class="WHIT">					</span><span class="NAME">remainingCtrlCount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ctrlNameList.length</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="COMM">//+1: for the default layout</span><span class="WHIT">
+<span class='line'>779</span> </span><span class="WHIT">					</span><span class="NAME">currentLoadCount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>780</span> 
+<span class='line'>781</span> </span><span class="WHIT">					</span><span class="COMM">//additional property for keeping track on how many layouts were load overall</span><span class="WHIT">
+<span class='line'>782</span> </span><span class="WHIT">					</span><span class="COMM">// NOTE: this additional counter is necessary, since currentLoadCount</span><span class="WHIT">
+<span class='line'>783</span> </span><span class="WHIT">					</span><span class="COMM">//       keeps only track of how many controller's were checked. But since</span><span class="WHIT">
+<span class='line'>784</span> </span><span class="WHIT">					</span><span class="COMM">//       a controller may not have a layout-defintion of its own, we have</span><span class="WHIT">
+<span class='line'>785</span> </span><span class="WHIT">					</span><span class="COMM">//       to use another counter to keep track of actually loaded layouts.</span><span class="WHIT">
+<span class='line'>786</span> </span><span class="WHIT">					</span><span class="NAME">loadedLayoutsCount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>787</span> 
+<span class='line'>788</span> </span><span class="WHIT">					</span><span class="COMM">//need a custom function for checking the load status: if no layout was loaded, </span><span class="WHIT">
+<span class='line'>789</span> </span><span class="WHIT">					</span><span class="COMM">//                                                     the Derred will be rejected</span><span class="WHIT">
+<span class='line'>790</span> </span><span class="WHIT">					</span><span class="NAME">onCompletionImpl</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">status</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>791</span> </span><span class="WHIT">						</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">status.loadedLayoutsCount</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>792</span> 
+<span class='line'>793</span> </span><span class="WHIT">							</span><span class="COMM">//there must be at least on layout-file for the default-controller:</span><span class="WHIT">
+<span class='line'>794</span> </span><span class="WHIT">							</span><span class="NAME">status.loader.reject</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">'Could not load any layout! At least one layout must be present at '</span><span class="WHIT">
+<span class='line'>795</span> </span><span class="WHIT">									</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">constants.getLayoutPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>796</span> </span><span class="WHIT">									</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">DEFAULT_LAYOUT_NAME</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">toLowerCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">DEFAULT_LAYOUT_NAME.substring</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>797</span> </span><span class="WHIT">									</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.ehtml'</span><span class="WHIT">
+<span class='line'>798</span> </span><span class="WHIT">							</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>799</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>800</span> </span><span class="WHIT">						</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>801</span> </span><span class="WHIT">							</span><span class="NAME">status.loader.resolve</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>802</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>803</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>804</span> 
+<span class='line'>805</span> </span><span class="WHIT">					</span><span class="COMM">//extend the status-update function: in case loading succeeded, increase the counter</span><span class="WHIT">
+<span class='line'>806</span> </span><span class="WHIT">					</span><span class="COMM">//                                   for overall loaded layouts.</span><span class="WHIT">
+<span class='line'>807</span> </span><span class="WHIT">					</span><span class="NAME">extLoadStatusFunc</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">hasLoadingFailed</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>808</span> </span><span class="WHIT">						</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">hasLoadingFailed</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>809</span> </span><span class="WHIT">							</span><span class="COMM">//do nothing</span><span class="WHIT">
+<span class='line'>810</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>811</span> </span><span class="WHIT">						</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>812</span> </span><span class="WHIT">							</span><span class="PUNC">++</span><span class="NAME">status.loadedLayoutsCount</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>813</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>814</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>815</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>816</span> 
+<span class='line'>817</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">createLayoutConfig</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>818</span> </span><span class="WHIT">					</span><span class="NAME">constructor</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">Layout</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>819</span> </span><span class="WHIT">					</span><span class="NAME">typeName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Layout'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>820</span> </span><span class="WHIT">					</span><span class="NAME">collection</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">_layouts</span><span class="WHIT">
+<span class='line'>821</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>822</span> 
+<span class='line'>823</span> </span><span class="WHIT">			</span><span class="COMM">//helper for loading a single layout-file</span><span class="WHIT">
+<span class='line'>824</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">doLoadLayout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ctrlName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">theDefaultLayoutName</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>825</span> 
+<span class='line'>826</span> </span><span class="WHIT">				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ctrlName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>827</span> </span><span class="WHIT">				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">layoutInfo</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>828</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">theDefaultLayoutName</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>829</span> 
+<span class='line'>830</span> </span><span class="WHIT">					</span><span class="NAME">ctrlName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">theDefaultLayoutName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>831</span> 
+<span class='line'>832</span> </span><span class="WHIT">					</span><span class="COMM">//create info-object for default-layout</span><span class="WHIT">
+<span class='line'>833</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">layoutFileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">theDefaultLayoutName</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">toLowerCase</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>834</span> </span><span class="WHIT">					</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">theDefaultLayoutName.substring</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">theDefaultLayoutName.length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>835</span> </span><span class="WHIT">					</span><span class="NAME">layoutInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>836</span> </span><span class="WHIT">						</span><span class="NAME">name</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">theDefaultLayoutName</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>837</span> </span><span class="WHIT">						</span><span class="NAME">fileName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">layoutFileName</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>838</span> </span><span class="WHIT">						</span><span class="NAME">genPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">constants.getCompiledLayoutPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="COMM">//TODO add compiled-path to view-info object (and read it from file-structure/JSON) </span><span class="WHIT">
+<span class='line'>839</span> </span><span class="WHIT">									</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">layoutFileName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.js'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>840</span> </span><span class="WHIT">						</span><span class="NAME">path</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">constants.getLayoutPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">layoutFileName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'.ehtml'</span><span class="WHIT">
+<span class='line'>841</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>842</span> 
+<span class='line'>843</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>844</span> </span><span class="WHIT">				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>845</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ctrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">controllerManager.getController</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">ctrlName</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>846</span> </span><span class="WHIT">					</span><span class="NAME">ctrlName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ctrl.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>847</span> </span><span class="WHIT">					</span><span class="NAME">layoutInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ctrl.getLayout</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>848</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>849</span> 
+<span class='line'>850</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">layoutInfo</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>851</span> 
+<span class='line'>852</span> </span><span class="WHIT">					</span><span class="NAME">doLoadTemplateFile</span><span class="PUNC">(</span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">layoutInfo</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">createLayoutConfig</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadStatus</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>853</span> 
+<span class='line'>854</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>855</span> 
+<span class='line'>856</span> </span><span class="WHIT">				</span><span class="PUNC">--</span><span class="NAME">loadStatus.remainingCtrlCount</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>857</span> </span><span class="WHIT">				</span><span class="NAME">checkCompletion</span><span class="PUNC">(</span><span class="NAME">loadStatus</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>858</span> 
+<span class='line'>859</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="COMM">//END: doLoadLayout(){...</span><span class="WHIT">
+<span class='line'>860</span> 
+<span class='line'>861</span> </span><span class="WHIT">			</span><span class="COMM">//load the default layout:</span><span class="WHIT">
+<span class='line'>862</span> </span><span class="WHIT">			</span><span class="NAME">doLoadLayout</span><span class="PUNC">(</span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">DEFAULT_LAYOUT_NAME</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>863</span> 
+<span class='line'>864</span> </span><span class="WHIT">			</span><span class="COMM">//load layouts for controllers (there may be none defined)</span><span class="WHIT">
+<span class='line'>865</span> </span><span class="WHIT">			</span><span class="NAME">$.each</span><span class="PUNC">(</span><span class="NAME">ctrlNameList</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">doLoadLayout</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>866</span> 
+<span class='line'>867</span> </span><span class="WHIT">			</span><span class="NAME">checkCompletion</span><span class="PUNC">(</span><span class="NAME">loadStatus</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>868</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">defer.promise</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>869</span> 
+<span class='line'>870</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="COMM">//END: loadLayouts()</span><span class="WHIT">
+<span class='line'>871</span> 
+<span class='line'>872</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>873</span> 		 * This function actually loads the views for every controller, creates
+<span class='line'>874</span> 		 * an instance of a view class and puts the view instance in the
+<span class='line'>875</span> 		 * &lt;b>_views&lt;/b> array.&lt;br>
+<span class='line'>876</span> 		 * 
+<span class='line'>877</span> 		 * @function loadViews
+<span class='line'>878</span> 		 * @private
+<span class='line'>879</span> 		 * @async
+<span class='line'>880</span> 		 * 
+<span class='line'>881</span> 		 * @returns {Promise} a Deferred.promise that gets resolved upon loading all views
+<span class='line'>882</span> 		 * 
+<span class='line'>883</span> 		 * @see doProcessTemplateList
+<span class='line'>884</span> 		 */</span><span class="WHIT">
+<span class='line'>885</span> </span><span class="WHIT">		</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">loadViews</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>886</span> 
+<span class='line'>887</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">creatorConfig</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>888</span> </span><span class="WHIT">					</span><span class="NAME">constructor</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">View</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>889</span> </span><span class="WHIT">					</span><span class="NAME">typeName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'View'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>890</span> </span><span class="WHIT">					</span><span class="NAME">collection</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">_views</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>891</span> </span><span class="WHIT">					</span><span class="NAME">keyGen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">createViewKey</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>892</span> </span><span class="WHIT">					</span><span class="NAME">accessorName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'getViews'</span><span class="WHIT">
+<span class='line'>893</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>894</span> 
+<span class='line'>895</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">doProcessTemplateList</span><span class="PUNC">(</span><span class="NAME">creatorConfig</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>896</span> 
+<span class='line'>897</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="COMM">//END: loadViews()</span><span class="WHIT">
+<span class='line'>898</span> 
+<span class='line'>899</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>900</span> 		 * This function actually loads the partials for every controller,
+<span class='line'>901</span> 		 * creates an instance of a partial class and puts the partial instance
+<span class='line'>902</span> 		 * in the &lt;b>_partials&lt;/b> array.&lt;br>
+<span class='line'>903</span> 		 * It uses a asynchronous way of loading the partials-files one after
+<span class='line'>904</span> 		 * another.&lt;br>
+<span class='line'>905</span> 		 * &lt;b>If you want to make sure, that all partials are indeed loaded,
+<span class='line'>906</span> 		 * before proceeding with the subsequent instructions, you could look at
+<span class='line'>907</span> 		 * the function
+<span class='line'>908</span> 		 * {@link mmir.ControllerManager#foundControllersCallBack} for
+<span class='line'>909</span> 		 * reference of a function which loads the files one after another - not
+<span class='line'>910</span> 		 * asynchronously.&lt;/b>
+<span class='line'>911</span> 		 * 
+<span class='line'>912</span> 		 * @function loadPartials
+<span class='line'>913</span> 		 * @private
+<span class='line'>914</span> 		 * @async
+<span class='line'>915</span> 		 * 
+<span class='line'>916</span> 		 * @returns {Promise} a Deferred.promise, that resolves after all partials have been loaded
+<span class='line'>917</span> 		 * 					NOTE: loading failures will generate a warning message (on the console)
+<span class='line'>918</span> 		 * 						  but will not cause the Promise to fail.
+<span class='line'>919</span> 		 */</span><span class="WHIT">
+<span class='line'>920</span> </span><span class="WHIT">		</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">loadPartials</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>921</span> 
+<span class='line'>922</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">creatorConfig</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>923</span> </span><span class="WHIT">					</span><span class="NAME">constructor</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">Partial</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>924</span> </span><span class="WHIT">					</span><span class="NAME">typeName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'Partial'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>925</span> </span><span class="WHIT">					</span><span class="NAME">collection</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">_partials</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>926</span> </span><span class="WHIT">					</span><span class="NAME">keyGen</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">createPartialKey</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>927</span> </span><span class="WHIT">					</span><span class="NAME">accessorName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'getPartials'</span><span class="WHIT">
+<span class='line'>928</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>929</span> 
+<span class='line'>930</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">doProcessTemplateList</span><span class="PUNC">(</span><span class="NAME">creatorConfig</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>931</span> 
+<span class='line'>932</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="COMM">//END: loadPartials()</span><span class="WHIT">
+<span class='line'>933</span> 
+<span class='line'>934</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>935</span> 		 * HELPER for checking the loading status.
+<span class='line'>936</span> 		 * 
+<span class='line'>937</span> 		 * As long as the Deferred &lt;code>status.loader&lt;/code> is
+<span class='line'>938</span> 		 * still pending, the loading status will be checked:
+<span class='line'>939</span> 		 * 
+<span class='line'>940</span> 		 * Depending on &lt;code>status.currentLoadCount&lt;/code> and
+<span class='line'>941</span> 		 * &lt;code>status.remainingCtrlCount&lt;/code> the completion
+<span class='line'>942</span> 		 * of the loading process is checked.
+<span class='line'>943</span> 		 * 
+<span class='line'>944</span> 		 * If loading is completed, the Deferred &lt;code>status.loader&lt;/code>
+<span class='line'>945</span> 		 * will be resolved.
+<span class='line'>946</span> 		 * 
+<span class='line'>947</span> 		 * If OPTIONAL &lt;code>status.loader&lt;/code> (Function) exists, intead of resolving
+<span class='line'>948</span> 		 * &lt;code>status.loader&lt;/code>, this function is invoked in case of completion
+<span class='line'>949</span> 		 * with &lt;code>status&lt;/code> as argument.
+<span class='line'>950</span> 		 * 
+<span class='line'>951</span> 		 * @private
+<span class='line'>952</span> 		 * @function
+<span class='line'>953</span> 		 * 
+<span class='line'>954</span> 		 * @param {PlainObject} status
+<span class='line'>955</span> 		 * 		the object for managing the laoding status.
+<span class='line'>956</span> 		 * 
+<span class='line'>957</span> 		 */</span><span class="WHIT">
+<span class='line'>958</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">checkCompletion</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">status</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>959</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">status.loader.state</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'pending'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">status.remainingCtrlCount</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">status.currentLoadCount</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>960</span> 
+<span class='line'>961</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">status.onCompletionImpl</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>962</span> </span><span class="WHIT">					</span><span class="NAME">status.onCompletionImpl</span><span class="PUNC">(</span><span class="NAME">status</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>963</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>964</span> </span><span class="WHIT">				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>965</span> </span><span class="WHIT">					</span><span class="NAME">status.loader.resolve</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>966</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>967</span> 
+<span class='line'>968</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>969</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>970</span> 
+<span class='line'>971</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>972</span> 		 * HELPER for updating the loading status.
+<span class='line'>973</span> 		 * 
+<span class='line'>974</span> 		 * Invokes {@link checkCompletion} with &lt;code>status&lt;/code> as argument.
+<span class='line'>975</span> 		 * 
+<span class='line'>976</span> 		 * @private
+<span class='line'>977</span> 		 * @function
+<span class='line'>978</span> 		 * 
+<span class='line'>979</span> 		 * @param {PlainObject} status
+<span class='line'>980</span> 		 * 		the object for managing the laoding status:
+<span class='line'>981</span> 		 * 		&lt;code>status.currentLoadCount&lt;/code> (Integer): this property will be decreased by 1.
+<span class='line'>982</span> 		 * 											This value should initially be set to the count
+<span class='line'>983</span> 		 * 											of files, that will / should be loaded.
+<span class='line'>984</span> 		 * 		OPTIONAL &lt;code>status.extLoadStatusFunc&lt;/code> (Function): if this property is set, the
+<span class='line'>985</span> 		 * 											function will be invoked with &lt;code>status&lt;/code>
+<span class='line'>986</span> 		 * 											and &lt;code>hasLoadingFailed&lt;/code> as arguments.
+<span class='line'>987</span> 		 * 
+<span class='line'>988</span> 		 * @param {Boolean} [hasLoadingFailed] OPTIONAL
+<span class='line'>989</span> 		 * 		if present and &lt;code>true&lt;/code>: this indicates that the loading process for the current
+<span class='line'>990</span> 		 * 		template file (*.ehtml) has failed. NOTE that this is NOT used, when loading of a 
+<span class='line'>991</span> 		 * 		_compiled_ template file (*.js) fails!
+<span class='line'>992</span> 		 */</span><span class="WHIT">
+<span class='line'>993</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">updateLoadStatus</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">hasLoadingFailed</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>994</span> </span><span class="WHIT">			</span><span class="PUNC">--</span><span class="NAME">status.currentLoadCount</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>995</span> 
+<span class='line'>996</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">status.extLoadStatusFunc</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>997</span> </span><span class="WHIT">				</span><span class="NAME">status.extLoadStatusFunc</span><span class="PUNC">(</span><span class="NAME">status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">hasLoadingFailed</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>998</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>999</span> 
+<span class='line'>1000</span> </span><span class="WHIT">			</span><span class="NAME">checkCompletion</span><span class="PUNC">(</span><span class="NAME">status</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1001</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1002</span> 
+<span class='line'>1003</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>1004</span> 		 * HELPER: creates a template-object (e.g. a View or a Partial) for the 
+<span class='line'>1005</span> 		 *         raw template conent.
+<span class='line'>1006</span> 		 *         
+<span class='line'>1007</span> 		 *         If necessary, the parser-classes (module 'parseUtils') are loaded,
+<span class='line'>1008</span> 		 *         which are necessary to process the raw template content.
+<span class='line'>1009</span> 		 * 
+<span class='line'>1010</span> 		 * @private
+<span class='line'>1011</span> 		 * @function doParseTemplate
+<span class='line'>1012</span> 		 * 
+<span class='line'>1013</span> 		 * @param {Controller} controller
+<span class='line'>1014</span> 		 * 		the controller to which the template files belong.
+<span class='line'>1015</span> 		 * 		May be &lt;code>null&lt;/code>: in this case, this argument will be omitted when
+<span class='line'>1016</span> 		 * 		creating the template object and creating the lookup-key (e.g. in case of a Layout).
+<span class='line'>1017</span> 		 * 
+<span class='line'>1018</span> 		 * @param {String} templateName
+<span class='line'>1019</span> 		 * 		the name for the template (e.g. file-name without extension)
+<span class='line'>1020</span> 		 * 
+<span class='line'>1021</span> 		 * @param {PlainObject} createConfig
+<span class='line'>1022</span> 		 * 		configuration that is used to create the template-object
+<span class='line'>1023</span> 		 * 		for the template-contents:
+<span class='line'>1024</span> 		 * 		&lt;code>createConfig.constructor&lt;/code>: the constructor function
+<span class='line'>1025</span> 		 *                    IF controller IS NOT null: &lt;code>(controller, templateName, templateContent)&lt;/code> 
+<span class='line'>1026</span> 		 *                    							 (e.g. View, Partial)
+<span class='line'>1027</span> 		 *                    IF controller IS null:     &lt;code>(templateName, templateContent)&lt;/code>
+<span class='line'>1028</span> 		 *                    							 (e.g. Layout)
+<span class='line'>1029</span> 		 *                    
+<span class='line'>1030</span> 		 * 		&lt;code>createConfig.collection&lt;/code>: the Dictionary to which the created
+<span class='line'>1031</span> 		 * 											 template-object will be added
+<span class='line'>1032</span> 		 * 		&lt;code>createConfig.keyGen&lt;/code>: a generator function for creating the lookup-key when adding
+<span class='line'>1033</span> 		 * 										the template-object to the collection.
+<span class='line'>1034</span> 		 * 										This function is invoked with &lt;code>(controller.getName(), templateName)&lt;/code>,
+<span class='line'>1035</span> 		 * 										that is &lt;code>(String, String)&lt;/code>.
+<span class='line'>1036</span> 		 * 										
+<span class='line'>1037</span> 		 * 										NOTE: if controller IS null, the keyGen function will not be used, and
+<span class='line'>1038</span> 		 * 											  instead the template-object will be added with the
+<span class='line'>1039</span> 		 * 											  created template-object's name as lookup-key.
+<span class='line'>1040</span> 		 * @param {PlainObject} status
+<span class='line'>1041</span> 		 * 			the object for managing the loading status.
+<span class='line'>1042</span> 		 * 			After creating and adding the template-object to the collection, the loading
+<span class='line'>1043</span> 		 * 			status will be updated via {@link updateLoadStatus}
+<span class='line'>1044</span> 		 * 
+<span class='line'>1045</span> 		 */</span><span class="WHIT">
+<span class='line'>1046</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">doParseTemplate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">controller</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">config</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateContent</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">status</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1047</span> 
+<span class='line'>1048</span> </span><span class="WHIT">			</span><span class="NAME">require</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="STRN">'parseUtils'</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1049</span> 
+<span class='line'>1050</span> </span><span class="WHIT">				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">templateObj</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1051</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">controller</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1052</span> </span><span class="WHIT">					</span><span class="COMM">//"normal" view constructor: (Controller, nameAsString, templateAsString)</span><span class="WHIT">
+<span class='line'>1053</span> </span><span class="WHIT">					</span><span class="NAME">templateObj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">config.constructor</span><span class="PUNC">(</span><span class="NAME">controller</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateName</span><span class="WHIT"> </span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateContent</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1054</span> </span><span class="WHIT">					</span><span class="NAME">config.collection.put</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">config.keyGen</span><span class="PUNC">(</span><span class="NAME">controller.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateName</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateObj</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1055</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1056</span> </span><span class="WHIT">				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1057</span> </span><span class="WHIT">					</span><span class="COMM">//in case of Layout: omit controller argument</span><span class="WHIT">
+<span class='line'>1058</span> </span><span class="WHIT">					</span><span class="COMM">// -> layout constructor: (nameAsString, templateAsString)</span><span class="WHIT">
+<span class='line'>1059</span> </span><span class="WHIT">					</span><span class="COMM">// -> there is a 1:1 correspondence betwenn controller and layout,</span><span class="WHIT">
+<span class='line'>1060</span> </span><span class="WHIT">					</span><span class="COMM">//    and Layout.name === Controller.name</span><span class="WHIT">
+<span class='line'>1061</span> </span><span class="WHIT">					</span><span class="COMM">//    => no need to create a lookup-key</span><span class="WHIT">
+<span class='line'>1062</span> </span><span class="WHIT">					</span><span class="NAME">templateObj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">config.constructor</span><span class="PUNC">(</span><span class="NAME">templateName</span><span class="WHIT"> </span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateContent</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1063</span> </span><span class="WHIT">					</span><span class="NAME">config.collection.put</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">templateObj.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateObj</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1064</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1065</span> 
+<span class='line'>1066</span> </span><span class="WHIT">				</span><span class="NAME">updateLoadStatus</span><span class="PUNC">(</span><span class="NAME">status</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1067</span> 
+<span class='line'>1068</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1069</span> 
+<span class='line'>1070</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1071</span> 
+<span class='line'>1072</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>1073</span> 		 * Generic helper for loading a list of template files (*.ehtml)
+<span class='line'>1074</span> 		 * that correspond to a specific template type (e.g. &lt;code>View&lt;/code>s, or &lt;code>Partial&lt;/code>s).
+<span class='line'>1075</span> 		 * 
+<span class='line'>1076</span> 		 *  If compiled representations of the template file exist AND is up-to-date AND
+<span class='line'>1077</span> 		 *  the configuration is set to load the compiled files rather than the raw template
+<span class='line'>1078</span> 		 *  file (see &lt;code>isUsePreCompiledViews&lt;/code>), then the compiled template is used.
+<span class='line'>1079</span> 		 *  
+<span class='line'>1080</span> 		 *  
+<span class='line'>1081</span> 		 * This function uses an asynchronous method for loading the template-files.&lt;br>
+<span class='line'>1082</span> 		 * 
+<span class='line'>1083</span> 		 * &lt;b>If you want to make sure, that all templates have indeed been loaded, before
+<span class='line'>1084</span> 		 * proceeding with the subsequent program flow, you should have a look at the
+<span class='line'>1085</span> 		 * function {@link mmir.ControllerManager#foundControllersCallBack}: use the returned
+<span class='line'>1086</span> 		 * Deferred.Promise for executing code that depends on the templates being loaded.&lt;/b>
+<span class='line'>1087</span> 		 * 
+<span class='line'>1088</span> 		 * &lt;p>
+<span class='line'>1089</span> 		 * Uses {@link doloadTemplateFile} for loading single template files.
+<span class='line'>1090</span> 		 * 
+<span class='line'>1091</span> 		 * @function doProcessTemplateList
+<span class='line'>1092</span> 		 * @private
+<span class='line'>1093</span> 		 * @async
+<span class='line'>1094</span> 		 * 
+<span class='line'>1095</span> 		 * @see doLoadTemplateFile
+<span class='line'>1096</span> 		 * 
+<span class='line'>1097</span> 		 * @param {PlainObject} createConfig
+<span class='line'>1098</span> 		 * 			configuration object that determines which templates are loaded, and how
+<span class='line'>1099</span> 		 * 			the loaded data is processed.
+<span class='line'>1100</span> 		 * 
+<span class='line'>1101</span> 		 * 
+<span class='line'>1102</span> 		 * @returns {Promise} a Deferred.promise, that resolves after all partials have been loaded
+<span class='line'>1103</span> 		 * 					NOTE: loading failures will generate a warning message (on the console)
+<span class='line'>1104</span> 		 * 						  but will not cause the Promise to fail.
+<span class='line'>1105</span> 		 */</span><span class="WHIT">
+<span class='line'>1106</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">doProcessTemplateList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">createConfig</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1107</span> 
+<span class='line'>1108</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">defer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$.Deferred</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1109</span> 
+<span class='line'>1110</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">ctrlNameList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">controllerManager.getControllerNames</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1111</span> 
+<span class='line'>1112</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">loadStatus</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1113</span> </span><span class="WHIT">					</span><span class="NAME">loader</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">defer</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1114</span> </span><span class="WHIT">					</span><span class="NAME">remainingCtrlCount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">ctrlNameList.length</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1115</span> </span><span class="WHIT">					</span><span class="NAME">currentLoadCount</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT">
+<span class='line'>1116</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1117</span> 
+<span class='line'>1118</span> </span><span class="WHIT">			</span><span class="NAME">$.each</span><span class="PUNC">(</span><span class="NAME">ctrlNameList</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ctrlIndex</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">controllerName</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1119</span> 
+<span class='line'>1120</span> </span><span class="WHIT">				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">controller</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">controllerManager.getController</span><span class="PUNC">(</span><span class="NAME">controllerName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>1121</span> 
+<span class='line'>1122</span> </span><span class="WHIT">				</span><span class="NAME">$.each</span><span class="PUNC">(</span><span class="NAME">controller</span><span class="PUNC">[</span><span class="NAME">createConfig.accessorName</span><span class="PUNC">]</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">index</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateInfo</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1123</span> 
+<span class='line'>1124</span> </span><span class="WHIT">					</span><span class="NAME">doLoadTemplateFile</span><span class="PUNC">(</span><span class="NAME">controller</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateInfo</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">createConfig</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadStatus</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1125</span> 
+<span class='line'>1126</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//END: each(templateInfo)</span><span class="WHIT">
+<span class='line'>1127</span> 
+<span class='line'>1128</span> </span><span class="WHIT">				</span><span class="PUNC">--</span><span class="WHIT"> </span><span class="NAME">loadStatus.remainingCtrlCount</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1129</span> </span><span class="WHIT">				</span><span class="NAME">checkCompletion</span><span class="PUNC">(</span><span class="NAME">loadStatus</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1130</span> 
+<span class='line'>1131</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//END: each(ctrlName)</span><span class="WHIT">
+<span class='line'>1132</span> 
+<span class='line'>1133</span> </span><span class="WHIT">			</span><span class="NAME">checkCompletion</span><span class="PUNC">(</span><span class="NAME">loadStatus</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1134</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">defer.promise</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1135</span> 
+<span class='line'>1136</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="COMM">//END: doProcessTemplateList()</span><span class="WHIT">
+<span class='line'>1137</span> 
+<span class='line'>1138</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>1139</span> 		 * HELPER that loads a single template file asynchronously and creates a corresponding template-class instance
+<span class='line'>1140</span> 		 * (depending on &lt;code>createConfig&lt;/code>).
+<span class='line'>1141</span> 		 * 
+<span class='line'>1142</span> 		 * The &lt;code>status&lt;/code> is updated on successful loading or on error (see {@link updateLoadStatus}).
+<span class='line'>1143</span> 		 * 
+<span class='line'>1144</span> 		 * @example
+<span class='line'>1145</span> 		 * 
+<span class='line'>1146</span> 		 * //EXAMPLE for createConfig for loading template contents into a Partial
+<span class='line'>1147</span> 		 * var theCreateConfig = {
+<span class='line'>1148</span> 		 *   constructor: Partial,        // the class constructor that takes the loaded template data
+<span class='line'>1149</span> 		 *   typeName: 'Partial',         // the name of the class that will be created
+<span class='line'>1150</span> 		 *   collection: _partials,        // the map/dictionary to which the created class-instance will be added
+<span class='line'>1151</span> 		 *   keyGen: createPartialKey,    // the function for creating the lookup-key (for the dictionary)
+<span class='line'>1152</span> 		 *   accessorName: 'getPartials'  // the accessor-function's name for accessing the info-objects on the controller-instance
+<span class='line'>1153</span> 		 * };
+<span class='line'>1154</span> 		 * doLoadTemplateFiles(theCreateConfig).then(function(){
+<span class='line'>1155</span> 		 * 	//do something that depends on loading of the template files... 
+<span class='line'>1156</span> 		 * });
+<span class='line'>1157</span> 		 * 
+<span class='line'>1158</span> 		 * //EXAMPLE for createConfig for loading template contents into a Layout
+<span class='line'>1159</span> 		 * var theCreateLayoutConfig = {
+<span class='line'>1160</span> 		 *   constructor: Layout,        // the class constructor that takes the loaded template data
+<span class='line'>1161</span> 		 *   typeName: 'Layout',         // the name of the class that will be created
+<span class='line'>1162</span> 		 *   collection: _layouts,        // the map/dictionary to which the created class-instance will be added
+<span class='line'>1163</span> 		 * };
+<span class='line'>1164</span> 		 * 
+<span class='line'>1165</span> 		 * doLoadTemplateFiles(theCreateLayoutConfig).then(function(){
+<span class='line'>1166</span> 		 * 	//do something that depends on loading of the template files... 
+<span class='line'>1167</span> 		 * });
+<span class='line'>1168</span> 		 * 
+<span class='line'>1169</span> 		 * //for createConfig for loading template contents into a Partial
+<span class='line'>1170</span> 		 * 
+<span class='line'>1171</span> 		 * @param {Controller} controller
+<span class='line'>1172</span> 		 * 		the controller to which the template files belong.
+<span class='line'>1173</span> 		 * 		May be &lt;code>null&lt;/code>: see {@link doParseTemplate}.
+<span class='line'>1174</span> 		 * 
+<span class='line'>1175</span> 		 * @param {PlainObject} templateInfo
+<span class='line'>1176</span> 		 * 		the JSON-like object containing information for the template
+<span class='line'>1177</span> 		 * 		(e.g. &lt;code>name&lt;/code>, &lt;code>file-path&lt;/code> etc.; see
+<span class='line'>1178</span> 		 * 		 {@link mmir.ControllerManager#getControllerResources} for 
+<span class='line'>1179</span> 		 *          more information).
+<span class='line'>1180</span> 		 *          
+<span class='line'>1181</span> 		 * @param {PlainObject} createConfig
+<span class='line'>1182</span> 		 * 		configuration that is used to create a corresponding template-object
+<span class='line'>1183</span> 		 * 		for the loaded template-contents.
+<span class='line'>1184</span> 		 * 		The created object will be added to &lt;code>createConfig.collection&lt;/code>
+<span class='line'>1185</span> 		 * 		(Dictionary; with controller's name as key).
+<span class='line'>1186</span> 		 * 
+<span class='line'>1187</span> 		 * @param {PlainObject} loadStatus
+<span class='line'>1188</span> 		 * 		Object for managing the loading-status. The status is updated and used to
+<span class='line'>1189</span> 		 * 		determine, if all templates (e.g. from a list) have been (asynchronously)
+<span class='line'>1190</span> 		 * 		loaded.
+<span class='line'>1191</span> 		 * 
+<span class='line'>1192</span> 		 * @function doProcessTemplateList
+<span class='line'>1193</span> 		 * @private
+<span class='line'>1194</span> 		 * @async
+<span class='line'>1195</span> 		 */</span><span class="WHIT">
+<span class='line'>1196</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">doLoadTemplateFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">controller</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateInfo</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">createConfig</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadStatus</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1197</span> </span><span class="WHIT">			</span><span class="PUNC">++</span><span class="NAME">loadStatus.currentLoadCount</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1198</span> 
+<span class='line'>1199</span> </span><span class="WHIT">			</span><span class="NAME">$.ajax</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1200</span> </span><span class="WHIT">				</span><span class="NAME">async</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1201</span> </span><span class="WHIT">				</span><span class="NAME">dataType</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"text"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1202</span> </span><span class="WHIT">				</span><span class="NAME">url</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">templateInfo.path</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1203</span> </span><span class="WHIT">				</span><span class="NAME">success</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1204</span> 
+<span class='line'>1205</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">isUsePreCompiledViews</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1206</span> 
+<span class='line'>1207</span> </span><span class="WHIT">						</span><span class="NAME">loadPrecompiledView</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateInfo.genPath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1208</span> 
+<span class='line'>1209</span> </span><span class="WHIT">							</span><span class="NAME">updateLoadStatus</span><span class="PUNC">(</span><span class="NAME">loadStatus</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1210</span> 
+<span class='line'>1211</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">err</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1212</span> 
+<span class='line'>1213</span> </span><span class="WHIT">							</span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="STRN">'Could not load precompiled '</span><span class="PUNC">+</span><span class="NAME">createConfig.typeName</span><span class="PUNC">+</span><span class="STRN">' from '</span><span class="WHIT">
+<span class='line'>1214</span> </span><span class="WHIT">									</span><span class="PUNC">+</span><span class="NAME">templateInfo.genPath</span><span class="PUNC">+</span><span class="STRN">'", because: '</span><span class="PUNC">+</span><span class="NAME">err</span><span class="WHIT">
+<span class='line'>1215</span> </span><span class="WHIT">									</span><span class="PUNC">+</span><span class="STRN">', compiling template instead: '</span><span class="WHIT">
+<span class='line'>1216</span> </span><span class="WHIT">									</span><span class="PUNC">+</span><span class="NAME">templateInfo.path</span><span class="WHIT">
+<span class='line'>1217</span> </span><span class="WHIT">							</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1218</span> 
+<span class='line'>1219</span> </span><span class="WHIT">							</span><span class="NAME">doParseTemplate</span><span class="PUNC">(</span><span class="NAME">controller</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateInfo.name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">createConfig</span><span class="WHIT"> </span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadStatus</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1220</span> 
+<span class='line'>1221</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1222</span> 
+<span class='line'>1223</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1224</span> </span><span class="WHIT">					</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1225</span> 
+<span class='line'>1226</span> </span><span class="WHIT">						</span><span class="NAME">doParseTemplate</span><span class="PUNC">(</span><span class="NAME">controller</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">templateInfo.name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">createConfig</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">loadStatus</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1227</span> 
+<span class='line'>1228</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1229</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1230</span> 
+<span class='line'>1231</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">fail</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">jqxhr</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">status</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">err</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1232</span> 
+<span class='line'>1233</span> </span><span class="WHIT">				</span><span class="COMM">// print out an error message</span><span class="WHIT">
+<span class='line'>1234</span> </span><span class="WHIT">				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">errMsg</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">err</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">err.stack</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">err.stack</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">err</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1235</span> </span><span class="WHIT">				</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"["</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">status</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"] Could not load '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">templateInfo.path</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"': "</span><span class="PUNC">+</span><span class="NAME">errMsg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">//failure</span><span class="WHIT">
+<span class='line'>1236</span> 
+<span class='line'>1237</span> </span><span class="WHIT">				</span><span class="NAME">updateLoadStatus</span><span class="PUNC">(</span><span class="NAME">loadStatus</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1238</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1239</span> 
+<span class='line'>1240</span> </span><span class="WHIT">			</span><span class="NAME">checkCompletion</span><span class="PUNC">(</span><span class="NAME">loadStatus</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1241</span> 
+<span class='line'>1242</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="COMM">//END: doLoadTemplateFile()</span><span class="WHIT">
+<span class='line'>1243</span> 
+<span class='line'>1244</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>1245</span> </span><span class="WHIT">		</span><span class="COMM">///////////// start intialization: ////////////////</span><span class="WHIT">
+<span class='line'>1246</span> 
+<span class='line'>1247</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">defer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$.Deferred</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1248</span> 
+<span class='line'>1249</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isLayoutsLoaded</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1250</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isViewsLoaded</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1251</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isPartialsLoaded</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1252</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isViewEngineLoaded</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="COMM">//MOD modularize view-engine jqm</span><span class="WHIT">
+<span class='line'>1253</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">checkResolved</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1254</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">isLayoutsLoaded</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">isViewsLoaded</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">isPartialsLoaded</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">isViewEngineLoaded</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1255</span> </span><span class="WHIT">				</span><span class="NAME">defer.resolve</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1256</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1257</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1258</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">failPromise</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1259</span> </span><span class="WHIT">			</span><span class="NAME">defer.reject</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1260</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1261</span> 
+<span class='line'>1262</span> </span><span class="WHIT">		</span><span class="NAME">loadLayouts</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">then</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>1263</span> </span><span class="WHIT">				</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">isLayoutsLoaded</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">checkResolved</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1264</span> </span><span class="WHIT">				</span><span class="NAME">failPromise</span><span class="WHIT">
+<span class='line'>1265</span> </span><span class="WHIT">		</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1266</span> </span><span class="WHIT">		</span><span class="NAME">loadViews</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">then</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>1267</span> </span><span class="WHIT">				</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">isViewsLoaded</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">checkResolved</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1268</span> </span><span class="WHIT">				</span><span class="NAME">failPromise</span><span class="WHIT">
+<span class='line'>1269</span> </span><span class="WHIT">		</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1270</span> </span><span class="WHIT">		</span><span class="NAME">loadPartials</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">then</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>1271</span> </span><span class="WHIT">				</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">isPartialsLoaded</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">checkResolved</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1272</span> </span><span class="WHIT">				</span><span class="NAME">failPromise</span><span class="WHIT">
+<span class='line'>1273</span> </span><span class="WHIT">		</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1274</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>1275</span> </span><span class="WHIT">		</span><span class="COMM">//MOD modularize view-engine jqm: load viewEngine (default is based on jQuery Mobile)</span><span class="WHIT">
+<span class='line'>1276</span> </span><span class="WHIT">		</span><span class="NAME">require</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NAME">core.viewEngine</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">viewEngineInit</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1277</span> </span><span class="WHIT">			</span><span class="NAME">viewEngineInit.then</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'>1278</span> </span><span class="WHIT">				</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">viewEngine</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1279</span> </span><span class="WHIT">					</span><span class="NAME">_instance.setRenderEngine</span><span class="PUNC">(</span><span class="NAME">viewEngine</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1280</span> </span><span class="WHIT">					</span><span class="NAME">isViewEngineLoaded</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1281</span> </span><span class="WHIT">					</span><span class="NAME">checkResolved</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1282</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failPromise</span><span class="WHIT">
+<span class='line'>1283</span> </span><span class="WHIT">			</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1284</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1285</span> 
+<span class='line'>1286</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">defer.promise</span><span class="PUNC">(</span><span class="NAME">_instance</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1287</span> 
+<span class='line'>1288</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="COMM">//END: init()</span><span class="WHIT">
+<span class='line'>1289</span> 
+<span class='line'>1290</span> </span><span class="WHIT">	</span><span class="COMM">/** #@- */</span><span class="WHIT">
+<span class='line'>1291</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1292</span> </span></pre></body></html>
