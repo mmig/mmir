@@ -1,0 +1,227 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * 	Copyright (C) 2012-2013 DFKI GmbH
+<span class='line'>  3</span>  * 	Deutsches Forschungszentrum fuer Kuenstliche Intelligenz
+<span class='line'>  4</span>  * 	German Research Center for Artificial Intelligence
+<span class='line'>  5</span>  * 	http://www.dfki.de
+<span class='line'>  6</span>  * 
+<span class='line'>  7</span>  * 	Permission is hereby granted, free of charge, to any person obtaining a 
+<span class='line'>  8</span>  * 	copy of this software and associated documentation files (the 
+<span class='line'>  9</span>  * 	"Software"), to deal in the Software without restriction, including 
+<span class='line'> 10</span>  * 	without limitation the rights to use, copy, modify, merge, publish, 
+<span class='line'> 11</span>  * 	distribute, sublicense, and/or sell copies of the Software, and to 
+<span class='line'> 12</span>  * 	permit persons to whom the Software is furnished to do so, subject to 
+<span class='line'> 13</span>  * 	the following conditions:
+<span class='line'> 14</span>  * 
+<span class='line'> 15</span>  * 	The above copyright notice and this permission notice shall be included 
+<span class='line'> 16</span>  * 	in all copies or substantial portions of the Software.
+<span class='line'> 17</span>  * 
+<span class='line'> 18</span>  * 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+<span class='line'> 19</span>  * 	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+<span class='line'> 20</span>  * 	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+<span class='line'> 21</span>  * 	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+<span class='line'> 22</span>  * 	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+<span class='line'> 23</span>  * 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+<span class='line'> 24</span>  * 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> 
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="COMM">/**
+<span class='line'> 29</span>  * @module mmir.tools
+<span class='line'> 30</span>  * 
+<span class='line'> 31</span>  */</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="NAME">define</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="STRN">'md5'</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 35</span> 	 * A Utility class for creating / reading checksum (files).&lt;br>
+<span class='line'> 36</span> 	 * 
+<span class='line'> 37</span> 	 * @name ChecksumUtils
+<span class='line'> 38</span> 	 * @class
+<span class='line'> 39</span> 	 * @exports ChecksumUtils as mmir.tools.ChecksumUtils
+<span class='line'> 40</span> 	 * @static
+<span class='line'> 41</span> 	 * 
+<span class='line'> 42</span> 	 * @requires CryptoJS (MD5, see https://code.google.com/p/crypto-js/)
+<span class='line'> 43</span> 	 */</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">		</span><span class="NAME">CryptoJS</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">	</span><span class="COMM">/** 
+<span class='line'> 49</span> 	 * @private
+<span class='line'> 50</span> 	 * @type CryptoJS.MD5
+<span class='line'> 51</span> 	 * @memberOf ChecksumUtils#
+<span class='line'> 52</span> 	 */</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">cryptoInstance</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 56</span> 	 * @private
+<span class='line'> 57</span> 	 * @function
+<span class='line'> 58</span> 	 * @memberOf ChecksumUtils#
+<span class='line'> 59</span> 	 */</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">computeChecksum</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">+</span><span class="NAME">cryptoInstance.MD5</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//&lt;- enforce String-value by using: ''+...</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">	</span><span class="COMM">/** 
+<span class='line'> 65</span> 	 * @private
+<span class='line'> 66</span> 	 * @type String
+<span class='line'> 67</span> 	 * @memberOf ChecksumUtils#
+<span class='line'> 68</span> 	 */</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">digestFileExt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'.checksum.txt'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">	</span><span class="COMM">/** 
+<span class='line'> 71</span> 	 * @private
+<span class='line'> 72</span> 	 * @type String
+<span class='line'> 73</span> 	 * @memberOf ChecksumUtils#
+<span class='line'> 74</span> 	 */</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">digestContentSeparator</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'\t'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">	</span><span class="COMM">/** 
+<span class='line'> 77</span> 	 * @private
+<span class='line'> 78</span> 	 * @type String
+<span class='line'> 79</span> 	 * @memberOf ChecksumUtils#
+<span class='line'> 80</span> 	 */</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">digestContentPostfix</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'\r\n'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">	</span><span class="COMM">/** 
+<span class='line'> 84</span> 	 * @private
+<span class='line'> 85</span> 	 * @function
+<span class='line'> 86</span> 	 * @memberOf ChecksumUtils#
+<span class='line'> 87</span> 	 */</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">createDigestFileContent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">originalText</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">originalText.length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">digest</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">computeChecksum</span><span class="PUNC">(</span><span class="NAME">originalText</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">digest</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">digestContentSeparator</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">digestContentPostfix</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">	</span><span class="COMM">/** 
+<span class='line'> 97</span> 	 * @returns {PlainObject} &lt;code>{size: Number, hash: String}&lt;/code>
+<span class='line'> 98</span> 	 * @private
+<span class='line'> 99</span> 	 * @type String
+<span class='line'>100</span> 	 * @memberOf ChecksumUtils#
+<span class='line'>101</span> 	 */</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">parseDigestFileContent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">rawTextContent</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rawTextContent.split</span><span class="PUNC">(</span><span class="NAME">digestContentSeparator</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">			</span><span class="NAME">size</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">			</span><span class="NAME">hash</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">	</span><span class="COMM">/** 
+<span class='line'>113</span> 	 * @returns {Boolean}
+<span class='line'>114</span> 	 * @private
+<span class='line'>115</span> 	 * @function
+<span class='line'>116</span> 	 * @memberOf ChecksumUtils#
+<span class='line'>117</span> 	 */</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">verifyIsSame</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">rawTextContent</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">referenceHash</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">referenceHash</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">			</span><span class="NAME">referenceHash</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseDigestFileContent</span><span class="PUNC">(</span><span class="NAME">referenceHash</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">origSize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rawTextContent.length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">origSize</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">referenceHash.size</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">referenceHash.hash</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">computeChecksum</span><span class="PUNC">(</span><span class="NAME">rawTextContent</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>132</span> 	 * @lends ChecksumUtils.prototype
+<span class='line'>133</span> 	 */</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>136</span> 		 * Must be called before using checksum-generation:
+<span class='line'>137</span> 		 * sets/initializes the object/function for checksum generation.
+<span class='line'>138</span> 		 * 
+<span class='line'>139</span> 		 * @param {CryptoJS} [cryptoImpl] OPTIONAL
+<span class='line'>140</span> 		 * 				if omitted, the (global!) variable &lt;code>CryptoJS&lt;/code> is used by default.
+<span class='line'>141</span> 		 * 				This argument should be the CryptoJS object containing the MD5 function/algorithm, i.e. CryptoJS.MD5() must be a function!
+<span class='line'>142</span> 		 * 
+<span class='line'>143</span> 		 * @memberOf mmir.tools.ChecksumUtils#
+<span class='line'>144</span> 		 */</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">		</span><span class="NAME">init</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">cryptoImpl</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">cryptoImpl</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">				</span><span class="NAME">cryptoImpl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">CryptoJS</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">			</span><span class="NAME">cryptoInstance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cryptoImpl</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>153</span> 		 * Creates the content for a checksum file, containing information about
+<span class='line'>154</span> 		 * the size and hash-value for the supplied String argument.
+<span class='line'>155</span> 		 * 
+<span class='line'>156</span> 		 * The result can be "written as is" to a file.
+<span class='line'>157</span> 		 * 
+<span class='line'>158</span> 		 * @function
+<span class='line'>159</span> 		 * @param {String} originalText
+<span class='line'>160</span> 		 * 						the "raw" text for which to generate the checksum information
+<span class='line'>161</span> 		 * 
+<span class='line'>162</span> 		 * @returns {String} the checksum information as a String (formatted as content of a checksum file)
+<span class='line'>163</span> 		 * 
+<span class='line'>164</span> 		 */</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">		</span><span class="NAME">createContent</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">createDigestFileContent</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>167</span> 		 * Parses the raw text-content of a checksum file and returns an object
+<span class='line'>168</span> 		 * with properties:
+<span class='line'>169</span> 		 * 
+<span class='line'>170</span> 		 * &lt;code>{ size: INTEGER, hash: STRING }&lt;/code>
+<span class='line'>171</span> 		 * 
+<span class='line'>172</span> 		 * @function
+<span class='line'>173</span> 		 * @param {String} rawTextContent
+<span class='line'>174</span> 		 * 					the raw conent of a checksum file
+<span class='line'>175</span> 		 * 
+<span class='line'>176</span> 		 * @returns {PlainObject} an object with the extracted properties from the checksum-data:
+<span class='line'>177</span> 		 * 				{ size: INTEGER, hash: STRING }
+<span class='line'>178</span> 		 */</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">		</span><span class="NAME">parseContent</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">parseDigestFileContent</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>181</span> 		 * Check if the length / checksum for a raw text is the same as the checksum-information.
+<span class='line'>182</span> 		 * 
+<span class='line'>183</span> 		 * NOTE: The actual checksum for the raw text is only generated & checked, if the size is equal.
+<span class='line'>184</span> 		 * 
+<span class='line'>185</span> 		 * @function
+<span class='line'>186</span> 		 * @param {String} rawTextContent
+<span class='line'>187</span> 		 * 					the (raw) text/content which should be checked
+<span class='line'>188</span> 		 * @param {String|PlainObject} referenceHash
+<span class='line'>189</span> 		 * 					the checksum information to check against: either the 
+<span class='line'>190</span> 		 * 					raw content (String) of a checksum file, or the parsed
+<span class='line'>191</span> 		 * 					contents of a checksum file, which is a PlainObject with
+<span class='line'>192</span> 		 * 					properties:
+<span class='line'>193</span> 		 * 					{ size: INTEGER, hash: STRING }
+<span class='line'>194</span> 		 * 
+<span class='line'>195</span> 		 * @returns {Boolean} &lt;code>true&lt;/code> if 
+<span class='line'>196</span> 		 */</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">		</span><span class="NAME">isSame</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">verifyIsSame</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>199</span> 		 * Returns the file extension for checksum-files.
+<span class='line'>200</span> 		 * 
+<span class='line'>201</span> 		 * CONST
+<span class='line'>202</span> 		 * 
+<span class='line'>203</span> 		 * @function
+<span class='line'>204</span> 		 * @returns {String} the default file extension for checksum files 
+<span class='line'>205</span> 		 * 						(including the separating dot, eg. ".checksum.txt") 
+<span class='line'>206</span> 		 */</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">		</span><span class="NAME">getFileExt</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">digestFileExt</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>211</span> 		 * The Char used for separating fields within checksum files.
+<span class='line'>212</span> 		 * 
+<span class='line'>213</span> 		 * @returns {String} the separator char (TAB)
+<span class='line'>214</span> 		 */</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">		</span><span class="NAME">getConentSeparator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">digestContentSeparator</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//END: define</span></pre></body></html>

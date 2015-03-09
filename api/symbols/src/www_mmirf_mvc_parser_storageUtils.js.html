@@ -1,0 +1,223 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="WHIT">
+<span class='line'>  2</span> </span><span class="COMM">/**
+<span class='line'>  3</span>  * Extends the parser-module with helper functions for
+<span class='line'>  4</span>  * storing/restoring compiled templates (eHTML -> layout, view, partial etc)
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * Dependencies:
+<span class='line'>  7</span>  * 
+<span class='line'>  8</span>  *  @requires jQuery.extend 
+<span class='line'>  9</span>  *  
+<span class='line'> 10</span>  *  alternatively: set &lt;code>mobileDS.parser.CLASS_EXTENDER&lt;/code> with an object that 
+<span class='line'> 11</span>  *  exposes a function &lt;tt>extend(obj1,obj1)&lt;/tt>, i.e.
+<span class='line'> 12</span>  *  
+<span class='line'> 13</span>  *  &lt;code>mmir.parser.CLASS_EXTENDER.extend(obj1, obj2)&lt;/code>
+<span class='line'> 14</span>  * 
+<span class='line'> 15</span>  * @module mmir.tools
+<span class='line'> 16</span>  * 
+<span class='line'> 17</span>  * @requires jQuery.extend
+<span class='line'> 18</span>  * 
+<span class='line'> 19</span>  */</span><span class="WHIT">
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="NAME">define</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="STRN">'jquery'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'parserModule'</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">parser</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="NAME">parser.STORAGE_FILE_FORMAT_NUMBER</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="COMM">/**
+<span class='line'> 26</span>  * Creates the appropriate object from a JSON-like &lt;tt>storedObject&lt;/tt>.
+<span class='line'> 27</span>  * 
+<span class='line'> 28</span>  * &lt;p>
+<span class='line'> 29</span>  * NOTE that in difference to a real JSON object, the &lt;tt>storedObject&lt;/tt> 
+<span class='line'> 30</span>  * may contain function definitions.
+<span class='line'> 31</span>  * 
+<span class='line'> 32</span>  * &lt;p>
+<span class='line'> 33</span>  * The storedObject must have a String property &lt;strong>classConstructor&lt;/strong>
+<span class='line'> 34</span>  * &lt;ul>
+<span class='line'> 35</span>  * 	&lt;li>that must correspond to a constructor function (which will be invoked with &lt;tt>new&lt;/tt>)&lt;/li>
+<span class='line'> 36</span>  * 	&lt;li>the constructor function must be invokable without parameters&lt;/li>
+<span class='line'> 37</span>  * 	&lt;li>the constructor function must be accessable from the global namespace
+<span class='line'> 38</span>  * 		(or &lt;tt>classConstuctor&lt;/tt> must contain the code for retrieving the constructor
+<span class='line'> 39</span>  * 		 function from the global namespace)&lt;/li>
+<span class='line'> 40</span>  * &lt;/ul>
+<span class='line'> 41</span>  * 
+<span class='line'> 42</span>  * 
+<span class='line'> 43</span>  * &lt;p>
+<span class='line'> 44</span>  * If &lt;tt>storedObject&lt;/tt> contains a function &lt;tt>init&lt;/tt>, then this function will be invoked
+<span class='line'> 45</span>  * before returning the new newly created object.
+<span class='line'> 46</span>  * 
+<span class='line'> 47</span>  * 
+<span class='line'> 48</span>  * @function
+<span class='line'> 49</span>  * @static
+<span class='line'> 50</span>  * @public
+<span class='line'> 51</span>  * 
+<span class='line'> 52</span>  * @param {Object} storedObject 
+<span class='line'> 53</span>  * 				    a JSON-like object with fields and functions (which will be transfered to the returned object).
+<span class='line'> 54</span>  * @param {Boolean} [isTriggerPublish] OPTIONAL
+<span class='line'> 55</span>  * 					if &lt;code>true&lt;/code> then the restore function call
+<span class='line'> 56</span>  * 					&lt;code>initPublish()&lt;/code> on the restored object before returning.
+<span class='line'> 57</span>  * 					This should only be &lt;code>true&lt;/code> for the root-object
+<span class='line'> 58</span>  * 					(e.g. the View-object or Partial-object; nested objects should NOT invoke
+<span class='line'> 59</span>  * 					 restoreObject() with this argument set to true).
+<span class='line'> 60</span>  * @param {Number} [fileFormatNo] OPTIONAL
+<span class='line'> 61</span>  * 					NOTE: if argument &lt;code>isTriggerPublish&lt;/code> was used with value &lt;code>true&lt;/code>,
+<span class='line'> 62</span>  * 						  then this argument MUST be used too!
+<span class='line'> 63</span>  * 					If the number given does not match {@link parser.STORAGE_FILE_FORMAT_NUMBER}
+<span class='line'> 64</span>  * 					the file format is assumed to be out-dated and an Error will be thrown.
+<span class='line'> 65</span>  * @returns {Object} 
+<span class='line'> 66</span>  *          an new instance created with the constructor &lt;tt>classConstructor&lt;/tt> and
+<span class='line'> 67</span>  * 			set with all properties (fields and functions) from &lt;tt>storedObject&lt;/tt>.
+<span class='line'> 68</span>  * 
+<span class='line'> 69</span>  * @throws Error if &lt;code>fileFormatNo&lt;/code> does not match STORAGE_FILE_FORMAT_NUMBER.
+<span class='line'> 70</span>  */</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="NAME">parser.restoreObject</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">storedObject</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">isTriggerPublish</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fileFormatNo</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">isTriggerPublish</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">fileFormatNo</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">parser.STORAGE_FILE_FORMAT_NUMBER</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">		</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Error</span><span class="PUNC">(</span><span class="STRN">'Compiled template file has wrong format: need file with format version '</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">				</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">parser.STORAGE_FILE_FORMAT_NUMBER</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="STRN">', but got: '</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">fileFormatNo</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">				</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'. Please re-compile views / templates.'</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">		</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">classExtender</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">parser.CLASS_EXTENDER</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">parser.CLASS_EXTENDER.extend</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">		</span><span class="NAME">classExtender</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parser.CLASS_EXTENDER</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">	</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">		</span><span class="NAME">classExtender</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">$</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="COMM">//	//NOTE: classConstructor contains a list of Strings:</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="COMM">//	//       * the constructor-function is either in global namespace</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="COMM">//	//         e.g. "View" -> then the list contains exactly one entry ["View"]</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="COMM">//	//</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="COMM">//	//       * if the constructor-function is in a sub-namespace (e.g. "sub-module")</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="COMM">//	//         then the list contains the "path" to the constructorf-function</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="COMM">//	//         starting with the module that is in the global namespace</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="COMM">//	//         e.g. "mobileDS.parser.ParsingResult" -> ["mobileDS, "parser", "ParsingResult"]</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="COMM">//	//</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="COMM">//	var constructor = window[storedObject.classConstructor[0]];//FIXME need to convert this to require</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="COMM">//	for(var i=1, size = storedObject.classConstructor.length; i &lt; size; ++i){</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="COMM">//		constructor = constructor[storedObject.classConstructor[i]];</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="COMM">//	}</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">	</span><span class="COMM">//requirejs version (for this to work, all Classe (i.e. JS-files) need to already have been loaded & required!)</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">constructor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="NAME">storedObject.classConstructor</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">classExtender.extend</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">constructor</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">storedObject</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">obj.init</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">		</span><span class="NAME">obj.init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">isTriggerPublish</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">obj.initPublish</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">		</span><span class="NAME">obj.initPublish</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>118</span> 
+<span class='line'>119</span> </span><span class="COMM">/**
+<span class='line'>120</span>  * Creates String-representations (JSON-like) for the specified properties and appends them to the StringBuffer.
+<span class='line'>121</span>  * 
+<span class='line'>122</span>  * &lt;p>
+<span class='line'>123</span>  * This function iterates over the Array &lt;tt>propertyNames&lt;/tt>:
+<span class='line'>124</span>  * If a property with that name exists in &lt;tt>obj&lt;/tt>, a JSON-like String-representation is generated
+<span class='line'>125</span>  * and appended at the end of the array &lt;tt>stringBuffer&lt;/tt>.
+<span class='line'>126</span>  * &lt;br>
+<span class='line'>127</span>  * Multiple representations are separated by comma entry &lt;code>','&lt;/code> in &lt;tt>stringBuffer&lt;/tt>.
+<span class='line'>128</span>  * &lt;br>
+<span class='line'>129</span>  * The last entry in &lt;tt>stringBuffer&lt;/tt> is a comma entry &lt;code>','&lt;/code> if at least one property 
+<span class='line'>130</span>  * entry was inserted in &lt;tt>stringBuffer&lt;/tt>.
+<span class='line'>131</span>  * 
+<span class='line'>132</span>  * &lt;p>
+<span class='line'>133</span>  * NOTE that the String-representation inserted into &lt;tt>stringBuffer&lt;/tt> may not have a 1:1 correspondence
+<span class='line'>134</span>  * with properties (only the last entry is guaranteed to be &lt;code>','&lt;/code>, if a property was inserted).
+<span class='line'>135</span>  * &lt;br>
+<span class='line'>136</span>  * For pratical use, the returned (or modified) &lt;tt>stringBuffer&lt;/tt> should be converted into a String
+<span class='line'>137</span>  * e.g. by &lt;code>stringBuffer.join('')&lt;/code>.
+<span class='line'>138</span>  * 
+<span class='line'>139</span>  * 
+<span class='line'>140</span>  * @function
+<span class='line'>141</span>  * @static
+<span class='line'>142</span>  * @public
+<span class='line'>143</span>  * 
+<span class='line'>144</span>  * @param {Object} obj 
+<span class='line'>145</span>  * 				the object, that contains the properties for which String representations should be generated.
+<span class='line'>146</span>  * @param {Array&lt;String>} propertyNames 
+<span class='line'>147</span>  * 				the names of the properties, for which String-representations should be generated.
+<span class='line'>148</span>  * @param {Array&lt;String>} stringBuffer 
+<span class='line'>149</span>  * 				the buffer: String-representations will be appended as entries at the end of the buffer
+<span class='line'>150</span>  * @param {String} [propertyNamePostfix] 
+<span class='line'>151</span>  * 				OPTIONAL if present, this postfix will be appended to each property name, before processing it.
+<span class='line'>152</span>  * 				This is a convenience method, e.g. if all properties in &lt;tt>propertyNames&lt;/tt> should end with
+<span class='line'>153</span>  * 				the same String / postfix.
+<span class='line'>154</span>  * @param {Function} [valueFunc] 
+<span class='line'>155</span>  * 				OPTIONAL by default, value representations are generated using the &lt;code>JSON.stringify&lt;/code>
+<span class='line'>156</span>  * 				function. If instead this argument is present, this function will be invoked for creating
+<span class='line'>157</span>  * 				the string representation of the property-value.
+<span class='line'>158</span>  * 				The function signature is &lt;code>valueFunc(propertyName : String, propertyValue : Object) : String&lt;/code>.
+<span class='line'>159</span>  * 
+<span class='line'>160</span>  * @returns {Array&lt;String>} the modified &lt;tt>stringBuffer&lt;/tt>
+<span class='line'>161</span>  * 
+<span class='line'>162</span>  * @requires JSON.stringify
+<span class='line'>163</span>  * 
+<span class='line'>164</span>  * @example
+<span class='line'>165</span>  * 
+<span class='line'>166</span>  * var obj = {
+<span class='line'>167</span>  * 	some: "properties",
+<span class='line'>168</span>  * 	including: function(arg1,arg2){ return 'functions' }
+<span class='line'>169</span>  * };
+<span class='line'>170</span>  * 
+<span class='line'>171</span>  * var sb = mobileDS.parser.appendStringified(obj, ['some'], []);
+<span class='line'>172</span>  * var str = sb.join(',');
+<span class='line'>173</span>  * //str will be: "some:\"properties\","
+<span class='line'>174</span>  * 
+<span class='line'>175</span>  */</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="NAME">parser.appendStringified</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">propertyNames</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">stringBuffer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">propertyNamePostfix</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">valueFunc</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">	</span><span class="COMM">//"shift" arguments, if necessary</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">propertyNamePostfix</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="WHIT"> </span><span class="NAME">valueFunc</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">		</span><span class="NAME">valueFunc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">propertyNamePostfix</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">		</span><span class="NAME">propertyNamePostfix</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">prop</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">val</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">	</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">propertyNames.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">		</span><span class="NAME">prop</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">propertyNames</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">propertyNamePostfix</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">			</span><span class="NAME">prop</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">propertyNamePostfix</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>191</span> 
+<span class='line'>192</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">			</span><span class="KEYW">continue</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">valueFunc</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">			</span><span class="NAME">val</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">valueFunc</span><span class="PUNC">(</span><span class="NAME">prop</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">obj</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">			</span><span class="NAME">val</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">		</span><span class="NAME">stringBuffer.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">prop</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">		</span><span class="NAME">stringBuffer.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">':'</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">		</span><span class="NAME">stringBuffer.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">val</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>207</span> 
+<span class='line'>208</span> </span><span class="WHIT">		</span><span class="NAME">stringBuffer.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">','</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">stringBuffer</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>213</span> 
+<span class='line'>214</span> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">parser</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>215</span> 
+<span class='line'>216</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//END: define(..., function(){</span></pre></body></html>
