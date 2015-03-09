@@ -1,0 +1,423 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="TOKN">﻿</span><span class="COMM">/*
+<span class='line'>  2</span>  * 	Copyright (C) 2012-2013 DFKI GmbH
+<span class='line'>  3</span>  * 	Deutsches Forschungszentrum fuer Kuenstliche Intelligenz
+<span class='line'>  4</span>  * 	German Research Center for Artificial Intelligence
+<span class='line'>  5</span>  * 	http://www.dfki.de
+<span class='line'>  6</span>  * 
+<span class='line'>  7</span>  * 	Permission is hereby granted, free of charge, to any person obtaining a 
+<span class='line'>  8</span>  * 	copy of this software and associated documentation files (the 
+<span class='line'>  9</span>  * 	"Software"), to deal in the Software without restriction, including 
+<span class='line'> 10</span>  * 	without limitation the rights to use, copy, modify, merge, publish, 
+<span class='line'> 11</span>  * 	distribute, sublicense, and/or sell copies of the Software, and to 
+<span class='line'> 12</span>  * 	permit persons to whom the Software is furnished to do so, subject to 
+<span class='line'> 13</span>  * 	the following conditions:
+<span class='line'> 14</span>  * 
+<span class='line'> 15</span>  * 	The above copyright notice and this permission notice shall be included 
+<span class='line'> 16</span>  * 	in all copies or substantial portions of the Software.
+<span class='line'> 17</span>  * 
+<span class='line'> 18</span>  * 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+<span class='line'> 19</span>  * 	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+<span class='line'> 20</span>  * 	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+<span class='line'> 21</span>  * 	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+<span class='line'> 22</span>  * 	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+<span class='line'> 23</span>  * 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+<span class='line'> 24</span>  * 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> 
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="NAME">define</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT"> </span><span class="STRN">'commonUtils'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'helper'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'logger'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'module'</span><span class="WHIT"> </span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 30</span> 	 * @name Controller
+<span class='line'> 31</span> 	 * @class
+<span class='line'> 32</span> 	 */</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">			</span><span class="NAME">commonUtils</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Helper</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Logger</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">module</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">logger</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Logger.create</span><span class="PUNC">(</span><span class="NAME">module</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">	</span><span class="COMM">/** @scope Controller.prototype */</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 41</span> 	 * #@+
+<span class='line'> 42</span> 	 * @memberOf Controller.prototype
+<span class='line'> 43</span> 	 */</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 46</span> 	 * The Controller Class is a kind of interface-class which gives access to the methods of a controller and its helper. &lt;br>
+<span class='line'> 47</span> 	 * Also holds information about views and partials associated with the controller.
+<span class='line'> 48</span> 	 * 
+<span class='line'> 49</span> 	 * @constructs Controller
+<span class='line'> 50</span> 	 * @param {String} name Name of the Controller
+<span class='line'> 51</span> 	 * @param {Object} jsonDef Information about the controllers views and partials 
+<span class='line'> 52</span> 	 * @category core
+<span class='line'> 53</span> 	 */</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Controller</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">jsonDef</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="COMM">//	    console.log("controller name " + name);</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">	    </span><span class="COMM">/**
+<span class='line'> 57</span> 	     * The definition of the controller object, containing all properties and functions of the controller.&lt;br>
+<span class='line'> 58</span> 	     * A method of the controller can be called via:
+<span class='line'> 59</span> 
+<span class='line'> 60</span> 		this.script.methodController(parameter);
+<span class='line'> 61</span> 
+<span class='line'> 62</span> 	     * 
+<span class='line'> 63</span> 	     * @property script
+<span class='line'> 64</span> 	     * @type Object
+<span class='line'> 65</span> 	     * @public
+<span class='line'> 66</span> 	     */</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">		</span><span class="COMM">// this can only be invoked, if a function with the name "name" exists</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">	    </span><span class="NAME">this.script</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">window</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 69</span> 
+<span class='line'> 70</span> </span><span class="WHIT">	    </span><span class="COMM">/**
+<span class='line'> 71</span> 	     * The json definition of the views and partials associated with the controller. Also contains paths to controller and its views/partials. 
+<span class='line'> 72</span> 	     * 
+<span class='line'> 73</span> 	     * @property def
+<span class='line'> 74</span> 	     * @type Object
+<span class='line'> 75</span> 	     * @public
+<span class='line'> 76</span> 	     */</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">	    </span><span class="NAME">this.def</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">jsonDef</span><span class="PUNC">;</span><span class="COMM">//new JPath(jsonDef);</span><span class="WHIT">
+<span class='line'> 78</span> 
+<span class='line'> 79</span> </span><span class="WHIT">	    </span><span class="COMM">/**
+<span class='line'> 80</span> 	     * The name of the controller. 
+<span class='line'> 81</span> 	     * 
+<span class='line'> 82</span> 	     * @property name
+<span class='line'> 83</span> 	     * @type String
+<span class='line'> 84</span> 	     * @public
+<span class='line'> 85</span> 	     */</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">	    </span><span class="NAME">this.name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">	    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">viewDefs</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.def.views</span><span class="PUNC">;</span><span class="COMM">//.query('views');</span><span class="WHIT">
+<span class='line'> 89</span> 
+<span class='line'> 90</span> </span><span class="WHIT">	    </span><span class="COMM">/**
+<span class='line'> 91</span> 	     * An array holding the names of all views associated with the controller.  
+<span class='line'> 92</span> 	     * 
+<span class='line'> 93</span> 	     * @property views
+<span class='line'> 94</span> 	     * @type Array
+<span class='line'> 95</span> 	     * @public
+<span class='line'> 96</span> 	     */</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">	    </span><span class="NAME">this.views</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Array</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">	    </span><span class="NAME">this.parseViews</span><span class="PUNC">(</span><span class="NAME">viewDefs</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 99</span> 
+<span class='line'>100</span> </span><span class="WHIT">	    </span><span class="COMM">// parsing the partials and saving the names in an array</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">	    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">partialDefs</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.def.partials</span><span class="PUNC">;</span><span class="COMM">//.query('partials');</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'>103</span> 
+<span class='line'>104</span> </span><span class="WHIT">	    </span><span class="COMM">/**
+<span class='line'>105</span> 	     * An array holding the names of all partials associated with the controller.  
+<span class='line'>106</span> 	     * 
+<span class='line'>107</span> 	     * @property partials
+<span class='line'>108</span> 	     * @type Array
+<span class='line'>109</span> 	     * @public
+<span class='line'>110</span> 	     */</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">	    </span><span class="NAME">this.partials</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Array</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">	    </span><span class="NAME">this.parsePartials</span><span class="PUNC">(</span><span class="NAME">partialDefs</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>113</span> 
+<span class='line'>114</span> 
+<span class='line'>115</span> </span><span class="WHIT">	    </span><span class="COMM">/**
+<span class='line'>116</span> 	     * The instance of the with the controller associated helper.  
+<span class='line'>117</span> 	     * 
+<span class='line'>118</span> 	     * @property helper
+<span class='line'>119</span> 	     * @type Object
+<span class='line'>120</span> 	     * @public
+<span class='line'>121</span> 	     */</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">	    </span><span class="NAME">this.helper</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">	    </span><span class="COMM">/**
+<span class='line'>125</span> 	     * The layout for this controller (if undefined, the default layout should be used)
+<span class='line'>126</span> 	     * @property layout
+<span class='line'>127</span> 	     * @type Object
+<span class='line'>128</span> 	     */</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">	    </span><span class="NAME">this.layout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.def.layout</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>131</span> 
+<span class='line'>132</span> 
+<span class='line'>133</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>134</span> 	 * This function loads the helper of the controller - if it exists.
+<span class='line'>135</span> 	 * 
+<span class='line'>136</span> 	 * @function loadHelper
+<span class='line'>137</span> 	 * @param {String} name Name of the Helper to be loaded
+<span class='line'>138</span> 	 * @param {String} helperPath Path to the helper file to load  
+<span class='line'>139</span> 	 * @public
+<span class='line'>140</span> 	 */</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.loadHelper</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">helperPath</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">self</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">		</span><span class="COMM">//TODO move check of helper existance to Controller.foundControllersCallBack ?</span><span class="WHIT">
+<span class='line'>145</span> 
+<span class='line'>146</span> </span><span class="WHIT">		</span><span class="COMM">//determine if there is a helper for the controller:</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">helperPath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">fileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">lastPathSeparatorIndex</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path.lastIndexOf</span><span class="PUNC">(</span><span class="STRN">'/'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">lastPathSeparatorIndex</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">			</span><span class="NAME">path</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">path.substring</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="NAME">lastPathSeparatorIndex</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">			</span><span class="NAME">fileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">fileName.substring</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">lastPathSeparatorIndex</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">		</span><span class="COMM">//get contents of the helper directory:</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dirContents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">commonUtils.getDirectoryContents</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">dirContents</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">			</span><span class="NAME">logger.warn</span><span class="PUNC">(</span><span class="STRN">'Could not determine contents for directory "'</span><span class="PUNC">+</span><span class="NAME">path</span><span class="PUNC">+</span><span class="STRN">'"'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">////////////////////// EARLY EXIT //////////////////////////////</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="WHIT"> </span><span class="NAME">commonUtils.isArray</span><span class="PUNC">(</span><span class="NAME">dirContents</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">dirContents.length</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">			</span><span class="NAME">logger.warn</span><span class="PUNC">(</span><span class="STRN">'Invalid information for contents of directory "'</span><span class="PUNC">+</span><span class="NAME">path</span><span class="PUNC">+</span><span class="STRN">'": '</span><span class="PUNC">+</span><span class="NAME">dirContents</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">////////////////////// EARLY EXIT //////////////////////////////</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">		</span><span class="COMM">//check, if there is an implementation file for this helper:</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">helperIsSpecified</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">		</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">dirContents.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">dirContents</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">fileName</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">				</span><span class="NAME">helperIsSpecified</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">				</span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="WHIT"> </span><span class="NAME">helperIsSpecified</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">logger.isVerbose</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">logger.v</span><span class="PUNC">(</span><span class="STRN">"[HELPER] no helper available (not implemented) at '"</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">helperPath</span><span class="PUNC">+</span><span class="STRN">"'"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">////////////////////// EARLY EXIT //////////////////////////////</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">		</span><span class="COMM">//if there is a file: load the helper</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">		</span><span class="NAME">commonUtils.getLocalScript</span><span class="PUNC">(</span><span class="NAME">helperPath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">textStatus</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">jqxhr</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">logger.isVerbose</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">logger.v</span><span class="PUNC">(</span><span class="STRN">"[HELPER] load "</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">helperPath</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//debug</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">				</span><span class="NAME">self.helper</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT">   </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Helper</span><span class="PUNC">(</span><span class="NAME">self</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//new window["GoogleMapHelper"]();</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">			</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">exception</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">				</span><span class="COMM">// print out an error message</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">				</span><span class="NAME">logger.error</span><span class="PUNC">(</span><span class="STRN">"[WARN] Could not load helper -> '"</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">helperPath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"'"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">exception</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">//failure</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">		</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>192</span> 
+<span class='line'>193</span> 
+<span class='line'>194</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>195</span> 	 * This function performs an action of a controller - which is represented by this instance of the Controller &lt;br>
+<span class='line'>196</span> 	 * class - by calling the method from the corresponding controller, e.g. assets/www/controllers/application.js   
+<span class='line'>197</span> 	 * 
+<span class='line'>198</span> 	 * @function perform
+<span class='line'>199</span> 	 * @param {String} actionName Name of the method to be executed
+<span class='line'>200</span> 	 * @param {Object} data Data to pass to the method of the controller as argument
+<span class='line'>201</span> 	 * @returns {Object} The return value of the executed method 
+<span class='line'>202</span> 	 * @public
+<span class='line'>203</span> 	 */</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.perform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">actionName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">logger.isVerbose</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">logger.v</span><span class="PUNC">(</span><span class="STRN">"should perform '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">actionName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"' of '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"'"</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">" with data: "</span><span class="PUNC">+</span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//debug</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">	    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">arguments.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">	    	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">[</span><span class="NAME">actionName</span><span class="PUNC">]</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">[</span><span class="NUMB">2</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">[</span><span class="NAME">actionName</span><span class="PUNC">]</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>215</span> 
+<span class='line'>216</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>217</span> 	 * 
+<span class='line'>218</span> 	 * This function performs an action of a controller, but only if an action with this name exists; otherwise nothing is done.
+<span class='line'>219</span> 	 * 
+<span class='line'>220</span> 	 * In difference to perform(..), the method does not trigger an ERROR, if the action does not exist / is not implemented.
+<span class='line'>221</span> 	 * As a consequence, this method refers to "optionally" implemented functions, whereas perform(..) refers to mandatory functions.
+<span class='line'>222</span> 	 * 
+<span class='line'>223</span> 	 * @function perform
+<span class='line'>224</span> 	 * @param {String} actionName Name of the method to be executed
+<span class='line'>225</span> 	 * @param {Object} data Data to pass to the method of the controller as argument
+<span class='line'>226</span> 	 * @returns {Object} The return value of the executed method 
+<span class='line'>227</span> 	 * @public
+<span class='line'>228</span> 	 */</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.performIfPresent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">actionName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">[</span><span class="NAME">actionName</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'function'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">logger.isVerbose</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">logger.v</span><span class="PUNC">(</span><span class="STRN">"performing '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">actionName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"' of '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"'"</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">" with data: "</span><span class="PUNC">+</span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//debug</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">		    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.perform.apply</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">[</span><span class="NAME">actionName</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">logger.isVerbose</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">logger.info</span><span class="PUNC">(</span><span class="STRN">"could not perform '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">actionName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"' of '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"'"</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">" with data: "</span><span class="PUNC">+</span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="STRN">": no function ("</span><span class="PUNC">+</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">this.script</span><span class="PUNC">[</span><span class="NAME">actionName</span><span class="PUNC">]</span><span class="PUNC">+</span><span class="STRN">")"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//debug</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">logger.isVerbose</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">logger.debug</span><span class="PUNC">(</span><span class="STRN">"could not perform '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">actionName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"' of '"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this.name</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"'"</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">" with data: "</span><span class="PUNC">+</span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="STRN">": not implemented (undefined)"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//debug</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>242</span> 
+<span class='line'>243</span> 
+<span class='line'>244</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>245</span> 	 * This function performs a helper action of a controller by calling the appropriate method&lt;br>
+<span class='line'>246</span> 	 * {@link Helper#perform} of the instance of the helper class associated with the controller.
+<span class='line'>247</span> 	 * 
+<span class='line'>248</span> 	 * @function performHelper
+<span class='line'>249</span> 	 * @param {String} actionName Name of the helper method to be executed
+<span class='line'>250</span> 	 * @param {Object} data Data to pass to the helper method as argument
+<span class='line'>251</span> 	 * @returns {Object} The return value of the executed method 
+<span class='line'>252</span> 	 * @public
+<span class='line'>253</span> 	 */</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.performHelper</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">actionName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">arguments.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.helper.perform</span><span class="PUNC">(</span><span class="NAME">actionName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">[</span><span class="NUMB">2</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.helper.perform</span><span class="PUNC">(</span><span class="NAME">actionName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>262</span> 
+<span class='line'>263</span> 
+<span class='line'>264</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>265</span> 	 * Returns the helper of the controller instance.
+<span class='line'>266</span> 	 * 
+<span class='line'>267</span> 	 * @function getHelper
+<span class='line'>268</span> 	 * @returns {Object} The helper instance 
+<span class='line'>269</span> 	 * @public
+<span class='line'>270</span> 	 */</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.getHelper</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.helper</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>274</span> 
+<span class='line'>275</span> 
+<span class='line'>276</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>277</span> 	 * Stores all names of the views of the controller by iterating over the array of the views definition.&lt;br>
+<span class='line'>278</span> 	 * This function is called by the constructor of the {@link mmir.Controller} class.
+<span class='line'>279</span> 	 * 
+<span class='line'>280</span> 	 * @function parseViews
+<span class='line'>281</span> 	 * @param {Array} viewDefs Array of the json-definition of the controllers views - containing name of the views and their corresponding path to the js-files
+<span class='line'>282</span> 	 * @public
+<span class='line'>283</span> 	 */</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.parseViews</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">viewDefs</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="WHIT">		</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">viewDefs.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="WHIT">			</span><span class="NAME">this.views.push</span><span class="PUNC">(</span><span class="NAME">viewDefs</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>291</span> 
+<span class='line'>292</span> 
+<span class='line'>293</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>294</span> 	 * Stores all names of the partials of the controller by iterating over the array of the partials definition.&lt;br>
+<span class='line'>295</span> 	 * This function is called by the constructor of the {@link mmir.Controller} class.
+<span class='line'>296</span> 	 * 
+<span class='line'>297</span> 	 * @function parseViews
+<span class='line'>298</span> 	 * @param {Array} partialDefs Array of the json-definition of the controllers partials - containing name of the partials and their corresponding path to the js-files
+<span class='line'>299</span> 	 * @public
+<span class='line'>300</span> 	 */</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.parsePartials</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">partialDefs</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">	    </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">partialDefs.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">			</span><span class="NAME">this.partials.push</span><span class="PUNC">(</span><span class="NAME">partialDefs</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>308</span> 
+<span class='line'>309</span> 
+<span class='line'>310</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>311</span> 	 * Returns the view names for the controller instance.
+<span class='line'>312</span> 	 * 
+<span class='line'>313</span> 	 * @function getViewNames
+<span class='line'>314</span> 	 * @returns {Array&lt;String>} An array of the controllers views 
+<span class='line'>315</span> 	 * @public
+<span class='line'>316</span> 	 */</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.getViewNames</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.views</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>320</span> 
+<span class='line'>321</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>322</span> 	 * Returns the view names for the controller instance.
+<span class='line'>323</span> 	 * 
+<span class='line'>324</span> 	 * TODO should this be private/hidden? -> provides "internal" JSON-details object (used in PresentationManager)
+<span class='line'>325</span> 	 * 
+<span class='line'>326</span> 	 * Each info object has properties:
+<span class='line'>327</span> 	 * {String} name
+<span class='line'>328</span> 	 * {String} path
+<span class='line'>329</span> 	 * 
+<span class='line'>330</span> 	 * @function getViews
+<span class='line'>331</span> 	 * @returns {Array&lt;Object>} An array of the controllers views 
+<span class='line'>332</span> 	 * @public
+<span class='line'>333</span> 	 */</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.getViews</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.def.views</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>337</span> 
+<span class='line'>338</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>339</span> 	 * Returns the partial names for the controller instance.
+<span class='line'>340</span> 	 * 
+<span class='line'>341</span> 	 * @function getPartialNames
+<span class='line'>342</span> 	 * @returns {Array&lt;String>} An array of the controllers partials 
+<span class='line'>343</span> 	 * @public
+<span class='line'>344</span> 	 */</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.getPartialNames</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">	    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.partials</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>348</span> 
+<span class='line'>349</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>350</span> 	 * Returns the partial info object for the controller instance.
+<span class='line'>351</span> 	 * 
+<span class='line'>352</span> 	 * TODO should this be private/hidden? -> provides "internal" JSON-details object (used in PresentationManager)
+<span class='line'>353</span> 	 * 
+<span class='line'>354</span> 	 * Each info object has properties:
+<span class='line'>355</span> 	 * {String} name
+<span class='line'>356</span> 	 * {String} path
+<span class='line'>357</span> 	 * 
+<span class='line'>358</span> 	 * @function getPartials
+<span class='line'>359</span> 	 * @returns {Array&lt;Object>} An array of the controllers partials 
+<span class='line'>360</span> 	 * @public
+<span class='line'>361</span> 	 */</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.getPartials</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">	    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.def.partials</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>365</span> 
+<span class='line'>366</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>367</span> 	 * Returns the layout of the controller instance.
+<span class='line'>368</span> 	 * 
+<span class='line'>369</span> 	 * If undefined, the default layout should be used.
+<span class='line'>370</span> 	 * 
+<span class='line'>371</span> 	 * TODO should this be private/hidden? -> provides "internal" JSON-details object (used in PresentationManager)
+<span class='line'>372</span> 	 * 
+<span class='line'>373</span> 	 * The info object has properties:
+<span class='line'>374</span> 	 * {String} name
+<span class='line'>375</span> 	 * {String} path
+<span class='line'>376</span> 	 * {String} fileName
+<span class='line'>377</span> 	 * 
+<span class='line'>378</span> 	 * @function getLayout
+<span class='line'>379</span> 	 * @returns {Object} The controller's layout (may be undefined) 
+<span class='line'>380</span> 	 * @public
+<span class='line'>381</span> 	 */</span><span class="WHIT">
+<span class='line'>382</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.getLayout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>383</span> </span><span class="WHIT">	    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.layout</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>384</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>385</span> 
+<span class='line'>386</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>387</span> 	 * Returns the layout name for the controller instance.
+<span class='line'>388</span> 	 * 
+<span class='line'>389</span> 	 * This is equal to the controller name.
+<span class='line'>390</span> 	 * 
+<span class='line'>391</span> 	 * If undefined, the default layout should be used.
+<span class='line'>392</span> 	 * 
+<span class='line'>393</span> 	 * @function getLayoutName
+<span class='line'>394</span> 	 * @returns {String} The controller's layout name (may be undefined) 
+<span class='line'>395</span> 	 * @public
+<span class='line'>396</span> 	 */</span><span class="WHIT">
+<span class='line'>397</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.getLayoutName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>398</span> </span><span class="WHIT">	    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.layout</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">this.layout.name</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.layout</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>399</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>400</span> 
+<span class='line'>401</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>402</span> 	 * Returns the name of the controller instance.
+<span class='line'>403</span> 	 * 
+<span class='line'>404</span> 	 * @function getName
+<span class='line'>405</span> 	 * @returns {String} The name of the controller 
+<span class='line'>406</span> 	 * @public
+<span class='line'>407</span> 	 */</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">	</span><span class="NAME">Controller.prototype.getName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">	    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.name</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>411</span> 
+<span class='line'>412</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Controller</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>413</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">	</span><span class="COMM">/** #@- */</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>416</span> </span></pre></body></html>

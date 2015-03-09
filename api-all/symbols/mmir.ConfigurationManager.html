@@ -1,0 +1,1183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - mmir.ConfigurationManager</title>
+
+		<style type="text/css">
+			/* INSERTED START */
+/* Generic box styles. */
+.box {
+    border: 1px solid;
+    border-radius: 3px;
+    margin: 1em 0;
+    padding: 0 1em;
+}
+.box.important {
+/*    background: #CCCCFF;
+    background: #FFE2CE; */
+    background: #FF8533;
+	padding: 10px;
+}
+.box.usedby {
+/*    background: #CCCCFF;
+    background: #FFE2CE; */
+    background: #FFFFC2;
+	padding: 10px;
+}
+/* INSERTED END */
+
+/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+/*	width: 800px;*/
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	position: absolute;
+	margin-top: 24px;
+/*	float: left;*/
+	left: 0%;
+	width: 15.5%;
+/*	width: 160px;*/
+/*	position: absolute;*/
+	left: 8px;
+	background-color: #E6E9EF;
+	padding: 8px;
+}
+
+#content
+{
+/*	margin-left: 190px;*/
+/*	width: 600px;*/
+/*	float:left; */
+	position: absolute;
+	left: 17.5%;
+	width: 81%;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+
+
+.label-singleton {
+	font-size: 10.998px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	white-space: nowrap;
+	padding: 1px 4px 2px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #c3325f;
+	vertical-align: middle;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/AudioCordovaImpl.html">AudioCordovaImpl</a></li>
+	
+	<li><a href="../symbols/AudioHtml5Impl.html">AudioHtml5Impl</a></li>
+	
+	<li><a href="../symbols/ContentElement.html">ContentElement</a></li>
+	
+	<li><a href="../symbols/Controller.html">Controller</a></li>
+	
+	<li><a href="../symbols/Dictionary.html">Dictionary</a></li>
+	
+	<li><a href="../symbols/DisabledLogger.html">DisabledLogger</a></li>
+	
+	<li><a href="../symbols/GrammarConverter.html">GrammarConverter</a></li>
+	
+	<li><a href="../symbols/Helper.html">Helper</a></li>
+	
+	<li><a href="../symbols/Layout.html">Layout</a></li>
+	
+	<li><a href="../symbols/Logger.html">Logger</a></li>
+	
+	<li><a href="../symbols/mmir.html">mmir</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.html">mmir.CommonUtils</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html">mmir.CommonUtils.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.ConfigurationManager.html">mmir.ConfigurationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.Constants.html">mmir.Constants</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.ControllerManager.html">mmir.ControllerManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.DialogManager.html">mmir.DialogManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.DisabledLogging.html">mmir.DisabledLogging</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JisonGenerator.html">mmir.env.grammar.JisonGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JsccGenerator.html">mmir.env.grammar.JsccGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.PegJsGenerator.html">mmir.env.grammar.PegJsGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.view.JqmViewEngine.html">mmir.env.view.JqmViewEngine</a></li>
+	
+	<li><a href="../symbols/mmir.InputManager.html">mmir.InputManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.html">mmir.LanguageManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.setToCompatibilityModeExtension.html">mmir.LanguageManager.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.Logging.html">mmir.Logging</a></li>
+	
+	<li><a href="../symbols/mmir.main.html">mmir.main</a></li>
+	
+	<li><a href="../symbols/mmir.MediaManager.html">mmir.MediaManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.ModelManager.html">mmir.ModelManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.NotificationManager.html">mmir.NotificationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.html">mmir.parser</a></li>
+	
+	<li><a href="../symbols/mmir.parser.ParserUtils.html">mmir.parser.ParserUtils</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.ParsingResult.html">mmir.parser.ParsingResult</a></li>
+	
+	<li><a href="../symbols/mmir.parser.RenderUtils.html">mmir.parser.RenderUtils</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.TemplateProcessor.html">mmir.parser.TemplateProcessor</a></li>
+	
+	<li><a href="../symbols/mmir.PresentationManager.html">mmir.PresentationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.SemanticInterpreter.html">mmir.SemanticInterpreter</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.tools.ChecksumUtils.html">mmir.tools.ChecksumUtils</a></li>
+	
+	<li><a href="../symbols/Partial.html">Partial</a></li>
+	
+	<li><a href="../symbols/String.html">String</a></li>
+	
+	<li><a href="../symbols/View.html">View</a></li>
+	
+	<li><a href="../symbols/YieldDeclaration.html">YieldDeclaration</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Namespace mmir.ConfigurationManager
+				<span class="label-singleton">Singleton</span>
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/www_mmirf_manager_settings_configurationManager.js.html">configurationManager.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class mmir.ConfigurationManager.">
+				<caption>Namespace Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/mmir.ConfigurationManager.html#constructor">mmir.ConfigurationManager</a></b>
+							</div>
+							<div class="description">A class for managing the configuration.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class mmir.ConfigurationManager.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.ConfigurationManager.html#configData">configData</a></b>
+								</div>
+								<div class="description">the configuration data (i.e.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.ConfigurationManager.html#configData#configData">configData#configData</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.ConfigurationManager.html#instance">instance</a></b>
+								</div>
+								<div class="description">Object containing the instance of the class <a href="../symbols/mmir.ConfigurationManager.html">mmir.ConfigurationManager</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.ConfigurationManager.html#instance#instance">instance#instance</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class mmir.ConfigurationManager.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.ConfigurationManager.html#_getAsPath">_getAsPath</a></b>(propertyName)
+								</div>
+								<div class="description">"Normalizes" a string or an array into a path:the result is a single, flat array where each string hasbeen separated at dots (i.e.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.ConfigurationManager.html#_loadConfigFile">_loadConfigFile</a></b>()
+								</div>
+								<div class="description">Helper that loads configuration file synchronously.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.ConfigurationManager.html#_toPathArray">_toPathArray</a></b>(pathList)
+								</div>
+								<div class="description">"Normalizes" an array of Strings by separatingeach String at dots and creating one single (flat) array whereeach path-component is a single entry.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.ConfigurationManager.html#constructor">constructor</a></b>()
+								</div>
+								<div class="description">Constructor-Method of Singleton mmir.ConfigurationManager.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.ConfigurationManager.html#get">get</a></b>(propertyName, useSafeAccess, defaultValue)
+								</div>
+								<div class="description">Returns the value of a property.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.ConfigurationManager.html#getBoolean">getBoolean</a></b>(defaultValue, useSafeAccess, defaultValue)
+								</div>
+								<div class="description">Uses <a href="../symbols/mmir.ConfigurationManager.html#get">#get</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.ConfigurationManager.html#getInstance">getInstance</a></b>()
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.ConfigurationManager.html#getLanguage">getLanguage</a></b>()
+								</div>
+								<div class="description">Returns the currently used language.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.ConfigurationManager.html#getString">getString</a></b>(defaultValue, useSafeAccess, defaultValue)
+								</div>
+								<div class="description">Uses <a href="../symbols/mmir.ConfigurationManager.html#get">#get</a>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.ConfigurationManager.html#set">set</a></b>(propertyName, value)
+								</div>
+								<div class="description">Sets a property to a given value.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.ConfigurationManager.html#setLanguage">setLanguage</a></b>(lang)
+								</div>
+								<div class="description">Sets the currently used language.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Namespace Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>mmir.ConfigurationManager</b>
+				</div>
+				
+				<div class="description">
+					A class for managing the configuration. <br>It's purpose is to load the configuration and settings automatically.This "class" is structured as a singleton - so that only one instance is in use.<br>
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+						<dl class="detailList">
+						<dt class="heading">Requires:</dt>
+						
+							<dd>jQuery.ajax</dd>
+						
+							<dd>jQuery.isArray</dd>
+						
+						</dl>
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name="configData"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Object}</span>
+					<b>configData</b>
+					
+					</div>
+					<div class="description">
+						the configuration data (i.e. properties)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="configData#configData"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>configData#configData</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="instance"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Object}</span>
+					<b>instance</b>
+					
+					</div>
+					<div class="description">
+						Object containing the instance of the class <a href="../symbols/mmir.ConfigurationManager.html">mmir.ConfigurationManager</a>.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="instance#instance"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>instance#instance</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="_getAsPath"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_getAsPath</b>(propertyName)
+					
+					</div>
+					<div class="description">
+						"Normalizes" a string or an array into a path:the result is a single, flat array where each string hasbeen separated at dots (i.e. each path component is a separate entry).
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">  //result is ['dot', 'separated', 'list']  _getAsPath('dot.separated.list');  _getAsPath(['dot', 'separated.list']);  _getAsPath(['dot', 'separated', 'list']);</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>|Array<String>}</span> <b>propertyName</b>
+									
+								</dt>
+								<dd>resolves a dot-separated property-name into an array.				If <code>propertyName</code> is an Array, all contained				String entries will be resolved, if necessary</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_loadConfigFile"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_loadConfigFile</b>()
+					
+					</div>
+					<div class="description">
+						Helper that loads configuration file synchronously.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="_toPathArray"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>_toPathArray</b>(pathList)
+					
+					</div>
+					<div class="description">
+						"Normalizes" an array of Strings by separatingeach String at dots and creating one single (flat) array whereeach path-component is a single entry.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array<String>}</span> <b>pathList</b>
+									
+								</dt>
+								<dd>resolves an array with paths, i.e. dot-separated property-names				into a single, flat array where each path component is a separate Strings</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="constructor"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>constructor</b>()
+					
+					</div>
+					<div class="description">
+						Constructor-Method of Singleton mmir.ConfigurationManager.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="get"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{any}</span>
+					<b>get</b>(propertyName, useSafeAccess, defaultValue)
+					
+					</div>
+					<div class="description">
+						Returns the value of a property.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>propertyName</b>
+									
+								</dt>
+								<dd>The name of the property.					NOTE: If the property does not exists at the root-level,						  dot-separated names will be resolved into						  object-structures, e.g.						  <code>some.property</code> will be resolved						  so that the <code>value</code> at:						  <code>some: {property: &lt;value&gt;}</code>						  will be returned</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>useSafeAccess</b>
+									<i>Optional</i>
+								</dt>
+								<dd>OPTIONAL					if <code>true</code>, resolution of dot-separated paths					will be done "safely", i.e. if a path-element does not					exists, no <code>error</code> will be thrown, but instead					the function will return the <code>defaultValue</code>					(which will be <code>undefined</code> if the argument is not given).</dd>
+							
+								<dt>
+									<span class="light fixedFont">{any}</span> <b>defaultValue</b>
+									<i>Optional</i>
+								</dt>
+								<dd>OPTIONAL					a default value that will be returned, in case there is no property					<code>propertyName</code>.					NOTE: if this argument is used, <code>useSafeAccess</code> must also be given!</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{any}</span> The value of the property</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getBoolean"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getBoolean</b>(defaultValue, useSafeAccess, defaultValue)
+					
+					</div>
+					<div class="description">
+						Uses <a href="../symbols/mmir.ConfigurationManager.html#get">#get</a>.If the propertyName does not exists, returns <code>undefined</code>,otherwise values will be converted into Boolean values.Special case for Strings:the String <code>"false"</code> will be converted toBoolean value <code>false</code>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{any}</span> <b>defaultValue</b>
+									<i>Optional</i>
+								</dt>
+								<dd>OPTIONAL			if a default value is specified and there exists			no property <code>propertyName</code>, the			specified default value will be returned.			NOTE: if this argument is used, <code>useSafeAccess</code> must also be given!						NOTE: the default value will also be converted				  to a Boolean value, if necessary.</dd>
+							
+								<dt>
+									<b>useSafeAccess</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>defaultValue</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="getInstance"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getInstance</b>()
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								instead: use mmir.ConfigurationManager directly
+							</dt>
+							</dl>
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="getLanguage"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>getLanguage</b>()
+					
+					</div>
+					<div class="description">
+						Returns the currently used language. <p>This does not return the language of the configuration, but is ashortcut for <a href="../symbols/mmir.LanguageManager.html#getLanguage">mmir.LanguageManager#getLanguage</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								use <a href="../symbols/mmir.LanguageManager.html#getLanguage">mmir.LanguageManager#getLanguage</a>() instead!
+							</dt>
+							</dl>
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> The currently used language</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Requires:</dt>
+							
+								<dd>mmir.LanguageManager</dd>
+							
+							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="getString"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getString</b>(defaultValue, useSafeAccess, defaultValue)
+					
+					</div>
+					<div class="description">
+						Uses <a href="../symbols/mmir.ConfigurationManager.html#get">#get</a>.If the property does not exists, returns <code>undefined</code>,otherwise values will be converted into String values.If the value has not the type <code>"string"</code>, it willbe converted by <code>JSON.stringify</code>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{any}</span> <b>defaultValue</b>
+									<i>Optional</i>
+								</dt>
+								<dd>OPTIONAL			if a default value is specified and there exists			no property <code>propertyName</code>, the			specified default value will be returned.			NOTE: if this argument is used, <code>useSafeAccess</code> must also be given!						NOTE: the default value will also be converted				  to a String value, if necessary.</dd>
+							
+								<dt>
+									<b>useSafeAccess</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>defaultValue</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="set"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>set</b>(propertyName, value)
+					
+					</div>
+					<div class="description">
+						Sets a property to a given value.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>|Array<String>}</span> <b>propertyName</b>
+									
+								</dt>
+								<dd>The name of the property.								If <code>propertyName</code> is an Array, it				will be treated as if its entries were path-elements				analogous to a dot-separated String propertyName.				NOTE: dot-separated names will be resolved into					  object-structures, e.g.					  <code>some.property</code> will be resolved					  so that the <code>value</code> will set to:					  <code>some: {property: &lt;value&gt;}</code></dd>
+							
+								<dt>
+									<span class="light fixedFont">{any}</span> <b>value</b>
+									
+								</dt>
+								<dd>The value of the property</dd>
+							
+							</dl>
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Throws:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Error}</span>  <b></b>
+								</dt>
+								<dd>if the propertyName is dot-separated AND					one of its path-elements (except for the last)					already exists AND its type is not 'object'</dd>
+							
+							</dl>
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setLanguage"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setLanguage</b>(lang)
+					
+					</div>
+					<div class="description">
+						Sets the currently used language.<p>This does not set the language of the configuration, but is ashortcut for <a href="../symbols/mmir.LanguageManager.html#setLanguage">mmir.LanguageManager#setLanguage</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>lang</b>
+									
+								</dt>
+								<dd>The language which is to be used</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								use <a href="../symbols/mmir.LanguageManager.html#setLanguage">mmir.LanguageManager#setLanguage</a>(lang) instead!
+							</dt>
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Requires:</dt>
+							
+								<dd>mmir.LanguageManager</dd>
+							
+							</dl>
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Mar 09 2015 22:18:43 GMT+0100 (MEZ)
+		</div>
+	</body>
+</html>

@@ -1,0 +1,643 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - mmir.parser.ParsingResult</title>
+
+		<style type="text/css">
+			/* INSERTED START */
+/* Generic box styles. */
+.box {
+    border: 1px solid;
+    border-radius: 3px;
+    margin: 1em 0;
+    padding: 0 1em;
+}
+.box.important {
+/*    background: #CCCCFF;
+    background: #FFE2CE; */
+    background: #FF8533;
+	padding: 10px;
+}
+.box.usedby {
+/*    background: #CCCCFF;
+    background: #FFE2CE; */
+    background: #FFFFC2;
+	padding: 10px;
+}
+/* INSERTED END */
+
+/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+/*	width: 800px;*/
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	position: absolute;
+	margin-top: 24px;
+/*	float: left;*/
+	left: 0%;
+	width: 15.5%;
+/*	width: 160px;*/
+/*	position: absolute;*/
+	left: 8px;
+	background-color: #E6E9EF;
+	padding: 8px;
+}
+
+#content
+{
+/*	margin-left: 190px;*/
+/*	width: 600px;*/
+/*	float:left; */
+	position: absolute;
+	left: 17.5%;
+	width: 81%;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+
+
+.label-singleton {
+	font-size: 10.998px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	white-space: nowrap;
+	padding: 1px 4px 2px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #c3325f;
+	vertical-align: middle;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/AudioCordovaImpl.html">AudioCordovaImpl</a></li>
+	
+	<li><a href="../symbols/AudioHtml5Impl.html">AudioHtml5Impl</a></li>
+	
+	<li><a href="../symbols/ContentElement.html">ContentElement</a></li>
+	
+	<li><a href="../symbols/Controller.html">Controller</a></li>
+	
+	<li><a href="../symbols/Dictionary.html">Dictionary</a></li>
+	
+	<li><a href="../symbols/DisabledLogger.html">DisabledLogger</a></li>
+	
+	<li><a href="../symbols/GrammarConverter.html">GrammarConverter</a></li>
+	
+	<li><a href="../symbols/Helper.html">Helper</a></li>
+	
+	<li><a href="../symbols/Layout.html">Layout</a></li>
+	
+	<li><a href="../symbols/Logger.html">Logger</a></li>
+	
+	<li><a href="../symbols/mmir.html">mmir</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.html">mmir.CommonUtils</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html">mmir.CommonUtils.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.ConfigurationManager.html">mmir.ConfigurationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.Constants.html">mmir.Constants</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.ControllerManager.html">mmir.ControllerManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.DialogManager.html">mmir.DialogManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.DisabledLogging.html">mmir.DisabledLogging</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JisonGenerator.html">mmir.env.grammar.JisonGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JsccGenerator.html">mmir.env.grammar.JsccGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.PegJsGenerator.html">mmir.env.grammar.PegJsGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.view.JqmViewEngine.html">mmir.env.view.JqmViewEngine</a></li>
+	
+	<li><a href="../symbols/mmir.InputManager.html">mmir.InputManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.html">mmir.LanguageManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.setToCompatibilityModeExtension.html">mmir.LanguageManager.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.Logging.html">mmir.Logging</a></li>
+	
+	<li><a href="../symbols/mmir.main.html">mmir.main</a></li>
+	
+	<li><a href="../symbols/mmir.MediaManager.html">mmir.MediaManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.ModelManager.html">mmir.ModelManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.NotificationManager.html">mmir.NotificationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.html">mmir.parser</a></li>
+	
+	<li><a href="../symbols/mmir.parser.ParserUtils.html">mmir.parser.ParserUtils</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.ParsingResult.html">mmir.parser.ParsingResult</a></li>
+	
+	<li><a href="../symbols/mmir.parser.RenderUtils.html">mmir.parser.RenderUtils</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.TemplateProcessor.html">mmir.parser.TemplateProcessor</a></li>
+	
+	<li><a href="../symbols/mmir.PresentationManager.html">mmir.PresentationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.SemanticInterpreter.html">mmir.SemanticInterpreter</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.tools.ChecksumUtils.html">mmir.tools.ChecksumUtils</a></li>
+	
+	<li><a href="../symbols/Partial.html">Partial</a></li>
+	
+	<li><a href="../symbols/String.html">String</a></li>
+	
+	<li><a href="../symbols/View.html">View</a></li>
+	
+	<li><a href="../symbols/YieldDeclaration.html">YieldDeclaration</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class mmir.parser.ParsingResult
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				ParsingResult
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/www_mmirf_mvc_parser_parsingResult.js.html">parsingResult.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class mmir.parser.ParsingResult.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.ParsingResult.html#constructor">mmir.parser.ParsingResult</a></b>(thetokens)
+							</div>
+							<div class="description">ParsingResult represents an element that was detected during parsing.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class mmir.parser.ParsingResult.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.ParsingResult.html#getType">getType</a></b>()
+								</div>
+								<div class="description">Get the type of this parsed element, i.e.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.ParsingResult.html#getTypeName">getTypeName</a></b>()
+								</div>
+								<div class="description">WARNING: do use sparingly -- an invocation triggers a list evaluation.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.ParsingResult.html#setEndFrom">setEndFrom</a></b>(thetokens)
+								</div>
+								<div class="description">Set the end position (index) for this parsed element with regard to the TokenStream of the complete input.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.ParsingResult.html#setStartFrom">setStartFrom</a></b>(thetokens)
+								</div>
+								<div class="description">Set the start position (index) for this parsed element with regard to the TokenStream of the complete input.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>mmir.parser.ParsingResult</b>(thetokens)
+				</div>
+				
+				<div class="description">
+					ParsingResult represents an element that was detected during parsing.<p>The detected element is referenced by the properties <code>start</code> and <code>end</code>that refer to the start-index and end-index within the parsed text.<p>The ParsingResult has a <code>type</code> property which refers to the kind of elementthat was detected (see constants in mmir.parser.element).<p>In addition, the ParsingResult may have several properties that depend of its type. In general,these properties refer to detected parts of the element (e.g. for a invocation-statement, thesemay refer to its arguments).<p>Properties for <strong>INCLUDE_SCRIPT</strong> type:<ul>	<li><strong>scriptPath</strong>: the path / URL to the resource</li>	<li><strong>scriptPathType</strong>: the type of the <tt>scriptPath</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li></ul><p>Properties for <strong>INCLUDE_STYLE</strong> type:<ul>	<li><strong>stylePath</strong>: </li>	<li><strong>stylePathType</strong>: the type of the <tt>stylePath</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li></ul><p>Properties for <strong>LOCALIZE</strong> type:<ul>	<li><strong>name</strong>: the name/identifier for the localized String</li>	<li><strong>nameType</strong>: the type of the <tt>name</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li></ul><p>Properties for <strong>YIELD_DECLARATION</strong> type:<ul>	<li><strong>name</strong>: the name/identifier for the yield section</li>	<li><strong>nameType</strong>: the type of the <tt>name</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li></ul>Properties for <strong>BLOCK</strong> type:<ul>	<li><strong>scriptContent</strong> {String}: <tt>OPTIONALLY</tt> the script code as a String</li>	<li><strong>scriptEval</strong> {Function}: the compiled script code in form of a function. The 							function takes one argument: the current data-object.</li></ul><p>Properties for <strong>STATEMENT</strong> type:<ul>	<li><strong>scriptContent</strong> {String}: <tt>OPTIONALLY</tt> the script code as a String</li>	<li><strong>scriptEval</strong> {Function}: the compiled script code in form of a function. The 							function takes one argument: the current data-object.</li></ul><p>Properties for <strong>HELPER</strong> type:<ul>	<li><strong>helper</strong>: the name of the helper function</li>	<li><strong>helperType</strong>: the type of the <tt>helper</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>argsEval</strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 			(optional argument) of the helper expression. The function takes one argument: the current data-object.</li></ul><p>Properties for <strong>IF</strong> type:<ul>	<li><strong>ifEval</strong> {Function}: the condition statement, that was compiled into a Function. The 							function takes one argument: the current data-object.</li>	<li><strong>content</strong> {ContentElement}: the HTML / template content that should be render, in case the					if-expression evaluates to <code>true</code>.</li> <li><strong>elseContent</strong> <a href="../symbols/mmir.parser.ParsingResult.html">mmir.parser.ParsingResult</a>: OPTIONALLY a ParsingResult 					representing an else-expression, see <a href="../symbols/mmir.parser.html#.element.ELSE">mmir.parser.element.ELSE</a>.</li></ul><p>Properties for <strong>ELSE</strong> type:<ul>	<li><strong>content</strong> {ContentElement}: the HTML / template content that should be render, in case the					if-expression (to which the else-expression belongs) evaluates to <code>false</code>.</li></ul><p>Properties for <strong>FOR</strong> type:<ul>	<li><strong>forControlType</strong> {String}: the type of for-loop, either <code>FORITER</code> or <code>FORSTEP</code></li>	<li><strong>forInitEval</strong> {Function}: the initialization statement of the for-expression, compiled into									a Function. The function takes one argument: the current data-object.</li>			<li><code>FORITER</code>: <code>@for(PROP in OBJ){ ... }@</code>	 <ul>		<li><strong>forIterator</strong> {Object}: an iterator object with functions <code>hasNext() : Boolean</code> and					<code>next() : String</code> (which returns the name of the property currently iterated).</li>		<li><strong>forPropName</strong> {String}: the variable name for the property which is currently iterated over.</li>	 </ul>	</li>	<li><code>FORSTEP</code>: <code>@for(INIT; CONDITION; INCREMENT){ ... }@</code>	 <ul>		<li><strong>forConditionEval</strong> {Function}: the condition statement of the for-expression, compiled into											a Function. The function takes one argument: the current data-object.</li>		<li><strong>forIncrementEval</strong> {Function}: the increment statement of the for-expression, compiled into											a Function. The function takes one argument: the current data-object.</li>	 </ul>	</li>	<li><strong>content</strong> {ContentElement}: the HTML / template content that should be rendered								 during each iteration of the for-loop.</li></ul><p>Properties for <strong>RENDER</strong> type:<ul>	<li><strong>partial</strong>: the name of the partial view</li>	<li><strong>partialType</strong>: the type of the <tt>partial</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>controller</strong>: the name of the controller, to which the partial view definition belongs</li>	<li><strong>controllerType</strong>: the type of the <tt>controller</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>argsEval</strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 								(optional argument) of the render expression. The function takes one argument: the current data-object.</li></ul><p>Properties for <strong>ESCAPE_ENTER</strong> type:<ul>	<li><strong>text</strong> {String}: the text that will be rendered (i.e. without the escape-character(s) itself).</li></ul><p>Properties for <strong>ESCAPE_EXIT</strong> type:<ul>	<li><strong>text</strong> {String}: the text that will be rendered (i.e. without the escape-character(s) itself).</li></ul><p>Properties for <strong>VAR_DECLARATION</strong> type:<ul>	<li><strong>name</strong>: the name for the variable (without the leading <tt>@</tt> of template variables)</li>	<li><strong>nameType</strong>: the type of the <tt>name</tt> field: <code>StringLiteral</code></li></ul><p>
+					
+				</div>
+				
+				
+				
+				
+					
+						<dl class="detailList">
+						<dt class="heading">Parameters:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{org.antlr.runtime.CommonTokenStream}</span>  <b>thetokens</b>
+								
+							</dt>
+								<dd>(optional) the TokenStream that corresponds to this parsed element;												when provided, the TokenStream is used to set the start- and end-												property of the new instance.		  {org.antlr.runtime.Token} thetokens (optional) if the parameter is a single Token object, then the start- and end-												property for the new instance is set by this token object</dd>
+						
+						</dl>
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="getType"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{mmir.parser.element}</span>
+					<b>getType</b>()
+					
+					</div>
+					<div class="description">
+						Get the type of this parsed element, i.e. as which type this element was parsed.The type corresponds to one of the type defined in {mmir.parser.element}.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{mmir.parser.element}</span> the type for this ParsingResult</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getTypeName"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>getTypeName</b>()
+					
+					</div>
+					<div class="description">
+						WARNING: do use sparingly -- an invocation triggers a list evaluation.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> a String representation (name) for this ParsingResult's type</dd>
+							
+							</dl>
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd><a href="../symbols/mmir.parser.ParsingResult.html#getType">#getType</a></dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="setEndFrom"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setEndFrom</b>(thetokens)
+					
+					</div>
+					<div class="description">
+						Set the end position (index) for this parsed element with regard to the TokenStream of the complete input.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{org.antlr.runtime.CommonTokenStream}</span> <b>thetokens</b>
+									
+								</dt>
+								<dd>(optional) the TokenStream that corresponds to this parsed element;												when provided, the TokenStream is used to set the end-property of this object.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setStartFrom"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setStartFrom</b>(thetokens)
+					
+					</div>
+					<div class="description">
+						Set the start position (index) for this parsed element with regard to the TokenStream of the complete input.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{org.antlr.runtime.CommonTokenStream}</span> <b>thetokens</b>
+									
+								</dt>
+								<dd>(optional) the TokenStream that corresponds to this parsed element;												when provided, the TokenStream is used to set the start-property of this object.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Mar 09 2015 22:18:44 GMT+0100 (MEZ)
+		</div>
+	</body>
+</html>

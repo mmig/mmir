@@ -1,0 +1,212 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="TOKN">﻿</span><span class="COMM">/*
+<span class='line'>  2</span>  * 	Copyright (C) 2012-2013 DFKI GmbH
+<span class='line'>  3</span>  * 	Deutsches Forschungszentrum fuer Kuenstliche Intelligenz
+<span class='line'>  4</span>  * 	German Research Center for Artificial Intelligence
+<span class='line'>  5</span>  * 	http://www.dfki.de
+<span class='line'>  6</span>  * 
+<span class='line'>  7</span>  * 	Permission is hereby granted, free of charge, to any person obtaining a 
+<span class='line'>  8</span>  * 	copy of this software and associated documentation files (the 
+<span class='line'>  9</span>  * 	"Software"), to deal in the Software without restriction, including 
+<span class='line'> 10</span>  * 	without limitation the rights to use, copy, modify, merge, publish, 
+<span class='line'> 11</span>  * 	distribute, sublicense, and/or sell copies of the Software, and to 
+<span class='line'> 12</span>  * 	permit persons to whom the Software is furnished to do so, subject to 
+<span class='line'> 13</span>  * 	the following conditions:
+<span class='line'> 14</span>  * 
+<span class='line'> 15</span>  * 	The above copyright notice and this permission notice shall be included 
+<span class='line'> 16</span>  * 	in all copies or substantial portions of the Software.
+<span class='line'> 17</span>  * 
+<span class='line'> 18</span>  * 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+<span class='line'> 19</span>  * 	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+<span class='line'> 20</span>  * 	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+<span class='line'> 21</span>  * 	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+<span class='line'> 22</span>  * 	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+<span class='line'> 23</span>  * 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+<span class='line'> 24</span>  * 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> 
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="NAME">define</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">'commonUtils'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'contentElement'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'storageUtils'</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">  </span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 30</span> 	 * @name Partial
+<span class='line'> 31</span> 	 * @class
+<span class='line'> 32</span> 	 */</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">			</span><span class="NAME">commonUtils</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ContentElement</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">parser</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">	</span><span class="COMM">/** @scope Partial.prototype */</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 38</span> 	 * #@+
+<span class='line'> 39</span> 	 * @memberOf Partial.prototype
+<span class='line'> 40</span> 	 */</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 43</span> 	 * The Partial class is a containing the definition of the partial and methods to access the definition.
+<span class='line'> 44</span> 	 * 
+<span class='line'> 45</span> 	 * @constructs Partial
+<span class='line'> 46</span> 	 * @param {Object} ctrl 
+<span class='line'> 47</span> 	 * 			Controller instance / object
+<span class='line'> 48</span> 	 * @param {String} name
+<span class='line'> 49</span> 	 * 			Name of the Partial 
+<span class='line'> 50</span> 	 * @param {String} definition
+<span class='line'> 51</span> 	 * 			Partial description, i.e. the raw template code that will be processed.
+<span class='line'> 52</span> 	 * 			May be empty: in this case the processed contents must be
+<span class='line'> 53</span> 	 * 						  added manually (cf. parser.StorageUtils)
+<span class='line'> 54</span> 	 * 
+<span class='line'> 55</span> 	 * @requires if param definition is NOT empty: parser.RenderUtils (must be loaded beforehand via &lt;code>require(["renderUtils"]...&lt;/code>)
+<span class='line'> 56</span> 	 * @requires if param definition is NOT empty: parser.ParseUtils (must be loaded beforehand via &lt;code>require(["parseUtils"]...&lt;/code>)
+<span class='line'> 57</span> 	 * 
+<span class='line'> 58</span> 	 * @category core
+<span class='line'> 59</span> 	 */</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Partial</span><span class="PUNC">(</span><span class="NAME">ctrl</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">definition</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="COMM">//	    var HTMLCommentRegExp = /&lt;!--[\s\S]*?-->/g;</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">definition</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">			</span><span class="COMM">//remove HTML comments:</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">	    	</span><span class="NAME">definition</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">definition.replace</span><span class="PUNC">(</span><span class="NAME">commonUtils.regexHTMLComment</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">	    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">	    </span><span class="NAME">this.controller</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ctrl</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">	    </span><span class="NAME">this.def</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">definition</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">	    </span><span class="NAME">this.name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="COMM">//	    console.log("[Partial] parsed Partial '" +this.controller + "-"+this.name+ "'.");</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">	    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">definition</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">contentElementInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">		    		</span><span class="COMM">//this name is purely informational:</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">		    		</span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.controller.getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'Partial'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">		    		</span><span class="NAME">content</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.def</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">		    	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">		    </span><span class="NAME">this.contentElement</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ContentElement</span><span class="PUNC">(</span><span class="NAME">contentElementInfo</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">'parseUtils'</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">'renderUtils'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">	    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 84</span> 
+<span class='line'> 85</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 86</span> 	 * Gets the definition of a partial.
+<span class='line'> 87</span> 	 * 
+<span class='line'> 88</span> 	 * @function getDefinition
+<span class='line'> 89</span> 	 * @returns {String} The partial description string
+<span class='line'> 90</span> 	 */</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">	</span><span class="NAME">Partial.prototype.getDefinition</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">	    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.def</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> 
+<span class='line'> 95</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 96</span> 	 * Gets the name of a partial. 
+<span class='line'> 97</span> 	 * 
+<span class='line'> 98</span> 	 * @function getName
+<span class='line'> 99</span> 	 * @returns {String} The name of the partial
+<span class='line'>100</span> 	 */</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">	</span><span class="NAME">Partial.prototype.getName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.name</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> 
+<span class='line'>105</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>106</span> 	 * Gets the controller of a partial - each partial is assigned to a specific controller, although they can be used from different controllers.
+<span class='line'>107</span> 	 * 
+<span class='line'>108</span> 	 * @function getController
+<span class='line'>109</span> 	 * @returns {Object} The controller of the partial
+<span class='line'>110</span> 	 */</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">	</span><span class="NAME">Partial.prototype.getController</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">	    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.controller</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>114</span> 
+<span class='line'>115</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>116</span> 	 * Gets the {@link mmir.ContentElement}, i.e. the content that this instance represents.
+<span class='line'>117</span> 	 * 
+<span class='line'>118</span> 	 * @function getContentElement
+<span class='line'>119</span> 	 * @returns {mmir.ContentElement} The ContentElement object
+<span class='line'>120</span> 	 */</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">	</span><span class="NAME">Partial.prototype.getContentElement</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">	    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.contentElement</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">	</span><span class="NAME">Partial.prototype.stringify</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>126</span> 
+<span class='line'>127</span> </span><span class="WHIT">		</span><span class="COMM">// "plain properties" list</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">propList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">		     </span><span class="STRN">'name'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">		     </span><span class="STRN">'def'</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">		</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>132</span> 
+<span class='line'>133</span> </span><span class="WHIT">		</span><span class="COMM">//Array-properties</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">stringifyablePropList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">	   	     </span><span class="STRN">'contentElement'</span><span class="WHIT"> </span><span class="COMM">//element type: ContentElement (stringify-able)</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">	   	</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>137</span> 
+<span class='line'>138</span> </span><span class="WHIT">		</span><span class="COMM">//function for iterating over the property-list and generating JSON-like entries in the string-buffer</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">appendStringified</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parser.appendStringified</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">moduleNameString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'"'</span><span class="PUNC">+</span><span class="NAME">this.name</span><span class="PUNC">+</span><span class="NAME">this.getController</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">+</span><span class="STRN">'Partial"'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">		</span><span class="COMM">//TODO use requirejs mechanism? (NOTE there may occur timing problems for loading/registering the JS file, and querying the PresentationManager for it ...)</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="COMM">//		var sb = ['define('+moduleNameString+', ["storageUtils"], function(parser){ return parser.restoreObject({ classConstructor: "partial"', ','];</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sb</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">'require("storageUtils").restoreObject({ classConstructor: "partial"'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">','</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">		</span><span class="NAME">appendStringified</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">propList</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sb</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">		</span><span class="COMM">//non-primitives properties with stringify() function:</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">		</span><span class="NAME">appendStringified</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">stringifyablePropList</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sb</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">arrayValueExtractor</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">stringifyableValue</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">stringifyableValue.stringify</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>154</span> 
+<span class='line'>155</span> </span><span class="WHIT">		</span><span class="COMM">//TODO should require() be replaced by define()-dependency declaration?</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">		</span><span class="COMM">//     NOTE the use of require() here, assumes that the dependency has already been loaded (i.e. has already been request by some other module!)</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">		</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">'initPublish: function(){ require("presentationManager").addPartial(this.getController(), this); }'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">		</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="STRN">','</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">		</span><span class="COMM">//TODO is there a better way to store the controller? -> by its contoller's name, and add a getter function...</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">[</span><span class="STRN">'controller'</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">			</span><span class="COMM">//getter/setter function for controller</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">			</span><span class="COMM">//  (NOTE: this init-function needs to be called before controller can be accessed!)</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">			</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">'initController: function(){'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>166</span> 
+<span class='line'>167</span> </span><span class="WHIT">			</span><span class="COMM">// store controller-name:</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">			</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">' var ctrlName = '</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">			</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">this.getController</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">getName</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">			</span><span class="COMM">// ... and the getter/setter code:</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">			</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">'; this.controller = require("controllerManager").getController(ctrlName); },'</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//TODO see remark about use of require() above</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">			</span><span class="COMM">//add initializer function</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">			</span><span class="COMM">//  (NOTE: needs to be called before controller or renderer can be accessed!)</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">			</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">'init: function(){'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">			</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">' this.initController(); '</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">			</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">' }'</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">			</span><span class="COMM">//NOTE: need to add comma in a separate entry </span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">			</span><span class="COMM">//      (-> in order to not break the removal method of last comma, see below)</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">			</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">','</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">		</span><span class="COMM">//if last element is a comma, remove it</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">sb</span><span class="PUNC">[</span><span class="NAME">sb.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">','</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">			</span><span class="NAME">sb.splice</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">sb.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">		</span><span class="COMM">//TODO use requirejs mechanism? (see remark above)</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="COMM">//		sb.push(' }, true); });\n require([' //&lt;- add require-call, so that this JS-file adds itself to the loaded dependencies in requirejs</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="COMM">//				+ moduleNameString + ']);');</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">		</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="STRN">' }, true, '</span><span class="PUNC">+</span><span class="NAME">parser.STORAGE_FILE_FORMAT_NUMBER</span><span class="PUNC">+</span><span class="STRN">');'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">sb.join</span><span class="PUNC">(</span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>198</span> 
+<span class='line'>199</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Partial</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">	</span><span class="COMM">/** #@- */</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>204</span> 
+<span class='line'>205</span> </span></pre></body></html>
