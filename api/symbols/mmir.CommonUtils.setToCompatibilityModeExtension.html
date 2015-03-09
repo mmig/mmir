@@ -1,0 +1,1720 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - mmir.CommonUtils.setToCompatibilityModeExtension</title>
+
+		<style type="text/css">
+			/* INSERTED START */
+/* Generic box styles. */
+.box {
+    border: 1px solid;
+    border-radius: 3px;
+    margin: 1em 0;
+    padding: 0 1em;
+}
+.box.important {
+/*    background: #CCCCFF;
+    background: #FFE2CE; */
+    background: #FF8533;
+	padding: 10px;
+}
+.box.usedby {
+/*    background: #CCCCFF;
+    background: #FFE2CE; */
+    background: #FFFFC2;
+	padding: 10px;
+}
+/* INSERTED END */
+
+/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+/*	width: 800px;*/
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	position: absolute;
+	margin-top: 24px;
+/*	float: left;*/
+	left: 0%;
+	width: 15.5%;
+/*	width: 160px;*/
+/*	position: absolute;*/
+	left: 8px;
+	background-color: #E6E9EF;
+	padding: 8px;
+}
+
+#content
+{
+/*	margin-left: 190px;*/
+/*	width: 600px;*/
+/*	float:left; */
+	position: absolute;
+	left: 17.5%;
+	width: 81%;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+
+
+.label-singleton {
+	font-size: 10.998px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	white-space: nowrap;
+	padding: 1px 4px 2px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #c3325f;
+	vertical-align: middle;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/AudioCordovaImpl.html">AudioCordovaImpl</a></li>
+	
+	<li><a href="../symbols/AudioHtml5Impl.html">AudioHtml5Impl</a></li>
+	
+	<li><a href="../symbols/ContentElement.html">ContentElement</a></li>
+	
+	<li><a href="../symbols/Controller.html">Controller</a></li>
+	
+	<li><a href="../symbols/Dictionary.html">Dictionary</a></li>
+	
+	<li><a href="../symbols/DisabledLogger.html">DisabledLogger</a></li>
+	
+	<li><a href="../symbols/GrammarConverter.html">GrammarConverter</a></li>
+	
+	<li><a href="../symbols/Helper.html">Helper</a></li>
+	
+	<li><a href="../symbols/Layout.html">Layout</a></li>
+	
+	<li><a href="../symbols/Logger.html">Logger</a></li>
+	
+	<li><a href="../symbols/mmir.html">mmir</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.html">mmir.CommonUtils</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html">mmir.CommonUtils.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.ConfigurationManager.html">mmir.ConfigurationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.Constants.html">mmir.Constants</a></li>
+	
+	<li><a href="../symbols/mmir.ControllerManager.html">mmir.ControllerManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.DialogManager.html">mmir.DialogManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.DisabledLogging.html">mmir.DisabledLogging</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JisonGenerator.html">mmir.env.grammar.JisonGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JsccGenerator.html">mmir.env.grammar.JsccGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.PegJsGenerator.html">mmir.env.grammar.PegJsGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.view.JqmViewEngine.html">mmir.env.view.JqmViewEngine</a></li>
+	
+	<li><a href="../symbols/mmir.InputManager.html">mmir.InputManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.html">mmir.LanguageManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.setToCompatibilityModeExtension.html">mmir.LanguageManager.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.Logging.html">mmir.Logging</a></li>
+	
+	<li><a href="../symbols/mmir.main.html">mmir.main</a></li>
+	
+	<li><a href="../symbols/mmir.MediaManager.html">mmir.MediaManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.ModelManager.html">mmir.ModelManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.NotificationManager.html">mmir.NotificationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.html">mmir.parser</a></li>
+	
+	<li><a href="../symbols/mmir.parser.ParserUtils.html">mmir.parser.ParserUtils</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.ParsingResult.html">mmir.parser.ParsingResult</a></li>
+	
+	<li><a href="../symbols/mmir.parser.RenderUtils.html">mmir.parser.RenderUtils</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.TemplateProcessor.html">mmir.parser.TemplateProcessor</a></li>
+	
+	<li><a href="../symbols/mmir.PresentationManager.html">mmir.PresentationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.SemanticInterpreter.html">mmir.SemanticInterpreter</a></li>
+	
+	<li><a href="../symbols/mmir.tools.ChecksumUtils.html">mmir.tools.ChecksumUtils</a></li>
+	
+	<li><a href="../symbols/Partial.html">Partial</a></li>
+	
+	<li><a href="../symbols/String.html">String</a></li>
+	
+	<li><a href="../symbols/View.html">View</a></li>
+	
+	<li><a href="../symbols/YieldDeclaration.html">YieldDeclaration</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Namespace mmir.CommonUtils.setToCompatibilityModeExtension
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/www_mmirf_tools_extensions_CommonUtilsCompatibility.js.html">CommonUtilsCompatibility.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class mmir.CommonUtils.setToCompatibilityModeExtension.">
+				<caption>Namespace Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#constructor">mmir.CommonUtils.setToCompatibilityModeExtension</a></b>
+							</div>
+							<div class="description">Set to "backwards compatibility mode" (for pre version 2.0) for CommonUtils.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class mmir.CommonUtils.setToCompatibilityModeExtension.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#compatibilitySelf.months#months">compatibilitySelf.months#months</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#contentForRegExp#contentForRegExp">contentForRegExp#contentForRegExp</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#debugNode#debugNode">debugNode#debugNode</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#javaScriptRegExp#javaScriptRegExp">javaScriptRegExp#javaScriptRegExp</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_name_regex">partial_name_regex</a></b>
+								</div>
+								<div class="description">See Property:#setToCompatibilityModeExtension-render_partial_regex<br>This regular expression is an extension for the parsing ofthe parameters of the partial (for customization) to get thename of the corresponding controller of the partial.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_name_regex#partial_name_regex">partial_name_regex#partial_name_regex</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_parameter_regex">partial_parameter_regex</a></b>
+								</div>
+								<div class="description">See Property:#setToCompatibilityModeExtension-render_partial_regex<br>This regular expression is an extension for the parsing ofthe parameters of the partial (for customization).</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_parameter_regex#partial_parameter_regex">partial_parameter_regex#partial_parameter_regex</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_var_pattern_assignment_regex">partial_var_pattern_assignment_regex</a></b>
+								</div>
+								<div class="description">Regular expression for detecting an assignment expression intemplates, e.g.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_var_pattern_assignment_regex#partial_var_pattern_assignment_regex">partial_var_pattern_assignment_regex#partial_var_pattern_assignment_regex</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_var_pattern_dataobject_regex">partial_var_pattern_dataobject_regex</a></b>
+								</div>
+								<div class="description">Regular expression for the parsing of partial-files.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_var_pattern_dataobject_regex#partial_var_pattern_dataobject_regex">partial_var_pattern_dataobject_regex#partial_var_pattern_dataobject_regex</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_var_pattern_regex">partial_var_pattern_regex</a></b>
+								</div>
+								<div class="description">Regular expression for the parsing of partial-files.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_var_pattern_regex#partial_var_pattern_regex">partial_var_pattern_regex#partial_var_pattern_regex</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_var_pattern_simpleobject_regex">partial_var_pattern_simpleobject_regex</a></b>
+								</div>
+								<div class="description">Regular expression for the parsing of partial-files.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#partial_var_pattern_simpleobject_regex#partial_var_pattern_simpleobject_regex">partial_var_pattern_simpleobject_regex#partial_var_pattern_simpleobject_regex</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#render_partial_regex">render_partial_regex</a></b>
+								</div>
+								<div class="description">Regular Expression to identify if a partial is to be insertedin a view.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#render_partial_regex#render_partial_regex">render_partial_regex#render_partial_regex</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#renderPartialRegExp#renderPartialRegExp">renderPartialRegExp#renderPartialRegExp</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#styleSheetRegExp#styleSheetRegExp">styleSheetRegExp#styleSheetRegExp</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#translationRegExpString#translationRegExpString">translationRegExpString#translationRegExpString</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#value_of_path_regex">value_of_path_regex</a></b>
+								</div>
+								<div class="description">See Property:#setToCompatibilityModeExtension-value_of_regex<br>This regular expression is an extension to parse theparameters of the <b>value_of</b>-function.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#value_of_path_regex#value_of_path_regex">value_of_path_regex#value_of_path_regex</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#value_of_regex">value_of_regex</a></b>
+								</div>
+								<div class="description">Regular Expression to identify content in a view that will beinserted.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#value_of_regex#value_of_regex">value_of_regex#value_of_regex</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class mmir.CommonUtils.setToCompatibilityModeExtension.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#appendJsSrcToHeader">appendJsSrcToHeader</a></b>(scriptSrc)
+								</div>
+								<div class="description">Similar to the jQuery.getScript() function - appending a urlof a javascript-source to the header of the main document.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#ehtml2Html">ehtml2Html</a></b>(eHtmlTag)
+								</div>
+								<div class="description">Function which transforms a ehtml string (while parsingviews) into html by replacing stylesheet-, javascript- andcontent_for-tags with corresponding contents.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#get_date_as_string">get_date_as_string</a></b>(the, <em>[Optional]</em>)
+								</div>
+								<div class="description">Reformat the String representation of a date.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#get_duration_as_string">get_duration_as_string</a></b>(the)
+								</div>
+								<div class="description">Convert a duration (in seconds) into a String representation.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#getTranslationRegExp">getTranslationRegExp</a></b>()
+								</div>
+								<div class="description">Gets the Regular Expression for translation tags.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html#log">log</a></b>(clazz, logMessage)
+								</div>
+								<div class="description">Appends a log-message to the main document (index.html) andprints it in the console</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Namespace Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>mmir.CommonUtils.setToCompatibilityModeExtension</b>
+				</div>
+				
+				<div class="description">
+					Set to "backwards compatibility mode" (for pre version 2.0) for CommonUtils.This function re-adds deprecated and removed functions andproperties to the CommonUtils instance.NOTE that once set to compatibility mode, it cannot be reset tonon-compatibility mode.         <p>In addition, the following functions of CommonUtils are made accessibleon the <code>mmir.CommonUtils</code> instance with these additional names<ul>	<li> <a href="../symbols/mmir.CommonUtils.html#regexHTMLComment">mmir.CommonUtils#regexHTMLComment</a> as         <b><u>html_comment_regex : RegExpr</u></b> </li><li> 	 <a href="../symbols/mmir.CommonUtils.html#resizeFitToSourroundingBox">mmir.CommonUtils#resizeFitToSourroundingBox</a> as         <b><u>html_resize_font_to_fit_surrounding_box()</u></b></li><li>		 <a href="../symbols/mmir.CommonUtils.html#toJSONStringValue">mmir.CommonUtils#toJSONStringValue</a> as         <b><u>to_json_string_value(String: theObjectValue) : String</u></b></li><li>		 <a href="../symbols/mmir.CommonUtils.html#convertJSONStringValueToHTML">mmir.CommonUtils#convertJSONStringValueToHTML</a> as         <b><u>convert_to_json_value_HTML_string(String: str) : String</u></b></li><li>		 <a href="../symbols/mmir.CommonUtils.html#convertJSONStringToHTML">mmir.CommonUtils#convertJSONStringToHTML</a> as         <b><u>convert_json_to_HTML_string(String: str) : String</u></b></li><li>		 <a href="../symbols/mmir.CommonUtils.html#parseParamsToDictionary">mmir.CommonUtils#parseParamsToDictionary</a> as         <b><u>get_params_as_dict(String: str) : Object</u></b></li></ul>
+					
+				</div>
+				
+				
+				
+				<pre class="code">require(['commonUtilsCompatibility'], function(setCompatibility){		setCompatibility(mmir.CommonUtils);});</pre>
+				
+				
+				
+				
+					
+						<dl class="detailList">
+						<dt class="heading">Parameters:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{<a href="../symbols/mmir.CommonUtils.html">mmir.CommonUtils</a>}</span>  <b>compatibilitySelf</b>
+								
+							</dt>
+								<dd>the instance of mmir.CommonUtils to which the compatibility functions etc.			will be attached</dd>
+						
+						</dl>
+					
+					
+					
+					
+					
+					
+						<dl class="detailList">
+						<dt class="heading">Requires:</dt>
+						
+							<dd>document (DOM element)</dd>
+						
+							<dd>document (DOM element)</dd>
+						
+						</dl>
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name="compatibilitySelf.months#months"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>compatibilitySelf.months#months</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="contentForRegExp#contentForRegExp"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>contentForRegExp#contentForRegExp</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="debugNode#debugNode"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>debugNode#debugNode</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="javaScriptRegExp#javaScriptRegExp"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>javaScriptRegExp#javaScriptRegExp</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_name_regex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>|RegExp}</span>
+					<b>partial_name_regex</b>
+					
+					</div>
+					<div class="description">
+						See Property:#setToCompatibilityModeExtension-render_partial_regex<br>This regular expression is an extension for the parsing ofthe parameters of the partial (for customization) to get thename of the corresponding controller of the partial.<br>Regular Expression to identify if a partial is to be insertedin a view. <br>Partials are in principle customizable views, which can beused independently from a controller and furthermore acceptparameters to customize the partial.<br>A partial is first processed and then integrated into theview.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"><code>  <% render googlemap/poi_details {:curr_poi_data_jpath => new JPath(mmir.ControllerManager.getInstance().getController("googlemap").script['current_poi_meta_data'])} %></code></pre>
+					
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								old template syntax format
+							</dt>
+							</dl>
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_name_regex#partial_name_regex"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>partial_name_regex#partial_name_regex</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_parameter_regex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>|RegExp}</span>
+					<b>partial_parameter_regex</b>
+					
+					</div>
+					<div class="description">
+						See Property:#setToCompatibilityModeExtension-render_partial_regex<br>This regular expression is an extension for the parsing ofthe parameters of the partial (for customization).<br>Regular Expression to identify if a partial is to be insertedin a view. <br>Partials are in principle customizable views, which can beused independently from a controller and furthermore acceptparameters to customize the partial.<br>A partial is first processed and then integrated into theview.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"><code>  <% render googlemap/poi_details {:curr_poi_data_jpath => new JPath(mmir.ControllerManager.getInstance().getController("googlemap").script['current_poi_meta_data'])} %></code></pre>
+					
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								old template syntax format
+							</dt>
+							</dl>
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_parameter_regex#partial_parameter_regex"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>partial_parameter_regex#partial_parameter_regex</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_var_pattern_assignment_regex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>|RegExp}</span>
+					<b>partial_var_pattern_assignment_regex</b>
+					
+					</div>
+					<div class="description">
+						Regular expression for detecting an assignment expression intemplates, e.g. <code>{::theVariable=... }</code>.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"><code>{::address = address + "&lt;br/&gt;"}</code>         or         <code>{::address = {:anotherVariable} + "&lt;br/&gt;"}</code></pre>
+					
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								old template syntax format
+							</dt>
+							</dl>
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_var_pattern_assignment_regex#partial_var_pattern_assignment_regex"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>partial_var_pattern_assignment_regex#partial_var_pattern_assignment_regex</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_var_pattern_dataobject_regex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>|RegExp}</span>
+					<b>partial_var_pattern_dataobject_regex</b>
+					
+					</div>
+					<div class="description">
+						Regular expression for the parsing of partial-files.<br>This expression detects all <b>data objects</b> for thecustomization of the partial in the form of<b>{::curr_poi_data={:curr_poi_data_jpath}}</b>.<br>Form of <b>data object</b>: <b>{::DATA_OBJECT}</b><br>Partials are principally customizable views, which can beused independently from a controller and furthermore acceptparameters to customize the partial.<br>A partial is first processed and then integrated into theview.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"><code>{::address = address + "&lt;br/&gt;"}</code></pre>
+					
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								old template syntax format
+							</dt>
+							</dl>
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_var_pattern_dataobject_regex#partial_var_pattern_dataobject_regex"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>partial_var_pattern_dataobject_regex#partial_var_pattern_dataobject_regex</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_var_pattern_regex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>|RegExp}</span>
+					<b>partial_var_pattern_regex</b>
+					
+					</div>
+					<div class="description">
+						Regular expression for the parsing of partial-files.<br>This expression detects all variables and data-instructionsfor the customization of the partial. There are 3 types ofvariables or instructions: + <b>if-else-statement</b>, controls which part of thepartial will be displayed - depending on the condition +<b>data-instruction</b>, which is evaluated, but notdisplayed + <b>variable</b> or <b>javascript-code</b>,which are evaluated and displayed in the viewPartials are principally customizable views, which can beused independently from a controller and furthermore acceptparameters to customize the partial.<br>A partial is first processed and then integrated into theview.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"><code>  {::address = address + " " + {:curr_poi_data}.query('addressBean/housenumber')}</code></pre>
+					
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								old template syntax format
+							</dt>
+							</dl>
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_var_pattern_regex#partial_var_pattern_regex"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>partial_var_pattern_regex#partial_var_pattern_regex</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_var_pattern_simpleobject_regex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>|RegExp}</span>
+					<b>partial_var_pattern_simpleobject_regex</b>
+					
+					</div>
+					<div class="description">
+						Regular expression for the parsing of partial-files.<br>This expression detects all simple variables for thecustomization of the partial in the form of<b>{:curr_poi_data}</b>.<br>Form of <b>simple object</b>: <b>{:SIMPLE_OBJECT}</b><br>Partials are principally customizable views, which can beused independently from a controller and furthermore acceptparameters to customize the partial.<br>A partial is first processed and then integrated into theview.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"><code>{:curr_poi_data}</code></pre>
+					
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								old template syntax format
+							</dt>
+							</dl>
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="partial_var_pattern_simpleobject_regex#partial_var_pattern_simpleobject_regex"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>partial_var_pattern_simpleobject_regex#partial_var_pattern_simpleobject_regex</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="render_partial_regex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>|RegExp}</span>
+					<b>render_partial_regex</b>
+					
+					</div>
+					<div class="description">
+						Regular Expression to identify if a partial is to be insertedin a view. <br>Partials are in principle customizable views, which can beused independently from a controller and furthermore acceptparameters to customize the partial.<br>A partial is first processed and then integrated into theview.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"><code>  <% render googlemap/poi_details {:curr_poi_data_jpath => new JPath(mmir.ControllerManager.getInstance().getController("googlemap").script['current_poi_meta_data'])} %></code></pre>
+					
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								old template syntax format
+							</dt>
+							</dl>
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="render_partial_regex#render_partial_regex"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>render_partial_regex#render_partial_regex</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="renderPartialRegExp#renderPartialRegExp"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>renderPartialRegExp#renderPartialRegExp</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="styleSheetRegExp#styleSheetRegExp"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>styleSheetRegExp#styleSheetRegExp</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="translationRegExpString#translationRegExpString"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>translationRegExpString#translationRegExpString</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="value_of_path_regex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>|RegExp}</span>
+					<b>value_of_path_regex</b>
+					
+					</div>
+					<div class="description">
+						See Property:#setToCompatibilityModeExtension-value_of_regex<br>This regular expression is an extension to parse theparameters of the <b>value_of</b>-function.<br>Regular Expression to identify content in a view that will beinserted.<br>The content is generated by a helper function of thecontroller and usually saved as a JSON-Object with a _helper_and _content_ part.<br>If the string is escaped and must be unescaped a secondparameter can be given to ensure that the string will beunescaped before the insertion in the view.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"><code> <%= value_of(languageMenu::header, true) %></code></pre>
+					
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								old template syntax format
+							</dt>
+							</dl>
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="value_of_path_regex#value_of_path_regex"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>value_of_path_regex#value_of_path_regex</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="value_of_regex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>|RegExp}</span>
+					<b>value_of_regex</b>
+					
+					</div>
+					<div class="description">
+						Regular Expression to identify content in a view that will beinserted.<br>The content is generated by a helper function of thecontroller and usually saved as a JSON-Object with a _helper_and _content_ part.<br>If the string is escaped and must be unescaped a secondparameter can be given to ensure that the string will beunescaped before the insertion in the view.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"><code> <%= value_of(languageMenu::header, true) %></code></pre>
+					
+					
+
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								old template syntax format
+							</dt>
+							</dl>
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="value_of_regex#value_of_regex"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>value_of_regex#value_of_regex</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="appendJsSrcToHeader"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>appendJsSrcToHeader</b>(scriptSrc)
+					
+					</div>
+					<div class="description">
+						Similar to the jQuery.getScript() function - appending a urlof a javascript-source to the header of the main document.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>scriptSrc</b>
+									
+								</dt>
+								<dd>source of javascript-file</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								superseded by getLocalScript
+							</dt>
+							</dl>
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="ehtml2Html"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>ehtml2Html</b>(eHtmlTag)
+					
+					</div>
+					<div class="description">
+						Function which transforms a ehtml string (while parsingviews) into html by replacing stylesheet-, javascript- andcontent_for-tags with corresponding contents.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>eHtmlTag</b>
+									
+								</dt>
+								<dd>A string that should be transformed from           ehtml to html</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Deprecated:</dt>
+							<dt>
+								used for parsing/rendering old template syntax            format
+							</dt>
+							</dl>
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> From ehtml into html transformed string</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="get_date_as_string"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>get_date_as_string</b>(the, <em>[Optional]</em>)
+					
+					</div>
+					<div class="description">
+						Reformat the String representation of a date.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">converts <code>2012-07-23 16:37:33.0</code> into         &rarr; <code>23. July 2012</code></pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>the</b>
+									
+								</dt>
+								<dd>date String in format           <code>yyyy-mm-dd HH:mm:ss.S</code></dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b><em>[Optional]</em></b>
+									
+								</dt>
+								<dd>the language code (currently           used to format the name of the month). Currently           supported languages: <code>en, de</code>. If           unkown or omitted, default <code>en</code> is           used.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> a new String representation for the date</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="get_duration_as_string"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>get_duration_as_string</b>(the)
+					
+					</div>
+					<div class="description">
+						Convert a duration (in seconds) into a String representation.
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code"><code>2:09:19 h</code>, <code>12:05 min</code></pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>the</b>
+									
+								</dt>
+								<dd>duration in seconds</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> a String representation for the duration</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getTranslationRegExp"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<b>getTranslationRegExp</b>()
+					
+					</div>
+					<div class="description">
+						Gets the Regular Expression for translation tags.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> The regular expression for matching a         translation-tag - used inside a ehtml-String</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="log"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>log</b>(clazz, logMessage)
+					
+					</div>
+					<div class="description">
+						Appends a log-message to the main document (index.html) andprints it in the console
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>clazz</b>
+									
+								</dt>
+								<dd>A prefix for the output of the log message           in the console</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/String.html">String</a>}</span> <b>logMessage</b>
+									
+								</dt>
+								<dd>The log message which should be printed</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Mar 09 2015 22:22:17 GMT+0100 (MEZ)
+		</div>
+	</body>
+</html>

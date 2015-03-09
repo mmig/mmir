@@ -1,0 +1,791 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - mmir</title>
+
+		<style type="text/css">
+			/* INSERTED START */
+/* Generic box styles. */
+.box {
+    border: 1px solid;
+    border-radius: 3px;
+    margin: 1em 0;
+    padding: 0 1em;
+}
+.box.important {
+/*    background: #CCCCFF;
+    background: #FFE2CE; */
+    background: #FF8533;
+	padding: 10px;
+}
+.box.usedby {
+/*    background: #CCCCFF;
+    background: #FFE2CE; */
+    background: #FFFFC2;
+	padding: 10px;
+}
+/* INSERTED END */
+
+/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+/*	width: 800px;*/
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	position: absolute;
+	margin-top: 24px;
+/*	float: left;*/
+	left: 0%;
+	width: 15.5%;
+/*	width: 160px;*/
+/*	position: absolute;*/
+	left: 8px;
+	background-color: #E6E9EF;
+	padding: 8px;
+}
+
+#content
+{
+/*	margin-left: 190px;*/
+/*	width: 600px;*/
+/*	float:left; */
+	position: absolute;
+	left: 17.5%;
+	width: 81%;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+
+
+
+.label-singleton {
+	font-size: 10.998px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	white-space: nowrap;
+	padding: 1px 4px 2px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #c3325f;
+	vertical-align: middle;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/AudioCordovaImpl.html">AudioCordovaImpl</a></li>
+	
+	<li><a href="../symbols/AudioHtml5Impl.html">AudioHtml5Impl</a></li>
+	
+	<li><a href="../symbols/ContentElement.html">ContentElement</a></li>
+	
+	<li><a href="../symbols/Controller.html">Controller</a></li>
+	
+	<li><a href="../symbols/Dictionary.html">Dictionary</a></li>
+	
+	<li><a href="../symbols/DisabledLogger.html">DisabledLogger</a></li>
+	
+	<li><a href="../symbols/GrammarConverter.html">GrammarConverter</a></li>
+	
+	<li><a href="../symbols/Helper.html">Helper</a></li>
+	
+	<li><a href="../symbols/Layout.html">Layout</a></li>
+	
+	<li><a href="../symbols/Logger.html">Logger</a></li>
+	
+	<li><a href="../symbols/mmir.html">mmir</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.html">mmir.CommonUtils</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html">mmir.CommonUtils.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.ConfigurationManager.html">mmir.ConfigurationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.Constants.html">mmir.Constants</a></li>
+	
+	<li><a href="../symbols/mmir.ControllerManager.html">mmir.ControllerManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.DialogManager.html">mmir.DialogManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.DisabledLogging.html">mmir.DisabledLogging</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JisonGenerator.html">mmir.env.grammar.JisonGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JsccGenerator.html">mmir.env.grammar.JsccGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.PegJsGenerator.html">mmir.env.grammar.PegJsGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.view.JqmViewEngine.html">mmir.env.view.JqmViewEngine</a></li>
+	
+	<li><a href="../symbols/mmir.InputManager.html">mmir.InputManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.html">mmir.LanguageManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.setToCompatibilityModeExtension.html">mmir.LanguageManager.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.Logging.html">mmir.Logging</a></li>
+	
+	<li><a href="../symbols/mmir.main.html">mmir.main</a></li>
+	
+	<li><a href="../symbols/mmir.MediaManager.html">mmir.MediaManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.ModelManager.html">mmir.ModelManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.NotificationManager.html">mmir.NotificationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.html">mmir.parser</a></li>
+	
+	<li><a href="../symbols/mmir.parser.ParserUtils.html">mmir.parser.ParserUtils</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.ParsingResult.html">mmir.parser.ParsingResult</a></li>
+	
+	<li><a href="../symbols/mmir.parser.RenderUtils.html">mmir.parser.RenderUtils</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.parser.TemplateProcessor.html">mmir.parser.TemplateProcessor</a></li>
+	
+	<li><a href="../symbols/mmir.PresentationManager.html">mmir.PresentationManager</a> <span class="label-singleton">Singleton</span></li>
+	
+	<li><a href="../symbols/mmir.SemanticInterpreter.html">mmir.SemanticInterpreter</a></li>
+	
+	<li><a href="../symbols/mmir.tools.ChecksumUtils.html">mmir.tools.ChecksumUtils</a></li>
+	
+	<li><a href="../symbols/Partial.html">Partial</a></li>
+	
+	<li><a href="../symbols/String.html">String</a></li>
+	
+	<li><a href="../symbols/View.html">View</a></li>
+	
+	<li><a href="../symbols/YieldDeclaration.html">YieldDeclaration</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class mmir
+				
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/www_mmirf_core.js.html">core.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class mmir.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/mmir.html#constructor">mmir</a></b>()
+							</div>
+							<div class="description">Main module / namespace for the MMIR framework.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class mmir.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								mmir.<b><a href="../symbols/mmir.html#.debug">debug</a></b>
+								</div>
+								<div class="description">Property for enabling / disabling logging:if set to <code>true</code> (or omitted), the default Logger implementation <code>tools/logger.js</code>will be loaded as "logger" module.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								mmir.<b><a href="../symbols/mmir.html#.logLevel">logLevel</a></b>
+								</div>
+								<div class="description">Property for the log-level of the Logger module:if set, and property <code>debug</code> is <code>true</code>, then the logger modulewill use the log-level as default log-level.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								mmir.<b><a href="../symbols/mmir.html#.logTrace">logTrace</a></b>
+								</div>
+								<div class="description">Property for enabling / disabling trace output in the Logger module:if set to <code>true</code>, and property <code>debug</code> is <code>true</code>, then the logger module will print a stack-trace for each log-message.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								mmir.<b><a href="../symbols/mmir.html#.startModule">startModule</a></b>
+								</div>
+								<div class="description">The name / ID of the RequireJS module that willbe loaded, after the configuration in<code>mainConfig.js</code> was applied.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								mmir.<b><a href="../symbols/mmir.html#.viewEngine">viewEngine</a></b>
+								</div>
+								<div class="description">Name / ID / load-path (requirejs) for the modulethat handles the views (i.e.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class mmir.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">mmir.<b><a href="../symbols/mmir.html#.config">config</a></b>(options)
+								</div>
+								<div class="description">Set options / settings for overwriting the defaultconfiguration for RequireJS:<br>Options / configurations that are added by thismethod will overwrite settings specified in<code>mainConfig.js</code>.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">mmir.<b><a href="../symbols/mmir.html#.ready">ready</a></b>(func)
+								</div>
+								<div class="description">Register callbacks for initialization-event of framework.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>mmir</b>()
+				</div>
+				
+				<div class="description">
+					Main module / namespace for the MMIR framework.On initialization, a global module <code>window.mmir</code> is created.If called multiple times, the existing module instance is returned.If a function <code>require</code> exists, the module tries to registers itselfaccording to the <em>RequireJS</em> interface (using the default as its module name, i.e. "core").
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+						<dl class="detailList">
+						<dt class="heading">Returns:</dt>
+						
+								<dd>the module instance <code>mmir</code></dd>
+						
+						</dl>
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name=".debug"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">mmir.</span><b>debug</b>
+					
+					</div>
+					<div class="description">
+						Property for enabling / disabling logging:if set to <code>true</code> (or omitted), the default Logger implementation <code>tools/logger.js</code>will be loaded as "logger" module.If set to <code>false</code> the "dummy" Logger implementation <code>tools/loggerDisabled.js</code> willbe loaded as "logger" module which essentially will create no logging output.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd>#logLevel</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Default Value:</dt>
+							<dd>
+								true
+							</dd>
+							</dl>
+						
+
+					<hr />
+				
+					<a name=".logLevel"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Integer | String}</span>
+					<span class="light">mmir.</span><b>logLevel</b>
+					
+					</div>
+					<div class="description">
+						Property for the log-level of the Logger module:if set, and property <code>debug</code> is <code>true</code>, then the logger modulewill use the log-level as default log-level.If omitted, the Logger's implementation defaults will be used.If set, the property must be either a Number or a String with one of the following values:0: "verbose"1: "debug"2: "info"3: "warn"4: "error"5: "critical"6: "disabled"NOTE: if you want to disable logging completely, use #debug.      Setting the logLevel to "disabled" will still allow specific module's to create logging output      (if their log-level is set appropriately)
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd>#debug</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Default Value:</dt>
+							<dd>
+								"debug"
+							</dd>
+							</dl>
+						
+
+					<hr />
+				
+					<a name=".logTrace"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean | PlainObject}</span>
+					<span class="light">mmir.</span><b>logTrace</b>
+					
+					</div>
+					<div class="description">
+						Property for enabling / disabling trace output in the Logger module:if set to <code>true</code>, and property <code>debug</code> is <code>true</code>, then the logger module will print a stack-trace for each log-message.If set to a configuration object:<pre>{		"trace": [true | false],	//same as the Boolean primitive for logTrace		"depth": ["full" | other]	//OPTIONAL: if "full" then the complete stack trace is printed,									// otherwise only the first stack-entry (i.e. the calling function)									// is printed.									//DEFAULT: other}</pre>i.e. <code>{trace: true}</code> would be the same as using <code>true</code> (or omitting this property).The default value (also if omitted!) is <code>true</code>.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+							<dd>#debug</dd>
+							
+							<dd>#logLevel</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Default Value:</dt>
+							<dd>
+								true
+							</dd>
+							</dl>
+						
+
+					<hr />
+				
+					<a name=".startModule"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">mmir.</span><b>startModule</b>
+					
+					</div>
+					<div class="description">
+						The name / ID of the RequireJS module that willbe loaded, after the configuration in<code>mainConfig.js</code> was applied.<p>This module should first start-up the framework andthen signal the application (via #setInitializedthat it is ready to be used, i.e. fully initialized now.<p>NOTE: If set to <code>undefined</code>, no module will be loaded after configuration in <code>mainConfig.js</code>was applied.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Default Value:</dt>
+							<dd>
+								"main" will load the module specified in main.js
+							</dd>
+							</dl>
+						
+
+					<hr />
+				
+					<a name=".viewEngine"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/String.html">String</a>}</span>
+					<span class="light">mmir.</span><b>viewEngine</b>
+					
+					</div>
+					<div class="description">
+						Name / ID / load-path (requirejs) for the modulethat handles the views (i.e. "rendering" that ischange from one view to the next).
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Default Value:</dt>
+							<dd>
+								"jqmViewEngine" will load the default view-engine that uses jQuery Mobile
+							</dd>
+							</dl>
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".config"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">mmir.</span><b>config</b>(options)
+					
+					</div>
+					<div class="description">
+						Set options / settings for overwriting the defaultconfiguration for RequireJS:<br>Options / configurations that are added by thismethod will overwrite settings specified in<code>mainConfig.js</code>.<p>NOTE: the options added here will be applied in the order      the were added, i.e. if a later option specifies      settings that were already set by a previous call,      then these later options will overwrite the earlier      ones.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{PlainObject}</span> <b>options</b>
+									
+								</dt>
+								<dd>options for RequireJS</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".ready"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">mmir.</span><b>ready</b>(func)
+					
+					</div>
+					<div class="description">
+						Register callbacks for initialization-event of framework.If used after framework has been initialized, the callback is invoked immediately.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>func</b>
+									
+								</dt>
+								<dd>callback Function that will be triggered when the framework has been initialized</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Mar 09 2015 22:22:17 GMT+0100 (MEZ)
+		</div>
+	</body>
+</html>

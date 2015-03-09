@@ -1,0 +1,895 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * 	Copyright (C) 2012-2013 DFKI GmbH
+<span class='line'>  3</span>  * 	Deutsches Forschungszentrum fuer Kuenstliche Intelligenz
+<span class='line'>  4</span>  * 	German Research Center for Artificial Intelligence
+<span class='line'>  5</span>  * 	http://www.dfki.de
+<span class='line'>  6</span>  * 
+<span class='line'>  7</span>  * 	Permission is hereby granted, free of charge, to any person obtaining a 
+<span class='line'>  8</span>  * 	copy of this software and associated documentation files (the 
+<span class='line'>  9</span>  * 	"Software"), to deal in the Software without restriction, including 
+<span class='line'> 10</span>  * 	without limitation the rights to use, copy, modify, merge, publish, 
+<span class='line'> 11</span>  * 	distribute, sublicense, and/or sell copies of the Software, and to 
+<span class='line'> 12</span>  * 	permit persons to whom the Software is furnished to do so, subject to 
+<span class='line'> 13</span>  * 	the following conditions:
+<span class='line'> 14</span>  * 
+<span class='line'> 15</span>  * 	The above copyright notice and this permission notice shall be included 
+<span class='line'> 16</span>  * 	in all copies or substantial portions of the Software.
+<span class='line'> 17</span>  * 
+<span class='line'> 18</span>  * 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+<span class='line'> 19</span>  * 	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+<span class='line'> 20</span>  * 	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+<span class='line'> 21</span>  * 	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+<span class='line'> 22</span>  * 	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+<span class='line'> 23</span>  * 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+<span class='line'> 24</span>  * 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> 
+<span class='line'> 27</span> 
+<span class='line'> 28</span> 
+<span class='line'> 29</span> </span><span class="NAME">define</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="STRN">'jquery'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'constants'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'commonUtils'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'configurationManager'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'dictionary'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'logger'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'module'</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 31</span> 	 * The MediaManager gives access to audio in- and output functionality.
+<span class='line'> 32</span> 	 * 
+<span class='line'> 33</span> 	 * Depending on its configuration, the MediaManager loads different implementation modules
+<span class='line'> 34</span> 	 * (&lt;em>plugins&lt;/em>) that realize the interface-functions differently.
+<span class='line'> 35</span> 	 * 
+<span class='line'> 36</span> 	 * See directory &lt;code>mmirf/env/media&lt;/code> for available plugins.
+<span class='line'> 37</span> 	 * 
+<span class='line'> 38</span> 	 * This "class" is a singleton - so that only one instance is in use.&lt;br>
+<span class='line'> 39</span> 	 * 
+<span class='line'> 40</span> 	 * @class
+<span class='line'> 41</span> 	 * @name MediaManager
+<span class='line'> 42</span> 	 * @exports MediaManager as mmir.MediaManager
+<span class='line'> 43</span> 	 * @static
+<span class='line'> 44</span> 	 * 
+<span class='line'> 45</span> 	 * @requires jQuery.extend
+<span class='line'> 46</span> 	 * @requires jQuery.Deferred
+<span class='line'> 47</span> 	 * 
+<span class='line'> 48</span> 	 * TODO remove / change dependency on forBrowser: constants.isBrowserEnv()!!!
+<span class='line'> 49</span> 	 */</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">		</span><span class="NAME">jQuery</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">constants</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">commonUtils</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">configurationManager</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Dictionary</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Logger</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">module</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">	</span><span class="COMM">//next 2 comments are needed by JSDoc so that all functions etc. can</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">	</span><span class="COMM">// be mapped to the correct class description</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">	</span><span class="COMM">/** @scope mmir.MediaManager.prototype */</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 57</span> 	 * #@+
+<span class='line'> 58</span> 	 * @memberOf mmir.MediaManager.prototype
+<span class='line'> 59</span> 	 */</span><span class="WHIT">
+<span class='line'> 60</span> 
+<span class='line'> 61</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 62</span> 	 * The instance that holds the singleton MediaManager object.
+<span class='line'> 63</span> 	 * @private
+<span class='line'> 64</span> 	 * @memberOf mmir.MediaManager#
+<span class='line'> 65</span> 	 */</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">instance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 69</span>      * default configuration for env-settings "browser" and "cordova":
+<span class='line'> 70</span>      * 
+<span class='line'> 71</span>      *  -> may be overwritten by settings in the configuration file.
+<span class='line'> 72</span>      *  e.g. adding the following JSON data to config/configuration.json:
+<span class='line'> 73</span>      * &lt;pre>
+<span class='line'> 74</span> 	 *     "mediaManager": {
+<span class='line'> 75</span> 	 *     	"plugins": {
+<span class='line'> 76</span> 	 *     		"browser": ["html5AudioOutput.js",
+<span class='line'> 77</span> 	 *     		            "html5AudioInput.js",
+<span class='line'> 78</span> 	 *     		            "maryTextToSpeech.js"
+<span class='line'> 79</span> 	 *     		],
+<span class='line'> 80</span> 	 *     		"cordova": ["cordovaAudioOutput.js",
+<span class='line'> 81</span> 	 *     		            "nuanceAudioInput.js",
+<span class='line'> 82</span> 	 *     		            "nativeTextToSpeech.js"
+<span class='line'> 83</span> 	 *     		]
+<span class='line'> 84</span> 	 *     	}
+<span class='line'> 85</span> 	 *     }
+<span class='line'> 86</span> 	 * &lt;/pre>
+<span class='line'> 87</span> 	 * 
+<span class='line'> 88</span> 	 * @private
+<span class='line'> 89</span> 	 * @property
+<span class='line'> 90</span> 	 * @type PlainObject
+<span class='line'> 91</span> 	 * 
+<span class='line'> 92</span> 	 * @memberOf mmir.MediaManager#
+<span class='line'> 93</span> 	 */</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pluginsToLoad</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">    		</span><span class="STRN">'browser'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">'html5AudioOutput.js'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">    		            </span><span class="STRN">'html5AudioInput.js'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">    		            </span><span class="STRN">'maryTextToSpeech.js'</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">    		</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">    		</span><span class="STRN">'cordova'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">'cordovaAudioOutput.js'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">    		            </span><span class="STRN">'nuanceAudioInput.js'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">    		            </span><span class="STRN">'nativeTextToSpeech.js'</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">    		</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>106</span>      * Load an media-module implementation from plugin file.
+<span class='line'>107</span>      * 
+<span class='line'>108</span>      * @param {String} filePath
+<span class='line'>109</span>      * @param {Function} successCallback
+<span class='line'>110</span>      * @param {Function} failureCallback
+<span class='line'>111</span>      * 
+<span class='line'>112</span>      * @private
+<span class='line'>113</span> 	 * @function
+<span class='line'>114</span> 	 * 
+<span class='line'>115</span> 	 * @memberOf mmir.MediaManager#
+<span class='line'>116</span> 	 */</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">loadPlugin</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">loadPlugin</span><span class="PUNC">(</span><span class="NAME">filePath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">successCallback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failureCallback</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">    	</span><span class="KEYW">try</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">    		</span><span class="NAME">commonUtils.loadScript</span><span class="PUNC">(</span><span class="NAME">constants.getMediaPluginPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">filePath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">	    		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">newMediaPlugin</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">newMediaPlugin</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">	    			</span><span class="NAME">newMediaPlugin.initialize</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">exportedFunctions</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">	    					</span><span class="NAME">jQuery.extend</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">,</span><span class="NAME">instance</span><span class="PUNC">,</span><span class="NAME">exportedFunctions</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">	    					</span><span class="NAME">newMediaPlugin</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">							</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">successCallback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">successCallback</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">	    			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">instance</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">	    		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">	    		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">	        		</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'Error loading MediaPlugin '</span><span class="PUNC">+</span><span class="NAME">filePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' - no newMediaPlugin set!'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">	    			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">failureCallback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">failureCallback</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">	    		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">    		</span><span class="WHIT">
+<span class='line'>133</span> 
+<span class='line'>134</span> </span><span class="WHIT">    		</span><span class="COMM">//DISABLED @russa: currently disabled, since debugging eval'ed code is problematic</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">    		</span><span class="COMM">//                 NOTE support for code-naming feature (see below) is currently somewhat broken in FireFox (e.g. location in error-stack is not done correctly) </span><span class="WHIT">
+<span class='line'>136</span> </span><span class="COMM">//        	//NOTE: this new loading-mechanism avoids global VARIABLES by</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="COMM">//    		//	* loading the script as text</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="COMM">//    		//	* evaluating the script-text (i.e. executing the JavaScript) within an local context</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="COMM">//    		//  * uses code-naming feature for eval'ed code: //@ sourceURL=...</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="COMM">//    		//i.e. eval(..) is used ...</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="COMM">//    		var targetPath = constants.getMediaPluginPath()+filePath;</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="COMM">//    		$.ajax({</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="COMM">//                async: true,</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="COMM">//                dataType: "text",</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="COMM">//                url: targetPath,</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="COMM">//                success: function(data){</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="COMM">//                	</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="COMM">//                	//add "dummy-export-code" to script-text </span><span class="WHIT">
+<span class='line'>149</span> </span><span class="COMM">//                	// -> for "retrieving" the media-plugin implementation as return value from eval(..)</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="COMM">//            		var LOAD_MODULE_TEMPLATE_POSTFIX = 'var dummy = newMediaPlugin; dummy';</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="COMM">//            		//use eval code naming feature...</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="COMM">//            		var codeId = ' sourceURL=' + constants.getMediaPluginPath()+filePath + '\n';</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="COMM">//            		//... for WebKit:</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="COMM">//            		var CODE_ID_EXPR1 = '//@';</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="COMM">//            		// ... and for FireFox:</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="COMM">//            		var CODE_ID_EXPR2 = '//#';</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="COMM">//            		</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="COMM">//                	var newMediaPlugin = eval(data </span><span class="WHIT">
+<span class='line'>159</span> </span><span class="COMM">//                			+ CODE_ID_EXPR1 + codeId </span><span class="WHIT">
+<span class='line'>160</span> </span><span class="COMM">//                			+ CODE_ID_EXPR2 + codeId </span><span class="WHIT">
+<span class='line'>161</span> </span><span class="COMM">//                			+ LOAD_MODULE_TEMPLATE_POSTFIX</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="COMM">//                	);</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="COMM">//                	</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="COMM">//                	if (typeof newMediaPlugin !== 'undefined' && newMediaPlugin){</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="COMM">//    	    			newMediaPlugin.initialize(function(exportedFunctions){</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="COMM">//    	    					jQuery.extend(true,instance,exportedFunctions);</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="COMM">//    	    					newMediaPlugin = null;</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="COMM">//    							if (successCallback) successCallback();</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="COMM">//    	    			}, instance);</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="COMM">//    	    		}</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="COMM">//    	    		else {</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="COMM">//    	        		console.error('Error loading MediaPlugin '+filePath + ' - no newMediaPlugin set!');</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="COMM">//    	    			if (failureCallback) failureCallback();</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="COMM">//    	    		}</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="COMM">//                }</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="COMM">//            }).fail(function(jqxhr, settings, err){</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="COMM">//                // print out an error message</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="COMM">//				var errMsg = err && err.stack? err.stack : err;</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="COMM">//                console.error("[" + settings + "] " + JSON.stringify(jqxhr) + " -- " + partial.path + ": "+errMsg); //failure</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="COMM">//            });</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="KEYW">catch</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">    		</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'Error loading MediaPlugin '</span><span class="PUNC">+</span><span class="NAME">filePath</span><span class="PUNC">+</span><span class="STRN">': '</span><span class="PUNC">+</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">    		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">failureCallback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">failureCallback</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>189</span>      * @constructs MediaManager
+<span class='line'>190</span>      * @memberOf MediaManager.prototype
+<span class='line'>191</span>      * @private
+<span class='line'>192</span>      */</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">constructor</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">    	</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">    	</span><span class="COMM">/**
+<span class='line'>196</span>     	 * map of listeners: 
+<span class='line'>197</span>     	 * 		event(String) -&gt; listener(Function)
+<span class='line'>198</span>     	 * 
+<span class='line'>199</span> 		 * @private
+<span class='line'>200</span>     	 * @memberOf MediaManager.prototype
+<span class='line'>201</span>     	 */</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">listener</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dictionary</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">    	</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">    	</span><span class="COMM">/**
+<span class='line'>205</span>     	 * map of listener-observers:
+<span class='line'>206</span>     	 *  observers get notified if a listener for event X gets added/removed
+<span class='line'>207</span>     	 * 
+<span class='line'>208</span> 		 * @private
+<span class='line'>209</span>     	 * @memberOf MediaManager.prototype
+<span class='line'>210</span>     	 */</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">listenerObserver</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Dictionary</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">    	</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">		</span><span class="COMM">/** 
+<span class='line'>214</span> 		 * exported as addListener() and on()
+<span class='line'>215</span> 		 * 
+<span class='line'>216</span> 		 * @private
+<span class='line'>217</span> 		 * @memberOf MediaManager.prototype
+<span class='line'>218</span> 		 */</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addListenerImpl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eventHandler</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">listener.get</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">list</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">				</span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NAME">eventHandler</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">				</span><span class="NAME">listener.put</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">list</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">			</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">				</span><span class="NAME">list.push</span><span class="PUNC">(</span><span class="NAME">eventHandler</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>228</span> 
+<span class='line'>229</span> </span><span class="WHIT">			</span><span class="COMM">//notify listener-observers for this event-type</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">			</span><span class="NAME">this._notifyObservers</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'added'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eventHandler</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>233</span> 		 * exported as removeListener() and off()
+<span class='line'>234</span> 		 *  
+<span class='line'>235</span> 		 * @private
+<span class='line'>236</span> 		 * @memberOf MediaManager.prototype
+<span class='line'>237</span> 		 */</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">removeListenerImpl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eventHandler</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isRemoved</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">listener.get</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">list</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">list.length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="WHIT">				</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">--</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">list</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT">  </span><span class="NAME">eventHandler</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">						</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">						</span><span class="COMM">//move all handlers after i by 1 index-position ahead:</span><span class="WHIT">
+<span class='line'>247</span> </span><span class="WHIT">						</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">--</span><span class="NAME">j</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>248</span> </span><span class="WHIT">							</span><span class="NAME">list</span><span class="PUNC">[</span><span class="NAME">j</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">list</span><span class="PUNC">[</span><span class="NAME">j</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>249</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>250</span> </span><span class="WHIT">						</span><span class="COMM">//remove last array-element</span><span class="WHIT">
+<span class='line'>251</span> </span><span class="WHIT">						</span><span class="NAME">list.splice</span><span class="PUNC">(</span><span class="NAME">size</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">						</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">						</span><span class="COMM">//notify listener-observers for this event-type</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">						</span><span class="NAME">this._notifyObservers</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'removed'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eventHandler</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">						</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">						</span><span class="NAME">isRemoved</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">						</span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">isRemoved</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>266</span> 		 * The logger for the MediaManager.
+<span class='line'>267</span> 		 * 
+<span class='line'>268</span> 		 * Exported as &lt;code>_log&lt;/code> by the MediaManager instance.
+<span class='line'>269</span> 		 * 
+<span class='line'>270</span> 		 * @private
+<span class='line'>271</span> 		 * @memberOf MediaManager.prototype
+<span class='line'>272</span> 		 */</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">logger</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Logger.create</span><span class="PUNC">(</span><span class="NAME">module</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//initialize with requirejs-module information</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="WHIT">    	</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="WHIT">    	</span><span class="COMM">/** @lends MediaManager.prototype */</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">    	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">    			</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>279</span>     			 * A logger for the MediaManager and its plugins/modules.
+<span class='line'>280</span>     			 * 
+<span class='line'>281</span>     			 * &lt;p>
+<span class='line'>282</span>     			 * This logger MAY be used by media-plugins and / or tools and helpers
+<span class='line'>283</span>     			 * related to the MediaManager.
+<span class='line'>284</span>     			 * 
+<span class='line'>285</span>     			 * &lt;p>
+<span class='line'>286</span>     			 * This logger SHOULD NOT be used by "code" that non-related to the
+<span class='line'>287</span>     			 * MediaManager 
+<span class='line'>288</span>     			 * 
+<span class='line'>289</span> 				 * @name _log
+<span class='line'>290</span> 				 * @property
+<span class='line'>291</span> 				 * @type mmir.Logger
+<span class='line'>292</span> 				 * @default mmir.Logger (logger instance for mmir.MediaManager)
+<span class='line'>293</span> 				 * @public
+<span class='line'>294</span> 				 * 
+<span class='line'>295</span> 				 * @memberOf MediaManager#
+<span class='line'>296</span>     			 */</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">    			</span><span class="NAME">_log</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">logger</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">    		</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">    			</span><span class="COMM">//TODO add API documentation</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">    		</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">    			</span><span class="COMM">//... these are the standard audioInput procedures, that should be implemented by a loaded file</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">    		</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="COMM">///////////////////////////// audio input API: /////////////////////////////</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">	    		</span><span class="COMM">/**
+<span class='line'>305</span> 	    		 * Start speech recognition with &lt;em>end-of-speech&lt;/em> detection:
+<span class='line'>306</span> 	    		 * 
+<span class='line'>307</span> 	    		 * the recognizer automatically tries to detect when speech has finished and then
+<span class='line'>308</span> 	    		 * triggers the callback with the result.
+<span class='line'>309</span> 	    		 * 
+<span class='line'>310</span> 	    		 * @async
+<span class='line'>311</span> 	    		 * 
+<span class='line'>312</span> 	    		 * @param {Function} [successCallBack] OPTIONAL
+<span class='line'>313</span> 	    		 * 			callback function that is triggered when a text result is available.
+<span class='line'>314</span> 	    		 * 			The callback signature is:
+<span class='line'>315</span> 	    		 * 				&lt;code>callback(textResult)&lt;/code>
+<span class='line'>316</span> 	    		 * @param {Function} [failureCallBack] OPTIONAL
+<span class='line'>317</span> 	    		 * 			callback function that is triggered when an error occurred.
+<span class='line'>318</span> 	    		 * 			The callback signature is:
+<span class='line'>319</span> 	    		 * 				&lt;code>callback(error)&lt;/code> 
+<span class='line'>320</span> 	    		 */</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="WHIT">    			</span><span class="NAME">recognize</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">successCallBack</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">    				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">    					</span><span class="NAME">failureCallBack</span><span class="PUNC">(</span><span class="STRN">"Audio Input: Speech Recognition is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">    				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">    					</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"Audio Input: Speech Recognition is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>330</span> 	    		 * Start continuous speech recognition:
+<span class='line'>331</span> 	    		 * 
+<span class='line'>332</span> 	    		 * The recognizer continues until {@link #stopRecord} is called.
+<span class='line'>333</span> 	    		 * 
+<span class='line'>334</span> 	    		 * &lt;p>
+<span class='line'>335</span> 	    		 * If &lt;code>isWithIntermediateResults&lt;/code> is used, the recognizer may
+<span class='line'>336</span> 	    		 * invoke the callback with intermediate recognition results.
+<span class='line'>337</span> 	    		 * 
+<span class='line'>338</span> 	    		 * TODO specify whether stopRecord should return the "gathered" intermediate results, or just the last one
+<span class='line'>339</span> 	    		 * 
+<span class='line'>340</span> 	    		 * NOTE that not all implementation may support this feature.
+<span class='line'>341</span> 	    		 * 
+<span class='line'>342</span> 	    		 * @async
+<span class='line'>343</span> 	    		 * 
+<span class='line'>344</span> 	    		 * @param {Function} [successCallBack] OPTIONAL
+<span class='line'>345</span> 	    		 * 			callback function that is triggered when a text result is available.
+<span class='line'>346</span> 	    		 * 			The callback signature is:
+<span class='line'>347</span> 	    		 * 				&lt;code>callback(textResult)&lt;/code>
+<span class='line'>348</span> 	    		 * @param {Function} [failureCallBack] OPTIONAL
+<span class='line'>349</span> 	    		 * 			callback function that is triggered when an error occurred.
+<span class='line'>350</span> 	    		 * 			The callback signature is:
+<span class='line'>351</span> 	    		 * 				&lt;code>callback(error)&lt;/code>
+<span class='line'>352</span> 	    		 * @param {Boolean} [isWithIntermediateResults] OPTIONAL
+<span class='line'>353</span> 	    		 * 			if &lt;code>true&lt;/code>, the recognizer will return intermediate results
+<span class='line'>354</span> 	    		 * 			by invoking the successCallback
+<span class='line'>355</span> 	    		 * 
+<span class='line'>356</span> 	    		 * @see #stopRecord
+<span class='line'>357</span> 	    		 */</span><span class="WHIT">
+<span class='line'>358</span> </span><span class="WHIT">    			</span><span class="NAME">startRecord</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">successCallBack</span><span class="PUNC">,</span><span class="NAME">failureCallBack</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">isWithIntermediateResults</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">    				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">    					</span><span class="NAME">failureCallBack</span><span class="PUNC">(</span><span class="STRN">"Audio Input: Speech Recognition (recording) is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>361</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="WHIT">    				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">    					</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"Audio Input: Speech Recognition (recording) is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>366</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>367</span> 	    		 * Stops continuous speech recognition:
+<span class='line'>368</span> 	    		 * 
+<span class='line'>369</span> 	    		 * After {@link #startRecord} was called, invoking this function will stop the recognition
+<span class='line'>370</span> 	    		 * process and return the result by invoking the &lt;code>succesCallback&lt;/code>.
+<span class='line'>371</span> 	    		 * 
+<span class='line'>372</span> 	    		 * TODO specify whether stopRecord should return the "gathered" intermediate results, or just the last one
+<span class='line'>373</span> 	    		 * 
+<span class='line'>374</span> 	    		 * @async
+<span class='line'>375</span> 	    		 * 
+<span class='line'>376</span> 	    		 * @param {Function} [successCallBack] OPTIONAL
+<span class='line'>377</span> 	    		 * 			callback function that is triggered when a text result is available.
+<span class='line'>378</span> 	    		 * 			The callback signature is:
+<span class='line'>379</span> 	    		 * 				&lt;code>callback(textResult)&lt;/code>
+<span class='line'>380</span> 	    		 * @param {Function} [failureCallBack] OPTIONAL
+<span class='line'>381</span> 	    		 * 			callback function that is triggered when an error occurred.
+<span class='line'>382</span> 	    		 * 			The callback signature is:
+<span class='line'>383</span> 	    		 * 				&lt;code>callback(error)&lt;/code>
+<span class='line'>384</span> 	    		 * 
+<span class='line'>385</span> 	    		 * @see #startRecord
+<span class='line'>386</span> 	    		 */</span><span class="WHIT">
+<span class='line'>387</span> </span><span class="WHIT">    			</span><span class="NAME">stopRecord</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">successCallBack</span><span class="PUNC">,</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>388</span> </span><span class="WHIT">    				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>389</span> </span><span class="WHIT">    					</span><span class="NAME">failureCallBack</span><span class="PUNC">(</span><span class="STRN">"Audio Input: Speech Recognition (recording) is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>390</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>391</span> </span><span class="WHIT">    				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>392</span> </span><span class="WHIT">    					</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"Audio Input: Speech Recognition (recording) is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>393</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>394</span> </span><span class="WHIT">    	   		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>395</span> 
+<span class='line'>396</span> </span><span class="WHIT">    	   		</span><span class="COMM">/**
+<span class='line'>397</span>     	   		 * Cancel currently active speech recognition.
+<span class='line'>398</span>     	   		 * 
+<span class='line'>399</span>     	   		 * Has no effect, if no recognition is active.
+<span class='line'>400</span>     	   		 */</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="WHIT">    			</span><span class="NAME">cancelRecognition</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">successCallBack</span><span class="PUNC">,</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">    	   			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">    					</span><span class="NAME">failureCallBack</span><span class="PUNC">(</span><span class="STRN">"Audio Output: canceling Recognize Speech is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="WHIT">    				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>406</span> </span><span class="WHIT">    					</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"Audio Output: canceling Recognize Speech is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>407</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="COMM">///////////////////////////// audio output API: /////////////////////////////</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">    	   		</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>412</span>     			 * Play PCM audio data.
+<span class='line'>413</span>     			 */</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">    	   		</span><span class="NAME">playWAV</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">blob</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onPlayedCallback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">    	   			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>416</span> </span><span class="WHIT">    					</span><span class="NAME">failureCallBack</span><span class="PUNC">(</span><span class="STRN">"Audio Output: play WAV audio is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">    				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">    					</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"Audio Output: play WAV audio is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>422</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>423</span>     			 * Play audio file from the specified URL.
+<span class='line'>424</span>     			 */</span><span class="WHIT">
+<span class='line'>425</span> </span><span class="WHIT">    			</span><span class="NAME">playURL</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onPlayedCallback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>426</span> </span><span class="WHIT">    	   			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>427</span> </span><span class="WHIT">    					</span><span class="NAME">failureCallBack</span><span class="PUNC">(</span><span class="STRN">"Audio Output: play audio from URL is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>428</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">    				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">    					</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"Audio Output: play audio from URL is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>432</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>433</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>434</span>     			 * Get an audio object for the audio file specified by URL.
+<span class='line'>435</span>     			 * 
+<span class='line'>436</span>     			 * The audio object exports the following functions:
+<span class='line'>437</span>     			 * 
+<span class='line'>438</span>     			 * play
+<span class='line'>439</span>     			 * stop
+<span class='line'>440</span>     			 * release
+<span class='line'>441</span>     			 * enable
+<span class='line'>442</span>     			 * disable
+<span class='line'>443</span>     			 * setVolume
+<span class='line'>444</span>     			 * getDuration
+<span class='line'>445</span>     			 * isPaused
+<span class='line'>446</span>     			 * isEnabled
+<span class='line'>447</span>     			 * 
+<span class='line'>448</span>     			 * NOTE: the audio object should only be used, after the &lt;code>onLoadedCallback&lt;/code>
+<span class='line'>449</span>     			 *       was triggered.
+<span class='line'>450</span>     			 * 
+<span class='line'>451</span>     			 * @param {String} url
+<span class='line'>452</span>     			 * @param {Function} [onPlayedCallback] OPTIONAL
+<span class='line'>453</span>     			 * @param {Function} [failureCallBack] OPTIONAL
+<span class='line'>454</span>     			 * @param {Function} [onLoadedCallBack] OPTIONAL
+<span class='line'>455</span>     			 */</span><span class="WHIT">
+<span class='line'>456</span> </span><span class="WHIT">    			</span><span class="NAME">getURLAsAudio</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onPlayedCallback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failureCallBack</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onLoadedCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>457</span> </span><span class="WHIT">    	   			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>458</span> </span><span class="WHIT">    					</span><span class="NAME">failureCallBack</span><span class="PUNC">(</span><span class="STRN">"Audio Output: create audio from URL is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>459</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>460</span> </span><span class="WHIT">    				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>461</span> </span><span class="WHIT">    					</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"Audio Output: create audio from URL is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>462</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>463</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>464</span> </span><span class="COMM">///////////////////////////// text-to-speech API: /////////////////////////////</span><span class="WHIT">
+<span class='line'>465</span> </span><span class="WHIT">    			</span><span class="WHIT">
+<span class='line'>466</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>467</span>     			 * Synthesizes ("read out loud") text.
+<span class='line'>468</span>     			 * 
+<span class='line'>469</span>     			 * @param {String|Array[String]|PlainObjec} parameter
+<span class='line'>470</span>     			 * 		if &lt;code>String&lt;/code> or &lt;code>Array&lt;/code> of &lt;code>String&lt;/code>s
+<span class='line'>471</span>     			 * 			  synthesizes the text of the String, for an Array: each entry is interpreted as "sentence";
+<span class='line'>472</span>     			 * 				after each sentence, a short pause is inserted before synthesizing the
+<span class='line'>473</span>     			 * 				the next sentence&lt;br>
+<span class='line'>474</span>     			 * 		for a &lt;code>PlainObject&lt;/code>, the following properties should be used:
+<span class='line'>475</span>     			 * 		&lt;pre>{
+<span class='line'>476</span>     			 * 			  text: string OR string Array, text that should be read aloud
+<span class='line'>477</span>     			 * 			, pauseLength: OPTIONAL Length of the pauses between sentences in milliseconds
+<span class='line'>478</span>     			 * 			, forceSingleSentence: OPTIONAL boolean, if true, a string Array will be turned into a single string
+<span class='line'>479</span>     			 * 			, split: OPTIONAL boolean, if true and the text is a single string, it will be split using a splitter function
+<span class='line'>480</span>     			 * 			, splitter: OPTIONAL function, replaces the default splitter-function. It takes a simple string as input and gives a string Array as output
+<span class='line'>481</span>     			 * 		}&lt;/pre>
+<span class='line'>482</span>     			 */</span><span class="WHIT">
+<span class='line'>483</span> </span><span class="WHIT">    			</span><span class="NAME">textToSpeech</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">parameter</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onPlayedCallback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>484</span> </span><span class="WHIT">    	   			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>485</span> </span><span class="WHIT">    					</span><span class="NAME">failureCallBack</span><span class="PUNC">(</span><span class="STRN">"Audio Output: Text To Speech is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>486</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>487</span> </span><span class="WHIT">    				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>488</span> </span><span class="WHIT">    					</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"Audio Output: Text To Speech is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>489</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>490</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>491</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>492</span>     			 * Cancel current synthesis.
+<span class='line'>493</span>     			 */</span><span class="WHIT">
+<span class='line'>494</span> </span><span class="WHIT">    			</span><span class="NAME">cancelSpeech</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">successCallBack</span><span class="PUNC">,</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>495</span> </span><span class="WHIT">    	   			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">failureCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>496</span> </span><span class="WHIT">    					</span><span class="NAME">failureCallBack</span><span class="PUNC">(</span><span class="STRN">"Audio Output: canceling Text To Speech is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>497</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>498</span> </span><span class="WHIT">    				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>499</span> </span><span class="WHIT">    					</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"Audio Output: canceling Text To Speech is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>500</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>501</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>502</span> </span><span class="WHIT">    			</span><span class="WHIT">
+<span class='line'>503</span> </span><span class="COMM">///////////////////////////// ADDITIONAL (optional) functions: ///////////////////////////// </span><span class="WHIT">
+<span class='line'>504</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>505</span>     			 * Set the volume for the speech synthesis (text-to-speech).
+<span class='line'>506</span>     			 * 
+<span class='line'>507</span>     			 * @param {Number} newValue
+<span class='line'>508</span>     			 * 				TODO specify format / range
+<span class='line'>509</span>     			 */</span><span class="WHIT">
+<span class='line'>510</span> </span><span class="WHIT">    			</span><span class="NAME">setTextToSpeechVolume</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">newValue</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>511</span> </span><span class="WHIT">    				</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">"Audio Output: set volume for Text To Speech is not supported."</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>512</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>513</span> </span><span class="WHIT">    			</span><span class="WHIT">
+<span class='line'>514</span> 
+<span class='line'>515</span> </span><span class="COMM">///////////////////////////// MediaManager "managing" functions: ///////////////////////////// </span><span class="WHIT">
+<span class='line'>516</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>517</span>     	    	 * Adds the handler-function for the event.
+<span class='line'>518</span>     	    	 * 
+<span class='line'>519</span>     	    	 * This function calls {@link #_notifyObservers} for the eventName with
+<span class='line'>520</span>     	    	 * &lt;code>actionType "added"&lt;/code>.
+<span class='line'>521</span>     	    	 * 
+<span class='line'>522</span>     	    	 * 
+<span class='line'>523</span>     	    	 * Event names (and firing events) are specific to the loaded media plugins.
+<span class='line'>524</span>     	    	 * 
+<span class='line'>525</span>     	    	 * TODO list events that the default media-plugins support
+<span class='line'>526</span>     	    	 *   * "miclevelchanged": fired by AudioInput plugins that support querying the microphone (audio input) levels
+<span class='line'>527</span>     	    	 * 
+<span class='line'>528</span>     	    	 * A plugin can tigger / fire events using the helper {@link #_fireEvent}
+<span class='line'>529</span>     	    	 * of the MediaManager.
+<span class='line'>530</span>     	    	 * 
+<span class='line'>531</span>     	    	 * 
+<span class='line'>532</span>     	    	 * Media plugins may observe registration / removal of listeners
+<span class='line'>533</span>     	    	 * via {@link #_addListenerObserver} and {@link #_removeListenerObserver}.
+<span class='line'>534</span>     	    	 * Or get and iterate over listeners via {@link #getListeners}.
+<span class='line'>535</span>     	    	 * 
+<span class='line'>536</span>     	    	 * 
+<span class='line'>537</span>     	    	 * 
+<span class='line'>538</span>     	    	 * 
+<span class='line'>539</span>     	    	 * @param {String} eventName
+<span class='line'>540</span>     	    	 * @param {Function} eventHandler
+<span class='line'>541</span>     	    	 * 
+<span class='line'>542</span>     	    	 * @function
+<span class='line'>543</span>     	    	 */</span><span class="WHIT">
+<span class='line'>544</span> </span><span class="WHIT">    			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">addListener</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">addListenerImpl</span><span class="WHIT">
+<span class='line'>545</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>546</span>     	    	 * Removes the handler-function for the event.
+<span class='line'>547</span>     	    	 * 
+<span class='line'>548</span>     	    	 * Calls {@link #_notifyObservers} for the eventName with
+<span class='line'>549</span>     	    	 * &lt;code>actionType "removed"&lt;/code>, if the handler
+<span class='line'>550</span>     	    	 * was actually removed.
+<span class='line'>551</span>     	    	 * 
+<span class='line'>552</span>     	    	 * @param {String} eventName
+<span class='line'>553</span>     	    	 * @param {Function} eventHandler
+<span class='line'>554</span>     	    	 * 
+<span class='line'>555</span>     	    	 * @returns {Boolean}
+<span class='line'>556</span>     	    	 * 		&lt;code>true&lt;/code> if the handler function was actually 
+<span class='line'>557</span>     	    	 * 		removed, and &lt;code>false&lt;/code> otherwise.
+<span class='line'>558</span>     	    	 * 
+<span class='line'>559</span>     	    	 * @function
+<span class='line'>560</span>     	    	 */</span><span class="WHIT">
+<span class='line'>561</span> </span><span class="WHIT">    			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">removeListener</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">removeListenerImpl</span><span class="WHIT">
+<span class='line'>562</span> </span><span class="WHIT">    			</span><span class="COMM">/** 
+<span class='line'>563</span>     			 * @function
+<span class='line'>564</span>     			 * @see #addListener
+<span class='line'>565</span>     			 */</span><span class="WHIT">
+<span class='line'>566</span> </span><span class="WHIT">    			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">on</span><span class="PUNC">:</span><span class="NAME">addListenerImpl</span><span class="WHIT">
+<span class='line'>567</span> </span><span class="WHIT">    			</span><span class="COMM">/** 
+<span class='line'>568</span>     			 * @function
+<span class='line'>569</span>     			 * @see #removeListener
+<span class='line'>570</span>     			 */</span><span class="WHIT">
+<span class='line'>571</span> </span><span class="WHIT">    			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">off</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">removeListenerImpl</span><span class="WHIT">
+<span class='line'>572</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>573</span>     			 * Get list of registered listeners / handlers for an event.
+<span class='line'>574</span>     			 * 
+<span class='line'>575</span>     			 * @returns {Array[Function]} of event-handlers. 
+<span class='line'>576</span>     			 * 				Empty, if there are no event handlers for eventName
+<span class='line'>577</span>     			 */</span><span class="WHIT">
+<span class='line'>578</span> </span><span class="WHIT">    			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">getListeners</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>579</span> </span><span class="WHIT">    				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">listener.get</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>580</span> </span><span class="WHIT">    				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">list.length</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>581</span> </span><span class="WHIT">    					</span><span class="COMM">//return copy of listener-list</span><span class="WHIT">
+<span class='line'>582</span> </span><span class="WHIT">    					</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">list.slice</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="NAME">list.length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>583</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>584</span> </span><span class="WHIT">    				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>585</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>586</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>587</span>     			 * Check if at least one listener / handler is  registered for the event.
+<span class='line'>588</span>     			 * 
+<span class='line'>589</span>     			 * @returns {Boolean} &lt;code>true&lt;/code> if at least 1 handler is registered 
+<span class='line'>590</span>     			 * 					  for eventName; otherwise &lt;code>false&lt;/code>.
+<span class='line'>591</span>     			 */</span><span class="WHIT">
+<span class='line'>592</span> </span><span class="WHIT">    			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">hasListeners</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>593</span> </span><span class="WHIT">    				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">listener.get</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>594</span> </span><span class="WHIT">    				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">list.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>595</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>596</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>597</span>     			 * Helper for firing / triggering an event.
+<span class='line'>598</span>     			 * This should only be used by media plugins (that handle the eventName).
+<span class='line'>599</span>     			 * 
+<span class='line'>600</span>     	    	 * @param {String} eventName
+<span class='line'>601</span>     	    	 * @param {Array} argsArray
+<span class='line'>602</span>     	    	 * 					the list of arguments with which the event-handlers
+<span class='line'>603</span>     	    	 * 					will be called.
+<span class='line'>604</span>     	    	 * @protected
+<span class='line'>605</span>     			 */</span><span class="WHIT">
+<span class='line'>606</span> </span><span class="WHIT">    			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">_fireEvent</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">argsArray</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>607</span> </span><span class="WHIT">    				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">listener.get</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>608</span> </span><span class="WHIT">    				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">list.length</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>609</span> </span><span class="WHIT">    					</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">list.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>610</span> </span><span class="WHIT">    						</span><span class="NAME">list</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">apply</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">argsArray</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>611</span> </span><span class="WHIT">    					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>612</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>613</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>614</span> </span><span class="WHIT">    			</span><span class="COMM">/** 
+<span class='line'>615</span>     			 * Helper for notifying listener-observers about changes (adding/removing listeners).
+<span class='line'>616</span>     			 * This should only be used by media plugins (that handle the eventName).
+<span class='line'>617</span>     			 * 
+<span class='line'>618</span>     			 * @param {String} eventName
+<span class='line'>619</span>     			 * @param {String} actionType
+<span class='line'>620</span>     			 * 					the change-type that occurred for the event/event-handler:
+<span class='line'>621</span>     			 * 					one of &lt;code>["added" | "removed"]&lt;/code>.
+<span class='line'>622</span>     	    	 * @param {Function} eventHandler
+<span class='line'>623</span>     	    	 * 					the event-handler function that has changed.
+<span class='line'>624</span>     	    	 * 
+<span class='line'>625</span>     			 * @protected
+<span class='line'>626</span>     			 */</span><span class="WHIT">
+<span class='line'>627</span> </span><span class="WHIT">    			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">_notifyObservers</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">actionType</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eventHandler</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="COMM">//actionType: one of "added" | "removed"</span><span class="WHIT">
+<span class='line'>628</span> </span><span class="WHIT">    				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">listenerObserver.get</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>629</span> </span><span class="WHIT">    				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">list.length</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>630</span> </span><span class="WHIT">    					</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">list.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>631</span> </span><span class="WHIT">    						</span><span class="NAME">list</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">(</span><span class="NAME">actionType</span><span class="PUNC">,</span><span class="NAME">eventHandler</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>632</span> </span><span class="WHIT">    					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>633</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>634</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>635</span> </span><span class="WHIT">    			</span><span class="COMM">/**
+<span class='line'>636</span>     			 * Add an observer for registration / removal of event-handler.
+<span class='line'>637</span>     			 * 
+<span class='line'>638</span>     			 * The observer gets notified,when handlers are registered / removed for the event.
+<span class='line'>639</span>     			 * 
+<span class='line'>640</span>     			 * The observer-callback function will be called with the following
+<span class='line'>641</span>     			 * arguments
+<span class='line'>642</span>     			 * 
+<span class='line'>643</span>     			 * &lt;code>(eventName, ACTION_TYPE, eventHandler)&lt;/code>
+<span class='line'>644</span>     			 * where
+<span class='line'>645</span>     			 * &lt;ul>
+<span class='line'>646</span>     			 *  &lt;li>eventName: String the name of the event that should be observed&lt;/li>
+<span class='line'>647</span>     			 *  &lt;li>ACTION_TYPE: the type of action: "added" if the handler was 
+<span class='line'>648</span>     			 *      registered for the event, "removed" if the the handler was removed
+<span class='line'>649</span>     			 *  &lt;/li>
+<span class='line'>650</span>     			 *  &lt;li>eventHandler: the handler function that was registered or removed&lt;/li>
+<span class='line'>651</span>     			 * &lt;/ul> 
+<span class='line'>652</span>     			 * 
+<span class='line'>653</span>     	    	 * @param {String} eventName
+<span class='line'>654</span>     	    	 * @param {Function} observerCallback
+<span class='line'>655</span>     			 */</span><span class="WHIT">
+<span class='line'>656</span> </span><span class="WHIT">    			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">_addListenerObserver</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">observerCallback</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>657</span> </span><span class="WHIT">    				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">listenerObserver.get</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>658</span> </span><span class="WHIT">    				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">list</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>659</span> </span><span class="WHIT">    					</span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NAME">observerCallback</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>660</span> </span><span class="WHIT">    					</span><span class="NAME">listenerObserver.put</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">list</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>661</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>662</span> </span><span class="WHIT">    				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>663</span> </span><span class="WHIT">    					</span><span class="NAME">list.push</span><span class="PUNC">(</span><span class="NAME">observerCallback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>664</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>665</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>666</span> </span><span class="WHIT">    			</span><span class="WHIT">
+<span class='line'>667</span> </span><span class="WHIT">    			</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">_removeListenerObserver</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">observerCallback</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>668</span> </span><span class="WHIT">    				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isRemoved</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>669</span> </span><span class="WHIT">    				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">list</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">listenerObserver.get</span><span class="PUNC">(</span><span class="NAME">eventName</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>670</span> </span><span class="WHIT">    				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">list</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>671</span> </span><span class="WHIT">    					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">list.length</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>672</span> </span><span class="WHIT">    					</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">>=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">--</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>673</span> </span><span class="WHIT">    						</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">list</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT">  </span><span class="NAME">observerCallback</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>674</span> </span><span class="WHIT">    							</span><span class="WHIT">
+<span class='line'>675</span> </span><span class="WHIT">    							</span><span class="COMM">//move all handlers after i by 1 index-position ahead:</span><span class="WHIT">
+<span class='line'>676</span> </span><span class="WHIT">    							</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">--</span><span class="NAME">j</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>677</span> </span><span class="WHIT">    								</span><span class="NAME">list</span><span class="PUNC">[</span><span class="NAME">j</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">list</span><span class="PUNC">[</span><span class="NAME">j</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>678</span> </span><span class="WHIT">    							</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>679</span> </span><span class="WHIT">    							</span><span class="COMM">//remove last array-element</span><span class="WHIT">
+<span class='line'>680</span> </span><span class="WHIT">    							</span><span class="NAME">list.splice</span><span class="PUNC">(</span><span class="NAME">size</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>681</span> </span><span class="WHIT">    							</span><span class="WHIT">
+<span class='line'>682</span> </span><span class="WHIT">    							</span><span class="NAME">isRemoved</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>683</span> </span><span class="WHIT">    							</span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>684</span> </span><span class="WHIT">    						</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>685</span> </span><span class="WHIT">    					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>686</span> </span><span class="WHIT">    				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>687</span> </span><span class="WHIT">    				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">isRemoved</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>688</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>689</span> </span><span class="WHIT">    			</span><span class="WHIT">
+<span class='line'>690</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="COMM">//END: return{...</span><span class="WHIT">
+<span class='line'>691</span> </span><span class="WHIT">    	</span><span class="WHIT">
+<span class='line'>692</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="COMM">//END: constructor(){...</span><span class="WHIT">
+<span class='line'>693</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'>694</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'>695</span> </span><span class="WHIT">    </span><span class="COMM">//has 2 default configuarions:</span><span class="WHIT">
+<span class='line'>696</span> </span><span class="WHIT">    </span><span class="COMM">// if isCordovaEnvironment TRUE: use 'cordova' config</span><span class="WHIT">
+<span class='line'>697</span> </span><span class="WHIT">    </span><span class="COMM">// if FALSEy: use 'browser' config</span><span class="WHIT">
+<span class='line'>698</span> </span><span class="WHIT">    </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>699</span> </span><span class="WHIT">    </span><span class="COMM">// NOTE: this setting/paramater is overwritten, if the configuration has a property 'mediaPlugins' set!!!</span><span class="WHIT">
+<span class='line'>700</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>701</span>      * HELPER for init-function:
+<span class='line'>702</span>      * 	determines, which plugins (i.e. files) should be loaded.
+<span class='line'>703</span>      * 
+<span class='line'>704</span>      * &lt;p>
+<span class='line'>705</span>      * has 2 default configuarions:&lt;br>
+<span class='line'>706</span>      * if isCordovaEnvironment TRUE: use 'cordova' config&lt;br>
+<span class='line'>707</span>      * if FALSEy: use 'browser' config
+<span class='line'>708</span>      * &lt;p>
+<span class='line'>709</span>      * OR&lt;br>
+<span class='line'>710</span>      * loads the list for the current environment (cordova or browser) that is set in configuration.json via &lt;br>
+<span class='line'>711</span>      * &lt;pre>
+<span class='line'>712</span>      * "mediaManager": {
+<span class='line'>713</span>      * 		"cordova": [...],
+<span class='line'>714</span>      * 		"browser": [...]
+<span class='line'>715</span>      * } 
+<span class='line'>716</span>      * &lt;/pre>
+<span class='line'>717</span>      * 
+<span class='line'>718</span>      * @returns {Array&lt;String>}
+<span class='line'>719</span>      * 				the list of plugins which should be loaded
+<span class='line'>720</span>      * 
+<span class='line'>721</span> 	 * @private
+<span class='line'>722</span> 	 * @memberOf mmir.MediaManager#
+<span class='line'>723</span>      */</span><span class="WHIT">
+<span class='line'>724</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">getPluginsToLoad</span><span class="PUNC">(</span><span class="NAME">isCordovaEnvironment</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>725</span> </span><span class="WHIT">    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">env</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>726</span> </span><span class="WHIT">    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pluginArray</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>727</span> </span><span class="WHIT">    	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isCordovaEnvironment</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>728</span> </span><span class="WHIT">    		</span><span class="NAME">env</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'cordova'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>729</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>730</span> </span><span class="WHIT">    		</span><span class="NAME">env</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'browser'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>731</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>732</span> </span><span class="WHIT">    	</span><span class="WHIT">
+<span class='line'>733</span> </span><span class="WHIT">    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dataFromConfig</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">configurationManager.get</span><span class="PUNC">(</span><span class="STRN">'mediaManager.plugins'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>734</span> </span><span class="WHIT">    	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">dataFromConfig</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">dataFromConfig</span><span class="PUNC">[</span><span class="NAME">env</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>735</span> </span><span class="WHIT">    		</span><span class="NAME">pluginArray</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pluginArray.concat</span><span class="PUNC">(</span><span class="NAME">dataFromConfig</span><span class="PUNC">[</span><span class="NAME">env</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>736</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>737</span> </span><span class="WHIT">    		</span><span class="NAME">pluginArray</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pluginArray.concat</span><span class="PUNC">(</span><span class="NAME">pluginsToLoad</span><span class="PUNC">[</span><span class="NAME">env</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>738</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>739</span> </span><span class="WHIT">    	</span><span class="WHIT">
+<span class='line'>740</span> </span><span class="WHIT">    	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pluginArray</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>741</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>742</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>743</span>      * 
+<span class='line'>744</span> 	 * @private
+<span class='line'>745</span> 	 * @memberOf mmir.MediaManager#
+<span class='line'>746</span>      */</span><span class="WHIT">
+<span class='line'>747</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">loadAllPlugins</span><span class="PUNC">(</span><span class="NAME">pluginArray</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">successCallback</span><span class="PUNC">,</span><span class="NAME">failureCallback</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>748</span> </span><span class="WHIT">    	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">pluginArray</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">pluginArray.length</span><span class="PUNC">&lt;</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>749</span> </span><span class="WHIT">    		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">successCallback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>750</span> </span><span class="WHIT">    			</span><span class="NAME">successCallback</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>751</span> </span><span class="WHIT">    		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>752</span> </span><span class="WHIT">    		</span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>753</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>754</span> </span><span class="WHIT">    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">newPluginName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pluginArray.pop</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>755</span> </span><span class="WHIT">    	</span><span class="NAME">loadPlugin</span><span class="PUNC">(</span><span class="NAME">newPluginName</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>756</span> </span><span class="WHIT">    		</span><span class="NAME">console.log</span><span class="PUNC">(</span><span class="NAME">newPluginName</span><span class="PUNC">+</span><span class="STRN">' loaded!'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>757</span> </span><span class="WHIT">    		</span><span class="NAME">loadAllPlugins</span><span class="PUNC">(</span><span class="NAME">pluginArray</span><span class="PUNC">,</span><span class="NAME">successCallback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failureCallback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>758</span> </span><span class="WHIT">    		</span><span class="NAME">failureCallback</span><span class="WHIT">
+<span class='line'>759</span> </span><span class="WHIT">    	</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>760</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>761</span> </span><span class="WHIT">    	</span><span class="WHIT">
+<span class='line'>762</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'>763</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_stub</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>764</span> </span><span class="WHIT">    	</span><span class="WHIT">
+<span class='line'>765</span> </span><span class="WHIT">    	</span><span class="COMM">/** @scope MediaManager.prototype */</span><span class="WHIT">
+<span class='line'>766</span> </span><span class="WHIT">    	</span><span class="WHIT">
+<span class='line'>767</span> </span><span class="WHIT">    	</span><span class="COMM">//TODO add for backwards compatibility?:</span><span class="WHIT">
+<span class='line'>768</span> </span><span class="COMM">//    	create : function(){ return this.init.apply(this, arguments); },</span><span class="WHIT">
+<span class='line'>769</span> </span><span class="WHIT">    	</span><span class="WHIT">
+<span class='line'>770</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>771</span>          * Object containing the instance of the class {{#crossLink "audioInput"}}{{/crossLink}} 
+<span class='line'>772</span>          * 
+<span class='line'>773</span>          * If &lt;em>listenerList&lt;/em> is provided, each listener will be registered after the instance
+<span class='line'>774</span>          * is initialized, but before media-plugins (i.e. environment specfific implementations) are
+<span class='line'>775</span>          * loaded.
+<span class='line'>776</span>          * Each entry in the &lt;em>listenerList&lt;/em> must have fields &lt;tt>name&lt;/tt> (String) and
+<span class='line'>777</span>          * &lt;tt>listener&lt;/tt> (Function), where
+<span class='line'>778</span>          * &lt;br>
+<span class='line'>779</span>          * name: is the name of the event
+<span class='line'>780</span>          * &lt;br>
+<span class='line'>781</span>          * listener: is the listener implementation (the signature/arguments of the listener function depends
+<span class='line'>782</span>          * 			 on the specific event for which the listener will be registered)
+<span class='line'>783</span>          *  
+<span class='line'>784</span>          * 
+<span class='line'>785</span>          * @method init
+<span class='line'>786</span>          * @param {Function} [successCallback] OPTIONAL
+<span class='line'>787</span>          * 				 callback that gets triggered after the MediaManager instance has been initialized.
+<span class='line'>788</span>          * @param {Function} [failureCallback] OPTIONAL
+<span class='line'>789</span>          * 				 a failure callback that gets triggered if an error occurs during initialization.
+<span class='line'>790</span>          * @param {Array[Object]} [listenerList] OPTIONAL
+<span class='line'>791</span>          * 				 a list of listeners that should be registered, where each entry is an Object
+<span class='line'>792</span>          * 				 with properties:
+<span class='line'>793</span>          * 				 &lt;pre>
+<span class='line'>794</span>          * 					{
+<span class='line'>795</span>          * 						name: String the event name,
+<span class='line'>796</span>          * 						listener: Function the handler function
+<span class='line'>797</span>          * 					}
+<span class='line'>798</span>          * 				 &lt;/pre>
+<span class='line'>799</span>          * @return {Object}
+<span class='line'>800</span>          * 				an Deferred object that gets resolved, after the {@link mmir.MediaManager}
+<span class='line'>801</span>          * 				has been initialized.
+<span class='line'>802</span>          * @public
+<span class='line'>803</span>          * 
+<span class='line'>804</span>          * @memberOf mmir.MediaManager.prototype
+<span class='line'>805</span>          * 
+<span class='line'>806</span>          */</span><span class="WHIT">
+<span class='line'>807</span> </span><span class="WHIT">        </span><span class="NAME">init</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">successCallback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failureCallback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listenerList</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>808</span> </span><span class="WHIT">        	</span><span class="WHIT">
+<span class='line'>809</span> </span><span class="WHIT">        	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">defer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">jQuery.Deferred</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>810</span> </span><span class="WHIT">        	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">deferredSuccess</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>811</span> </span><span class="WHIT">    			</span><span class="NAME">defer.resolve</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>812</span> </span><span class="WHIT">    		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>813</span> </span><span class="WHIT">        	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">deferredFailure</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>814</span> </span><span class="WHIT">    			</span><span class="NAME">defer.reject</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>815</span> </span><span class="WHIT">    		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>816</span> </span><span class="WHIT">        	</span><span class="WHIT">
+<span class='line'>817</span> </span><span class="WHIT">    		</span><span class="WHIT">
+<span class='line'>818</span> </span><span class="WHIT">        	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">successCallback</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>819</span> </span><span class="WHIT">        		</span><span class="NAME">defer.done</span><span class="PUNC">(</span><span class="NAME">successCallback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>820</span> </span><span class="WHIT">        	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>821</span> </span><span class="WHIT">        	</span><span class="WHIT">
+<span class='line'>822</span> </span><span class="WHIT">        	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">deferredFailure</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>823</span> </span><span class="WHIT">        		</span><span class="NAME">defer.fail</span><span class="PUNC">(</span><span class="NAME">failureCallback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>824</span> </span><span class="WHIT">        	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>825</span> </span><span class="WHIT">        	</span><span class="WHIT">
+<span class='line'>826</span> </span><span class="WHIT">        	</span><span class="WHIT">
+<span class='line'>827</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">instance</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>828</span> </span><span class="WHIT">            	</span><span class="NAME">jQuery.extend</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">,</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="NAME">constructor</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>829</span> </span><span class="WHIT">                </span><span class="NAME">instance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>830</span> </span><span class="WHIT">                </span><span class="WHIT">
+<span class='line'>831</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">listenerList</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>832</span> </span><span class="WHIT">                	</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">listenerList.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>833</span> </span><span class="WHIT">                		</span><span class="NAME">instance.addListener</span><span class="PUNC">(</span><span class="NAME">listenerList</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listenerList</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">listener</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>834</span> </span><span class="WHIT">                	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>835</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>836</span> </span><span class="WHIT">                </span><span class="WHIT">
+<span class='line'>837</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isCordovaEnvironment</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="WHIT"> </span><span class="NAME">constants.isBrowserEnv</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//FIXME implement mechanism for configuring this!!</span><span class="WHIT">
+<span class='line'>838</span> </span><span class="WHIT">                </span><span class="WHIT">
+<span class='line'>839</span> </span><span class="WHIT">            	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pluginArray</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">getPluginsToLoad</span><span class="PUNC">(</span><span class="NAME">isCordovaEnvironment</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>840</span> </span><span class="WHIT">                </span><span class="NAME">loadAllPlugins</span><span class="PUNC">(</span><span class="NAME">pluginArray</span><span class="PUNC">,</span><span class="NAME">deferredSuccess</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">deferredFailure</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>841</span> 
+<span class='line'>842</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>843</span> </span><span class="WHIT">            </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">listenerList</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>844</span> </span><span class="WHIT">            	</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">listenerList.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>845</span> </span><span class="WHIT">            		</span><span class="NAME">instance.addListener</span><span class="PUNC">(</span><span class="NAME">listenerList</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listenerList</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">listener</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>846</span> </span><span class="WHIT">            	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>847</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>848</span> </span><span class="WHIT">            </span><span class="WHIT">
+<span class='line'>849</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">defer.promise</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>850</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>851</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>852</span>          * Same as {@link #init}.
+<span class='line'>853</span>          * 
+<span class='line'>854</span>          * @deprecated use &lt;code>init()&lt;/code> instead.
+<span class='line'>855</span>          * 
+<span class='line'>856</span>          * @method getInstance
+<span class='line'>857</span>          * @public
+<span class='line'>858</span>          */</span><span class="WHIT">
+<span class='line'>859</span> </span><span class="WHIT">        </span><span class="NAME">getInstance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>860</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.init</span><span class="PUNC">(</span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>861</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>862</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>863</span>          * loads a file. If the file implements a function initialize(f)
+<span class='line'>864</span>          * where the function f is called with a set of functions e, then those functions in e 
+<span class='line'>865</span>          * are added to the visibility of audioInput, and will from now on be applicable by calling
+<span class='line'>866</span>          * mmir.MediaManager.&lt;function name>().
+<span class='line'>867</span>          * 
+<span class='line'>868</span>          * @deprecated do not use.
+<span class='line'>869</span>          * @method loadFile
+<span class='line'>870</span>          * @protected
+<span class='line'>871</span>          * 
+<span class='line'>872</span>          */</span><span class="WHIT">
+<span class='line'>873</span> </span><span class="WHIT">    	</span><span class="NAME">loadFile</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">filePath</span><span class="PUNC">,</span><span class="NAME">successCallback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failureCallback</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>874</span> </span><span class="WHIT">    		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">instance</span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>875</span> </span><span class="WHIT">    			</span><span class="NAME">this.init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>876</span> </span><span class="WHIT">    		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>877</span> </span><span class="WHIT">    		</span><span class="WHIT">
+<span class='line'>878</span> </span><span class="WHIT">    		</span><span class="NAME">loadPlugin</span><span class="PUNC">(</span><span class="NAME">filePath</span><span class="PUNC">,</span><span class="NAME">sucessCallback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failureCallback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>879</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>880</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>881</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>882</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'>883</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">_stub</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>884</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>885</span> </span><span class="WHIT">	</span><span class="COMM">/** #@- */</span><span class="WHIT">
+<span class='line'>886</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'>887</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//END: define(..., function(){...</span><span class="WHIT">
+<span class='line'>888</span> </span></pre></body></html>
