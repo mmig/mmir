@@ -42,54 +42,54 @@
 <span class='line'> 35</span>  * vs. BROWSER). As a consequence the constants object has 2 modes, that can be
 <span class='line'> 36</span>  * switchted via the getInstance()-method, e.g. &lt;code>getInstance(false)&lt;/code>
 <span class='line'> 37</span>  * 
-<span class='line'> 38</span>  * @example &lt;code>mmir.Constants&lt;/code>
-<span class='line'> 39</span>  * @category core
-<span class='line'> 40</span>  * 
-<span class='line'> 41</span>  * @name Constants
-<span class='line'> 42</span>  * @exports Constants as mmir.Constants
-<span class='line'> 43</span>  * @static
-<span class='line'> 44</span>  * @class
-<span class='line'> 45</span>  */</span><span class="WHIT">
-<span class='line'> 46</span> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="WHIT">
-<span class='line'> 47</span> </span><span class="WHIT">		</span><span class="NAME">env</span><span class="WHIT">
-<span class='line'> 48</span> </span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 49</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'> 50</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'> 51</span> 	 * #@+
-<span class='line'> 52</span> 	 * @private
-<span class='line'> 53</span> 	 */</span><span class="WHIT">
-<span class='line'> 54</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'> 55</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'> 56</span> 	 * Object containing the instance of the class constants 
-<span class='line'> 57</span> 	 * 
-<span class='line'> 58</span> 	 * @property instance
-<span class='line'> 59</span> 	 * @type mmir.Constants#constructor
-<span class='line'> 60</span> 	 * @private
-<span class='line'> 61</span> 	 */</span><span class="WHIT">
-<span class='line'> 62</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">instance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 63</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'> 64</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'> 65</span> 	 * @memberOf Constants#
-<span class='line'> 66</span> 	 */</span><span class="WHIT">
-<span class='line'> 67</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isBrowserEnv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 68</span> 
-<span class='line'> 69</span> </span><span class="WHIT">	</span><span class="COMM">// needed basepath</span><span class="WHIT">
-<span class='line'> 70</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'> 71</span> 	 * the base path for the "invoking" app (i.e. where the main HTML file is located)
-<span class='line'> 72</span> 	 * @memberOf Constants#
-<span class='line'> 73</span> 	 */</span><span class="WHIT">
-<span class='line'> 74</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 75</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'> 76</span> </span><span class="WHIT">    </span><span class="COMM">///////////////////////////////////////////////////// Paths /////////////////////////////////////////////////////</span><span class="WHIT">
-<span class='line'> 77</span> </span><span class="WHIT">    </span><span class="WHIT">
-<span class='line'> 78</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'> 79</span> 	 * the base path of the (i.e. this) library
-<span class='line'> 80</span> 	 * @memberOf Constants#
-<span class='line'> 81</span> 	 */</span><span class="WHIT">
-<span class='line'> 82</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"mmirf/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 83</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'> 84</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'> 85</span> 	 * the path for WebWorkers
+<span class='line'> 38</span>  * 
+<span class='line'> 39</span>  * @name Constants
+<span class='line'> 40</span>  * @memberOf mmir
+<span class='line'> 41</span>  * @static
+<span class='line'> 42</span>  * @class
+<span class='line'> 43</span>  * 
+<span class='line'> 44</span>  * @requires org.apache.cordova.device: cordova plugin add org.apache.cordova.device
+<span class='line'> 45</span>  * 
+<span class='line'> 46</span>  * @example var appBase = mmir.Constants.getBasePath();
+<span class='line'> 47</span>  */</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">		</span><span class="NAME">env</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 53</span> 	 * Object containing the instance of the class constants 
+<span class='line'> 54</span> 	 * 
+<span class='line'> 55</span> 	 * @type mmir.Constants
+<span class='line'> 56</span> 	 * @private
+<span class='line'> 57</span> 	 * @memberOf Constants#
+<span class='line'> 58</span> 	 */</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">instance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 62</span> 	 * @memberOf Constants#
+<span class='line'> 63</span> 	 */</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isBrowserEnv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> 
+<span class='line'> 66</span> </span><span class="WHIT">	</span><span class="COMM">// needed basepath</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 68</span> 	 * the base path for the "invoking" app (i.e. where the main HTML file is located)
+<span class='line'> 69</span> 	 * @private
+<span class='line'> 70</span> 	 * @memberOf Constants#
+<span class='line'> 71</span> 	 */</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">    </span><span class="COMM">///////////////////////////////////////////////////// Paths /////////////////////////////////////////////////////</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 77</span> 	 * the base path of the (i.e. this) library
+<span class='line'> 78</span> 	 * @private
+<span class='line'> 79</span> 	 * @memberOf Constants#
+<span class='line'> 80</span> 	 */</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"mmirf/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 84</span> 	 * the path for WebWorkers
+<span class='line'> 85</span> 	 * @private
 <span class='line'> 86</span> 	 * @memberOf Constants#
 <span class='line'> 87</span> 	 */</span><span class="WHIT">
 <span class='line'> 88</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">workerPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"workers/"</span><span class="PUNC">;</span><span class="WHIT">
@@ -98,423 +98,493 @@
 <span class='line'> 91</span> 	 *  
 <span class='line'> 92</span> 	 * TODO deprecated? since Cordova 3.x brings its own loading mechanism now...
 <span class='line'> 93</span> 	 * 
-<span class='line'> 94</span> 	 * @memberOf Constants#
-<span class='line'> 95</span> 	 */</span><span class="WHIT">
-<span class='line'> 96</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pluginsPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"plugins/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 97</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'> 98</span> 	 * the path for Extensions (i.e. extending JavaScript base classes)
-<span class='line'> 99</span> 	 * @memberOf Constants#
-<span class='line'>100</span> 	 */</span><span class="WHIT">
-<span class='line'>101</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">extensionsPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"tools/extensions/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>102</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>103</span> 	 * the path to the audio file containing the default beep sound.
-<span class='line'>104</span> 	 * @memberOf Constants#
-<span class='line'>105</span> 	 */</span><span class="WHIT">
-<span class='line'>106</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">beepURL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"vendor/sounds/beep-notification.mp3"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>107</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>108</span> 	 * the path to the app's controllers
-<span class='line'>109</span> 	 * @memberOf Constants#
-<span class='line'>110</span> 	 */</span><span class="WHIT">
-<span class='line'>111</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">controllerPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"controllers/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>112</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>113</span> 	 * the path to the app's controller helpers
-<span class='line'>114</span> 	 * @memberOf Constants#
-<span class='line'>115</span> 	 */</span><span class="WHIT">
-<span class='line'>116</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">helperPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"helpers/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>117</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>118</span> 	 * the path to the language resources root directory
+<span class='line'> 94</span> 	 * @private
+<span class='line'> 95</span> 	 * @memberOf Constants#
+<span class='line'> 96</span> 	 */</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pluginsPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"plugins/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 99</span> 	 * the path for Extensions (i.e. extending JavaScript base classes)
+<span class='line'>100</span> 	 * @private
+<span class='line'>101</span> 	 * @memberOf Constants#
+<span class='line'>102</span> 	 */</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">extensionsPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"tools/extensions/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>105</span> 	 * the path to the audio file containing the default beep sound.
+<span class='line'>106</span> 	 * @private
+<span class='line'>107</span> 	 * @memberOf Constants#
+<span class='line'>108</span> 	 */</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">beepURL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"vendor/sounds/beep-notification.mp3"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>111</span> 	 * the path to the app's controllers
+<span class='line'>112</span> 	 * @private
+<span class='line'>113</span> 	 * @memberOf Constants#
+<span class='line'>114</span> 	 */</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">controllerPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"controllers/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>117</span> 	 * the path to the app's controller helpers
+<span class='line'>118</span> 	 * @private
 <span class='line'>119</span> 	 * @memberOf Constants#
 <span class='line'>120</span> 	 */</span><span class="WHIT">
-<span class='line'>121</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">languagePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"config/languages/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">helperPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"helpers/"</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>122</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>123</span> 	 * the path to the app's models
-<span class='line'>124</span> 	 * @memberOf Constants#
-<span class='line'>125</span> 	 */</span><span class="WHIT">
-<span class='line'>126</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">modelPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"models/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>127</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>128</span> 	 * the path to the app's layouts
-<span class='line'>129</span> 	 * @memberOf Constants#
-<span class='line'>130</span> 	 */</span><span class="WHIT">
-<span class='line'>131</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">layoutPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"views/layouts/"</span><span class="PUNC">;</span><span class="COMM">//before changing this: see also use of 'layouts' sub-dir-name in build/lib/mmir-build/ant/StandaloneTemplateParserExec.js</span><span class="WHIT">
-<span class='line'>132</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>133</span> 	 * the path to the app's view root directory
-<span class='line'>134</span> 	 * @memberOf Constants#
-<span class='line'>135</span> 	 */</span><span class="WHIT">
-<span class='line'>136</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">viewPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"views/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>137</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>138</span> 	 * the path to the app's generated (compiled JS) views
-<span class='line'>139</span> 	 * @memberOf Constants#
-<span class='line'>140</span> 	 */</span><span class="WHIT">
-<span class='line'>141</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">genViewPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"gen/views/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>142</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>143</span> 	 * the path to the app's generated (compiled JS) layouts
-<span class='line'>144</span> 	 * @memberOf Constants#
-<span class='line'>145</span> 	 */</span><span class="WHIT">
-<span class='line'>146</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">genLayoutPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"gen/views/layouts/"</span><span class="PUNC">;</span><span class="COMM">//before changing this: see also use of 'layouts' sub-dir-name in build/lib/mmir-build/ant/StandaloneTemplateParserExec.js</span><span class="WHIT">
-<span class='line'>147</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>148</span> 	 * the path to the app's generated (compiled JS) grammars
+<span class='line'>123</span> 	 * the path to the language resources root directory
+<span class='line'>124</span> 	 * @private
+<span class='line'>125</span> 	 * @memberOf Constants#
+<span class='line'>126</span> 	 */</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">languagePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"config/languages/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>129</span> 	 * the path to the app's models
+<span class='line'>130</span> 	 * @private
+<span class='line'>131</span> 	 * @memberOf Constants#
+<span class='line'>132</span> 	 */</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">modelPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"models/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>135</span> 	 * the path to the app's layouts
+<span class='line'>136</span> 	 * @private
+<span class='line'>137</span> 	 * @memberOf Constants#
+<span class='line'>138</span> 	 */</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">layoutPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"views/layouts/"</span><span class="PUNC">;</span><span class="COMM">//before changing this: see also use of 'layouts' sub-dir-name in build/lib/mmir-build/ant/StandaloneTemplateParserExec.js</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>141</span> 	 * the path to the app's view root directory
+<span class='line'>142</span> 	 * @private
+<span class='line'>143</span> 	 * @memberOf Constants#
+<span class='line'>144</span> 	 */</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">viewPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"views/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>147</span> 	 * the path to the app's generated (compiled JS) views
+<span class='line'>148</span> 	 * @private
 <span class='line'>149</span> 	 * @memberOf Constants#
 <span class='line'>150</span> 	 */</span><span class="WHIT">
-<span class='line'>151</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">genGrammarsPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"gen/grammar/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>152</span> 
-<span class='line'>153</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>154</span> 	 * the path to media plugins / modules
+<span class='line'>151</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">genViewPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"gen/views/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>153</span> 	 * the path to the app's generated (compiled JS) layouts
+<span class='line'>154</span> 	 * @private
 <span class='line'>155</span> 	 * @memberOf Constants#
 <span class='line'>156</span> 	 */</span><span class="WHIT">
-<span class='line'>157</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">mediaPluginPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"env/media/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">genLayoutPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"gen/views/layouts/"</span><span class="PUNC">;</span><span class="COMM">//before changing this: see also use of 'layouts' sub-dir-name in build/lib/mmir-build/ant/StandaloneTemplateParserExec.js</span><span class="WHIT">
 <span class='line'>158</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>159</span> 	 * the path to grammar engine implementations / modules
-<span class='line'>160</span> 	 * @memberOf Constants#
-<span class='line'>161</span> 	 */</span><span class="WHIT">
-<span class='line'>162</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">grammarPluginPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"env/grammar/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>163</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>164</span> </span><span class="WHIT">	</span><span class="COMM">///////////////////////////////////////////////////// Resource Names /////////////////////////////////////////////////////</span><span class="WHIT">
-<span class='line'>165</span> </span><span class="WHIT">    </span><span class="WHIT">
-<span class='line'>166</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>167</span> 	 * the name of speech (output) configuration files
+<span class='line'>159</span> 	 * the path to the app's generated (compiled JS) grammars
+<span class='line'>160</span> 	 * @private
+<span class='line'>161</span> 	 * @memberOf Constants#
+<span class='line'>162</span> 	 */</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">genGrammarsPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"gen/grammar/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>164</span> 
+<span class='line'>165</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>166</span> 	 * the path to media plugins / modules
+<span class='line'>167</span> 	 * @private
 <span class='line'>168</span> 	 * @memberOf Constants#
 <span class='line'>169</span> 	 */</span><span class="WHIT">
-<span class='line'>170</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">speechConfigFileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"speech.json"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">mediaPluginPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"env/media/"</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>171</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>172</span> 	 * the name of (JSON) grammar files, i.e. "grammar definitions"
-<span class='line'>173</span> 	 * @memberOf Constants#
-<span class='line'>174</span> 	 */</span><span class="WHIT">
-<span class='line'>175</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">grammarFileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"grammar.json"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>176</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>177</span> 	 * the name of language dictionary files
-<span class='line'>178</span> 	 * @memberOf Constants#
-<span class='line'>179</span> 	 */</span><span class="WHIT">
-<span class='line'>180</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dictionaryFileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"dictionary.json"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>181</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>182</span> 	 * the name of the app's configuration file
+<span class='line'>172</span> 	 * the path to grammar engine implementations / modules
+<span class='line'>173</span> 	 * @private
+<span class='line'>174</span> 	 * @memberOf Constants#
+<span class='line'>175</span> 	 */</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">grammarPluginPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">frameworkBasePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"env/grammar/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">	</span><span class="COMM">///////////////////////////////////////////////////// Resource Names /////////////////////////////////////////////////////</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">    </span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>181</span> 	 * the name of speech (output) configuration files
+<span class='line'>182</span> 	 * @private
 <span class='line'>183</span> 	 * @memberOf Constants#
 <span class='line'>184</span> 	 */</span><span class="WHIT">
-<span class='line'>185</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">configurationFileUrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"config/configuration.json"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">speechConfigFileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"speech.json"</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>186</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>187</span> 	 * the name of the app's directory-/file-information file
-<span class='line'>188</span> 	 * @memberOf Constants#
-<span class='line'>189</span> 	 */</span><span class="WHIT">
-<span class='line'>190</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">directoriesFileUrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"config/directories.json"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>191</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>192</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>193</span> </span><span class="WHIT">	</span><span class="COMM">////////////////////////////////////////////////// General Constant Values///////////////////////////////////////////////////</span><span class="WHIT">
-<span class='line'>194</span> </span><span class="WHIT">    </span><span class="WHIT">
-<span class='line'>195</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>196</span> 	 * the default language setting
-<span class='line'>197</span> 	 * @memberOf Constants#
-<span class='line'>198</span> 	 */</span><span class="WHIT">
-<span class='line'>199</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">language</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"en"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>200</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>201</span> </span><span class="WHIT">	</span><span class="COMM">// Prefixes</span><span class="WHIT">
-<span class='line'>202</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>203</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>204</span> 	 * the prefix for partial-view file-names
-<span class='line'>205</span> 	 * @memberOf Constants#
-<span class='line'>206</span> 	 */</span><span class="WHIT">
-<span class='line'>207</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">partialsPrefix</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'~'</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>208</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>209</span> 	 * the postfix for controller-helper file-names
-<span class='line'>210</span> 	 * @memberOf Constants#
-<span class='line'>211</span> 	 */</span><span class="WHIT">
-<span class='line'>212</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">helperSuffix</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"Helper"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>213</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>187</span> 	 * the name of (JSON) grammar files, i.e. "grammar definitions"
+<span class='line'>188</span> 	 * @private
+<span class='line'>189</span> 	 * @memberOf Constants#
+<span class='line'>190</span> 	 */</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">grammarFileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"grammar.json"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>193</span> 	 * the name of language dictionary files
+<span class='line'>194</span> 	 * @private
+<span class='line'>195</span> 	 * @memberOf Constants#
+<span class='line'>196</span> 	 */</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dictionaryFileName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"dictionary.json"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>199</span> 	 * the name of the app's configuration file
+<span class='line'>200</span> 	 * @private
+<span class='line'>201</span> 	 * @memberOf Constants#
+<span class='line'>202</span> 	 */</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">configurationFileUrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"config/configuration.json"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>205</span> 	 * the name of the app's directory-/file-information file
+<span class='line'>206</span> 	 * @private
+<span class='line'>207</span> 	 * @memberOf Constants#
+<span class='line'>208</span> 	 */</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">directoriesFileUrl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"config/directories.json"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">	</span><span class="COMM">////////////////////////////////////////////////// General Constant Values///////////////////////////////////////////////////</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">    </span><span class="WHIT">
 <span class='line'>214</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>215</span> 	 * @memberOf Constants#
-<span class='line'>216</span> 	 */</span><span class="WHIT">
-<span class='line'>217</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">setBasePath</span><span class="PUNC">(</span><span class="NAME">isBrowserEnvParam</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>218</span> </span><span class="WHIT">		</span><span class="COMM">// if not on browser: basepath must be different</span><span class="WHIT">
-<span class='line'>219</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">isBrowserEnvParam</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>220</span> </span><span class="WHIT">			</span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">isBrowserEnvParam</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>221</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>222</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isBrowserEnvParam</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">isBrowserEnvParam.env</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>223</span> 
-<span class='line'>224</span> </span><span class="WHIT">			</span><span class="KEYW">switch</span><span class="PUNC">(</span><span class="NAME">isBrowserEnvParam.env</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>225</span> </span><span class="WHIT">				</span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'cordova'</span><span class="PUNC">:</span><span class="WHIT">
-<span class='line'>226</span> </span><span class="WHIT">				</span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'android'</span><span class="PUNC">:</span><span class="WHIT">
-<span class='line'>227</span> </span><span class="WHIT">					</span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"file:///android_asset/www/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>228</span> </span><span class="WHIT">					</span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>229</span> </span><span class="WHIT">				</span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'ios'</span><span class="PUNC">:</span><span class="WHIT">
-<span class='line'>230</span> </span><span class="WHIT">				</span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'default'</span><span class="PUNC">:</span><span class="WHIT">
-<span class='line'>231</span> </span><span class="WHIT">					</span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>232</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>233</span> </span><span class="WHIT">			</span><span class="WHIT">
-<span class='line'>234</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>235</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isBrowserEnvParam</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>236</span> </span><span class="WHIT">			</span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>237</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>238</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>239</span> </span><span class="WHIT">			</span><span class="COMM">//TODO this is only for ANDROID -- need to set appropriate path path according to ENV setting...</span><span class="WHIT">
-<span class='line'>240</span> </span><span class="WHIT">			</span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"file:///android_asset/www/"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>241</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>242</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>243</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>244</span> </span><span class="WHIT">	</span><span class="COMM">/**
-<span class='line'>245</span> 	 * Constructor-Method of Class {@link Constants}&lt;br>
-<span class='line'>246</span> 	 * 
-<span class='line'>247</span> 	 * @memberOf mmir.Constants.prototype
-<span class='line'>248</span> 	 * @private
-<span class='line'>249</span> 	 */</span><span class="WHIT">
-<span class='line'>250</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">constructor</span><span class="PUNC">(</span><span class="NAME">forBrowserParameter</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>251</span> </span><span class="WHIT">		</span><span class="NAME">isBrowserEnv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">forBrowserParameter</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">forBrowserParameter</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">isBrowserEnv</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>252</span> </span><span class="WHIT">		</span><span class="NAME">setBasePath</span><span class="PUNC">(</span><span class="NAME">forBrowserParameter</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>253</span> </span><span class="WHIT">		</span><span class="WHIT">
-<span class='line'>254</span> </span><span class="WHIT">		</span><span class="COMM">/** @lends Constants.prototype */</span><span class="WHIT">
-<span class='line'>255</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>256</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>257</span> 			 * Returns a string with the base path.
-<span class='line'>258</span> 			 * @function getBasePath
-<span class='line'>259</span> 			 * @public
-<span class='line'>260</span> 			 * @returns {String} base path
-<span class='line'>261</span> 			 * 
-<span class='line'>262</span> 			 * @memberOf mmir.Constants.prototype
-<span class='line'>263</span> 			 */</span><span class="WHIT">
-<span class='line'>264</span> </span><span class="WHIT">			</span><span class="NAME">getBasePath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>265</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>266</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>267</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>268</span> 			 * Returns a string with the path to the plugins.
-<span class='line'>269</span> 			 * @function getPluginsPath
-<span class='line'>270</span> 			 * @public
-<span class='line'>271</span> 			 * @returns {String} plugin path
-<span class='line'>272</span> 			 */</span><span class="WHIT">
-<span class='line'>273</span> </span><span class="WHIT">			</span><span class="NAME">getPluginsPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>274</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">pluginsPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>275</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>276</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>277</span> 			 * Returns a string with the path to the layouts.
-<span class='line'>278</span> 			 * @function getLayoutPath
-<span class='line'>279</span> 			 * @public
-<span class='line'>280</span> 			 * @returns {String} layout path
-<span class='line'>281</span> 			 */</span><span class="WHIT">
-<span class='line'>282</span> </span><span class="WHIT">			</span><span class="NAME">getLayoutPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>283</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">layoutPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>284</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>285</span> </span><span class="WHIT">			</span><span class="NAME">getCompiledLayoutPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>286</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">genLayoutPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>287</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>288</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>289</span> 			 * Returns a string with the path to the models.
-<span class='line'>290</span> 			 * @function getModelPath
-<span class='line'>291</span> 			 * @public
-<span class='line'>292</span> 			 * @returns {String} model path
-<span class='line'>293</span> 			 */</span><span class="WHIT">
-<span class='line'>294</span> </span><span class="WHIT">			</span><span class="NAME">getModelPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>295</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">modelPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>296</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>297</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>298</span> 			 * Returns a string with the path to the views.
-<span class='line'>299</span> 			 * @function getViewPath
-<span class='line'>300</span> 			 * @public
-<span class='line'>301</span> 			 * @returns {String} view path
-<span class='line'>302</span> 			 */</span><span class="WHIT">
-<span class='line'>303</span> </span><span class="WHIT">			</span><span class="NAME">getViewPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>304</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">viewPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>305</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>306</span> </span><span class="WHIT">			</span><span class="WHIT">
-<span class='line'>307</span> </span><span class="WHIT">			</span><span class="NAME">getCompiledViewPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>308</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">genViewPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>309</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>310</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>311</span> 			 * Returns a string with the path to the languages.
-<span class='line'>312</span> 			 * @function getLanguagePath
-<span class='line'>313</span> 			 * @public
-<span class='line'>314</span> 			 * @returns {String} language path
-<span class='line'>315</span> 			 */</span><span class="WHIT">
-<span class='line'>316</span> </span><span class="WHIT">			</span><span class="NAME">getLanguagePath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>317</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">languagePath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>318</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>319</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>320</span> 			 * Returns a string with the path to the controllers.
-<span class='line'>321</span> 			 * @function getControllerPath
-<span class='line'>322</span> 			 * @public
-<span class='line'>323</span> 			 * @returns {String} controller path
-<span class='line'>324</span> 			 */</span><span class="WHIT">
-<span class='line'>325</span> </span><span class="WHIT">			</span><span class="NAME">getControllerPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>326</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">controllerPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>327</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>328</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>329</span> 			 * Returns a string with the path to the workers.
-<span class='line'>330</span> 			 * @function getWorerPath
-<span class='line'>331</span> 			 * @public
-<span class='line'>332</span> 			 * @returns {String} worker path
-<span class='line'>333</span> 			 */</span><span class="WHIT">
-<span class='line'>334</span> </span><span class="WHIT">			</span><span class="NAME">getWorkerPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>335</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">workerPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>336</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>337</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>338</span> 			 * Returns a string with the path to the helpers.
-<span class='line'>339</span> 			 * @function getHelperPath
-<span class='line'>340</span> 			 * @public
-<span class='line'>341</span> 			 * @returns {String} helper path
-<span class='line'>342</span> 			 */</span><span class="WHIT">
-<span class='line'>343</span> </span><span class="WHIT">			</span><span class="NAME">getHelperPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>344</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">helperPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>345</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>346</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>347</span> 			 * Returns a string with the path to the extensions.
-<span class='line'>348</span> 			 * @function getExtensionsPath
-<span class='line'>349</span> 			 * @public
-<span class='line'>350</span> 			 * @returns {String} extensions path
-<span class='line'>351</span> 			 */</span><span class="WHIT">
-<span class='line'>352</span> </span><span class="WHIT">			</span><span class="NAME">getExtensionsPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>353</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">extensionsPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>354</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>355</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>356</span> 			 * Returns a string with the path to the Media-Plugins.
-<span class='line'>357</span> 			 * @function getMediaPluginPath
-<span class='line'>358</span> 			 * @public
-<span class='line'>359</span> 			 * @returns {String} MediaPlugin path
-<span class='line'>360</span> 			 */</span><span class="WHIT">
-<span class='line'>361</span> </span><span class="WHIT">			</span><span class="NAME">getMediaPluginPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>362</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">mediaPluginPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>363</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>364</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>365</span> 			 * Returns a string with the path to the Grammar-Plugins
-<span class='line'>366</span> 			 * (ie. engines for grammar generation).
-<span class='line'>367</span> 			 * 
-<span class='line'>368</span> 			 * @function getGrammarPluginPath
+<span class='line'>215</span> 	 * the default language setting
+<span class='line'>216</span> 	 * @private
+<span class='line'>217</span> 	 * @memberOf Constants#
+<span class='line'>218</span> 	 */</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">language</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"en"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">	</span><span class="COMM">// Prefixes</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>224</span> 	 * the prefix for partial-view file-names
+<span class='line'>225</span> 	 * @private
+<span class='line'>226</span> 	 * @memberOf Constants#
+<span class='line'>227</span> 	 */</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">partialsPrefix</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'~'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>230</span> 	 * the postfix for controller-helper file-names
+<span class='line'>231</span> 	 * @private
+<span class='line'>232</span> 	 * @memberOf Constants#
+<span class='line'>233</span> 	 */</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">helperSuffix</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"Helper"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>237</span> 	 * Object that holds information about the execution
+<span class='line'>238</span> 	 * environment / platform.
+<span class='line'>239</span> 	 * 
+<span class='line'>240</span> 	 * (set on initialization)
+<span class='line'>241</span> 	 * 
+<span class='line'>242</span> 	 * @private
+<span class='line'>243</span> 	 * @type env
+<span class='line'>244</span> 	 * @memberOf Constants#
+<span class='line'>245</span> 	 */</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">envInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">void</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>247</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>248</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>249</span> 	 * @private
+<span class='line'>250</span> 	 * @memberOf Constants#
+<span class='line'>251</span> 	 */</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">setBasePath</span><span class="PUNC">(</span><span class="NAME">isBrowserEnvParam</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">		</span><span class="COMM">// if not on browser: basepath must be different</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">isBrowserEnvParam</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">			</span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">isBrowserEnvParam</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isBrowserEnvParam</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">isBrowserEnvParam.isCordovaEnv</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>258</span> 
+<span class='line'>259</span> </span><span class="WHIT">			</span><span class="COMM">//if cordova env, try to use the specific platform</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">env</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">isBrowserEnvParam.envSetting</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">env</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'cordova'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">				</span><span class="NAME">env</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">isBrowserEnvParam.platform</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">env</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'default'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>266</span> </span><span class="WHIT">					</span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="STRN">'Unknown cordova platform "'</span><span class="PUNC">+</span><span class="NAME">env</span><span class="PUNC">+</span><span class="STRN">'", using default base path /'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>267</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>268</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'>269</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>270</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">			</span><span class="KEYW">switch</span><span class="PUNC">(</span><span class="NAME">env</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">				</span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'android'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">					</span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"file:///android_asset/www/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="WHIT">					</span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="COMM">//				case 'cordova':</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">				</span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'ios'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">				</span><span class="KEYW">case</span><span class="WHIT"> </span><span class="STRN">'default'</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">				</span><span class="KEYW">default</span><span class="PUNC">:</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">					</span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isBrowserEnvParam</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">isBrowserEnvParam.isBrowserEnv</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">			</span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isBrowserEnvParam</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">isBrowserEnvParam</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="WHIT">			</span><span class="COMM">//BACKWARD COMPATIBILITY: false and omitted argument are interpreted as Android env</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">			</span><span class="COMM">//TODO remove this?</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">			</span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"file:///android_asset/www/"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">			</span><span class="COMM">//default:</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">			</span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>299</span> 	 * Constructor-Method of Class {@link Constants}&lt;br>
+<span class='line'>300</span> 	 * 
+<span class='line'>301</span> 	 * @constructs Constants#
+<span class='line'>302</span> 	 * @memberOf mmir.Constants.prototype
+<span class='line'>303</span> 	 * @private
+<span class='line'>304</span> 	 */</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">    </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">constructor</span><span class="PUNC">(</span><span class="NAME">env</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">    	</span><span class="NAME">envInfo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">env</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">		</span><span class="NAME">isBrowserEnv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">envInfo.isBrowserEnv</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">		</span><span class="NAME">setBasePath</span><span class="PUNC">(</span><span class="NAME">env</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">		</span><span class="COMM">/** @lends Constants.prototype */</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>313</span> 			 * Returns a string with the base path.
+<span class='line'>314</span> 			 * @function
+<span class='line'>315</span> 			 * @public
+<span class='line'>316</span> 			 * @returns {String} base path
+<span class='line'>317</span> 			 * 
+<span class='line'>318</span> 			 * @memberOf mmir.Constants.prototype
+<span class='line'>319</span> 			 */</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">			</span><span class="NAME">getBasePath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>324</span> 			 * Returns a string with the path to the plugins.
+<span class='line'>325</span> 			 * @function
+<span class='line'>326</span> 			 * @public
+<span class='line'>327</span> 			 * @returns {String} plugin path
+<span class='line'>328</span> 			 */</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">			</span><span class="NAME">getPluginsPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">pluginsPath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>333</span> 			 * Returns a string with the path to the layouts.
+<span class='line'>334</span> 			 * @function
+<span class='line'>335</span> 			 * @public
+<span class='line'>336</span> 			 * @returns {String} layout path
+<span class='line'>337</span> 			 */</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">			</span><span class="NAME">getLayoutPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">layoutPath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">			</span><span class="NAME">getCompiledLayoutPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>342</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">genLayoutPath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>345</span> 			 * Returns a string with the path to the models.
+<span class='line'>346</span> 			 * @function
+<span class='line'>347</span> 			 * @public
+<span class='line'>348</span> 			 * @returns {String} model path
+<span class='line'>349</span> 			 */</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">			</span><span class="NAME">getModelPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">modelPath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>353</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>354</span> 			 * Returns a string with the path to the views.
+<span class='line'>355</span> 			 * @function
+<span class='line'>356</span> 			 * @public
+<span class='line'>357</span> 			 * @returns {String} view path
+<span class='line'>358</span> 			 */</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">			</span><span class="NAME">getViewPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">viewPath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>361</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">			</span><span class="NAME">getCompiledViewPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">genViewPath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>366</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>367</span> 			 * Returns a string with the path to the languages.
+<span class='line'>368</span> 			 * @function
 <span class='line'>369</span> 			 * @public
-<span class='line'>370</span> 			 * @returns {String} Grammar Plugin path (
+<span class='line'>370</span> 			 * @returns {String} language path
 <span class='line'>371</span> 			 */</span><span class="WHIT">
-<span class='line'>372</span> </span><span class="WHIT">			</span><span class="NAME">getGrammarPluginPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>373</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">grammarPluginPath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">			</span><span class="NAME">getLanguagePath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">languagePath</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>374</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>375</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>376</span> 			 * Returns a string with the path to the directory that contains the generated/executable grammars.
-<span class='line'>377</span> 			 * @function getGeneratedGrammarsPath
+<span class='line'>376</span> 			 * Returns a string with the path to the controllers.
+<span class='line'>377</span> 			 * @function
 <span class='line'>378</span> 			 * @public
-<span class='line'>379</span> 			 * @returns {String} path for generated grammars (JavaScript files)
+<span class='line'>379</span> 			 * @returns {String} controller path
 <span class='line'>380</span> 			 */</span><span class="WHIT">
-<span class='line'>381</span> </span><span class="WHIT">			</span><span class="NAME">getGeneratedGrammarsPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>382</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">genGrammarsPath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>381</span> </span><span class="WHIT">			</span><span class="NAME">getControllerPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>382</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">controllerPath</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>383</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>384</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>385</span> 			 * Returns a string with the path to the configuration file.
-<span class='line'>386</span> 			 * @function getConfigurationFileUrl
+<span class='line'>385</span> 			 * Returns a string with the path to the workers.
+<span class='line'>386</span> 			 * @function
 <span class='line'>387</span> 			 * @public
-<span class='line'>388</span> 			 * @returns {String} path to configuration file
+<span class='line'>388</span> 			 * @returns {String} worker path
 <span class='line'>389</span> 			 */</span><span class="WHIT">
-<span class='line'>390</span> </span><span class="WHIT">			</span><span class="NAME">getConfigurationFileUrl</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>391</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">configurationFileUrl</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>390</span> </span><span class="WHIT">			</span><span class="NAME">getWorkerPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>391</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">workerPath</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>392</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>393</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>394</span> 			 * Returns a string with the path to the directories file (directory-strucure / file-list).
-<span class='line'>395</span> 			 * @function getDirectoriesFileUrl
+<span class='line'>394</span> 			 * Returns a string with the path to the helpers.
+<span class='line'>395</span> 			 * @function
 <span class='line'>396</span> 			 * @public
-<span class='line'>397</span> 			 * @returns {String} path to directories file
+<span class='line'>397</span> 			 * @returns {String} helper path
 <span class='line'>398</span> 			 */</span><span class="WHIT">
-<span class='line'>399</span> </span><span class="WHIT">			</span><span class="NAME">getDirectoriesFileUrl</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>400</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">directoriesFileUrl</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>399</span> </span><span class="WHIT">			</span><span class="NAME">getHelperPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>400</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">helperPath</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>401</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>402</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>403</span> 			 * Returns a string with the path to the beep audio-file.
-<span class='line'>404</span> 			 * @function getBeepUrl
+<span class='line'>403</span> 			 * Returns a string with the path to the extensions.
+<span class='line'>404</span> 			 * @function
 <span class='line'>405</span> 			 * @public
-<span class='line'>406</span> 			 * @returns {String} path to beep wav file
+<span class='line'>406</span> 			 * @returns {String} extensions path
 <span class='line'>407</span> 			 */</span><span class="WHIT">
-<span class='line'>408</span> </span><span class="WHIT">			</span><span class="NAME">getBeepUrl</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>409</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">beepURL</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">			</span><span class="NAME">getExtensionsPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">extensionsPath</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>410</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>411</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>412</span> 			 * Returns the name of the dictionary filename as string 
-<span class='line'>413</span> 			 * @function getDictionaryFileName
+<span class='line'>412</span> 			 * Returns a string with the path to the Media-Plugins.
+<span class='line'>413</span> 			 * @function
 <span class='line'>414</span> 			 * @public
-<span class='line'>415</span> 			 * @returns {String} dictionary filename
+<span class='line'>415</span> 			 * @returns {String} MediaPlugin path
 <span class='line'>416</span> 			 */</span><span class="WHIT">
-<span class='line'>417</span> </span><span class="WHIT">			</span><span class="NAME">getDictionaryFileName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>418</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">dictionaryFileName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">			</span><span class="NAME">getMediaPluginPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">mediaPluginPath</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>419</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>420</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>421</span> 			 * Returns the name of the filename for
-<span class='line'>422</span> 			 * the speech configuration as string 
-<span class='line'>423</span> 			 * @function getSpeechFileName
-<span class='line'>424</span> 			 * @public
-<span class='line'>425</span> 			 * @returns {String} dictionary filename
-<span class='line'>426</span> 			 */</span><span class="WHIT">
-<span class='line'>427</span> </span><span class="WHIT">			</span><span class="NAME">getSpeechConfigFileName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>428</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">speechConfigFileName</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>429</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>430</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>431</span> 			 * Returns the name of the grammar filename as string 
-<span class='line'>432</span> 			 * @function grammarFileName
-<span class='line'>433</span> 			 * @public
-<span class='line'>434</span> 			 * @returns {String} grammar filename
-<span class='line'>435</span> 			 */</span><span class="WHIT">
-<span class='line'>436</span> </span><span class="WHIT">			</span><span class="NAME">getGrammarFileName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>437</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">grammarFileName</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>438</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>439</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>440</span> 			 * Returns the prefix for partial filenames as string 
-<span class='line'>441</span> 			 * @function getPartialsPrefix
-<span class='line'>442</span> 			 * @public
-<span class='line'>443</span> 			 * @returns {String} prefix for partial filenames
-<span class='line'>444</span> 			 */</span><span class="WHIT">
-<span class='line'>445</span> </span><span class="WHIT">			</span><span class="NAME">getPartialsPrefix</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>446</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">partialsPrefix</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>447</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>448</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>449</span> 			 * Returns the suffix for helper filenames as string. A helpers filename looks like: "ControllerName"+"Helper"+".js"
-<span class='line'>450</span> 			 * @function getHelperSuffix
-<span class='line'>451</span> 			 * @public
-<span class='line'>452</span> 			 * @returns {String} suffix for helper filenames
-<span class='line'>453</span> 			 */</span><span class="WHIT">
-<span class='line'>454</span> </span><span class="WHIT">			</span><span class="NAME">getHelperSuffix</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>455</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">helperSuffix</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>456</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>457</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>458</span> 			 * Returns default language as string.
-<span class='line'>459</span> 			 * @function getLanguage
-<span class='line'>460</span> 			 * @public
-<span class='line'>461</span> 			 * @returns {String} default language
-<span class='line'>462</span> 			 */</span><span class="WHIT">
-<span class='line'>463</span> </span><span class="WHIT">			</span><span class="NAME">getLanguage</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>464</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">language</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>465</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>466</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>421</span> 			 * Returns a string with the path to the Grammar-Plugins
+<span class='line'>422</span> 			 * (ie. engines for grammar generation).
+<span class='line'>423</span> 			 * 
+<span class='line'>424</span> 			 * @function
+<span class='line'>425</span> 			 * @public
+<span class='line'>426</span> 			 * @returns {String} Grammar Plugin path (
+<span class='line'>427</span> 			 */</span><span class="WHIT">
+<span class='line'>428</span> </span><span class="WHIT">			</span><span class="NAME">getGrammarPluginPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">grammarPluginPath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>432</span> 			 * Returns a string with the path to the directory that contains the generated/executable grammars.
+<span class='line'>433</span> 			 * @function
+<span class='line'>434</span> 			 * @public
+<span class='line'>435</span> 			 * @returns {String} path for generated grammars (JavaScript files)
+<span class='line'>436</span> 			 */</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="WHIT">			</span><span class="NAME">getGeneratedGrammarsPath</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>438</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">genGrammarsPath</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>439</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>440</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>441</span> 			 * Returns a string with the path to the configuration file.
+<span class='line'>442</span> 			 * @function
+<span class='line'>443</span> 			 * @public
+<span class='line'>444</span> 			 * @returns {String} path to configuration file
+<span class='line'>445</span> 			 */</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">			</span><span class="NAME">getConfigurationFileUrl</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>447</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">configurationFileUrl</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>448</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>449</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>450</span> 			 * Returns a string with the path to the directories file (directory-strucure / file-list).
+<span class='line'>451</span> 			 * @function
+<span class='line'>452</span> 			 * @public
+<span class='line'>453</span> 			 * @returns {String} path to directories file
+<span class='line'>454</span> 			 */</span><span class="WHIT">
+<span class='line'>455</span> </span><span class="WHIT">			</span><span class="NAME">getDirectoriesFileUrl</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>456</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">directoriesFileUrl</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>457</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>458</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>459</span> 			 * Returns a string with the path to the beep audio-file.
+<span class='line'>460</span> 			 * @function
+<span class='line'>461</span> 			 * @public
+<span class='line'>462</span> 			 * @returns {String} path to beep wav file
+<span class='line'>463</span> 			 */</span><span class="WHIT">
+<span class='line'>464</span> </span><span class="WHIT">			</span><span class="NAME">getBeepUrl</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>465</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">basePath</span><span class="PUNC">+</span><span class="NAME">beepURL</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>466</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>467</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>468</span> 	         * Initialize the Constants singleton.
-<span class='line'>469</span> 	         * 
-<span class='line'>470</span> 	         * @function init
-<span class='line'>471</span> 	         * @param {Boolean} forBrowserParameter &lt;tt>true&lt;/tt> for browser-environment, if &lt;tt>false&lt;/tt> ANDROID environment
-<span class='line'>472</span> 	         * @returns {Object} Object containing the instance of the class {@link mmir.Constants}
-<span class='line'>473</span> 	         * @public
-<span class='line'>474</span> 	         */</span><span class="WHIT">
-<span class='line'>475</span> </span><span class="WHIT">			</span><span class="NAME">init</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">theForBrowserParameter</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>476</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">theForBrowserParameter</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">theForBrowserParameter</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">isBrowserEnv</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>477</span> </span><span class="WHIT">    				</span><span class="NAME">setBasePath</span><span class="PUNC">(</span><span class="NAME">theForBrowserParameter</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>478</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>479</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>480</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>481</span> </span><span class="WHIT">			</span><span class="WHIT">
-<span class='line'>482</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>483</span> 	         * @function
-<span class='line'>484</span> 	         * @returns {Boolean}
-<span class='line'>485</span> 	         * @public
-<span class='line'>486</span> 	         */</span><span class="WHIT">
-<span class='line'>487</span> </span><span class="WHIT">			</span><span class="NAME">isBrowserEnv</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="COMM">//FIXME replace with real environment-setting/-mechanism</span><span class="WHIT">
-<span class='line'>488</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">isBrowserEnv</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>489</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>490</span> </span><span class="WHIT">			</span><span class="WHIT">
-<span class='line'>491</span> </span><span class="WHIT">			</span><span class="COMM">/**
-<span class='line'>492</span> 			 * @deprecated instead, use Constants-object directly: mmir.Constants
-<span class='line'>493</span> 			 */</span><span class="WHIT">
-<span class='line'>494</span> </span><span class="WHIT">			</span><span class="NAME">getInstance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">forBrowserParameter</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>495</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.init</span><span class="PUNC">(</span><span class="NAME">forBrowserParameter</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>496</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>497</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="COMM">//END: return{}</span><span class="WHIT">
-<span class='line'>498</span> </span><span class="WHIT">		</span><span class="WHIT">
-<span class='line'>499</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="COMM">//END: constructor()</span><span class="WHIT">
-<span class='line'>500</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>501</span> </span><span class="WHIT">    </span><span class="WHIT">
-<span class='line'>502</span> </span><span class="COMM">//    //TODO implement mechanism for setting env-variable (e.g. read from params...)</span><span class="WHIT">
-<span class='line'>503</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isBrowserEnvironment</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">env.isBrowserEnv</span><span class="PUNC">;</span><span class="COMM">// module.config().forBrowser;</span><span class="WHIT">
-<span class='line'>504</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>505</span> </span><span class="WHIT">	</span><span class="NAME">instance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">constructor</span><span class="PUNC">(</span><span class="NAME">isBrowserEnvironment</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>506</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>507</span> </span><span class="WHIT">	</span><span class="COMM">//TODO find better way for initializing env-dependent settings (see also comment above)</span><span class="WHIT">
-<span class='line'>508</span> </span><span class="WHIT">	</span><span class="NAME">setBasePath</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="NAME">env</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">env.envSetting</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>509</span> </span><span class="WHIT">	</span><span class="WHIT">
-<span class='line'>510</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">instance</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>511</span> 
-<span class='line'>512</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>513</span> </span></pre></body></html>
+<span class='line'>468</span> 			 * Returns the name of the dictionary filename as string 
+<span class='line'>469</span> 			 * @function
+<span class='line'>470</span> 			 * @public
+<span class='line'>471</span> 			 * @returns {String} dictionary filename
+<span class='line'>472</span> 			 */</span><span class="WHIT">
+<span class='line'>473</span> </span><span class="WHIT">			</span><span class="NAME">getDictionaryFileName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>474</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">dictionaryFileName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>475</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>476</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>477</span> 			 * Returns the name of the filename for
+<span class='line'>478</span> 			 * the speech configuration as string 
+<span class='line'>479</span> 			 * @function
+<span class='line'>480</span> 			 * @public
+<span class='line'>481</span> 			 * @returns {String} dictionary filename
+<span class='line'>482</span> 			 */</span><span class="WHIT">
+<span class='line'>483</span> </span><span class="WHIT">			</span><span class="NAME">getSpeechConfigFileName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>484</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">speechConfigFileName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>485</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>486</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>487</span> 			 * Returns the name of the grammar filename as string 
+<span class='line'>488</span> 			 * @function
+<span class='line'>489</span> 			 * @public
+<span class='line'>490</span> 			 * @returns {String} grammar filename
+<span class='line'>491</span> 			 */</span><span class="WHIT">
+<span class='line'>492</span> </span><span class="WHIT">			</span><span class="NAME">getGrammarFileName</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>493</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">grammarFileName</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>494</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>495</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>496</span> 			 * Returns the prefix for partial filenames as string 
+<span class='line'>497</span> 			 * @function
+<span class='line'>498</span> 			 * @public
+<span class='line'>499</span> 			 * @returns {String} prefix for partial filenames
+<span class='line'>500</span> 			 */</span><span class="WHIT">
+<span class='line'>501</span> </span><span class="WHIT">			</span><span class="NAME">getPartialsPrefix</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>502</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">partialsPrefix</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>503</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>504</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>505</span> 			 * Returns the suffix for helper filenames as string. A helpers filename looks like: "ControllerName"+"Helper"+".js"
+<span class='line'>506</span> 			 * @function
+<span class='line'>507</span> 			 * @public
+<span class='line'>508</span> 			 * @returns {String} suffix for helper filenames
+<span class='line'>509</span> 			 */</span><span class="WHIT">
+<span class='line'>510</span> </span><span class="WHIT">			</span><span class="NAME">getHelperSuffix</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>511</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">helperSuffix</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>512</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>513</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>514</span> 			 * Returns default language as string.
+<span class='line'>515</span> 			 * @function
+<span class='line'>516</span> 			 * @public
+<span class='line'>517</span> 			 * @returns {String} default language
+<span class='line'>518</span> 			 */</span><span class="WHIT">
+<span class='line'>519</span> </span><span class="WHIT">			</span><span class="NAME">getLanguage</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>520</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">language</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>521</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>522</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>523</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>524</span> 	         * Initialize the Constants singleton.
+<span class='line'>525</span> 	         * 
+<span class='line'>526</span> 	         * @function
+<span class='line'>527</span> 	         * @param {Boolean} forBrowserParameter &lt;tt>true&lt;/tt> for browser-environment, if &lt;tt>false&lt;/tt> ANDROID environment
+<span class='line'>528</span> 	         * @returns {Object} Object containing the instance of the class {@link mmir.Constants}
+<span class='line'>529</span> 	         * @public
+<span class='line'>530</span> 	         */</span><span class="WHIT">
+<span class='line'>531</span> </span><span class="WHIT">			</span><span class="NAME">init</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">theForBrowserParameter</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>532</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">theForBrowserParameter</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">theForBrowserParameter</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">isBrowserEnv</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>533</span> </span><span class="WHIT">    				</span><span class="NAME">setBasePath</span><span class="PUNC">(</span><span class="NAME">theForBrowserParameter</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>534</span> </span><span class="WHIT">    			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>535</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>536</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>537</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>538</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>539</span> 	         * @function
+<span class='line'>540</span> 	         * @returns {Boolean}
+<span class='line'>541</span> 	         * @public
+<span class='line'>542</span> 	         */</span><span class="WHIT">
+<span class='line'>543</span> </span><span class="WHIT">			</span><span class="NAME">isBrowserEnv</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="COMM">//FIXME replace with real environment-setting/-mechanism</span><span class="WHIT">
+<span class='line'>544</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">isBrowserEnv</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>545</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>546</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>547</span> 
+<span class='line'>548</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>549</span> 	         * @function
+<span class='line'>550</span> 	         * @returns {String}
+<span class='line'>551</span> 	         * @values "browser" | "cordova" | (or: VALUE set in document's query-parameter "?env=VALUE"
+<span class='line'>552</span> 	         * @public
+<span class='line'>553</span> 	         */</span><span class="WHIT">
+<span class='line'>554</span> </span><span class="WHIT">			</span><span class="NAME">getEnv</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>555</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">envInfo.envSetting</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">envInfo.envSetting</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'browser'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>556</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>557</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>558</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>559</span> 	         * @function
+<span class='line'>560</span> 	         * @returns {String}
+<span class='line'>561</span> 	         * @values "android" | "ios" | "browser" | "default"
+<span class='line'>562</span> 	         * @public
+<span class='line'>563</span> 	         */</span><span class="WHIT">
+<span class='line'>564</span> </span><span class="WHIT">			</span><span class="NAME">getEnvPlatform</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>565</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">envInfo.platform</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>566</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>567</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>568</span> </span><span class="WHIT">			</span><span class="COMM">/**
+<span class='line'>569</span> 			 * @deprecated instead, use Constants-object directly: mmir.Constants
+<span class='line'>570</span> 			 */</span><span class="WHIT">
+<span class='line'>571</span> </span><span class="WHIT">			</span><span class="NAME">getInstance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">forBrowserParameter</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>572</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.init</span><span class="PUNC">(</span><span class="NAME">forBrowserParameter</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>573</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>574</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="COMM">//END: return{}</span><span class="WHIT">
+<span class='line'>575</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>576</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="COMM">//END: constructor()</span><span class="WHIT">
+<span class='line'>577</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>578</span> </span><span class="WHIT">	</span><span class="NAME">instance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">constructor</span><span class="PUNC">(</span><span class="NAME">env</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>579</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>580</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">instance</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>581</span> 
+<span class='line'>582</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>583</span> </span></pre></body></html>
