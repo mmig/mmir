@@ -16,10 +16,9 @@ Overview for the MMIR (Mobile Multimodal Interaction and Rendering) Framework.
 - tools
  * [scion-queue-plugin][6]: a Cordova 5.x plugin that provides an event-queue for SCION (used by the dialog manager)
 - speech modules
- * [mmir-plugin-speech-android][14]: a Cordova 5.x plugin that integrates Android's default speech recognizer and text-to-speech engines into the MMIR framework (platforms: android)
- * [mmir-plugin-speech-android][15]: a Cordova 5.x plugin that integrates the Nuance SpeechKit (Dragon Mobile SDK) for speech recognition and text-to-speech (platforms: android, ios)
- * WebKit SpeechRecognizer (included in core framework): a module for integrating Google Chrome's SpeechRecognition into the MMIR framework (platforms: browser _(Chrome only)_)
- * MARYTTS (included in core framework): a module for integrating MARY TTS service (an Open Source speech synthesis) into the MMIR framework (platforms: all)
+ * [mmir-plugin-speech-android][14]: a Cordova 5.x plugin that integrates Android's default speech recognizer and text-to-speech engines
+ * [mmir-plugin-speech-android][15]: a Cordova 5.x plugin that integrates the Nuance SpeechKit (Dragon Mobile SDK) for speech recognition and text-to-speech
+ * see also [module overview][16] in the wiki
 - examples
  * [mmir-cordova][9]: resources / example for creating a minimal MMIR-based application _(for Cordova 5.x)_
  * [mmir-starter-kit][10]: a small MMIR-based example application _(for Cordova 5.x)_
@@ -71,8 +70,8 @@ In addition, the development tools for the targeted `platforms` need to be insta
 ##### Custom Cordova Plugins
 
 If you plan to use the MMIR framework in combination with SCION (that is: make use of
-the framework's ```DialogManager``` and/or ```InputManager```) within an environment that __does not__
-support HTML5 ```WebWorkers```, you need the [Queue Plugin][6] for extending the framework's SCION  
+the framework's `DialogManager` and/or `InputManager`) within an environment that __does not__
+support HTML5 `WebWorkers`, you need the [Queue Plugin][6] for extending the framework's SCION  
 integration with an event queue.
 
 
@@ -93,3 +92,4 @@ integration with an event queue.
 [13]: https://mmig.github.io/mmir/api-all
 [14]: https://github.com/mmig/mmir-plugin-speech-android
 [15]: https://github.com/mmig/mmir-plugin-speech-nunace
+[16]: https://github.com/mmig/mmir/wiki/3.9.2-Speech-Processing-in-MMIR#speech-modules
