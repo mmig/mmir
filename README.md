@@ -2,7 +2,7 @@
 ====
 
 <p align="center">
-<img width="20%" src="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png">
+<img width="10%" src="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png">
 </p>
 
 Overview for the MMIR (Mobile Multimodal Interaction and Rendering) Framework. 
@@ -14,15 +14,31 @@ Overview for the MMIR (Mobile Multimodal Interaction and Rendering) Framework.
  * [mmir-lib][4]: the core library _(this is usually included in the directory `mmirf/` of MMIR-based applications)_
  * [mmir-tooling][5]: scripts and resources for building and generating resources _(e.g. compiling JSON grammars)_
 - tools
- * [scion-queue-plugin][6]: a Cordova 3.x plugin that provides an event-queue for SCION
+ * [scion-queue-plugin][6]: a Cordova 5.x plugin that provides an event-queue for SCION (used by the dialog manager)
+- speech modules
+ * [mmir-plugin-speech-android][14]: a Cordova 5.x plugin that integrates Android's default speech recognizer and text-to-speech engines
+ * [mmir-plugin-speech-android][15]: a Cordova 5.x plugin that integrates the Nuance SpeechKit (Dragon Mobile SDK) for speech recognition and text-to-speech
+ * see also [module overview][16] in the wiki
 - examples
- * [mmir-cordova][9]: resources / example for creating a minimal MMIR-based application _(for Cordova 3.x)_
- * [mmir-starter-kit][10]: a small MMIR-based example application _(for Cordova 3.x)_
+ * [mmir-cordova][9]: resources / example for creating a minimal MMIR-based application _(for Cordova 5.x)_
+ * [mmir-starter-kit][10]: a small MMIR-based example application _(for Cordova 5.x)_
+
+## Documentation
+
+See the **[wiki][8]** for the main documentation.
+
+
+See [API][12] documentation for information about the `mmir-lib` interface (or the even more detailed API doc with [private-visibility][13]).
+
+
+See the README in [mmir-cordova][9] for step-by-step instruction on how to (1) create a new Cordova project and (2) add the MMIR framework
+
 
 ## Introduction
 
-The MMIR (Mobile Multimodal Interaction and Rendering) framework aims to provide a lightweight multimodal dialog manager that -- for instance -- can run
-on mobile devices. The base technology is HTML5 (JavaScript).
+The MMIR (Mobile Multimodal Interaction and Rendering) framework aims to provide a 
+lightweight multimodal dialog manager that -- for instance -- can run on mobile devices. 
+The base technology is HTML5 (JavaScript).
 
 A core concept for the framework is the MVC (Model View Controller) pattern. The framework provides a template
 mechanism similar to JSP (Java Server Pages), ASP (Active Server Pages), and alike.
@@ -47,27 +63,17 @@ NOTE 2: Since the Google Speech Recognition service now requires registration an
 
 ## Prerequisites
 
-Installed Cordova 3.x environment (see [Cordova][0] documentation on CLI based development for more details).
+Installed Cordova 5.x environment (see [Cordova][0] documentation on CLI based development for more details).
 
 In addition, the development tools for the targeted `platforms` need to be installed (see also the [Cordova][0] documentation).
 
 ##### Custom Cordova Plugins
 
 If you plan to use the MMIR framework in combination with SCION (that is: make use of
-the framework's ```DialogManager``` and/or ```InputManager```) within an environment that __does not__
-support HTML5 ```WebWorkers```, you need the [Queue Plugin][6] for extending the framework's SCION  
+the framework's `DialogManager` and/or `InputManager`) within an environment that __does not__
+support HTML5 `WebWorkers`, you need the [Queue Plugin][6] for extending the framework's SCION  
 integration with an event queue.
 
-## Documentation
-
-
-See the [wiki][8] for the main documentation **parts may be out of date!**.
-
-
-See [API][12] documentation for information about the `mmir-lib` interface (or the more detailed API doc with [private-visibility][13]).
-
-
-See the README in [mmir-cordova][9] for step-by-step instruction on how to (1) create a new Cordova project and (2) add the MMIR framework
 
 
 [0]: http://cordova.apache.org/
@@ -82,6 +88,8 @@ See the README in [mmir-cordova][9] for step-by-step instruction on how to (1) c
 [9]: https://github.com/mmig/mmir-cordova
 [10]: https://github.com/mmig/mmir-starter-kit
 [11]: https://github.com/mmig/mmir
-[12]: http://mmig.github.io/mmir/api
-[13]: http://mmig.github.io/mmir/api-all
-
+[12]: https://mmig.github.io/mmir/api
+[13]: https://mmig.github.io/mmir/api-all
+[14]: https://github.com/mmig/mmir-plugin-speech-android
+[15]: https://github.com/mmig/mmir-plugin-speech-nunace
+[16]: https://github.com/mmig/mmir/wiki/3.9.2-Speech-Processing-in-MMIR#speech-modules
