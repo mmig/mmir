@@ -31,7 +31,11 @@ See the **[wiki][8]** for the main documentation.
 See [API][12] documentation for information about the `mmir-lib` interface (or the even more detailed API doc with [private-visibility][13]).
 
 
-See the README in [mmir-cordova][9] for step-by-step instruction on how to (1) create a new Cordova project and (2) add the MMIR framework
+See the README in [mmir-cordova][9] for step-by-step instruction on how to (1) create a new Cordova project and (2) add the MMIR framework.
+
+
+Older Documenation:
+ * [API mmir-lib v3.x][17] (and [private-visibility][18])
 
 
 ## Introduction
@@ -93,3 +97,5 @@ integration with an event queue.
 [14]: https://github.com/mmig/mmir-plugin-speech-android
 [15]: https://github.com/mmig/mmir-plugin-speech-nunace
 [16]: https://github.com/mmig/mmir/wiki/3.9.2-Speech-Processing-in-MMIR#speech-modules
+[17]: https://mmig.github.io/mmir/api-v3
+[18]: https://mmig.github.io/mmir/api-all-v3
