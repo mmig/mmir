@@ -1951,101 +1951,273 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="mvc_parser_storageUtils.js.html">Source: mvc/parser/storageUtils.js</h1>
         
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
 
 
-    <h3> </h3>
+define(['mmirf/util/extend', 'mmirf/parserModule', 'require'],
+/**
+ * Extends the parser-module with helper functions for
+ * storing/restoring compiled templates (eHTML -> layout, view, partial etc)
+ *
+ * Dependencies:
+ *  
+ *  alternatively: set &lt;code>mmir.parser.CLASS_EXTENDER&lt;/code> with an object that 
+ *  exposes a function &lt;tt>extend(obj1,obj1)&lt;/tt>, i.e.
+ *  
+ *  &lt;code>mmir.parser.CLASS_EXTENDER.extend(obj1, obj2)&lt;/code>
+ * 
+ * @class
+ * @name StorageUtils
+ * @memberOf mmir.parser
+ * 
+ */		
+function(extend, parser, require){
 
+/**
+ * @public
+ * @constant
+ * @memberOf mmir.parser
+ */
+var STORAGE_FILE_FORMAT_NUMBER = 3;
+parser.STORAGE_FILE_FORMAT_NUMBER = STORAGE_FILE_FORMAT_NUMBER;
 
+/**
+ * Prefix for wrapping persisted objects:
+ * 
+ * &lt;ul>
+ *  &lt;li> wraps code into a closure
+ *  &lt;/li>&lt;li> makes global namespace available as variable &lt;code>global&lt;/code> (see {@link #STORAGE_CODE_WRAP_PREFIX} for setting global namespace)
+ *  &lt;/li>&lt;li> makes mmirf/core available as variable &lt;code>mmir&lt;/code> (if mmirf/core is present in global namespace)
+ *  &lt;/li>&lt;li> makes mmirf/core's require function available as &lt;code>require&lt;/code> (if mmirf/core is present and has require function)
+ * &lt;/ul>
+ * 
+ * @public
+ * @constant
+ * @memberOf mmir.parser
+ * 
+ * @see GrammarConverter#getCodeWrapPrefix
+ */
+var STORAGE_CODE_WRAP_PREFIX = ';(function(global){\n'
+	+ 'var mmirName = typeof MMIR_CORE_NAME === "string"? MMIR_CORE_NAME : "mmir";\n'
+  	+ 'var mmir = global? global[mmirName] : void(0);\n'
+  	+ 'var require = mmir &amp;&amp; mmir.require? mmir.require : (typeof requirejs !== "undefined"? requirejs : (global? global.require : require));\n'
+	+ 'var require = mmir &amp;&amp; mmir.require? mmir.require : require;\n';
+parser.STORAGE_CODE_WRAP_PREFIX = STORAGE_CODE_WRAP_PREFIX;
 
+/**
+ * Suffix for wrapping persisted objects:
+ * 
+ * &lt;ul>
+ *  &lt;li> sets global namespace to &lt;code>window&lt;/code>
+ *  &lt;/li>
+ * &lt;/ul>
+ * 
+ * @public
+ * @constant
+ * @memberOf mmir.parser
+ * 
+ * @see GrammarConverter#getCodeWrapSuffix
+ */
+var STORAGE_CODE_WRAP_SUFFIX = '\n})(typeof window !== "undefined"? window : global);';
+parser.STORAGE_CODE_WRAP_SUFFIX = STORAGE_CODE_WRAP_SUFFIX;
 
+/**
+ * Creates the appropriate object from a JSON-like &lt;tt>storedObject&lt;/tt>.
+ * 
+ * &lt;p>
+ * NOTE that in difference to a real JSON object, the &lt;tt>storedObject&lt;/tt> 
+ * may contain function definitions.
+ * 
+ * &lt;p>
+ * The storedObject must have a String property &lt;strong>classConstructor&lt;/strong> (type &lt;code>String&lt;/code>)
+ * &lt;ul>
+ * 	&lt;li>that must correspond to a require'able module that represents a constructor function (which will be invoked with &lt;tt>new&lt;/tt>)&lt;/li>
+ * 	&lt;li>the require'able module must be represents a constructor function (which will be invoked with &lt;tt>new&lt;/tt>)&lt;/li>
+ * 	&lt;li>the constructor function must be invokable without parameters&lt;/li>
+ * &lt;/ul>
+ * 
+ * 
+ * &lt;p>
+ * If &lt;tt>storedObject&lt;/tt> contains a function &lt;tt>init&lt;/tt>, then this function will be invoked
+ * before returning the new newly created object.
+ * 
+ * 
+ * @function
+ * @static
+ * @public
+ * @memberOf mmir.parser
+ * 
+ * @param {Object} storedObject 
+ * 				    a JSON-like object with fields and functions (which will be transfered to the returned object).
+ * @param {Boolean} [isTriggerPublish] OPTIONAL
+ * 					if &lt;code>true&lt;/code> then the restore function call
+ * 					&lt;code>initPublish()&lt;/code> on the restored object before returning.
+ * 					This should only be &lt;code>true&lt;/code> for the root-object
+ * 					(e.g. the View-object or Partial-object; nested objects should NOT invoke
+ * 					 restoreObject() with this argument set to true).
+ * @param {Number} [fileFormatNo] OPTIONAL
+ * 					NOTE: if argument &lt;code>isTriggerPublish&lt;/code> was used with value &lt;code>true&lt;/code>,
+ * 						  then this argument MUST be used too!
+ * 					If the number given does not match {@link parser.STORAGE_FILE_FORMAT_NUMBER}
+ * 					the file format is assumed to be out-dated and an Error will be thrown.
+ * @returns {Object} 
+ *          an new instance created with the constructor &lt;tt>classConstructor&lt;/tt> and
+ * 			set with all properties (fields and functions) from &lt;tt>storedObject&lt;/tt>.
+ * 
+ * @throws Error if &lt;code>fileFormatNo&lt;/code> does not match STORAGE_FILE_FORMAT_NUMBER.
+ * 
+ */
+function restoreObject(storedObject, isTriggerPublish, fileFormatNo){
+	
+	if(isTriggerPublish &amp;&amp; fileFormatNo != parser.STORAGE_FILE_FORMAT_NUMBER){
+		
+		throw new Error('Compiled template file has wrong format: need file with format version '
+				+ parser.STORAGE_FILE_FORMAT_NUMBER +', but got: '+ fileFormatNo
+				+ '. Please re-compile views / templates.'
+		);
+		
+	}
+	
+	var classExtender = {};
+	if(parser.CLASS_EXTENDER &amp;&amp; typeof parser.CLASS_EXTENDER.extend === 'function'){
+		classExtender = parser.CLASS_EXTENDER;
+	}
+	else {
+		classExtender = {extend: extend};
+	}
+	
+	
+	//NOTE: for require-ing to work, all Classes (i.e. JS-files) need to already have been loaded &amp; required (i.e. "async-required" once before)
+	var constructor = require(storedObject.classConstructor);
+	
+	var obj = classExtender.extend( new constructor(), storedObject);
+	if(typeof obj.init === 'function'){
+		obj.init();
+	}
+	
+	if(isTriggerPublish &amp;&amp; typeof obj.initPublish === 'function'){
+		obj.initPublish();
+	}
+	
+	return obj;
+};
+parser.restoreObject = restoreObject;
 
+/**
+ * Creates String-representations (JSON-like) for the specified properties and appends them to the StringBuffer.
+ * 
+ * &lt;p>
+ * This function iterates over the Array &lt;tt>propertyNames&lt;/tt>:
+ * If a property with that name exists in &lt;tt>obj&lt;/tt>, a JSON-like String-representation is generated
+ * and appended at the end of the array &lt;tt>stringBuffer&lt;/tt>.
+ * &lt;br>
+ * Multiple representations are separated by comma entry &lt;code>','&lt;/code> in &lt;tt>stringBuffer&lt;/tt>.
+ * &lt;br>
+ * The last entry in &lt;tt>stringBuffer&lt;/tt> is a comma entry &lt;code>','&lt;/code> if at least one property 
+ * entry was inserted in &lt;tt>stringBuffer&lt;/tt>.
+ * 
+ * &lt;p>
+ * NOTE that the String-representation inserted into &lt;tt>stringBuffer&lt;/tt> may not have a 1:1 correspondence
+ * with properties (only the last entry is guaranteed to be &lt;code>','&lt;/code>, if a property was inserted).
+ * &lt;br>
+ * For pratical use, the returned (or modified) &lt;tt>stringBuffer&lt;/tt> should be converted into a String
+ * e.g. by &lt;code>stringBuffer.join('')&lt;/code>.
+ * 
+ * 
+ * @function
+ * @static
+ * @public
+ * @memberOf mmir.parser
+ * 
+ * @param {Object} obj 
+ * 				the object, that contains the properties for which String representations should be generated.
+ * @param {Array&lt;String>} propertyNames 
+ * 				the names of the properties, for which String-representations should be generated.
+ * @param {Array&lt;String>} stringBuffer 
+ * 				the buffer: String-representations will be appended as entries at the end of the buffer
+ * @param {String} [propertyNamePostfix] 
+ * 				OPTIONAL if present, this postfix will be appended to each property name, before processing it.
+ * 				This is a convenience method, e.g. if all properties in &lt;tt>propertyNames&lt;/tt> should end with
+ * 				the same String / postfix.
+ * @param {Function} [valueFunc] 
+ * 				OPTIONAL by default, value representations are generated using the &lt;code>JSON.stringify&lt;/code>
+ * 				function. If instead this argument is present, this function will be invoked for creating
+ * 				the string representation of the property-value.
+ * 				The function signature is &lt;code>valueFunc(propertyName : String, propertyValue : Object) : String&lt;/code>.
+ * 				If the function returns &lt;code>void&lt;/code>, then the corresponding property will not be added/stringified.
+ * 
+ * @returns {Array&lt;String>} the modified &lt;tt>stringBuffer&lt;/tt>
+ * 
+ * @requires JSON.stringify
+ * 
+ * @example
+ * 
+ * var obj = {
+ * 	some: "properties",
+ * 	including: function(arg1,arg2){ return 'functions' }
+ * };
+ * 
+ * var sb = mobileDS.parser.appendStringified(obj, ['some'], []);
+ * var str = sb.join(',');
+ * //str will be: "some:\"properties\","
+ * 
+ */
+function appendStringified(obj, propertyNames, stringBuffer, propertyNamePostfix, valueFunc){
+	
+	//"shift" arguments, if necessary
+	if(typeof propertyNamePostfix === 'function' &amp;&amp; ! valueFunc){
+		valueFunc = propertyNamePostfix;
+		propertyNamePostfix = null;
+	}
+	
+	var prop, val;
+	for(var i=0, size = propertyNames.length; i &lt; size; ++i){
+		prop = propertyNames[i];
+		
+		if(propertyNamePostfix){
+			prop += propertyNamePostfix;
+		}
 
+		if(typeof obj[prop] === 'undefined'){
+			continue;
+		}
+		
+		
+		if(valueFunc){
+			val = valueFunc(prop, obj[prop]);
+		}
+		else {
+			val = JSON.stringify(obj[prop]);
+		}
+		
+		if(typeof val === 'undefined'){
+			continue;
+		}
+		
+		stringBuffer.push( prop );
+		stringBuffer.push( ':' );
+		stringBuffer.push( val );
 
+		stringBuffer.push( ',' );
+	}
+	
+	return stringBuffer;
+};
+parser.appendStringified = appendStringified;
 
-    
+return parser;
 
+});//END: define(..., function(){</code></pre>
+        </article>
+    </section>
 
-
-
-
-
-
-
-
-
-<section>
-    
-<header>
-    <h2>
-    tools/interfaces.js
-    </h2>
-    
-</header>  
-
-<article>
-    <div class="container-overview">
-    
-    
-    
-        
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
-        
-        
-        
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-        
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</article>
-
-</section>  
 
 
 

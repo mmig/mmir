@@ -2312,30 +2312,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="global.html">Global</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -2343,7 +2321,7 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+    
     </h2>
     
 </header>  
@@ -2353,8 +2331,6 @@
     
     
     
-        
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
         
         
         
@@ -2398,7 +2374,7591 @@
     
     
     
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="newWebAudioTtsImpl">newWebAudioTtsImpl</h4>
+    </div>
     
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Media Module: Implementation for Text-To-Speech via MARY TTS
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="alert">
+            
+            alert<span class="signature">(message, <span class="optional">alertCallback</span>, <span class="optional">title</span>, <span class="optional">buttonName</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_notificationManager.js.html">manager/notificationManager.js</a>, <a href="manager_notificationManager.js.html#line734">line 734</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Opens a (native) alert-notification dialog.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the alert message</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>alertCallback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                callback that is triggered, after dialog was closed</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				the title for the alert dialog				(may not be provided / settable in all execution environments)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>buttonName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				the label for the close button in the alert dialog				(may not be provided / settable in all execution environments)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="beep">
+            
+            beep<span class="signature">(times)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_notificationManager.js.html">manager/notificationManager.js</a>, <a href="manager_notificationManager.js.html#line779">line 779</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Trigger a beep notification sound.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>times</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                how many times should to beep repeated</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="clear">
+            
+            clear<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_dictionary.js.html">tools/dictionary.js</a>, <a href="tools_dictionary.js.html#line255">line 255</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Remove all entries from the dictionary.<p>NOTE that this may execute rather slowly, with O(n).
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="confirm">
+            
+            confirm<span class="signature">(message, <span class="optional">alertCallback</span>, <span class="optional">title</span>, <span class="optional">buttonLabels</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_notificationManager.js.html">manager/notificationManager.js</a>, <a href="manager_notificationManager.js.html#line763">line 763</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Opens a (native) confirm-notification dialog.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the confirm message</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>alertCallback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                callback that is triggered, after dialog was closed.				The callback will be invoked with 1 argument:<br>				<code>callback(wasConfirmed : Boolean)</code><br>				if the OK/CONFIRM button was pressed, <code>wasConfirmed</code>				will be <code>true</code>, otherwise <code>false</code>.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				the title for the confirm dialog				(may not be provided / settable in all execution environments)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>buttonLabels</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="String.html">String</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				the labels for the buttons of the confirm dialog				(may not be provided / settable in all execution environments)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="containsKey">
+            
+            containsKey<span class="signature">(key)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_dictionary.js.html">tools/dictionary.js</a>, <a href="tools_dictionary.js.html#line127">line 127</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Check if the dictionary contains an entry for a key.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the lookup key to check</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+if an entry exists, otherwise         <code>false</code>
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="containsValue">
+            
+            containsValue<span class="signature">(value, <span class="optional">useStrict</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_dictionary.js.html">tools/dictionary.js</a>, <a href="tools_dictionary.js.html#line148">line 148</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Check if the dictionary contains an entry with the value.<p>NOTE that this function may execute rather slowly, with O(n).
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the value to check</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>useStrict</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                if <code>true</code> entry-values are           checked against param <tt>value</tt> with           <code>===</code>. If <code>false</code> or omitted,           values are compared with each other using <code>==</code>.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+if an entry exists, otherwise         <code>false</code>
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="createSound">
+            
+            createSound<span class="signature">(name, url, <span class="optional">isKeepOnPause</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_notificationManager.js.html">manager/notificationManager.js</a>, <a href="manager_notificationManager.js.html#line860">line 860</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Create a sound notification.<p>After creation, the sound "theSoundId" can be played via <code>playSound("theSoundId", 1)</code>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the name / identifier for the sound</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the URL for the audio of the sound</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>isKeepOnPause</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL			flag indicating, if the audio resources should be keept			when the device goes into <em>pause mode</em>			(may not apply to all execution environments; 			 e.g. relevant for Android environment)			<br>			DEFAULT: <code>false</code></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="decodeUmlauts">
+            
+            decodeUmlauts<span class="signature">(target, <span class="optional">doAlsoEncodeUpperCase</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>|Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_EncodeUtils.js.html">tools/extensions/EncodeUtils.js</a>, <a href="tools_extensions_EncodeUtils.js.html#line81">line 81</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Decodes from <code>__{CHAR}[e|s]__</code> to umlauts, e.g.<code>__ae__</code> to <code>ä</code>or<code>__ss__</code> to <code>ß</code>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the String for wich all contained umlauts-encoding should be replaced with the original umlauts.							If this parameter is not a String, it will be converted using <code>JSON.stringify()</code>							and the resulting String will be processed (may lead to errors if umlauts occur in "strange"							places within the stringified object).</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>doAlsoEncodeUpperCase</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL							if <code>true</code>, then upper-case umlauts-encodings will be decoded, too							DEFAULT: <code>false</code> (i.e. no decoding for upper-case umlauts-encodings)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+String with decoded umlauts-encodings (i.e. with the "original" umlauts).				If the input argument <code>target</code> was an Object, the return value				will also be an Object, for which the processing stringified Object is converted				back using <code>JSON.parse()</code> (may lead to errors if umlauts occur in "strange"				places within the stringified object).
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="determineLanguage">
+            
+            determineLanguage<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line532">line 532</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Chooses a language for the application.<p>The language selection is done as follows:<ol><li>check if a default language exists<br>if it does and if both (!) grammar and dictionary exist for thislanguage, return this language </li><li>walk through all languages alphabetically<ol><li>if for a language both (!) grammar and dictionary exist,return this language memorize the first language with a grammar(do not care, if a dictionary exists) </li></ol><li>test if a grammar exists for the default language - do notcare about dictionaries - if it does, return the default language</li><li>If a language was found (in Step 2.1) return this language</li><li>If still no language is returned take the default languageif it has a dictionary </li><li>If a language exists, take it (the first one) </li><li>Take the default language - no matter what </li></ol>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+determined language
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="doRenderView">
+            
+            doRenderView<span class="signature">(ctrlName, viewName, view, ctrl, <span class="optional">data</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="env_view_simpleViewEngine.js.html">env/view/simpleViewEngine.js</a>, <a href="env_view_simpleViewEngine.js.html#line267">line 267</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Actually renders the View.<br>Fetches the layout for the controller, then fills thelayout-template with the view content, while incorporatingpartials and contents that helper methods have provided. ThenDialogs are created and the pageContainer id is updated. At lastall the content is localized using<code>mmir.LanguageManager#translateHTML</code>, and appended tothe HTML document of the application, while the old one isremoved.<br>At the end the <b>on_page_load</b> action is performed.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>ctrlName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Name of the controller</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>viewName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Name of the view to render</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>view</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                View object that is to be rendered</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>ctrl</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Controller object of the view to render</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                optional data for the view.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+Promise that gets resolved when rendering is finished
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="encodeUmlauts">
+            
+            encodeUmlauts<span class="signature">(target, <span class="optional">doAlsoEncodeUpperCase</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>|Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_EncodeUtils.js.html">tools/extensions/EncodeUtils.js</a>, <a href="tools_extensions_EncodeUtils.js.html#line27">line 27</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Encodes umlauts to <code>__{CHAR}[e|s]__</code>, e.g.<code>ä</code> to <code>__ae__</code>or<code>ß</code> to <code>__ss__</code>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the String for wich all contained umlauts should be replaced with an encoded version.							If this parameter is not a String, it will be converted using <code>JSON.stringify()</code>							and the resulting String will be processed (may lead to errors if umlauts occur in "strange"							places within the stringified object).</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>doAlsoEncodeUpperCase</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL							if <code>true</code>, then upper-case umlauts will be encoded, too							DEFAULT: <code>false</code> (i.e. no encoding for upper-case umlauts)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+String with encoded umlauts.				If the input argument <code>target</code> was an Object, the return value				will also be an Object, for which the processing stringified Object is converted				back using <code>JSON.parse()</code> (may lead to errors if umlauts occur in "strange"				places within the stringified object).
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="existsDictionary">
+            
+            existsDictionary<span class="signature">(Language)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line447">line 447</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        If a dictionary exists for the given language, 'true' isreturned. Else the method returns 'false'.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>Language</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                String, i.e.: en, de</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+if a dictionary exists for given         language.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="existsGrammar">
+            
+            existsGrammar<span class="signature">(Language)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line500">line 500</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        If a JSON grammar file exists for the given language, 'true' isreturned. Else the method returns 'false'.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>Language</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                String, i.e.: en, de</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+if a grammar exists for given language.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="existsSpeechConfig">
+            
+            existsSpeechConfig<span class="signature">(lang)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line475">line 475</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        If a speech-configuration (file) exists for the given language.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>lang</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the language for which existence of the configuration should be checked, e.g. en, de</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+a speech-configuration exists for given language.				Otherwise <code>false</code>.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fixLang">
+            
+            fixLang<span class="signature">(providerName, langCode)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line748">line 748</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        HELPER for dealing with specific language / country code quirks of speech services:Get the language code for a specific ASR or TTS service, that is if the service requires somespecific codes/transformations, then the transformed code is retruned by this function(otherwise the unchanged langCode is returned).
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>providerName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                corrections for: "nuance" | "mary"</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>langCode</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the original language / country code</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+(possibly "fixed") language-setting/-code
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="get">
+            
+            get<span class="signature">(key)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{any}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_dictionary.js.html">tools/dictionary.js</a>, <a href="tools_dictionary.js.html#line173">line 173</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get the value for a key.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the lookup key with was used to store the entry/value.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+value for the <tt>key</tt>, or         <code>undefined</code> if the dictionary has no entry for         the <tt>key</tt>.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getBeepUrl">
+            
+            getBeepUrl<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line463">line 463</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the beep audio-file.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+to beep wav file
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getConfigurationFileUrl">
+            
+            getConfigurationFileUrl<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line445">line 445</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the configuration file.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+to configuration file
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getControllerPath">
+            
+            getControllerPath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line380">line 380</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the controllers.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+path
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getDefaultLanguage">
+            
+            getDefaultLanguage<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line627">line 627</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Gets the default language.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+default language
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getDictionary">
+            
+            getDictionary<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line432">line 432</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns the dictionary of the currently used language.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+JSON object for the dictionary of the         currently used language
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getDictionaryFileName">
+            
+            getDictionaryFileName<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line472">line 472</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns the name of the dictionary filename as string
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+filename
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getDirectoriesFileUrl">
+            
+            getDirectoriesFileUrl<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line454">line 454</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the directories file (directory-strucure / file-list).
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+to directories file
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getEnv">
+            
+            getEnv<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line562">line 562</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getEnvPlatform">
+            
+            getEnvPlatform<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line572">line 572</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getExtensionsPath">
+            
+            getExtensionsPath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line407">line 407</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the extensions.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+path
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getGeneratedGrammarsPath">
+            
+            getGeneratedGrammarsPath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line436">line 436</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the directory that contains the generated/executable grammars.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+for generated grammars (JavaScript files)
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getGrammarFileName">
+            
+            getGrammarFileName<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line491">line 491</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns the name of the grammar filename as string
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+filename
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getGrammarPluginPath">
+            
+            getGrammarPluginPath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line427">line 427</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the Grammar-Plugins(ie. engines for grammar generation).
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+Plugin path (
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getHelperPath">
+            
+            getHelperPath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line398">line 398</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the helpers.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+path
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getHelperSuffix">
+            
+            getHelperSuffix<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line509">line 509</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns the suffix for helper filenames as string. A helpers filename looks like: "ControllerName"+"Helper"+".js"
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+for helper filenames
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getKeys">
+            
+            getKeys<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array.&lt;<a href="String.html">String</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_dictionary.js.html">tools/dictionary.js</a>, <a href="tools_dictionary.js.html#line228">line 228</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get a list of the keys for all entries in the dictionary.<p>The returned list has no specific ordering.<p>NOTE that this may execute rather slowly, with O(n).<p>NOTE that the returned list is no "view" for the keys, i.e. changeson this list will not be reflected by the dictionary's key-list.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+list of all keys
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getLanguage">
+            
+            getLanguage<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line616">line 616</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Gets the language currently used for the translation.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+current language
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getLanguage">
+            
+            getLanguage<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line518">line 518</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns default language as string.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+language
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getLanguageConfig">
+            
+            getLanguageConfig<span class="signature">(pluginId, <span class="optional">feature</span>, <span class="optional">separator</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line702">line 702</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get the language code setting for a specific plugin.Returns the default setting, if no specific setting for the specified plugin was defined.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>pluginId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>feature</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+|
+
+<span class="param-type">Array.&lt;<a href="String.html">String</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				dot-separate path String or "path Array"				This parameter may be omitted, if no <code>separator</code> parameter				is used.				DEFAULT: "language" (the language feature)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>separator</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				the speparator-string that should be used for separating				the country-part and the language-part of the code</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+language-setting/-code
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getLanguagePath">
+            
+            getLanguagePath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line371">line 371</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the languages.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+path
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getLanguages">
+            
+            getLanguages<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line639">line 639</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Gets an array of all for the translation available languages.<br>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+array of all for the translation available         languages
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getLayoutPath">
+            
+            getLayoutPath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line337">line 337</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the layouts.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+path
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getMediaPluginPath">
+            
+            getMediaPluginPath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line416">line 416</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the Media-Plugins.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+path
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getModelPath">
+            
+            getModelPath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line349">line 349</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the models.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+path
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getPartialsPrefix">
+            
+            getPartialsPrefix<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line500">line 500</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns the prefix for partial filenames as string
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+for partial filenames
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getPath">
+            
+            getPath<span class="signature">(scriptUrl)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="workers_workerUtil.js.html">workers/workerUtil.js</a>, <a href="workers_workerUtil.js.html#line61">line 61</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        HELPER for resolving script paths that will be loaded via importScripts()This helper resolves URL for scripts that are NOT located in the same directory/path as the worker itself(do not use this helper for script URLs that are located in the same path as the worker!)
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>scriptUrl</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+resolved script path
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getSpeechConfigFileName">
+            
+            getSpeechConfigFileName<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line482">line 482</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns the name of the filename forthe speech configuration as string
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+filename
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getText">
+            
+            getText<span class="signature">(textVarName)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line681">line 681</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Looks up a keyword in the current dictionary and returns thetranslation.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>textVarName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The keyword which is to be translated</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+translation of the keyword
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getViewPath">
+            
+            getViewPath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line358">line 358</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the views.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+path
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getWorkerPath">
+            
+            getWorkerPath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line389">line 389</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the workers.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+path
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="hideCurrentDialog">
+            
+            hideCurrentDialog<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="env_view_simpleViewEngine.js.html">env/view/simpleViewEngine.js</a>, <a href="env_view_simpleViewEngine.js.html#line416">line 416</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Closes a modal window / dialog.<br>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="hideWaitDialog">
+            
+            hideWaitDialog<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="env_view_simpleViewEngine.js.html">env/view/simpleViewEngine.js</a>, <a href="env_view_simpleViewEngine.js.html#line503">line 503</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Hides / closes the "wait" dialog.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><code>showWaitDialog</code></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="htmlEncode">
+            
+            htmlEncode<span class="signature">(source, <span class="optional">display</span>, <span class="optional">tabs</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_EncodeUtils.js.html">tools/extensions/EncodeUtils.js</a>, <a href="tools_extensions_EncodeUtils.js.html#line137">line 137</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        HTML-Encode the supplied inputParameters:
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The text to be encoded.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>display</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL                    The output is intended for display.                    If true (or undefined):                    * Tabs will be expanded to the number of spaces                       indicated by the 'tabs' argument.                    * Line breaks will be converted to <br />.                    If false:                    * Tabs and linebreaks get turned into &#____;                      entities just like all other control characters.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>tabs</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL                    The number of spaces to expand tabs to.                      (Ignored if the 'display' parameter evaluates to false                      or if tabs is not >= 0.)                                         Default: undefined (do not replace tabs with spaces)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+HTML encoded stringversion 2010-11-08 (modified: 2012-12-20)
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="init">
+            
+            <span class="type-signature ">private</span>init<span class="signature">(config)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="workers_asyncCompileUtil.js.html">workers/asyncCompileUtil.js</a>, <a href="workers_asyncCompileUtil.js.html#line60">line 60</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        initialized the compiler and sends init-complete message when finished
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>config</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">PlainObject</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                configuration with property <code>config.engineUrl</code> (String)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="init">
+            
+            init<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_asyncGrammar.js.html">semantic/asyncGrammar.js</a>, <a href="semantic_asyncGrammar.js.html#line106">line 106</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Initialize a grammar to be loaded & executed asynchronouslyAfter
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="init">
+            
+            <span class="type-signature ">private</span>init<span class="signature">(config)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="workers_asyncGrammarWorker.js.html">workers/asyncGrammarWorker.js</a>, <a href="workers_asyncGrammarWorker.js.html#line109">line 109</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        sets the config and echos back
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>config</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="init">
+            
+            init<span class="signature">(forBrowserParameter)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line530">line 530</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Initialize the Constants singleton.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>forBrowserParameter</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <tt>true</tt> for browser-environment, if <tt>false</tt> ANDROID environment</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+containing the instance of the class <a href="mmir.Constants.html"><code>mmir.Constants</code></a>
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="initSound">
+            
+            initSound<span class="signature">(name)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_notificationManager.js.html">manager/notificationManager.js</a>, <a href="manager_notificationManager.js.html#line908">line 908</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Initialize a sound notification.<p>NOTE a sound does not need to be explicitly initialized, <code>playSound</code> willautomatically initialize the sound if necessary.<p>Initializing a sound prepares all resources, so that the sound can be immediately played.For instance, a sound that needs to loaded from a remote server first, may take some timebefore it can be played.<p>NOTE the sound must be <code>created</code> first, before initializing it.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the name / identifier for the sound</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><code>createSound</code></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="isBrowserEnv">
+            
+            isBrowserEnv<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line542">line 542</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="isCordovaEnv">
+            
+            isCordovaEnv<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_constants.js.html">tools/constants.js</a>, <a href="tools_constants.js.html#line551">line 551</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="isVibrateAvailable">
+            
+            isVibrateAvailable<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_notificationManager.js.html">manager/notificationManager.js</a>, <a href="manager_notificationManager.js.html#line696">line 696</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Check if the execution environment supports <code>vibrate</code>.<p>If <code>false</code> is returned, calling the <code>vibrate()</code>function will have no effect.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+if <code>#vibrate</code> is functional
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="isVibrateEnabled">
+            
+            isVibrateEnabled<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_notificationManager.js.html">manager/notificationManager.js</a>, <a href="manager_notificationManager.js.html#line677">line 677</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Check if <code>vibrate</code> is functional and enabled.<p>If <code>false</code> is returned, calling the <code>vibrate()</code>function will have no effect.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+if <code>#vibrate</code> is functional
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="parseJS">
+            
+            parseJS<span class="signature">(rawTemplateString, <span class="optional">parseEntryRuleName</span>, <span class="optional">view</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="mmir.parser.html#.ParsingResult">mmir.parser.ParsingResult</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_parser_templateParseUtils.js.html">mvc/parser/templateParseUtils.js</a>, <a href="mvc_parser_templateParseUtils.js.html#line786">line 786</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Parse a text as JavaScript.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>rawTemplateString</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the text that should be parsed</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>parseEntryRuleName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                (optional) specifies the JavaScript element that should be parsed for</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>view</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                (optional) the view to which the <tt>rawTemplateString</tt> belongs (only used for error messages)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+parsing result
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="playSound">
+            
+            playSound<span class="signature">(name, times)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_notificationManager.js.html">manager/notificationManager.js</a>, <a href="manager_notificationManager.js.html#line834">line 834</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Trigger a sound notification by NAME (needs to be created first).
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the name / identifier for the sound (if <code>null</code>, beep notification is used)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>times</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                how many times should to beep repeated</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><code>createSound</code></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="remove">
+            
+            remove<span class="signature">(key)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_dictionary.js.html">tools/dictionary.js</a>, <a href="tools_dictionary.js.html#line191">line 191</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Remove an entry from the dictionary.<p>NOTE that this may execute rather slowly, with O(n).
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the lookup key for the entry to remove</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+if the entry was removed. If         there was no entry for the <tt>key</tt> and nothing was         removed, <code>false</code> is returned.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setLanguage">
+            
+            setLanguage<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line605">line 605</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Sets a new language, but only, if the new language is differentfrom the current language.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+(new) current language
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setNextLanguage">
+            
+            setNextLanguage<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_settings_languageManager.js.html">manager/settings/languageManager.js</a>, <a href="manager_settings_languageManager.js.html#line651">line 651</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Cycles through the available languages.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>unused</li><ul></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+(new) current language
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setVibrateEnabled">
+            
+            setVibrateEnabled<span class="signature">(enabled)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_notificationManager.js.html">manager/notificationManager.js</a>, <a href="manager_notificationManager.js.html#line715">line 715</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Enable or disable <code>vibrate</code>.<p>NOTE: If {@ #isVibrateAvailable} returns <code>false</code>, enabling will have no effect.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>enabled</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                set vibrate function to <code>enable</code></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setVolume">
+            
+            setVolume<span class="signature">(vol)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_notificationManager.js.html">manager/notificationManager.js</a>, <a href="manager_notificationManager.js.html#line796">line 796</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Set the volume for sound notifications.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>vol</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the new volume: a number between [0, 1]</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="mmir.env.media.IAudio.html#setVolume">mmir.env.media.IAudio#setVolume</a></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="showDialog">
+            
+            showDialog<span class="signature">(ctrlName, dialogId, data)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="env_view_simpleViewEngine.js.html">env/view/simpleViewEngine.js</a>, <a href="env_view_simpleViewEngine.js.html#line435">line 435</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Opens the requested dialog.<br>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>ctrlName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Name of the controller</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>dialogId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Id of the dialog</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Optionally data - not used</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+instance of the current dialog that was opened
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="showWaitDialog">
+            
+            showWaitDialog<span class="signature">(<span class="optional">text</span>, <span class="optional">theme</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="env_view_simpleViewEngine.js.html">env/view/simpleViewEngine.js</a>, <a href="env_view_simpleViewEngine.js.html#line469">line 469</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Shows a "wait" dialog, i.e. "work in progress" notification.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				the text that should be displayed.				If omitted the language setting for <code>loadingText</code>				will be used instead (from dictionary.json)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>theme</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				set the jQuery Mobile theme to be used for the wait-dialog				(e.g. "a" or "b").				NOTE: if this argument is used, then the <code>text</code>					  must also be supplied.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><code>hideWaitDialog</code></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="size">
+            
+            size<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Number}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_dictionary.js.html">tools/dictionary.js</a>, <a href="tools_dictionary.js.html#line244">line 244</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get the size of the dictionary.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+count of entries in the dictionary
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="stopSound">
+            
+            stopSound<span class="signature">(name)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_notificationManager.js.html">manager/notificationManager.js</a>, <a href="manager_notificationManager.js.html#line877">line 877</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Stop a sound notification, if it is playing.Has no effect, if the notification is not playing.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the name / identifier for the sound</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
     
     
     

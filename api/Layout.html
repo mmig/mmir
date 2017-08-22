@@ -1951,30 +1951,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="Layout.html">Class: Layout</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -1982,7 +1960,7 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+    Layout
     </h2>
     
 </header>  
@@ -1993,10 +1971,105 @@
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="Layout">
+            
+            new Layout<span class="signature">(name, definition)</span>
+        </h4>
+    
         
+        <div class="tag-source">
+            <a href="mvc_views_layout.js.html">mvc/views/layout.js</a>, <a href="mvc_views_layout.js.html#line30">line 30</a>
+        </div>
         
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        The Layout class The constructor parses the layout and divides them into containers (headerContents, bodyContents, dialogsContents).
+    </div>
+    
+
+    
+    
+    
+    
+    
         
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Name of the Layout (usually the same name as the Layout's controller).</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>definition</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Layout description, i.e. the raw template code that will be processed.			May be empty: in this case the processed contents must be						  added manually (cf. parser.StorageUtils)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
 <dl class="details">
     
         
@@ -2021,8 +2094,20 @@
     
 </dl>
 
-        
-        
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
     
@@ -2031,6 +2116,53 @@
     
     
     
+        <h3 class="subsection-title">Requires</h3>
+        
+        <ul>
+            <li>module:if</li>
+        
+            <li>module:if</li>
+        </ul>
+    
+    
+    
+        <h3 class="subsection-title">Classes</h3>
+        
+        <dl>
+            <dt><a href="Layout.TagElement.html">TagElement</a></dt>
+            <dd></dd>
+        </dl>
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="bodyAttributes">bodyAttributes<span class="type-signature type object">Object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        A JSON-like object containing the attributes of the BODY-tag as String values.For example, for the following BODY-tag:<pre><body onload="handleOnLoad()" class  = 'some css-classes' ></pre>the bodyAttributes would be<pre>{	"onload": "handleOnLoad()",	"class": "some css-classes"}</pre>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
     
     
     
@@ -2038,6 +2170,910 @@
     
     
     
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>undefined</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="bodyContentElement">bodyContentElement<span class="type-signature type contentelement"><a href="ContentElement.html">ContentElement</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The (parsed) content for the body-container.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="bodyContents">bodyContents<span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        This variable holds the contents of the body part of the layout.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>unused</li><ul></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="def">def<span class="type-signature type object">Object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The definition string of the layout (ehtml-format, taken from assets/www/views/layout/*.ehtml)
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="dialogsContents">dialogsContents<span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        This variable holds the contents of the dialogs part of the layout.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="headerContents">headerContents<span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        This variable holds the contents of the header part of the layout.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>unused</li><ul></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="headerElements">headerElements<span class="type-signature type array.<layout.tagelement>">Array.&lt;<a href="Layout.TagElement.html">Layout.TagElement</a>></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        List for extracted & parsed SCRIPT, LINK and STYLE tags
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="name">name<span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The name of the layout.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="title">title<span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The page / layout titleWill be extracted from <em>definition</em>'s TITLE-tag, if present.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="yields">yields<span class="type-signature type array">Array</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        A list holding the content-references (yield declarations) for the containers (except for body):header, footer, and dialogs
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="_extHeaderElements">
+            
+            <span class="type-signature ">protected</span>_extHeaderElements<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_views_layout.js.html">mvc/views/layout.js</a>, <a href="mvc_views_layout.js.html#line683">line 683</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        HELPER: add prototype functions of Layout.TagElement to the #headerElements
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getBodyContents">
+            
+            getBodyContents<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_views_layout.js.html">mvc/views/layout.js</a>, <a href="mvc_views_layout.js.html#line662">line 662</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This methods returns the contents of the body part of the layout.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+contents of the body part of the layout
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getDialogsContents">
+            
+            getDialogsContents<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_views_layout.js.html">mvc/views/layout.js</a>, <a href="mvc_views_layout.js.html#line651">line 651</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This methods returns the contents of the dialog part of the layout.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+contents of the dialog part of the layout
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getHeaderContents">
+            
+            getHeaderContents<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_views_layout.js.html">mvc/views/layout.js</a>, <a href="mvc_views_layout.js.html#line640">line 640</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This methods returns the contents of the header part of the layout.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+contents of the header part of the layout
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getName">
+            
+            getName<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_views_layout.js.html">mvc/views/layout.js</a>, <a href="mvc_views_layout.js.html#line673">line 673</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Gets the name of the layout.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+name of the layout.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getYields">
+            
+            getYields<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_views_layout.js.html">mvc/views/layout.js</a>, <a href="mvc_views_layout.js.html#line629">line 629</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This methods returns an associative array holding the contents of the different containers: header, body, footer and dialogs.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+associative array holding the contents of the different containers: header, body, footer and dialogs
+<br />
+
+    
+    
+    
+</dd>
+
+        </dl>
     
     
     
@@ -2054,7 +3090,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:51 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:52 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>

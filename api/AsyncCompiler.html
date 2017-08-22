@@ -1951,30 +1951,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="AsyncCompiler.html">Class: AsyncCompiler</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -1982,7 +1960,7 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+    AsyncCompiler
     </h2>
     
 </header>  
@@ -1993,10 +1971,37 @@
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="AsyncCompiler">
+            
+            new AsyncCompiler<span class="signature">()</span>
+        </h4>
+    
         
+        <div class="tag-source">
+            <a href="env_grammar_asyncGenerator.js.html">env/grammar/asyncGenerator.js</a>, <a href="env_grammar_asyncGenerator.js.html#line55">line 55</a>
+        </div>
         
-        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Factory for creating WebWorkers that compile grammar-parser
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
 <dl class="details">
     
         
@@ -2021,8 +2026,20 @@
     
 </dl>
 
-        
-        
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
     
@@ -2038,6 +2055,135 @@
     
     
     
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="createWorker">
+            
+            createWorker<span class="signature">(parserEngineId)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="CompileWebWorker.html">CompileWebWorker</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="env_grammar_asyncGenerator.js.html">env/grammar/asyncGenerator.js</a>, <a href="env_grammar_asyncGenerator.js.html#line92">line 92</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Create a WebWorker for compiling grammars.The returned WebWorker provides 2 additional convenience functionsfor communicating with the WebWorker thread:<code>addCallback(taskId : String, callback : Function)</code>where <em>taskId</em> is a unique String identifying a single compile-joband <em>callback</em> handles messages that come back from the WebWorker thread:The <code>callback(eventData)</code> will invoke the callback with the message's dataThe property <code>eventData.done</code> has a special function:		 if this property is present with a TRUTHY value, then callback will be removed, i.e.      not listening anymore for the specified taskId.After adding a <em>callback</em>, messages to the WebWorker thread can be send withthe <code>postMessage({id: taskId, cmd: 'parse', ...})</code>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>parserEngineId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the name of the file that holds the WebWorker implementation.			The file must be located in MMIR's <code>Constants#getWorkerPath</code>			directory.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+WebWorker that provides some convenience functions for			communicating with the WebWorker/thread.
+<br />
+
+    
+    
+    
+</dd>
+
+        </dl>
     
     
     

@@ -1951,30 +1951,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="mmir.Core.getCompatibility3ModuleId.html">Class: getCompatibility3ModuleId</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -1982,7 +1960,7 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+    getCompatibility3ModuleId
     </h2>
     
 </header>  
@@ -1993,10 +1971,37 @@
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getCompatibility3ModuleId">
+            
+            new mmir.Core.getCompatibility3ModuleId<span class="signature">()</span>
+        </h4>
+    
         
+        <div class="tag-source">
+            <a href="tools_extensions_Core3ModuleIdCompatibility.js.html">tools/extensions/Core3ModuleIdCompatibility.js</a>, <a href="tools_extensions_Core3ModuleIdCompatibility.js.html#line2">line 2</a>
+        </div>
         
-        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Maps requirejs module IDs from mmir-lib v3 (and earlier) to module IDs used in mmir-lib version >= 4.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
 <dl class="details">
     
         
@@ -2021,8 +2026,28 @@
     
 </dl>
 
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
         
-        
+
+    
+    <pre class="prettyprint"><code>mmir.require(['mmirf/core3ModuleIdCompatibility', 'mmirf/core'], function(core3ModuleIdCompatibility, mmir){		core3ModuleIdCompatibility(mmir.require, window, false);});</code></pre>
+    
+
+    
+</dd>
+
     
     </div>
     
@@ -2037,7 +2062,434 @@
     
     
     
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".core3Ids"><span class="type-signature static">static</span>mmir.Core.getCompatibility3ModuleId.core3Ids</h4>
+    </div>
     
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Map v3 IDs (input) to v4 IDs (output)
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".core3Shims"><span class="type-signature static">static</span>mmir.Core.getCompatibility3ModuleId.core3Shims</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        requirejs shim configuration for v3 modules (that are no longer used in v4).
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".getId">
+            
+            <span class="type-signature static">static</span>mmir.Core.getCompatibility3ModuleId.getId<span class="signature">(id)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_Core3ModuleIdCompatibility.js.html">tools/extensions/Core3ModuleIdCompatibility.js</a>, <a href="tools_extensions_Core3ModuleIdCompatibility.js.html#line143">line 143</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Maps requirejs module IDs from mmir-lib v3 (and earlier) to module IDs used in mmir-lib version >= 4.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the v3 module ID</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+corresponding v4 module ID
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".getLegacyConfig">
+            
+            <span class="type-signature static">static</span>mmir.Core.getCompatibility3ModuleId.getLegacyConfig<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{PlainObject}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_Core3ModuleIdCompatibility.js.html">tools/extensions/Core3ModuleIdCompatibility.js</a>, <a href="tools_extensions_Core3ModuleIdCompatibility.js.html#line161">line 161</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get the requirejs shim configuration for v3 modules (that are no longer used in v4).
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+requirejs configuration for v3 module shims
+<br />
+
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>mmir.config(compat.getLegacyConfig());</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".setToCompatibilityMode">
+            
+            <span class="type-signature static">static</span>mmir.Core.getCompatibility3ModuleId.setToCompatibilityMode<span class="signature">(mmir)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_Core3ModuleIdCompatibility.js.html">tools/extensions/Core3ModuleIdCompatibility.js</a>, <a href="tools_extensions_Core3ModuleIdCompatibility.js.html#line182">line 182</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Set to "backwards compatibility mode" (for pre version 4.0).This function re-adds deprecated and removed functions andproperties to the (core) mmir namespace.NOTE that once set to compatibility mode, it cannot be reset tonon-compatibility mode.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>mmir</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="mmir.html">mmir</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the (core) instance/namespace for MMIR</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
     
     
     
@@ -2054,7 +2506,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:51 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:52 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>

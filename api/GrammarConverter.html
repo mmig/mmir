@@ -1951,30 +1951,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="GrammarConverter.html">Class: GrammarConverter</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -1982,7 +1960,7 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+    GrammarConverter
     </h2>
     
 </header>  
@@ -1993,10 +1971,37 @@
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="GrammarConverter">
+            
+            new GrammarConverter<span class="signature">()</span>
+        </h4>
+    
         
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line28">line 28</a>
+        </div>
         
-        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        The GrammarConverter object initializes the grammar for processing<em>natural language text</em>, e.g. from the voice recognition.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
 <dl class="details">
     
         
@@ -2021,8 +2026,20 @@
     
 </dl>
 
-        
-        
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
     
@@ -2031,6 +2048,13 @@
     
     
     
+        <h3 class="subsection-title">Requires</h3>
+        
+        <ul>
+            <li>module:util/loadFile</li>
+        
+            <li>module:util/isArray</li>
+        </ul>
     
     
     
@@ -2038,6 +2062,2338 @@
     
     
     
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="executeGrammar">
+            
+            executeGrammar<span class="signature">(text, <span class="optional">callback</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line693">line 693</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Execute the grammar.NOTE: do not use directly, but <code>mmir.SemanticInterpreter.interpret</code> instead,		since that function applies some pre- and post-processing to the text (stopword removal		en-/decoding of special characters etc.).
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the text String that should be parse.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                if #isAsyncExec is TRUE, then executeGrammar will have no return value, but instead the result			of the grammar execution is delivered by the <code>callback</code>:			<pre>function callback(result){ ... }</pre>			(see also description of <code>return</code> value below)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+result of the grammar execution:			<code>{phrase: STRING, phrases: OBJECT, semantic: OBJECT}</code>			The property <code>phrase</code> contains the <code>text</code> which was matched (with removed stopwords).			The property <code>phrases</code> contains the matched <tt>TOKENS</tt> and <tt>UTTERANCES</tt> from			the JSON definition of the grammar as properties as arrays         (e.g. for 1 matched TOKEN "token": <code>{token: ["the matched text"]}</code>).         The returned property <code>semantic</code> depends on the JSON definition of the grammar.                  NOTE: if #isAsyncExec is TRUE, then there will be no return value, but instead the callback               is invoked with the return value.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getCodeWrapPrefix">
+            
+            getCodeWrapPrefix<span class="signature">(fileFormatVersion, execMode)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line711">line 711</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get code-prefix for wrapping generated, executable grammars.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>fileFormatVersion</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the file format (see <code>mmir.SemanticInterpreter#getFileVersion</code>)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>execMode</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the execution mode for the generated grammar: 'sync' | 'async'</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>mmir.parser#STORAGE_CODE_WRAP_PREFIX</li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+prefix code for generated grammars (i.e. prepend to generated grammar code)
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getCodeWrapSuffix">
+            
+            getCodeWrapSuffix<span class="signature">(encodedStopwords, grammarFuncName, grammarId)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line737">line 737</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get code-suffix for wrapping generated, executable grammars.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>encodedStopwords</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the list of encoded stopwords (see <a href="GrammarConverter.html#getEncodedStopwords"><code>getEncodedStopwords</code></a>)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>grammarFuncName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the (variable's) name of the grammar function that was generated				(and will be used in <a href="GrammarConverter.html#executeGrammar"><code>executeGrammar</code></a>)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>grammarId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the ID for the grammar (e.g. language code) with which the grammar				will be registered with SemanticInterpreter (see <code>mmir.SemanticInterpreter#addGrammar</code>)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>mmir.parser#STORAGE_CODE_WRAP_SUFFIX</li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+suffix code for generated grammars (i.e. append to generated grammar code)
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getEncodedStopwords">
+            
+            getEncodedStopwords<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array.&lt;<a href="String.html">String</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line150">line 150</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        HELPER creates a copy of the stopword list and encodes all non-ASCII chars to their unicode       representation (e.g. for save storage of stringified stopword list, even if file-encoding       does not support non-ASCII letters).
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+copy of the stopword list, from the current JSON grammar							(or empty list, if no grammar is present)
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getGrammarDef">
+            
+            getGrammarDef<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line295">line 295</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get grammar definition text.This is the "source code" input for the grammar compiler(i.e. syntax for jison, PEG.js or JS/CC).The grammar definition text is generated from the JSON grammar.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+grammar definition in compiler-specific syntax
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getGrammarSource">
+            
+            getGrammarSource<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line328">line 328</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get the compiled JavaScript grammar source code.This is the output of the grammar compiler (with additionalJavaScript "framing" in SemanticInterpreter.createGrammar).This needs to be eval'ed before it can be executed (eval() will addthe corresponding executable grammar to SemanticInterpreter).
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+compiled, JavaScript grammar source code
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getStopWordsEncRegExpr">
+            
+            getStopWordsEncRegExpr<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line278">line 278</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        FIX for stopwords that start or end with encoded chars (i.e. non-ASCII chars)This RegExp may be NULL/undefined, if no stopwords exist, that begin/end with encoded charsi.e. you need to check for NULL, before trying to use this RegExpr. Usage:
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>//remove normal stopwords: var removedStopwordsStr  = someStr.replace( gc.getStopWordsRegExpr(), '');   var removedStopwordsStr2 = removedStopwordsStr; if(gc.getStopWordsEncRegExpr()){ 	//NOTE replace stopwords with spaces (not with empty String as above, ie. with "normal" stopwords)  	removedStopwordsStr2 = gc.getStopWordsEncRegExpr().replace( gc.getStopWordsEncRegExpr(), ' '); }</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="maskAsUnicode">
+            
+            maskAsUnicode<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line936">line 936</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        HELPER uses #maskString for encoding non-ASCII chars to their Unicode representation,i.e. <code>\uXXXX</code> where XXXX is the Unicode HEX number.SHORTCUT for calling <code>maskString(str, '\\u', '')</code>.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>//for Japanese "下さい" ("please")maskAsUnicode("下さい") -> "\u4E0B\u3055\u3044"//... and using default masking:maskString("下さい") -> "~~4E0B~~~~3055~~~~3044~~"</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="maskString">
+            
+            maskString<span class="signature">(str, <span class="optional">computePositions</span>, <span class="optional">prefix</span>, <span class="optional">postfix</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>|Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line805">line 805</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Masks unicoded characters strings.Unicode characters are mask by replacing them with<code>~~XXXX~~</code>where <code>XXXX</code> is the four digit unicode HEX number.<p>NOTE that this function is <em>stable</em> with regard tomultiple executions:If the function is invoked on the returned String again, thereturned String will be the same / unchanged, i.e.maskings (i.e. "~~XXXX~~") will not be masked again.</p><p>NOTE: currently, the masking pattern cannot be escaped,		 i.e. if the original String contains a substring		 that matches the masking pattern, it cannot		 be escaped, so that the unmask-function		 will leave it untouched.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>str</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the String to process</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>computePositions</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				DEFAULT: false</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>prefix</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				an alternative prefix used for masking, i.e instead of <code>~~</code>				(ignored, if argument has other type than <code>string</code>)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>postfix</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				an alternative postfix used for masking, i.e instead of <code>~~</code>				(ignored, if argument has other type than <code>string</code>)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+masked string, or if <code>computePositions</code> was <code>true</code>				a result object with				<pre>				{					str: STRING, // the masked string					pos: [POSITION] // array of maskink-positions: {i: NUMBER, len: NUMBER, mlen: NUMBER}				}				</pre>				where POSITION is an object with				<pre>				{					i: NUMBER, // the index within the modified string					len: NUMBER, // the length before the modification (i.e. of sub-string that is to be masked)					mlen: NUMBER // the length after the modification (i.e. of sub-string that that was masked)				}				</pre>
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="postproc">
+            
+            postproc<span class="signature">(procResult, <span class="optional">recodeFunc</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line641">line 641</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Post-processes the result from the applied grammar: * un-masks non-ASCI characters
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>procResult</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">SemanticResult</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>recodeFunc</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                function that recodes non-ASCI characters (or reverts the recoding)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="preproc">
+            
+            preproc<span class="signature">(thePhrase, <span class="optional">pos</span>, <span class="optional">maskFunc</span>, <span class="optional">stopwordFunc</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line543">line 543</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Apply pre-processing to the string, before applying the grammar: * mask non-ASCI characters * remove stopwords
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>thePhrase</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>pos</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">PlainObject</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				in/out argument: if given, the pre-processor will add fields with information								 on how the input string <code>thePhrase</code> was modified				Namely, the position information for removed stopwords will be added to				<code>pos.stopwords</code> (see <a href="GrammarConverter.html#removeStopwords"><code>removeStopwords</code></a> for more details)				NOTE that this may not work, if custom <code>maskFunc</code> and/or <code>stopwordFunc</code>				     are provided as well.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>maskFunc</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				custom function for masking non-ASCI characters:				<pre>maskFunc(inputStr : STRING [, isCalcPosition: BOOLEAN]) : STRING | {str: STRING, pos: ARRAY<POSITION>}</pre>				DEFAUL: use of <code>this.maskString(thePhrase, !!pos)</code></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>stopwordFunc</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				custom function for removing stopwords				<pre>stopwordFunc(inputStr : STRING [, positions: ARRAY]) : STRING | {str: STRING, pos: ARRAY<POSITION>}</pre>				DEFAUL: use of <code>this.removeStopwords(str, [])</code>								NOTE that <code>maskFunc</code> must also be specified, if this argument is used</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+pre-processed string
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="recodeJSON">
+            
+            recodeJSON<span class="signature">(json, recodeFunc, <span class="optional">isMaskValues</span>, <span class="optional">isMaskNames</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line1087">line 1087</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Recodes Strings of a JSON-like object.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>json</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the JSON-like object (i.e. PlainObject)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>recodeFunc</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the "recoding" function for modifying String values:								 must accecpt a String argument and return a String									<code>String recodeFunc(String)</code>.								The <tt></tt> function is invoked in context of the GrammarConverter object.								Example: this.maskString().								See <a href="GrammarConverter.html#maskString"><code>maskString</code></a>.k</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>isMaskValues</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL								 if true, the object's property String values will be processed								 NOTE: in case this parameter is specified, then <code>recodeFunc</code> must									   also be specified!								 DEFAULT: uses property <code>maskValues</code></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>isMaskNames</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL								 if true, the property names will be processed								 NOTE: in case this parameter is specified, then <code>recodeFunc</code> and									   <code>isMaskValues</code> must also be specified!								 DEFAULT: uses property <code>maskNames</code></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+recoded JSON object
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="removeStopwords">
+            
+            removeStopwords<span class="signature">(thePhrase, <span class="optional">positions</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line382">line 382</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>thePhrase</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the string from which to remove stopwords (and trim()'ed)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>positions</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Position></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				if provided, the positions at which stopwords were removed will be added				to this array, where each position-object is comprised of				<pre>					{						i: NUMBER the index at which the stopword was removed						mlen: NUMBER the length of the stopword that was removed					}				</pre>				the positions will order by occurance (i.e. by <code>pos.i</code>)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+string where stopwords were removed
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setGrammarDef">
+            
+            <span class="type-signature ">protected</span>setGrammarDef<span class="signature">(rawGrammarSyntax)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line313">line 313</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Sets the grammar definition text.This function should only be used during compilation of the JSON grammarto the executable grammar.NOTE: Setting this "manually" will have no effect on the executable grammar.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>rawGrammarSyntax</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the grammar definition in compiler-specific syntax</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="GrammarConverter.html#getGrammarDef"><code>getGrammarDef</code></a></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setGrammarFunction">
+            
+            setGrammarFunction<span class="signature">(func, <span class="optional">isAsnc</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line355">line 355</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Set the executable grammar function.The grammar function takes a String argument: the text that should be parsed.                           a Function argument: the callback for the result.                           where the callback itself takes 1 argument for the result: <code>callback(result)</code>                           The returned result depends on the JSON definition of the grammar:<code>func(inputText, resultCallback)</code>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>func</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the executable grammar function: <code>func(string, function(object)) : object</code></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>isAsnc</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL					set to TRUE, if execution is asynchronously done.					DEFAULT: FALSE</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><code>exectueGrammar</code></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="unmaskString">
+            
+            unmaskString<span class="signature">(str, <span class="optional">computePositions</span>, <span class="optional">detector</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>|Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_grammarConverter.js.html">semantic/grammarConverter.js</a>, <a href="semantic_grammarConverter.js.html#line983">line 983</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Unmasks <i>masked unicoded characters</i> in a string.Masked unicode characters are assumed to have the pattern:<code>~~XXXX~~</code>where <code>XXXX</code> is the four digit unicode HEX number.<p>NOTE that this function is <em>stable</em> with regard tomultiple executions, <b>IF</b> the original String <tt>str</tt> did notcontain a sub-string that conforms to the encoding pattern (see remark for <a href="GrammarConverter.html#maskString"><code>maskString</code></a>):If the function is invoked on the returned String again, thereturned String will be the same, i.e. unchanged. </p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>str</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>computePositions</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				DEFAULT: false</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>detector</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RegExp</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				an alternative detector-RegExp:				the RegExp must conatin at least one grouping which detects a unicode number (HEX),				e.g. default detector is <code>~~([0-9|A-F|a-f]{4})~~</code> (note the grouping				for detecting a 4-digit HEX number within the brackets).</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+masked string, or if <code>computePositions</code> was <code>true</code>				a result object with				<pre>				{					str: STRING, // the masked string					pos: [POSITION] // array of maskink-positions: {i: NUMBER, len: NUMBER, mlen: NUMBER}				}				</pre>				where POSITION is an object with				<pre>				{					i: NUMBER, // the index within the modified string					len: NUMBER, // the length before the modification (i.e. of sub-string that is to be masked)					mlen: NUMBER // the length after the modification (i.e. of sub-string that that was masked)				}				</pre>
+<br />
+
+    
+    
+    
+</dd>
+
+        </dl>
     
     
     
@@ -2054,7 +4410,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:51 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:52 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>

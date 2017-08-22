@@ -1951,30 +1951,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="mmir.html">Namespace: mmir</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -1982,7 +1960,7 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+    mmir
     </h2>
     
 </header>  
@@ -1993,7 +1971,7 @@
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+            <div class="description">Main module / namespace for the MMIR framework.On initialization, a global module <code>window.mmir</code> is created.If called multiple times, the existing module instance is returned.If a function <code>require</code> exists, the module tries to registers itselfaccording to the <em>RequireJS</em> interface (using the default as its module name, i.e. "mmirf/core").</div>
         
         
         
@@ -2033,11 +2011,1269 @@
     
     
     
+        <h3 class="subsection-title">Classes</h3>
+        
+        <dl>
+            <dt><a href="mmir.CommonUtils.html">CommonUtils</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.ConfigurationManager.html">ConfigurationManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.Constants.html">Constants</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.ControllerManager.html">ControllerManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.DialogManager.html">DialogManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.DisabledLogging.html">DisabledLogging</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.InputManager.html">InputManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.LanguageManager.html">LanguageManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.Logging.html">Logging</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.MediaManager.html">MediaManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.ModelManager.html">ModelManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.NotificationManager.html">NotificationManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.PresentationManager.html">PresentationManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.SemanticInterpreter.html">SemanticInterpreter</a></dt>
+            <dd></dd>
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Namespaces</h3>
+        
+        <dl>
+            <dt><a href="namespaces.html#mmir.parser"><a href="mmir.parser.html">parser</a></a></dt>
+            <dd></dd>
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="._define"><span class="type-signature ">protected,static</span>mmir._define<span class="type-signature type function">function</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Attached define-function for "declaring" modules that is used by the framework.See requirejs documentation on details about the <code>define</code> function.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
     
     
     
     
     
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>define</li></ul></dd>
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://requirejs.org/">https://requirejs.org/</a></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="._mmirLibPath"><span class="type-signature ">protected,static</span>mmir._mmirLibPath<span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The (relative) path pointing to the mmir-lib, in case the library is locatedsomewhere other than <code>mmirf/</code> (relative to the main HTML page).Normally, it should not be necessary to change this.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>undefined (will use the default configuration for the path)</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".conf"><span class="type-signature static">static</span>mmir.conf</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".const"><span class="type-signature static">static</span>mmir.const</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".debug"><span class="type-signature static">static</span>mmir.debug<span class="type-signature type boolean">Boolean</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Property for enabling / disabling logging:if set to <code>true</code> (or omitted), the default Logger implementation <code>tools/logger.js</code>will be loaded as "logger" module.If set to <code>false</code> the "dummy" Logger implementation <code>tools/loggerDisabled.js</code> willbe loaded as "logger" module which essentially will create no logging output.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>true</li></ul></dd>
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="mmir.html#.logLevel">mmir.logLevel</a></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".jquery"><span class="type-signature static">static</span>mmir.jquery<span class="type-signature type jquery">jQuery</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The jQuery instance that will be used by the MMIR library.Will be automatically set, if jQuery is loaded before the MMIR library initializes(or can be manually set, before the MMIR library initializes).If jQuery is present, the MMIR library will utilize its implementation for someutility functions (otherwise alternative, internal utiltiy implemenations will be used).NOTE: changing this field after the MMIR library has initialized will have no effect.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>undefined (will be set automatically, if jQuery was loaded)</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".logLevel"><span class="type-signature static">static</span>mmir.logLevel<span class="type-signature type integer">Integer</span> <span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Property for the log-level of the Logger module:if set, and property <code>debug</code> is <code>true</code>, then the logger modulewill use the log-level as default log-level.If omitted, the Logger's implementation defaults will be used.If set, the property must be either a Number or a String with one of the following values:0: "verbose"1: "debug"2: "info"3: "warn"4: "error"5: "critical"6: "disabled"NOTE: if you want to disable logging completely, use <a href="mmir.html#.debug"><code>mmir.debug</code></a>.      Setting the logLevel to "disabled" will still allow specific module's to create logging output      (if their log-level is set appropriately)
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>"debug"</li></ul></dd>
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="mmir.html#.debug">mmir.debug</a></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".logTrace"><span class="type-signature static">static</span>mmir.logTrace<span class="type-signature type boolean">Boolean</span> <span class="type-signature type plainobject">PlainObject</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Property for enabling / disabling trace output in the Logger module:if set to <code>true</code>, and property <code>debug</code> is <code>true</code>, then the logger module will print a stack-trace for each log-message.If set to a configuration object:<pre>{		"trace": [true | false],	//same as the Boolean primitive for logTrace		"depth": ["full" | other]	//OPTIONAL: if "full" then the complete stack trace is printed,									// otherwise only the first stack-entry (i.e. the calling function)									// is printed.									//DEFAULT: other}</pre>i.e. <code>{trace: true}</code> would be the same as using <code>true</code> (or omitting this property).The default value (also if omitted!) is <code>true</code>.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>true</li></ul></dd>
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="mmir.html#.debug">mmir.debug</a></li>
+        
+            <li><a href="mmir.html#.logLevel">mmir.logLevel</a></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".mmirName"><span class="type-signature static">static,readonly</span>mmir.mmirName<span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The name of the (this) the core module:this is also the global variable by which the core module (this) can be accessed.NOTE: changing this name here will have no affect on the name of the global variable
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>{String} "mmir"</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".notifier"><span class="type-signature static">static</span>mmir.notifier</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".require"><span class="type-signature static">static</span>mmir.require<span class="type-signature type function">function</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Attached require-function that is used by the framework to load dependencies.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>requirejs</li></ul></dd>
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://requirejs.org/">https://requirejs.org/</a></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".startModule"><span class="type-signature static">static</span>mmir.startModule<span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The name / ID of the RequireJS module that willbe loaded, after the configuration in<code>mainConfig.js</code> was applied.<p>This module should first start-up the framework andthen signal the application (via <code>mmir.setInitialized</code>)that it is ready to be used, i.e. fully initialized now.<p>NOTE: If set to <code>undefined</code>, no module will be loaded after configuration in <code>mainConfig.js</code>was applied.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>{String} "mmirf/main" will load the module specified in /main.js</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".util"><span class="type-signature static">static</span>mmir.util</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".version"><span class="type-signature static">static,readonly</span>mmir.version<span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The version of mmir-lib.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".viewEngine"><span class="type-signature static">static</span>mmir.viewEngine<span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Name / ID / load-path (requirejs) for the modulethat handles the views (i.e. "rendering" that ischange from one view to the next).
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>"mmirf/simpleViewEngine" will load the default view-engine that uses standard HTML document API</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".applyConfigs">
+            
+            <span class="type-signature ">protected,static</span>mmir.applyConfigs<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="core.js.html">core.js</a>, <a href="core.js.html#line492">line 492</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Applies settings that were added via<code>config</code>.<p>WARNING: use this only, if you know what         you are doing -- normally this         functions is only called once         during initialization by the         framework, after the default         configuration settings for          RequireJS in <code>mainConfig.js</code>         were applied.<p>NOTE: this is a semi-private function that          should only be used by the initialization         process.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".config">
+            
+            <span class="type-signature static">static</span>mmir.config<span class="signature">(options)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="core.js.html">core.js</a>, <a href="core.js.html#line439">line 439</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Set options / settings for overwriting the defaultconfiguration for RequireJS:<br>Options / configurations that are added by thismethod will overwrite settings specified in<code>mainConfig.js</code>.<p>NOTE: the options added here will be applied in the order      they were added, i.e. if a later option specifies      settings that were already set by a previous call,      then these later options will overwrite the earlier      ones.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">PlainObject</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                options for RequireJS</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>//IMPORTANT these calls need to done, AFTER core.js is loaded, but BEFORE require.js+mainConfig.js is loaded//(see example index.html in starter-kit)//set specific log-level for module "moduleName":mmir.config({config: { 'moduleName': {logLevel: 'warn'}}});//modify default log-levels for dialogManager and inputManager:mmir.config({config: { 'mmirf/dialogManager': {logLevel: 'warn'}, 'mmirf/inputManager': {logLevel: 'warn'}}});//... or using alternative SCXML definition for dialog-engine:mmir.config({config: { 'mmirf/dialogManager': {scxmlDoc: 'config/statedef/example-view_transitions-dialogDescriptionSCXML.xml'});//overwrite module location (BEWARE: you should know what you are doing, if you use this)mmir.config({paths: {'jquery': 'content/libs/zepto'}};//add ID and location for own module (NOTE: need to omit file-extension ".js" in location! see requirejs docs):mmir.config({paths: {'customAppRouter': 'content/libs/router'}};</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".isVersion">
+            
+            <span class="type-signature static">static</span>mmir.isVersion<span class="signature">(version, <span class="optional">comp</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean|Void}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="core.js.html">core.js</a>, <a href="core.js.html#line518">line 518</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Check if the version number corresponds to the most significant (right-most)part of the mmir-lib's version number, i.e. check"is <code>version</code> <code>comp</code> than the mmir-lib version?"<br>NOTE: changing the <a href="mmir.html#.version"><code>mmir.version</code></a> field will have no effect on this function      (i.e. it will use the original value of <code>version</code>)
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>version</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the version number to check against</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>comp</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL			the comparison type, e.g. <code> ">" | "<" | ">=" | "<=" | "==" | "===" | "!=" | "!==" </code>			<br>Will be used as follows: <code>{mmir-lib version} {comp} {version}</code>			<br>DEFAULT: "==="			<br>NOTE: "=" will be interpreted as "=="</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+the result of the comparison to most the significant part                        of the mmir-lib version number,                        or <code>VOID</code> if the mmir-lib version number is not available.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".ready">
+            
+            <span class="type-signature static">static</span>mmir.ready<span class="signature">(func)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="core.js.html">core.js</a>, <a href="core.js.html#line414">line 414</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Register callbacks for initialization-event of framework.If used after framework has been initialized, the callback is invoked immediately.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>func</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                callback Function that will be triggered when the framework has been initialized</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
     
     
     
@@ -2054,7 +3290,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:51 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:52 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>

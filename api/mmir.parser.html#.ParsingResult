@@ -1951,30 +1951,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="mmir.parser.html#.ParsingResult">Class: ParsingResult</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -1982,7 +1960,9 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+        <span class="ancestors"><a href="mmir.html">mmir</a><a href="mmir.parser.html">.parser</a>.</span>
+    
+    ParsingResult
     </h2>
     
 </header>  
@@ -1993,10 +1973,92 @@
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".ParsingResult">
+            
+            new mmir.parser.ParsingResult<span class="signature">(<span class="optional">thetokens</span>)</span>
+        </h4>
+    
         
+        <div class="tag-source">
+            <a href="mvc_parser_parsingResult.js.html">mvc/parser/parsingResult.js</a>, <a href="mvc_parser_parsingResult.js.html#line42">line 42</a>
+        </div>
         
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        ParsingResult represents an element that was detected during parsing.<p>The detected element is referenced by the properties <code>start</code> and <code>end</code>that refer to the start-index and end-index within the parsed text.<p>The ParsingResult has a <code>type</code> property which refers to the kind of elementthat was detected (see constants in <a href="mmir.parser.element.html"><code>mmir.parser.element</code></a>).<p>In addition, the ParsingResult may have several properties that depend of its type. In general,these properties refer to detected parts of the element (e.g. for a invocation-statement, thesemay refer to its arguments).<p>Properties for <strong>INCLUDE_SCRIPT</strong> type:<ul>	<li><strong>scriptPath</strong>: the path / URL to the resource</li>	<li><strong>scriptPathType</strong>: the type of the <tt>scriptPath</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li></ul><p>Properties for <strong>INCLUDE_STYLE</strong> type:<ul>	<li><strong>stylePath</strong>: </li>	<li><strong>stylePathType</strong>: the type of the <tt>stylePath</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li></ul><p>Properties for <strong>LOCALIZE</strong> type:<ul>	<li><strong>name</strong>: the name/identifier for the localized String</li>	<li><strong>nameType</strong>: the type of the <tt>name</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li></ul><p>Properties for <strong>YIELD_DECLARATION</strong> type:<ul>	<li><strong>name</strong>: the name/identifier for the yield section</li>	<li><strong>nameType</strong>: the type of the <tt>name</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li></ul>Properties for <strong>BLOCK</strong> type:<ul>	<li><strong>scriptContent</strong> {String}: <tt>OPTIONALLY</tt> the script code as a String</li>	<li><strong>scriptEval</strong> {Function}: the compiled script code in form of a function. The 							function takes one argument: the current data-object.</li></ul><p>Properties for <strong>STATEMENT</strong> type:<ul>	<li><strong>scriptContent</strong> {String}: <tt>OPTIONALLY</tt> the script code as a String</li>	<li><strong>scriptEval</strong> {Function}: the compiled script code in form of a function. The 							function takes one argument: the current data-object.</li></ul><p>Properties for <strong>HELPER</strong> type:<ul>	<li><strong>helper</strong>: the name of the helper function</li>	<li><strong>helperType</strong>: the type of the <tt>helper</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>argsEval</strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 			(optional argument) of the helper expression. The function takes one argument: the current data-object.</li></ul><p>Properties for <strong>IF</strong> type:<ul>	<li><strong>ifEval</strong> {Function}: the condition statement, that was compiled into a Function. The 							function takes one argument: the current data-object.</li>	<li><strong>content</strong> {ContentElement}: the HTML / template content that should be render, in case the					if-expression evaluates to <code>true</code>.</li> <li><strong>elseContent</strong> <a href="mmir.parser.html#.ParsingResult"><code>mmir.parser.ParsingResult</code></a>: OPTIONALLY a ParsingResult 					representing an else-expression, see <a href="mmir.parser.element.html#.ELSE"><code>mmir.parser.element.ELSE</code></a>.</li></ul><p>Properties for <strong>ELSE</strong> type:<ul>	<li><strong>content</strong> {ContentElement}: the HTML / template content that should be render, in case the					if-expression (to which the else-expression belongs) evaluates to <code>false</code>.</li></ul><p>Properties for <strong>FOR</strong> type:<ul>	<li><strong>forControlType</strong> {String}: the type of for-loop, either <code>FORITER</code> or <code>FORSTEP</code></li>	<li><strong>forInitEval</strong> {Function}: the initialization statement of the for-expression, compiled into									a Function. The function takes one argument: the current data-object.</li>			<li><code>FORITER</code>: <code>@for(PROP in OBJ){ ... }@</code>	 <ul>		<li><strong>forIterator</strong> {Object}: an iterator object with functions <code>hasNext() : Boolean</code> and					<code>next() : String</code> (which returns the name of the property currently iterated).</li>		<li><strong>forPropName</strong> {String}: the variable name for the property which is currently iterated over.</li>	 </ul>	</li>	<li><code>FORSTEP</code>: <code>@for(INIT; CONDITION; INCREMENT){ ... }@</code>	 <ul>		<li><strong>forConditionEval</strong> {Function}: the condition statement of the for-expression, compiled into											a Function. The function takes one argument: the current data-object.</li>		<li><strong>forIncrementEval</strong> {Function}: the increment statement of the for-expression, compiled into											a Function. The function takes one argument: the current data-object.</li>	 </ul>	</li>	<li><strong>content</strong> {ContentElement}: the HTML / template content that should be rendered								 during each iteration of the for-loop.</li></ul><p>Properties for <strong>RENDER</strong> type:<ul>	<li><strong>partial</strong>: the name of the partial view</li>	<li><strong>partialType</strong>: the type of the <tt>partial</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>controller</strong>: the name of the controller, to which the partial view definition belongs</li>	<li><strong>controllerType</strong>: the type of the <tt>controller</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>argsEval</strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 								(optional argument) of the render expression. The function takes one argument: the current data-object.</li></ul><p>Properties for <strong>ESCAPE_ENTER</strong> type:<ul>	<li><strong>text</strong> {String}: the text that will be rendered (i.e. without the escape-character(s) itself).</li></ul><p>Properties for <strong>ESCAPE_EXIT</strong> type:<ul>	<li><strong>text</strong> {String}: the text that will be rendered (i.e. without the escape-character(s) itself).</li></ul><p>Properties for <strong>VAR_DECLARATION</strong> type:<ul>	<li><strong>name</strong>: the name for the variable (without the leading <tt>@</tt> of template variables)</li>	<li><strong>nameType</strong>: the type of the <tt>name</tt> field: <code>StringLiteral</code></li></ul><p>
+    </div>
+    
+
+    
+    
+    
+    
+    
         
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>thetokens</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">org.antlr.runtime.CommonTokenStream</span>
+|
+
+<span class="param-type">org.antlr.runtime.Token</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL					if <code>org.antlr.runtime.CommonTokenStream</code>:													the TokenStream that corresponds to this parsed element;												when provided, the TokenStream is used to set the start- and end-												property of the new instance.<br>		  			if <code>org.antlr.runtime.Token</code>:												if the parameter is a single Token object, then the start- and end-												property for the new instance is set by this token object</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
 <dl class="details">
     
         
@@ -2021,8 +2083,20 @@
     
 </dl>
 
-        
-        
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
     
@@ -2054,7 +2128,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:51 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:52 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>

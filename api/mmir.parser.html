@@ -1951,30 +1951,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="mmir.parser.html">Namespace: parser</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -1982,7 +1960,9 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+        <span class="ancestors"><a href="mmir.html">mmir</a>.</span>
+    
+    parser
     </h2>
     
 </header>  
@@ -1993,7 +1973,7 @@
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+            <div class="description">This module holds functions / classes for template parsing.<p>This module contains definitions for constants used in the Template Parser and Renderer.</div>
         
         
         
@@ -2023,6 +2003,14 @@
 
         
         
+            <h3>Example</h3>
+            
+
+    
+    <pre class="prettyprint"><code>//access the parser module// (it is a sub-module of mmir!)var someConst = mmir.parser.element.INCLUDE_SCRIPT;...</code></pre>
+    
+
+        
     
     </div>
     
@@ -2033,11 +2021,762 @@
     
     
     
+        <h3 class="subsection-title">Classes</h3>
+        
+        <dl>
+            <dt><a href="mmir.parser.ParserUtils.html">ParserUtils</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.parser.html#.ParsingResult">ParsingResult</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.parser.RenderUtils.html">RenderUtils</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.parser.StorageUtils.html">StorageUtils</a></dt>
+            <dd></dd>
+        
+            <dt><a href="mmir.parser.TemplateProcessor.html">TemplateProcessor</a></dt>
+            <dd></dd>
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Namespaces</h3>
+        
+        <dl>
+            <dt><a href="namespaces.html#mmir.parser.element"><a href="mmir.parser.element.html">element</a></a></dt>
+            <dd></dd>
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".STORAGE_CODE_WRAP_PREFIX"><span class="type-signature static">static,constant</span>mmir.parser.STORAGE_CODE_WRAP_PREFIX</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Prefix for wrapping persisted objects:<ul> <li> wraps code into a closure </li><li> makes global namespace available as variable <code>global</code> (see <code>STORAGE_CODE_WRAP_PREFIX</code> for setting global namespace) </li><li> makes mmirf/core available as variable <code>mmir</code> (if mmirf/core is present in global namespace) </li><li> makes mmirf/core's require function available as <code>require</code> (if mmirf/core is present and has require function)</ul>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
     
     
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="GrammarConverter.html#getCodeWrapPrefix">GrammarConverter#getCodeWrapPrefix</a></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".STORAGE_CODE_WRAP_SUFFIX"><span class="type-signature static">static,constant</span>mmir.parser.STORAGE_CODE_WRAP_SUFFIX</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Suffix for wrapping persisted objects:<ul> <li> sets global namespace to <code>window</code> </li></ul>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="GrammarConverter.html#getCodeWrapSuffix">GrammarConverter#getCodeWrapSuffix</a></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".STORAGE_FILE_FORMAT_NUMBER"><span class="type-signature static">static,constant</span>mmir.parser.STORAGE_FILE_FORMAT_NUMBER</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".appendStringified">
+            
+            <span class="type-signature static">static</span>mmir.parser.appendStringified<span class="signature">(obj, propertyNames, stringBuffer, <span class="optional">propertyNamePostfix</span>, <span class="optional">valueFunc</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array.&lt;<a href="String.html">String</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_parser_storageUtils.js.html">mvc/parser/storageUtils.js</a>, <a href="mvc_parser_storageUtils.js.html#line212">line 212</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Creates String-representations (JSON-like) for the specified properties and appends them to the StringBuffer.<p>This function iterates over the Array <tt>propertyNames</tt>:If a property with that name exists in <tt>obj</tt>, a JSON-like String-representation is generatedand appended at the end of the array <tt>stringBuffer</tt>.<br>Multiple representations are separated by comma entry <code>','</code> in <tt>stringBuffer</tt>.<br>The last entry in <tt>stringBuffer</tt> is a comma entry <code>','</code> if at least one property entry was inserted in <tt>stringBuffer</tt>.<p>NOTE that the String-representation inserted into <tt>stringBuffer</tt> may not have a 1:1 correspondencewith properties (only the last entry is guaranteed to be <code>','</code>, if a property was inserted).<br>For pratical use, the returned (or modified) <tt>stringBuffer</tt> should be converted into a Stringe.g. by <code>stringBuffer.join('')</code>.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the object, that contains the properties for which String representations should be generated.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>propertyNames</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="String.html">String</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the names of the properties, for which String-representations should be generated.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>stringBuffer</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="String.html">String</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the buffer: String-representations will be appended as entries at the end of the buffer</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>propertyNamePostfix</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL if present, this postfix will be appended to each property name, before processing it.				This is a convenience method, e.g. if all properties in <tt>propertyNames</tt> should end with				the same String / postfix.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>valueFunc</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL by default, value representations are generated using the <code>JSON.stringify</code>				function. If instead this argument is present, this function will be invoked for creating				the string representation of the property-value.				The function signature is <code>valueFunc(propertyName : String, propertyValue : Object) : String</code>.				If the function returns <code>void</code>, then the corresponding property will not be added/stringified.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+modified <tt>stringBuffer</tt>
+<br />
+
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>var obj = {	some: "properties",	including: function(arg1,arg2){ return 'functions' }};var sb = mobileDS.parser.appendStringified(obj, ['some'], []);var str = sb.join(',');//str will be: "some:\"properties\","</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".ParsingResult">
+            
+            <span class="type-signature static">static</span>mmir.parser.ParsingResult<span class="signature">(thetokens)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_parser_parsingResult.js.html">mvc/parser/parsingResult.js</a>, <a href="mvc_parser_parsingResult.js.html#line426">line 426</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Set the end position (index) for this parsed element with regard to the TokenStream of the complete input.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>thetokens</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">org.antlr.runtime.CommonTokenStream</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                (optional) the TokenStream that corresponds to this parsed element;												when provided, the TokenStream is used to set the end-property of this object.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".restoreObject">
+            
+            <span class="type-signature static">static</span>mmir.parser.restoreObject<span class="signature">(storedObject, <span class="optional">isTriggerPublish</span>, <span class="optional">fileFormatNo</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_parser_storageUtils.js.html">mvc/parser/storageUtils.js</a>, <a href="mvc_parser_storageUtils.js.html#line117">line 117</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Creates the appropriate object from a JSON-like <tt>storedObject</tt>.<p>NOTE that in difference to a real JSON object, the <tt>storedObject</tt> may contain function definitions.<p>The storedObject must have a String property <strong>classConstructor</strong> (type <code>String</code>)<ul>	<li>that must correspond to a require'able module that represents a constructor function (which will be invoked with <tt>new</tt>)</li>	<li>the require'able module must be represents a constructor function (which will be invoked with <tt>new</tt>)</li>	<li>the constructor function must be invokable without parameters</li></ul><p>If <tt>storedObject</tt> contains a function <tt>init</tt>, then this function will be invokedbefore returning the new newly created object.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>storedObject</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                a JSON-like object with fields and functions (which will be transfered to the returned object).</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>isTriggerPublish</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL					if <code>true</code> then the restore function call					<code>initPublish()</code> on the restored object before returning.					This should only be <code>true</code> for the root-object					(e.g. the View-object or Partial-object; nested objects should NOT invoke					 restoreObject() with this argument set to true).</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>fileFormatNo</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL					NOTE: if argument <code>isTriggerPublish</code> was used with value <code>true</code>,						  then this argument MUST be used too!					If the number given does not match <code>parser.STORAGE_FILE_FORMAT_NUMBER</code>					the file format is assumed to be out-dated and an Error will be thrown.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    <h5>Throws:</h5>
+    
+            
+
+    <div class="param-desc">
+    
+        Error if <code>fileFormatNo</code> does not match STORAGE_FILE_FORMAT_NUMBER.
+    
+    </div>
+
+
+        
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+new instance created with the constructor <tt>classConstructor</tt> and			set with all properties (fields and functions) from <tt>storedObject</tt>.
+<br />
+
+    
+    
+    
+</dd>
+
+        </dl>
     
     
     
@@ -2054,7 +2793,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:51 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:52 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>

@@ -1951,30 +1951,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="mmir.CommonUtils.html">Class: CommonUtils</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -1982,7 +1960,9 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+        <span class="ancestors"><a href="mmir.html">mmir</a>.</span>
+    
+    CommonUtils
     </h2>
     
 </header>  
@@ -1993,10 +1973,37 @@
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="CommonUtils">
+            
+            new mmir.CommonUtils<span class="signature">()</span>
+        </h4>
+    
         
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line29">line 29</a>
+        </div>
         
-        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        A Utility class to support various functions.<br>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
 <dl class="details">
     
         
@@ -2021,8 +2028,28 @@
     
 </dl>
 
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
         
-        
+
+    
+    <pre class="prettyprint"><code>var isList = mmir.CommonUtils.isArray(list);</code></pre>
+    
+
+    
+</dd>
+
     
     </div>
     
@@ -2031,6 +2058,59 @@
     
     
     
+        <h3 class="subsection-title">Requires</h3>
+        
+        <ul>
+            <li>module:Constants</li>
+        
+            <li>module:mmir.SemanticInterpreter</li>
+        
+            <li>module:util/isArray</li>
+        
+            <li>module:util/deferred</li>
+        
+            <li>module:util/loadFile</li>
+        </ul>
+    
+    
+    
+        <h3 class="subsection-title">Classes</h3>
+        
+        <dl>
+            <dt><a href="mmir.CommonUtils.setToCompatibilityModeExtension.html">setToCompatibilityModeExtension</a></dt>
+            <dd></dd>
+        </dl>
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="regexHTMLComment">regexHTMLComment<span class="type-signature type string"><a href="String.html">String</a></span> <span class="type-signature type regexp">RegExp</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Regular Expression for matching HTML comments.<br>This RegExp also matches multi-line comments.Note upon using the RegExp that it does not consider if a HTMLcomment is specified within a String or data-definition (i.e. thecomment is matched regardless were its defined).
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
     
     
     
@@ -2038,6 +2118,2408 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code><!-- some comment --></code></pre>
+    
+
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="checkNetworkConnection">
+            
+            checkNetworkConnection<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line875">line 875</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This function is used check whether a network connection isenabled. </br> This version of checking the network connection isbased on the cordova 2.3.0 API.TODO implement with HTML5 functions (in addition to / instead ofcordova)?
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+if a network connection is enabled
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="concatArray">
+            
+            concatArray<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{string}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line196">line 196</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        extracts all the strings from a String-Array into a single string
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getCompiledGrammarPath">
+            
+            getCompiledGrammarPath<span class="signature">(generatedGrammarsPath, grammarId, <span class="optional">isFileNameOnly</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line241">line 241</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get the file path/name for a compiled grammar (executable JavaScript grammars).
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>generatedGrammarsPath</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Path of the grammars which should be loaded, e.g. <b>gen/grammar/</b></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>grammarId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the ID (e.g. language code) for the grammar</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>isFileNameOnly</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL					if TRUE then only the file name will be returned, otherwise the full path is returned</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+path / name for the compiled grammar                  (returns an empty string, if there is no compile grammar for the specified grammar ID)
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getDirectoryContents">
+            
+            getDirectoryContents<span class="signature">(pathname, <span class="optional">filter</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line603">line 603</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This function returns an array of strings (file names) with the contents of the directory <code>pathname</code>.The <code>pathname</code> must be one of the directories (or sub-directories)of the framework's parsed folders, see <code>directoriesToParse</code>.If a <code>filter</code> is use, only files which's names matchthe filter are included in the returned list.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>pathname</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Path of the directory which's contents should be           returned</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+|
+
+<span class="param-type">RegExp</span>
+|
+
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Filter for file-names:             if <code>String</code> the file-name may contain the wildcard <code>*</code>                (comparison is <b>not case-sensitive</b>),                e.g.: <b>*.js</b>, <b>*</b> or <b>*.ehtml</b>             if <code>RegExp</code> the file-name must match the regular expression,                e.g.: <b>/.*\.js/ig</b> or <b>/^.*\.ehtml$/ig</b>             if <code>Function</code> the file-name is included, if the function returns <code>true</code>,               where the function signature is <code>function(fileName: String) : Boolean</code>,               note that argument <code>fileName</code> will have been transformed to lower-case characters</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>use <a href="mmir.CommonUtils.html#listDir"><code>listDir</code></a> instead</li><ul></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+of Strings which contains the contents of         the directory.         Or <code>null</code>, if <code>pathname</code> is not one of the framework's         parsed folders.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getDirectoryContentsWithFilter">
+            
+            getDirectoryContentsWithFilter<span class="signature">(pathname, <span class="optional">filter</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line618">line 618</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This function returns an array of strings (file names) with the contents of the directory <code>pathname</code>.The <code>pathname</code> must be one of the directories (or sub-directories)of the framework's parsed folders, see <code>directoriesToParse</code>.If a <code>filter</code> is use, only files which's names matchthe filter are included in the returned list.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>pathname</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Path of the directory which's contents should be           returned</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+|
+
+<span class="param-type">RegExp</span>
+|
+
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Filter for file-names:             if <code>String</code> the file-name may contain the wildcard <code>*</code>                (comparison is <b>not case-sensitive</b>),                e.g.: <b>*.js</b>, <b>*</b> or <b>*.ehtml</b>             if <code>RegExp</code> the file-name must match the regular expression,                e.g.: <b>/.*\.js/ig</b> or <b>/^.*\.ehtml$/ig</b>             if <code>Function</code> the file-name is included, if the function returns <code>true</code>,               where the function signature is <code>function(fileName: String) : Boolean</code>,               note that argument <code>fileName</code> will have been transformed to lower-case characters</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>use <a href="mmir.CommonUtils.html#listDir"><code>listDir</code></a> with RegExp for filter instead (see example for converting pseudo-wildcard string to RegExp)</li><ul></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+of Strings which contains the contents of         the directory.         Or <code>null</code>, if <code>pathname</code> is not one of the framework's         parsed folders.
+<br />
+
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>//convert pseudo-wildcard string to RegExpvar filterStr = '^' + filter.replace('.', '\\.').replace('*', '.*').replace('\$', '\\$') + '$'; // e.g.,// '^.*\.js$'var regexpr = new RegExp(filterStr, 'gi');mmir.CommonUtils.listDir(pathname, regexpr); </code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getDirectoryStructure">
+            
+            getDirectoryStructure<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line185">line 185</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+structure as json object
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getLocalScript">
+            
+            <span class="type-signature ">async</span>getLocalScript<span class="signature">(scriptUrl, success, fail)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line574">line 574</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <div class="box important"> <b>Note:</b> On Android 4.0jQuery.getScript() is not working properly - so use this function instead!</div>Similar to the jQuery.getScript() function - appending a url of ajavascript-source to the header of the main document.<br>This function also calls a success-callback if the script wassuccessfully loaded or a fail-callback.<br>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>scriptUrl</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                source of javascript-file</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>success</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                success callback function</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>fail</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                fail callback function</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getPartialsPrefix">
+            
+            getPartialsPrefix<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line175">line 175</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+Prefix for the file names of partial-files
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="isArray">
+            
+            isArray<span class="signature">(object)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line812">line 812</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks if an object is an <code>Array</code>.<p>This function can be safely run in arbitrary contexts, e.g.<pre> var checkArray = mmir.CommonUtils.isArray; if( checkArray(someObject) ){  ...</pre>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>object</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the Object for checking if it is an Array</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+if <code>object</code>         is an <code>Array</code>, otherwise         <code>false</code>.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="isRunningOnAndroid">
+            
+            isRunningOnAndroid<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line510">line 510</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Detects via the user-agent-string if the application is runningon Android.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+if application is running on         Android, <b>False</b> otherwise
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="isRunningOnSmartphone">
+            
+            isRunningOnSmartphone<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line534">line 534</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Should detect - via the user-agent-string - if the application isrunning on Android, Symbian or iOS; in other words: on asmartphone.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+if application is running on         smartphone, <b>False</b> otherwise
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="listDir">
+            
+            listDir<span class="signature">(pathname, <span class="optional">filter</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line661">line 661</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This function returns an array of strings (file names) with the contents of the directory <code>pathname</code>.The <code>pathname</code> must be one of the directories (or sub-directories)of the framework's parsed folders, see <code>directoriesToParse</code>.If a <code>filter</code> is use, only files which's names matchthe filter are included in the returned list.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>pathname</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Path of the directory which's contents should be           returned</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+|
+
+<span class="param-type">RegExp</span>
+|
+
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                Filter for file-names:             if <code>String</code> the file-name may contain the wildcard <code>*</code>                (comparison is <b>not case-sensitive</b>),                e.g.: <b>*.js</b>, <b>*</b> or <b>*.ehtml</b>             if <code>RegExp</code> the file-name must match the regular expression,                e.g.: <b>/.*\.js/ig</b> or <b>/^.*\.ehtml$/ig</b>             if <code>Function</code> the file-name is included, if the function returns <code>true</code>,               where the function signature is <code>function(fileName: String) : Boolean</code>,               note that argument <code>fileName</code> will have been transformed to lower-case characters</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+of Strings which contains the contents of         the directory.         Or <code>null</code>, if <code>pathname</code> is not one of the framework's         parsed folders.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="loadCompiledGrammars">
+            
+            <span class="type-signature ">async</span>loadCompiledGrammars<span class="signature">(generatedGrammarsPath, cbFunction, <span class="optional">ignoreGrammarIds</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line278">line 278</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Load all compiled grammars (executable JavaScript grammars).
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>generatedGrammarsPath</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Path of the grammars which should be loaded, e.g. <b>gen/grammar/</b></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>cbFunction</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The function that should be executed after the plugins are loaded. 					 If the execution of following functions is dependent on the presence of the grammars, 					 they should be triggered from inside the callback-function.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>ignoreGrammarIds</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="String.html">String</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL					grammar IDs that should be ignored, i.e. not loaded, even if there is a file available</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+deferred promise (see loadImpl())
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="loadDirectoryStructure">
+            
+            <span class="type-signature ">async</span>loadDirectoryStructure<span class="signature">(<span class="optional">success</span>, <span class="optional">errorFunc</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line925">line 925</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Parses the directory structure and stores the result in the class-property <code>mmir.CommonUtils-directoryStructure</code>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>success</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The function that should be executed after the diretories are parsed - it's best to include all following functions inside the callback-function.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>errorFunc</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                callback function that is invoked if an error occured during initialization.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="loadImpl">
+            
+            <span class="type-signature ">async</span>loadImpl<span class="signature">(librariesPath, isSerial, <span class="optional">completedCallback</span>, <span class="optional">checkIsAlreadyLoadedFunc</span>, <span class="optional">statusCallback</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line379">line 379</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Load implementation files (i.e. JavaScript files) from a directory (if <tt>librariesPath</tt> is a String) oror a list of files-names (if <tt>librariesPath</tt> is an Array of Strings).
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>librariesPath</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+|
+
+<span class="param-type">Array.&lt;<a href="String.html">String</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Path (or list of  of the plugins which should be loaded, e.g. <b>mmirf/plugins/</b>				NOTE: The (String) path must be an entry in directories.json!                    (directories.json is used to generate/"query" the file-list for the path)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>isSerial</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                Set <code>true</code> if the libraries should be loaded serially, i.e. synchronously, that is "one after the other" (later ones may depend on earlier ones).				set <code>false</code> if libraries should be loaded in parallel, i.e. "asychronously" (NOTE in this case, the libraries must not depend on each other).								NOTE: The loading process as a hole is asynchronous (regardless of parameter <tt>isSerial</tt>),				      i.e. loading is completed when <tt>completedCallback()</tt> is invoked,				      NOT when this function returns!</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>completedCallback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The function that should be executed after the libraries are loaded. 				If the execution of following functions is dependent on the presence of the libraries,				they should be capsuled inside this callback-function.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>checkIsAlreadyLoadedFunc</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                If provided, this function checks (based on the file-name), if the library is already				loaded.				The signature for the callback is  <code>checkIsAlreadyLoadedFunc(String fileName) return [true|false]</code>,				i.e. the function may check - based on the file-name - if the library is already loaded.				If the function returns <tt>true</tt>, the library will not be loaded, and loading continues				with the next library-file.				NOTE: if <tt>isSerial</tt> is <tt>false</tt>, libraries with lower indices in the list may				      still be loading, when later entries are checked with this callback. In consequence,				      the "is already loaded"-check may not be accurate, in case parallel loading is				      used and the library-list contains "duplicate" entries.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>statusCallback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                If provided, this function is invoked, when a library was loaded loaded (INFO) or an				error occurs.				The signature for the callback is 				<code>statusCallback(String statusLevel, String fileName, String message)</code>				where <tt>statusLevel</tt> is one of <tt>info, warning, error</tt>,				      <tt>fileName</tt> is the file-name for the library that this status message concerns, and				      <tt>message</tt> is a message text with details concerning the status</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+deferred promise that will be fulfilled when loadImpl() has finished.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="loadScript">
+            
+            loadScript<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line222">line 222</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Same as <code>getLocalScript</code>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="mmir.CommonUtils.html#getLocalScript"><code>getLocalScript</code></a></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="parseParamsToDictionary">
+            
+            parseParamsToDictionary<span class="signature">(urlParamsPartStrings)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_paramsParseFunc.js.html">tools/paramsParseFunc.js</a>, <a href="tools_paramsParseFunc.js.html#line43">line 43</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Convert parameter-part of an URL to a "dictionary", containingthe parameter keys and values<p>	<code>?id=5&name=heinz&name=kunz</code> &rarr;	<pre>	{	  id: "5",	  name: ["heinz", "kunz"],   	  //utility functions	  has: function(key) : Boolean,	  isMultiple: function(key) : Boolean,// is entry an Array of values	  getKeys: function() : String[],     // get list of all keys	}	</pre><p>The returned "dictionary" has the following functions:<ul><li>has(String key): returns <code>true</code> if thedictionary contains an entry for <code>key</code></li><li>isMultiple(String key): returns <code>true</code> if theentry for <code>key</code> is an Array (i.e. the URL containedmultiple values for this key)</li><li>getKeys(): returns an Array with the keys (String) for allentries</li></ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>urlParamsPartStrings</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the parameter-part of the URL, i.e. <code>&...</code></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+"dictionary" for the parameters
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="parseParamsToDictionary">
+            
+            parseParamsToDictionary<span class="signature">(urlParamsPartStrings)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_commonUtils.js.html">tools/commonUtils.js</a>, <a href="tools_commonUtils.js.html#line857">line 857</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        IMPORTED FROM paramsParseFunc.js<p>Convert parameter-part of an URL to a "dictionary", containingthe parameter keys and values<p>	<code>?id=5&name=heinz&name=kunz</code> &rarr;	<pre>	{	  id: "5",	  name: ["heinz", "kunz"],   	  //utility functions	  has: function(key) : Boolean,	  isMultiple: function(key) : Boolean,// is entry an Array of values	  getKeys: function() : String[],     // get list of all keys	}	</pre><p>The returnd "dictionary" has the following functions:<ul><li>has(String key): returns <code>true</code> if thedictionary contains an entry for <code>key</code></li><li>isMultiple(String key): returns <code>true</code> if theentry for <code>key</code> is an Array (i.e. the URL containedmultiple values for this key)</li><li>getKeys(): returns an Array with the keys (String) for allentries</li></ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>urlParamsPartStrings</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the parameter-part of the URL, i.e. <code>&...</code></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+"dictionary" for the parameters
+<br />
+
+    
+    
+    
+</dd>
+
+        </dl>
     
     
     
@@ -2054,7 +4536,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:51 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:52 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>

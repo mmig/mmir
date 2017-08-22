@@ -1951,30 +1951,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="mmir.parser.RenderUtils.html">Class: RenderUtils</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -1982,7 +1960,9 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+        <span class="ancestors"><a href="mmir.html">mmir</a><a href="mmir.parser.html">.parser</a>.</span>
+    
+    RenderUtils
     </h2>
     
 </header>  
@@ -1993,10 +1973,37 @@
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="RenderUtils">
+            
+            new mmir.parser.RenderUtils<span class="signature">()</span>
+        </h4>
+    
         
+        <div class="tag-source">
+            <a href="mvc_parser_templateRenderUtils.js.html">mvc/parser/templateRenderUtils.js</a>, <a href="mvc_parser_templateRenderUtils.js.html#line33">line 33</a>
+        </div>
         
-        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        A Utility class for rendering parsed (eHTML) templates, or more specifically ParsingResult objects.<br>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
 <dl class="details">
     
         
@@ -2021,8 +2028,28 @@
     
 </dl>
 
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
         
-        
+
+    
+    <pre class="prettyprint"><code>mmir.parser.RenderUtils.render(parseResult, contentElementList);</code></pre>
+    
+
+    
+</dd>
+
     
     </div>
     
@@ -2039,6 +2066,969 @@
     
     
     
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="renderContentElement">
+            
+            renderContentElement<span class="signature">(contentElement, <span class="optional">data</span>, <span class="optional">renderingBuffer</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_parser_templateRenderUtils.js.html">mvc/parser/templateRenderUtils.js</a>, <a href="mvc_parser_templateRenderUtils.js.html#line1078">line 1078</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Renders a single <a href="ContentElement.html"><code>ContentElement</code></a> object.<p>During rendering, the view's template-expressions are evaluated, and the results rendered intothe returned String.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>contentElement</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ContentElement.html">ContentElement</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the ContentElement object that should be rendered</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                a JSON object which's fields will be available during rendering/evaluation of the template expressions</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>renderingBuffer</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="String.html">String</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                if provided, the partial rendering results will be appended to this Array</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+evaluated and rendered ContentElement; if <tt>renderingBuffer</tt> was provided and not empty, the result will be prepended with the concatenated contents of the Array's Strings
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="renderJS">
+            
+            renderJS<span class="signature">(rawJSSourceCode, replacementObjectsList, <span class="optional">isForcePrefix</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_parser_templateRenderUtils.js.html">mvc/parser/templateRenderUtils.js</a>, <a href="mvc_parser_templateRenderUtils.js.html#line1127">line 1127</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Prepares JavaScript source code for usage in rendering the template (view/partial etc.).The replacement-list contains information which parts of the raw JavaScript code should bemodified (e.g. indices [start,end] for replacing text in the source code).The function returns the modified JavaScript source code as a String.If the mode is <code>isForcePrefix == true</code>, the variable-names that correspondto replacementObjectsList are check: if a name does not start with @, then the name will prepended with @ beforerendering.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>rawJSSourceCode</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the original JavaScript source code</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>replacementObjectsList</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="mmir.parser.html#.ParsingResult">mmir.parser.ParsingResult</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>isForcePrefix</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="renderLayout">
+            
+            renderLayout<span class="signature">(parseResult, <span class="optional">contentForArray</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_parser_templateRenderUtils.js.html">mvc/parser/templateRenderUtils.js</a>, <a href="mvc_parser_templateRenderUtils.js.html#line1021">line 1021</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Renders a layout in preparation for displaying content:This function should be used to preperare the layout content, so that itsviews can be rendered into it (needs to be done only once, after the layout is loaded).
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>parseResult</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="mmir.parser.html#.ParsingResult">mmir.parser.ParsingResult</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the parsed view template</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>contentForArray</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="ContentElement.html">ContentElement</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+prepared layout content
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="renderViewContent">
+            
+            renderViewContent<span class="signature">(htmlContentString, yieldDeclarationsArray, contentForObjectsArray, <span class="optional">data</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_parser_templateRenderUtils.js.html">mvc/parser/templateRenderUtils.js</a>, <a href="mvc_parser_templateRenderUtils.js.html#line1045">line 1045</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Renders a view.<p>During rendering, the view's template-expressions are evaluated, and the results rendered intothe returned String.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>htmlContentString</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+|
+
+<span class="param-type"><a href="ContentElement.html">ContentElement</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the original view-content of the layout-template text, see <a href="Layout.html#getBodyContents"><code>Layout#getBodyContents</code></a>				or a ContentElement with its YieldDeclarations in its allContentElements field (by default yields are not contained in ContentElement.allContentElements)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>yieldDeclarationsArray</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="YieldDeclaration.html">YieldDeclaration</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                a list of yield-declarations of the layout</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>contentForObjectsArray</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="ContentElement.html">ContentElement</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                a list of content-for objects of the view. This list must supply a corresponding objecet for each entry in the <tt>yieldDeclarationsArray</tt>.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL				a JSON object which's fields will be available during rendering/evaluation of the template expressions</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+evaluated and rendered view-content
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="renderViewDialogs">
+            
+            renderViewDialogs<span class="signature">(htmlContentString, YieldDeclaration[]}, contentForObjectsArray, <span class="optional">data</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mvc_parser_templateRenderUtils.js.html">mvc/parser/templateRenderUtils.js</a>, <a href="mvc_parser_templateRenderUtils.js.html#line1100">line 1100</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Renders the dialog content for a view.<p>During rendering, the view's template-expressions are evaluated, and the results rendered intothe returned String.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>htmlContentString</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the original dialog-content of the layout-template text, see <a href="Layout.html#getDialogsContents"><code>Layout#getDialogsContents</code></a></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>YieldDeclaration[]}</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                yieldDeclarationsArray a list of yield-declarations of the layout</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>contentForObjectsArray</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="ContentElement.html">ContentElement</a>></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                a list of content-for objects of the view. This list must supply a corresponding objecet for each entry in the <tt>yieldDeclarationsArray</tt>.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                a JSON object which's fields will be available during rendering/evaluation of the template expressions</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+evaluated and rendered dialog-content
+<br />
+
+    
+    
+    
+</dd>
+
+        </dl>
+    
     
     
     
@@ -2054,7 +3044,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:51 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:52 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>

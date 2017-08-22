@@ -1951,101 +1951,134 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="tools_paramsParseFunc.js.html">Source: tools/paramsParseFunc.js</h1>
         
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+define(function() {
+	
+	////////////////////// exports ///////////////////////
+	
+	/**
+     * Convert parameter-part of an URL to a "dictionary", containing
+     * the parameter keys and values
+     * &lt;p>
+     * 
+     * 	&lt;code>?id=5&amp;name=heinz&amp;name=kunz&lt;/code> &amp;rarr;
+     * 	&lt;pre>
+     * 	{
+     * 	  id: "5",
+     * 	  name: ["heinz", "kunz"],
+     *    
+     * 	  //utility functions
+     * 	  has: function(key) : Boolean,
+     * 	  isMultiple: function(key) : Boolean,// is entry an Array of values
+     * 	  getKeys: function() : String[],     // get list of all keys
+     * 	}
+     * 	&lt;/pre>
+     * &lt;p>
+     * 
+     * The returned "dictionary" has the following functions:
+     * &lt;ul>
+     * &lt;li>has(String key): returns &lt;code>true&lt;/code> if the
+     * dictionary contains an entry for &lt;code>key&lt;/code>&lt;/li>
+     * &lt;li>isMultiple(String key): returns &lt;code>true&lt;/code> if the
+     * entry for &lt;code>key&lt;/code> is an Array (i.e. the URL contained
+     * multiple values for this key)&lt;/li>
+     * &lt;li>getKeys(): returns an Array with the keys (String) for all
+     * entries&lt;/li>
+     * &lt;/ul>
+     * 
+     * @function
+     * @param {String} urlParamsPartStrings
+     *            the parameter-part of the URL, i.e. &lt;code>&amp;...&lt;/code>
+     * @return {Object} a "dictionary" for the parameters
+     * @public
+	 * @memberOf mmir.CommonUtils.prototype
+     */
+    function parseParamsToDictionary(urlParamsPartStrings) {
+		var dict = new Object();
 
+		dict.has = function(key) {
+			return typeof dict[key] !== 'undefined';
+		};
+		dict.isMultiple = function(key) {
+			// use not-allowed-as-part-of-parameter-name character '&amp;' as
+			// prefix for meta-data 'isMultiple' on field 'key':
+			return dict['&amp;' + key] === true;
+		};
+		// use not-allowed-as-part-of-parameter-name char &amp; as prefix
+		// for meta-data 'keys-list':
+		dict['&amp;&amp;keys'] = [];
+		dict.getKeys = function() {
+			return dict['&amp;&amp;keys'];
+		};
 
-    <h3> </h3>
+		if (urlParamsPartStrings) {
+			if (typeof urlParamsPartStrings !== 'string') {
+				urlParamsPartStrings = urlParamsPartStrings.toString();
+			}
+			if (urlParamsPartStrings.length &lt; 1) {
+				return dict;//////////////////////// EARLY EXIT /////////////////////////////
+			}
+			if (urlParamsPartStrings.charAt(0) === '?') {
+				urlParamsPartStrings = urlParamsPartStrings.substring(1);
+			}
 
+			var params = urlParamsPartStrings.split('&amp;');
+			var cur = null;
+			var keyValue = null;
+			var theKey = null;
+			var theValue = null;
+			for (var i_params = 0, size_params = params.length; i_params &lt; size_params; ++i_params) {
 
+				cur = params[i_params];
 
+				// "parse" parameter into key &amp; value:
+				keyValue = cur.split('=');
+				theKey = keyValue[0];
+				if (keyValue.length > 1) {
+					theValue = keyValue[1];
+				}
+				else {
+					theValue = null;
+				}
 
+				// create entry in dict for the parameter
+				if (dict.has(theKey)) {
 
+					if (dict.isMultiple(theKey)) {
+						dict[theKey].push(theValue);
+					}
+					else {
+						// entry already exist, but is not multiple (=Array) yet:
+						var arr = new Array(2);
+						arr[0] = dict[theKey];
+						arr[1] = theValue;
+						dict[theKey] = arr;
+						dict['&amp;' + theKey] = true;
+					}
+				}
+				else {
+					dict[theKey] = theValue;
+					dict['&amp;&amp;keys'].push(theKey);
+				}
+			}
+		}
+		return dict;
+    }
 
+    return parseParamsToDictionary;
+	
+});
+</code></pre>
+        </article>
+    </section>
 
-
-    
-
-
-
-
-
-
-
-
-
-
-<section>
-    
-<header>
-    <h2>
-    tools/interfaces.js
-    </h2>
-    
-</header>  
-
-<article>
-    <div class="container-overview">
-    
-    
-    
-        
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
-        
-        
-        
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-        
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</article>
-
-</section>  
 
 
 

@@ -1951,30 +1951,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="mmir.Core.setToCompatibilityMode3Extension.html">Class: setToCompatibilityMode3Extension</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -1982,7 +1960,7 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+    setToCompatibilityMode3Extension
     </h2>
     
 </header>  
@@ -1993,10 +1971,82 @@
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setToCompatibilityMode3Extension">
+            
+            new mmir.Core.setToCompatibilityMode3Extension<span class="signature">(mmir)</span>
+        </h4>
+    
         
+        <div class="tag-source">
+            <a href="tools_extensions_Core3Compatibility.js.html">tools/extensions/Core3Compatibility.js</a>, <a href="tools_extensions_Core3Compatibility.js.html#line9">line 9</a>
+        </div>
         
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Set to "backwards compatibility mode v3" (for pre version 4.0) for module names and method names.This function adds old names/synonyms for modules names (on <code>mmir</code> object/namespace):<ul>	<li> <a href="mmir.CommonUtils.html"><code>mmir.CommonUtils</code></a> as         <b><u>mmir.util</u></b> </li><li> <a href="mmir.ConfigurationManager.html"><code>mmir.ConfigurationManager</code></a> as         <b><u>mmir.conf</u></b> </li><li> <a href="mmir.ControllerManager.html"><code>mmir.ControllerManager</code></a> as         <b><u>mmir.ctrl</u></b> </li><li> <a href="mmir.Constants.html"><code>mmir.Constants</code></a> as         <b><u>mmir.const</u></b> </li><li> <a href="mmir.DialogManager.html"><code>mmir.DialogManager</code></a> as         <b><u>mmir.dialog</u></b> </li><li> <a href="mmir.InputManager.html"><code>mmir.InputManager</code></a> as         <b><u>mmir.input</u></b> </li><li> <a href="mmir.LanguageManager.html"><code>mmir.LanguageManager</code></a> as         <b><u>mmir.lang</u></b> </li><li> <a href="mmir.MediaManager.html"><code>mmir.MediaManager</code></a> as         <b><u>mmir.media</u></b> </li><li> <a href="mmir.ModelManager.html"><code>mmir.ModelManager</code></a> as         <b><u>mmir.model</u></b> </li><li> <a href="mmir.NotificationManager.html"><code>mmir.NotificationManager</code></a> as         <b><u>mmir.notifier</u></b> </li><li> <a href="mmir.PresentationManager.html"><code>mmir.PresentationManager</code></a> as         <b><u>mmir.presentation</u></b> </li><li> <a href="mmir.SemanticInterpreter.html"><code>mmir.SemanticInterpreter</code></a> as         <b><u>mmir.semantic</u></b> </li></ul>In addition, old method names will be added as synonyms:<ul>	 <li> <a href="mmir.ConfigurationManager.html"><code>mmir.ConfigurationManager</code></a>		<ul>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.ConfigurationManager.html"><code>mmir.ConfigurationManager</code></a></li>		</ul> </li><li> <a href="mmir.Constants.html"><code>mmir.Constants</code></a>		<ul>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.Constants.html"><code>mmir.Constants</code></a></li>		</ul> </li><li> <a href="mmir.ControllerManager.html"><code>mmir.ControllerManager</code></a>		<ul>			<li><b><u>get</u></b> for <code>mmir.ControllerManager#getController</code></li>			<li><b><u>getNames</u></b> for <code>mmir.ControllerManager#getControllerNames</code></li>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.ControllerManager.html"><code>mmir.ControllerManager</code></a></li>		</ul> </li><li> <a href="mmir.DialogManager.html"><code>mmir.DialogManager</code></a>		<ul>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.DialogManager.html"><code>mmir.DialogManager</code></a></li>		</ul> </li><li> <a href="mmir.InputManager.html"><code>mmir.InputManager</code></a>		<ul>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.InputManager.html"><code>mmir.InputManager</code></a></li>		</ul> </li><li> <a href="mmir.LanguageManager.html"><code>mmir.LanguageManager</code></a>		<ul>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.LanguageManager.html"><code>mmir.LanguageManager</code></a></li>		</ul> </li><li> <a href="mmir.ModelManager.html"><code>mmir.ModelManager</code></a>		<ul>			<li><b><u>get</u></b> for <code>mmir.ModelManager#getController</code></li>			<li><b><u>getNames</u></b> for <code>mmir.ModelManager#getControllerNames</code></li>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.ModelManager.html"><code>mmir.ModelManager</code></a></li>		</ul> </li><li> <a href="mmir.ModelManager.html"><code>mmir.ModelManager</code></a>		<ul>			<li><b><u>get</u></b> for <code>mmir.ModelManager#getController</code></li>			<li><b><u>getNames</u></b> for <code>mmir.ModelManager#getControllerNames</code></li>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.ModelManager.html"><code>mmir.ModelManager</code></a></li>		</ul> </li> <li> <a href="mmir.NotificationManager.html"><code>mmir.NotificationManager</code></a>		<ul>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.NotificationManager.html"><code>mmir.NotificationManager</code></a></li>		</ul> </li> <li> <a href="mmir.PresentationManager.html"><code>mmir.PresentationManager</code></a>		<ul>			<li><b><u>renderView</u></b> for <a href="mmir.PresentationManager.html#render"><code>mmir.PresentationManager#render</code></a></li>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.PresentationManager.html"><code>mmir.PresentationManager</code></a></li>		</ul> </li><li> <a href="mmir.parser.ParserUtils.html"><code>mmir.parser.ParserUtils</code></a>		<ul>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.parser.ParserUtils.html"><code>mmir.parser.ParserUtils</code></a></li>		</ul> </li><li> <a href="mmir.parser.RenderUtils.html"><code>mmir.parser.RenderUtils</code></a>		<ul>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.parser.RenderUtils.html"><code>mmir.parser.RenderUtils</code></a></li>		</ul> </li><li> <a href="mmir.SemanticInterpreter.html"><code>mmir.SemanticInterpreter</code></a>		<ul>			<li><b><u>getASRSemantic</u></b> for <code>mmir.SemanticInterpreter#interpret</code></li>			<li><b><u>getInstance</u></b> <em>(removed)</em> for <a href="mmir.SemanticInterpreter.html"><code>mmir.SemanticInterpreter</code></a></li>		</ul> </li></ul>Methods with changed signature will be re-mapped to match their old signature<ul>	 <li> <a href="mmir.ConfigurationManager.html"><code>mmir.ConfigurationManager</code></a>		<ul>			<li>map <b><u>get(propertyName, defaultValue, useSafeAccess)</u></b> back to <br>				get(propertyName, useSafeAccess, defaultValue)<br>				the original function will be available via <em>_get(propertyName, useSafeAccess, defaultValue)</em>			</li>			<li>map <b><u>getBoolean(propertyName, defaultValue, useSafeAccess)</u></b> back to <br>				getBoolean(propertyName, useSafeAccess, defaultValue)<br>				the original function will be available via <em>_getBoolean(propertyName, useSafeAccess, defaultValue)</em>			</li>			<li>map <b><u>getString(propertyName, defaultValue, useSafeAccess)</u></b> back to <br>				getString(propertyName, useSafeAccess, defaultValue)<br>				the original function will be available via <em>_getString(propertyName, useSafeAccess, defaultValue)</em>			</li>		</ul>  </li></ul>Lastly, removed methods will be added:<ul>	<li> <a href="mmir.Constants.html"><code>mmir.Constants</code></a>		<ul>			<li><b><u>getPluginsPath</u></b> <em>(removed)</em> to <a href="mmir.CommonUtils.html"><code>mmir.CommonUtils</code></a></li>		</ul>  </li>	 <li> <a href="mmir.CommonUtils.html"><code>mmir.CommonUtils</code></a>		<ul>			<li><b><u>loadAllCordovaPlugins</u></b> <em>(removed)</em> to <a href="mmir.CommonUtils.html"><code>mmir.CommonUtils</code></a></li>			<li><b><u>setToCompatibilityMode</u></b> <em>(removed)</em> to <a href="mmir.CommonUtils.html"><code>mmir.CommonUtils</code></a></li>		</ul>  </li>	 <li> <a href="mmir.LanguageManager.html"><code>mmir.LanguageManager</code></a>		<ul>			<li><b><u>setToCompatibilityMode</u></b> <em>(removed)</em> to <a href="mmir.LanguageManager.html"><code>mmir.LanguageManager</code></a></li>		</ul>  </li></ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
         
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>mmir</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="mmir.html">mmir</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the (core) instance/namespace for MMIR</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
 <dl class="details">
     
         
@@ -2021,8 +2071,28 @@
     
 </dl>
 
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
         
-        
+
+    
+    <pre class="prettyprint"><code>mmir.require(['mmirf/core3Compatibility', 'mmirf/core'], function(setCompatibility, mmir){		setCompatibility(mmir);});//OR: if mmir-lib modules were require'd in application code, add v3 module-ID aliases first:mmir.require(['mmirf/core3ModuleIdCompatibility', 'mmirf/core3Compatibility', 'mmirf/core'], function(core3ModuleIdCompatibility, setCompatibility, mmir){		core3ModuleIdCompatibility(mmir.require, window);		setCompatibility(mmir);});</code></pre>
+    
+
+    
+</dd>
+
     
     </div>
     
@@ -2031,6 +2101,11 @@
     
     
     
+        <h3 class="subsection-title">Requires</h3>
+        
+        <ul>
+            <li>module:SemanticInterpreterCompatibility</li>
+        </ul>
     
     
     
@@ -2038,6 +2113,581 @@
     
     
     
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".commonUtils.loadAllCordovaPlugins">
+            
+            <span class="type-signature ">async,static</span>mmir.Core.setToCompatibilityMode3Extension.commonUtils.loadAllCordovaPlugins<span class="signature">(<span class="optional">pluginsPath</span>, <span class="optional">cbFunction</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_Core3Compatibility.js.html">tools/extensions/Core3Compatibility.js</a>, <a href="tools_extensions_Core3Compatibility.js.html#line415">line 415</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Load all plugins (i.e. JavaScript interfaces forCordova v2 / JavaScript-impl. plugins).
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>pluginsPath</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL            Path of the plugins which should be           loaded, e.g.           <b>mmirf/plugins/</b>                      If omitted: the default plugin-path is used           (see <code>mmir.Core.setToCompatibilityMode3Extension#getPluginsPath</code>)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>cbFunction</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL            The function that should be executed after           the plugins are loaded. If the execution of following           functions is dependent on the present of plugins, they           should be triggered from inside the callback-function</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+Deferred.promise (see loadImpl())
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".commonUtils.setToCompatibilityMode">
+            
+            <span class="type-signature ">async,static</span>mmir.Core.setToCompatibilityMode3Extension.commonUtils.setToCompatibilityMode<span class="signature">(<span class="optional">success</span>, <span class="optional">requireFunction</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_Core3Compatibility.js.html">tools/extensions/Core3Compatibility.js</a>, <a href="tools_extensions_Core3Compatibility.js.html#line308">line 308</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Set to "backwards compatibility mode" (for pre version 2.0).This function re-adds deprecated and removed functions andproperties to the CommonUtils instance.NOTE that once set to compatibility mode, it cannot be reset tonon-compatibility mode.NOTE: Requires jQuery to be present.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>success</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                a callback function that is invoked, after compatibility mode				was set (alternatively the returned promise can be used).</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>requireFunction</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                the require-function that is configured for loading the compatibility module/file.				Normally, this would be the function <code>mmir.require</code>.				If omitted, the default (local dependency) <code>require</code> function will be used.				NOTE: this argument is positional, i.e. argument <code>success</code> must be present, if				      you want to specify this argument</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>use only for backwards compatibility</li><ul></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+deferred promise that is resolved, after compatibility mode				was set
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".constants.getPluginsPath">
+            
+            <span class="type-signature static">static</span>mmir.Core.setToCompatibilityMode3Extension.constants.getPluginsPath<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="String.html">String</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_Core3Compatibility.js.html">tools/extensions/Core3Compatibility.js</a>, <a href="tools_extensions_Core3Compatibility.js.html#line385">line 385</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns a string with the path to the (Cordova v2.x) plugins directory.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+directory path
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".languageManager.setToCompatibilityMode">
+            
+            <span class="type-signature ">async,static</span>mmir.Core.setToCompatibilityMode3Extension.languageManager.setToCompatibilityMode<span class="signature">(<span class="optional">success</span>, <span class="optional">requireFunction</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_Core3Compatibility.js.html">tools/extensions/Core3Compatibility.js</a>, <a href="tools_extensions_Core3Compatibility.js.html#line359">line 359</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Set to "backwards compatibility mode" (for pre version 2.0).This function re-adds deprecated and removed functions andproperties to the CommonUtils instance.NOTE that once set to compatibility mode, it cannot be reset tonon-compatibility mode.NOTE: Requires jQuery to be present.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>success</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                a callback function that is invoked, after compatibility mode				was set (alternatively the returned promise can be used).</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>requireFunction</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                the require-function that is configured for loading the compatibility module/file.				Normally, this would be the function <code>mmir.require</code>.				If omitted, the global <code>require</code> function will be used.				NOTE: this argument is positional, i.e. argument <code>success</code> must be present, if				      you want to specify this argument</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>use only for backwards compatibility</li><ul></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+deferred promise that is resolved, after compatibility mode				was set
+<br />
+
+    
+    
+    
+</dd>
+
+        </dl>
     
     
     
@@ -2054,7 +2704,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:51 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:52 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>

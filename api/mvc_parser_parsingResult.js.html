@@ -1951,101 +1951,796 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="mvc_parser_parsingResult.js.html">Source: mvc/parser/parsingResult.js</h1>
         
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * 	Copyright (C) 2012-2013 DFKI GmbH
+ * 	Deutsches Forschungszentrum fuer Kuenstliche Intelligenz
+ * 	German Research Center for Artificial Intelligence
+ * 	http://www.dfki.de
+ * 
+ * 	Permission is hereby granted, free of charge, to any person obtaining a 
+ * 	copy of this software and associated documentation files (the 
+ * 	"Software"), to deal in the Software without restriction, including 
+ * 	without limitation the rights to use, copy, modify, merge, publish, 
+ * 	distribute, sublicense, and/or sell copies of the Software, and to 
+ * 	permit persons to whom the Software is furnished to do so, subject to 
+ * 	the following conditions:
+ * 
+ * 	The above copyright notice and this permission notice shall be included 
+ * 	in all copies or substantial portions of the Software.
+ * 
+ * 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+ * 	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+ * 	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+ * 	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+ * 	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+ * 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+ * 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 
 
-    <h3> </h3>
+/**
+ * Dependencies:
+ * 
+ *  * parser.element (parserModule.js)
+ *  * OPTIONALLY: ANTLR TokenStream (antlr3-all.js)
+ *                (if present, the constructor may be able to automatically derive start/end properties from given argument)
+ * 
+ * 
+ * @requires antlr3-all.js as &lt;code>org&lt;/code> (see comment above)
+ * 
+ */
 
+define(['mmirf/parserModule'], 
+//this comment is needed by jsdoc2 [copy of comment for: function ParsingResult(...]
+/**
+ * ParsingResult represents an element that was detected during parsing.
+ * 
+ * &lt;p>
+ * The detected element is referenced by the properties &lt;code>start&lt;/code> and &lt;code>end&lt;/code>
+ * that refer to the start-index and end-index within the parsed text.
+ * 
+ * &lt;p>
+ * The ParsingResult has a &lt;code>type&lt;/code> property which refers to the kind of element
+ * that was detected (see constants in {@link mmir.parser.element}).
+ * 
+ * &lt;p>
+ * In addition, the ParsingResult may have several properties that depend of its type. In general,
+ * these properties refer to detected parts of the element (e.g. for a invocation-statement, these
+ * may refer to its arguments).
+ * 
+ * 
+ * &lt;p>
+ * Properties for &lt;strong>INCLUDE_SCRIPT&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>scriptPath&lt;/strong>: the path / URL to the resource&lt;/li>
+ * 	&lt;li>&lt;strong>scriptPathType&lt;/strong>: the type of the &lt;tt>scriptPath&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>INCLUDE_STYLE&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>stylePath&lt;/strong>: &lt;/li>
+ * 	&lt;li>&lt;strong>stylePathType&lt;/strong>: the type of the &lt;tt>stylePath&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>LOCALIZE&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>name&lt;/strong>: the name/identifier for the localized String&lt;/li>
+ * 	&lt;li>&lt;strong>nameType&lt;/strong>: the type of the &lt;tt>name&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>YIELD_DECLARATION&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>name&lt;/strong>: the name/identifier for the yield section&lt;/li>
+ * 	&lt;li>&lt;strong>nameType&lt;/strong>: the type of the &lt;tt>name&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * &lt;/ul>
+ * Properties for &lt;strong>BLOCK&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>scriptContent&lt;/strong> {String}: &lt;tt>OPTIONALLY&lt;/tt> the script code as a String&lt;/li>
+ * 	&lt;li>&lt;strong>scriptEval&lt;/strong> {Function}: the compiled script code in form of a function. The 
+ * 							function takes one argument: the current data-object.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>STATEMENT&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>scriptContent&lt;/strong> {String}: &lt;tt>OPTIONALLY&lt;/tt> the script code as a String&lt;/li>
+ * 	&lt;li>&lt;strong>scriptEval&lt;/strong> {Function}: the compiled script code in form of a function. The 
+ * 							function takes one argument: the current data-object.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>HELPER&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>helper&lt;/strong>: the name of the helper function&lt;/li>
+ * 	&lt;li>&lt;strong>helperType&lt;/strong>: the type of the &lt;tt>helper&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * 	&lt;li>&lt;strong>argsEval&lt;/strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 
+ * 			(optional argument) of the helper expression. The function takes one argument: the current data-object.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>IF&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>ifEval&lt;/strong> {Function}: the condition statement, that was compiled into a Function. The 
+ * 							function takes one argument: the current data-object.&lt;/li>
+ * 	&lt;li>&lt;strong>content&lt;/strong> {ContentElement}: the HTML / template content that should be render, in case the
+ * 					if-expression evaluates to &lt;code>true&lt;/code>.&lt;/li>
+ *  &lt;li>&lt;strong>elseContent&lt;/strong> {@link mmir.parser.ParsingResult}: OPTIONALLY a ParsingResult
+ *  					representing an else-expression, see {@link mmir.parser.element.ELSE}.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>ELSE&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>content&lt;/strong> {ContentElement}: the HTML / template content that should be render, in case the
+ * 					if-expression (to which the else-expression belongs) evaluates to &lt;code>false&lt;/code>.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>FOR&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>forControlType&lt;/strong> {String}: the type of for-loop, either &lt;code>FORITER&lt;/code> or &lt;code>FORSTEP&lt;/code>&lt;/li>
+ * 	&lt;li>&lt;strong>forInitEval&lt;/strong> {Function}: the initialization statement of the for-expression, compiled into
+ * 									a Function. The function takes one argument: the current data-object.&lt;/li>
+ * 		
+ * 	&lt;li>&lt;code>FORITER&lt;/code>: &lt;code>@for(PROP in OBJ){ ... }@&lt;/code>
+ * 	 &lt;ul>
+ * 		&lt;li>&lt;strong>forIterator&lt;/strong> {Object}: an iterator object with functions &lt;code>hasNext() : Boolean&lt;/code> and
+ * 					&lt;code>next() : String&lt;/code> (which returns the name of the property currently iterated).&lt;/li>
+ * 		&lt;li>&lt;strong>forPropName&lt;/strong> {String}: the variable name for the property which is currently iterated over.&lt;/li>
+ * 	 &lt;/ul>
+ * 	&lt;/li>
+ * 	&lt;li>&lt;code>FORSTEP&lt;/code>: &lt;code>@for(INIT; CONDITION; INCREMENT){ ... }@&lt;/code>
+ * 	 &lt;ul>
+ * 		&lt;li>&lt;strong>forConditionEval&lt;/strong> {Function}: the condition statement of the for-expression, compiled into
+ * 											a Function. The function takes one argument: the current data-object.&lt;/li>
+ * 		&lt;li>&lt;strong>forIncrementEval&lt;/strong> {Function}: the increment statement of the for-expression, compiled into
+ * 											a Function. The function takes one argument: the current data-object.&lt;/li>
+ * 	 &lt;/ul>
+ * 	&lt;/li>
+ * 	&lt;li>&lt;strong>content&lt;/strong> {ContentElement}: the HTML / template content that should be rendered
+ * 								 during each iteration of the for-loop.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>RENDER&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>partial&lt;/strong>: the name of the partial view&lt;/li>
+ * 	&lt;li>&lt;strong>partialType&lt;/strong>: the type of the &lt;tt>partial&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * 	&lt;li>&lt;strong>controller&lt;/strong>: the name of the controller, to which the partial view definition belongs&lt;/li>
+ * 	&lt;li>&lt;strong>controllerType&lt;/strong>: the type of the &lt;tt>controller&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * 	&lt;li>&lt;strong>argsEval&lt;/strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 
+ * 								(optional argument) of the render expression. The function takes one argument: the current data-object.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>ESCAPE_ENTER&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>text&lt;/strong> {String}: the text that will be rendered (i.e. without the escape-character(s) itself).&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>ESCAPE_EXIT&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>text&lt;/strong> {String}: the text that will be rendered (i.e. without the escape-character(s) itself).&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>VAR_DECLARATION&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>name&lt;/strong>: the name for the variable (without the leading &lt;tt>@&lt;/tt> of template variables)&lt;/li>
+ * 	&lt;li>&lt;strong>nameType&lt;/strong>: the type of the &lt;tt>name&lt;/tt> field: &lt;code>StringLiteral&lt;/code>&lt;/li>
+ * &lt;/ul>
+ * 
+ * &lt;p>
+ * 
+ * @param {org.antlr.runtime.CommonTokenStream|org.antlr.runtime.Token} [thetokens] OPTIONAL
+ * 					if &lt;code>org.antlr.runtime.CommonTokenStream&lt;/code>:	
+ * 												the TokenStream that corresponds to this parsed element;
+ * 												when provided, the TokenStream is used to set the start- and end-
+ * 												property of the new instance.&lt;br>
+ * 		  			if &lt;code>org.antlr.runtime.Token&lt;/code>:
+ * 												if the parameter is a single Token object, then the start- and end-
+ * 												property for the new instance is set by this token object
+ * @class
+ * @name ParsingResult
+ * @memberOf mmir.parser
+ */		
+function(parser){
+	
+var _antrl3;
 
+//set to @ignore in order to avoid doc-duplication in jsdoc3
+/**
+ * @ignore
+ * 
+ * ParsingResult represents an element that was detected during parsing.
+ * 
+ * &lt;p>
+ * The detected element is referenced by the properties &lt;code>start&lt;/code> and &lt;code>end&lt;/code>
+ * that refer to the start-index and end-index within the parsed text.
+ * 
+ * &lt;p>
+ * The ParsingResult has a &lt;code>type&lt;/code> property which refers to the kind of element
+ * that was detected (see constants in {@link mmir.parser.element}).
+ * 
+ * &lt;p>
+ * In addition, the ParsingResult may have several properties that depend of its type. In general,
+ * these properties refer to detected parts of the element (e.g. for a invocation-statement, these
+ * may refer to its arguments).
+ * 
+ * 
+ * &lt;p>
+ * Properties for &lt;strong>INCLUDE_SCRIPT&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>scriptPath&lt;/strong>: the path / URL to the resource&lt;/li>
+ * 	&lt;li>&lt;strong>scriptPathType&lt;/strong>: the type of the &lt;tt>scriptPath&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>INCLUDE_STYLE&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>stylePath&lt;/strong>: &lt;/li>
+ * 	&lt;li>&lt;strong>stylePathType&lt;/strong>: the type of the &lt;tt>stylePath&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>LOCALIZE&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>name&lt;/strong>: the name/identifier for the localized String&lt;/li>
+ * 	&lt;li>&lt;strong>nameType&lt;/strong>: the type of the &lt;tt>name&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>YIELD_DECLARATION&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>name&lt;/strong>: the name/identifier for the yield section&lt;/li>
+ * 	&lt;li>&lt;strong>nameType&lt;/strong>: the type of the &lt;tt>name&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * &lt;/ul>
+ * Properties for &lt;strong>BLOCK&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>scriptContent&lt;/strong> {String}: &lt;tt>OPTIONALLY&lt;/tt> the script code as a String&lt;/li>
+ * 	&lt;li>&lt;strong>scriptEval&lt;/strong> {Function}: the compiled script code in form of a function. The 
+ * 							function takes one argument: the current data-object.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>STATEMENT&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>scriptContent&lt;/strong> {String}: &lt;tt>OPTIONALLY&lt;/tt> the script code as a String&lt;/li>
+ * 	&lt;li>&lt;strong>scriptEval&lt;/strong> {Function}: the compiled script code in form of a function. The 
+ * 							function takes one argument: the current data-object.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>HELPER&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>helper&lt;/strong>: the name of the helper function&lt;/li>
+ * 	&lt;li>&lt;strong>helperType&lt;/strong>: the type of the &lt;tt>helper&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * 	&lt;li>&lt;strong>argsEval&lt;/strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 
+ * 			(optional argument) of the helper expression. The function takes one argument: the current data-object.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>IF&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>ifEval&lt;/strong> {Function}: the condition statement, that was compiled into a Function. The 
+ * 							function takes one argument: the current data-object.&lt;/li>
+ * 	&lt;li>&lt;strong>content&lt;/strong> {ContentElement}: the HTML / template content that should be render, in case the
+ * 					if-expression evaluates to &lt;code>true&lt;/code>.&lt;/li>
+ *  &lt;li>&lt;strong>elseContent&lt;/strong> {@link mmir.parser.ParsingResult}: OPTIONALLY a ParsingResult
+ *  					representing an else-expression, see {@link mmir.parser.element.ELSE}.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>ELSE&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>content&lt;/strong> {ContentElement}: the HTML / template content that should be render, in case the
+ * 					if-expression (to which the else-expression belongs) evaluates to &lt;code>false&lt;/code>.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>FOR&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>forControlType&lt;/strong> {String}: the type of for-loop, either &lt;code>FORITER&lt;/code> or &lt;code>FORSTEP&lt;/code>&lt;/li>
+ * 	&lt;li>&lt;strong>forInitEval&lt;/strong> {Function}: the initialization statement of the for-expression, compiled into
+ * 									a Function. The function takes one argument: the current data-object.&lt;/li>
+ * 		
+ * 	&lt;li>&lt;code>FORITER&lt;/code>: &lt;code>@for(PROP in OBJ){ ... }@&lt;/code>
+ * 	 &lt;ul>
+ * 		&lt;li>&lt;strong>forIterator&lt;/strong> {Object}: an iterator object with functions &lt;code>hasNext() : Boolean&lt;/code> and
+ * 					&lt;code>next() : String&lt;/code> (which returns the name of the property currently iterated).&lt;/li>
+ * 		&lt;li>&lt;strong>forPropName&lt;/strong> {String}: the variable name for the property which is currently iterated over.&lt;/li>
+ * 	 &lt;/ul>
+ * 	&lt;/li>
+ * 	&lt;li>&lt;code>FORSTEP&lt;/code>: &lt;code>@for(INIT; CONDITION; INCREMENT){ ... }@&lt;/code>
+ * 	 &lt;ul>
+ * 		&lt;li>&lt;strong>forConditionEval&lt;/strong> {Function}: the condition statement of the for-expression, compiled into
+ * 											a Function. The function takes one argument: the current data-object.&lt;/li>
+ * 		&lt;li>&lt;strong>forIncrementEval&lt;/strong> {Function}: the increment statement of the for-expression, compiled into
+ * 											a Function. The function takes one argument: the current data-object.&lt;/li>
+ * 	 &lt;/ul>
+ * 	&lt;/li>
+ * 	&lt;li>&lt;strong>content&lt;/strong> {ContentElement}: the HTML / template content that should be rendered
+ * 								 during each iteration of the for-loop.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>RENDER&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>partial&lt;/strong>: the name of the partial view&lt;/li>
+ * 	&lt;li>&lt;strong>partialType&lt;/strong>: the type of the &lt;tt>partial&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * 	&lt;li>&lt;strong>controller&lt;/strong>: the name of the controller, to which the partial view definition belongs&lt;/li>
+ * 	&lt;li>&lt;strong>controllerType&lt;/strong>: the type of the &lt;tt>controller&lt;/tt>
+ * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
+ * 	&lt;li>&lt;strong>argsEval&lt;/strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 
+ * 								(optional argument) of the render expression. The function takes one argument: the current data-object.&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>ESCAPE_ENTER&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>text&lt;/strong> {String}: the text that will be rendered (i.e. without the escape-character(s) itself).&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>ESCAPE_EXIT&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>text&lt;/strong> {String}: the text that will be rendered (i.e. without the escape-character(s) itself).&lt;/li>
+ * &lt;/ul>
+ * &lt;p>
+ * Properties for &lt;strong>VAR_DECLARATION&lt;/strong> type:
+ * &lt;ul>
+ * 	&lt;li>&lt;strong>name&lt;/strong>: the name for the variable (without the leading &lt;tt>@&lt;/tt> of template variables)&lt;/li>
+ * 	&lt;li>&lt;strong>nameType&lt;/strong>: the type of the &lt;tt>name&lt;/tt> field: &lt;code>StringLiteral&lt;/code>&lt;/li>
+ * &lt;/ul>
+ * 
+ * &lt;p>
+ * 
+ * @constructs ParsingResult
+ * @param {org.antlr.runtime.CommonTokenStream|org.antlr.runtime.Token} [thetokens] OPTIONAL
+ * 					if &lt;code>org.antlr.runtime.CommonTokenStream&lt;/code>:	
+ * 												the TokenStream that corresponds to this parsed element;
+ * 												when provided, the TokenStream is used to set the start- and end-
+ * 												property of the new instance.&lt;br>
+ * 		  			if &lt;code>org.antlr.runtime.Token&lt;/code>:
+ * 												if the parameter is a single Token object, then the start- and end-
+ * 												property for the new instance is set by this token object
+ * 
+ */
+function ParsingResult (thetokens){
+	var isSet = false;
+	
+	//try to extract start-/end-indexes from the argument:
+	if(thetokens){
+		
+		if(typeof org !== 'undefined'){
+			//NOTE: must invoke getTokens() for initializing size() etc.!
+			if(thetokens instanceof org.antlr.runtime.CommonTokenStream &amp;&amp; thetokens.getTokens() &amp;&amp; thetokens.size() > 0){
+				this.start = thetokens.getTokens()[0].getStartIndex();
+				this.end = thetokens.getTokens()[thetokens.size()-1].getStopIndex();
+				
+				isSet = true;
+			}
+			else if(thetokens instanceof org.antlr.runtime.CommonToken || thetokens instanceof org.antlr.runtime.Token){
+				this.start = thetokens.getStartIndex();
+				this.end = thetokens.getStopIndex();
+							
+				isSet = true;
+			}
+		}
+		
+		//if not already set, try...
+		if( isSet === false &amp;&amp; typeof thetokens.getToken !== 'undefined' &amp;&amp; (typeof thetokens.getToken().getStartIndex !== 'undefined' &amp;&amp; typeof thetokens.getToken().getStopIndex !== 'undefined')){
+			this.start = thetokens.getToken().getStartIndex();
+			this.end = thetokens.getToken().getStopIndex();
+						
+			isSet = true;
+		}
+		else if(typeof thetokens.getStartIndex !== 'undefined' &amp;&amp; typeof thetokens.getStopIndex !== 'undefined'){
+			this.start = thetokens.getStartIndex();
+			this.end = thetokens.getStopIndex();
+						
+			isSet = true;
+		}
+		else if(isSet === false) {
+			var type = Object.prototype.toString.call(thetokens);//.match(/^\[object (.*)\]$/)[1];
+			console.warn('unknown argument type: '+type);//debug
+		}
+	}
+	
+	if(isSet === false) {
+		this.start = -1;
+		this.end   = -1;
+	}
+};
 
+/**
+ * Set the start position (index) for this parsed element with regard to the TokenStream of the complete input.
+ * 
+ * @function
+ * @param {org.antlr.runtime.CommonTokenStream} thetokens (optional) the TokenStream that corresponds to this parsed element;
+ * 												when provided, the TokenStream is used to set the start-property of this object.
+ * 
+ * @public
+ */
+ParsingResult.prototype.setStartFrom = function(thetokens){
+	//NOTE: must invoke getTokens() for initializing size() etc.!
+	if(thetokens.getTokens() &amp;&amp; thetokens.size() > 0){
+		this.start = thetokens.getTokens()[0].getStartIndex();
+	} 
+	else {
+		this.start = -1;
+	}
+};
 
+/**
+ * Set the end position (index) for this parsed element with regard to the TokenStream of the complete input.
+ * 
+ * @function
+ * @param {org.antlr.runtime.CommonTokenStream} thetokens (optional) the TokenStream that corresponds to this parsed element;
+ * 												when provided, the TokenStream is used to set the end-property of this object.
+ * 
+ * @public
+ * @alias mmir.parser.ParsingResult
+ */
+ParsingResult.prototype.setEndFrom = function(thetokens){
+	//NOTE: must invoke getTokens() for initializing size() etc.!
+	if(thetokens.getTokens() &amp;&amp; thetokens.size() > 0){
+		this.end = thetokens.getTokens()[thetokens.size()-1].getStopIndex();
+	} 
+	else {
+		this.end = -1;
+	}
+};
+ParsingResult.prototype.getStart = function(){
+	return this.start;
+};
+ParsingResult.prototype.getEnd = function(){
+	return this.end;
+};
 
+/**
+ * Get the type of this parsed element, i.e. as which type this element was parsed.
+ * 
+ * The type corresponds to one of the type defined in {mmir.parser.element}.
+ * 
+ * @function
+ * @return {mmir.parser.element} the type for this ParsingResult
+ * 
+ * @public
+ */
+ParsingResult.prototype.getType = function(){
+	return this.type;
+};
 
+//helper function for converting properties to the correct value.
+// By default, the ParsingResult only contains "raw" property values.
+// Which properties are available, depends on the type of the ParsingResult (see templateProcessor.js)
+ParsingResult.prototype.getValue = function(rawPropertyValue, proptertyType, data){
+	
+	if(proptertyType === 'StringLiteral'){
+		return rawPropertyValue.substring(1, rawPropertyValue.length-1);
+	}
+	else if(proptertyType === 'Identifier'){
+		if(data){
+			return data['@' + rawPropertyValue];
+		}
+		else {
+			//just return variable name
+			return rawPropertyValue;
+		}
+	}
+	else if(proptertyType === 'IdentifierNameAmpersatStart'){
+		if(data){
+			return data[rawPropertyValue];
+		}
+		else {
+			//just return variable name, but remove leading @:
+			return rawPropertyValue.substring(1);
+		}
+	}
+	else if(proptertyType === 'OBJECT'){
+		return rawPropertyValue;//TODO
+	}
+	else if(proptertyType === 'DecimalLiteral'){
+		return parseFloat(rawPropertyValue);
+	}
+//	else if(typeof proptertyType === 'undefined'){
+//		return rawPropertyValue;
+//	}
+	else
+		return rawPropertyValue;
+};
 
+ParsingResult.prototype.hasVarReferences = function(){
+	return false;//TODO implement this
+};
 
-    
+ParsingResult.prototype.isScriptTag = function(){
+	if( parser.element.INCLUDE_SCRIPT === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
+ParsingResult.prototype.isStyleTag = function(){
+	if( parser.element.INCLUDE_STYLE === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
+ParsingResult.prototype.isLocalize = function(){
+	if( parser.element.LOCALIZE === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
+ParsingResult.prototype.isYield = function(){
+	if( parser.element.YIELD_DECLARATION === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
+ParsingResult.prototype.isYieldContent = function(){
+	if( parser.element.YIELD_CONTENT === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
+ParsingResult.prototype.isScriptBlock = function(){
+	if( parser.element.BLOCK === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
+ParsingResult.prototype.isScriptStatement = function(){
+	if( parser.element.STATEMENT === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
+ParsingResult.prototype.isHelper = function(){
+	if( parser.element.HELPER === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
+ParsingResult.prototype.isIf = function(){
+	if( parser.element.IF === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
+ParsingResult.prototype.hasElse = function(){
+	if(this.isIf() &amp;&amp; typeof this.elseContent != 'undefined'){
+		return true;
+	}
+	return false;
+};
 
-<section>
-    
-<header>
-    <h2>
-    tools/interfaces.js
-    </h2>
-    
-</header>  
+ParsingResult.prototype.isElse = function(){
+	if( parser.element.ELSE === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
-<article>
-    <div class="container-overview">
-    
-    
-    
-        
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
-        
-        
-        
-<dl class="details">
-    
-        
-    
-    
-    
+ParsingResult.prototype.isFor = function(){
+	if( parser.element.FOR === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
+ParsingResult.prototype.isRender = function(){
+	if( parser.element.RENDER === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
-        
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</article>
+ParsingResult.prototype.isEscapeEnter = function(){
+	if( parser.element.ESCAPE_ENTER === this.getType() ){
+		return true;
+	}
+	return false;
+};
 
-</section>  
+ParsingResult.prototype.isEscapeExit = function(){
+	if( parser.element.ESCAPE_EXIT === this.getType() ){
+		return true;
+	}
+	return false;
+};
+
+ParsingResult.prototype.isEscape = function(){
+	return this.isEscapeEnter() || this.isEscapeExit();
+};
+
+/**
+ * WARNING: do use sparingly -- an invocation triggers a list evaluation.
+ * 
+ * @returns {String} a String representation (name) for this ParsingResult's type
+ * 
+ * @see #getType
+ */
+ParsingResult.prototype.getTypeName = function(){
+	
+	if(this.typeName){
+		return this.typeName;/////////////////// EARLY EXIT //////////////////////////
+	}
+	
+	for(var prop in parser.element){
+		if(parser.element.hasOwnProperty(prop) &amp;&amp; parser.element[prop] === this.getType()){
+			this.typeName = prop;
+			return prop;/////////////////// EARLY EXIT //////////////////////////
+		}
+	}
+	
+	return void(0);
+};
+
+ParsingResult.prototype.hasCallData = function(){
+	return typeof this.dataPos !== 'undefined';
+};
+
+ParsingResult.prototype.getCallDataStart = function(){
+	return this.dataPos.start;
+};
+
+ParsingResult.prototype.getCallDataEnd = function(){
+	return this.dataPos.end;
+};
+
+ParsingResult.prototype.getCallDataType = function(){
+	return this.dataType;
+};
+
+ParsingResult.prototype.stringify = function(){
+	
+	//TODO use constants for lists
+	
+    //typed properties:
+	// for each typed properties '&lt;prop>' there is an additional property with name '&lt;prop>Type'
+	// (both of these properties are Strings themselves)
+	var typedPropList = [
+	     'scriptPath',
+	     'stylePath', 
+	     'name',
+	     'helper',
+	     'partial',
+	     'controller'
+	];
+	
+	//primitive-type properties:
+	// write values 'as is' for these properties
+	var propList = [
+   	     'start',
+	     'end',
+	     'type',
+	     'dataType',
+	     'text',
+	     'forControlType',
+	     'forPropName'
+	];
+	
+	//"stringify-able" object properties:
+	var strPropList = [
+   	     'content',
+   	     'elseContent'
+   	];
+	
+	//function properties:
+	var funcPropList = [
+	//DISABLED these are now generated/initialized in the owning ContentElment's initEvalFunctions() function (NOTE that this may include the forInitEval too, which then will overwrite this function, that may be exported due to this list)
+//   	     'scriptEval',
+//   	     'argsEval',
+//   	     'ifEval',
+//   	     'forConditionEval',
+//   	     'forIncrementEval',
+   	     'forInitEval',//TODO include this in ContentElement.initEvalFunctions
+   	     'forIterator'//TODO include this in ContentElement.initEvalFunctions
+   	];
+	
+	//default function properties:
+	// these functions from the prototype may have been overwritten
+	//  -> if one is overwritten, i.e. not the default implementation, then store that one too
+	var overwrittenFuncPropList = [
+ 	     'getEnd',
+   	     'getStart',
+   	     'getType',
+   	     'getValue',
+   	     'getTypeName',
+   	     'getCallDataStart',
+   	     'getCallDataEnd',
+   	     'getCallDataType'
+   	];
+	
+	//function for iterating over the property-list and generating JSON-like entries in the string-buffer
+	var  appendStringified = parser.appendStringified;
+
+	var sb = ['require("mmirf/storageUtils").restoreObject({ classConstructor: "mmirf/parsingResult"', ','];
+
+	//TODO property dataPos: {start: Number, end: Number}
+	if(this['dataPos']){
+		sb.push( 'dataPos:{start:' );
+		sb.push( this.dataPos.start );
+		sb.push( ',end:' );
+		sb.push( this.dataPos.end );
+		sb.push( '}' );
+		//NOTE: need to add comma in a separate entry 
+		//      (-> in order to not break the removal method of last comma, see below)
+		sb.push( ',' );
+	}
+		
+	
+	appendStringified(this, typedPropList, sb);
+	appendStringified(this, typedPropList, sb, 'Type');
+	appendStringified(this, propList, sb);
+	//non-primitives with stringify() function:
+	appendStringified(this, strPropList, sb, null, function stringifyableExtractor(name, value){
+		return value.stringify();
+	});
+	//function definitions
+	appendStringified(this, funcPropList, sb, null, function functionExtractor(name, value){
+		return value.toString();
+	});
+	//add "overwritten" function definitions
+	appendStringified(this, overwrittenFuncPropList, sb, null, function nonDefaultFunctionExtractor(name, value){
+		var instanceImpl = value.toString();
+		var defaultImpl = ParsingResult.prototype[name].toString();
+		if(instanceImpl !== defaultImpl){
+			return instanceImpl;
+		}
+		//DEFAULT: return void (will omit this from storage -> use default impl. of the prototype)
+		return;
+	});
+	
+	//if last element is a comma, remove it
+	if(sb[sb.length - 1] === ','){
+		sb.splice( sb.length - 1, 1);
+	}
+	
+	sb.push(' })');
+	return sb.join('');
+};
+
+/**
+ * HELPER for making the namespace of the core-parser (i.e. ANTLR3) available
+ * 
+ * This is necessary in environments where the namespace is not automatically
+ *  exported into the global namespace, e.g. when runnin in nodejs.
+ * 
+ * @static
+ * @private
+ * @param {String} parserNamerspace
+ * 			the namespace object of the ANTLR parser (should be the object org which is exported by antlr3 module/shim) 
+ */
+ParsingResult._nsParserInit = function(parserNamerspace){
+	
+	_antrl3 = parserNamerspace;
+	
+	if(typeof org === 'undefined'){
+		org = parserNamerspace;
+	}
+};
+
+parser.ParsingResult = ParsingResult;
+
+return parser.ParsingResult;
+
+});//END: define(..., function(){</code></pre>
+        </article>
+    </section>
+
 
 
 

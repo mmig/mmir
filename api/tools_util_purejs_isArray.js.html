@@ -1951,101 +1951,62 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="tools_util_purejs_isArray.js.html">Source: tools/util_purejs/isArray.js</h1>
         
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>define(function(){
+	/**
+   * This helper initializes a function for detecting if an Object is an
+   * Array.
+   *
+   * The helper tries to find native or library JavaScript functions for this; if
+   * none can be found, a custom implementation is used.
+   *
+   * NOTE: The current implementation checks jQuery.isArray for presences
+   *
+   * @type Function
+   * @param {any} obj
+   * 				the object that should be tested
+   * @returns {Boolean} TRUE if obj is an array
+   *
+   * @memberOf util
+   */
+  var IsArray = (function() {
 
+		// this is the initializer: the following will overwrite the
+		// isArray-function
+		// with the appropriate version (use jQuery method, if present,
+		// otherwise use alternative)
 
-    <h3> </h3>
+    	//use native method, if present
+    	if(Array.isArray){
+			return Array.isArray;
+		}
+		// if present, use jQuery method:
+    	else if (typeof jQuery !== 'undefined' &amp;&amp; typeof jQuery.isArray === 'function') {
+			return jQuery.isArray;
+		}
+		else {
+		    // use the toString method with well-defined return-value from
+		    // Object:
+		    var staticToString = Object.prototype.toString;
 
+		    return function(obj) {
+		    	return staticToString.call(obj) === '[object Array]';
+		    };
+		}
+  })();//&lt;- immediately initialize the isArray-function
 
+	return IsArray;
+});
+</code></pre>
+        </article>
+    </section>
 
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-<section>
-    
-<header>
-    <h2>
-    tools/interfaces.js
-    </h2>
-    
-</header>  
-
-<article>
-    <div class="container-overview">
-    
-    
-    
-        
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
-        
-        
-        
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-        
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</article>
-
-</section>  
 
 
 

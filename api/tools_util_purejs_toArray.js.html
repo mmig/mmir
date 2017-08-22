@@ -1951,101 +1951,31 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="tools_util_purejs_toArray.js.html">Source: tools/util_purejs/toArray.js</h1>
         
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>define(function(){
 
+	/** @memberOf util */
+	function ToArray(obj){
+		var list = obj.length? new Array(obj.length) : [];
+		var i = 0;
+		for(var k in Object.keys(obj)){
+			list[i++] = obj[k];
+		}
+		return list;
+	}
+	
+	return ToArray;
+});
+</code></pre>
+        </article>
+    </section>
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-<section>
-    
-<header>
-    <h2>
-    tools/interfaces.js
-    </h2>
-    
-</header>  
-
-<article>
-    <div class="container-overview">
-    
-    
-    
-        
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
-        
-        
-        
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-        
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</article>
-
-</section>  
 
 
 

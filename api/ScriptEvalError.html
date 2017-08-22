@@ -1951,30 +1951,8 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="ScriptEvalError.html">Class: ScriptEvalError</h1>
         
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 
@@ -1982,7 +1960,7 @@
     
 <header>
     <h2>
-    tools/interfaces.js
+    ScriptEvalError
     </h2>
     
 </header>  
@@ -1993,11 +1971,227 @@
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="ScriptEvalError">
+            
+            new ScriptEvalError<span class="signature">()</span>
+        </h4>
+    
         
+        <div class="tag-source">
+            <a href="mvc_views_contentElement.js.html">mvc/views/contentElement.js</a>, <a href="mvc_views_contentElement.js.html#line356">line 356</a>
+        </div>
         
-        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Error for parsing problems with detailed location information (i.e. where the parsing problem occured).
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
 <dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the error name, that triggered the ScriptEvalError</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the message of the error that triggered the ScriptEvalError</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>stack</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the error stack (if available)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>details</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the detailed message of the ScriptEvalError including the positional information and the error that triggered it</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the offset (number of characters) of the ContentElement where the error occurred (in relation to its parent/owning Element)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the starting position for the content (number of characters) within the ContentElement's <code>rawText</code></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>end</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">the end position for the content (number of characters) within the ContentElement's <code>rawText</code></td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
     
         
     
@@ -2021,8 +2215,20 @@
     
 </dl>
 
-        
-        
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
     
@@ -2036,6 +2242,62 @@
     
     
     
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getDetails">getDetails<span class="type-signature type function">function</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Get the detailed error message with origin information.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><code>details</code></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
     
     
     
@@ -2054,7 +2316,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:51 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 16:37:53 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>

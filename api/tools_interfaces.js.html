@@ -1951,101 +1951,356 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="tools_interfaces.js.html">Source: tools/interfaces.js</h1>
         
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * @file This file contains interface definitions. 
+ * 		 The interface definitions are purely for documentation and 
+ * 		 should not be loaded / executed / or used in any way other
+ * 		 than for reference purposes.
+ */
+
+/**
+ * The Audio abstraction that is returned by {@link mmir.MediaManager#getURLAsAudio}.
+ * 
+ * &lt;p>
+ * NOTE: when an audio object is not used anymore, its {@link #release} method should
+ * 		 be called.
+ * 
+ * &lt;p>
+ * 
+ * @interface
+ * @name IAudio
+ * @memberOf mmir.env.media
+ * @public
+ */
+var IAudio = {
+	/**
+	 * The constructor.
+	 * 
+	 * &lt;p>
+	 * NOTE that audio objects are created with a factory,
+	 * e.g. via {@link mmir.MediaManager#getURLAsAudio}.
+	 * 
+	 * @param {String} url
+	 * 			the URL for the audio file
+	 * @param {Function} [onPlayedCallback] OPTIONAL
+	 * 			callback that is triggered when audio did play and has ended
+	 * @param {Function} [failureCallBack] OPTIONAL
+	 * 			callback that is triggered when an error occurs (usually during initialization)&lt;br>
+	 * 			NOTE: this argument is positional (i.e. onPlayedCallback must be specified, but may be &lt;code>null&lt;/code>)
+	 * @param {Function} [onLoadedCallBack] OPTIONAL
+	 * 			callback that is triggered when audio has been initialized and is ready to be played
+	 * 			NOTE: this argument is positional (i.e. onPlayedCallback and failureCallBack must be specified, but may be &lt;code>null&lt;/code>)
+	 * 
+	 * @protected
+	 * @function
+	 * @name _constructor
+	 * @memberOf mmir.env.media.IAudio.prototype
+	 * 
+	 * @see mmir.MediaManager#getURLAsAudio
+	 * 
+	 * @example
+	 *  var audio = mmir.MediaManager.getURLAsAudio(url, null, null, function onReady(){
+	 *  	audio.play();
+	 *  });
+	 */
+	_constructor: function(url, onPlayedCallback, failureCallBack, onLoadedCallBack){},
+	/**
+	 * Play audio.
+	 * 
+	 * @returns {Boolean} &lt;code>true&lt;/code>, if playing was started immediately.
+	 *                    If &lt;code>false&lt;/code>, the Audio object may have been disabled,
+	 *                    or is still preparing (in which case it is auto-started, when
+	 *                    preparing completes)
+	 * 
+	 * @public
+	 * @name play
+	 * @function
+	 * @memberOf mmir.env.media.IAudio.prototype
+	 */
+	play: function(){},
+	/**
+	 * Stop playing audio.
+	 * 
+	 * @returns {Boolean} &lt;code>true&lt;/code>, if stopping was successful.
+	 * 
+	 * @public
+	 * @name stop
+	 * @function
+	 * @memberOf mmir.env.media.IAudio.prototype
+	 */
+	stop: function(){},
+	/**
+	 * Enable audio (should only be used internally).
+	 * 
+	 * @protected
+	 * @name enable
+	 * @function
+	 * @memberOf mmir.env.media.IAudio.prototype
+	 */
+	enable: function(){},
+	/**
+	 * Disable audio (should only be used internally).
+	 * 
+	 * @protected
+	 * @name disable
+	 * @function
+	 * @memberOf mmir.env.media.IAudio.prototype
+	 */
+	disable: function(){},
+	/**
+	 * Release audio: should be called when the audio
+	 * file is not used any more.
+	 * 
+	 * &lt;p>
+	 * NOTE some environments - such as Android - have limited resources available.
+	 *      Not releasing resources may result in not being able to instantiate new
+	 *      (audio) resources.
+	 * 
+	 * @public
+	 * @name release
+	 * @function
+	 * @memberOf mmir.env.media.IAudio.prototype
+	 */
+	release: function(){},
+	/**
+	 * Set the volume of this audio file
+	 * 
+	 * @param {Number} value
+	 * 			the new value for the volume:
+	 * 			a number between [0.0, 1.0]
+	 * 
+	 * @public
+	 * @name setVolume
+	 * @function
+	 * @memberOf mmir.env.media.IAudio.prototype
+	 */
+	setVolume: function(value){},
+	/**
+	 * Get the duration of the audio file
+	 * 
+	 * @returns {Number} the duration in MS (or &lt;code>-1&lt;/code> if unknown)
+	 * 
+	 * @public
+	 * @name getDuration
+	 * @function
+	 * @memberOf mmir.env.media.IAudio.prototype
+	 */
+	getDuration: function(){},
+	/**
+	 * Check if audio is currently paused.
+	 * 
+	 * &lt;p>
+	 * NOTE: the state "paused" is a different status than state "stopped".
+	 * 
+	 * @returns {Boolean} &lt;code>true&lt;/code> if paused, &lt;code>false&lt;/code> otherwise
+	 * 
+	 * @public
+	 * @name isPaused
+	 * @function
+	 * @memberOf mmir.env.media.IAudio.prototype
+	 */
+	isPaused: function(){},
+	/**
+	 * Check if audio is currently enabled
+	 * 
+	 * @returns {Boolean} &lt;code>true&lt;/code> if enabled
+	 * 
+	 * @public
+	 * @name isEnabled
+	 * @function
+	 * @memberOf mmir.env.media.IAudio.prototype
+	 */
+	isEnabled: function(){}
+};
+
+/**
+ * Audio object that is used for the sound notifications
+ * by the {@link mmir.NotificationManager}.
+ * 
+ * @interface
+ * @name INotificationSound
+ * @augments mmir.env.media.IAudio
+ * @memberOf mmir.env.media
+ */
+var INotificationSound = {
+	/**
+	 * The name / identifier for the sound.
+	 * 
+	 * @public
+	 * @type String
+	 * @name name
+	 * @memberOf mmir.env.media.INotificationSound.prototype
+	 */
+	name : null,
+	/**
+	 * Flag for the play status.
+	 * 
+	 * @protected
+	 * @type Boolean
+	 * @name isNotificationPlaying
+	 * @memberOf mmir.env.media.INotificationSound.prototype
+	 */
+	isNotificationPlaying : false,
+	/**
+	 * Field that holds the value for the repeat number:
+	 * specifies how many times the sound should be played, before
+	 * {@link #isNotificationPlaying} is set to &lt;code>false&lt;/code>.
+	 * &lt;p>
+	 * MUST be &lt;code>>= 1&lt;/code>, otherwise the sound will not be played.
+	 * 
+	 * @protected
+	 * @type Number
+	 * @name repeatNotification
+	 * @memberOf mmir.env.media.INotificationSound.prototype
+	 */
+	repeatNotification : 0,
+	/**
+	 * The callback for "finished" events.
+	 * 
+	 * @protected
+	 * @type Function
+	 * @name onFinishedListener
+	 * @memberOf mmir.env.media.INotificationSound.prototype
+	 */
+	onFinishedListener : null,
+	/**
+	 * The callback for "error" events.
+	 * 
+	 * @protected
+	 * @type Function
+	 * @name onErrorListener
+	 * @memberOf mmir.env.media.INotificationSound.prototype
+	 */
+	onErrorListener : null,
+	/**
+	 * Field that holds the value for the repeat number:
+	 * specifies how many times the sound should be played, before
+	 * {@link #isNotificationPlaying} is set to &lt;code>false&lt;/code>.
+	 * &lt;p>
+	 * MUST be &lt;code>>= 1&lt;/code>, otherwise the sound will not be played.
+	 * 
+	 * @param {Number} repeatNTimes
+	 * 					specifies how many times the sound should be played, before
+	 * 					{@link #isNotificationPlaying} is set to &lt;code>false&lt;/code>.
+	 * 					&lt;br>
+	 * 					MUST be &lt;code>>= 1&lt;/code>, otherwise the sound will not be played.
+	 * 		
+	 * 
+	 * @public
+	 * @function
+	 * @name playNotification
+	 * @memberOf mmir.env.media.INotificationSound.prototype
+	 */
+	playNotification : function(repeatNTimes){},
+	/**
+	 * Set callback functions for when the sound has finished playing, and
+	 * for errors.
+	 * &lt;p>
+	 * The sound finishes playing, when its audio object has been played
+	 * &lt;code>repeatNTimes&lt;/code> as specified when invoking
+	 * &lt;code>function playNotification(repeatNTimes)&lt;/code>.
+	 * 
+	 * 
+	 * @param {Function} onFinished
+	 * 				the callback for the finished event
+	 * @param {Function} onError
+	 * 				the callback for errors
+	 * 
+	 * @public
+	 * @function
+	 * @name setCallbacks
+	 * @memberOf mmir.env.media.INotificationSound.prototype
+	 */
+	setCallbacks : function(onFinished, onError){},
+	/**
+	 * Clears the "finished" and "error" callbacks.
+	 * 
+	 * @public
+	 * @function
+	 * @name clearCallbacks
+	 * @memberOf mmir.env.media.INotificationSound.prototype
+	 */
+	clearCallbacks : function(){},
+	/**
+	 * Fires the "finished" event for its callback (if one is set).
+	 * 
+	 * @protected
+	 * @function
+	 * @name fireFinished
+	 * @memberOf mmir.env.media.INotificationSound.prototype
+	 */
+	fireFinished : function(){},
+	/**
+	 * Fires the "error" event for its callback (if one is set).
+	 * 
+	 * @param {any} error
+	 * 			the error that occurred
+	 * 
+	 * @protected
+	 * @function
+	 * @name fireError
+	 * @memberOf mmir.env.media.INotificationSound.prototype
+	 */
+	fireError : function(error){}
+};
 
 
-    <h3> </h3>
+/**
+ * Audio object that is used for the sound notifications
+ * by the {@link mmir.MediaManager}.
+ * 
+ * @interface
+ * @name IWaitReadyIndicator
+ * @memberOf mmir.env.media
+ * 
+ * @see mmir.MediaManager#readyWaitImpl
+ */
+var IWaitReadyIndicator = {
+	/**
+	 * Indicates that the media plugin &lt;code>pluginName&lt;/code> is preparing
+	 * something and that the user should wait.
+	 * 
+	 * &lt;p>
+	 * For example, an implementation could show a wait dialog / overlay when this function is called.
+	 * 
+	 * @param {String} moduleName
+	 * 			the module name from which the function was invoked
+	 * 
+	 * @public
+	 * @memberOf mmir.env.media.IWaitReadyIndicator.prototype
+	 * 
+	 * @see mmir.MediaManager#_preparing
+	 */
+    preparing: function (moduleName){},
+    /**
+     * Indicates that the media plugin &lt;code>pluginName&lt;/code> is now ready
+	 * and that the user can begin interacting.
+	 * 
+	 * &lt;p>
+	 * For example, an implementation could hide a wait dialog / overlay when this function is called
+	 * (that was previously shown with {@link #preparing}).
+	 * 
+	 * @param {String} moduleName
+	 * 			the module name from which the function was invoked
+     * 
+	 * @public
+	 * @memberOf mmir.env.media.IWaitReadyIndicator.prototype
+	 * 
+	 * @see mmir.MediaManager#_ready
+	 */
+	ready: function(moduleName){}
+};</code></pre>
+        </article>
+    </section>
 
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-<section>
-    
-<header>
-    <h2>
-    tools/interfaces.js
-    </h2>
-    
-</header>  
-
-<article>
-    <div class="container-overview">
-    
-    
-    
-        
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
-        
-        
-        
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-        
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</article>
-
-</section>  
 
 
 

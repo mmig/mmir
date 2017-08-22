@@ -1951,101 +1951,69 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="tools_extensions_ResizeFitToSourroundingBox.js.html">Source: tools/extensions/ResizeFitToSourroundingBox.js</h1>
         
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>define(['jquery'], function($){
 
+/**
+ * This function iterates over all elements of a specific class and
+ * changes the font-size of the contained text to the maximal
+ * possible size - while still being small enough to fit in the
+ * element.
+ *
+ * @function
+ * @param {String}
+ *            class_name Name of the class which inner text should
+ *            be fitted to the size of the element
+ *
+ * @requires jQuery
+ * @public
+ * @memberOf mmir.ExtendedCommonUtils.prototype
+ */
+function resizeFitToSourroundingBox(class_name) {
+  // resize the font in box_fit-class, so that it won't overlap its div-box
+  $(function() {
 
-    <h3> </h3>
+  	var smallest_font = 1000;
+  	$(class_name).each(function(i, box) {
+  		var width = $( box ).width(),
+  					html = '&lt;span style="white-space:nowrap">',
+  					line = $( box ).wrapInner( html ).children()[ 0 ],
+  					n = parseInt($( box ).css('font-size'), 10);
 
+  				$( box ).css( 'font-size', n );
 
+  				while ( $( line ).width() > width ) {
+  					$( box ).css( 'font-size', --n );
+  				}
 
+  				$( box ).text( $( line ).text() );
 
+  				n = parseInt($( box ).css('font-size'), 10);
 
+  		if (n &lt; smallest_font) {
+  			smallest_font = n;
+  		}
+  	});
 
+  	$(class_name).each(function(i, box) {
+  		$(box).css('font-size', smallest_font);
+  	});
+  });
+}
 
+return resizeFitToSourroundingBox;
 
-    
+})
+</code></pre>
+        </article>
+    </section>
 
-
-
-
-
-
-
-
-
-
-<section>
-    
-<header>
-    <h2>
-    tools/interfaces.js
-    </h2>
-    
-</header>  
-
-<article>
-    <div class="container-overview">
-    
-    
-    
-        
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
-        
-        
-        
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-        
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</article>
-
-</section>  
 
 
 

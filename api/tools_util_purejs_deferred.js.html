@@ -1951,101 +1951,34 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="tools_util_purejs_deferred.js.html">Source: tools/util_purejs/deferred.js</h1>
         
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>define(function(){
 
+	/** @memberOf util */
+	function Deferred(){
+		var __res, __rej;
+		var p = new Promise(function(_resolve, _reject){
+			__res = _resolve;
+			__rej = _reject;
+		});
+		p.resolve = __res;
+		p.reject  = __rej;
 
-    <h3> </h3>
+		return p;
+	}
 
+	return Deferred;
+});
+</code></pre>
+        </article>
+    </section>
 
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-<section>
-    
-<header>
-    <h2>
-    tools/interfaces.js
-    </h2>
-    
-</header>  
-
-<article>
-    <div class="container-overview">
-    
-    
-    
-        
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
-        
-        
-        
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-        
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</article>
-
-</section>  
 
 
 
