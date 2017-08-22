@@ -2250,6 +2250,8 @@
             
                 <li data-name="mmir.SemanticInterpreter#hasGrammar"><a href="mmir.SemanticInterpreter.html#hasGrammar">hasGrammar</a></li>
             
+                <li data-name="mmir.SemanticInterpreter#interpret"><a href="mmir.SemanticInterpreter.html#interpret">interpret</a></li>
+            
                 <li data-name="mmir.SemanticInterpreter#isEnabled"><a href="mmir.SemanticInterpreter.html#isEnabled">isEnabled</a></li>
             
                 <li data-name="mmir.SemanticInterpreter#removeGrammar"><a href="mmir.SemanticInterpreter.html#removeGrammar">removeGrammar</a></li>
@@ -3476,6 +3478,190 @@ ID of the current grammar engine
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="interpret">
+            
+            interpret<span class="signature">(phrase, langCode, <span class="optional">callback</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="semantic_semanticInterpreter.js.html">semantic/semanticInterpreter.js</a>, <a href="semantic_semanticInterpreter.js.html#line652">line 652</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>phrase</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the phrase that will be parsed</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>langCode</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the language code (identifier) for the parser/grammar</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                OPTIONAL					a callback function that receives the return value					(instead of receiving the result as return value from					 this function directly).					The signature for the callback is: <code>callback(result: Object)</code>					  (i.e. the result that would be returned by this function itself is					   passed as argument into the callback function; see also documentation					   for <em>returns</em>).					NOTE: in case, the grammar for the requested <code>langCode</code>						  is not compiled yet (i.e. not present as executable JavaScript),						  the corresponding JSON definition of the grammar needs to be					      compiled first, before processing the ASR's semantics is possible.						  In this case, a <code>callback</code> function <strong>MUST</strong>						  be supplied in order to receive a result (since compilation of the					      grammar may be <em>asynchronous</em>).</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+parsing result (as processed by the parser / grammar;				usually a JSON-like object).				WARNING: if a <code>callback</code> function was provided, then						 there is no return object.
+<br />
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="isEnabled">
             
             isEnabled<span class="signature">()</span>
@@ -3628,7 +3814,7 @@ ID of the current grammar engine
     
     
     <div class="description">
-        Removes stopwords using the stopword-list from the parser/grammarfor <code>lang</code>.NOTE: <code><code>interpret</code></code> automatically applies stopword-removal		 (i.e. there is no need to manually remove stopwords using this function		  when using <code><code>interpret</code></code>).
+        Removes stopwords using the stopword-list from the parser/grammarfor <code>lang</code>.NOTE: <code><a href="mmir.SemanticInterpreter.html#interpret"><code>interpret</code></a></code> automatically applies stopword-removal		 (i.e. there is no need to manually remove stopwords using this function		  when using <code><a href="mmir.SemanticInterpreter.html#interpret"><code>interpret</code></a></code>).
     </div>
     
 
@@ -3767,7 +3953,7 @@ ID of the current grammar engine
     
     
     <div class="description">
-        Sets the current grammar.If in invocations of <code>interpret</code> the grammar ID (e.g. language code) is missing,then this grammar that is set here is used.The id must reference either a grammar that was compiled (i.e. generated JavaScript file)for this id, or there must exists JSON-grammar file for which the language-dir matches the id parameter,e.g. <code>config/languages/[id]/grammar.json</code>.
+        Sets the current grammar.If in invocations of <a href="mmir.SemanticInterpreter.html#interpret"><code>interpret</code></a> the grammar ID (e.g. language code) is missing,then this grammar that is set here is used.The id must reference either a grammar that was compiled (i.e. generated JavaScript file)for this id, or there must exists JSON-grammar file for which the language-dir matches the id parameter,e.g. <code>config/languages/[id]/grammar.json</code>.
     </div>
     
 
@@ -4282,7 +4468,7 @@ ID of the current grammar engine
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 21:15:51 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 21:21:38 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>
