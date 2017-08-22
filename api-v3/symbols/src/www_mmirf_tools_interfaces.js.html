@@ -1,0 +1,340 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="WHIT">
+<span class='line'>  2</span> </span><span class="COMM">/**
+<span class='line'>  3</span>  * @file This file contains interface definitions. 
+<span class='line'>  4</span>  * 		 The interface definitions are purely for documentation and 
+<span class='line'>  5</span>  * 		 should not be loaded / executed / or used in any way other
+<span class='line'>  6</span>  * 		 than for reference purposes.
+<span class='line'>  7</span>  */</span><span class="WHIT">
+<span class='line'>  8</span> 
+<span class='line'>  9</span> </span><span class="COMM">/**
+<span class='line'> 10</span>  * The Audio abstraction that is returned by {@link mmir.MediaManager#getURLAsAudio}.
+<span class='line'> 11</span>  * 
+<span class='line'> 12</span>  * &lt;p>
+<span class='line'> 13</span>  * NOTE: when an audio object is not used anymore, its {@link #release} method should
+<span class='line'> 14</span>  * 		 be called.
+<span class='line'> 15</span>  * 
+<span class='line'> 16</span>  * &lt;p>
+<span class='line'> 17</span>  * 
+<span class='line'> 18</span>  * @interface
+<span class='line'> 19</span>  * @name IAudio
+<span class='line'> 20</span>  * @memberOf mmir.env.media
+<span class='line'> 21</span>  * @public
+<span class='line'> 22</span>  */</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">IAudio</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 25</span> 	 * The constructor.
+<span class='line'> 26</span> 	 * 
+<span class='line'> 27</span> 	 * &lt;p>
+<span class='line'> 28</span> 	 * NOTE that audio objects are created with a factory,
+<span class='line'> 29</span> 	 * e.g. via {@link mmir.MediaManager#getURLAsAudio}.
+<span class='line'> 30</span> 	 * 
+<span class='line'> 31</span> 	 * @param {String} url
+<span class='line'> 32</span> 	 * 			the URL for the audio file
+<span class='line'> 33</span> 	 * @param {Function} [onPlayedCallback] OPTIONAL
+<span class='line'> 34</span> 	 * 			callback that is triggered when audio did play and has ended
+<span class='line'> 35</span> 	 * @param {Function} [failureCallBack] OPTIONAL
+<span class='line'> 36</span> 	 * 			callback that is triggered when an error occurs (usually during initialization)&lt;br>
+<span class='line'> 37</span> 	 * 			NOTE: this argument is positional (i.e. onPlayedCallback must be specified, but may be &lt;code>null&lt;/code>)
+<span class='line'> 38</span> 	 * @param {Function} [onLoadedCallBack] OPTIONAL
+<span class='line'> 39</span> 	 * 			callback that is triggered when audio has been initialized and is ready to be played
+<span class='line'> 40</span> 	 * 			NOTE: this argument is positional (i.e. onPlayedCallback and failureCallBack must be specified, but may be &lt;code>null&lt;/code>)
+<span class='line'> 41</span> 	 * 
+<span class='line'> 42</span> 	 * @protected
+<span class='line'> 43</span> 	 * @function
+<span class='line'> 44</span> 	 * @name _constructor
+<span class='line'> 45</span> 	 * @memberOf mmir.env.media.IAudio.prototype
+<span class='line'> 46</span> 	 * 
+<span class='line'> 47</span> 	 * @see mmir.MediaManager#getURLAsAudio
+<span class='line'> 48</span> 	 * 
+<span class='line'> 49</span> 	 * @example
+<span class='line'> 50</span> 	 *  var audio = mmir.MediaManager.getURLAsAudio(url, null, null, function onReady(){
+<span class='line'> 51</span> 	 *  	audio.play();
+<span class='line'> 52</span> 	 *  });
+<span class='line'> 53</span> 	 */</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">	</span><span class="NAME">_constructor</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onPlayedCallback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">failureCallBack</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onLoadedCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 56</span> 	 * Play audio.
+<span class='line'> 57</span> 	 * 
+<span class='line'> 58</span> 	 * @public
+<span class='line'> 59</span> 	 * @name play
+<span class='line'> 60</span> 	 * @function
+<span class='line'> 61</span> 	 * @memberOf mmir.env.media.IAudio.prototype
+<span class='line'> 62</span> 	 */</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">	</span><span class="NAME">play</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 65</span> 	 * Stop playing audio.
+<span class='line'> 66</span> 	 * 
+<span class='line'> 67</span> 	 * @public
+<span class='line'> 68</span> 	 * @name stop
+<span class='line'> 69</span> 	 * @function
+<span class='line'> 70</span> 	 * @memberOf mmir.env.media.IAudio.prototype
+<span class='line'> 71</span> 	 */</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">	</span><span class="NAME">stop</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 74</span> 	 * Enable audio (should only be used internally).
+<span class='line'> 75</span> 	 * 
+<span class='line'> 76</span> 	 * @protected
+<span class='line'> 77</span> 	 * @name enable
+<span class='line'> 78</span> 	 * @function
+<span class='line'> 79</span> 	 * @memberOf mmir.env.media.IAudio.prototype
+<span class='line'> 80</span> 	 */</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">	</span><span class="NAME">enable</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 83</span> 	 * Disable audio (should only be used internally).
+<span class='line'> 84</span> 	 * 
+<span class='line'> 85</span> 	 * @protected
+<span class='line'> 86</span> 	 * @name disable
+<span class='line'> 87</span> 	 * @function
+<span class='line'> 88</span> 	 * @memberOf mmir.env.media.IAudio.prototype
+<span class='line'> 89</span> 	 */</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">	</span><span class="NAME">disable</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 92</span> 	 * Release audio: should be called when the audio
+<span class='line'> 93</span> 	 * file is not used any more.
+<span class='line'> 94</span> 	 * 
+<span class='line'> 95</span> 	 * &lt;p>
+<span class='line'> 96</span> 	 * NOTE some environments - such as Android - have limited resources available.
+<span class='line'> 97</span> 	 *      Not releasing resources may result in not being able to instantiate new
+<span class='line'> 98</span> 	 *      (audio) resources.
+<span class='line'> 99</span> 	 * 
+<span class='line'>100</span> 	 * @public
+<span class='line'>101</span> 	 * @name release
+<span class='line'>102</span> 	 * @function
+<span class='line'>103</span> 	 * @memberOf mmir.env.media.IAudio.prototype
+<span class='line'>104</span> 	 */</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">	</span><span class="NAME">release</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>107</span> 	 * Set the volume of this audio file
+<span class='line'>108</span> 	 * 
+<span class='line'>109</span> 	 * @param {Number} value
+<span class='line'>110</span> 	 * 			the new value for the volume:
+<span class='line'>111</span> 	 * 			a number between [0.0, 1.0]
+<span class='line'>112</span> 	 * 
+<span class='line'>113</span> 	 * @public
+<span class='line'>114</span> 	 * @name setVolume
+<span class='line'>115</span> 	 * @function
+<span class='line'>116</span> 	 * @memberOf mmir.env.media.IAudio.prototype
+<span class='line'>117</span> 	 */</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">	</span><span class="NAME">setVolume</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">value</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>120</span> 	 * Get the duration of the audio file
+<span class='line'>121</span> 	 * 
+<span class='line'>122</span> 	 * @returns {Number} the duration in MS (or &lt;code>-1&lt;/code> if unknown)
+<span class='line'>123</span> 	 * 
+<span class='line'>124</span> 	 * @public
+<span class='line'>125</span> 	 * @name getDuration
+<span class='line'>126</span> 	 * @function
+<span class='line'>127</span> 	 * @memberOf mmir.env.media.IAudio.prototype
+<span class='line'>128</span> 	 */</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">	</span><span class="NAME">getDuration</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>131</span> 	 * Check if audio is currently paused.
+<span class='line'>132</span> 	 * 
+<span class='line'>133</span> 	 * &lt;p>
+<span class='line'>134</span> 	 * NOTE: the state "paused" is a different status than state "stopped".
+<span class='line'>135</span> 	 * 
+<span class='line'>136</span> 	 * @returns {Boolean} &lt;code>true&lt;/code> if paused, &lt;code>false&lt;/code> otherwise
+<span class='line'>137</span> 	 * 
+<span class='line'>138</span> 	 * @public
+<span class='line'>139</span> 	 * @name isPaused
+<span class='line'>140</span> 	 * @function
+<span class='line'>141</span> 	 * @memberOf mmir.env.media.IAudio.prototype
+<span class='line'>142</span> 	 */</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">	</span><span class="NAME">isPaused</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>145</span> 	 * Check if audio is currently enabled
+<span class='line'>146</span> 	 * 
+<span class='line'>147</span> 	 * @returns {Boolean} &lt;code>true&lt;/code> if enabled
+<span class='line'>148</span> 	 * 
+<span class='line'>149</span> 	 * @public
+<span class='line'>150</span> 	 * @name isEnabled
+<span class='line'>151</span> 	 * @function
+<span class='line'>152</span> 	 * @memberOf mmir.env.media.IAudio.prototype
+<span class='line'>153</span> 	 */</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">	</span><span class="NAME">isEnabled</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>156</span> 
+<span class='line'>157</span> </span><span class="COMM">/**
+<span class='line'>158</span>  * Audio object that is used for the sound notifications
+<span class='line'>159</span>  * by the {@link mmir.NotificationManager}.
+<span class='line'>160</span>  * 
+<span class='line'>161</span>  * @interface
+<span class='line'>162</span>  * @name INotificationSound
+<span class='line'>163</span>  * @augments mmir.env.media.IAudio
+<span class='line'>164</span>  * @memberOf mmir.env.media
+<span class='line'>165</span>  */</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">INotificationSound</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>168</span> 	 * The name / identifier for the sound.
+<span class='line'>169</span> 	 * 
+<span class='line'>170</span> 	 * @public
+<span class='line'>171</span> 	 * @type String
+<span class='line'>172</span> 	 * @name name
+<span class='line'>173</span> 	 * @memberOf mmir.env.media.INotificationSound.prototype
+<span class='line'>174</span> 	 */</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">	</span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>177</span> 	 * Flag for the play status.
+<span class='line'>178</span> 	 * 
+<span class='line'>179</span> 	 * @protected
+<span class='line'>180</span> 	 * @type Boolean
+<span class='line'>181</span> 	 * @name isNotificationPlaying
+<span class='line'>182</span> 	 * @memberOf mmir.env.media.INotificationSound.prototype
+<span class='line'>183</span> 	 */</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">	</span><span class="NAME">isNotificationPlaying</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>186</span> 	 * Field that holds the value for the repeat number:
+<span class='line'>187</span> 	 * specifies how many times the sound should be played, before
+<span class='line'>188</span> 	 * {@link #isNotificationPlaying} is set to &lt;code>false&lt;/code>.
+<span class='line'>189</span> 	 * &lt;p>
+<span class='line'>190</span> 	 * MUST be &lt;code>>= 1&lt;/code>, otherwise the sound will not be played.
+<span class='line'>191</span> 	 * 
+<span class='line'>192</span> 	 * @protected
+<span class='line'>193</span> 	 * @type Number
+<span class='line'>194</span> 	 * @name repeatNotification
+<span class='line'>195</span> 	 * @memberOf mmir.env.media.INotificationSound.prototype
+<span class='line'>196</span> 	 */</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">	</span><span class="NAME">repeatNotification</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>199</span> 	 * The callback for "finished" events.
+<span class='line'>200</span> 	 * 
+<span class='line'>201</span> 	 * @protected
+<span class='line'>202</span> 	 * @type Function
+<span class='line'>203</span> 	 * @name onFinishedListener
+<span class='line'>204</span> 	 * @memberOf mmir.env.media.INotificationSound.prototype
+<span class='line'>205</span> 	 */</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">	</span><span class="NAME">onFinishedListener</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>208</span> 	 * The callback for "error" events.
+<span class='line'>209</span> 	 * 
+<span class='line'>210</span> 	 * @protected
+<span class='line'>211</span> 	 * @type Function
+<span class='line'>212</span> 	 * @name onErrorListener
+<span class='line'>213</span> 	 * @memberOf mmir.env.media.INotificationSound.prototype
+<span class='line'>214</span> 	 */</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">	</span><span class="NAME">onErrorListener</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>217</span> 	 * Field that holds the value for the repeat number:
+<span class='line'>218</span> 	 * specifies how many times the sound should be played, before
+<span class='line'>219</span> 	 * {@link #isNotificationPlaying} is set to &lt;code>false&lt;/code>.
+<span class='line'>220</span> 	 * &lt;p>
+<span class='line'>221</span> 	 * MUST be &lt;code>>= 1&lt;/code>, otherwise the sound will not be played.
+<span class='line'>222</span> 	 * 
+<span class='line'>223</span> 	 * @param {Number} repeatNTimes
+<span class='line'>224</span> 	 * 					specifies how many times the sound should be played, before
+<span class='line'>225</span> 	 * 					{@link #isNotificationPlaying} is set to &lt;code>false&lt;/code>.
+<span class='line'>226</span> 	 * 					&lt;br>
+<span class='line'>227</span> 	 * 					MUST be &lt;code>>= 1&lt;/code>, otherwise the sound will not be played.
+<span class='line'>228</span> 	 * 		
+<span class='line'>229</span> 	 * 
+<span class='line'>230</span> 	 * @public
+<span class='line'>231</span> 	 * @function
+<span class='line'>232</span> 	 * @name playNotification
+<span class='line'>233</span> 	 * @memberOf mmir.env.media.INotificationSound.prototype
+<span class='line'>234</span> 	 */</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">	</span><span class="NAME">playNotification</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">repeatNTimes</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>237</span> 	 * Set callback functions for when the sound has finished playing, and
+<span class='line'>238</span> 	 * for errors.
+<span class='line'>239</span> 	 * &lt;p>
+<span class='line'>240</span> 	 * The sound finishes playing, when its audio object has been played
+<span class='line'>241</span> 	 * &lt;code>repeatNTimes&lt;/code> as specified when invoking
+<span class='line'>242</span> 	 * &lt;code>function playNotification(repeatNTimes)&lt;/code>.
+<span class='line'>243</span> 	 * 
+<span class='line'>244</span> 	 * 
+<span class='line'>245</span> 	 * @param {Function} onFinished
+<span class='line'>246</span> 	 * 				the callback for the finished event
+<span class='line'>247</span> 	 * @param {Function} onError
+<span class='line'>248</span> 	 * 				the callback for errors
+<span class='line'>249</span> 	 * 
+<span class='line'>250</span> 	 * @public
+<span class='line'>251</span> 	 * @function
+<span class='line'>252</span> 	 * @name setCallbacks
+<span class='line'>253</span> 	 * @memberOf mmir.env.media.INotificationSound.prototype
+<span class='line'>254</span> 	 */</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">	</span><span class="NAME">setCallbacks</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">onFinished</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">onError</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>257</span> 	 * Clears the "finished" and "error" callbacks.
+<span class='line'>258</span> 	 * 
+<span class='line'>259</span> 	 * @public
+<span class='line'>260</span> 	 * @function
+<span class='line'>261</span> 	 * @name clearCallbacks
+<span class='line'>262</span> 	 * @memberOf mmir.env.media.INotificationSound.prototype
+<span class='line'>263</span> 	 */</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">	</span><span class="NAME">clearCallbacks</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>266</span> 	 * Fires the "finished" event for its callback (if one is set).
+<span class='line'>267</span> 	 * 
+<span class='line'>268</span> 	 * @protected
+<span class='line'>269</span> 	 * @function
+<span class='line'>270</span> 	 * @name fireFinished
+<span class='line'>271</span> 	 * @memberOf mmir.env.media.INotificationSound.prototype
+<span class='line'>272</span> 	 */</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">	</span><span class="NAME">fireFinished</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>275</span> 	 * Fires the "error" event for its callback (if one is set).
+<span class='line'>276</span> 	 * 
+<span class='line'>277</span> 	 * @param {any} error
+<span class='line'>278</span> 	 * 			the error that occurred
+<span class='line'>279</span> 	 * 
+<span class='line'>280</span> 	 * @protected
+<span class='line'>281</span> 	 * @function
+<span class='line'>282</span> 	 * @name fireError
+<span class='line'>283</span> 	 * @memberOf mmir.env.media.INotificationSound.prototype
+<span class='line'>284</span> 	 */</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">	</span><span class="NAME">fireError</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">error</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>287</span> 
+<span class='line'>288</span> 
+<span class='line'>289</span> </span><span class="COMM">/**
+<span class='line'>290</span>  * Audio object that is used for the sound notifications
+<span class='line'>291</span>  * by the {@link mmir.MediaManager}.
+<span class='line'>292</span>  * 
+<span class='line'>293</span>  * @interface
+<span class='line'>294</span>  * @name IWaitReadyIndicator
+<span class='line'>295</span>  * @memberOf mmir.env.media
+<span class='line'>296</span>  * 
+<span class='line'>297</span>  * @see mmir.MediaManager#readyWaitImpl
+<span class='line'>298</span>  */</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">IWaitReadyIndicator</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>301</span> 	 * Indicates that the media plugin &lt;code>pluginName&lt;/code> is preparing
+<span class='line'>302</span> 	 * something and that the user should wait.
+<span class='line'>303</span> 	 * 
+<span class='line'>304</span> 	 * &lt;p>
+<span class='line'>305</span> 	 * For example, an implementation could show a wait dialog / overlay when this function is called.
+<span class='line'>306</span> 	 * 
+<span class='line'>307</span> 	 * @param {String} moduleName
+<span class='line'>308</span> 	 * 			the module name from which the function was invoked
+<span class='line'>309</span> 	 * 
+<span class='line'>310</span> 	 * @public
+<span class='line'>311</span> 	 * @memberOf mmir.env.media.IWaitReadyIndicator.prototype
+<span class='line'>312</span> 	 * 
+<span class='line'>313</span> 	 * @see mmir.MediaManager#_preparing
+<span class='line'>314</span> 	 */</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">    </span><span class="NAME">preparing</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">moduleName</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>317</span>      * Indicates that the media plugin &lt;code>pluginName&lt;/code> is now ready
+<span class='line'>318</span> 	 * and that the user can begin interacting.
+<span class='line'>319</span> 	 * 
+<span class='line'>320</span> 	 * &lt;p>
+<span class='line'>321</span> 	 * For example, an implementation could hide a wait dialog / overlay when this function is called
+<span class='line'>322</span> 	 * (that was previously shown with {@link #preparing}).
+<span class='line'>323</span> 	 * 
+<span class='line'>324</span> 	 * @param {String} moduleName
+<span class='line'>325</span> 	 * 			the module name from which the function was invoked
+<span class='line'>326</span>      * 
+<span class='line'>327</span> 	 * @public
+<span class='line'>328</span> 	 * @memberOf mmir.env.media.IWaitReadyIndicator.prototype
+<span class='line'>329</span> 	 * 
+<span class='line'>330</span> 	 * @see mmir.MediaManager#_ready
+<span class='line'>331</span> 	 */</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">	</span><span class="NAME">ready</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">moduleName</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="PUNC">}</span><span class="PUNC">;</span></pre></body></html>
