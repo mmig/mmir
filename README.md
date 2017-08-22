@@ -10,18 +10,19 @@ Overview for the MMIR (Mobile Multimodal Interaction and Rendering) Framework.
 
 ##### Related repositories
 
-- core
- * [mmir-lib][4]: the core library _(this is usually included in the directory `mmirf/` of MMIR-based applications)_
- * [mmir-tooling][5]: scripts and resources for building and generating resources _(e.g. compiling JSON grammars)_
-- tools
- * [scion-queue-plugin][6]: a Cordova 5.x plugin that provides an event-queue for SCION (used by the dialog manager)
-- speech modules
- * [mmir-plugin-speech-android][14]: a Cordova 5.x plugin that integrates Android's default speech recognizer and text-to-speech engines
- * [mmir-plugin-speech-android][15]: a Cordova 5.x plugin that integrates the Nuance SpeechKit (Dragon Mobile SDK) for speech recognition and text-to-speech
- * see also [module overview][16] in the wiki
-- examples
- * [mmir-cordova][9]: resources / example for creating a minimal MMIR-based application _(for Cordova 5.x)_
- * [mmir-starter-kit][10]: a small MMIR-based example application _(for Cordova 5.x)_
+- core:
+  * [mmir-lib][4]: the core library _(this is usually included in the directory `mmirf/` of MMIR-based applications)_
+  * [mmir-tooling][5]: scripts and resources for building and generating resources _(e.g. compiling JSON grammars)_
+- tools:
+  * [scion-queue-plugin][6]: a Cordova 5.x plugin that provides an event-queue for SCION (used by the dialog manager)
+- speech modules:
+  * [mmir-plugin-speech-android][14]: a Cordova 5.x plugin that integrates Android's default speech recognizer and text-to-speech engines
+  * [mmir-plugin-speech-nuance][15]: a Cordova 5.x plugin that integrates the Nuance SpeechKit (Dragon Mobile SDK) for speech recognition and text-to-speech
+  * [mmir-plugins-media][20]: multiple speech input (ASR) and speech oupt (TTS) plugins that use various web services
+  * see also [module overview][16] in the wiki
+- examples:
+  * [mmir-cordova][9]: resources / example for creating a minimal MMIR-based application _(for Cordova 5.x)_
+  * [mmir-starter-kit][10]: a small MMIR-based example application _(for Cordova 5.x)_
 
 ## Documentation
 
@@ -52,24 +53,25 @@ The framework uses SCXML (State Chart XML) via [SCION][1]: SCION is a JavaScript
 
 The framework core and its extensions are implemented as AMD (Asynchronous Module Definition) using [RequireJS][3].
 
+The MMIR library provides basic capabilities for recognizing speech input
+(ASR, e.g. using Google Speech Recognition service), and speech output (TTS, e.g. using [MARY][2]).  
+For more details of available MMIR Speech Plugins, see the overview on the [speech processing wiki page][19].
 
-The MMIR library provides basic capabilities for recognizing speech input (ASR, using the Google Speech Recognition service), and speech output (TTS, using [MARY][2]).
+NOTE: Requirements for browser-based speech plugins
+ * web-service-based ASR plugins
+	* microphone access: plugins require access to the microphone resource for speech input, i.e. [getUserMedia API](https://caniuse.com/#feat=stream)
+	* silence detection: plugins require support of the [AudioContext API](https://caniuse.com/#feat=audio-api), for the implementation of the end-of-speech detection (aka silence detection)
+ * _Web Speech_-based ASR plugins: plugins that use [Web Speech][7] for speech recognition, require support of the [Web Speech API](https://caniuse.com/#feat=speech-recognition)
+ * web-service-base TTS plugins:
+    * playback of speech synthesis: plugins require support of the [Audio Object API](https://caniuse.com/#feat=audio)
 
-NOTE 1: There are some restrictions for ASR when running the StarterKit in a browser environment:
- * microphone access: currently only Google Chrome (version 21.x.x), and Firefox (version 20.x) allow access to the microphone resource for speech input
- * silence detection: currently only Google Chrome (version 25.x.x) and Firefox (version 26.x) provide an implementation for the AudioContext object, which is needed by our implementation for the end-of-speech detection (aka silence detection) 
-
-NOTE 2: Since the Google Speech Recognition service now requires registration and an API key (and has a volume limit),
-        the use of the general (i.e. _HTML5 based_) ASR solution of the framework is rather limited.
-        However, for the browser environment Google Chrome, we recommend the _webkitAudioInput_ plugin
-        that makes use of the
-        [Web Speech API][7] (which, unfortunately, currently is only supported by Chrome).
 
 ## Prerequisites
 
-Installed Cordova 5.x environment (see [Cordova][0] documentation on CLI based development for more details).
+For target platforms `Android` and `iOS`, Cordova 5.x or later is required
+(see [Cordova][20] documentation on CLI based development for more details).
 
-In addition, the development tools for the targeted `platforms` need to be installed (see also the [Cordova][0] documentation).
+In addition, the development tools for the targeted `platforms` need to be installed (see also the [Cordova][20] documentation).
 
 ##### Custom Cordova Plugins
 
@@ -80,7 +82,7 @@ integration with an event queue.
 
 
 
-[0]: http://cordova.apache.org/
+[0]: https://cordova.apache.org/
 [1]: https://github.com/jbeard4/SCION
 [2]: http://mary.dfki.de/
 [3]: http://requirejs.org/
@@ -99,3 +101,6 @@ integration with an event queue.
 [16]: https://github.com/mmig/mmir/wiki/3.9.2-Speech-Processing-in-MMIR#speech-modules
 [17]: https://mmig.github.io/mmir/api-v3
 [18]: https://mmig.github.io/mmir/api-all-v3
+[19]: https://github.com/mmig/mmir/wiki/3.9.2-Speech-Processing-in-MMIR
+[20]: https://github.com/mmig/mmir-plugins-media
+[21]: https://cordova.apache.org/docs/
