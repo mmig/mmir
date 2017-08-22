@@ -1,0 +1,3691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - mmir.parser.TemplateProcessor</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">MMIR Framework v3.6.0rc6</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/AsyncCompiler.createWorker.AsyncCompiler%23createWorker-asyncCompiler.html">AsyncCompiler.createWorker.AsyncCompiler#createWorker-asyncCompiler</a></li>
+	
+	<li><a href="../symbols/ContentElement.html">ContentElement</a></li>
+	
+	<li><a href="../symbols/Controller.html">Controller</a></li>
+	
+	<li><a href="../symbols/Dictionary.html">Dictionary</a></li>
+	
+	<li><a href="../symbols/DisabledLogger.html">DisabledLogger</a></li>
+	
+	<li><a href="../symbols/GrammarConverter.html">GrammarConverter</a></li>
+	
+	<li><a href="../symbols/Helper.html">Helper</a></li>
+	
+	<li><a href="../symbols/Html5AudioOutput%23newMediaPlugin.initialize-MediaError.html">Html5AudioOutput#newMediaPlugin.initialize-MediaError</a></li>
+	
+	<li><a href="../symbols/Layout.html">Layout</a></li>
+	
+	<li><a href="../symbols/Layout.TagElement.html">Layout.TagElement</a></li>
+	
+	<li><a href="../symbols/Logger.html">Logger</a></li>
+	
+	<li><a href="../symbols/mmir.html">mmir</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.html">mmir.CommonUtils</a></li>
+	
+	<li><a href="../symbols/mmir.CommonUtils.setToCompatibilityModeExtension.html">mmir.CommonUtils.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.ConfigurationManager.html">mmir.ConfigurationManager</a></li>
+	
+	<li><a href="../symbols/mmir.Constants.html">mmir.Constants</a></li>
+	
+	<li><a href="../symbols/mmir.ControllerManager.html">mmir.ControllerManager</a></li>
+	
+	<li><a href="../symbols/mmir.DialogManager.html">mmir.DialogManager</a></li>
+	
+	<li><a href="../symbols/mmir.DisabledLogging.html">mmir.DisabledLogging</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.AsyncGenerator.html">mmir.env.grammar.AsyncGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JisonAsyncGenerator.html">mmir.env.grammar.JisonAsyncGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JisonGenerator.html">mmir.env.grammar.JisonGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JsccAsyncGenerator.html">mmir.env.grammar.JsccAsyncGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.JsccGenerator.html">mmir.env.grammar.JsccGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.PegJsAsyncGenerator.html">mmir.env.grammar.PegJsAsyncGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.grammar.PegJsGenerator.html">mmir.env.grammar.PegJsGenerator</a></li>
+	
+	<li><a href="../symbols/mmir.env.media.AudioCordovaImpl.html">mmir.env.media.AudioCordovaImpl</a></li>
+	
+	<li><a href="../symbols/mmir.env.media.AudioHtml5Impl.html">mmir.env.media.AudioHtml5Impl</a></li>
+	
+	<li><a href="../symbols/mmir.env.view.JqmViewEngine.html">mmir.env.view.JqmViewEngine</a></li>
+	
+	<li><a href="../symbols/mmir.InputManager.html">mmir.InputManager</a></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.html">mmir.LanguageManager</a></li>
+	
+	<li><a href="../symbols/mmir.LanguageManager.setToCompatibilityModeExtension.html">mmir.LanguageManager.setToCompatibilityModeExtension</a></li>
+	
+	<li><a href="../symbols/mmir.Logging.html">mmir.Logging</a></li>
+	
+	<li><a href="../symbols/mmir.main.html">mmir.main</a></li>
+	
+	<li><a href="../symbols/mmir.MediaManager.html">mmir.MediaManager</a></li>
+	
+	<li><a href="../symbols/mmir.ModelManager.html">mmir.ModelManager</a></li>
+	
+	<li><a href="../symbols/mmir.NotificationManager.html">mmir.NotificationManager</a></li>
+	
+	<li><a href="../symbols/mmir.parser.html">mmir.parser</a></li>
+	
+	<li><a href="../symbols/mmir.parser.element.html">mmir.parser.element</a></li>
+	
+	<li><a href="../symbols/mmir.parser.ParserUtils.html">mmir.parser.ParserUtils</a></li>
+	
+	<li><a href="../symbols/mmir.parser.ParsingResult.html">mmir.parser.ParsingResult</a></li>
+	
+	<li><a href="../symbols/mmir.parser.RenderUtils.html">mmir.parser.RenderUtils</a></li>
+	
+	<li><a href="../symbols/mmir.parser.StorageUtils.html">mmir.parser.StorageUtils</a></li>
+	
+	<li><a href="../symbols/mmir.parser.TemplateProcessor.html">mmir.parser.TemplateProcessor</a></li>
+	
+	<li><a href="../symbols/mmir.PresentationManager.html">mmir.PresentationManager</a></li>
+	
+	<li><a href="../symbols/mmir.SemanticInterpreter.html">mmir.SemanticInterpreter</a></li>
+	
+	<li><a href="../symbols/mmir.tools.ChecksumUtils.html">mmir.tools.ChecksumUtils</a></li>
+	
+	<li><a href="../symbols/Partial.html">Partial</a></li>
+	
+	<li><a href="../symbols/ScriptEvalError.html">ScriptEvalError</a></li>
+	
+	<li><a href="../symbols/String.html">String</a></li>
+	
+	<li><a href="../symbols/View.html">View</a></li>
+	
+	<li><a href="../symbols/ViewConstants.html">ViewConstants</a></li>
+	
+	<li><a href="../symbols/YieldDeclaration.html">YieldDeclaration</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Namespace mmir.parser.TemplateProcessor
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/www_mmirf_mvc_parser_templateProcessor.js.html">templateProcessor.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class mmir.parser.TemplateProcessor.">
+				<caption>Namespace Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#constructor">mmir.parser.TemplateProcessor</a></b>
+							</div>
+							<div class="description">Main implementation for parsing (view) templates.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class mmir.parser.TemplateProcessor.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#getTokenName">getTokenName</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#IF_TYPE">IF_TYPE</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_BLOCK">INTERNAL_BLOCK</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_COMMENT">INTERNAL_COMMENT</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_ELSE">INTERNAL_ELSE</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_ESCAPE_ENTER">INTERNAL_ESCAPE_ENTER</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_ESCAPE_EXIT">INTERNAL_ESCAPE_EXIT</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_FOR">INTERNAL_FOR</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_FOR_TYPE_ITER">INTERNAL_FOR_TYPE_ITER</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_FOR_TYPE_STEP">INTERNAL_FOR_TYPE_STEP</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_HELPER">INTERNAL_HELPER</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_IF">INTERNAL_IF</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_INCLUDE_SCRIPT">INTERNAL_INCLUDE_SCRIPT</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_INCLUDE_STYLE">INTERNAL_INCLUDE_STYLE</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_LOCALIZE">INTERNAL_LOCALIZE</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_RENDER">INTERNAL_RENDER</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_STATEMENT">INTERNAL_STATEMENT</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_VAR_DECLARATION">INTERNAL_VAR_DECLARATION</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_VAR_REFERENCE">INTERNAL_VAR_REFERENCE</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_YIELD_CONTENT">INTERNAL_YIELD_CONTENT</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#INTERNAL_YIELD_DECLARATION">INTERNAL_YIELD_DECLARATION</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#isDebug">isDebug</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#PARSER_JS_CODE">PARSER_JS_CODE</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#PARSER_SCRIPT_BLOCK">PARSER_SCRIPT_BLOCK</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#PARSER_SCRIPT_CONTENT">PARSER_SCRIPT_CONTENT</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#PARSER_SCRIPT_STATMENT">PARSER_SCRIPT_STATMENT</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#SCRIPT_CHANNEL">SCRIPT_CHANNEL</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.comments">theLexerInstance.comments</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.escape">theLexerInstance.escape</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.fors">theLexerInstance.fors</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.helpers">theLexerInstance.helpers</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.ifs">theLexerInstance.ifs</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.includeScripts">theLexerInstance.includeScripts</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.includeStyles">theLexerInstance.includeStyles</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.lastParsedElement">theLexerInstance.lastParsedElement</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.locales">theLexerInstance.locales</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.renderPartials">theLexerInstance.renderPartials</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.scriptBlocks">theLexerInstance.scriptBlocks</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.scriptStatements">theLexerInstance.scriptStatements</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.vars">theLexerInstance.vars</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.yieldContents">theLexerInstance.yieldContents</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/mmir.parser.TemplateProcessor.html#theLexerInstance.yields">theLexerInstance.yields</a></b>
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class mmir.parser.TemplateProcessor.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#createJSObjectFrom">createJSObjectFrom</a></b>(parseElement, parentObject, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#doEnter">doEnter</a></b>(parserType, self, currentChannel, entryFunc, processFunc, parseResultObject, msg)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#enterBlock">enterBlock</a></b>(currentChannel, entryFunc, processFunc, msg, parseResultObject)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#enterContent">enterContent</a></b>(currentChannel, entryFunc, processFunc, msg, parseResultObject)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#enterJavaScript">enterJavaScript</a></b>(currentChannel, entryFunc, processFunc, msg, parseResultObject)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#enterScript">enterScript</a></b>(currentChannel, entryFunc, processFunc, msg, parseResultObject)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#extractBoundries">extractBoundries</a></b>(subTree, buffer)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#getBoundries">getBoundries</a></b>(treeNode)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#getFirstChild">getFirstChild</a></b>(treeNode, strChildType, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#getLexerFor">getLexerFor</a></b>(self, parserType, input)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#getParserFor">getParserFor</a></b>(self, parserType, tokens)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#getStringFor">getStringFor</a></b>(boundriesObj, tokens, offset)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#getStringForSubTree">getStringForSubTree</a></b>(treeNode, tokens, offset)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#isArray">isArray</a></b>()
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processBlock">processBlock</a></b>(parsingObj, result, tokens)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processComment">processComment</a></b>(msg)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processDeclareVar">processDeclareVar</a></b>(parsingObj, result, tokens, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processElse">processElse</a></b>(parsingObj, result, tokens)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processEscape">processEscape</a></b>(replacementText, msg)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processForContent">processForContent</a></b>(parsingObj, result, tokens)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processForControl">processForControl</a></b>(parsingObj, result, tokens, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processHelperFunction">processHelperFunction</a></b>(parsingObj, result, tokens, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processIfContent">processIfContent</a></b>(parsingObj, result, tokens)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processIfExpr">processIfExpr</a></b>(parsingObj, result, tokens, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processIncludeScript">processIncludeScript</a></b>(parsingObj, result, tokens, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processIncludeStyle">processIncludeStyle</a></b>(parsingObj, result, tokens, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processLocalize">processLocalize</a></b>(parsingObj, result, tokens, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processRenderPartial">processRenderPartial</a></b>(parsingObj, result, tokens, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processStatement">processStatement</a></b>(parsingObj, result, tokens)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processYieldContent">processYieldContent</a></b>(parsingObj, result, tokens)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processYieldContentParam">processYieldContentParam</a></b>(parsingObj, result, tokens, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/mmir.parser.TemplateProcessor.html#processYieldDeclaration">processYieldDeclaration</a></b>(parsingObj, result, tokens, parser)
+								</div>
+								<div class="description"></div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Namespace Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>mmir.parser.TemplateProcessor</b>
+				</div>
+				
+				<div class="description">
+					Main implementation for parsing (view) templates.
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name="getTokenName"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>getTokenName</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="IF_TYPE"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>IF_TYPE</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_BLOCK"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_BLOCK</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_COMMENT"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_COMMENT</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_ELSE"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_ELSE</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_ESCAPE_ENTER"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_ESCAPE_ENTER</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_ESCAPE_EXIT"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_ESCAPE_EXIT</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_FOR"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_FOR</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_FOR_TYPE_ITER"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_FOR_TYPE_ITER</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_FOR_TYPE_STEP"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_FOR_TYPE_STEP</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_HELPER"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_HELPER</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_IF"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_IF</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_INCLUDE_SCRIPT"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_INCLUDE_SCRIPT</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_INCLUDE_STYLE"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_INCLUDE_STYLE</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_LOCALIZE"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_LOCALIZE</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_RENDER"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_RENDER</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_STATEMENT"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_STATEMENT</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_VAR_DECLARATION"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_VAR_DECLARATION</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_VAR_REFERENCE"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_VAR_REFERENCE</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_YIELD_CONTENT"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_YIELD_CONTENT</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="INTERNAL_YIELD_DECLARATION"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					<span class="light">{Number}</span>
+					<b>INTERNAL_YIELD_DECLARATION</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="isDebug"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>isDebug</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="PARSER_JS_CODE"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>PARSER_JS_CODE</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="PARSER_SCRIPT_BLOCK"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>PARSER_SCRIPT_BLOCK</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="PARSER_SCRIPT_CONTENT"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>PARSER_SCRIPT_CONTENT</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="PARSER_SCRIPT_STATMENT"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>PARSER_SCRIPT_STATMENT</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="SCRIPT_CHANNEL"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>SCRIPT_CHANNEL</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.comments"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.comments</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.escape"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.escape</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.fors"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.fors</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.helpers"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.helpers</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.ifs"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.ifs</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.includeScripts"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.includeScripts</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.includeStyles"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.includeStyles</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.lastParsedElement"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.lastParsedElement</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.locales"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.locales</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.renderPartials"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.renderPartials</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.scriptBlocks"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.scriptBlocks</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.scriptStatements"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.scriptStatements</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.vars"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.vars</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.yieldContents"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.yieldContents</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="theLexerInstance.yields"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>theLexerInstance.yields</b>
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="createJSObjectFrom"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>createJSObjectFrom</b>(parseElement, parentObject, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parseElement</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parentObject</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="doEnter"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>doEnter</b>(parserType, self, currentChannel, entryFunc, processFunc, parseResultObject, msg)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parserType</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>self</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>currentChannel</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>entryFunc</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>processFunc</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parseResultObject</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>msg</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="enterBlock"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>enterBlock</b>(currentChannel, entryFunc, processFunc, msg, parseResultObject)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>currentChannel</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>entryFunc</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>processFunc</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>msg</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parseResultObject</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="enterContent"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>enterContent</b>(currentChannel, entryFunc, processFunc, msg, parseResultObject)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>currentChannel</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>entryFunc</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>processFunc</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>msg</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parseResultObject</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="enterJavaScript"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>enterJavaScript</b>(currentChannel, entryFunc, processFunc, msg, parseResultObject)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>currentChannel</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>entryFunc</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>processFunc</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>msg</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parseResultObject</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="enterScript"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>enterScript</b>(currentChannel, entryFunc, processFunc, msg, parseResultObject)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>currentChannel</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>entryFunc</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>processFunc</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>msg</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parseResultObject</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="extractBoundries"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>extractBoundries</b>(subTree, buffer)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>subTree</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>buffer</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="getBoundries"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>getBoundries</b>(treeNode)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>treeNode</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="getFirstChild"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>getFirstChild</b>(treeNode, strChildType, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>treeNode</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>strChildType</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="getLexerFor"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>getLexerFor</b>(self, parserType, input)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>self</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parserType</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>input</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="getParserFor"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>getParserFor</b>(self, parserType, tokens)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>self</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parserType</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="getStringFor"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>getStringFor</b>(boundriesObj, tokens, offset)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>boundriesObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>offset</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="getStringForSubTree"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>getStringForSubTree</b>(treeNode, tokens, offset)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>treeNode</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>offset</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="isArray"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>isArray</b>()
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processBlock"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processBlock</b>(parsingObj, result, tokens)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processComment"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processComment</b>(msg)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>msg</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processDeclareVar"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processDeclareVar</b>(parsingObj, result, tokens, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processElse"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processElse</b>(parsingObj, result, tokens)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processEscape"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processEscape</b>(replacementText, msg)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>replacementText</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>msg</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processForContent"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processForContent</b>(parsingObj, result, tokens)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processForControl"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processForControl</b>(parsingObj, result, tokens, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processHelperFunction"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processHelperFunction</b>(parsingObj, result, tokens, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processIfContent"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processIfContent</b>(parsingObj, result, tokens)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processIfExpr"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processIfExpr</b>(parsingObj, result, tokens, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processIncludeScript"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processIncludeScript</b>(parsingObj, result, tokens, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processIncludeStyle"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processIncludeStyle</b>(parsingObj, result, tokens, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processLocalize"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processLocalize</b>(parsingObj, result, tokens, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processRenderPartial"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processRenderPartial</b>(parsingObj, result, tokens, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processStatement"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processStatement</b>(parsingObj, result, tokens)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processYieldContent"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processYieldContent</b>(parsingObj, result, tokens)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processYieldContentParam"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processYieldContentParam</b>(parsingObj, result, tokens, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="processYieldDeclaration"> </a>
+					<div class="fixedFont">&lt;private&gt; 
+					
+					
+					<b>processYieldDeclaration</b>(parsingObj, result, tokens, parser)
+					
+					</div>
+					<div class="description">
+						
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>parsingObj</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>result</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>tokens</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<b>parser</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Fri Feb 26 2016 21:44:43 GMT+0100 (Mitteleuropäische Zeit)
+		</div>
+	</body>
+</html>
