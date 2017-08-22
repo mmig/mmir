@@ -1,0 +1,253 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="WHIT">
+<span class='line'>  2</span> 
+<span class='line'>  3</span> </span><span class="NAME">define</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="STRN">'constants'</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  4</span> </span><span class="COMM">/**
+<span class='line'>  5</span>  * Module that provides a generator for parser-compiler WebWorker instances:
+<span class='line'>  6</span>  * 
+<span class='line'>  7</span>  * initializes the WebWorker instance and provides functions for communicating with
+<span class='line'>  8</span>  * the WebWorker.
+<span class='line'>  9</span>  * 
+<span class='line'> 10</span>  * @class
+<span class='line'> 11</span>  * @constant
+<span class='line'> 12</span>  * @public
+<span class='line'> 13</span>  * @name AsyncGenerator
+<span class='line'> 14</span>  * @memberOf mmir.env.grammar
+<span class='line'> 15</span>  * 
+<span class='line'> 16</span>  * @requires WebWorker
+<span class='line'> 17</span>  * 
+<span class='line'> 18</span>  * @example
+<span class='line'> 19</span>  * 
+<span class='line'> 20</span>  * //initializes a WebWorker at MMIR's worker path, i.e. at constants.getWorkerPath() + "file.name":
+<span class='line'> 21</span>  * var asyncCompiler = asyncGen.createWorker("jisonCompiler.js");
+<span class='line'> 22</span>  * 
+<span class='line'> 23</span>  * //create job ID (must be unique for each job):
+<span class='line'> 24</span>  * var taskId = '1';
+<span class='line'> 25</span>  * 
+<span class='line'> 26</span>  * //register callback for the job ID:
+<span class='line'> 27</span>  * asyncCompiler.addCallback(taskId, function(evtData){
+<span class='line'> 28</span>  * 		
+<span class='line'> 29</span>  * 		if(evtData.error){
+<span class='line'> 30</span>  * 			//... do something
+<span class='line'> 31</span>  * 		} else {
+<span class='line'> 32</span>  * 			var hasError = evtData.hasError;
+<span class='line'> 33</span>  * 			var grammarParser = evtData.def;
+<span class='line'> 34</span>  * 
+<span class='line'> 35</span>  * 			//... do something
+<span class='line'> 36</span>  * 		}
+<span class='line'> 37</span>  * 
+<span class='line'> 38</span>  * });
+<span class='line'> 39</span>  * 
+<span class='line'> 40</span>  * //start a compile job on the worker:
+<span class='line'> 41</span>  * asyncCompiler.postMessage({
+<span class='line'> 42</span>  * 		cmd: 'parse',
+<span class='line'> 43</span>  *  	id: taskId,
+<span class='line'> 44</span>  *  	config: options,		//compile options (specific to compiler engine)
+<span class='line'> 45</span>  *  	text: grammarDefinition	//parser definition (using the syntax of the specific compiler engine)
+<span class='line'> 46</span>  * });
+<span class='line'> 47</span>  * 
+<span class='line'> 48</span>  */</span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">constants</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">COMPILER_WORKER_POSTFIX</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'Compiler.js'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> 
+<span class='line'> 53</span> </span><span class="COMM">/**
+<span class='line'> 54</span>  * Factory for creating WebWorkers that compile grammar-parser
+<span class='line'> 55</span>  * 
+<span class='line'> 56</span>  * @class AsyncCompiler
+<span class='line'> 57</span>  */</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">	</span><span class="COMM">/** @scope AsyncCompiler.prototype */</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">	</span><span class="COMM">/** 
+<span class='line'> 62</span> 	 * Create a WebWorker for compiling grammars.
+<span class='line'> 63</span> 	 * 
+<span class='line'> 64</span> 	 * The returned WebWorker provides 2 additional convenience functions
+<span class='line'> 65</span> 	 * for communicating with the WebWorker thread:
+<span class='line'> 66</span> 	 * 
+<span class='line'> 67</span> 	 * &lt;code>addCallback(taskId : String, callback : Function)&lt;/code>
+<span class='line'> 68</span> 	 * where &lt;em>taskId&lt;/em> is a unique String identifying a single compile-job
+<span class='line'> 69</span> 	 * and &lt;em>callback&lt;/em> handles messages that come back from the WebWorker thread:
+<span class='line'> 70</span> 	 * 
+<span class='line'> 71</span> 	 * The &lt;code>callback(eventData)&lt;/code> will invoke the callback with the message's data
+<span class='line'> 72</span> 	 * The property &lt;code>eventData.done&lt;/code> has a special function:
+<span class='line'> 73</span> 	 * 		 if this property is present with a TRUTHY value, then callback will be removed, i.e. 
+<span class='line'> 74</span> 	 *       not listening anymore for the specified taskId.
+<span class='line'> 75</span> 	 *       
+<span class='line'> 76</span> 	 * After adding a &lt;em>callback&lt;/em>, messages to the WebWorker thread can be send with
+<span class='line'> 77</span> 	 * the &lt;code>postMessage({id: taskId, cmd: 'parse', ...})&lt;/code>
+<span class='line'> 78</span> 	 * 
+<span class='line'> 79</span> 	 * @param {String} parserEngineId
+<span class='line'> 80</span> 	 * 			the name of the file that holds the WebWorker implementation.
+<span class='line'> 81</span> 	 * 			The file must be located in MMIR's {@link Constants#getWorkerPath}
+<span class='line'> 82</span> 	 * 			directory.
+<span class='line'> 83</span> 	 * 
+<span class='line'> 84</span> 	 * @returns {CompileWebWorker}
+<span class='line'> 85</span> 	 * 			a WebWorker that provides some convenience functions for
+<span class='line'> 86</span> 	 * 			communicating with the WebWorker/thread.
+<span class='line'> 87</span> 	 * 
+<span class='line'> 88</span> 	 * @memberOf AsyncCompiler#
+<span class='line'> 89</span> 	 */</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">	</span><span class="NAME">createWorker</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">parserEngineId</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 92</span> 
+<span class='line'> 93</span> </span><span class="WHIT">		</span><span class="COMM">/**  @memberOf CompileWebWorker# */</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">workerPath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">constants.getWorkerPath</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">parserEngineId</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">COMPILER_WORKER_POSTFIX</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 95</span> 
+<span class='line'> 96</span> </span><span class="WHIT">		</span><span class="COMM">/** 
+<span class='line'> 97</span> 		 * web-worker for compile jobs
+<span class='line'> 98</span> 		 * 
+<span class='line'> 99</span> 		 * @class CompileWebWorker
+<span class='line'>100</span> 		 * @memberOf AsyncCompiler.createWorker
+<span class='line'>101</span> 		 */</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">asyncCompiler</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Worker</span><span class="PUNC">(</span><span class="NAME">workerPath</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>103</span> 
+<span class='line'>104</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>105</span> 		 * dictionary for currently active compilations
+<span class='line'>106</span> 		 * 
+<span class='line'>107</span> 		 * &lt;pre>
+<span class='line'>108</span> 		 * [id] -> callback-function()
+<span class='line'>109</span> 		 * &lt;/pre>  
+<span class='line'>110</span> 		 * 
+<span class='line'>111</span> 		 * @memberOf CompileWebWorker#
+<span class='line'>112</span> 		 */</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">		</span><span class="NAME">asyncCompiler._activeTaskIds</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>114</span> 
+<span class='line'>115</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>116</span> 		 * listener for init-message
+<span class='line'>117</span> 		 * 
+<span class='line'>118</span> 		 * DEFAULT: prints a message to the console
+<span class='line'>119</span> 		 * 
+<span class='line'>120</span> 		 * Init Message:
+<span class='line'>121</span> 		 *  * success:
+<span class='line'>122</span> 		 *    &lt;code>{init:true}&lt;/code>
+<span class='line'>123</span> 		 *  * failed:
+<span class='line'>124</span> 		 *    &lt;code>{init:false,error:"message"}&lt;/code>
+<span class='line'>125</span> 		 * 
+<span class='line'>126</span> 		 * @memberOf CompileWebWorker#
+<span class='line'>127</span> 		 */</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">		</span><span class="NAME">asyncCompiler._oninit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">evtData</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">evtData.init</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">				</span><span class="NAME">console.log</span><span class="PUNC">(</span><span class="STRN">'initialized: '</span><span class="PUNC">+</span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">evtData</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">				</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'failed to initialize: '</span><span class="PUNC">+</span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">evtData</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>137</span> 		 * HELPER generate & setup oninit signal for sync + async modules.
+<span class='line'>138</span> 		 * 
+<span class='line'>139</span> 		 * Side Effects:
+<span class='line'>140</span> 		 * generates and sets #_oninit
+<span class='line'>141</span> 		 * 
+<span class='line'>142</span> 		 * @param {ParserGen} syncGen
+<span class='line'>143</span> 		 * 				the sync parser generator
+<span class='line'>144</span> 		 * @param {Deferred} asyncDef
+<span class='line'>145</span> 		 * 				the deferred that should be resolved when async generator is initialized
+<span class='line'>146</span> 		 * @param {requirejs} require
+<span class='line'>147</span> 		 * 				the require instance that is used for loading the MMIR framework
+<span class='line'>148</span> 		 * 
+<span class='line'>149</span> 		 * @returns {AsyncInitMesssage}
+<span class='line'>150</span> 		 * 				the message object that should be sent to the async generator's WebWorker
+<span class='line'>151</span> 		 * 
+<span class='line'>152</span> 		 * @memberOf CompileWebWorker#
+<span class='line'>153</span> 		 */</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">		</span><span class="NAME">asyncCompiler.prepareOnInit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">syncGen</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">asyncDef</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>155</span> 
+<span class='line'>156</span> </span><span class="WHIT">			</span><span class="COMM">//setup async init-signaling:</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isSyncGenInit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">isAsyncGenInit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">			</span><span class="COMM">//HELPER signal as "completely initialized" when sync & async modules are initialized:</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">checkInit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">isSyncGenInit</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">isAsyncGenInit</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">					</span><span class="NAME">asyncDef.resolve</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>166</span> 
+<span class='line'>167</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">initSyncGenDef</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">syncGen.init</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="COMM">//&lt;- get init-signal for sync-generator</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">			</span><span class="NAME">initSyncGenDef.always</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">				</span><span class="NAME">isSyncGenInit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">				</span><span class="NAME">checkInit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>172</span> 
+<span class='line'>173</span> </span><span class="WHIT">			</span><span class="NAME">this._oninit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">initEvt</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">initEvt.init</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">					</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'Failed to initialize '</span><span class="PUNC">+</span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">initEvt</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">					</span><span class="NAME">isAsyncGenInit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">				</span><span class="NAME">checkInit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="NAME">cmd</span><span class="PUNC">:</span><span class="STRN">'init'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">engineUrl</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">require.toUrl</span><span class="PUNC">(</span><span class="NAME">syncGen.engineId</span><span class="PUNC">)</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>182</span> 
+<span class='line'>183</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> 
+<span class='line'>185</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>186</span> 		 * Error handler for errors signaled by the webworker
+<span class='line'>187</span> 		 * 
+<span class='line'>188</span> 		 * @memberOf CompileWebWorker#
+<span class='line'>189</span> 		 */</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">		</span><span class="NAME">asyncCompiler._onerror</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">errorMsg</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">error</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">			</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="NAME">errorMsg</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">error</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>193</span> 
+<span class='line'>194</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>195</span> 		 * HELPER: register a callback (usage: see jisonGen.compileGrammar() below)
+<span class='line'>196</span> 		 * 
+<span class='line'>197</span> 		 * @memberOf CompileWebWorker#
+<span class='line'>198</span> 		 */</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">		</span><span class="NAME">asyncCompiler.addCallback</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">id</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">			</span><span class="NAME">this._activeTaskIds</span><span class="PUNC">[</span><span class="NAME">id</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>202</span> 
+<span class='line'>203</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>204</span> 		 * handler for messages/event from web-worker:
+<span class='line'>205</span> 		 * 
+<span class='line'>206</span> 		 * @memberOf CompileWebWorker#
+<span class='line'>207</span> 		 */</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">		</span><span class="NAME">asyncCompiler.onmessage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">evt</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">id</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">evt.data.id</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">id</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">this._activeTaskIds</span><span class="PUNC">[</span><span class="NAME">id</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">					</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">					</span><span class="NAME">this._activeTaskIds</span><span class="PUNC">[</span><span class="NAME">id</span><span class="PUNC">]</span><span class="PUNC">(</span><span class="NAME">evt.data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">					</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">					</span><span class="NAME">console.warn</span><span class="PUNC">(</span><span class="STRN">'no callback registered for ID "'</span><span class="PUNC">+</span><span class="NAME">id</span><span class="PUNC">+</span><span class="STRN">'" -> '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">evt.data</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">				</span><span class="COMM">//this was the final message for this ID -> remove callback-function from "active tasks" dictionary:</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">evt.data.done</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">					</span><span class="NAME">this._activeTaskIds</span><span class="PUNC">[</span><span class="NAME">id</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">void</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">			</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">evt.data.error</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">				</span><span class="NAME">this._onerror</span><span class="PUNC">(</span><span class="STRN">'Error in '</span><span class="PUNC">+</span><span class="NAME">workerPath</span><span class="PUNC">+</span><span class="STRN">': '</span><span class="PUNC">+</span><span class="NAME">evt.data.error</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">evt.data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">			</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">evt.data.init</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'boolean'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">				</span><span class="NAME">asyncCompiler._oninit</span><span class="PUNC">(</span><span class="NAME">evt.data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">			</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">				</span><span class="NAME">this._onerror</span><span class="PUNC">(</span><span class="STRN">'ERROR unknown message -> '</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">JSON.stringify</span><span class="PUNC">(</span><span class="NAME">evt.data</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">evt.data</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">asyncCompiler</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>244</span> 
+<span class='line'>245</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>246</span> </span></pre></body></html>

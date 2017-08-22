@@ -1,0 +1,681 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="TOKN">﻿</span><span class="COMM">/*
+<span class='line'>  2</span>  * 	Copyright (C) 2012-2013 DFKI GmbH
+<span class='line'>  3</span>  * 	Deutsches Forschungszentrum fuer Kuenstliche Intelligenz
+<span class='line'>  4</span>  * 	German Research Center for Artificial Intelligence
+<span class='line'>  5</span>  * 	http://www.dfki.de
+<span class='line'>  6</span>  * 
+<span class='line'>  7</span>  * 	Permission is hereby granted, free of charge, to any person obtaining a 
+<span class='line'>  8</span>  * 	copy of this software and associated documentation files (the 
+<span class='line'>  9</span>  * 	"Software"), to deal in the Software without restriction, including 
+<span class='line'> 10</span>  * 	without limitation the rights to use, copy, modify, merge, publish, 
+<span class='line'> 11</span>  * 	distribute, sublicense, and/or sell copies of the Software, and to 
+<span class='line'> 12</span>  * 	permit persons to whom the Software is furnished to do so, subject to 
+<span class='line'> 13</span>  * 	the following conditions:
+<span class='line'> 14</span>  * 
+<span class='line'> 15</span>  * 	The above copyright notice and this permission notice shall be included 
+<span class='line'> 16</span>  * 	in all copies or substantial portions of the Software.
+<span class='line'> 17</span>  * 
+<span class='line'> 18</span>  * 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+<span class='line'> 19</span>  * 	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+<span class='line'> 20</span>  * 	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+<span class='line'> 21</span>  * 	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+<span class='line'> 22</span>  * 	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+<span class='line'> 23</span>  * 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+<span class='line'> 24</span>  * 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> 
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="NAME">define</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">[</span><span class="STRN">'commonUtils'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'viewConstants'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'yield'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'storageUtils'</span><span class="WHIT"> </span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">	</span><span class="COMM">//this comment is needed by jsdoc2 [copy of comment for: function Layout(...]</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 31</span> 	 * The Layout class 
+<span class='line'> 32</span> 	 * The constructor parses the layout and divides them into containers (headerContents, bodyContents, dialogsContents).
+<span class='line'> 33</span> 	 * 
+<span class='line'> 34</span> 	 * @param {String} name
+<span class='line'> 35</span> 	 * 			Name of the Layout (usually the same name as the Layout's controller).
+<span class='line'> 36</span> 	 * @param {String} definition
+<span class='line'> 37</span> 	 * 			Layout description, i.e. the raw template code that will be processed.
+<span class='line'> 38</span> 	 * 			May be empty: in this case the processed contents must be
+<span class='line'> 39</span> 	 * 						  added manually (cf. parser.StorageUtils)
+<span class='line'> 40</span> 	 * 
+<span class='line'> 41</span> 	 * @requires if param definition is NOT empty: parser.RenderUtils (must be loaded beforehand via &lt;code>require(["renderUtils"]...&lt;/code>)
+<span class='line'> 42</span> 	 * 			
+<span class='line'> 43</span> 	 * @requires if param definition is NOT empty: parser.ParseUtils (must be loaded beforehand via &lt;code>require(["parseUtils"]...&lt;/code>)
+<span class='line'> 44</span> 	 * 
+<span class='line'> 45</span> 	 * @name Layout
+<span class='line'> 46</span> 	 * @class
+<span class='line'> 47</span> 	 */</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">	</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">		</span><span class="NAME">commonUtils</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ViewConstants</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">YieldDeclaration</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">storageUtils</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="COMM">/** @scope Layout.prototype */</span><span class="COMM">//for jsdoc2</span><span class="WHIT">
+<span class='line'> 53</span> 
+<span class='line'> 54</span> </span><span class="COMM">//set to @ignore in order to avoid doc-duplication in jsdoc3</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="COMM">/**
+<span class='line'> 56</span>  * @ignore
+<span class='line'> 57</span>  * The Layout class 
+<span class='line'> 58</span>  * The constructor parses the layout and divides them into containers (headerContents, bodyContents, dialogsContents).
+<span class='line'> 59</span>  * 
+<span class='line'> 60</span>  * @constructs Layout
+<span class='line'> 61</span>  * @param {String} name
+<span class='line'> 62</span>  * 			Name of the Layout (usually the same name as the Layout's controller).
+<span class='line'> 63</span>  * @param {String} definition
+<span class='line'> 64</span>  * 			Layout description, i.e. the raw template code that will be processed.
+<span class='line'> 65</span>  * 			May be empty: in this case the processed contents must be
+<span class='line'> 66</span>  * 						  added manually (cf. parser.StorageUtils)
+<span class='line'> 67</span>  * 
+<span class='line'> 68</span>  * @requires if param &lt;code>definition&lt;/code> is NOT empty: parser.RenderUtils (must be loaded beforehand via &lt;code>require(["renderUtils"]...&lt;/code>)
+<span class='line'> 69</span>  * 			
+<span class='line'> 70</span>  * @requires if param &lt;code>definition&lt;/code> is NOT empty: parser.ParseUtils (must be loaded beforehand via &lt;code>require(["parseUtils"]...&lt;/code>)
+<span class='line'> 71</span>  * 
+<span class='line'> 72</span>  */</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Layout</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">definition</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">remote</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ignoreMissingBody</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="COMM">//		console.log("[Layout] initialize '"+name+"'.");</span><span class="WHIT">
+<span class='line'> 75</span> 
+<span class='line'> 76</span> </span><span class="WHIT">		</span><span class="COMM">//FIXME MODIFICATIONS for "remote content layout object":</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">		</span><span class="NAME">this.remoteaccess</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">remote</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">"undefined"</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">remote</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">			</span><span class="NAME">this.remoteaccess</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 82</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'> 84</span> 	     * The definition string of the layout (ehtml-format, taken from assets/www/views/layout/*.ehtml)
+<span class='line'> 85</span> 	     * 
+<span class='line'> 86</span> 	     * @type Object
+<span class='line'> 87</span> 	     * @public
+<span class='line'> 88</span> 	     */</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">		</span><span class="NAME">this.def</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">definition</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">definition.replace</span><span class="PUNC">(</span><span class="NAME">commonUtils.regexHTMLComment</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">definition</span><span class="PUNC">;</span><span class="COMM">//remove HTML comments!</span><span class="WHIT">
+<span class='line'> 90</span> 
+<span class='line'> 91</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'> 92</span> 	     * The name of the layout. 
+<span class='line'> 93</span> 	     * 
+<span class='line'> 94</span> 	     * @type String
+<span class='line'> 95</span> 	     * @public
+<span class='line'> 96</span> 	     */</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">	    </span><span class="NAME">this.name</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 98</span> 
+<span class='line'> 99</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>100</span> 	     * This variable holds the contents of the header part of the layout.
+<span class='line'>101</span> 	     * 
+<span class='line'>102</span> 	     * @type String
+<span class='line'>103</span> 	     * @public
+<span class='line'>104</span> 	     * @deprecated unused
+<span class='line'>105</span> 	     */</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">	    </span><span class="NAME">this.headerContents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>107</span> 
+<span class='line'>108</span> </span><span class="WHIT">	    </span><span class="COMM">/**
+<span class='line'>109</span> 	     * List for extracted & parsed SCRIPT, LINK and STYLE tags
+<span class='line'>110</span> 	     * 
+<span class='line'>111</span> 	     * @type Array&lt;Layout.TagElement>
+<span class='line'>112</span> 	     * @public
+<span class='line'>113</span> 	     */</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">	    </span><span class="NAME">this.headerElements</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">	    </span><span class="COMM">/**
+<span class='line'>117</span> 	     * The page / layout title
+<span class='line'>118</span> 	     * 
+<span class='line'>119</span> 	     * Will be extracted from &lt;em>definition&lt;/em>'s TITLE-tag, if present.
+<span class='line'>120</span> 	     * 
+<span class='line'>121</span> 	     * @type String
+<span class='line'>122</span> 	     * @public
+<span class='line'>123</span> 	     */</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">	    </span><span class="NAME">this.title</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> 
+<span class='line'>126</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>127</span> 	     * This variable holds the contents of the body part of the layout.
+<span class='line'>128</span> 	     * 
+<span class='line'>129</span> 	     * @type String
+<span class='line'>130</span> 	     * @public
+<span class='line'>131</span> 	     * @deprecated unused
+<span class='line'>132</span> 	     */</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">	    </span><span class="NAME">this.bodyContents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> 
+<span class='line'>135</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>136</span> 	     * This variable holds the contents of the dialogs part of the layout.
+<span class='line'>137</span> 	     * 
+<span class='line'>138</span> 	     * @type String
+<span class='line'>139</span> 	     * @public
+<span class='line'>140</span> 	     */</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">	    </span><span class="NAME">this.dialogsContents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>142</span> 
+<span class='line'>143</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>144</span> 	     * An associative array holding the contents of the different containers: header, body, footer and dialogs
+<span class='line'>145</span> 	     * 
+<span class='line'>146</span> 	     * @type Array
+<span class='line'>147</span> 	     * @public
+<span class='line'>148</span> 	     */</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">	    </span><span class="NAME">this.yields</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Array</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">	    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">this.def</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">		    </span><span class="COMM">//console.debug('Layout&lt;constructor>: start rendering layout for "'+this.name+'"'+(remote?' (REMOTE)':'')+', RAW: '+this.def);</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">parser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">'parseUtils'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">	    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">parseResult</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parser.parse</span><span class="PUNC">(</span><span class="NAME">this.def</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">	    	</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">	    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">renderer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">'renderUtils'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">	    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">renderedLayout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">renderer.renderLayout</span><span class="PUNC">(</span><span class="NAME">parseResult</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="COMM">/*FIXME?*/</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>159</span> 
+<span class='line'>160</span> </span><span class="WHIT">	    	</span><span class="COMM">//DISABLED: parsing a string as HTML via jQuery etc. does not work (removes head, body,... tags):</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="COMM">//	    	var doc = new DOMParser().parseFromString(renderedLayout, "text/html");</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="COMM">//	    	if(!doc){</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="COMM">//	    		doc = document.implementation.createHTMLDocument('LAYOUT');</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="COMM">//	    	}</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="COMM">//	    	var $layout = $(doc);//$.parseHTML(renderedLayout, doc);</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="COMM">//	    	var headerElements = $('head', $layout);</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="COMM">//	    	for(var i=0, size = headerElements.length; i &lt; size; ++i){</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="COMM">//	    		this.headerContents += headerElements[i].outerHTML;</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="COMM">//	    	}</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="COMM">//	    	var bodyElement = $('body', $layout);</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="COMM">//	    	this.bodyContents = bodyElement.html();</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="COMM">//	    	var dialogElement = $('dialogs', $layout);</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="COMM">//	    	this.dialogsContents = dialogElement.html();</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">		    </span><span class="COMM">//TODO remove this (replace with real HTML parser?)</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">self</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">		    </span><span class="COMM">//TODO these should be constants (remove to constants.js?): </span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">		    </span><span class="NAME">this.markerAttributeName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ViewConstants.REMOTE_RESOURCES_ATTR_NAME</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">		    </span><span class="NAME">this.markerAttributeValue</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ViewConstants.REMOTE_RESOURCES_ATTR_VALUE</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">		    </span><span class="NAME">this.markerUseSingleQuotes</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="COMM">//&lt;- set value enclosed in single-quotes (true) or double-quotes (false)</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">		    </span><span class="COMM">//appends the marker attribute for "signaling"/marking that a</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">		    </span><span class="COMM">//		  script/style/link-TAG was parsed&evaluated by this layout object</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">addMarkerAttribute</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">strStartOfTag</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">		    	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">strStartOfTag</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">' '</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">		    			</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">self.markerAttributeName</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">'='</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">		    			</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">self.markerUseSingleQuotes</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">'\''</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'"'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">		    			</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">self.markerAttributeValue</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">		    			</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">self.markerUseSingleQuotes</span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">'\''</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'"'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">		    			</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">		    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">		    </span><span class="COMM">//pure HTML:</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">		    </span><span class="COMM">// (1) removed all HTML comments (via RegExpr)</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">		    </span><span class="COMM">// (2) removed template comments (via parser/renderer)</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pureHtml</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">renderedLayout</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>203</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">regExprTagContent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="COMM">//match one of the following (as groups):</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="WHIT">		    						 </span><span class="STRN">'(('</span><span class="PUNC">+</span><span class="WHIT"> 		</span><span class="COMM">//match as groups</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">		    							</span><span class="STRN">'('</span><span class="PUNC">+</span><span class="WHIT">		</span><span class="COMM">//(1) CDATA: this may contain anything, even a closing script-statement</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">		    								</span><span class="STRN">'&lt;!\\[CDATA\\['</span><span class="PUNC">+</span><span class="WHIT">		</span><span class="COMM">//CDATA open: &lt;![CDATA[</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">		    									</span><span class="STRN">'(.|[\\r\\n])*?'</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="COMM">//allow anything within CDATA, but match non-greedily...</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">		    								</span><span class="STRN">'\\]\\]>'</span><span class="PUNC">+</span><span class="WHIT">			</span><span class="COMM">//...for the CDATA-closing statement: ]]></span><span class="WHIT">
+<span class='line'>209</span> </span><span class="WHIT">		    													</span><span class="COMM">//   (i.e. the first time we encounter this, we stop)</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="WHIT">		    							</span><span class="STRN">')'</span><span class="PUNC">+</span><span class="WHIT">				</span><span class="COMM">//close group for CDATA-matching</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">		    							</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">		    							</span><span class="STRN">'|[\\r\\n]'</span><span class="PUNC">+</span><span class="WHIT">	</span><span class="COMM">//(2) OR line breaks \r and \n (in any combination)</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">		</span><span class="COMM">//DISABLED (using . instead!):	'|[^&lt;]'+	//(3) OR any symbol that is NOT &lt;</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">		    							</span><span class="STRN">'|.'</span><span class="PUNC">+</span><span class="WHIT">		</span><span class="COMM">//(4) OR any symbol (REQUIRED for allowing &lt;-symbol within script!</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">		    						 </span><span class="STRN">')'</span><span class="PUNC">+</span><span class="WHIT">			</span><span class="COMM">//close group</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">		    						 </span><span class="STRN">'*'</span><span class="PUNC">+</span><span class="WHIT">			</span><span class="COMM">//match this any number of times (or even none)</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">		    						 </span><span class="STRN">'?'</span><span class="PUNC">+</span><span class="WHIT">			</span><span class="COMM">//do matching non-greedy (i.e. until the next pattern in the RegExpr can be matched the first time)</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">			 						 </span><span class="STRN">')'</span><span class="PUNC">;</span><span class="WHIT">			</span><span class="COMM">//close outer group (i.e. one group for ALL content that is matched)</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">		    </span><span class="COMM">//_non-greedy_ RegExpr for</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">		    </span><span class="COMM">//	* any line-break: \r or \n or a combination of them</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">		    </span><span class="COMM">//	* any other character but &lt; (less-symbol); note that this itself does not include line breaks</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">regExprTagInternal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'('</span><span class="PUNC">+</span><span class="WHIT">			</span><span class="COMM">//open group: match as a group (i.e. give access to the matched content via an index in the RegExpr object)</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="WHIT">		    							</span><span class="STRN">'[\\r\\n]'</span><span class="PUNC">+</span><span class="WHIT">	</span><span class="COMM">//line breaks \r and \n</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">		    						   </span><span class="STRN">'|'</span><span class="PUNC">+</span><span class="WHIT">			</span><span class="COMM">//OR</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">		    						    </span><span class="STRN">'[^&lt;]'</span><span class="PUNC">+</span><span class="WHIT">		</span><span class="COMM">//any symbol that is NOT &lt;</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">		    						 </span><span class="STRN">')'</span><span class="PUNC">+</span><span class="WHIT">			</span><span class="COMM">//close group</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">		    						 </span><span class="STRN">'*'</span><span class="PUNC">+</span><span class="WHIT">			</span><span class="COMM">//match this any number of times (or even none)</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="WHIT">		    						 </span><span class="STRN">'?'</span><span class="PUNC">;</span><span class="WHIT">			</span><span class="COMM">//do matching non-greedy (i.e. until the next pattern in the RegExpr can be matched the first time)</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">		    </span><span class="COMM">//matching: &lt;script some attributes...> some content and '&lt;!CDATA[' with any content allowed  &lt;/script></span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">		    </span><span class="COMM">//      or: &lt;script some attributes... /></span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">	</span><span class="COMM">//	    var regExpScriptTag = /((&lt;script([\r\n]|[^&lt;])*?>)(((&lt;!\[CDATA\[(.|[\r\n])*?\]\]>)|[\r\n]|.)*?)(&lt;\/script>))|(&lt;script([\r\n]|[^&lt;])*?\/>)/igm;// /((&lt;script([\r\n]|[^&lt;])*?>)((&lt;!\[CDATA|[\r\n]|[^&lt;])*?)(&lt;\/script>))|(&lt;script([\r\n]|[^&lt;])*?\/>)/igm;</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">strRegExpScriptTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'((&lt;script'</span><span class="PUNC">+</span><span class="NAME">regExprTagInternal</span><span class="PUNC">+</span><span class="STRN">'>)'</span><span class="PUNC">+</span><span class="NAME">regExprTagContent</span><span class="PUNC">+</span><span class="STRN">'(&lt;/script>))'</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="COMM">//DETECT    "normal" script-TAG with optional content</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">		    						 </span><span class="STRN">'|(&lt;script'</span><span class="PUNC">+</span><span class="NAME">regExprTagInternal</span><span class="PUNC">+</span><span class="STRN">'/>)'</span><span class="PUNC">;</span><span class="WHIT">								   </span><span class="COMM">//OR DETECT "self-closing" script TAG</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">regExpScriptTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">RegExp</span><span class="PUNC">(</span><span class="NAME">strRegExpScriptTag</span><span class="PUNC">,</span><span class="STRN">'igm'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">		    </span><span class="COMM">//change to the following RegExpr (change the ones for link/style etc too)</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">		    </span><span class="COMM">// from</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">		    </span><span class="COMM">//		/((&lt;script([\r\n]|[^&lt;])*?>)(([\r\n]|[^&lt;])*?)(&lt;\/script>))|(&lt;script([\r\n]|[^&lt;])*?\/>)/igm;</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="WHIT">		    </span><span class="COMM">// to</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="WHIT">		    </span><span class="COMM">//		/((&lt;script([\r\n]|[^&lt;])*?>)(((&lt;!\[CDATA\[(.|[\r\n])*?\]\]>)|[\r\n]|.)*?)(&lt;\/script>))|(&lt;script([\r\n]|[^&lt;])*?\/>)/igm</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">		    </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">		    </span><span class="COMM">// -> this RegExpr additionally </span><span class="WHIT">
+<span class='line'>247</span> </span><span class="WHIT">		    </span><span class="COMM">//		* respects CDATA (&lt;![CDTATA[ ... ]]>), with any content within its boundaries, even a "closing" &lt;/script>-TAG</span><span class="WHIT">
+<span class='line'>248</span> </span><span class="WHIT">		    </span><span class="COMM">//		* allows opening &lt; within the script-TAGs</span><span class="WHIT">
+<span class='line'>249</span> </span><span class="WHIT">		    </span><span class="COMM">// LIMITATIONS: both this and the current one do not allow a &lt; within the script-TAGS attributes, e.g. </span><span class="WHIT">
+<span class='line'>250</span> </span><span class="WHIT">		    </span><span class="COMM">//				NOT: &lt;script data-condition=" i &lt; 5"></span><span class="WHIT">
+<span class='line'>251</span> </span><span class="WHIT">		    </span><span class="COMM">//				WORKAROUND: encode the &lt;-symbol, i.e. instead use &lt;script data-condition=" i &lt; 5"> </span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">		    </span><span class="COMM">//							==> use "&lt;" or "&#60;" instead of "&lt;" in TAG attributes!</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">		    </span><span class="COMM">// regExpScriptTag[0]: complete match</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">		    </span><span class="COMM">// regExpScriptTag[1]: script with start and end tag (if matched)</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">		    </span><span class="COMM">// regExpScriptTag[4]: TEXT content of script-tag (if present/matched)</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">		    </span><span class="COMM">// regExpScriptTag[9]: self-closing script (if matched)</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">matchScriptTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">		    </span><span class="NAME">self.headerContents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>261</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>262</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">removedScriptAndLinkHmtl</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Array</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">	</span><span class="COMM">//	    var matchIndex;</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">		    </span><span class="KEYW">while</span><span class="PUNC">(</span><span class="NAME">matchScriptTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">regExpScriptTag.exec</span><span class="PUNC">(</span><span class="NAME">pureHtml</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">	</span><span class="COMM">//	    	matchIndex = matchScriptTag[1] ? 1 : (matchScriptTag[9]? 9 : -1);</span><span class="WHIT">
+<span class='line'>266</span> </span><span class="WHIT">		    	</span><span class="WHIT">
+<span class='line'>267</span> </span><span class="WHIT">		    	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">matchScriptTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="COMM">//matchIndex != -1){</span><span class="WHIT">
+<span class='line'>268</span> </span><span class="WHIT">	</span><span class="COMM">//	    		console.warn("Remote: " + self.remoteaccess);</span><span class="WHIT">
+<span class='line'>269</span> </span><span class="WHIT">		    		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">self.remoteaccess</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>270</span> </span><span class="WHIT">	</span><span class="COMM">//	    			self.headerContents += matchScriptTag[0].replace("&lt;script", "&lt;script loc=\"remote\"");//[matchIndex];</span><span class="WHIT">
+<span class='line'>271</span> </span><span class="WHIT">		    			</span><span class="NAME">self.headerContents</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">addMarkerAttribute</span><span class="PUNC">(</span><span class="STRN">'&lt;script'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">matchScriptTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">substring</span><span class="PUNC">(</span><span class="STRN">'&lt;script'</span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">		    		</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">		        		</span><span class="NAME">self.headerContents</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">matchScriptTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="WHIT">		    		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>275</span> </span><span class="WHIT">		    		</span><span class="COMM">//remove script tag, and continue search</span><span class="WHIT">
+<span class='line'>276</span> </span><span class="WHIT">	</span><span class="COMM">//	    		pureHtml = pureHtml.substring(0,matchScriptTag.index) + pureHtml.substring(matchScriptTag.index + matchScriptTag[0].length);// pureHtml.replace(matchScriptTag[matchIndex], '');</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">		    	    </span><span class="NAME">removedScriptAndLinkHmtl.push</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="NAME">start</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">matchScriptTag.index</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">end</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">matchScriptTag.index</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">matchScriptTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>279</span> 
+<span class='line'>280</span> </span><span class="WHIT">		    	    </span><span class="NAME">self.headerElements.push</span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Layout.TagElement</span><span class="PUNC">(</span><span class="NAME">matchScriptTag</span><span class="PUNC">[</span><span class="NUMB">2</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">matchScriptTag</span><span class="PUNC">[</span><span class="NUMB">9</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">matchScriptTag</span><span class="PUNC">[</span><span class="NUMB">4</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'SCRIPT'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">		    	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">		    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">		    </span><span class="COMM">//matching: &lt;link some attributes...> some content and '&lt;!CDATA[' with any content allowed &lt;/link></span><span class="WHIT">
+<span class='line'>285</span> </span><span class="WHIT">		    </span><span class="COMM">//      or: &lt;link some attributes... /></span><span class="WHIT">
+<span class='line'>286</span> </span><span class="WHIT">	</span><span class="COMM">//	    var regExpLinkTag = /((&lt;link([\r\n]|[^&lt;])*?>)(((&lt;!\[CDATA\[(.|[\r\n])*?\]\]>)|[\r\n]|.)*?)(&lt;\/link>))|(&lt;link([\r\n]|[^&lt;])*?\/>)/igm;</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">strRegExpLinkTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'((&lt;link'</span><span class="PUNC">+</span><span class="NAME">regExprTagInternal</span><span class="PUNC">+</span><span class="STRN">'>)'</span><span class="PUNC">+</span><span class="NAME">regExprTagContent</span><span class="PUNC">+</span><span class="STRN">'(&lt;/link>))'</span><span class="PUNC">+</span><span class="WHIT"> </span><span class="COMM">//DETECT    "normal" script-TAG with optional content</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">			 					   </span><span class="STRN">'|(&lt;link'</span><span class="PUNC">+</span><span class="NAME">regExprTagInternal</span><span class="PUNC">+</span><span class="STRN">'/>)'</span><span class="PUNC">;</span><span class="WHIT">								 </span><span class="COMM">//OR DETECT "self-closing" script TAG</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">regExpLinkTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">RegExp</span><span class="PUNC">(</span><span class="NAME">strRegExpLinkTag</span><span class="PUNC">,</span><span class="STRN">'igm'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">		    </span><span class="COMM">// regExpLinkTag[0]: complete match</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">		    </span><span class="COMM">// regExpLinkTag[1]: link with start and end tag (if matched)</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">		    </span><span class="COMM">// regExpLinkTag[4]: TEXT content of link-tag (if present/matched)</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">		    </span><span class="COMM">// regExpLinkTag[9]: self-closing link (if matched)</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">matchLinkTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">		    </span><span class="KEYW">while</span><span class="PUNC">(</span><span class="NAME">matchLinkTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">regExpLinkTag.exec</span><span class="PUNC">(</span><span class="NAME">pureHtml</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">	</span><span class="COMM">//	    	console.warn("Matchlinktag: " + matchLinkTag[0]);</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">		    	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">matchLinkTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">	</span><span class="COMM">//	    		console.warn("Remote: " + self.remoteaccess);</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">		    		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">self.remoteaccess</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">	</span><span class="COMM">//	    			self.headerContents += matchLinkTag[0].replace("&lt;link", "&lt;link loc=\"remote\"");</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">		    			</span><span class="NAME">self.headerContents</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">addMarkerAttribute</span><span class="PUNC">(</span><span class="STRN">'&lt;link'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">matchLinkTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">substring</span><span class="PUNC">(</span><span class="STRN">'&lt;link'</span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">		    		</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">		        		</span><span class="NAME">self.headerContents</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">matchLinkTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="WHIT">		    		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="WHIT">		    	    </span><span class="NAME">removedScriptAndLinkHmtl.push</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="NAME">start</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">matchLinkTag.index</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">end</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">matchLinkTag.index</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">matchLinkTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>307</span> 
+<span class='line'>308</span> </span><span class="WHIT">		    	    </span><span class="NAME">self.headerElements.push</span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Layout.TagElement</span><span class="PUNC">(</span><span class="NAME">matchLinkTag</span><span class="PUNC">[</span><span class="NUMB">2</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">matchLinkTag</span><span class="PUNC">[</span><span class="NUMB">9</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">matchLinkTag</span><span class="PUNC">[</span><span class="NUMB">4</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'LINK'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">		    	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">		    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">		    </span><span class="COMM">//matching: &lt;style type="text/css" some attributes...> some content and '&lt;!CDATA[' with any content allowed &lt;/style></span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">	</span><span class="COMM">//	    var regExpStyleTag = /((&lt;style([\r\n]|[^&lt;])*?type="text\/css"([\r\n]|[^&lt;])*?>)(((&lt;!\[CDATA\[(.|[\r\n])*?\]\]>)|[\r\n]|.)*?)(&lt;\/style>))/igm;</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">strRegExpStyleTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'((&lt;style'</span><span class="PUNC">+</span><span class="NAME">regExprTagInternal</span><span class="PUNC">+</span><span class="STRN">'>)'</span><span class="PUNC">+</span><span class="NAME">regExprTagContent</span><span class="PUNC">+</span><span class="STRN">'(&lt;/style>))'</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">//DETECT only "normal" style-TAG with content</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">regExpStyleTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">RegExp</span><span class="PUNC">(</span><span class="NAME">strRegExpStyleTag</span><span class="PUNC">,</span><span class="STRN">'igm'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">		    </span><span class="COMM">// regExpStyleTag[0]: complete match</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">		    </span><span class="COMM">// regExpStyleTag[1]: script with start and end tag (if matched)</span><span class="WHIT">
+<span class='line'>319</span> </span><span class="WHIT">		    </span><span class="COMM">// regExpStyleTag[4]: TEXT content of style-tag (if present/matched)</span><span class="WHIT">
+<span class='line'>320</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">matchStyleTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">		    </span><span class="KEYW">while</span><span class="PUNC">(</span><span class="NAME">matchStyleTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">regExpStyleTag.exec</span><span class="PUNC">(</span><span class="NAME">pureHtml</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">	</span><span class="COMM">//	    	matchIndex = matchStyleTag[1] ? 1 : -1;</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">		    	</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">		    	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">matchStyleTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="COMM">//matchIndex != -1){</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">	</span><span class="COMM">//	    		console.warn("Remote: " + self.remoteaccess);</span><span class="WHIT">
+<span class='line'>327</span> </span><span class="WHIT">		    		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">self.remoteaccess</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>328</span> </span><span class="WHIT">	</span><span class="COMM">//	    			self.headerContents += matchStyleTag[0].replace("&lt;style", "&lt;style loc=\"remote\"");//[matchIndex];</span><span class="WHIT">
+<span class='line'>329</span> </span><span class="WHIT">		    			</span><span class="NAME">self.headerContents</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">addMarkerAttribute</span><span class="PUNC">(</span><span class="STRN">'&lt;style'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">matchStyleTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">substring</span><span class="PUNC">(</span><span class="STRN">'&lt;style'</span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>330</span> </span><span class="WHIT">		    		</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>331</span> </span><span class="WHIT">		        		</span><span class="NAME">self.headerContents</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">matchStyleTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>332</span> </span><span class="WHIT">		    		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">		    		</span><span class="COMM">//remove script tag, and continue search</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">	</span><span class="COMM">//	    		pureHtml = pureHtml.substring(0,matchStyleTag.index) + pureHtml.substring(matchStyleTag.index + matchStyleTag[0].length);// pureHtml.replace(matchStyleTag[matchIndex], '');</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">		    	    </span><span class="NAME">removedScriptAndLinkHmtl.push</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="NAME">start</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">matchStyleTag.index</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">end</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">matchStyleTag.index</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">matchStyleTag</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>337</span> 
+<span class='line'>338</span> </span><span class="WHIT">		    	    </span><span class="NAME">self.headerElements.push</span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Layout.TagElement</span><span class="PUNC">(</span><span class="NAME">matchStyleTag</span><span class="PUNC">[</span><span class="NUMB">2</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">matchStyleTag</span><span class="PUNC">[</span><span class="NUMB">4</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'STYLE'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">		    	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">		    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>342</span> </span><span class="WHIT">		    </span><span class="COMM">//only need to "process" removed script/link tags, if some were found:</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">		    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">removedScriptAndLinkHmtl.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">		    	</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">		    	</span><span class="NAME">removedScriptAndLinkHmtl.sort</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">,</span><span class="NAME">b</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">		    		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">a.start</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">b.start</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">		    	</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>348</span> </span><span class="WHIT">		    	</span><span class="WHIT">
+<span class='line'>349</span> </span><span class="WHIT">		    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">cleanedHtml</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Array</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="WHIT">		    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">remPos</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>351</span> </span><span class="WHIT">		    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">removalElement</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">removedScriptAndLinkHmtl</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>352</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'>353</span> </span><span class="WHIT">		    	</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">removedScriptAndLinkHmtl.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>354</span> </span><span class="WHIT">		    		</span><span class="NAME">removalElement</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">removedScriptAndLinkHmtl</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>355</span> </span><span class="WHIT">		    		</span><span class="WHIT">
+<span class='line'>356</span> </span><span class="WHIT">		    		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">text</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pureHtml.substring</span><span class="PUNC">(</span><span class="NAME">remPos</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">removalElement.start</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>357</span> </span><span class="WHIT">		    		</span><span class="NAME">cleanedHtml.push</span><span class="PUNC">(</span><span class="NAME">text</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>358</span> </span><span class="WHIT">		    		</span><span class="WHIT">
+<span class='line'>359</span> </span><span class="WHIT">		    		</span><span class="NAME">remPos</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">removalElement.end</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>360</span> </span><span class="WHIT">		    	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>361</span> </span><span class="WHIT">		    	</span><span class="COMM">//add rest of the HTML if necessary</span><span class="WHIT">
+<span class='line'>362</span> </span><span class="WHIT">			    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">removalElement.end</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">pureHtml.length</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>363</span> </span><span class="WHIT">			    	</span><span class="NAME">cleanedHtml.push</span><span class="PUNC">(</span><span class="NAME">pureHtml.substring</span><span class="PUNC">(</span><span class="NAME">removalElement.end</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>364</span> </span><span class="WHIT">			    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>365</span> </span><span class="WHIT">			    </span><span class="COMM">//replace HTML with the removed/clean version:</span><span class="WHIT">
+<span class='line'>366</span> </span><span class="WHIT">			    </span><span class="NAME">pureHtml</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cleanedHtml.join</span><span class="PUNC">(</span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>367</span> </span><span class="WHIT">		    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>368</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>369</span> </span><span class="WHIT">			</span><span class="COMM">//TODO this is needed my be of interest for further processing </span><span class="WHIT">
+<span class='line'>370</span> </span><span class="WHIT">			</span><span class="COMM">// (for processing partial HTML responses) </span><span class="WHIT">
+<span class='line'>371</span> </span><span class="WHIT">			</span><span class="COMM">//-> should this be part of the framework? (i.e. "public" property for Layout; TODO add to stringify()?)</span><span class="WHIT">
+<span class='line'>372</span> </span><span class="WHIT">	    	</span><span class="NAME">this._processedDef</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pureHtml</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>373</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'>374</span> </span><span class="WHIT">		    </span><span class="COMM">//FIXME reg-expr does not detect body-TAG, if body has no content (i.e. body="&lt;body>&lt;/body>")</span><span class="WHIT">
+<span class='line'>375</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">regExpBodyTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/(&lt;body([\r\n]|.)*?>)(([\r\n]|.)*?)(&lt;\/body>)/igm</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>376</span> </span><span class="WHIT">		    </span><span class="COMM">// matchBodyTag[0]: complete match</span><span class="WHIT">
+<span class='line'>377</span> </span><span class="WHIT">		    </span><span class="COMM">// matchBodyTag[1]: body start tag</span><span class="WHIT">
+<span class='line'>378</span> </span><span class="WHIT">		    </span><span class="COMM">// matchBodyTag[2]: last CHAR within body start tag, before closing, e.g. "...lskdjf>" -> "f"</span><span class="WHIT">
+<span class='line'>379</span> </span><span class="WHIT">		    </span><span class="COMM">// matchBodyTag[3]: body text content</span><span class="WHIT">
+<span class='line'>380</span> </span><span class="WHIT">		    </span><span class="COMM">// matchBodyTag[4]: last CHAR within body text content, before closing, e.g. "...lsk&lt;/body>" -> "k"</span><span class="WHIT">
+<span class='line'>381</span> </span><span class="WHIT">		    </span><span class="COMM">// matchBodyTag[5]: body end tag</span><span class="WHIT">
+<span class='line'>382</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">matchBodyTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">regExpBodyTag.exec</span><span class="PUNC">(</span><span class="NAME">pureHtml</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>383</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>384</span> </span><span class="WHIT">		    </span><span class="NAME">self.bodyContents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>385</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>386</span> </span><span class="WHIT">		    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">matchBodyTag</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">matchBodyTag</span><span class="PUNC">[</span><span class="NUMB">3</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>387</span> </span><span class="WHIT">			    </span><span class="NAME">self.bodyContents</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">matchBodyTag</span><span class="PUNC">[</span><span class="NUMB">3</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>388</span> </span><span class="WHIT">		    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>389</span> </span><span class="WHIT">		    </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">ignoreMissingBody</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>390</span> </span><span class="WHIT">		    	</span><span class="COMM">//TODO throw error?</span><span class="WHIT">
+<span class='line'>391</span> </span><span class="WHIT">		    	</span><span class="NAME">console.error</span><span class="PUNC">(</span><span class="STRN">'Layout.&lt;constructor>: Layout template does not contain a &lt;body> element!'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>392</span> </span><span class="WHIT">		    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>393</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>394</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>395</span> </span><span class="WHIT">		    </span><span class="COMM">//TEST: experimental -> "remember" attributes of body tag</span><span class="WHIT">
+<span class='line'>396</span> </span><span class="WHIT">		    </span><span class="COMM">//NOTE this assumes that matchBodyTag-RegExpr starts with: /(&lt;body([\r\n]|.)*?>) ... </span><span class="WHIT">
+<span class='line'>397</span> </span><span class="WHIT">		    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">matchBodyTag</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">matchBodyTag</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">matchBodyTag</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="STRN">'&lt;body>'</span><span class="PUNC">.</span><span class="NAME">length</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>398</span> </span><span class="WHIT">		    	</span><span class="WHIT">
+<span class='line'>399</span> </span><span class="COMM">//		    	//NOTE: 1st case should really never occur.</span><span class="WHIT">
+<span class='line'>400</span> </span><span class="COMM">//		    	var bodyAttrEnd = matchBodyTag[1].endsWith('/>')? matchBodyTag[1].length-2 : matchBodyTag[1].length-1;</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="COMM">//		    	var bodyAttr = '&lt;div ' + matchBodyTag[1].substring('&lt;body'.length, bodyAttrEnd) + '&lt;/div>';</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="COMM">//		    	bodyAttr = jQuery(bodyAttr);</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">		    	</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">		    	</span><span class="NAME">self.bodyAttributes</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Layout.getTagAttr</span><span class="PUNC">(</span><span class="NAME">matchBodyTag</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="WHIT">		    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>406</span> </span><span class="WHIT">		    		</span><span class="WHIT">
+<span class='line'>407</span> </span><span class="WHIT">		    </span><span class="COMM">//Extract title-tag</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">	    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">regExpTitleTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/(&lt;title([\r\n]|.)*?>)(([\r\n]|.)*?)(&lt;\/title>)/igm</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">		    </span><span class="COMM">// matchTitleTag[0]: complete match</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">		    </span><span class="COMM">// matchTitleTag[1]: title start tag</span><span class="WHIT">
+<span class='line'>411</span> </span><span class="WHIT">		    </span><span class="COMM">// matchTitleTag[2]: last CHAR within title start tag, before closing, e.g. "...lskdjf>" -> "f"</span><span class="WHIT">
+<span class='line'>412</span> </span><span class="WHIT">		    </span><span class="COMM">// matchTitleTag[3]: title text content</span><span class="WHIT">
+<span class='line'>413</span> </span><span class="WHIT">		    </span><span class="COMM">// matchTitleTag[4]: last CHAR within title text content, before closing, e.g. "...lsk&lt;/title>" -> "k"</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">		    </span><span class="COMM">// matchTitleTag[5]: title end tag</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">matchTitleTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">regExpTitleTag.exec</span><span class="PUNC">(</span><span class="NAME">pureHtml</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>416</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">		    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">matchTitleTag</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">matchTitleTag</span><span class="PUNC">[</span><span class="NUMB">3</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>418</span> </span><span class="WHIT">			    </span><span class="NAME">self.title</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">matchTitleTag</span><span class="PUNC">[</span><span class="NUMB">3</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">	    	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">regExpDialogsTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/(&lt;dialogs([\r\n]|.)*?>)(([\r\n]|.)*?)(&lt;\/dialogs>)/igm</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>422</span> </span><span class="WHIT">		    </span><span class="COMM">// matchDialogsTag[0]: complete match</span><span class="WHIT">
+<span class='line'>423</span> </span><span class="WHIT">		    </span><span class="COMM">// matchDialogsTag[1]: dialogs start tag</span><span class="WHIT">
+<span class='line'>424</span> </span><span class="WHIT">		    </span><span class="COMM">// matchDialogsTag[2]: last CHAR within dialogs start tag, before closing, e.g. "...lskdjf>" -> "f"</span><span class="WHIT">
+<span class='line'>425</span> </span><span class="WHIT">		    </span><span class="COMM">// matchDialogsTag[3]: dialogs text content</span><span class="WHIT">
+<span class='line'>426</span> </span><span class="WHIT">		    </span><span class="COMM">// matchDialogsTag[4]: last CHAR within dialogs text content, before closing, e.g. "...lsk&lt;/dialogs>" -> "k"</span><span class="WHIT">
+<span class='line'>427</span> </span><span class="WHIT">		    </span><span class="COMM">// matchDialogsTag[5]: dialogs end tag</span><span class="WHIT">
+<span class='line'>428</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">matchDialogsTag</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">regExpDialogsTag.exec</span><span class="PUNC">(</span><span class="NAME">pureHtml</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>429</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>430</span> </span><span class="WHIT">		    </span><span class="NAME">self.dialogsContents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>431</span> </span><span class="WHIT">		    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">matchDialogsTag</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">matchDialogsTag</span><span class="PUNC">[</span><span class="NUMB">3</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>432</span> </span><span class="WHIT">			    </span><span class="NAME">self.dialogsContents</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">matchDialogsTag</span><span class="PUNC">[</span><span class="NUMB">3</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>433</span> </span><span class="WHIT">		    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>434</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>435</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">parseBodyResult</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parser.parse</span><span class="PUNC">(</span><span class="NAME">this.bodyContents</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>436</span> </span><span class="WHIT">		    </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseBodyResult.yields.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>437</span> </span><span class="WHIT">		    	</span><span class="NAME">this.yields.push</span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">YieldDeclaration</span><span class="PUNC">(</span><span class="NAME">parseBodyResult.yields</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ViewConstants.CONTENT_AREA_BODY</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>438</span> </span><span class="WHIT">		    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>439</span> </span><span class="WHIT">		    </span><span class="WHIT">
+<span class='line'>440</span> </span><span class="WHIT">		    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">parseDialogResult</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parser.parse</span><span class="PUNC">(</span><span class="NAME">this.dialogsContents</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>441</span> </span><span class="WHIT">		    </span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseDialogResult.yields.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>442</span> </span><span class="WHIT">		    	</span><span class="NAME">this.yields.push</span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">YieldDeclaration</span><span class="PUNC">(</span><span class="NAME">parseDialogResult.yields</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ViewConstants.CONTENT_AREA_DIALOGS</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>443</span> </span><span class="WHIT">		    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>444</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'>445</span> </span><span class="WHIT">	    </span><span class="PUNC">}</span><span class="COMM">//END: if(this.def)</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'>447</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="COMM">//END: Layout()</span><span class="WHIT">
+<span class='line'>448</span> 
+<span class='line'>449</span> 
+<span class='line'>450</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>451</span> 	 * HELPER: extracts TAG attributes into an JSON-object
+<span class='line'>452</span> 	 * 
+<span class='line'>453</span> 	 * @memberOf Layout
+<span class='line'>454</span> 	 * @private
+<span class='line'>455</span> 	 * @static
+<span class='line'>456</span> 	 * 
+<span class='line'>457</span> 	 * @param {String} str
+<span class='line'>458</span> 	 * 			the start-TAG as String
+<span class='line'>459</span> 	 * @param {Object} [target] OPTIONAL
+<span class='line'>460</span> 	 * 			the target-object to which the extracted attributes will be attached
+<span class='line'>461</span> 	 * 			if omitted, a new, empty object will be created
+<span class='line'>462</span> 	 * 
+<span class='line'>463</span> 	 * @return {Object} the object with the extracted attributes as properties
+<span class='line'>464</span> 	 * 					(if &lt;em>target&lt;/em> was provided, then this is the &lt;em>target&lt;/em> object)
+<span class='line'>465</span> 	 * 
+<span class='line'>466</span> 	 * @example
+<span class='line'>467</span> 	 * e.g. &lt;body onload="on_load();" class = 'biggestFont'>
+<span class='line'>468</span> 	 * -->
+<span class='line'>469</span> 	 * {"onload": "on_load()", "class": "biggestFont"}
+<span class='line'>470</span> 	 * 
+<span class='line'>471</span> 	 */</span><span class="WHIT">
+<span class='line'>472</span> </span><span class="WHIT">	</span><span class="NAME">Layout.getTagAttr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">target</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>473</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>474</span> </span><span class="WHIT">		</span><span class="COMM">//RegExp for:</span><span class="WHIT">
+<span class='line'>475</span> </span><span class="WHIT">		</span><span class="COMM">// name = "..."</span><span class="WHIT">
+<span class='line'>476</span> </span><span class="WHIT">		</span><span class="COMM">//or</span><span class="WHIT">
+<span class='line'>477</span> </span><span class="WHIT">		</span><span class="COMM">// name = '...'</span><span class="WHIT">
+<span class='line'>478</span> </span><span class="WHIT">		</span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>479</span> </span><span class="WHIT">		</span><span class="COMM">//NOTE: the RegExp does not extract "single properties", as e.g. &lt;tag required></span><span class="WHIT">
+<span class='line'>480</span> </span><span class="WHIT">		</span><span class="COMM">//      ... instead, for extraction, they must be specified as follows: &lt;tag required="..."></span><span class="WHIT">
+<span class='line'>481</span> </span><span class="WHIT">		</span><span class="COMM">//NOTE: values MUST be enclosed in double-quotes or quotes, "quote-less" attribute values cannot be extracted!</span><span class="WHIT">
+<span class='line'>482</span> </span><span class="WHIT">		</span><span class="COMM">//      ... e.g. NOT: &lt;tag name=value>, instead: &lt;tag name="value"> or &lt;tag name='value'></span><span class="WHIT">
+<span class='line'>483</span> </span><span class="WHIT">		</span><span class="COMM">//NOTE: the RegExp also detects escaped double-quotes and quotes respectively</span><span class="WHIT">
+<span class='line'>484</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">regExpr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/\s+([^=]*?)\s*=\s*(("((\\"|[^"])*)")|('((\\'|[^'])*)'))/igm</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>485</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">target</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>486</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">match</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>487</span> </span><span class="WHIT">	    </span><span class="WHIT">
+<span class='line'>488</span> </span><span class="WHIT">	    </span><span class="KEYW">while</span><span class="PUNC">(</span><span class="NAME">match</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">regExpr.exec</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>489</span> </span><span class="WHIT">	    	</span><span class="WHIT">
+<span class='line'>490</span> </span><span class="WHIT">	    	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">match</span><span class="PUNC">[</span><span class="NUMB">4</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>491</span> </span><span class="WHIT">				</span><span class="NAME">result</span><span class="PUNC">[</span><span class="NAME">match</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">match</span><span class="PUNC">[</span><span class="NUMB">4</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>492</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>493</span> </span><span class="WHIT">			</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">match</span><span class="PUNC">[</span><span class="NUMB">7</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>494</span> </span><span class="WHIT">				</span><span class="NAME">result</span><span class="PUNC">[</span><span class="NAME">match</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">match</span><span class="PUNC">[</span><span class="NUMB">7</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>495</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>496</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>497</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>498</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>499</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>500</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>501</span> 	 * HELPER class: extract raw TAG Strings into a property-object
+<span class='line'>502</span> 	 * 
+<span class='line'>503</span> 	 * @public
+<span class='line'>504</span> 	 * @constructor
+<span class='line'>505</span> 	 * @param {String} tag
+<span class='line'>506</span> 	 * 			the start TAG
+<span class='line'>507</span> 	 * @param {String} content
+<span class='line'>508</span> 	 * 			the TEXT content of the TAG (may be empty)
+<span class='line'>509</span> 	 * @param {String} tagType
+<span class='line'>510</span> 	 *  		the TAG type, e.g. "SCRIPT"
+<span class='line'>511</span> 	 * 
+<span class='line'>512</span> 	 * @returns {Layout.TagElement}
+<span class='line'>513</span> 	 * 
+<span class='line'>514</span> 	 * 		prop {String} tagName: the TAG type, e.g. "SCRIPT"
+<span class='line'>515</span> 	 * 		prop {String} textContent: the TEXT content of the TAG (may be an empty String)
+<span class='line'>516</span> 	 * 		prop EXTRACTED ATTRIBUTES: the extracted attributes form the start-TAG
+<span class='line'>517</span> 	 * 
+<span class='line'>518</span> 	 * 		func {String} attr(STRING name): returns the attribute-value for name (may be undefined)
+<span class='line'>519</span> 	 * 		func {String} html(): returns the TEXT content of the TAG (may be an empty String)
+<span class='line'>520</span> 	 * 
+<span class='line'>521</span> 	 * 		func {Boolean} isScript(): returns TRUE if tagType is SCRIPT
+<span class='line'>522</span> 	 * 		func {Boolean} isStyle():  returns TRUE if tagType is STYLE
+<span class='line'>523</span> 	 * 		func {Boolean} isLink():   returns TRUE if tagType is LINK
+<span class='line'>524</span> 	 */</span><span class="WHIT">
+<span class='line'>525</span> </span><span class="WHIT">	</span><span class="NAME">Layout.TagElement</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">TagElement</span><span class="PUNC">(</span><span class="NAME">tag</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">content</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">tagType</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>526</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>527</span> </span><span class="WHIT">		</span><span class="NAME">this.tagName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">tagType</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>528</span> </span><span class="WHIT">		</span><span class="NAME">this.textContent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">content</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>529</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>530</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">tis</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>531</span> </span><span class="WHIT">		</span><span class="NAME">tis.attr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>532</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">[</span><span class="NAME">name</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>533</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>534</span> </span><span class="WHIT">		</span><span class="NAME">tis.html</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>535</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.textContent</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>536</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>537</span> </span><span class="WHIT">		</span><span class="NAME">tis.isScript</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.tagName</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'SCRIPT'</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>538</span> </span><span class="WHIT">		</span><span class="NAME">tis.isStyle</span><span class="WHIT">  </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.tagName</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'STYLE'</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>539</span> </span><span class="WHIT">		</span><span class="NAME">tis.isLink</span><span class="WHIT">   </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.tagName</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'LINK'</span><span class="PUNC">;</span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>540</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>541</span> </span><span class="WHIT">		</span><span class="COMM">//extract attributes as properties from TAG string:</span><span class="WHIT">
+<span class='line'>542</span> </span><span class="WHIT">		</span><span class="NAME">Layout.getTagAttr</span><span class="PUNC">(</span><span class="NAME">tag</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">tis</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>543</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">tis</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>544</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>545</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>546</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>547</span> 	 * This methods returns an associative array holding the contents of the different containers: header, body, footer and dialogs.
+<span class='line'>548</span> 	 * 
+<span class='line'>549</span> 	 * @function
+<span class='line'>550</span> 	 * @returns {Array} An associative array holding the contents of the different containers: header, body, footer and dialogs
+<span class='line'>551</span> 	 * @public
+<span class='line'>552</span> 	 */</span><span class="WHIT">
+<span class='line'>553</span> </span><span class="WHIT">	</span><span class="NAME">Layout.prototype.getYields</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>554</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.yields</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>555</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>556</span> 
+<span class='line'>557</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>558</span> 	 * This methods returns the contents of the header part of the layout.
+<span class='line'>559</span> 	 * 
+<span class='line'>560</span> 	 * @function
+<span class='line'>561</span> 	 * @returns {String} The contents of the header part of the layout
+<span class='line'>562</span> 	 * @public
+<span class='line'>563</span> 	 */</span><span class="WHIT">
+<span class='line'>564</span> </span><span class="WHIT">	</span><span class="NAME">Layout.prototype.getHeaderContents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>565</span> </span><span class="WHIT">	    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.headerContents</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>566</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>567</span> 
+<span class='line'>568</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>569</span> 	 * This methods returns the contents of the dialog part of the layout.
+<span class='line'>570</span> 	 * 
+<span class='line'>571</span> 	 * @function
+<span class='line'>572</span> 	 * @returns {String} The contents of the dialog part of the layout
+<span class='line'>573</span> 	 * @public
+<span class='line'>574</span> 	 */</span><span class="WHIT">
+<span class='line'>575</span> </span><span class="WHIT">	</span><span class="NAME">Layout.prototype.getDialogsContents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>576</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.dialogsContents</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>577</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>578</span> 
+<span class='line'>579</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>580</span> 	 * This methods returns the contents of the body part of the layout.
+<span class='line'>581</span> 	 * 
+<span class='line'>582</span> 	 * @function
+<span class='line'>583</span> 	 * @returns {String} The contents of the body part of the layout
+<span class='line'>584</span> 	 * @public
+<span class='line'>585</span> 	 */</span><span class="WHIT">
+<span class='line'>586</span> </span><span class="WHIT">	</span><span class="NAME">Layout.prototype.getBodyContents</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>587</span> </span><span class="WHIT">	    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.bodyContents</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>588</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>589</span> 
+<span class='line'>590</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>591</span> 	 * Gets the name of the layout.
+<span class='line'>592</span> 	 * 
+<span class='line'>593</span> 	 * @function
+<span class='line'>594</span> 	 * @returns {String} The name of the layout.
+<span class='line'>595</span> 	 * @public
+<span class='line'>596</span> 	 */</span><span class="WHIT">
+<span class='line'>597</span> </span><span class="WHIT">	</span><span class="NAME">Layout.prototype.getName</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>598</span> </span><span class="WHIT">	    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.name</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>599</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>600</span> 
+<span class='line'>601</span> </span><span class="NAME">Layout.prototype.stringify</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>602</span> 
+<span class='line'>603</span> </span><span class="WHIT">	</span><span class="COMM">// "plain properties" list</span><span class="WHIT">
+<span class='line'>604</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">propList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'>605</span> </span><span class="WHIT">	     </span><span class="STRN">'name'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>606</span> </span><span class="WHIT">	     </span><span class="STRN">'remoteaccess'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>607</span> </span><span class="WHIT">	     </span><span class="STRN">'def'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>608</span> </span><span class="WHIT">	     </span><span class="STRN">'headerElements'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>609</span> </span><span class="WHIT">	     </span><span class="STRN">'headerContents'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>610</span> </span><span class="WHIT">	     </span><span class="STRN">'title'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>611</span> </span><span class="WHIT">	     </span><span class="STRN">'bodyContents'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>612</span> </span><span class="WHIT">	     </span><span class="STRN">'dialogsContents'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>613</span> </span><span class="WHIT">	     </span><span class="STRN">'markerAttributeName'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>614</span> </span><span class="WHIT">	     </span><span class="STRN">'markerAttributeValue'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>615</span> </span><span class="WHIT">	     </span><span class="STRN">'markerUseSingleQuotes'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>616</span> </span><span class="WHIT">	     </span><span class="STRN">'bodyAttributes'</span><span class="WHIT">
+<span class='line'>617</span> </span><span class="WHIT">	</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>618</span> 
+<span class='line'>619</span> </span><span class="WHIT">	</span><span class="COMM">//complex Array-properties</span><span class="WHIT">
+<span class='line'>620</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">arrayPropList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'>621</span> </span><span class="WHIT">   	     </span><span class="STRN">'yields'</span><span class="WHIT"> </span><span class="COMM">//element type: YieldDeclaration (stringify-able)</span><span class="WHIT">
+<span class='line'>622</span> </span><span class="WHIT">   	</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>623</span> 
+<span class='line'>624</span> </span><span class="WHIT">	</span><span class="COMM">//function for iterating over the property-list and generating JSON-like entries in the string-buffer</span><span class="WHIT">
+<span class='line'>625</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">appendStringified</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">storageUtils.appendStringified</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>626</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>627</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">moduleNameString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'"'</span><span class="PUNC">+</span><span class="NAME">this.name</span><span class="PUNC">+</span><span class="STRN">'Layout"'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>628</span> 
+<span class='line'>629</span> </span><span class="WHIT">	</span><span class="COMM">//TODO use requirejs mechanism? (NOTE there may occur timing problems for loading/registering the JS file, and querying the PresentationManager for it ...)</span><span class="WHIT">
+<span class='line'>630</span> </span><span class="COMM">//	var sb = ['define('+moduleNameString+', ["storageUtils"], function(parser){ return parser.restoreObject({ classConstructor: "layout"', ','];</span><span class="WHIT">
+<span class='line'>631</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>632</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">sb</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="STRN">'require("storageUtils").restoreObject({ classConstructor: "layout"'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">','</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>633</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>634</span> </span><span class="WHIT">	</span><span class="NAME">appendStringified</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">propList</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sb</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>635</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>636</span> </span><span class="WHIT">	</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="STRN">'initPublish: function(){ require("presentationManager").addLayout(this); }'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>637</span> </span><span class="WHIT">	</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="STRN">','</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>638</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>639</span> </span><span class="WHIT">	</span><span class="COMM">//non-primitives array-properties with stringify() function:</span><span class="WHIT">
+<span class='line'>640</span> </span><span class="WHIT">	</span><span class="NAME">appendStringified</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arrayPropList</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sb</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">arrayValueExtractor</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arrayValue</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>641</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>642</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">buf</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="PUNC">[</span><span class="STRN">'['</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>643</span> </span><span class="WHIT">		</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">size</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">arrayValue.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">size</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>644</span> </span><span class="WHIT">			</span><span class="NAME">buf.push</span><span class="PUNC">(</span><span class="NAME">arrayValue</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">stringify</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>645</span> </span><span class="WHIT">			</span><span class="NAME">buf.push</span><span class="PUNC">(</span><span class="STRN">','</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>646</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>647</span> </span><span class="WHIT">		</span><span class="COMM">//remove last comma</span><span class="WHIT">
+<span class='line'>648</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">arrayValue.length</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>649</span> </span><span class="WHIT">			</span><span class="NAME">buf.splice</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">buf.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>650</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>651</span> </span><span class="WHIT">		</span><span class="NAME">buf.push</span><span class="PUNC">(</span><span class="STRN">']'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>652</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>653</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">buf.join</span><span class="PUNC">(</span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>654</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>655</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>656</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>657</span> </span><span class="WHIT">	</span><span class="COMM">//if last element is a comma, remove it</span><span class="WHIT">
+<span class='line'>658</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">sb</span><span class="PUNC">[</span><span class="NAME">sb.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">','</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>659</span> </span><span class="WHIT">		</span><span class="NAME">sb.splice</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">sb.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>660</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>661</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>662</span> </span><span class="WHIT">	</span><span class="COMM">//TODO use requirejs mechanism? (see remark above)</span><span class="WHIT">
+<span class='line'>663</span> </span><span class="COMM">//	sb.push(' }, true); });\n require(['//&lt;- add require-call, so that this JS-file adds itself to the loaded dependencies in requirejs</span><span class="WHIT">
+<span class='line'>664</span> </span><span class="COMM">//			+ moduleNameString + ']);');</span><span class="WHIT">
+<span class='line'>665</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>666</span> </span><span class="WHIT">	</span><span class="NAME">sb.push</span><span class="PUNC">(</span><span class="STRN">' }, true, '</span><span class="PUNC">+</span><span class="NAME">storageUtils.STORAGE_FILE_FORMAT_NUMBER</span><span class="PUNC">+</span><span class="STRN">');'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>667</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>668</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">sb.join</span><span class="PUNC">(</span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>669</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>670</span> 
+<span class='line'>671</span> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Layout</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>672</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>673</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>674</span> </span></pre></body></html>

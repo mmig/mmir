@@ -1,0 +1,155 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="TOKN">﻿</span><span class="COMM">/*
+<span class='line'>  2</span>  * License (MIT)
+<span class='line'>  3</span>  *
+<span class='line'>  4</span>  * modifications:
+<span class='line'>  5</span>  * 
+<span class='line'>  6</span>  * 	Copyright (C) 2013 DFKI GmbH
+<span class='line'>  7</span>  * 	Deutsches Forschungszentrum fuer Kuenstliche Intelligenz
+<span class='line'>  8</span>  * 	German Research Center for Artificial Intelligence
+<span class='line'>  9</span>  * 	http://www.dfki.de
+<span class='line'> 10</span>  *  
+<span class='line'> 11</span>  * based on
+<span class='line'> 12</span>  * 	Copyright (C) 2013 Matt Diamond (MIT License)
+<span class='line'> 13</span>  *
+<span class='line'> 14</span>  * 	Permission is hereby granted, free of charge, to any person obtaining a 
+<span class='line'> 15</span>  * 	copy of this software and associated documentation files (the 
+<span class='line'> 16</span>  * 	"Software"), to deal in the Software without restriction, including 
+<span class='line'> 17</span>  * 	without limitation the rights to use, copy, modify, merge, publish, 
+<span class='line'> 18</span>  * 	distribute, sublicense, and/or sell copies of the Software, and to 
+<span class='line'> 19</span>  * 	permit persons to whom the Software is furnished to do so, subject to 
+<span class='line'> 20</span>  * 	the following conditions:
+<span class='line'> 21</span>  * 
+<span class='line'> 22</span>  * 	The above copyright notice and this permission notice shall be included 
+<span class='line'> 23</span>  * 	in all copies or substantial portions of the Software.
+<span class='line'> 24</span>  * 
+<span class='line'> 25</span>  * 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+<span class='line'> 26</span>  * 	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+<span class='line'> 27</span>  * 	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+<span class='line'> 28</span>  * 	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+<span class='line'> 29</span>  * 	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+<span class='line'> 30</span>  * 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+<span class='line'> 31</span>  * 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<span class='line'> 32</span>  */</span><span class="WHIT">
+<span class='line'> 33</span> 
+<span class='line'> 34</span> 
+<span class='line'> 35</span> </span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 36</span> 
+<span class='line'> 37</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">WORKER_PATH</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'mmirf/workers/recorderWorker.js'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> 
+<span class='line'> 39</span> </span><span class="WHIT">  </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">Recorder</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cfg</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">config</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cfg</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">bufferLen</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">config.bufferLen</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NUMB">4096</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">    </span><span class="NAME">this.context</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">source.context</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="COMM">//    this.createScriptProcessor = function(contextObj, bufferSize, numberOfInputChannels, numberOfOutputChannels){</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="COMM">//    	if(contextObj.createJavaScriptNode){</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="COMM">//    		return contextObj.createJavaScriptNode(bufferSize, numberOfInputChannels, numberOfOutputChannels);</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="COMM">//    	}</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="COMM">//    	else if(contextObj.createScriptProcessor){</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="COMM">//    		return contextObj.createScriptProcessor(bufferSize, numberOfInputChannels, numberOfOutputChannels);</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="COMM">//    	}</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="COMM">//    	else {</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="COMM">//    		throw Error('Could not create script-processor for AudioContext: context provides no function for generating processor!');</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="COMM">//    	}</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="COMM">//    };</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="COMM">//    this.node = this.createScriptProcessor(this.context, bufferLen, 2, 2);</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.context.createScriptProcessor</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    	</span><span class="NAME">this.node</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.context.createJavaScriptNode</span><span class="PUNC">(</span><span class="NAME">bufferLen</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    	</span><span class="NAME">this.node</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.context.createScriptProcessor</span><span class="PUNC">(</span><span class="NAME">bufferLen</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">worker</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Worker</span><span class="PUNC">(</span><span class="NAME">config.workerPath</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">WORKER_PATH</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="NAME">worker.postMessage</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">    	</span><span class="NAME">command</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'init'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">    	</span><span class="NAME">config</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">    		</span><span class="NAME">sampleRate</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">this.context.sampleRate</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">recording</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">      </span><span class="NAME">currCallback</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> 
+<span class='line'> 71</span> </span><span class="WHIT">    </span><span class="NAME">this.node.onaudioprocess</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">recording</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">      </span><span class="NAME">worker.postMessage</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">        </span><span class="NAME">command</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'record'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">        </span><span class="NAME">buffer</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">          </span><span class="NAME">e.inputBuffer.getChannelData</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">          </span><span class="NAME">e.inputBuffer.getChannelData</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">        </span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 81</span> 
+<span class='line'> 82</span> </span><span class="WHIT">    </span><span class="NAME">this.configure</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">cfg</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">      </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">prop</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">cfg</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">cfg.hasOwnProperty</span><span class="PUNC">(</span><span class="NAME">prop</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">          </span><span class="NAME">config</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cfg</span><span class="PUNC">[</span><span class="NAME">prop</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 89</span> 
+<span class='line'> 90</span> </span><span class="WHIT">    </span><span class="NAME">this.record</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">      </span><span class="NAME">recording</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 93</span> 
+<span class='line'> 94</span> </span><span class="WHIT">    </span><span class="NAME">this.stop</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">      </span><span class="NAME">recording</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 97</span> 
+<span class='line'> 98</span> </span><span class="WHIT">    </span><span class="NAME">this.clear</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">      </span><span class="NAME">worker.postMessage</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">command</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'clear'</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>101</span> 
+<span class='line'>102</span> </span><span class="WHIT">    </span><span class="NAME">this.getBuffers</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">cb</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">      </span><span class="NAME">currCallback</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">config.callback</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">      </span><span class="NAME">worker.postMessage</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">command</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'getBuffers'</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>106</span> 
+<span class='line'>107</span> </span><span class="WHIT">    </span><span class="NAME">this.exportWAV</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">cb</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">type</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">    	</span><span class="NAME">currCallback</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">config.callback</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">    	</span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">config.type</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">'audio/wav'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">    	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">currCallback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Error</span><span class="PUNC">(</span><span class="STRN">'Callback not set'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">    	</span><span class="NAME">worker.postMessage</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">    		</span><span class="NAME">command</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'exportWAV'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">    		</span><span class="NAME">type</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">type</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>116</span> 
+<span class='line'>117</span> </span><span class="WHIT">    </span><span class="NAME">this.exportMonoWAV</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">cb</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">type</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">    	</span><span class="NAME">currCallback</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">config.callback</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">    	</span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">config.type</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">'audio/wav'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">    	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">currCallback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Error</span><span class="PUNC">(</span><span class="STRN">'Callback not set'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">    	</span><span class="NAME">worker.postMessage</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">    		</span><span class="NAME">command</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'exportMonoWAV'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">    		</span><span class="NAME">type</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">type</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">    	</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>126</span> 
+<span class='line'>127</span> </span><span class="WHIT">    </span><span class="NAME">worker.onmessage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">    	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">blob</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">e.data</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="WHIT">    	</span><span class="NAME">currCallback</span><span class="PUNC">(</span><span class="NAME">blob</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>131</span> 
+<span class='line'>132</span> </span><span class="WHIT">    </span><span class="NAME">source.connect</span><span class="PUNC">(</span><span class="NAME">this.node</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">    </span><span class="NAME">this.node.connect</span><span class="PUNC">(</span><span class="NAME">this.context.destination</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">    </span><span class="COMM">// if the script node is not connected to an output the "onaudioprocess" event is not triggered in chrome.</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>135</span> 
+<span class='line'>136</span> </span><span class="WHIT">  </span><span class="NAME">Recorder.forceDownload</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">blob</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">filename</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">url</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">window.URL</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">window.webkitURL</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">createObjectURL</span><span class="PUNC">(</span><span class="NAME">blob</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">link</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">window.document.createElement</span><span class="PUNC">(</span><span class="STRN">'a'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">    </span><span class="NAME">link.href</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">url</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">    </span><span class="NAME">link.download</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">filename</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="STRN">'output.wav'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">click</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document.createEvent</span><span class="PUNC">(</span><span class="STRN">"Event"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">    </span><span class="NAME">click.initEvent</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">    </span><span class="NAME">link.dispatchEvent</span><span class="PUNC">(</span><span class="NAME">click</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>145</span> 
+<span class='line'>146</span> </span><span class="WHIT">  </span><span class="NAME">window.Recorder</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Recorder</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">window</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>148</span> </span></pre></body></html>
