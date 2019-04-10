@@ -45,8 +45,10 @@ The MMIR (Mobile Multimodal Interaction and Rendering) framework aims to provide
 lightweight multimodal dialog manager that -- for instance -- can run on mobile devices. 
 The base technology is HTML5 (JavaScript).
 
-A core concept for the framework is the MVC (Model View Controller) pattern. The framework provides a template
-mechanism similar to JSP (Java Server Pages), ASP (Active Server Pages), and alike.
+A core concept for the framework is the MVC (Model View Controller) pattern.
+While the framework provides a template mechanism similar to JSP (Java Server Pages),
+ASP (Active Server Pages), the MMIR framework can also be combined/used with other GUI
+frameworks, e.g. see [Ionic/Angluar starter-kit example][22].
 
 The state of the dialog system can be tracked and manipulated based on a finite-state machine (FSM).
 The framework uses SCXML (State Chart XML) via [SCION][1]: SCION is a JavaScript-based interpreter for SCXML files.
@@ -83,13 +85,13 @@ integration with an event queue.
 
 
 [0]: https://cordova.apache.org/
-[1]: https://github.com/jbeard4/SCION
+[1]: https://gitlab.com/scion-scxml/scion
 [2]: http://mary.dfki.de/
-[3]: http://requirejs.org/
+[3]: https://requirejs.org/
 [4]: https://github.com/mmig/mmir-lib
 [5]: https://github.com/mmig/mmir-tooling
 [6]: https://github.com/mmig/mmir-plugin-scionqueue
-[7]: https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
+[7]: https://w3c.github.io/speech-api/
 [8]: https://github.com/mmig/mmir/wiki
 [9]: https://github.com/mmig/mmir-cordova
 [10]: https://github.com/mmig/mmir-starter-kit
@@ -104,3 +106,4 @@ integration with an event queue.
 [19]: https://github.com/mmig/mmir/wiki/3.9.2-Speech-Processing-in-MMIR
 [20]: https://github.com/mmig/mmir-plugins-media
 [21]: https://cordova.apache.org/docs/
+[22]: https://github.com/mmig/mmir-starter-kit/tree/ionic-gui
