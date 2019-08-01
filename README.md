@@ -5,7 +5,7 @@
 <img width="10%" src="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png">
 </p>
 
-Overview for the MMIR (Mobile Multimodal Interaction and Rendering) Framework. 
+Overview for the MMIR (Mobile Multimodal Interaction and Rendering) Framework.
 
 
 ##### Related repositories
@@ -13,13 +13,14 @@ Overview for the MMIR (Mobile Multimodal Interaction and Rendering) Framework.
 - core:
   * [mmir-lib][4]: the core library _(this is usually included in the directory `mmirf/` of MMIR-based applications)_
   * [mmir-tooling][5]: scripts and resources for building and generating resources _(e.g. compiling JSON grammars)_
-- tools:
-  * [scion-queue-plugin][6]: a Cordova 5.x plugin that provides an event-queue for SCION (used by the dialog manager)
-- speech modules:
+  * [mmir-webpack][25]: extended tooling for integrating `mmir-lib` in [webpack][26]-based apps
+- plugins (e.g. for different speech recognition/synthesis engines):
+  * [mmir-plugins-*][20]: multiple speech input (ASR) and speech oupt (TTS) plugins that use various web services
   * [mmir-plugin-speech-android][14]: a Cordova 5.x plugin that integrates Android's default speech recognizer and text-to-speech engines
   * [mmir-plugin-speech-nuance][15]: a Cordova 5.x plugin that integrates the Nuance SpeechKit (Dragon Mobile SDK) for speech recognition and text-to-speech
-  * [mmir-plugins-media][20]: multiple speech input (ASR) and speech oupt (TTS) plugins that use various web services
   * see also [module overview][16] in the wiki
+- tools:
+  * [scion-queue-plugin][6]: a Cordova 5.x plugin for `android` platform that provides an event-queue for SCION (used by the dialog manager)
 - examples:
   * [mmir-cordova][9]: resources / example for creating a minimal MMIR-based application _(for Cordova 5.x)_
   * [mmir-starter-kit][10]: a small MMIR-based example application _(for Cordova 5.x)_
@@ -36,13 +37,14 @@ See the README in [mmir-cordova][9] for step-by-step instruction on how to (1) c
 
 
 Older Documenation:
+ * [API mmir-lib v4.x][23] (and [private-visibility][24])
  * [API mmir-lib v3.x][17] (and [private-visibility][18])
 
 
 ## Introduction
 
-The MMIR (Mobile Multimodal Interaction and Rendering) framework aims to provide a 
-lightweight multimodal dialog manager that -- for instance -- can run on mobile devices. 
+The MMIR (Mobile Multimodal Interaction and Rendering) framework aims to provide a
+lightweight multimodal dialog manager that -- for instance -- can run on mobile devices.
 The base technology is HTML5 (JavaScript).
 
 A core concept for the framework is the MVC (Model View Controller) pattern.
@@ -71,9 +73,9 @@ NOTE: Requirements for browser-based speech plugins
 ## Prerequisites
 
 For target platforms `Android` and `iOS`, Cordova 5.x or later is required
-(see [Cordova][20] documentation on CLI based development for more details).
+(see [Cordova][21] documentation on CLI based development for more details).
 
-In addition, the development tools for the targeted `platforms` need to be installed (see also the [Cordova][20] documentation).
+In addition, the development tools for the targeted `platforms` need to be installed (see also the [Cordova][21] documentation).
 
 ##### Custom Cordova Plugins
 
@@ -104,6 +106,10 @@ integration with an event queue.
 [17]: https://mmig.github.io/mmir/api-v3
 [18]: https://mmig.github.io/mmir/api-all-v3
 [19]: https://github.com/mmig/mmir/wiki/3.9.2-Speech-Processing-in-MMIR
-[20]: https://github.com/mmig/mmir-plugins-media
+[20]: https://github.com/mmig?q=mmir-plugin-
 [21]: https://cordova.apache.org/docs/
 [22]: https://github.com/mmig/mmir-starter-kit/tree/ionic-gui
+[23]: https://mmig.github.io/mmir/api-v4
+[24]: https://mmig.github.io/mmir/api-all-v4
+[25]: https://github.com/mmig/mmir-webpack
+[26]: https://webpack.js.org/
