@@ -3044,60 +3044,29 @@
     
     <section>
         <article>
-            <pre id="source-code" class="prettyprint source linenums"><code>/*
- * 	Copyright (C) 2012-2013 DFKI GmbH
- * 	Deutsches Forschungszentrum fuer Kuenstliche Intelligenz
- * 	German Research Center for Artificial Intelligence
- * 	http://www.dfki.de
- * 
- * 	Permission is hereby granted, free of charge, to any person obtaining a 
- * 	copy of this software and associated documentation files (the 
- * 	"Software"), to deal in the Software without restriction, including 
- * 	without limitation the rights to use, copy, modify, merge, publish, 
- * 	distribute, sublicense, and/or sell copies of the Software, and to 
- * 	permit persons to whom the Software is furnished to do so, subject to 
- * 	the following conditions:
- * 
- * 	The above copyright notice and this permission notice shall be included 
- * 	in all copies or substantial portions of the Software.
- * 
- * 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
- * 	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
- * 	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
- * 	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
- * 	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
- * 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
- * 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
-
+            <pre id="source-code" class="prettyprint source linenums"><code>
 /**
  * A Utility class for parsing (eHTML) templates.&lt;br>
- * 
+ *
  * @class ParserUtils
- * 
+ *
  * @see mmir.parser.ParserUtils#constructor
- * 
+ *
  * @example mmir.ParserUtils.parse(str, view)
  */
-//mmir.parser.ParserUtils = (function(){});
-
-
-//(function ( mmir ) {
-
 define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
         ,'mmirf/templateLexer','mmirf/ES3Lexer','mmirf/ES3Parser','mmirf/contentLexer','mmirf/contentParser'
         ,'mmirf/scriptLexer','mmirf/scriptParser','mmirf/antlr3'
-    ], 
-    
+    ],
+
     /**
      * Utility functions for parsing templates (and template elements, e.g. JS-parts of template expressions)
-     * 
+     *
      * @class
      * @name ParserUtils
      * @memberOf mmir.parser
      * @static
-     * 
+     *
      * @public
      */
     function( parser, ParsingResult, templateProcessor
@@ -3108,42 +3077,42 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 	/**
 	 * add extend-function for MmirTemplateLexer objects:
 	 *  attaches the main processing functionality for parsing the template files
-	 *  
-	 *  (NOTE the extend-function is called in the constructor, see MmirTemplate.g and MmirTemplateLexer.js) 
-	 * 
+	 *
+	 *  (NOTE the extend-function is called in the constructor, see MmirTemplate.g and MmirTemplateLexer.js)
+	 *
 	 * @type Function
 	 * @memberOf MmirTemplateLexer.prototype
 	 */
 	MmirTemplateLexer.__mmirExtend = templateProcessor;
-	
+
 	/**
 	 * @memberOf ES3Parser.prototype
 	 */
 	ES3Parser.prototype.getVarReferences = function(){
-		
+
 		var size = this.ampersatIdentifiers.length;
-		
+
 		if(size === 0){
 			return null;
 		}
-		
+
 		var varRefs = new Array(size);
 		for(var i=0; i &lt; size; ++i){
 			var ref = this.ampersatIdentifiers[i];
-			
+
 			var refObj = new ParsingResult(ref);
 //			refObj.start = ref.start;
-			
+
 			//correct end-position (token's stop-index is exactly the last char-index, whereas ParsingResult's end-position is token.stopIndex + 1)
 			refObj.end = refObj.getEnd() + 1;
-			
+
 			refObj.type = parser.element.VAR_REFERENCE;
-			
+
 			varRefs[i] = refObj;
 		}
 		return varRefs;
 	};
-	
+
 	////////////////////////////////////helper for debugging / printing error details ////////////////////////
 
 	/**
@@ -3154,16 +3123,16 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 	 *  2: warn
 	 *  3: error
 	 * TODO make this set-able (export getter/setter? use configurationManager?)
-	 * 
+	 *
 	 * @private
 	 * @memberOf ParserUtils#
 	 */
 	var errorLevel = 2;
-	
+
 
 	/**
 	 * HELPER print internal debug messages during parsing (VERY VERBOSE)
-	 * 
+	 *
 	 * @private
 	 * @memberOf ParserUtils#
 	 */
@@ -3174,7 +3143,7 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 
 	/**
 	 * HELPER print internal, informational messages during parsing (VERBOSE)
-	 * 
+	 *
 	 * @private
 	 * @memberOf ParserUtils#
 	 */
@@ -3185,7 +3154,7 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 
 	/**
 	 * HELPER print debug messages during parsing
-	 * 
+	 *
 	 * @private
 	 * @memberOf ParserUtils#
 	 */
@@ -3196,7 +3165,7 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 
 	/**
 	 * HELPER print informational messages during parsing
-	 * 
+	 *
 	 * @private
 	 * @memberOf ParserUtils#
 	 */
@@ -3204,10 +3173,10 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 		if (  errorLevel &lt;= 1  ) console.info(parser.parserCreatePrintMessage(prefix,msg, source));
 	};
 	parser.parserPrintInfo = _parserPrintInfo;
-	
+
 	/**
 	 * HELPER print warnings during parsing
-	 * 
+	 *
 	 * @private
 	 * @memberOf ParserUtils#
 	 */
@@ -3218,7 +3187,7 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 
 	/**
 	 * HELPER print errors during parsing
-	 * 
+	 *
 	 * @private
 	 * @memberOf ParserUtils#
 	 */
@@ -3226,10 +3195,10 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 		if (  errorLevel &lt;= 3  ) console.error(parser.parserCreatePrintMessage(prefix,msg, source));
 	};
 	parser.parserPrintError = _parserPrintError;
-	
+
 	/**
 	 * HELPER: attach internal print-functions to all classes (ie. prototypes) in the list
-	 * 
+	 *
 	 * @private
 	 * @memberOf ParserUtils#
 	 */
@@ -3241,24 +3210,24 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 			_prototype.printDebug = parser.print;
 		}
 	};
-	
+
 	//attach the internal debug/print functions to all lexers/parsers:
 	// (-> see import-list in define() above)
 	_attachInternalPrintFunc([
 		MmirTemplateLexer, ES3Lexer, ES3Parser, MmirScriptContentLexer, MmirScriptContentParser
 		, MmirScriptLexer, MmirScriptParser
 	]);
-	
+
 	/**
 	 * @type View
 	 * @private
 	 * @memberOf ParserUtils#
 	 */
 	var _currentParsedView = null;//FIXME make this an argument in the printXXX functions (e.g. the current mechanism will not work, if templates are parsed concurrently/in parallel/using threads)
-	
+
 	/**
 	 * Creates a message with parsing-information.
-	 * 
+	 *
 	 * In case the &lt;code>msg&lt;/code> is an error message containing relative/incorrect location information,
 	 * an heuristic will be used to fix the location information; in addition the references location
 	 * will be extracted from the source-String and a "pointer-String" will be generated, e.g.
@@ -3266,7 +3235,7 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 	 * 	source:   "  	@{  mmmm.['sd']=wer ;}@"
 	 * 	pointer:  "  	        ^"
 	 * &lt;/pre>
-	 * 
+	 *
 	 * @function
 	 * @param {String} prefix
 	 * 					a prefix for the message
@@ -3282,37 +3251,37 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 	 * @param {Object} [viewObj] OPTIONAL
 	 * 					currently not used!
 	 * 					(will replace _currentParsedView in the future!)
-	 * 
+	 *
 	 * @private
 	 * @memberOf ParserUtils#
 	 */
 	var parserCreatePrintMessage = (function(){//return function(prefix, msg, tokenSource, viewObj)
-		
+
 		/**
 		 *
 		 * Get the index in the String str, where line number lineNo
 		 * starts.
-		 * 
+		 *
 		 * New lines begin after \n, \r\n, or \r.
-		 * 
+		 *
 		 * If lineNo is &lt;= 1, the function returns always 0.
-		 * 
-		 * If the lineNo is greater than the count of lines in str, the string length itself is returned. 
-		 * 
+		 *
+		 * If the lineNo is greater than the count of lines in str, the string length itself is returned.
+		 *
 		 * &lt;p>
 		 * NOTE used by {@link #parserCreatePrintMessage}
-		 * 
+		 *
 		 * @function
 		 * @param {String} str the string
 		 * @param {Number} lineNo the line number (first line is 1)
-		 * 
+		 *
 		 * @private
 		 * @memberOf ParserUtils.parserCreatePrintMessage
 		 */
 		var getIndexForLine = (function(){
-			
+
 			var detectLinebreak = /(\r?\n|\r)/igm;
-			
+
 			return function(str, lineNo){
 				if(lineNo &lt;= 1){
 					return 0;
@@ -3325,14 +3294,14 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 						break;
 					}
 				}
-				
+
 				//reset regexpr:
 				detectLinebreak.lastIndex = 0;
-				
+
 				if(match){
 					return match.index + match[1].length;
 				}
-				
+
 				//request line-no. >= 2 AND loop "detect enough" linebreaks => the request line index starts after strings ends => return string's length
 				return str.length;
 			};
@@ -3341,9 +3310,9 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 		/**
 		 *
 		 * Get the line in the String str, in which the char at index is included.
-		 * 
+		 *
 		 * New lines begin after \n, \r\n, or \r,
-		 * e.g. for line X: 
+		 * e.g. for line X:
 		 * &lt;pre>
 		 *  ...\r\n
 		 *        ^
@@ -3355,20 +3324,20 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 		 * If the index is greater than str.length, -1 is returned.
 		 * &lt;p>
 		 * NOTE used by {@link #extractErrorPosition}
-		 * 
+		 *
 		 * @function
 		 * @param {String} str the string
 		 * @param {Number} index the char index for which to find the line number (first line is 1)
-		 * 
+		 *
 		 * @private
-		 * 
+		 *
 		 * @memberOf ParserUtils.parserCreatePrintMessage
-		 * 
+		 *
 		 */
 		var getLineForIndex = (function(){
-			
+
 			var detectLinebreak = /(\r?\n|\r)/ig;
-			
+
 			return function(str, index){
 				if(index &lt; 0){
 					return 1;
@@ -3391,10 +3360,10 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 	                lastPos = currentPos;
 					++count;
 				}
-				
+
 				//reset regexpr:
 				detectLinebreak.lastIndex = 0;
-				            
+
 				return {
 					line : count,
 					index: index - lastPos
@@ -3403,36 +3372,36 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 		})();//END getLineForIndex
 
 		/**
-		 * 
+		 *
 		 * NOTE used by {@link #parserCreatePrintMessage}
-		 * 
+		 *
 		 * @private
 		 * @function
 		 * @memberOf ParserUtils.parserCreatePrintMessage
 		 */
 		var extractErrorPosition = (function(){
-			
+
 			var detectLineNo = /line (\d+):(-?\d+)/i;
-			
+
 			return function extractErrorPositionImpl(msg, offset, originalContent, tokenSource){
 //				console.log('\nTEST1_extractErrorPositionImpl with arguments '+arguments.length+'\n');
-				
+
 				var result = detectLineNo.exec(msg);
-				
+
 				//reset regexpr:
 				detectLineNo.lastIndex = 0;
-				
+
 //				console.log('\nTEST2_result for "'+msg+'": '+result+'\n');
 				var pos = null;
 				if(result){
-					
+
 					var line = parseInt(result[1],10);
 					var index = parseInt(result[2],10);
-					
+
 					var isCorrected = false;
-					
+
 					if(tokenSource){
-						
+
 						//if we have "invalid" position-info.:
 						//  -> the error probably occured at the very beginning of the parsed expression
 						//  -> try to extract position from parent parser/lexer
@@ -3440,10 +3409,10 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 							line  = tokenSource.getLine();
 							index = tokenSource.getCharPositionInLine();
 						}
-						
+
 						//if there is an offest supplied by the tokenSource -> use it:
 						if(tokenSource.offset){
-							
+
 							var iOffset = tokenSource.offset;
 //							if(line === 1){
 //								//
@@ -3455,32 +3424,32 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 //								//   @for( ...
 //								iOffset += 2;
 //							}
-							
+
 							var contentOffset = getLineForIndex(originalContent, iOffset);
-							
-							//if it is "relatively" the first line, we need to adjust to index 
+
+							//if it is "relatively" the first line, we need to adjust to index
 							//   (i.e. the position within the line)
 							if(line === 1){
 								index += contentOffset.index;
 							}
-							
+
 							//adjust the line, i.e. make "relative" -> "absolute" line number
 							line += contentOffset.line - 1;
-							
+
 							isCorrected = true;
 						}
-						
+
 					}
-					
+
 					pos = {
 							line: line,
 							index: index
 					};
 //					console.log('\nTEST3_pos: '+JSON.stringify(pos)+', offset: '+offset+'\n');
-					
+
 					if(offset &amp;&amp; offset !== 0){
 //						console.log('\nTEST4_offset: '+offset+'\n');
-						
+
 						var newLine = line;
 						var newIndex = index;
 						if( ! isCorrected){
@@ -3494,7 +3463,7 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 							pos.originalLine = line;
 							pos.line = newLine;
 						}
-						
+
 						var fixed = msg.substring(0,result.index + 'line '.length) + newLine + ':' + newIndex + msg.substring(result.index + result[0].length);
 						pos.text = fixed;
 //						pos.originalContent = originalContent;
@@ -3505,18 +3474,18 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 					}
 				}
 				else if(tokenSource &amp;&amp; tokenSource.start &amp;&amp; tokenSource.end){
-					
+
 					pos = getLineForIndex(originalContent, tokenSource.start);
 					pos.text = ' near /';
 				}
-				
+
 				return pos;
 			};
 		})();//END extractErrorPosition
-		
+
 		/**
 		 * Create a message for parsing-information.
-		 * 
+		 *
 		 * In case the &lt;code>msg&lt;/code> is an error message containing relative/incorrect location information,
 		 * an heuristic will be used to fix the location information; in addition the references location
 		 * will be extracted from the source-String and a "pointer-String" will be generated, e.g.
@@ -3524,9 +3493,9 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 		 * 	source:   "  	@{  mmmm.['sd']=wer ;}@"
 		 * 	pointer:  "  	        ^"
 		 * &lt;/pre>
-		 * 
+		 *
 		 * @private
-		 * 
+		 *
 		 * @param {String} prefix
 		 * 					a prefix for the message
 		 * @param {String} msg
@@ -3545,13 +3514,13 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 		return function parserCreatePrintMessageImpl(prefix, msg, tokenSource, viewObj){//FIXME
 			var currentView = _currentParsedView;
 			if(currentView != null){
-				
+
 				var rootView = null;
 				var details = '';
 				if(currentView.getController){
 					details += 'CTRL("' + currentView.getController().getName() + '")';
 				}
-				
+
 				if(currentView.getView){
 					if(details.length > 0){
 						details += '->';
@@ -3559,30 +3528,30 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 					details += 'VIEW("' + currentView.getView().getName() + '")';
 					rootView = currentView.getView();
 				}
-				
+
 				if(details.length > 0){
 					details += '->';
 				}
 				details += currentView.constructor.name;
-				
+
 				if(currentView.getName){
 					details += '("' + currentView.getName() + '")';
 				}
-				
+
 				if(rootView &amp;&amp; typeof currentView.getStart !== 'undefined'){
-					
+
 					var pos = extractErrorPosition(msg, currentView.getOffset(), rootView.getDefinition(), tokenSource);
 		//			console.log('\nTEST_A_pos: '+JSON.stringify(pos)+', offset: '+currentView.getStart() +'\n');
 					if(pos){
-		
+
 						msg = pos.text;
-						
+
 						//msg += '\n\t at line '+pos.line+', index '+pos.index;
 						var content = rootView.getDefinition();
 						var line = null;
 						var offset = currentView.getStart();
-		
-						
+
+
 						if(content){
 							var start = getIndexForLine(content, pos.line);
 							var end = start;
@@ -3590,12 +3559,12 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 							while(end &lt; len &amp;&amp; (content[end] != '\r' &amp;&amp; content[end] != '\n')){
 								++end;
 							}
-							
+
 							line = content.substring(start,end);
 						}
-						
+
 						if(line){
-							
+
 							//marker for "pointing" the error
 							var marker = [];
 							for(var i=0; i &lt; pos.index; ++i){
@@ -3610,33 +3579,33 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 							}
 							//add marker symbol, that points to error in the line above:
 							marker.push('^');
-			
+
 							msg += ' at line '+pos.line+':';
 							msg += '\n "'+line+'"';        //&lt;- the line with the error
 							msg += '\n  '+marker.join(''); //&lt;- the marker line (will only be correctly aligned for fixed-width fonts)
 						}
 					}
 				}
-				
+
 				return prefix + 'in ' + details + ' - ' + msg;
 			}
 			else {
 				return prefix+msg;
 			}
 		};//END parserCreatePrintMessage
-		
+
 	})();//END var parserCreatePrintMessage = ...
-	
-	parser.parserCreatePrintMessage = parserCreatePrintMessage; 
-	
+
+	parser.parserCreatePrintMessage = parserCreatePrintMessage;
+
 	//////////////////////////////////// END: helper for debugging, error details etc. ////////////////////////
 
 	/**
-     * Object containing the instance of the class ParserUtils 
-     * 
+     * Object containing the instance of the class ParserUtils
+     *
      * @type ParserUtils
      * @private
-     * 
+     *
      * @memberOf ParserUtils#
      */
     var instance = null;
@@ -3646,21 +3615,21 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
      * @memberOf ParserUtils#
      */
     var isDebug = true;//TODO read/set from configuration
-    
+
     MmirTemplateLexer.prototype.emitErrorMessage = function(msg) {
     	parser.parserPrintError('[ERROR] TemplateLexer: ', msg, this);
 	};
 //		MmirTemplateParser.prototype.emitErrorMessage = function(msg) {
 //			parser.parserPrintError('[ERROR] TemplateParser: ',msg);
 //		};
-	
+
 	ES3Lexer.prototype.emitErrorMessage = function(msg) {
 		parser.parserPrintError('[ERROR] JavaScriptLexer_ES3: ', msg, this);
 	};
 	ES3Parser.prototype.emitErrorMessage = function(msg) {
 		parser.parserPrintError('[ERROR] JavaScriptParser_ES3: ', msg, this.getTokenStream().getTokenSource());
 	};
-	
+
 	MmirScriptLexer.prototype.emitErrorMessage = function(msg) {
 		var mode = this.isStatementMode()? 'Statement' : 'Block';
 		parser.parserPrintError('[ERROR] Script'+mode+'Lexer: ',msg, this);
@@ -3668,14 +3637,14 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 	MmirScriptParser.prototype.emitErrorMessage = function(msg) {
 		parser.parserPrintError('[ERROR] ScriptParser: ',msg, this.getTokenStream().getTokenSource());
 	};
-	
+
 	MmirScriptContentLexer.prototype.emitErrorMessage = function(msg) {
 		parser.parserPrintError('[ERROR] ContentLexer: ',msg, this);
 	};
 	MmirScriptContentParser.prototype.emitErrorMessage = function(msg) {
 		parser.parserPrintError('[ERROR] ContentParser: ',msg, this.getTokenStream().getTokenSource());
 	};
-	
+
 	/**
 	 * @private
      * @memberOf ParserUtils#
@@ -3684,9 +3653,9 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 
 	    var input = new org.antlr.runtime.ANTLRStringStream(text);//FIXME change, how dependency 'mmirf/antlr3' is exported?
 	  	var lexer = new MmirTemplateLexer(input);
-	  	
+
 	  	lexer.isDebug = isDebug;
-	  	
+
 	  	var tokens = new org.antlr.runtime.CommonTokenStream(lexer);//FIXME change, how dependency 'mmirf/antlr3' is exported?
 
 		var result 				= {};
@@ -3706,167 +3675,166 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 		result.vars				= lexer.vars;
 		result.comments			= lexer.comments;
 		//end: parsing results
-		
-		
+
+
 		lexer = null;
-		
+
 		return result;
 	}
-	
+
 	/**
 	 * @private
      * @memberOf ParserUtils#
 	 */
 	function internalParseJS(text, entryRuleName, offset) {
-	  	
+
 	  	var input = new org.antlr.runtime.ANTLRStringStream(text);
 	  	var lexer = new ES3Lexer(input);
 	  	lexer.isDebug = isDebug;
 	  	lexer.offset = offset;
-	  	
+
 	  	var tokens = new org.antlr.runtime.CommonTokenStream(lexer);
 		var parser = new ES3Parser(tokens);
 		parser.offset = offset;
-		
+
 		if(!entryRuleName){
-//			var parseResult = 
+//			var parseResult =
 			parser.program();//&lt;- parse with main rule 'program' in ES3Parser
 		}
 		else {
-//				var parseResult = 
+//				var parseResult =
 				parser[entryRuleName]();//&lt;- parse with main rule 'program' in ES3Parser
 		}
 		var result 				= new Object();
 		result.rawTemplateText 	= tokens.toString();
-		
+
 		var varRefs = parser.getVarReferences();
 		if(varRefs){
 			result.varReferences = varRefs;
 		} else {
 			result.varReferences = [];
 		}
-		
+
 		//TODO handle potentially global var-declaration (i.e. assignments without preceding var, where the variable is undefined yet)
-		
+
 		//end: parsing results
-		
+
 		lexer = null;
 		parser = null;
-		
+
 		return result;
 	}
-		
+
 //		var getVarReferences = function(parser){
-//			
+//
 //			var size = parser.ampersatIdentifiers.length;
-//			
+//
 //			if(size === 0){
 //				return null;
 //			}
-//			
+//
 //			var varRefs = new Array(size);
 //			for(var i=0; i &lt; size; ++i){
 //				var ref = parser.ampersatIdentifiers[i];
-//				
+//
 //				var refObj = new mmir.parser.ParsingResult(ref);
 ////				refObj.start = ref.start;
-//				
+//
 //				//correct end-position (token's stop-index is exactly the last char-index, whereas ParsingResult's end-position is token.stopIndex + 1)
 //				refObj.end = refObj.getEnd() + 1;
-//				
+//
 //				refObj.type = mmir.parser.element.VAR_REFERENCE;
-//				
+//
 //				varRefs[i] = refObj;
 //			}
 //			return varRefs;
 //		};
-		
+
 	    /**
 		 * Constructor-Method of Singleton mmir.parser.ParserUtils
-		 * 
+		 *
 		 * @constructs ParserUtils
 		 * @memberOf ParserUtils.prototype
 		 * @private
 		 * @ignore
-		 * 
+		 *
 		 */
 	    function constructor(){
 	        //private members (currently none)
-	    	
+
 	    	/** @lends mmir.parser.ParserUtils.prototype */
 	    	return {
 	        	//public members:
 
 	    		/**
-	    		 * Parse a text as view template (e.g. *.ehtml files). 
-	    		 * 
+	    		 * Parse a text as view template (e.g. *.ehtml files).
+	    		 *
 	    		 * @param {String} rawTemplateString the text that should be parsed
 	    		 * @param {Object} [view] (optional) the view to which the &lt;tt>rawTemplateString&lt;/tt> belongs (only used for error messages)
 	    		 * @returns {mmir.parser.ParsingResult} the parsing result
-	    		 * 
+	    		 *
 	    		 * @public
 	    		 * @memberOf mmir.parser.ParserUtils.prototype
 	    		 */
 	    		parse: function(rawTemplateString, view){
-	    			
+
 	    			if(view){
 	    				_currentParsedView = view;
 	    			}
 	    			else {
 	    				_currentParsedView = null;
 	    			}
-	    			
+
 	    			return internalParse(rawTemplateString);
 	    		},
-	    		
+
 	    		/**
 	    		 * Parse a text as JavaScript.
-	    		 * 
+	    		 *
 	    		 * @param {String} rawTemplateString the text that should be parsed
 	    		 * @param {String} [parseEntryRuleName] (optional) specifies the JavaScript element that should be parsed for
 	    		 * @param {Object} [view] (optional) the view to which the &lt;tt>rawTemplateString&lt;/tt> belongs (only used for error messages)
 	    		 * @returns {mmir.parser.ParsingResult} the parsing result
-	    		 * 
+	    		 *
 	    		 * @public
 	    		 * @memberOf mmir.parser.ParserUtils.prototype
 	    		 */
 	    		parseJS: function(rawTemplateString, parseEntryRuleName, view, inViewOffset){
-	    			
+
 	    			//in case only 2 or 3 arguments are present: is 2nd the View object?
 	    			if(!inViewOffset &amp;&amp; typeof parseEntryRuleName !== 'string' &amp;&amp; parseEntryRuleName !== null &amp;&amp; typeof parseEntryRuleName === 'object'){
-	    				
+
 	    				if(typeof view === 'number'){
 	    					inViewOffset = view;
 	    				}
-	    				
+
 	    				view = parseEntryRuleName;
 	    				parseEntryRuleName = null;
-	    				
-	    				
+
+
 	    			}
-	    			
+
 	    			if(view){
 	    				_currentParsedView = view;
 	    			}
 	    			else {
 	    				_currentParsedView = null;
 	    			}
-	    			
+
 	    			return internalParseJS(rawTemplateString, parseEntryRuleName, inViewOffset);
 	    		}
 	    	};//END: return{}
-	    	
+
 	    }//END: constructor()
-	    
+
 	    instance = new constructor();
-	    
+
 	    //FIXME should the renderer be exported to parser.ParserUtils here?
 	    parser.ParserUtils = instance;
-	    
-	    return instance;
-		
-	});//END define(..., function(){
 
+	    return instance;
+
+	});//END define(..., function(){
 </code></pre>
         </article>
     </section>
@@ -3879,7 +3847,7 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Aug 01 2019 16:47:35 GMT+0200 (GMT+02:00)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Aug 01 2019 18:22:52 GMT+0200 (GMT+02:00)
         </footer>
     </div>
 </div>

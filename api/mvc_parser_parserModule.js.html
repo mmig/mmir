@@ -3044,42 +3044,16 @@
     
     <section>
         <article>
-            <pre id="source-code" class="prettyprint source linenums"><code>/*
- * 	Copyright (C) 2012-2013 DFKI GmbH
- * 	Deutsches Forschungszentrum fuer Kuenstliche Intelligenz
- * 	German Research Center for Artificial Intelligence
- * 	http://www.dfki.de
- * 
- * 	Permission is hereby granted, free of charge, to any person obtaining a 
- * 	copy of this software and associated documentation files (the 
- * 	"Software"), to deal in the Software without restriction, including 
- * 	without limitation the rights to use, copy, modify, merge, publish, 
- * 	distribute, sublicense, and/or sell copies of the Software, and to 
- * 	permit persons to whom the Software is furnished to do so, subject to 
- * 	the following conditions:
- * 
- * 	The above copyright notice and this permission notice shall be included 
- * 	in all copies or substantial portions of the Software.
- * 
- * 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
- * 	OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
- * 	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
- * 	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
- * 	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
- * 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
- * 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
-
+            <pre id="source-code" class="prettyprint source linenums"><code>
 define(
 	/**
 	 * This module holds functions / classes for template parsing.
-	 * 
+	 *
 	 * &lt;p>
 	 * This module contains definitions for constants used in the Template Parser and Renderer.
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 * @namespace
 	 * @name mmir.parser
 	 * @example
@@ -3087,12 +3061,12 @@ define(
 	 * // (it is a sub-module of mmir!)
 	 * var someConst = mmir.parser.element.INCLUDE_SCRIPT;
 	 * ...
-	 * 
+	 *
 	 */
 	function(
 ){
 
-	
+
 var parser = {
 	/**
 	 * @namespace
@@ -3105,10 +3079,10 @@ var parser = {
 
 	/**
 	 * Constant for template expression type &lt;tt>include script&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression generates a script TAG.
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type INCLUDE_SCRIPT:
 	 * &lt;ul>
@@ -3116,7 +3090,7 @@ var parser = {
 	 * 	&lt;li>&lt;strong>scriptPathType&lt;/strong>: the type of the &lt;tt>scriptPath&lt;/tt>
 	 * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3125,11 +3099,11 @@ var parser = {
 	INCLUDE_SCRIPT 		: 0,
 	/**
 	 * Constant for template expression type &lt;tt>include style&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression generates a style reference, i.e.
 	 * a link TAG with &lt;tt>rel&lt;/tt> attribute &lt;code>stylesheet&lt;/code>.
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type INCLUDE_STYLE:
 	 * &lt;ul>
@@ -3137,7 +3111,7 @@ var parser = {
 	 * 	&lt;li>&lt;strong>stylePathType&lt;/strong>: the type of the &lt;tt>stylePath&lt;/tt>
 	 * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3146,10 +3120,10 @@ var parser = {
 	INCLUDE_STYLE 		: 2,
 	/**
 	 * Constant for template expression type &lt;tt>localize&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression inserts a localized String.
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type LOCALIZE:
 	 * &lt;ul>
@@ -3157,7 +3131,7 @@ var parser = {
 	 * 	&lt;li>&lt;strong>nameType&lt;/strong>: the type of the &lt;tt>name&lt;/tt>
 	 * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3166,10 +3140,10 @@ var parser = {
 	LOCALIZE	 		: 4,
 	/**
 	 * Constant for template expression type &lt;tt>yield declaration&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression declares a yield section.
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type YIELD_DECLARATION:
 	 * &lt;ul>
@@ -3177,7 +3151,7 @@ var parser = {
 	 * 	&lt;li>&lt;strong>nameType&lt;/strong>: the type of the &lt;tt>name&lt;/tt>
 	 * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3186,14 +3160,14 @@ var parser = {
 	YIELD_DECLARATION 	: 8,
 	/**
 	 * Constant for template expression type &lt;tt>yield content&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression specifies the content of a yield section.
-	 * 
+	 *
 	 * &lt;p>
 	 * A yield section corresponds to a {@link ContentElement}:
 	 * Its content can itself contain HTML content as well as template expressions.
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3202,18 +3176,18 @@ var parser = {
 	YIELD_CONTENT 		: 16,
 	/**
 	 * Constant for template expression type &lt;tt>code block&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression represents a compiled code block (script).
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type BLOCK:
 	 * &lt;ul>
 	 * 	&lt;li>&lt;strong>scriptContent&lt;/strong> {String}: &lt;tt>OPTIONALLY&lt;/tt> the script code as a String&lt;/li>
-	 * 	&lt;li>&lt;strong>scriptEval&lt;/strong> {Function}: the compiled script code in form of a function. The 
+	 * 	&lt;li>&lt;strong>scriptEval&lt;/strong> {Function}: the compiled script code in form of a function. The
 	 * 							function takes one argument: the current data-object.&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3222,18 +3196,18 @@ var parser = {
 	BLOCK 				: 32,
 	/**
 	 * Constant for template expression type &lt;tt>code statement&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression represents a compiled code statement (script).
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type STATEMENT:
 	 * &lt;ul>
 	 * 	&lt;li>&lt;strong>scriptContent&lt;/strong> {String}: &lt;tt>OPTIONALLY&lt;/tt> the script code as a String&lt;/li>
-	 * 	&lt;li>&lt;strong>scriptEval&lt;/strong> {Function}: the compiled script code in form of a function. The 
+	 * 	&lt;li>&lt;strong>scriptEval&lt;/strong> {Function}: the compiled script code in form of a function. The
 	 * 							function takes one argument: the current data-object.&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3242,21 +3216,21 @@ var parser = {
 	STATEMENT 			: 64,
 	/**
 	 * Constant for template expression type &lt;tt>helper&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression will invoke a function in the {@link Helper} instance
 	 * (depending of the {@link Controller}, in which's view definition this template expression is used).
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type HELPER:
 	 * &lt;ul>
 	 * 	&lt;li>&lt;strong>helper&lt;/strong>: the name of the helper function&lt;/li>
 	 * 	&lt;li>&lt;strong>helperType&lt;/strong>: the type of the &lt;tt>helper&lt;/tt>
 	 * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
-	 * 	&lt;li>&lt;strong>argsEval&lt;/strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 
+	 * 	&lt;li>&lt;strong>argsEval&lt;/strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS
 	 * 			(optional argument) of the helper expression. The function takes one argument: the current data-object.&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3265,22 +3239,22 @@ var parser = {
 	HELPER	 			: 128,
 	/**
 	 * Constant for template expression type &lt;tt>if&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression represents an if-expression, including the content-block
 	 * that follows the condition-statement of the if-expression.
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type IF:
 	 * &lt;ul>
-	 * 	&lt;li>&lt;strong>ifEval&lt;/strong> {Function}: the condition statement, that was compiled into a Function. The 
+	 * 	&lt;li>&lt;strong>ifEval&lt;/strong> {Function}: the condition statement, that was compiled into a Function. The
 	 * 							function takes one argument: the current data-object.&lt;/li>
 	 * 	&lt;li>&lt;strong>content&lt;/strong> {ContentElement}: the HTML / template content that should be render, in case the
 	 * 					if-expression evaluates to &lt;code>true&lt;/code>.&lt;/li>
 	 *  &lt;li>&lt;strong>elseContent&lt;/strong> {@link mmir.parser.ParsingResult}: OPTIONALLY a ParsingResult
 	 *  					representing an else-expression, see {@link mmir.parser.element.ELSE}.&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3289,18 +3263,18 @@ var parser = {
 	IF		 			: 256,
 	/**
 	 * Constant for template expression type &lt;tt>else&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression represents an else-expression (including its content-block);
 	 * an else-expression may occur in combination with an if-expression, see {@link mmir.parser.element.IF}.
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type ELSE:
 	 * &lt;ul>
 	 * 	&lt;li>&lt;strong>content&lt;/strong> {ContentElement}: the HTML / template content that should be render, in case the
 	 * 					if-expression (to which the else-expression belongs) evaluates to &lt;code>false&lt;/code>.&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3309,17 +3283,17 @@ var parser = {
 	ELSE	 			: 512,
 	/**
 	 * Constant for template expression type &lt;tt>for&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression represents for-expression (including its content-block);
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type FOR:
 	 * &lt;ul>
 	 * 	&lt;li>&lt;strong>forControlType&lt;/strong> {String}: the type of for-loop, either &lt;code>FORITER&lt;/code> or &lt;code>FORSTEP&lt;/code>&lt;/li>
 	 * 	&lt;li>&lt;strong>forInitEval&lt;/strong> {Function}: the initialization statement of the for-expression, compiled into
 	 * 									a Function. The function takes one argument: the current data-object.&lt;/li>
-	 * 		
+	 *
 	 * 	&lt;li>&lt;code>FORITER&lt;/code>: &lt;code>@for(PROP in OBJ){ ... }@&lt;/code>
 	 * 	 &lt;ul>
 	 * 		&lt;li>&lt;strong>forIterator&lt;/strong> {Object}: an iterator object with functions &lt;code>hasNext() : Boolean&lt;/code> and
@@ -3338,7 +3312,7 @@ var parser = {
 	 * 	&lt;li>&lt;strong>content&lt;/strong> {ContentElement}: the HTML / template content that should be rendered
 	 * 								 during each iteration of the for-loop.&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3347,11 +3321,11 @@ var parser = {
 	FOR		 			: 1024,
 	/**
 	 * Constant for template expression type &lt;tt>render&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression renders a &lt;tt>partial view&lt;/tt> into a view.
-	 * 
-	 * 
+	 *
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type RENDER:
 	 * &lt;ul>
@@ -3361,10 +3335,10 @@ var parser = {
 	 * 	&lt;li>&lt;strong>controller&lt;/strong>: the name of the controller, to which the partial view definition belongs&lt;/li>
 	 * 	&lt;li>&lt;strong>controllerType&lt;/strong>: the type of the &lt;tt>controller&lt;/tt>
 	 * 		 field: one of &lt;code>StringLiteral&lt;/code>, &lt;code>Identifier&lt;/code>, &lt;code>IdentifierNameAmpersatStart&lt;/code>&lt;/li>
-	 * 	&lt;li>&lt;strong>argsEval&lt;/strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 
+	 * 	&lt;li>&lt;strong>argsEval&lt;/strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS
 	 * 								(optional argument) of the render expression. The function takes one argument: the current data-object.&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3373,17 +3347,17 @@ var parser = {
 	RENDER	 			: 2048,
 	/**
 	 * Constant for template expression type &lt;tt>escape enter&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression represents an escape statement (when entering a template expression);
 	 * escaping means, that the following sequence is not interpreted as template expression.
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type ESCAPE_ENTER:
 	 * &lt;ul>
 	 * 	&lt;li>&lt;strong>text&lt;/strong> {String}: the text that will be rendered (i.e. without the escape-character(s) itself).&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3392,17 +3366,17 @@ var parser = {
 	ESCAPE_ENTER		: 4096,
 	/**
 	 * Constant for template expression type &lt;tt>escape exit&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression represents an escape statement (when exiting a template expression);
 	 * escaping means, that the following sequence is not interpreted as template expression.
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type ESCAPE_EXIT:
 	 * &lt;ul>
 	 * 	&lt;li>&lt;strong>text&lt;/strong> {String}: the text that will be rendered (i.e. without the escape-character(s) itself).&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3412,48 +3386,48 @@ var parser = {
 
 	/**
 	 * Constant for for-expression type &lt;tt>iter&lt;/tt> ("iteration").
-	 * 
+	 *
 	 * &lt;p>
 	 * This type identifies an ITERATION type for-expression.
-	 * 
-	 * 
+	 *
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
 	 * @public
-	 * 
+	 *
 	 * @see parser.element.FOR
 	 */
 	FOR_TYPE_ITER		: 16384,
 	/**
 	 * Constant for for-expression type &lt;tt>step&lt;/tt> ("step-wise").
-	 * 
+	 *
 	 * &lt;p>
 	 * This type identifies an STEP-wise type for-expression.
-	 * 
-	 * 
+	 *
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
 	 * @public
-	 * 
+	 *
 	 * @see parser.element.FOR
 	 */
 	FOR_TYPE_STEP		: 32768,
 
 	/**
 	 * Constant for template expression type &lt;tt>variable declaration&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression represents a variable declaration.
-	 * 
+	 *
 	 * &lt;p>
 	 * Properties of {@link mmir.parser.ParsingResult} objects with type VAR_DECLARATION:
 	 * &lt;ul>
 	 * 	&lt;li>&lt;strong>name&lt;/strong>: the name for the variable (without the leading &lt;tt>@&lt;/tt> of template variables)&lt;/li>
 	 * 	&lt;li>&lt;strong>nameType&lt;/strong>: the type of the &lt;tt>name&lt;/tt> field: &lt;code>StringLiteral&lt;/code>&lt;/li>
 	 * &lt;/ul>
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3462,20 +3436,20 @@ var parser = {
 	VAR_DECLARATION		: 65536,
 	/**
 	 * Constant for template expression type &lt;tt>variable reference&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * This template expression is used within JavaScript code blocks / statements,
 	 * in order to replace the occurrence of the &lt;tt>template variable&lt;/tt> by an
 	 * appropriate getter function, that retrieves the current value of the variable
 	 * during the execution of the script code.
-	 * 
+	 *
 	 * &lt;p>
 	 * NOTE: this is used during compilation of the Function objects, used e.g. by BLOCK, STATEMENT, FOR etc.
-	 * 
+	 *
 	 * &lt;p>
 	 * NOTE: the name of the variable is extracted from the raw-template text during processing/compilation
 	 * 		 of the Functions.
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3485,11 +3459,11 @@ var parser = {
 
 	/**
 	 * Constant for template expression type &lt;tt>comment&lt;/tt>.
-	 * 
+	 *
 	 * &lt;p>
 	 * The template expression represents a template-comment: the content of the comment will be ignored
 	 * (that is: removed during processing of the template).
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type Number
@@ -3501,7 +3475,7 @@ var parser = {
 	 * Constant for &lt;tt>data&lt;/tt> name that is used to hold the &lt;tt>current data&lt;/tt>:
 	 * this name will be used for the argument name of generated/compiled Functions, and in the Function code block
 	 * appropriate getter/setter expression will be inserted.
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type String
@@ -3509,9 +3483,9 @@ var parser = {
 	 */
 	DATA_NAME				: '__$$DATA$$__',
 	/**
-	 * Constant for the name of the reserved &lt;tt>data&lt;/tt> variable: the optional data argument is passed in 
+	 * Constant for the name of the reserved &lt;tt>data&lt;/tt> variable: the optional data argument is passed in
 	 * into rendering-calls for views, layouts etc. (see PresentationManager)
-	 * 
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type String
@@ -3521,15 +3495,15 @@ var parser = {
 	/**
 	 * Constant for the name of the reserved &lt;tt>argument&lt;/tt> variable: some template expressions
 	 * have an (optional) &lt;tt>argument&lt;/tt> argument, which can be accessed using the variable name
-	 * within the template expressions inner content-/code-blocks. 
-	 * 
+	 * within the template expressions inner content-/code-blocks.
+	 *
 	 * @memberOf mmir.parser.element
 	 * @constant
 	 * @type String
 	 * @public
 	 */
 	ARGUMENT_ARGUMENT_NAME	: '@argument'
-	
+
 	}//END element: {...
 
 };//END: parser: {...
@@ -3548,7 +3522,7 @@ return parser;
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Aug 01 2019 16:47:35 GMT+0200 (GMT+02:00)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Aug 01 2019 18:22:52 GMT+0200 (GMT+02:00)
         </footer>
     </div>
 </div>

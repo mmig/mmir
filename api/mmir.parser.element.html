@@ -3160,7 +3160,7 @@
 <dd>
     
     <div class="description">
-        Constant for template expression type <tt>code block</tt>.<p>The template expression represents a compiled code block (script).<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type BLOCK:<ul>	<li><strong>scriptContent</strong> {String}: <tt>OPTIONALLY</tt> the script code as a String</li>	<li><strong>scriptEval</strong> {Function}: the compiled script code in form of a function. The 							function takes one argument: the current data-object.</li></ul>
+        Constant for template expression type <tt>code block</tt>.<p>The template expression represents a compiled code block (script).<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type BLOCK:<ul>	<li><strong>scriptContent</strong> {String}: <tt>OPTIONALLY</tt> the script code as a String</li>	<li><strong>scriptEval</strong> {Function}: the compiled script code in form of a function. The							function takes one argument: the current data-object.</li></ul>
     </div>
     
     
@@ -3250,7 +3250,7 @@
 <dd>
     
     <div class="description">
-        Constant for the name of the reserved <tt>data</tt> variable: the optional data argument is passed in into rendering-calls for views, layouts etc. (see PresentationManager)
+        Constant for the name of the reserved <tt>data</tt> variable: the optional data argument is passed ininto rendering-calls for views, layouts etc. (see PresentationManager)
     </div>
     
     
@@ -3475,7 +3475,7 @@
 <dd>
     
     <div class="description">
-        Constant for template expression type <tt>for</tt>.<p>The template expression represents for-expression (including its content-block);<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type FOR:<ul>	<li><strong>forControlType</strong> {String}: the type of for-loop, either <code>FORITER</code> or <code>FORSTEP</code></li>	<li><strong>forInitEval</strong> {Function}: the initialization statement of the for-expression, compiled into									a Function. The function takes one argument: the current data-object.</li>			<li><code>FORITER</code>: <code>@for(PROP in OBJ){ ... }@</code>	 <ul>		<li><strong>forIterator</strong> {Object}: an iterator object with functions <code>hasNext() : Boolean</code> and					<code>next() : String</code> (which returns the name of the property currently iterated).</li>		<li><strong>forPropName</strong> {String}: the variable name for the property which is currently iterated over.</li>	 </ul>	</li>	<li><code>FORSTEP</code>: <code>@for(INIT; CONDITION; INCREMENT){ ... }@</code>	 <ul>		<li><strong>forConditionEval</strong> {Function}: the condition statement of the for-expression, compiled into											a Function. The function takes one argument: the current data-object.</li>		<li><strong>forIncrementEval</strong> {Function}: the increment statement of the for-expression, compiled into											a Function. The function takes one argument: the current data-object.</li>	 </ul>	</li>	<li><strong>content</strong> {ContentElement}: the HTML / template content that should be rendered								 during each iteration of the for-loop.</li></ul>
+        Constant for template expression type <tt>for</tt>.<p>The template expression represents for-expression (including its content-block);<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type FOR:<ul>	<li><strong>forControlType</strong> {String}: the type of for-loop, either <code>FORITER</code> or <code>FORSTEP</code></li>	<li><strong>forInitEval</strong> {Function}: the initialization statement of the for-expression, compiled into									a Function. The function takes one argument: the current data-object.</li>	<li><code>FORITER</code>: <code>@for(PROP in OBJ){ ... }@</code>	 <ul>		<li><strong>forIterator</strong> {Object}: an iterator object with functions <code>hasNext() : Boolean</code> and					<code>next() : String</code> (which returns the name of the property currently iterated).</li>		<li><strong>forPropName</strong> {String}: the variable name for the property which is currently iterated over.</li>	 </ul>	</li>	<li><code>FORSTEP</code>: <code>@for(INIT; CONDITION; INCREMENT){ ... }@</code>	 <ul>		<li><strong>forConditionEval</strong> {Function}: the condition statement of the for-expression, compiled into											a Function. The function takes one argument: the current data-object.</li>		<li><strong>forIncrementEval</strong> {Function}: the increment statement of the for-expression, compiled into											a Function. The function takes one argument: the current data-object.</li>	 </ul>	</li>	<li><strong>content</strong> {ContentElement}: the HTML / template content that should be rendered								 during each iteration of the for-loop.</li></ul>
     </div>
     
     
@@ -3624,7 +3624,7 @@
 <dd>
     
     <div class="description">
-        Constant for template expression type <tt>helper</tt>.<p>The template expression will invoke a function in the <a href="Helper.html"><code>Helper</code></a> instance(depending of the <a href="Controller.html"><code>Controller</code></a>, in which's view definition this template expression is used).<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type HELPER:<ul>	<li><strong>helper</strong>: the name of the helper function</li>	<li><strong>helperType</strong>: the type of the <tt>helper</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>argsEval</strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 			(optional argument) of the helper expression. The function takes one argument: the current data-object.</li></ul>
+        Constant for template expression type <tt>helper</tt>.<p>The template expression will invoke a function in the <a href="Helper.html"><code>Helper</code></a> instance(depending of the <a href="Controller.html"><code>Controller</code></a>, in which's view definition this template expression is used).<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type HELPER:<ul>	<li><strong>helper</strong>: the name of the helper function</li>	<li><strong>helperType</strong>: the type of the <tt>helper</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>argsEval</strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS			(optional argument) of the helper expression. The function takes one argument: the current data-object.</li></ul>
     </div>
     
     
@@ -3669,7 +3669,7 @@
 <dd>
     
     <div class="description">
-        Constant for template expression type <tt>if</tt>.<p>The template expression represents an if-expression, including the content-blockthat follows the condition-statement of the if-expression.<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type IF:<ul>	<li><strong>ifEval</strong> {Function}: the condition statement, that was compiled into a Function. The 							function takes one argument: the current data-object.</li>	<li><strong>content</strong> {ContentElement}: the HTML / template content that should be render, in case the					if-expression evaluates to <code>true</code>.</li> <li><strong>elseContent</strong> <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a>: OPTIONALLY a ParsingResult 					representing an else-expression, see <a href="mmir.parser.element.html#.ELSE"><code>mmir.parser.element.ELSE</code></a>.</li></ul>
+        Constant for template expression type <tt>if</tt>.<p>The template expression represents an if-expression, including the content-blockthat follows the condition-statement of the if-expression.<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type IF:<ul>	<li><strong>ifEval</strong> {Function}: the condition statement, that was compiled into a Function. The							function takes one argument: the current data-object.</li>	<li><strong>content</strong> {ContentElement}: the HTML / template content that should be render, in case the					if-expression evaluates to <code>true</code>.</li> <li><strong>elseContent</strong> <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a>: OPTIONALLY a ParsingResult 					representing an else-expression, see <a href="mmir.parser.element.html#.ELSE"><code>mmir.parser.element.ELSE</code></a>.</li></ul>
     </div>
     
     
@@ -3804,7 +3804,7 @@
 <dd>
     
     <div class="description">
-        Constant for template expression type <tt>render</tt>.<p>The template expression renders a <tt>partial view</tt> into a view.<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type RENDER:<ul>	<li><strong>partial</strong>: the name of the partial view</li>	<li><strong>partialType</strong>: the type of the <tt>partial</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>controller</strong>: the name of the controller, to which the partial view definition belongs</li>	<li><strong>controllerType</strong>: the type of the <tt>controller</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>argsEval</strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS 								(optional argument) of the render expression. The function takes one argument: the current data-object.</li></ul>
+        Constant for template expression type <tt>render</tt>.<p>The template expression renders a <tt>partial view</tt> into a view.<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type RENDER:<ul>	<li><strong>partial</strong>: the name of the partial view</li>	<li><strong>partialType</strong>: the type of the <tt>partial</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>controller</strong>: the name of the controller, to which the partial view definition belongs</li>	<li><strong>controllerType</strong>: the type of the <tt>controller</tt>		 field: one of <code>StringLiteral</code>, <code>Identifier</code>, <code>IdentifierNameAmpersatStart</code></li>	<li><strong>argsEval</strong> {Function}: OPTIONALLY compiled getter Function for retrieving the current ARGS								(optional argument) of the render expression. The function takes one argument: the current data-object.</li></ul>
     </div>
     
     
@@ -3849,7 +3849,7 @@
 <dd>
     
     <div class="description">
-        Constant for template expression type <tt>code statement</tt>.<p>The template expression represents a compiled code statement (script).<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type STATEMENT:<ul>	<li><strong>scriptContent</strong> {String}: <tt>OPTIONALLY</tt> the script code as a String</li>	<li><strong>scriptEval</strong> {Function}: the compiled script code in form of a function. The 							function takes one argument: the current data-object.</li></ul>
+        Constant for template expression type <tt>code statement</tt>.<p>The template expression represents a compiled code statement (script).<p>Properties of <a href="mmir.parser.ParsingResult.html"><code>mmir.parser.ParsingResult</code></a> objects with type STATEMENT:<ul>	<li><strong>scriptContent</strong> {String}: <tt>OPTIONALLY</tt> the script code as a String</li>	<li><strong>scriptEval</strong> {Function}: the compiled script code in form of a function. The							function takes one argument: the current data-object.</li></ul>
     </div>
     
     
@@ -4083,7 +4083,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Aug 01 2019 16:47:38 GMT+0200 (GMT+02:00)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Aug 01 2019 18:22:54 GMT+0200 (GMT+02:00)
         </footer>
     </div>
 </div>
