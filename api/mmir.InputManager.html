@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, IUI Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a target="_blank" href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, IUI Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -63,11 +63,11 @@
             
                 <li data-name="mmir.conf"><a href="mmir.html#.conf">conf</a></li>
             
-                <li data-name="mmir.const"><a href="mmir.html#.const">const</a></li>
-            
                 <li data-name="mmir.debug"><a href="mmir.html#.debug">debug</a></li>
             
                 <li data-name="mmir.jquery"><a href="mmir.html#.jquery">jquery</a></li>
+            
+                <li data-name="mmir.libMode"><a href="mmir.html#.libMode">libMode</a></li>
             
                 <li data-name="mmir.logLevel"><a href="mmir.html#.logLevel">logLevel</a></li>
             
@@ -79,13 +79,20 @@
             
                 <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
             
+                <li data-name="mmir.res"><a href="mmir.html#.res">res</a></li>
+            
                 <li data-name="mmir.startModule"><a href="mmir.html#.startModule">startModule</a></li>
+            
+                <li data-name="mmir.startModules"><a href="mmir.html#.startModules">startModules</a></li>
             
                 <li data-name="mmir.util"><a href="mmir.html#.util">util</a></li>
             
                 <li data-name="mmir.version"><a href="mmir.html#.version">version</a></li>
             
                 <li data-name="mmir.viewEngine"><a href="mmir.html#.viewEngine">viewEngine</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -125,6 +132,9 @@
                 <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
             
                 <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -201,6 +211,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             </ul>
@@ -215,6 +228,9 @@
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -243,7 +259,36 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="AsyncGrammar">
+            <span class="title">
+                <a href="AsyncGrammar.html">AsyncGrammar</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="AsyncGrammar#init"><a href="AsyncGrammar.html#init">init</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -257,6 +302,9 @@
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -323,6 +371,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
@@ -361,12 +412,59 @@
             </ul>
         </li>
     
+        <li class="item" data-name="CordovaAudioOutput">
+            <span class="title">
+                <a href="CordovaAudioOutput.html">CordovaAudioOutput</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="CordovaAudioOutput#_pluginName"><a href="CordovaAudioOutput.html#_pluginName">_pluginName</a></li>
+            
+                <li data-name="CordovaAudioOutput#getAudio"><a href="CordovaAudioOutput.html#getAudio">getAudio</a></li>
+            
+                <li data-name="CordovaAudioOutput#play"><a href="CordovaAudioOutput.html#play">play</a></li>
+            
+                <li data-name="CordovaAudioOutput#play"><a href="CordovaAudioOutput.html#play">play</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="CordovaAudioOutput#getAudio"><a href="CordovaAudioOutput.html#getAudio">getAudio</a></li>
+            
+                <li data-name="CordovaAudioOutput#getURLAsAudio"><a href="CordovaAudioOutput.html#getURLAsAudio">getURLAsAudio</a></li>
+            
+                <li data-name="CordovaAudioOutput#initialize"><a href="CordovaAudioOutput.html#initialize">initialize</a></li>
+            
+                <li data-name="CordovaAudioOutput#playURL"><a href="CordovaAudioOutput.html#playURL">playURL</a></li>
+            
+                <li data-name="CordovaAudioOutput#playWAV"><a href="CordovaAudioOutput.html#playWAV">playWAV</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Dictionary">
             <span class="title">
                 <a href="Dictionary.html">Dictionary</a>
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -404,6 +502,9 @@
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -475,6 +576,114 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Emma">
+            <span class="title">
+                <a href="Emma.html">Emma</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="Emma#_iGuid"><a href="Emma.html#_iGuid">_iGuid</a></li>
+            
+                <li data-name="Emma#DEFAULT_SPEECH_TYPE"><a href="Emma.html#DEFAULT_SPEECH_TYPE">DEFAULT_SPEECH_TYPE</a></li>
+            
+                <li data-name="Emma#DEFAULT_TACTILE_TYPES"><a href="Emma.html#DEFAULT_TACTILE_TYPES">DEFAULT_TACTILE_TYPES</a></li>
+            
+                <li data-name="Emma#defaultSpeechInterpretation"><a href="Emma.html#defaultSpeechInterpretation">defaultSpeechInterpretation</a></li>
+            
+                <li data-name="Emma#defaultTactileInterpretation"><a href="Emma.html#defaultTactileInterpretation">defaultTactileInterpretation</a></li>
+            
+                <li data-name="Emma#EVENT_SUFFIXES"><a href="Emma.html#EVENT_SUFFIXES">EVENT_SUFFIXES</a></li>
+            
+                <li data-name="Emma#EVENT_SUFFIXES_HORIZONTAL"><a href="Emma.html#EVENT_SUFFIXES_HORIZONTAL">EVENT_SUFFIXES_HORIZONTAL</a></li>
+            
+                <li data-name="Emma#EVENT_SUFFIXES_VERTICAL"><a href="Emma.html#EVENT_SUFFIXES_VERTICAL">EVENT_SUFFIXES_VERTICAL</a></li>
+            
+                <li data-name="Emma#RE_TACTILE_SUB_TYPES"><a href="Emma.html#RE_TACTILE_SUB_TYPES">RE_TACTILE_SUB_TYPES</a></li>
+            
+                <li data-name="Emma#SPEECH_RECOGNITION_RESULT_NAME"><a href="Emma.html#SPEECH_RECOGNITION_RESULT_NAME">SPEECH_RECOGNITION_RESULT_NAME</a></li>
+            
+                <li data-name="Emma#SPEECH_UNDERSTANDING_PREPROCESSED_PHRASE_NAME"><a href="Emma.html#SPEECH_UNDERSTANDING_PREPROCESSED_PHRASE_NAME">SPEECH_UNDERSTANDING_PREPROCESSED_PHRASE_NAME</a></li>
+            
+                <li data-name="Emma#SPEECH_UNDERSTANDING_SEMANTICS_NAME"><a href="Emma.html#SPEECH_UNDERSTANDING_SEMANTICS_NAME">SPEECH_UNDERSTANDING_SEMANTICS_NAME</a></li>
+            
+                <li data-name="Emma#SPEECH_UNDERSTANDING_SEMANTICS_PARTS_NAME"><a href="Emma.html#SPEECH_UNDERSTANDING_SEMANTICS_PARTS_NAME">SPEECH_UNDERSTANDING_SEMANTICS_PARTS_NAME</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Emma#_isGrammarUnderstanding"><a href="Emma.html#_isGrammarUnderstanding">_isGrammarUnderstanding</a></li>
+            
+                <li data-name="Emma#addRecognition"><a href="Emma.html#addRecognition">addRecognition</a></li>
+            
+                <li data-name="Emma#getType"><a href="Emma.html#getType">getType</a></li>
+            
+                <li data-name="Emma#guid"><a href="Emma.html#guid">guid</a></li>
+            
+                <li data-name="Emma#isRecognition"><a href="Emma.html#isRecognition">isRecognition</a></li>
+            
+                <li data-name="Emma#isSpeech"><a href="Emma.html#isSpeech">isSpeech</a></li>
+            
+                <li data-name="Emma#isTactile"><a href="Emma.html#isTactile">isTactile</a></li>
+            
+                <li data-name="Emma#isUnderstanding"><a href="Emma.html#isUnderstanding">isUnderstanding</a></li>
+            
+                <li data-name="Emma#setModality"><a href="Emma.html#setModality">setModality</a></li>
+            
+                <li data-name="Emma#setSource"><a href="Emma.html#setSource">setSource</a></li>
+            
+                <li data-name="Emma#setSpeechRecognition"><a href="Emma.html#setSpeechRecognition">setSpeechRecognition</a></li>
+            
+                <li data-name="Emma#setSpeechUnderstanding"><a href="Emma.html#setSpeechUnderstanding">setSpeechUnderstanding</a></li>
+            
+                <li data-name="Emma#toEmma"><a href="Emma.html#toEmma">toEmma</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="EncodeUtils">
+            <span class="title">
+                <a href="EncodeUtils.html">EncodeUtils</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="EncodeUtils#decodeUmlauts"><a href="EncodeUtils.html#decodeUmlauts">decodeUmlauts</a></li>
+            
+                <li data-name="EncodeUtils#encodeUmlauts"><a href="EncodeUtils.html#encodeUmlauts">encodeUmlauts</a></li>
+            
+                <li data-name="EncodeUtils#htmlEncode"><a href="EncodeUtils.html#htmlEncode">htmlEncode</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="ExtendedEngineImpl">
             <span class="title">
                 <a href="ExtendedEngineImpl.html">ExtendedEngineImpl</a>
@@ -485,6 +694,9 @@
             <span class="subtitle">Members</span>
             
                 <li data-name="ExtendedEngineImpl._scion"><a href="ExtendedEngineImpl.html#._scion">_scion</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -504,6 +716,9 @@
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -572,6 +787,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
@@ -584,18 +802,51 @@
             </ul>
         </li>
     
-        <li class="item" data-name="jqmSimpleViewEngine">
+        <li class="item" data-name="Html5AudioOutput">
             <span class="title">
-                <a href="jqmSimpleViewEngine.html">jqmSimpleViewEngine</a>
+                <a href="Html5AudioOutput.html">Html5AudioOutput</a>
                 
             </span>
             <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="Html5AudioOutput#_pluginName"><a href="Html5AudioOutput.html#_pluginName">_pluginName</a></li>
+            
+                <li data-name="Html5AudioOutput#MediaError"><a href="Html5AudioOutput.html#MediaError">MediaError</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Html5AudioOutput#createDataUrl"><a href="Html5AudioOutput.html#createDataUrl">createDataUrl</a></li>
+            
+                <li data-name="Html5AudioOutput#createError"><a href="Html5AudioOutput.html#createError">createError</a></li>
+            
+                <li data-name="Html5AudioOutput#createErrorWrapper"><a href="Html5AudioOutput.html#createErrorWrapper">createErrorWrapper</a></li>
+            
+                <li data-name="Html5AudioOutput#getURLAsAudio"><a href="Html5AudioOutput.html#getURLAsAudio">getURLAsAudio</a></li>
+            
+                <li data-name="Html5AudioOutput#getWAVAsAudio"><a href="Html5AudioOutput.html#getWAVAsAudio">getWAVAsAudio</a></li>
+            
+                <li data-name="Html5AudioOutput#handlePlayPromise"><a href="Html5AudioOutput.html#handlePlayPromise">handlePlayPromise</a></li>
+            
+                <li data-name="Html5AudioOutput#initialize"><a href="Html5AudioOutput.html#initialize">initialize</a></li>
+            
+                <li data-name="Html5AudioOutput#playURL"><a href="Html5AudioOutput.html#playURL">playURL</a></li>
+            
+                <li data-name="Html5AudioOutput#playWAV"><a href="Html5AudioOutput.html#playWAV">playWAV</a></li>
+            
+                <li data-name="Html5AudioOutput#releaseDataUrl"><a href="Html5AudioOutput.html#releaseDataUrl">releaseDataUrl</a></li>
+            
+                <li data-name="Html5AudioOutput#releaseDataUrl"><a href="Html5AudioOutput.html#releaseDataUrl">releaseDataUrl</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -636,6 +887,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
@@ -670,6 +924,9 @@
                 <li data-name="Layout.TagElement#tagName"><a href="Layout.TagElement.html#tagName">tagName</a></li>
             
                 <li data-name="Layout.TagElement#textContent"><a href="Layout.TagElement.html#textContent">textContent</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -734,6 +991,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
@@ -776,6 +1036,84 @@
             </ul>
         </li>
     
+        <li class="item" data-name="MicLevelsAnalysis">
+            <span class="title">
+                <a href="MicLevelsAnalysis.html">MicLevelsAnalysis</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="MicLevelsAnalysis#_audioAnalyzer"><a href="MicLevelsAnalysis.html#_audioAnalyzer">_audioAnalyzer</a></li>
+            
+                <li data-name="MicLevelsAnalysis#_audioContext"><a href="MicLevelsAnalysis.html#_audioContext">_audioContext</a></li>
+            
+                <li data-name="MicLevelsAnalysis#_currentInputStream"><a href="MicLevelsAnalysis.html#_currentInputStream">_currentInputStream</a></li>
+            
+                <li data-name="MicLevelsAnalysis#_isAnalysisActive"><a href="MicLevelsAnalysis.html#_isAnalysisActive">_isAnalysisActive</a></li>
+            
+                <li data-name="MicLevelsAnalysis#_isAnalysisCanceled"><a href="MicLevelsAnalysis.html#_isAnalysisCanceled">_isAnalysisCanceled</a></li>
+            
+                <li data-name="MicLevelsAnalysis#html5Navigator"><a href="MicLevelsAnalysis.html#html5Navigator">html5Navigator</a></li>
+            
+                <li data-name="MicLevelsAnalysis#isMicLevelsEnabled"><a href="MicLevelsAnalysis.html#isMicLevelsEnabled">isMicLevelsEnabled</a></li>
+            
+                <li data-name="MicLevelsAnalysis#LEVEL_CHANGED_THRESHOLD"><a href="MicLevelsAnalysis.html#LEVEL_CHANGED_THRESHOLD">LEVEL_CHANGED_THRESHOLD</a></li>
+            
+                <li data-name="MicLevelsAnalysis#MIC_MAX_NORM_VAL"><a href="MicLevelsAnalysis.html#MIC_MAX_NORM_VAL">MIC_MAX_NORM_VAL</a></li>
+            
+                <li data-name="MicLevelsAnalysis#MIC_MAX_VAL"><a href="MicLevelsAnalysis.html#MIC_MAX_VAL">MIC_MAX_VAL</a></li>
+            
+                <li data-name="MicLevelsAnalysis#MIC_NORMALIZATION_FACTOR"><a href="MicLevelsAnalysis.html#MIC_NORMALIZATION_FACTOR">MIC_NORMALIZATION_FACTOR</a></li>
+            
+                <li data-name="MicLevelsAnalysis#MIC_QUERY_INTERVALL"><a href="MicLevelsAnalysis.html#MIC_QUERY_INTERVALL">MIC_QUERY_INTERVALL</a></li>
+            
+                <li data-name="MicLevelsAnalysis#recording"><a href="MicLevelsAnalysis.html#recording">recording</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="MicLevelsAnalysis#_startAudioAnalysis"><a href="MicLevelsAnalysis.html#_startAudioAnalysis">_startAudioAnalysis</a></li>
+            
+                <li data-name="MicLevelsAnalysis#_startUserMedia"><a href="MicLevelsAnalysis.html#_startUserMedia">_startUserMedia</a></li>
+            
+                <li data-name="MicLevelsAnalysis#_stopAudioAnalysis"><a href="MicLevelsAnalysis.html#_stopAudioAnalysis">_stopAudioAnalysis</a></li>
+            
+                <li data-name="MicLevelsAnalysis#_updateMicLevelAnalysis"><a href="MicLevelsAnalysis.html#_updateMicLevelAnalysis">_updateMicLevelAnalysis</a></li>
+            
+                <li data-name="MicLevelsAnalysis#active"><a href="MicLevelsAnalysis.html#active">active</a></li>
+            
+                <li data-name="MicLevelsAnalysis#createAudioContext"><a href="MicLevelsAnalysis.html#createAudioContext">createAudioContext</a></li>
+            
+                <li data-name="MicLevelsAnalysis#enabled"><a href="MicLevelsAnalysis.html#enabled">enabled</a></li>
+            
+                <li data-name="MicLevelsAnalysis#getDb"><a href="MicLevelsAnalysis.html#getDb">getDb</a></li>
+            
+                <li data-name="MicLevelsAnalysis#getRms"><a href="MicLevelsAnalysis.html#getRms">getRms</a></li>
+            
+                <li data-name="MicLevelsAnalysis#hasChanged"><a href="MicLevelsAnalysis.html#hasChanged">hasChanged</a></li>
+            
+                <li data-name="MicLevelsAnalysis#normalize"><a href="MicLevelsAnalysis.html#normalize">normalize</a></li>
+            
+                <li data-name="MicLevelsAnalysis#start"><a href="MicLevelsAnalysis.html#start">start</a></li>
+            
+                <li data-name="MicLevelsAnalysis#stop"><a href="MicLevelsAnalysis.html#stop">stop</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="mmir.CommonUtils">
             <span class="title">
                 <a href="mmir.CommonUtils.html">mmir.CommonUtils</a>
@@ -786,6 +1124,9 @@
             <span class="subtitle">Members</span>
             
                 <li data-name="mmir.CommonUtils#regexHTMLComment"><a href="mmir.CommonUtils.html#regexHTMLComment">regexHTMLComment</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -837,12 +1178,15 @@
             </ul>
         </li>
     
-        <li class="item" data-name="mmir.CommonUtils.setToCompatibilityModeExtension">
+        <li class="item" data-name="mmir.compat.v1.CommonUtils">
             <span class="title">
-                <a href="mmir.CommonUtils.setToCompatibilityModeExtension.html">mmir.CommonUtils.setToCompatibilityModeExtension</a>
+                <a href="mmir.compat.v1.CommonUtils.html">mmir.compat.v1.CommonUtils</a>
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -856,12 +1200,213 @@
             </ul>
         </li>
     
+        <li class="item" data-name="mmir.compat.v1.CoreCompat">
+            <span class="title">
+                <a href="mmir.compat.v1.CoreCompat.html">mmir.compat.v1.CoreCompat</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="mmir.compat.v1.LanguageManager">
+            <span class="title">
+                <a href="mmir.compat.v1.LanguageManager.html">mmir.compat.v1.LanguageManager</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="mmir.compat.v1.LanguageManager#changeLanguage"><a href="mmir.compat.v1.LanguageManager.html#changeLanguage">changeLanguage</a></li>
+            
+                <li data-name="mmir.compat.v1.LanguageManager#translateHTML"><a href="mmir.compat.v1.LanguageManager.html#translateHTML">translateHTML</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="mmir.compat.v2.CoreCompat">
+            <span class="title">
+                <a href="mmir.compat.v2.CoreCompat.html">mmir.compat.v2.CoreCompat</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="mmir.compat.v3.CoreCompat">
+            <span class="title">
+                <a href="mmir.compat.v3.CoreCompat.html">mmir.compat.v3.CoreCompat</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="mmir.compat.v3.ModuleIdCompat">
+            <span class="title">
+                <a href="mmir.compat.v3.ModuleIdCompat.html">mmir.compat.v3.ModuleIdCompat</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="mmir.compat.v3.ModuleIdCompat#core3Ids"><a href="mmir.compat.v3.ModuleIdCompat.html#core3Ids">core3Ids</a></li>
+            
+                <li data-name="mmir.compat.v3.ModuleIdCompat#core3Shims"><a href="mmir.compat.v3.ModuleIdCompat.html#core3Shims">core3Shims</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="mmir.compat.v3.ModuleIdCompat#getId"><a href="mmir.compat.v3.ModuleIdCompat.html#getId">getId</a></li>
+            
+                <li data-name="mmir.compat.v3.ModuleIdCompat#getLegacyConfig"><a href="mmir.compat.v3.ModuleIdCompat.html#getLegacyConfig">getLegacyConfig</a></li>
+            
+                <li data-name="mmir.compat.v3.ModuleIdCompat#setToCompatibilityMode"><a href="mmir.compat.v3.ModuleIdCompat.html#setToCompatibilityMode">setToCompatibilityMode</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="mmir.compat.v3.SemanticInterpreter">
+            <span class="title">
+                <a href="mmir.compat.v3.SemanticInterpreter.html">mmir.compat.v3.SemanticInterpreter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="mmir.compat.v4.DialogManager">
+            <span class="title">
+                <a href="mmir.compat.v4.DialogManager.html">mmir.compat.v4.DialogManager</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="mmir.compat.v4.DialogManager#_setControllerManager"><a href="mmir.compat.v4.DialogManager.html#_setControllerManager">_setControllerManager</a></li>
+            
+                <li data-name="mmir.compat.v4.DialogManager#_setPresentationManager"><a href="mmir.compat.v4.DialogManager.html#_setPresentationManager">_setPresentationManager</a></li>
+            
+                <li data-name="mmir.compat.v4.DialogManager#getOnPageRenderedHandler"><a href="mmir.compat.v4.DialogManager.html#getOnPageRenderedHandler">getOnPageRenderedHandler</a></li>
+            
+                <li data-name="mmir.compat.v4.DialogManager#hideCurrentDialog"><a href="mmir.compat.v4.DialogManager.html#hideCurrentDialog">hideCurrentDialog</a></li>
+            
+                <li data-name="mmir.compat.v4.DialogManager#hideWaitDialog"><a href="mmir.compat.v4.DialogManager.html#hideWaitDialog">hideWaitDialog</a></li>
+            
+                <li data-name="mmir.compat.v4.DialogManager#perform"><a href="mmir.compat.v4.DialogManager.html#perform">perform</a></li>
+            
+                <li data-name="mmir.compat.v4.DialogManager#performHelper"><a href="mmir.compat.v4.DialogManager.html#performHelper">performHelper</a></li>
+            
+                <li data-name="mmir.compat.v4.DialogManager#render"><a href="mmir.compat.v4.DialogManager.html#render">render</a></li>
+            
+                <li data-name="mmir.compat.v4.DialogManager#setOnPageRenderedHandler"><a href="mmir.compat.v4.DialogManager.html#setOnPageRenderedHandler">setOnPageRenderedHandler</a></li>
+            
+                <li data-name="mmir.compat.v4.DialogManager#showDialog"><a href="mmir.compat.v4.DialogManager.html#showDialog">showDialog</a></li>
+            
+                <li data-name="mmir.compat.v4.DialogManager#showWaitDialog"><a href="mmir.compat.v4.DialogManager.html#showWaitDialog">showWaitDialog</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="mmir.ConfigurationManager">
             <span class="title">
                 <a href="mmir.ConfigurationManager.html">mmir.ConfigurationManager</a>
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -885,83 +1430,6 @@
             </ul>
         </li>
     
-        <li class="item" data-name="mmir.Constants">
-            <span class="title">
-                <a href="mmir.Constants.html">mmir.Constants</a>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            <span class="subtitle">Methods</span>
-            
-                <li data-name="mmir.Constants#getBasePath"><a href="mmir.Constants.html#getBasePath">getBasePath</a></li>
-            
-                <li data-name="mmir.Constants#getBeepUrl"><a href="mmir.Constants.html#getBeepUrl">getBeepUrl</a></li>
-            
-                <li data-name="mmir.Constants#getCompiledLayoutPath"><a href="mmir.Constants.html#getCompiledLayoutPath">getCompiledLayoutPath</a></li>
-            
-                <li data-name="mmir.Constants#getCompiledViewPath"><a href="mmir.Constants.html#getCompiledViewPath">getCompiledViewPath</a></li>
-            
-                <li data-name="mmir.Constants#getConfigurationFileUrl"><a href="mmir.Constants.html#getConfigurationFileUrl">getConfigurationFileUrl</a></li>
-            
-                <li data-name="mmir.Constants#getControllerPath"><a href="mmir.Constants.html#getControllerPath">getControllerPath</a></li>
-            
-                <li data-name="mmir.Constants#getDictionaryFileName"><a href="mmir.Constants.html#getDictionaryFileName">getDictionaryFileName</a></li>
-            
-                <li data-name="mmir.Constants#getDirectoriesFileUrl"><a href="mmir.Constants.html#getDirectoriesFileUrl">getDirectoriesFileUrl</a></li>
-            
-                <li data-name="mmir.Constants#getEnv"><a href="mmir.Constants.html#getEnv">getEnv</a></li>
-            
-                <li data-name="mmir.Constants#getEnvPlatform"><a href="mmir.Constants.html#getEnvPlatform">getEnvPlatform</a></li>
-            
-                <li data-name="mmir.Constants#getExtensionsPath"><a href="mmir.Constants.html#getExtensionsPath">getExtensionsPath</a></li>
-            
-                <li data-name="mmir.Constants#getGeneratedGrammarsPath"><a href="mmir.Constants.html#getGeneratedGrammarsPath">getGeneratedGrammarsPath</a></li>
-            
-                <li data-name="mmir.Constants#getGrammarFileName"><a href="mmir.Constants.html#getGrammarFileName">getGrammarFileName</a></li>
-            
-                <li data-name="mmir.Constants#getGrammarPluginPath"><a href="mmir.Constants.html#getGrammarPluginPath">getGrammarPluginPath</a></li>
-            
-                <li data-name="mmir.Constants#getHelperPath"><a href="mmir.Constants.html#getHelperPath">getHelperPath</a></li>
-            
-                <li data-name="mmir.Constants#getHelperSuffix"><a href="mmir.Constants.html#getHelperSuffix">getHelperSuffix</a></li>
-            
-                <li data-name="mmir.Constants#getLanguage"><a href="mmir.Constants.html#getLanguage">getLanguage</a></li>
-            
-                <li data-name="mmir.Constants#getLanguagePath"><a href="mmir.Constants.html#getLanguagePath">getLanguagePath</a></li>
-            
-                <li data-name="mmir.Constants#getLayoutPath"><a href="mmir.Constants.html#getLayoutPath">getLayoutPath</a></li>
-            
-                <li data-name="mmir.Constants#getMediaPluginPath"><a href="mmir.Constants.html#getMediaPluginPath">getMediaPluginPath</a></li>
-            
-                <li data-name="mmir.Constants#getModelPath"><a href="mmir.Constants.html#getModelPath">getModelPath</a></li>
-            
-                <li data-name="mmir.Constants#getPartialsPrefix"><a href="mmir.Constants.html#getPartialsPrefix">getPartialsPrefix</a></li>
-            
-                <li data-name="mmir.Constants#getSpeechConfigFileName"><a href="mmir.Constants.html#getSpeechConfigFileName">getSpeechConfigFileName</a></li>
-            
-                <li data-name="mmir.Constants#getViewPath"><a href="mmir.Constants.html#getViewPath">getViewPath</a></li>
-            
-                <li data-name="mmir.Constants#getWorkerPath"><a href="mmir.Constants.html#getWorkerPath">getWorkerPath</a></li>
-            
-                <li data-name="mmir.Constants#init"><a href="mmir.Constants.html#init">init</a></li>
-            
-                <li data-name="mmir.Constants#isBrowserEnv"><a href="mmir.Constants.html#isBrowserEnv">isBrowserEnv</a></li>
-            
-                <li data-name="mmir.Constants#isCordovaEnv"><a href="mmir.Constants.html#isCordovaEnv">isCordovaEnv</a></li>
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
         <li class="item" data-name="mmir.ControllerManager">
             <span class="title">
                 <a href="mmir.ControllerManager.html">mmir.ControllerManager</a>
@@ -973,9 +1441,14 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
+            
+                <li data-name="mmir.ControllerManager#createCtrlInstance"><a href="mmir.ControllerManager.html#createCtrlInstance">createCtrlInstance</a></li>
             
                 <li data-name="mmir.ControllerManager#get"><a href="mmir.ControllerManager.html#get">get</a></li>
             
@@ -986,108 +1459,6 @@
                 <li data-name="mmir.ControllerManager#perform"><a href="mmir.ControllerManager.html#perform">perform</a></li>
             
                 <li data-name="mmir.ControllerManager#performHelper"><a href="mmir.ControllerManager.html#performHelper">performHelper</a></li>
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-        <li class="item" data-name="mmir.Core.getCompatibility3ModuleId">
-            <span class="title">
-                <a href="mmir.Core.getCompatibility3ModuleId.html">mmir.Core.getCompatibility3ModuleId</a>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            <span class="subtitle">Members</span>
-            
-                <li data-name="mmir.Core.getCompatibility3ModuleId.core3Ids"><a href="mmir.Core.getCompatibility3ModuleId.html#.core3Ids">core3Ids</a></li>
-            
-                <li data-name="mmir.Core.getCompatibility3ModuleId.core3Shims"><a href="mmir.Core.getCompatibility3ModuleId.html#.core3Shims">core3Shims</a></li>
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            <span class="subtitle">Methods</span>
-            
-                <li data-name="mmir.Core.getCompatibility3ModuleId.getId"><a href="mmir.Core.getCompatibility3ModuleId.html#.getId">getId</a></li>
-            
-                <li data-name="mmir.Core.getCompatibility3ModuleId.getLegacyConfig"><a href="mmir.Core.getCompatibility3ModuleId.html#.getLegacyConfig">getLegacyConfig</a></li>
-            
-                <li data-name="mmir.Core.getCompatibility3ModuleId.setToCompatibilityMode"><a href="mmir.Core.getCompatibility3ModuleId.html#.setToCompatibilityMode">setToCompatibilityMode</a></li>
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-        <li class="item" data-name="mmir.Core.setToCompatibilityMode1Extension">
-            <span class="title">
-                <a href="mmir.Core.setToCompatibilityMode1Extension.html">mmir.Core.setToCompatibilityMode1Extension</a>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-        <li class="item" data-name="mmir.Core.setToCompatibilityMode2Extension">
-            <span class="title">
-                <a href="mmir.Core.setToCompatibilityMode2Extension.html">mmir.Core.setToCompatibilityMode2Extension</a>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-        <li class="item" data-name="mmir.Core.setToCompatibilityMode3Extension">
-            <span class="title">
-                <a href="mmir.Core.setToCompatibilityMode3Extension.html">mmir.Core.setToCompatibilityMode3Extension</a>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            <span class="subtitle">Methods</span>
-            
-                <li data-name="mmir.Core.setToCompatibilityMode3Extension.commonUtils.loadAllCordovaPlugins"><a href="mmir.Core.setToCompatibilityMode3Extension.html#.commonUtils.loadAllCordovaPlugins">commonUtils.loadAllCordovaPlugins</a></li>
-            
-                <li data-name="mmir.Core.setToCompatibilityMode3Extension.commonUtils.setToCompatibilityMode"><a href="mmir.Core.setToCompatibilityMode3Extension.html#.commonUtils.setToCompatibilityMode">commonUtils.setToCompatibilityMode</a></li>
-            
-                <li data-name="mmir.Core.setToCompatibilityMode3Extension.constants.getPluginsPath"><a href="mmir.Core.setToCompatibilityMode3Extension.html#.constants.getPluginsPath">constants.getPluginsPath</a></li>
-            
-                <li data-name="mmir.Core.setToCompatibilityMode3Extension.languageManager.setNextLanguage"><a href="mmir.Core.setToCompatibilityMode3Extension.html#.languageManager.setNextLanguage">languageManager.setNextLanguage</a></li>
-            
-                <li data-name="mmir.Core.setToCompatibilityMode3Extension.languageManager.setToCompatibilityMode"><a href="mmir.Core.setToCompatibilityMode3Extension.html#.languageManager.setToCompatibilityMode">languageManager.setToCompatibilityMode</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1110,11 +1481,10 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
-            
-            <span class="subtitle">Methods</span>
-            
-                <li data-name="mmir.DialogManager#raise"><a href="mmir.DialogManager.html#raise">raise</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1132,6 +1502,9 @@
             <span class="subtitle">Members</span>
             
                 <li data-name="mmir.DisabledLogging#isDisabledLogger"><a href="mmir.DisabledLogging.html#isDisabledLogger">isDisabledLogger</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1178,6 +1551,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
@@ -1212,6 +1588,9 @@
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1256,6 +1635,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             </ul>
@@ -1270,6 +1652,9 @@
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1299,6 +1684,9 @@
                 <li data-name="mmir.env.statemachine.engine.exec#_stubFactory"><a href="mmir.env.statemachine.engine.exec.html#_stubFactory">_stubFactory</a></li>
             
                 <li data-name="mmir.env.statemachine.engine.exec#nolog"><a href="mmir.env.statemachine.engine.exec.html#nolog">nolog</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1337,6 +1725,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
@@ -1356,21 +1747,14 @@
             </span>
             <ul class="members itemMembers">
             
-            <span class="subtitle">Members</span>
-            
-                <li data-name="mmir.InputManager#_instance"><a href="mmir.InputManager.html#_instance">_instance</a></li>
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="methods itemMembers">
-            
-            <span class="subtitle">Methods</span>
-            
-                <li data-name="mmir.InputManager#init"><a href="mmir.InputManager.html#init">init</a></li>
-            
-                <li data-name="mmir.InputManager#raise"><a href="mmir.InputManager.html#raise">raise</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1384,6 +1768,13 @@
                 
             </span>
             <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="mmir.LanguageManager#_requestGrammar"><a href="mmir.LanguageManager.html#_requestGrammar">_requestGrammar</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1425,25 +1816,6 @@
             </ul>
         </li>
     
-        <li class="item" data-name="mmir.LanguageManager.setToCompatibilityModeExtension">
-            <span class="title">
-                <a href="mmir.LanguageManager.setToCompatibilityModeExtension.html">mmir.LanguageManager.setToCompatibilityModeExtension</a>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
         <li class="item" data-name="mmir.Logging">
             <span class="title">
                 <a href="mmir.Logging.html">mmir.Logging</a>
@@ -1454,6 +1826,9 @@
             <span class="subtitle">Members</span>
             
                 <li data-name="mmir.Logging#_level"><a href="mmir.Logging.html#_level">_level</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1487,6 +1862,38 @@
             </ul>
         </li>
     
+        <li class="item" data-name="mmir.ManagerFactory">
+            <span class="title">
+                <a href="mmir.ManagerFactory.html">mmir.ManagerFactory</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="mmir.ManagerFactory#_instance"><a href="mmir.ManagerFactory.html#_instance">_instance</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="mmir.ManagerFactory#init"><a href="mmir.ManagerFactory.html#init">init</a></li>
+            
+                <li data-name="mmir.ManagerFactory#raise"><a href="mmir.ManagerFactory.html#raise">raise</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="mmir.MediaManager">
             <span class="title">
                 <a href="mmir.MediaManager.html">mmir.MediaManager</a>
@@ -1501,6 +1908,9 @@
                 <li data-name="mmir.MediaManager#ctx"><a href="mmir.MediaManager.html#ctx">ctx</a></li>
             
                 <li data-name="mmir.MediaManager#waitReadyImpl"><a href="mmir.MediaManager.html#waitReadyImpl">waitReadyImpl</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1538,7 +1948,13 @@
             
                 <li data-name="mmir.MediaManager#getListeners"><a href="mmir.MediaManager.html#getListeners">getListeners</a></li>
             
+                <li data-name="mmir.MediaManager#getRecognitionLanguages"><a href="mmir.MediaManager.html#getRecognitionLanguages">getRecognitionLanguages</a></li>
+            
+                <li data-name="mmir.MediaManager#getSpeechLanguages"><a href="mmir.MediaManager.html#getSpeechLanguages">getSpeechLanguages</a></li>
+            
                 <li data-name="mmir.MediaManager#getURLAsAudio"><a href="mmir.MediaManager.html#getURLAsAudio">getURLAsAudio</a></li>
+            
+                <li data-name="mmir.MediaManager#getVoices"><a href="mmir.MediaManager.html#getVoices">getVoices</a></li>
             
                 <li data-name="mmir.MediaManager#hasListeners"><a href="mmir.MediaManager.html#hasListeners">hasListeners</a></li>
             
@@ -1591,6 +2007,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
@@ -1611,6 +2030,9 @@
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1665,6 +2087,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
@@ -1685,6 +2110,9 @@
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1769,6 +2197,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             <span class="subtitle">Methods</span>
@@ -1800,6 +2231,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             </ul>
@@ -1818,6 +2252,9 @@
             <span class="subtitle">Members</span>
             
                 <li data-name="mmir.parser.TemplateProcessor#parserModule"><a href="mmir.parser.TemplateProcessor.html#parserModule">parserModule</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1843,6 +2280,9 @@
                 <li data-name="mmir.PresentationManager#_pageIndex"><a href="mmir.PresentationManager.html#_pageIndex">_pageIndex</a></li>
             
                 <li data-name="mmir.PresentationManager#pageIndex"><a href="mmir.PresentationManager.html#pageIndex">pageIndex</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1886,12 +2326,97 @@
             </ul>
         </li>
     
+        <li class="item" data-name="mmir.Resources">
+            <span class="title">
+                <a href="mmir.Resources.html">mmir.Resources</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="mmir.Resources#getBasePath"><a href="mmir.Resources.html#getBasePath">getBasePath</a></li>
+            
+                <li data-name="mmir.Resources#getBeepUrl"><a href="mmir.Resources.html#getBeepUrl">getBeepUrl</a></li>
+            
+                <li data-name="mmir.Resources#getCompiledLayoutPath"><a href="mmir.Resources.html#getCompiledLayoutPath">getCompiledLayoutPath</a></li>
+            
+                <li data-name="mmir.Resources#getCompiledViewPath"><a href="mmir.Resources.html#getCompiledViewPath">getCompiledViewPath</a></li>
+            
+                <li data-name="mmir.Resources#getConfigurationFileUrl"><a href="mmir.Resources.html#getConfigurationFileUrl">getConfigurationFileUrl</a></li>
+            
+                <li data-name="mmir.Resources#getControllerPath"><a href="mmir.Resources.html#getControllerPath">getControllerPath</a></li>
+            
+                <li data-name="mmir.Resources#getDictionaryFileUrl"><a href="mmir.Resources.html#getDictionaryFileUrl">getDictionaryFileUrl</a></li>
+            
+                <li data-name="mmir.Resources#getDirectoriesFileUrl"><a href="mmir.Resources.html#getDirectoriesFileUrl">getDirectoriesFileUrl</a></li>
+            
+                <li data-name="mmir.Resources#getEnv"><a href="mmir.Resources.html#getEnv">getEnv</a></li>
+            
+                <li data-name="mmir.Resources#getEnvPlatform"><a href="mmir.Resources.html#getEnvPlatform">getEnvPlatform</a></li>
+            
+                <li data-name="mmir.Resources#getExtensionsPath"><a href="mmir.Resources.html#getExtensionsPath">getExtensionsPath</a></li>
+            
+                <li data-name="mmir.Resources#getGeneratedGrammarsPath"><a href="mmir.Resources.html#getGeneratedGrammarsPath">getGeneratedGrammarsPath</a></li>
+            
+                <li data-name="mmir.Resources#getGeneratedStateModelsPath"><a href="mmir.Resources.html#getGeneratedStateModelsPath">getGeneratedStateModelsPath</a></li>
+            
+                <li data-name="mmir.Resources#getGrammarFileUrl"><a href="mmir.Resources.html#getGrammarFileUrl">getGrammarFileUrl</a></li>
+            
+                <li data-name="mmir.Resources#getGrammarPluginPath"><a href="mmir.Resources.html#getGrammarPluginPath">getGrammarPluginPath</a></li>
+            
+                <li data-name="mmir.Resources#getHelperPath"><a href="mmir.Resources.html#getHelperPath">getHelperPath</a></li>
+            
+                <li data-name="mmir.Resources#getHelperSuffix"><a href="mmir.Resources.html#getHelperSuffix">getHelperSuffix</a></li>
+            
+                <li data-name="mmir.Resources#getLanguage"><a href="mmir.Resources.html#getLanguage">getLanguage</a></li>
+            
+                <li data-name="mmir.Resources#getLanguagePath"><a href="mmir.Resources.html#getLanguagePath">getLanguagePath</a></li>
+            
+                <li data-name="mmir.Resources#getLayoutPath"><a href="mmir.Resources.html#getLayoutPath">getLayoutPath</a></li>
+            
+                <li data-name="mmir.Resources#getMediaPluginPath"><a href="mmir.Resources.html#getMediaPluginPath">getMediaPluginPath</a></li>
+            
+                <li data-name="mmir.Resources#getModelPath"><a href="mmir.Resources.html#getModelPath">getModelPath</a></li>
+            
+                <li data-name="mmir.Resources#getPartialsPrefix"><a href="mmir.Resources.html#getPartialsPrefix">getPartialsPrefix</a></li>
+            
+                <li data-name="mmir.Resources#getSpeechConfigFileUrl"><a href="mmir.Resources.html#getSpeechConfigFileUrl">getSpeechConfigFileUrl</a></li>
+            
+                <li data-name="mmir.Resources#getViewPath"><a href="mmir.Resources.html#getViewPath">getViewPath</a></li>
+            
+                <li data-name="mmir.Resources#getWorkerPath"><a href="mmir.Resources.html#getWorkerPath">getWorkerPath</a></li>
+            
+                <li data-name="mmir.Resources#init"><a href="mmir.Resources.html#init">init</a></li>
+            
+                <li data-name="mmir.Resources#isBrowserEnv"><a href="mmir.Resources.html#isBrowserEnv">isBrowserEnv</a></li>
+            
+                <li data-name="mmir.Resources#isCordovaEnv"><a href="mmir.Resources.html#isCordovaEnv">isCordovaEnv</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="mmir.SemanticInterpreter">
             <span class="title">
                 <a href="mmir.SemanticInterpreter.html">mmir.SemanticInterpreter</a>
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1943,31 +2468,15 @@
             </ul>
         </li>
     
-        <li class="item" data-name="mmir.SemanticInterpreter.setToCompatibilityModeExtension">
-            <span class="title">
-                <a href="mmir.SemanticInterpreter.setToCompatibilityModeExtension.html">mmir.SemanticInterpreter.setToCompatibilityModeExtension</a>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
         <li class="item" data-name="mmir.tools.ChecksumUtils">
             <span class="title">
                 <a href="mmir.tools.ChecksumUtils.html">mmir.tools.ChecksumUtils</a>
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -2006,6 +2515,9 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
             
             </ul>
@@ -2020,6 +2532,9 @@
                 
             </span>
             <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -2058,7 +2573,44 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="SimpleViewEngine">
+            <span class="title">
+                <a href="SimpleViewEngine.html">SimpleViewEngine</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="SimpleViewEngine#doRenderView"><a href="SimpleViewEngine.html#doRenderView">doRenderView</a></li>
+            
+                <li data-name="SimpleViewEngine#hideCurrentDialog"><a href="SimpleViewEngine.html#hideCurrentDialog">hideCurrentDialog</a></li>
+            
+                <li data-name="SimpleViewEngine#hideWaitDialog"><a href="SimpleViewEngine.html#hideWaitDialog">hideWaitDialog</a></li>
+            
+                <li data-name="SimpleViewEngine#showDialog"><a href="SimpleViewEngine.html#showDialog">showDialog</a></li>
+            
+                <li data-name="SimpleViewEngine#showWaitDialog"><a href="SimpleViewEngine.html#showWaitDialog">showWaitDialog</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -2081,7 +2633,44 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="StubViewEngine">
+            <span class="title">
+                <a href="StubViewEngine.html">StubViewEngine</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="StubViewEngine#doRenderView"><a href="StubViewEngine.html#doRenderView">doRenderView</a></li>
+            
+                <li data-name="StubViewEngine#hideCurrentDialog"><a href="StubViewEngine.html#hideCurrentDialog">hideCurrentDialog</a></li>
+            
+                <li data-name="StubViewEngine#hideWaitDialog"><a href="StubViewEngine.html#hideWaitDialog">hideWaitDialog</a></li>
+            
+                <li data-name="StubViewEngine#showDialog"><a href="StubViewEngine.html#showDialog">showDialog</a></li>
+            
+                <li data-name="StubViewEngine#showWaitDialog"><a href="StubViewEngine.html#showWaitDialog">showWaitDialog</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -2107,6 +2696,9 @@
                 <li data-name="View#helperMethods"><a href="View.html#helperMethods">helperMethods</a></li>
             
                 <li data-name="View#name"><a href="View.html#name">name</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -2147,7 +2739,258 @@
             <ul class="typedefs itemMembers">
             
             </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
             <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="WaitReadyIndicatorImpl">
+            <span class="title">
+                <a href="WaitReadyIndicatorImpl.html">WaitReadyIndicatorImpl</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="WaitReadyIndicatorImpl#_id"><a href="WaitReadyIndicatorImpl.html#_id">_id</a></li>
+            
+                <li data-name="WaitReadyIndicatorImpl#_pluginName"><a href="WaitReadyIndicatorImpl.html#_pluginName">_pluginName</a></li>
+            
+                <li data-name="WaitReadyIndicatorImpl#caption"><a href="WaitReadyIndicatorImpl.html#caption">caption</a></li>
+            
+                <li data-name="WaitReadyIndicatorImpl#cssUrl"><a href="WaitReadyIndicatorImpl.html#cssUrl">cssUrl</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="WaitReadyIndicatorImpl#getWaitCaption"><a href="WaitReadyIndicatorImpl.html#getWaitCaption">getWaitCaption</a></li>
+            
+                <li data-name="WaitReadyIndicatorImpl#initialize"><a href="WaitReadyIndicatorImpl.html#initialize">initialize</a></li>
+            
+                <li data-name="WaitReadyIndicatorImpl#preparing"><a href="WaitReadyIndicatorImpl.html#preparing">preparing</a></li>
+            
+                <li data-name="WaitReadyIndicatorImpl#ready"><a href="WaitReadyIndicatorImpl.html#ready">ready</a></li>
+            
+                <li data-name="WaitReadyIndicatorImpl#setWaitCaption"><a href="WaitReadyIndicatorImpl.html#setWaitCaption">setWaitCaption</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="WebAudioTextToSpeech">
+            <span class="title">
+                <a href="WebAudioTextToSpeech.html">WebAudioTextToSpeech</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="WebAudioTextToSpeech#_basePluginName"><a href="WebAudioTextToSpeech.html#_basePluginName">_basePluginName</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#_defaultCtxName"><a href="WebAudioTextToSpeech.html#_defaultCtxName">_defaultCtxName</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#_defaultImplFile"><a href="WebAudioTextToSpeech.html#_defaultImplFile">_defaultImplFile</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#_instance"><a href="WebAudioTextToSpeech.html#_instance">_instance</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#_logger"><a href="WebAudioTextToSpeech.html#_logger">_logger</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#_pluginName"><a href="WebAudioTextToSpeech.html#_pluginName">_pluginName</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#audioArray"><a href="WebAudioTextToSpeech.html#audioArray">audioArray</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#bufferSize"><a href="WebAudioTextToSpeech.html#bufferSize">bufferSize</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#commandQueue"><a href="WebAudioTextToSpeech.html#commandQueue">commandQueue</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#createAudio"><a href="WebAudioTextToSpeech.html#createAudio">createAudio</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#EMPTY_SENTENCE"><a href="WebAudioTextToSpeech.html#EMPTY_SENTENCE">EMPTY_SENTENCE</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#firstSentence"><a href="WebAudioTextToSpeech.html#firstSentence">firstSentence</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#getLanguages"><a href="WebAudioTextToSpeech.html#getLanguages">getLanguages</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#getVoices"><a href="WebAudioTextToSpeech.html#getVoices">getVoices</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#isLoading"><a href="WebAudioTextToSpeech.html#isLoading">isLoading</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#isReady"><a href="WebAudioTextToSpeech.html#isReady">isReady</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#loadIndex"><a href="WebAudioTextToSpeech.html#loadIndex">loadIndex</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#pauseDuration"><a href="WebAudioTextToSpeech.html#pauseDuration">pauseDuration</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#playIndex"><a href="WebAudioTextToSpeech.html#playIndex">playIndex</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#sentenceArray"><a href="WebAudioTextToSpeech.html#sentenceArray">sentenceArray</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#ttsMedia"><a href="WebAudioTextToSpeech.html#ttsMedia">ttsMedia</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#volume"><a href="WebAudioTextToSpeech.html#volume">volume</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="WebAudioTextToSpeech#_resetCallbacks"><a href="WebAudioTextToSpeech.html#_resetCallbacks">_resetCallbacks</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#_setVolume"><a href="WebAudioTextToSpeech.html#_setVolume">_setVolume</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#addToCommandQueue"><a href="WebAudioTextToSpeech.html#addToCommandQueue">addToCommandQueue</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#cancelSpeech"><a href="WebAudioTextToSpeech.html#cancelSpeech">cancelSpeech</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#clearCommandQueue"><a href="WebAudioTextToSpeech.html#clearCommandQueue">clearCommandQueue</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#currentFailureCallback"><a href="WebAudioTextToSpeech.html#currentFailureCallback">currentFailureCallback</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#getLangParam"><a href="WebAudioTextToSpeech.html#getLangParam">getLangParam</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#getSpeechLanguages"><a href="WebAudioTextToSpeech.html#getSpeechLanguages">getSpeechLanguages</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#getVoiceParam"><a href="WebAudioTextToSpeech.html#getVoiceParam">getVoiceParam</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#getVoices"><a href="WebAudioTextToSpeech.html#getVoices">getVoices</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#initialize"><a href="WebAudioTextToSpeech.html#initialize">initialize</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#initImpl"><a href="WebAudioTextToSpeech.html#initImpl">initImpl</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#loadNext"><a href="WebAudioTextToSpeech.html#loadNext">loadNext</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#onEndCallback"><a href="WebAudioTextToSpeech.html#onEndCallback">onEndCallback</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#onReadyCallback"><a href="WebAudioTextToSpeech.html#onReadyCallback">onReadyCallback</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#playNext"><a href="WebAudioTextToSpeech.html#playNext">playNext</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#playNextAfterPause"><a href="WebAudioTextToSpeech.html#playNextAfterPause">playNextAfterPause</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#processNextInCommandQueue"><a href="WebAudioTextToSpeech.html#processNextInCommandQueue">processNextInCommandQueue</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#setTextToSpeechVolume"><a href="WebAudioTextToSpeech.html#setTextToSpeechVolume">setTextToSpeechVolume</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#textToSpeech"><a href="WebAudioTextToSpeech.html#textToSpeech">textToSpeech</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#tts"><a href="WebAudioTextToSpeech.html#tts">tts</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#ttsSentenceArray"><a href="WebAudioTextToSpeech.html#ttsSentenceArray">ttsSentenceArray</a></li>
+            
+                <li data-name="WebAudioTextToSpeech#ttsSingleSentence"><a href="WebAudioTextToSpeech.html#ttsSingleSentence">ttsSingleSentence</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="WebspeechAudioInput">
+            <span class="title">
+                <a href="WebspeechAudioInput.html">WebspeechAudioInput</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="WebspeechAudioInput#_pluginName"><a href="WebspeechAudioInput.html#_pluginName">_pluginName</a></li>
+            
+                <li data-name="WebspeechAudioInput#_prevResult"><a href="WebspeechAudioInput.html#_prevResult">_prevResult</a></li>
+            
+                <li data-name="WebspeechAudioInput#aborted"><a href="WebspeechAudioInput.html#aborted">aborted</a></li>
+            
+                <li data-name="WebspeechAudioInput#active"><a href="WebspeechAudioInput.html#active">active</a></li>
+            
+                <li data-name="WebspeechAudioInput#currentFailureCallback"><a href="WebspeechAudioInput.html#currentFailureCallback">currentFailureCallback</a></li>
+            
+                <li data-name="WebspeechAudioInput#currentSuccessCallback"><a href="WebspeechAudioInput.html#currentSuccessCallback">currentSuccessCallback</a></li>
+            
+                <li data-name="WebspeechAudioInput#DEFAULT_ALTERNATIVE_RESULTS"><a href="WebspeechAudioInput.html#DEFAULT_ALTERNATIVE_RESULTS">DEFAULT_ALTERNATIVE_RESULTS</a></li>
+            
+                <li data-name="WebspeechAudioInput#default_error_function"><a href="WebspeechAudioInput.html#default_error_function">default_error_function</a></li>
+            
+                <li data-name="WebspeechAudioInput#DEFAULT_LANGUAGE"><a href="WebspeechAudioInput.html#DEFAULT_LANGUAGE">DEFAULT_LANGUAGE</a></li>
+            
+                <li data-name="WebspeechAudioInput#EVENT_RESULT_FIELD"><a href="WebspeechAudioInput.html#EVENT_RESULT_FIELD">EVENT_RESULT_FIELD</a></li>
+            
+                <li data-name="WebspeechAudioInput#EVENT_SCORE_FIELD"><a href="WebspeechAudioInput.html#EVENT_SCORE_FIELD">EVENT_SCORE_FIELD</a></li>
+            
+                <li data-name="WebspeechAudioInput#final_recognition_result"><a href="WebspeechAudioInput.html#final_recognition_result">final_recognition_result</a></li>
+            
+                <li data-name="WebspeechAudioInput#helper_error_handler"><a href="WebspeechAudioInput.html#helper_error_handler">helper_error_handler</a></li>
+            
+                <li data-name="WebspeechAudioInput#intermediate_results"><a href="WebspeechAudioInput.html#intermediate_results">intermediate_results</a></li>
+            
+                <li data-name="WebspeechAudioInput#logger"><a href="WebspeechAudioInput.html#logger">logger</a></li>
+            
+                <li data-name="WebspeechAudioInput#max_error_retry"><a href="WebspeechAudioInput.html#max_error_retry">max_error_retry</a></li>
+            
+                <li data-name="WebspeechAudioInput#micLevelsImplFile"><a href="WebspeechAudioInput.html#micLevelsImplFile">micLevelsImplFile</a></li>
+            
+                <li data-name="WebspeechAudioInput#pluginExports"><a href="WebspeechAudioInput.html#pluginExports">pluginExports</a></li>
+            
+                <li data-name="WebspeechAudioInput#recognition"><a href="WebspeechAudioInput.html#recognition">recognition</a></li>
+            
+                <li data-name="WebspeechAudioInput#recording"><a href="WebspeechAudioInput.html#recording">recording</a></li>
+            
+                <li data-name="WebspeechAudioInput#RESULT_TYPES"><a href="WebspeechAudioInput.html#RESULT_TYPES">RESULT_TYPES</a></li>
+            
+                <li data-name="WebspeechAudioInput#SpeechRecognitionImpl"><a href="WebspeechAudioInput.html#SpeechRecognitionImpl">SpeechRecognitionImpl</a></li>
+            
+                <li data-name="WebspeechAudioInput#UNSTABLE_LIMIT"><a href="WebspeechAudioInput.html#UNSTABLE_LIMIT">UNSTABLE_LIMIT</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="WebspeechAudioInput#cancelRecognition"><a href="WebspeechAudioInput.html#cancelRecognition">cancelRecognition</a></li>
+            
+                <li data-name="WebspeechAudioInput#default_error_function"><a href="WebspeechAudioInput.html#default_error_function">default_error_function</a></li>
+            
+                <li data-name="WebspeechAudioInput#helper_error_handler"><a href="WebspeechAudioInput.html#helper_error_handler">helper_error_handler</a></li>
+            
+                <li data-name="WebspeechAudioInput#helper_extract_results"><a href="WebspeechAudioInput.html#helper_extract_results">helper_extract_results</a></li>
+            
+                <li data-name="WebspeechAudioInput#initialize"><a href="WebspeechAudioInput.html#initialize">initialize</a></li>
+            
+                <li data-name="WebspeechAudioInput#recognize"><a href="WebspeechAudioInput.html#recognize">recognize</a></li>
+            
+                <li data-name="WebspeechAudioInput#startRecord"><a href="WebspeechAudioInput.html#startRecord">startRecord</a></li>
+            
+                <li data-name="WebspeechAudioInput#stopRecord"><a href="WebspeechAudioInput.html#stopRecord">stopRecord</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -2165,6 +3008,9 @@
             <span class="subtitle">Members</span>
             
                 <li data-name="YieldDeclaration#getValue"><a href="YieldDeclaration.html#getValue">getValue</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -2284,7 +3130,7 @@
         
 
     
-    <pre class="prettyprint"><code>//initialization of inputManagerrequire('mmirf/inputManager').init().then( function(inputManagerInstance, inputEngineInstance){		//do something});</code></pre>
+    <pre class="prettyprint"><code>//initialization of inputManagerrequire('mmirf/inputManager').init().then( function(data){		var inputManagerInstance = data.manager;		var inputEngineInstance  = data.engine;		//do something...});</code></pre>
     
 
     
@@ -2298,127 +3144,11 @@
     
     
     
-        <h3 class="subsection-title">Requires</h3>
-        
-        <ul>
-            <li>module:mmir.require</li>
-        
-            <li>module:mmir._define</li>
-        </ul>
     
     
     
     
     
-    
-    
-        <h3 class="subsection-title">Members</h3>
-        
-        <dl>
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="_instance">_instance</h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        </dl>
-    
-    
-    
-        <h3 class="subsection-title">Methods</h3>
-        
-        <dl>
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="init">
-            
-            init<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Deferred}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="manager_dialog_inputManager.js.html">manager/dialog/inputManager.js</a>, <a href="manager_dialog_inputManager.js.html#line93">line 93</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
     
     
     
@@ -2427,195 +3157,6 @@
     
     
 
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="raise">
-            
-            raise<span class="signature">(eventName, <span class="optional">eventData</span>)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="manager_dialog_inputManager.js.html">manager/dialog/inputManager.js</a>, <a href="manager_dialog_inputManager.js.html#line82">line 82</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This function raises an event.
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>eventName</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="String.html">String</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                The name of the event which is to be raised</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>eventData</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                OPTIONAL				Data belonging to the event</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    <h5>Throws:</h5>
-    
-            
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        if this function is invoked while the internal				   event/state engine (i.e. <code>mmir.InputEngine</code>				   is not initialized yet
-        </div>
-    </dt>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type">Error</span>
-
-
-            </dd>
-        </dl>
-    </dt>
-</dl>
-
-
-        
-    
-    
-    
-    
-</dd>
-
-        </dl>
-    
-    
-    
-    
     
 </article>
 
@@ -2628,12 +3169,11 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.0-dev</a> on Tue Aug 22 2017 21:24:22 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Aug 01 2019 16:47:37 GMT+0200 (GMT+02:00)
         </footer>
     </div>
 </div>
 <script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
-<script src="scripts/main.js"></script>
+<script src="scripts/jaguar.js"></script>
 </body>
 </html>
