@@ -1,0 +1,3952 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>MMIR Framework API 5.0.0</title>
+    
+    
+    
+        <meta name="keywords" content="multimodal,dialog system,speech,recognition,synthesis" />
+        <meta name="keyword" content="multimodal,dialog system,speech,recognition,synthesis" />
+    
+    
+    
+    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
+    <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
+    <meta property="og:url" content="https://github.com/mmig/mmir"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a target="_blank" href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">MMIR Framework</a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentation">
+    </div>
+    <ul class="list">
+    
+        <h3 class="typeHeading">Namespaces</h3>
+        
+            <li class="item" data-name="mmir.html">
+                <span class="title">
+                    <a href="mmir.html">mmir</a>
+                    
+                    <span class="static">static</span>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir._define"><a href="mmir.html#._define">_define</a></li>
+                
+                    <li data-name="mmir._mmirLibPath"><a href="mmir.html#._mmirLibPath">_mmirLibPath</a></li>
+                
+                    <li data-name="mmir.conf"><a href="mmir.html#.conf">conf</a></li>
+                
+                    <li data-name="mmir.ctrl"><a href="mmir.html#.ctrl">ctrl</a></li>
+                
+                    <li data-name="mmir.debug"><a href="mmir.html#.debug">debug</a></li>
+                
+                    <li data-name="mmir.dialog"><a href="mmir.html#.dialog">dialog</a></li>
+                
+                    <li data-name="mmir.dialogEngine"><a href="mmir.html#.dialogEngine">dialogEngine</a></li>
+                
+                    <li data-name="mmir.input"><a href="mmir.html#.input">input</a></li>
+                
+                    <li data-name="mmir.inputEngine"><a href="mmir.html#.inputEngine">inputEngine</a></li>
+                
+                    <li data-name="mmir.jquery"><a href="mmir.html#.jquery">jquery</a></li>
+                
+                    <li data-name="mmir.lang"><a href="mmir.html#.lang">lang</a></li>
+                
+                    <li data-name="mmir.libMode"><a href="mmir.html#.libMode">libMode</a></li>
+                
+                    <li data-name="mmir.logLevel"><a href="mmir.html#.logLevel">logLevel</a></li>
+                
+                    <li data-name="mmir.logTrace"><a href="mmir.html#.logTrace">logTrace</a></li>
+                
+                    <li data-name="mmir.media"><a href="mmir.html#.media">media</a></li>
+                
+                    <li data-name="mmir.mmirName"><a href="mmir.html#.mmirName">mmirName</a></li>
+                
+                    <li data-name="mmir.model"><a href="mmir.html#.model">model</a></li>
+                
+                    <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
+                
+                    <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
+                
+                    <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
+                
+                    <li data-name="mmir.res"><a href="mmir.html#.res">res</a></li>
+                
+                    <li data-name="mmir.semantic"><a href="mmir.html#.semantic">semantic</a></li>
+                
+                    <li data-name="mmir.startModule"><a href="mmir.html#.startModule">startModule</a></li>
+                
+                    <li data-name="mmir.startModules"><a href="mmir.html#.startModules">startModules</a></li>
+                
+                    <li data-name="mmir.util"><a href="mmir.html#.util">util</a></li>
+                
+                    <li data-name="mmir.version"><a href="mmir.html#.version">version</a></li>
+                
+                    <li data-name="mmir.viewEngine"><a href="mmir.html#.viewEngine">viewEngine</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.applyConfigs"><a href="mmir.html#.applyConfigs">applyConfigs</a></li>
+                
+                    <li data-name="mmir.config"><a href="mmir.html#.config">config</a></li>
+                
+                    <li data-name="mmir.isVersion"><a href="mmir.html#.isVersion">isVersion</a></li>
+                
+                    <li data-name="mmir.ready"><a href="mmir.html#.ready">ready</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.parser.html">
+                <span class="title">
+                    <a href="mmir.parser.html">mmir.parser</a>
+                    
+                    <span class="static">static</span>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+      
+        <h3 class="typeHeading">Classes</h3>
+        
+            <li class="item" data-name="AsyncCompiler.html">
+                <span class="title">
+                    <a href="AsyncCompiler.html">AsyncCompiler</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="AsyncCompiler#createWorker"><a href="AsyncCompiler.html#createWorker">createWorker</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="AsyncCompiler.createWorker.CompileWebWorker.html">
+                <span class="title">
+                    <a href="AsyncCompiler.createWorker.CompileWebWorker.html">AsyncCompiler.createWorker.CompileWebWorker</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="AsyncGrammar.html">
+                <span class="title">
+                    <a href="AsyncGrammar.html">AsyncGrammar</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="AsyncGrammar#init"><a href="AsyncGrammar.html#init">init</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="ContentElement.html">
+                <span class="title">
+                    <a href="ContentElement.html">ContentElement</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="ContentElement#getController"><a href="ContentElement.html#getController">getController</a></li>
+                
+                    <li data-name="ContentElement#getDefinition"><a href="ContentElement.html#getDefinition">getDefinition</a></li>
+                
+                    <li data-name="ContentElement#getEnd"><a href="ContentElement.html#getEnd">getEnd</a></li>
+                
+                    <li data-name="ContentElement#getName"><a href="ContentElement.html#getName">getName</a></li>
+                
+                    <li data-name="ContentElement#getRawText"><a href="ContentElement.html#getRawText">getRawText</a></li>
+                
+                    <li data-name="ContentElement#getStart"><a href="ContentElement.html#getStart">getStart</a></li>
+                
+                    <li data-name="ContentElement#getView"><a href="ContentElement.html#getView">getView</a></li>
+                
+                    <li data-name="ContentElement#hasDynamicContent"><a href="ContentElement.html#hasDynamicContent">hasDynamicContent</a></li>
+                
+                    <li data-name="ContentElement#stringify"><a href="ContentElement.html#stringify">stringify</a></li>
+                
+                    <li data-name="ContentElement#toHtml"><a href="ContentElement.html#toHtml">toHtml</a></li>
+                
+                    <li data-name="ContentElement#toStrings"><a href="ContentElement.html#toStrings">toStrings</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="Controller.html">
+                <span class="title">
+                    <a href="Controller.html">Controller</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="Controller#def"><a href="Controller.html#def">def</a></li>
+                
+                    <li data-name="Controller#helper"><a href="Controller.html#helper">helper</a></li>
+                
+                    <li data-name="Controller#impl"><a href="Controller.html#impl">impl</a></li>
+                
+                    <li data-name="Controller#layout"><a href="Controller.html#layout">layout</a></li>
+                
+                    <li data-name="Controller#name"><a href="Controller.html#name">name</a></li>
+                
+                    <li data-name="Controller#partials"><a href="Controller.html#partials">partials</a></li>
+                
+                    <li data-name="Controller#script"><a href="Controller.html#script">script</a></li>
+                
+                    <li data-name="Controller#views"><a href="Controller.html#views">views</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="Controller#getHelper"><a href="Controller.html#getHelper">getHelper</a></li>
+                
+                    <li data-name="Controller#getLayout"><a href="Controller.html#getLayout">getLayout</a></li>
+                
+                    <li data-name="Controller#getLayoutName"><a href="Controller.html#getLayoutName">getLayoutName</a></li>
+                
+                    <li data-name="Controller#getName"><a href="Controller.html#getName">getName</a></li>
+                
+                    <li data-name="Controller#getPartialNames"><a href="Controller.html#getPartialNames">getPartialNames</a></li>
+                
+                    <li data-name="Controller#getPartials"><a href="Controller.html#getPartials">getPartials</a></li>
+                
+                    <li data-name="Controller#getViewNames"><a href="Controller.html#getViewNames">getViewNames</a></li>
+                
+                    <li data-name="Controller#getViews"><a href="Controller.html#getViews">getViews</a></li>
+                
+                    <li data-name="Controller#loadHelper"><a href="Controller.html#loadHelper">loadHelper</a></li>
+                
+                    <li data-name="Controller#parsePartials"><a href="Controller.html#parsePartials">parsePartials</a></li>
+                
+                    <li data-name="Controller#parseViews"><a href="Controller.html#parseViews">parseViews</a></li>
+                
+                    <li data-name="Controller#perform"><a href="Controller.html#perform">perform</a></li>
+                
+                    <li data-name="Controller#performHelper"><a href="Controller.html#performHelper">performHelper</a></li>
+                
+                    <li data-name="Controller#performIfPresent"><a href="Controller.html#performIfPresent">performIfPresent</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="CordovaAudioOutput.html">
+                <span class="title">
+                    <a href="CordovaAudioOutput.html">CordovaAudioOutput</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="CordovaAudioOutput#_pluginName"><a href="CordovaAudioOutput.html#_pluginName">_pluginName</a></li>
+                
+                    <li data-name="CordovaAudioOutput#getAudio"><a href="CordovaAudioOutput.html#getAudio">getAudio</a></li>
+                
+                    <li data-name="CordovaAudioOutput#play"><a href="CordovaAudioOutput.html#play">play</a></li>
+                
+                    <li data-name="CordovaAudioOutput#play"><a href="CordovaAudioOutput.html#play">play</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="CordovaAudioOutput#getAudio"><a href="CordovaAudioOutput.html#getAudio">getAudio</a></li>
+                
+                    <li data-name="CordovaAudioOutput#getURLAsAudio"><a href="CordovaAudioOutput.html#getURLAsAudio">getURLAsAudio</a></li>
+                
+                    <li data-name="CordovaAudioOutput#initialize"><a href="CordovaAudioOutput.html#initialize">initialize</a></li>
+                
+                    <li data-name="CordovaAudioOutput#playURL"><a href="CordovaAudioOutput.html#playURL">playURL</a></li>
+                
+                    <li data-name="CordovaAudioOutput#playWAV"><a href="CordovaAudioOutput.html#playWAV">playWAV</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="Dictionary.html">
+                <span class="title">
+                    <a href="Dictionary.html">Dictionary</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="Dictionary#clear"><a href="Dictionary.html#clear">clear</a></li>
+                
+                    <li data-name="Dictionary#containsKey"><a href="Dictionary.html#containsKey">containsKey</a></li>
+                
+                    <li data-name="Dictionary#containsValue"><a href="Dictionary.html#containsValue">containsValue</a></li>
+                
+                    <li data-name="Dictionary#get"><a href="Dictionary.html#get">get</a></li>
+                
+                    <li data-name="Dictionary#getKeys"><a href="Dictionary.html#getKeys">getKeys</a></li>
+                
+                    <li data-name="Dictionary#put"><a href="Dictionary.html#put">put</a></li>
+                
+                    <li data-name="Dictionary#remove"><a href="Dictionary.html#remove">remove</a></li>
+                
+                    <li data-name="Dictionary#size"><a href="Dictionary.html#size">size</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="DisabledLogger.html">
+                <span class="title">
+                    <a href="DisabledLogger.html">DisabledLogger</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="DisabledLogger#c"><a href="DisabledLogger.html#c">c</a></li>
+                
+                    <li data-name="DisabledLogger#critical"><a href="DisabledLogger.html#critical">critical</a></li>
+                
+                    <li data-name="DisabledLogger#d"><a href="DisabledLogger.html#d">d</a></li>
+                
+                    <li data-name="DisabledLogger#debug"><a href="DisabledLogger.html#debug">debug</a></li>
+                
+                    <li data-name="DisabledLogger#e"><a href="DisabledLogger.html#e">e</a></li>
+                
+                    <li data-name="DisabledLogger#error"><a href="DisabledLogger.html#error">error</a></li>
+                
+                    <li data-name="DisabledLogger#getLevel"><a href="DisabledLogger.html#getLevel">getLevel</a></li>
+                
+                    <li data-name="DisabledLogger#i"><a href="DisabledLogger.html#i">i</a></li>
+                
+                    <li data-name="DisabledLogger#info"><a href="DisabledLogger.html#info">info</a></li>
+                
+                    <li data-name="DisabledLogger#isc"><a href="DisabledLogger.html#isc">isc</a></li>
+                
+                    <li data-name="DisabledLogger#isCritical"><a href="DisabledLogger.html#isCritical">isCritical</a></li>
+                
+                    <li data-name="DisabledLogger#isd"><a href="DisabledLogger.html#isd">isd</a></li>
+                
+                    <li data-name="DisabledLogger#isDebug"><a href="DisabledLogger.html#isDebug">isDebug</a></li>
+                
+                    <li data-name="DisabledLogger#isDisabled"><a href="DisabledLogger.html#isDisabled">isDisabled</a></li>
+                
+                    <li data-name="DisabledLogger#ise"><a href="DisabledLogger.html#ise">ise</a></li>
+                
+                    <li data-name="DisabledLogger#isError"><a href="DisabledLogger.html#isError">isError</a></li>
+                
+                    <li data-name="DisabledLogger#isi"><a href="DisabledLogger.html#isi">isi</a></li>
+                
+                    <li data-name="DisabledLogger#isInfo"><a href="DisabledLogger.html#isInfo">isInfo</a></li>
+                
+                    <li data-name="DisabledLogger#isv"><a href="DisabledLogger.html#isv">isv</a></li>
+                
+                    <li data-name="DisabledLogger#isVerbose"><a href="DisabledLogger.html#isVerbose">isVerbose</a></li>
+                
+                    <li data-name="DisabledLogger#isw"><a href="DisabledLogger.html#isw">isw</a></li>
+                
+                    <li data-name="DisabledLogger#isWarn"><a href="DisabledLogger.html#isWarn">isWarn</a></li>
+                
+                    <li data-name="DisabledLogger#log"><a href="DisabledLogger.html#log">log</a></li>
+                
+                    <li data-name="DisabledLogger#setLevel"><a href="DisabledLogger.html#setLevel">setLevel</a></li>
+                
+                    <li data-name="DisabledLogger#v"><a href="DisabledLogger.html#v">v</a></li>
+                
+                    <li data-name="DisabledLogger#verbose"><a href="DisabledLogger.html#verbose">verbose</a></li>
+                
+                    <li data-name="DisabledLogger#w"><a href="DisabledLogger.html#w">w</a></li>
+                
+                    <li data-name="DisabledLogger#warn"><a href="DisabledLogger.html#warn">warn</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="Emma.html">
+                <span class="title">
+                    <a href="Emma.html">Emma</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="Emma#_iGuid"><a href="Emma.html#_iGuid">_iGuid</a></li>
+                
+                    <li data-name="Emma#DEFAULT_SPEECH_TYPE"><a href="Emma.html#DEFAULT_SPEECH_TYPE">DEFAULT_SPEECH_TYPE</a></li>
+                
+                    <li data-name="Emma#DEFAULT_TACTILE_TYPES"><a href="Emma.html#DEFAULT_TACTILE_TYPES">DEFAULT_TACTILE_TYPES</a></li>
+                
+                    <li data-name="Emma#defaultSpeechInterpretation"><a href="Emma.html#defaultSpeechInterpretation">defaultSpeechInterpretation</a></li>
+                
+                    <li data-name="Emma#defaultTactileInterpretation"><a href="Emma.html#defaultTactileInterpretation">defaultTactileInterpretation</a></li>
+                
+                    <li data-name="Emma#EVENT_SUFFIXES"><a href="Emma.html#EVENT_SUFFIXES">EVENT_SUFFIXES</a></li>
+                
+                    <li data-name="Emma#EVENT_SUFFIXES_HORIZONTAL"><a href="Emma.html#EVENT_SUFFIXES_HORIZONTAL">EVENT_SUFFIXES_HORIZONTAL</a></li>
+                
+                    <li data-name="Emma#EVENT_SUFFIXES_VERTICAL"><a href="Emma.html#EVENT_SUFFIXES_VERTICAL">EVENT_SUFFIXES_VERTICAL</a></li>
+                
+                    <li data-name="Emma#RE_TACTILE_SUB_TYPES"><a href="Emma.html#RE_TACTILE_SUB_TYPES">RE_TACTILE_SUB_TYPES</a></li>
+                
+                    <li data-name="Emma#SPEECH_RECOGNITION_RESULT_NAME"><a href="Emma.html#SPEECH_RECOGNITION_RESULT_NAME">SPEECH_RECOGNITION_RESULT_NAME</a></li>
+                
+                    <li data-name="Emma#SPEECH_UNDERSTANDING_PREPROCESSED_PHRASE_NAME"><a href="Emma.html#SPEECH_UNDERSTANDING_PREPROCESSED_PHRASE_NAME">SPEECH_UNDERSTANDING_PREPROCESSED_PHRASE_NAME</a></li>
+                
+                    <li data-name="Emma#SPEECH_UNDERSTANDING_SEMANTICS_NAME"><a href="Emma.html#SPEECH_UNDERSTANDING_SEMANTICS_NAME">SPEECH_UNDERSTANDING_SEMANTICS_NAME</a></li>
+                
+                    <li data-name="Emma#SPEECH_UNDERSTANDING_SEMANTICS_PARTS_NAME"><a href="Emma.html#SPEECH_UNDERSTANDING_SEMANTICS_PARTS_NAME">SPEECH_UNDERSTANDING_SEMANTICS_PARTS_NAME</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="Emma#_isGrammarUnderstanding"><a href="Emma.html#_isGrammarUnderstanding">_isGrammarUnderstanding</a></li>
+                
+                    <li data-name="Emma#addRecognition"><a href="Emma.html#addRecognition">addRecognition</a></li>
+                
+                    <li data-name="Emma#getType"><a href="Emma.html#getType">getType</a></li>
+                
+                    <li data-name="Emma#guid"><a href="Emma.html#guid">guid</a></li>
+                
+                    <li data-name="Emma#isRecognition"><a href="Emma.html#isRecognition">isRecognition</a></li>
+                
+                    <li data-name="Emma#isSpeech"><a href="Emma.html#isSpeech">isSpeech</a></li>
+                
+                    <li data-name="Emma#isTactile"><a href="Emma.html#isTactile">isTactile</a></li>
+                
+                    <li data-name="Emma#isUnderstanding"><a href="Emma.html#isUnderstanding">isUnderstanding</a></li>
+                
+                    <li data-name="Emma#setModality"><a href="Emma.html#setModality">setModality</a></li>
+                
+                    <li data-name="Emma#setSource"><a href="Emma.html#setSource">setSource</a></li>
+                
+                    <li data-name="Emma#setSpeechRecognition"><a href="Emma.html#setSpeechRecognition">setSpeechRecognition</a></li>
+                
+                    <li data-name="Emma#setSpeechUnderstanding"><a href="Emma.html#setSpeechUnderstanding">setSpeechUnderstanding</a></li>
+                
+                    <li data-name="Emma#toEmma"><a href="Emma.html#toEmma">toEmma</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="EncodeUtils.html">
+                <span class="title">
+                    <a href="EncodeUtils.html">EncodeUtils</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="EncodeUtils#decodeUmlauts"><a href="EncodeUtils.html#decodeUmlauts">decodeUmlauts</a></li>
+                
+                    <li data-name="EncodeUtils#encodeUmlauts"><a href="EncodeUtils.html#encodeUmlauts">encodeUmlauts</a></li>
+                
+                    <li data-name="EncodeUtils#htmlEncode"><a href="EncodeUtils.html#htmlEncode">htmlEncode</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="ExtendedStateEngineImpl.html">
+                <span class="title">
+                    <a href="ExtendedStateEngineImpl.html">ExtendedStateEngineImpl</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="ExtendedStateEngineImpl._events"><a href="ExtendedStateEngineImpl.html#._events">_events</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl._scion"><a href="ExtendedStateEngineImpl.html#._scion">_scion</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl._states"><a href="ExtendedStateEngineImpl.html#._states">_states</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl._transitions"><a href="ExtendedStateEngineImpl.html#._transitions">_transitions</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="ExtendedStateEngineImpl.evalScript"><a href="ExtendedStateEngineImpl.html#.evalScript">evalScript</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl.gen"><a href="ExtendedStateEngineImpl.html#.gen">gen</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl.getActiveEvents"><a href="ExtendedStateEngineImpl.html#.getActiveEvents">getActiveEvents</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl.getActiveStates"><a href="ExtendedStateEngineImpl.html#.getActiveStates">getActiveStates</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl.getActiveTransitions"><a href="ExtendedStateEngineImpl.html#.getActiveTransitions">getActiveTransitions</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl.getEvents"><a href="ExtendedStateEngineImpl.html#.getEvents">getEvents</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl.getStates"><a href="ExtendedStateEngineImpl.html#.getStates">getStates</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl.getTransitions"><a href="ExtendedStateEngineImpl.html#.getTransitions">getTransitions</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl.ignoreScript"><a href="ExtendedStateEngineImpl.html#.ignoreScript">ignoreScript</a></li>
+                
+                    <li data-name="ExtendedStateEngineImpl.start"><a href="ExtendedStateEngineImpl.html#.start">start</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="GrammarConverter.html">
+                <span class="title">
+                    <a href="GrammarConverter.html">GrammarConverter</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="GrammarConverter#executeGrammar"><a href="GrammarConverter.html#executeGrammar">executeGrammar</a></li>
+                
+                    <li data-name="GrammarConverter#getCodeWrapPrefix"><a href="GrammarConverter.html#getCodeWrapPrefix">getCodeWrapPrefix</a></li>
+                
+                    <li data-name="GrammarConverter#getCodeWrapSuffix"><a href="GrammarConverter.html#getCodeWrapSuffix">getCodeWrapSuffix</a></li>
+                
+                    <li data-name="GrammarConverter#getEncodedStopwords"><a href="GrammarConverter.html#getEncodedStopwords">getEncodedStopwords</a></li>
+                
+                    <li data-name="GrammarConverter#getGrammarDef"><a href="GrammarConverter.html#getGrammarDef">getGrammarDef</a></li>
+                
+                    <li data-name="GrammarConverter#getGrammarSource"><a href="GrammarConverter.html#getGrammarSource">getGrammarSource</a></li>
+                
+                    <li data-name="GrammarConverter#getStopWordsEncRegExpr"><a href="GrammarConverter.html#getStopWordsEncRegExpr">getStopWordsEncRegExpr</a></li>
+                
+                    <li data-name="GrammarConverter#maskAsUnicode"><a href="GrammarConverter.html#maskAsUnicode">maskAsUnicode</a></li>
+                
+                    <li data-name="GrammarConverter#maskString"><a href="GrammarConverter.html#maskString">maskString</a></li>
+                
+                    <li data-name="GrammarConverter#postproc"><a href="GrammarConverter.html#postproc">postproc</a></li>
+                
+                    <li data-name="GrammarConverter#preproc"><a href="GrammarConverter.html#preproc">preproc</a></li>
+                
+                    <li data-name="GrammarConverter#recodeJSON"><a href="GrammarConverter.html#recodeJSON">recodeJSON</a></li>
+                
+                    <li data-name="GrammarConverter#removeStopwords"><a href="GrammarConverter.html#removeStopwords">removeStopwords</a></li>
+                
+                    <li data-name="GrammarConverter#setGrammarDef"><a href="GrammarConverter.html#setGrammarDef">setGrammarDef</a></li>
+                
+                    <li data-name="GrammarConverter#setGrammarFunction"><a href="GrammarConverter.html#setGrammarFunction">setGrammarFunction</a></li>
+                
+                    <li data-name="GrammarConverter#unmaskString"><a href="GrammarConverter.html#unmaskString">unmaskString</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="Helper.html">
+                <span class="title">
+                    <a href="Helper.html">Helper</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="Helper#controller"><a href="Helper.html#controller">controller</a></li>
+                
+                    <li data-name="Helper#impl"><a href="Helper.html#impl">impl</a></li>
+                
+                    <li data-name="Helper#name"><a href="Helper.html#name">name</a></li>
+                
+                    <li data-name="Helper#script"><a href="Helper.html#script">script</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="Helper#perform"><a href="Helper.html#perform">perform</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="Html5AudioOutput.html">
+                <span class="title">
+                    <a href="Html5AudioOutput.html">Html5AudioOutput</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="Html5AudioOutput#_pluginName"><a href="Html5AudioOutput.html#_pluginName">_pluginName</a></li>
+                
+                    <li data-name="Html5AudioOutput#MediaError"><a href="Html5AudioOutput.html#MediaError">MediaError</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="Html5AudioOutput#createDataUrl"><a href="Html5AudioOutput.html#createDataUrl">createDataUrl</a></li>
+                
+                    <li data-name="Html5AudioOutput#createError"><a href="Html5AudioOutput.html#createError">createError</a></li>
+                
+                    <li data-name="Html5AudioOutput#createErrorWrapper"><a href="Html5AudioOutput.html#createErrorWrapper">createErrorWrapper</a></li>
+                
+                    <li data-name="Html5AudioOutput#getURLAsAudio"><a href="Html5AudioOutput.html#getURLAsAudio">getURLAsAudio</a></li>
+                
+                    <li data-name="Html5AudioOutput#getWAVAsAudio"><a href="Html5AudioOutput.html#getWAVAsAudio">getWAVAsAudio</a></li>
+                
+                    <li data-name="Html5AudioOutput#handlePlayPromise"><a href="Html5AudioOutput.html#handlePlayPromise">handlePlayPromise</a></li>
+                
+                    <li data-name="Html5AudioOutput#initialize"><a href="Html5AudioOutput.html#initialize">initialize</a></li>
+                
+                    <li data-name="Html5AudioOutput#playURL"><a href="Html5AudioOutput.html#playURL">playURL</a></li>
+                
+                    <li data-name="Html5AudioOutput#playWAV"><a href="Html5AudioOutput.html#playWAV">playWAV</a></li>
+                
+                    <li data-name="Html5AudioOutput#releaseDataUrl"><a href="Html5AudioOutput.html#releaseDataUrl">releaseDataUrl</a></li>
+                
+                    <li data-name="Html5AudioOutput#releaseDataUrl"><a href="Html5AudioOutput.html#releaseDataUrl">releaseDataUrl</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="Layout.html">
+                <span class="title">
+                    <a href="Layout.html">Layout</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="Layout#bodyAttributes"><a href="Layout.html#bodyAttributes">bodyAttributes</a></li>
+                
+                    <li data-name="Layout#bodyContentElement"><a href="Layout.html#bodyContentElement">bodyContentElement</a></li>
+                
+                    <li data-name="Layout#bodyContents"><a href="Layout.html#bodyContents">bodyContents</a></li>
+                
+                    <li data-name="Layout#def"><a href="Layout.html#def">def</a></li>
+                
+                    <li data-name="Layout#dialogsContents"><a href="Layout.html#dialogsContents">dialogsContents</a></li>
+                
+                    <li data-name="Layout#headerContents"><a href="Layout.html#headerContents">headerContents</a></li>
+                
+                    <li data-name="Layout#headerElements"><a href="Layout.html#headerElements">headerElements</a></li>
+                
+                    <li data-name="Layout#name"><a href="Layout.html#name">name</a></li>
+                
+                    <li data-name="Layout#title"><a href="Layout.html#title">title</a></li>
+                
+                    <li data-name="Layout#yields"><a href="Layout.html#yields">yields</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="Layout#_extHeaderElements"><a href="Layout.html#_extHeaderElements">_extHeaderElements</a></li>
+                
+                    <li data-name="Layout#getBodyContents"><a href="Layout.html#getBodyContents">getBodyContents</a></li>
+                
+                    <li data-name="Layout#getDialogsContents"><a href="Layout.html#getDialogsContents">getDialogsContents</a></li>
+                
+                    <li data-name="Layout#getHeaderContents"><a href="Layout.html#getHeaderContents">getHeaderContents</a></li>
+                
+                    <li data-name="Layout#getName"><a href="Layout.html#getName">getName</a></li>
+                
+                    <li data-name="Layout#getYields"><a href="Layout.html#getYields">getYields</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="Layout.TagElement.html">
+                <span class="title">
+                    <a href="Layout.TagElement.html">Layout.TagElement</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="Layout.TagElement#tagName"><a href="Layout.TagElement.html#tagName">tagName</a></li>
+                
+                    <li data-name="Layout.TagElement#textContent"><a href="Layout.TagElement.html#textContent">textContent</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="Layout.TagElement#attr"><a href="Layout.TagElement.html#attr">attr</a></li>
+                
+                    <li data-name="Layout.TagElement#html"><a href="Layout.TagElement.html#html">html</a></li>
+                
+                    <li data-name="Layout.TagElement#isLink"><a href="Layout.TagElement.html#isLink">isLink</a></li>
+                
+                    <li data-name="Layout.TagElement#isScript"><a href="Layout.TagElement.html#isScript">isScript</a></li>
+                
+                    <li data-name="Layout.TagElement#isStyle"><a href="Layout.TagElement.html#isStyle">isStyle</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="Logger.html">
+                <span class="title">
+                    <a href="Logger.html">Logger</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="Logger#c"><a href="Logger.html#c">c</a></li>
+                
+                    <li data-name="Logger#d"><a href="Logger.html#d">d</a></li>
+                
+                    <li data-name="Logger#e"><a href="Logger.html#e">e</a></li>
+                
+                    <li data-name="Logger#i"><a href="Logger.html#i">i</a></li>
+                
+                    <li data-name="Logger#isc"><a href="Logger.html#isc">isc</a></li>
+                
+                    <li data-name="Logger#isd"><a href="Logger.html#isd">isd</a></li>
+                
+                    <li data-name="Logger#ise"><a href="Logger.html#ise">ise</a></li>
+                
+                    <li data-name="Logger#isi"><a href="Logger.html#isi">isi</a></li>
+                
+                    <li data-name="Logger#isv"><a href="Logger.html#isv">isv</a></li>
+                
+                    <li data-name="Logger#isw"><a href="Logger.html#isw">isw</a></li>
+                
+                    <li data-name="Logger#l"><a href="Logger.html#l">l</a></li>
+                
+                    <li data-name="Logger#v"><a href="Logger.html#v">v</a></li>
+                
+                    <li data-name="Logger#w"><a href="Logger.html#w">w</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="Logger#critical"><a href="Logger.html#critical">critical</a></li>
+                
+                    <li data-name="Logger#debug"><a href="Logger.html#debug">debug</a></li>
+                
+                    <li data-name="Logger#error"><a href="Logger.html#error">error</a></li>
+                
+                    <li data-name="Logger#getLevel"><a href="Logger.html#getLevel">getLevel</a></li>
+                
+                    <li data-name="Logger#info"><a href="Logger.html#info">info</a></li>
+                
+                    <li data-name="Logger#isCritical"><a href="Logger.html#isCritical">isCritical</a></li>
+                
+                    <li data-name="Logger#isDebug"><a href="Logger.html#isDebug">isDebug</a></li>
+                
+                    <li data-name="Logger#isDisabled"><a href="Logger.html#isDisabled">isDisabled</a></li>
+                
+                    <li data-name="Logger#isError"><a href="Logger.html#isError">isError</a></li>
+                
+                    <li data-name="Logger#isInfo"><a href="Logger.html#isInfo">isInfo</a></li>
+                
+                    <li data-name="Logger#isVerbose"><a href="Logger.html#isVerbose">isVerbose</a></li>
+                
+                    <li data-name="Logger#isWarn"><a href="Logger.html#isWarn">isWarn</a></li>
+                
+                    <li data-name="Logger#log"><a href="Logger.html#log">log</a></li>
+                
+                    <li data-name="Logger#setLevel"><a href="Logger.html#setLevel">setLevel</a></li>
+                
+                    <li data-name="Logger#verbose"><a href="Logger.html#verbose">verbose</a></li>
+                
+                    <li data-name="Logger#warn"><a href="Logger.html#warn">warn</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="MicLevelsAnalysis.html">
+                <span class="title">
+                    <a href="MicLevelsAnalysis.html">MicLevelsAnalysis</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="MicLevelsAnalysis#_audioAnalyzer"><a href="MicLevelsAnalysis.html#_audioAnalyzer">_audioAnalyzer</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#_audioContext"><a href="MicLevelsAnalysis.html#_audioContext">_audioContext</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#_currentInputStream"><a href="MicLevelsAnalysis.html#_currentInputStream">_currentInputStream</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#_isAnalysisActive"><a href="MicLevelsAnalysis.html#_isAnalysisActive">_isAnalysisActive</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#_isAnalysisCanceled"><a href="MicLevelsAnalysis.html#_isAnalysisCanceled">_isAnalysisCanceled</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#html5Navigator"><a href="MicLevelsAnalysis.html#html5Navigator">html5Navigator</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#isMicLevelsEnabled"><a href="MicLevelsAnalysis.html#isMicLevelsEnabled">isMicLevelsEnabled</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#LEVEL_CHANGED_THRESHOLD"><a href="MicLevelsAnalysis.html#LEVEL_CHANGED_THRESHOLD">LEVEL_CHANGED_THRESHOLD</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#MIC_MAX_NORM_VAL"><a href="MicLevelsAnalysis.html#MIC_MAX_NORM_VAL">MIC_MAX_NORM_VAL</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#MIC_MAX_VAL"><a href="MicLevelsAnalysis.html#MIC_MAX_VAL">MIC_MAX_VAL</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#MIC_NORMALIZATION_FACTOR"><a href="MicLevelsAnalysis.html#MIC_NORMALIZATION_FACTOR">MIC_NORMALIZATION_FACTOR</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#MIC_QUERY_INTERVALL"><a href="MicLevelsAnalysis.html#MIC_QUERY_INTERVALL">MIC_QUERY_INTERVALL</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#recording"><a href="MicLevelsAnalysis.html#recording">recording</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="MicLevelsAnalysis#_startAudioAnalysis"><a href="MicLevelsAnalysis.html#_startAudioAnalysis">_startAudioAnalysis</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#_startUserMedia"><a href="MicLevelsAnalysis.html#_startUserMedia">_startUserMedia</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#_stopAudioAnalysis"><a href="MicLevelsAnalysis.html#_stopAudioAnalysis">_stopAudioAnalysis</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#_updateMicLevelAnalysis"><a href="MicLevelsAnalysis.html#_updateMicLevelAnalysis">_updateMicLevelAnalysis</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#active"><a href="MicLevelsAnalysis.html#active">active</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#createAudioContext"><a href="MicLevelsAnalysis.html#createAudioContext">createAudioContext</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#enabled"><a href="MicLevelsAnalysis.html#enabled">enabled</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#getDb"><a href="MicLevelsAnalysis.html#getDb">getDb</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#getRms"><a href="MicLevelsAnalysis.html#getRms">getRms</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#hasChanged"><a href="MicLevelsAnalysis.html#hasChanged">hasChanged</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#normalize"><a href="MicLevelsAnalysis.html#normalize">normalize</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#start"><a href="MicLevelsAnalysis.html#start">start</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#stop"><a href="MicLevelsAnalysis.html#stop">stop</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.CommonUtils.html">
+                <span class="title">
+                    <a href="mmir.CommonUtils.html">mmir.CommonUtils</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.CommonUtils#regexHTMLComment"><a href="mmir.CommonUtils.html#regexHTMLComment">regexHTMLComment</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.CommonUtils#checkNetworkConnection"><a href="mmir.CommonUtils.html#checkNetworkConnection">checkNetworkConnection</a></li>
+                
+                    <li data-name="mmir.CommonUtils#concatArray"><a href="mmir.CommonUtils.html#concatArray">concatArray</a></li>
+                
+                    <li data-name="mmir.CommonUtils#getCompiledGrammarPath"><a href="mmir.CommonUtils.html#getCompiledGrammarPath">getCompiledGrammarPath</a></li>
+                
+                    <li data-name="mmir.CommonUtils#getDirectoryContents"><a href="mmir.CommonUtils.html#getDirectoryContents">getDirectoryContents</a></li>
+                
+                    <li data-name="mmir.CommonUtils#getDirectoryContentsWithFilter"><a href="mmir.CommonUtils.html#getDirectoryContentsWithFilter">getDirectoryContentsWithFilter</a></li>
+                
+                    <li data-name="mmir.CommonUtils#getDirectoryStructure"><a href="mmir.CommonUtils.html#getDirectoryStructure">getDirectoryStructure</a></li>
+                
+                    <li data-name="mmir.CommonUtils#getLocalScript"><a href="mmir.CommonUtils.html#getLocalScript">getLocalScript</a></li>
+                
+                    <li data-name="mmir.CommonUtils#getPartialsPrefix"><a href="mmir.CommonUtils.html#getPartialsPrefix">getPartialsPrefix</a></li>
+                
+                    <li data-name="mmir.CommonUtils#isArray"><a href="mmir.CommonUtils.html#isArray">isArray</a></li>
+                
+                    <li data-name="mmir.CommonUtils#isRunningOnAndroid"><a href="mmir.CommonUtils.html#isRunningOnAndroid">isRunningOnAndroid</a></li>
+                
+                    <li data-name="mmir.CommonUtils#isRunningOnSmartphone"><a href="mmir.CommonUtils.html#isRunningOnSmartphone">isRunningOnSmartphone</a></li>
+                
+                    <li data-name="mmir.CommonUtils#listDir"><a href="mmir.CommonUtils.html#listDir">listDir</a></li>
+                
+                    <li data-name="mmir.CommonUtils#loadCompiledGrammars"><a href="mmir.CommonUtils.html#loadCompiledGrammars">loadCompiledGrammars</a></li>
+                
+                    <li data-name="mmir.CommonUtils#loadDirectoryStructure"><a href="mmir.CommonUtils.html#loadDirectoryStructure">loadDirectoryStructure</a></li>
+                
+                    <li data-name="mmir.CommonUtils#loadImpl"><a href="mmir.CommonUtils.html#loadImpl">loadImpl</a></li>
+                
+                    <li data-name="mmir.CommonUtils#loadScript"><a href="mmir.CommonUtils.html#loadScript">loadScript</a></li>
+                
+                    <li data-name="mmir.CommonUtils#parseParamsToDictionary"><a href="mmir.CommonUtils.html#parseParamsToDictionary">parseParamsToDictionary</a></li>
+                
+                    <li data-name="mmir.CommonUtils#parseParamsToDictionary"><a href="mmir.CommonUtils.html#parseParamsToDictionary">parseParamsToDictionary</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.v1.CommonUtils.html">
+                <span class="title">
+                    <a href="mmir.compat.v1.CommonUtils.html">mmir.compat.v1.CommonUtils</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.v1.CoreCompat.html">
+                <span class="title">
+                    <a href="mmir.compat.v1.CoreCompat.html">mmir.compat.v1.CoreCompat</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.v1.LanguageManager.html">
+                <span class="title">
+                    <a href="mmir.compat.v1.LanguageManager.html">mmir.compat.v1.LanguageManager</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.compat.v1.LanguageManager#changeLanguage"><a href="mmir.compat.v1.LanguageManager.html#changeLanguage">changeLanguage</a></li>
+                
+                    <li data-name="mmir.compat.v1.LanguageManager#translateHTML"><a href="mmir.compat.v1.LanguageManager.html#translateHTML">translateHTML</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.v2.CoreCompat.html">
+                <span class="title">
+                    <a href="mmir.compat.v2.CoreCompat.html">mmir.compat.v2.CoreCompat</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.v3.CoreCompat.html">
+                <span class="title">
+                    <a href="mmir.compat.v3.CoreCompat.html">mmir.compat.v3.CoreCompat</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.v3.ModuleIdCompat.html">
+                <span class="title">
+                    <a href="mmir.compat.v3.ModuleIdCompat.html">mmir.compat.v3.ModuleIdCompat</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.compat.v3.ModuleIdCompat#core3Ids"><a href="mmir.compat.v3.ModuleIdCompat.html#core3Ids">core3Ids</a></li>
+                
+                    <li data-name="mmir.compat.v3.ModuleIdCompat#core3Shims"><a href="mmir.compat.v3.ModuleIdCompat.html#core3Shims">core3Shims</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.compat.v3.ModuleIdCompat#getId"><a href="mmir.compat.v3.ModuleIdCompat.html#getId">getId</a></li>
+                
+                    <li data-name="mmir.compat.v3.ModuleIdCompat#getLegacyConfig"><a href="mmir.compat.v3.ModuleIdCompat.html#getLegacyConfig">getLegacyConfig</a></li>
+                
+                    <li data-name="mmir.compat.v3.ModuleIdCompat#setToCompatibilityMode"><a href="mmir.compat.v3.ModuleIdCompat.html#setToCompatibilityMode">setToCompatibilityMode</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.v3.SemanticInterpreter.html">
+                <span class="title">
+                    <a href="mmir.compat.v3.SemanticInterpreter.html">mmir.compat.v3.SemanticInterpreter</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.v4.DialogManager.html">
+                <span class="title">
+                    <a href="mmir.compat.v4.DialogManager.html">mmir.compat.v4.DialogManager</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#_setControllerManager"><a href="mmir.compat.v4.DialogManager.html#_setControllerManager">_setControllerManager</a></li>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#_setPresentationManager"><a href="mmir.compat.v4.DialogManager.html#_setPresentationManager">_setPresentationManager</a></li>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#getOnPageRenderedHandler"><a href="mmir.compat.v4.DialogManager.html#getOnPageRenderedHandler">getOnPageRenderedHandler</a></li>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#hideCurrentDialog"><a href="mmir.compat.v4.DialogManager.html#hideCurrentDialog">hideCurrentDialog</a></li>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#hideWaitDialog"><a href="mmir.compat.v4.DialogManager.html#hideWaitDialog">hideWaitDialog</a></li>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#perform"><a href="mmir.compat.v4.DialogManager.html#perform">perform</a></li>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#performHelper"><a href="mmir.compat.v4.DialogManager.html#performHelper">performHelper</a></li>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#render"><a href="mmir.compat.v4.DialogManager.html#render">render</a></li>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#setOnPageRenderedHandler"><a href="mmir.compat.v4.DialogManager.html#setOnPageRenderedHandler">setOnPageRenderedHandler</a></li>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#showDialog"><a href="mmir.compat.v4.DialogManager.html#showDialog">showDialog</a></li>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#showWaitDialog"><a href="mmir.compat.v4.DialogManager.html#showWaitDialog">showWaitDialog</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.ConfigurationManager.html">
+                <span class="title">
+                    <a href="mmir.ConfigurationManager.html">mmir.ConfigurationManager</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.ConfigurationManager#get"><a href="mmir.ConfigurationManager.html#get">get</a></li>
+                
+                    <li data-name="mmir.ConfigurationManager#getBoolean"><a href="mmir.ConfigurationManager.html#getBoolean">getBoolean</a></li>
+                
+                    <li data-name="mmir.ConfigurationManager#getString"><a href="mmir.ConfigurationManager.html#getString">getString</a></li>
+                
+                    <li data-name="mmir.ConfigurationManager#set"><a href="mmir.ConfigurationManager.html#set">set</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.ControllerManager.html">
+                <span class="title">
+                    <a href="mmir.ControllerManager.html">mmir.ControllerManager</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.ControllerManager#createCtrlInstance"><a href="mmir.ControllerManager.html#createCtrlInstance">createCtrlInstance</a></li>
+                
+                    <li data-name="mmir.ControllerManager#get"><a href="mmir.ControllerManager.html#get">get</a></li>
+                
+                    <li data-name="mmir.ControllerManager#getNames"><a href="mmir.ControllerManager.html#getNames">getNames</a></li>
+                
+                    <li data-name="mmir.ControllerManager#init"><a href="mmir.ControllerManager.html#init">init</a></li>
+                
+                    <li data-name="mmir.ControllerManager#perform"><a href="mmir.ControllerManager.html#perform">perform</a></li>
+                
+                    <li data-name="mmir.ControllerManager#performHelper"><a href="mmir.ControllerManager.html#performHelper">performHelper</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.DialogManager.html">
+                <span class="title">
+                    <a href="mmir.DialogManager.html">mmir.DialogManager</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.DialogManager#_instance"><a href="mmir.DialogManager.html#_instance">_instance</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.DialogManager#init"><a href="mmir.DialogManager.html#init">init</a></li>
+                
+                    <li data-name="mmir.DialogManager#raise"><a href="mmir.DialogManager.html#raise">raise</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.DisabledLogging.html">
+                <span class="title">
+                    <a href="mmir.DisabledLogging.html">mmir.DisabledLogging</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.DisabledLogging#isDisabledLogger"><a href="mmir.DisabledLogging.html#isDisabledLogger">isDisabledLogger</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.DisabledLogging#create"><a href="mmir.DisabledLogging.html#create">create</a></li>
+                
+                    <li data-name="mmir.DisabledLogging#debug"><a href="mmir.DisabledLogging.html#debug">debug</a></li>
+                
+                    <li data-name="mmir.DisabledLogging#error"><a href="mmir.DisabledLogging.html#error">error</a></li>
+                
+                    <li data-name="mmir.DisabledLogging#get"><a href="mmir.DisabledLogging.html#get">get</a></li>
+                
+                    <li data-name="mmir.DisabledLogging#getDefaultLogLevel"><a href="mmir.DisabledLogging.html#getDefaultLogLevel">getDefaultLogLevel</a></li>
+                
+                    <li data-name="mmir.DisabledLogging#info"><a href="mmir.DisabledLogging.html#info">info</a></li>
+                
+                    <li data-name="mmir.DisabledLogging#log"><a href="mmir.DisabledLogging.html#log">log</a></li>
+                
+                    <li data-name="mmir.DisabledLogging#setDefaultLogLevel"><a href="mmir.DisabledLogging.html#setDefaultLogLevel">setDefaultLogLevel</a></li>
+                
+                    <li data-name="mmir.DisabledLogging#verbose"><a href="mmir.DisabledLogging.html#verbose">verbose</a></li>
+                
+                    <li data-name="mmir.DisabledLogging#warn"><a href="mmir.DisabledLogging.html#warn">warn</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.env.media.AudioCordovaImpl.html">
+                <span class="title">
+                    <a href="mmir.env.media.AudioCordovaImpl.html">mmir.env.media.AudioCordovaImpl</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.env.media.AudioCordovaImpl#disable"><a href="mmir.env.media.AudioCordovaImpl.html#disable">disable</a></li>
+                
+                    <li data-name="mmir.env.media.AudioCordovaImpl#enable"><a href="mmir.env.media.AudioCordovaImpl.html#enable">enable</a></li>
+                
+                    <li data-name="mmir.env.media.AudioCordovaImpl#getDuration"><a href="mmir.env.media.AudioCordovaImpl.html#getDuration">getDuration</a></li>
+                
+                    <li data-name="mmir.env.media.AudioCordovaImpl#isEnabled"><a href="mmir.env.media.AudioCordovaImpl.html#isEnabled">isEnabled</a></li>
+                
+                    <li data-name="mmir.env.media.AudioCordovaImpl#isPaused"><a href="mmir.env.media.AudioCordovaImpl.html#isPaused">isPaused</a></li>
+                
+                    <li data-name="mmir.env.media.AudioCordovaImpl#play"><a href="mmir.env.media.AudioCordovaImpl.html#play">play</a></li>
+                
+                    <li data-name="mmir.env.media.AudioCordovaImpl#release"><a href="mmir.env.media.AudioCordovaImpl.html#release">release</a></li>
+                
+                    <li data-name="mmir.env.media.AudioCordovaImpl#setVolume"><a href="mmir.env.media.AudioCordovaImpl.html#setVolume">setVolume</a></li>
+                
+                    <li data-name="mmir.env.media.AudioCordovaImpl#stop"><a href="mmir.env.media.AudioCordovaImpl.html#stop">stop</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.env.media.AudioHtml5Impl.html">
+                <span class="title">
+                    <a href="mmir.env.media.AudioHtml5Impl.html">mmir.env.media.AudioHtml5Impl</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.env.media.AudioHtml5Impl#disable"><a href="mmir.env.media.AudioHtml5Impl.html#disable">disable</a></li>
+                
+                    <li data-name="mmir.env.media.AudioHtml5Impl#enable"><a href="mmir.env.media.AudioHtml5Impl.html#enable">enable</a></li>
+                
+                    <li data-name="mmir.env.media.AudioHtml5Impl#getDuration"><a href="mmir.env.media.AudioHtml5Impl.html#getDuration">getDuration</a></li>
+                
+                    <li data-name="mmir.env.media.AudioHtml5Impl#isEnabled"><a href="mmir.env.media.AudioHtml5Impl.html#isEnabled">isEnabled</a></li>
+                
+                    <li data-name="mmir.env.media.AudioHtml5Impl#isPaused"><a href="mmir.env.media.AudioHtml5Impl.html#isPaused">isPaused</a></li>
+                
+                    <li data-name="mmir.env.media.AudioHtml5Impl#play"><a href="mmir.env.media.AudioHtml5Impl.html#play">play</a></li>
+                
+                    <li data-name="mmir.env.media.AudioHtml5Impl#release"><a href="mmir.env.media.AudioHtml5Impl.html#release">release</a></li>
+                
+                    <li data-name="mmir.env.media.AudioHtml5Impl#setVolume"><a href="mmir.env.media.AudioHtml5Impl.html#setVolume">setVolume</a></li>
+                
+                    <li data-name="mmir.env.media.AudioHtml5Impl#stop"><a href="mmir.env.media.AudioHtml5Impl.html#stop">stop</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.env.media.MicLevelsAnalysis.html">
+                <span class="title">
+                    <a href="mmir.env.media.MicLevelsAnalysis.html">mmir.env.media.MicLevelsAnalysis</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.env.media.WaitReadyIndicatorImpl.html">
+                <span class="title">
+                    <a href="mmir.env.media.WaitReadyIndicatorImpl.html">mmir.env.media.WaitReadyIndicatorImpl</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.InputManager.html">
+                <span class="title">
+                    <a href="mmir.InputManager.html">mmir.InputManager</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.InputManager#_instance"><a href="mmir.InputManager.html#_instance">_instance</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.InputManager#init"><a href="mmir.InputManager.html#init">init</a></li>
+                
+                    <li data-name="mmir.InputManager#raise"><a href="mmir.InputManager.html#raise">raise</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.LanguageManager.html">
+                <span class="title">
+                    <a href="mmir.LanguageManager.html">mmir.LanguageManager</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.LanguageManager#_requestGrammar"><a href="mmir.LanguageManager.html#_requestGrammar">_requestGrammar</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.LanguageManager#determineLanguage"><a href="mmir.LanguageManager.html#determineLanguage">determineLanguage</a></li>
+                
+                    <li data-name="mmir.LanguageManager#existsDictionary"><a href="mmir.LanguageManager.html#existsDictionary">existsDictionary</a></li>
+                
+                    <li data-name="mmir.LanguageManager#existsGrammar"><a href="mmir.LanguageManager.html#existsGrammar">existsGrammar</a></li>
+                
+                    <li data-name="mmir.LanguageManager#existsSpeechConfig"><a href="mmir.LanguageManager.html#existsSpeechConfig">existsSpeechConfig</a></li>
+                
+                    <li data-name="mmir.LanguageManager#fixLang"><a href="mmir.LanguageManager.html#fixLang">fixLang</a></li>
+                
+                    <li data-name="mmir.LanguageManager#getDefaultLanguage"><a href="mmir.LanguageManager.html#getDefaultLanguage">getDefaultLanguage</a></li>
+                
+                    <li data-name="mmir.LanguageManager#getDictionary"><a href="mmir.LanguageManager.html#getDictionary">getDictionary</a></li>
+                
+                    <li data-name="mmir.LanguageManager#getLanguage"><a href="mmir.LanguageManager.html#getLanguage">getLanguage</a></li>
+                
+                    <li data-name="mmir.LanguageManager#getLanguageConfig"><a href="mmir.LanguageManager.html#getLanguageConfig">getLanguageConfig</a></li>
+                
+                    <li data-name="mmir.LanguageManager#getLanguages"><a href="mmir.LanguageManager.html#getLanguages">getLanguages</a></li>
+                
+                    <li data-name="mmir.LanguageManager#getText"><a href="mmir.LanguageManager.html#getText">getText</a></li>
+                
+                    <li data-name="mmir.LanguageManager#init"><a href="mmir.LanguageManager.html#init">init</a></li>
+                
+                    <li data-name="mmir.LanguageManager#setLanguage"><a href="mmir.LanguageManager.html#setLanguage">setLanguage</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.Logging.html">
+                <span class="title">
+                    <a href="mmir.Logging.html">mmir.Logging</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.Logging#_level"><a href="mmir.Logging.html#_level">_level</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.Logging#create"><a href="mmir.Logging.html#create">create</a></li>
+                
+                    <li data-name="mmir.Logging#debug"><a href="mmir.Logging.html#debug">debug</a></li>
+                
+                    <li data-name="mmir.Logging#error"><a href="mmir.Logging.html#error">error</a></li>
+                
+                    <li data-name="mmir.Logging#getDefaultLogLevel"><a href="mmir.Logging.html#getDefaultLogLevel">getDefaultLogLevel</a></li>
+                
+                    <li data-name="mmir.Logging#info"><a href="mmir.Logging.html#info">info</a></li>
+                
+                    <li data-name="mmir.Logging#log"><a href="mmir.Logging.html#log">log</a></li>
+                
+                    <li data-name="mmir.Logging#setDefaultLogLevel"><a href="mmir.Logging.html#setDefaultLogLevel">setDefaultLogLevel</a></li>
+                
+                    <li data-name="mmir.Logging#verbose"><a href="mmir.Logging.html#verbose">verbose</a></li>
+                
+                    <li data-name="mmir.Logging#warn"><a href="mmir.Logging.html#warn">warn</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.ManagerFactory.html">
+                <span class="title">
+                    <a href="mmir.ManagerFactory.html">mmir.ManagerFactory</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.ManagerFactory#_instance"><a href="mmir.ManagerFactory.html#_instance">_instance</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.ManagerFactory#init"><a href="mmir.ManagerFactory.html#init">init</a></li>
+                
+                    <li data-name="mmir.ManagerFactory#raise"><a href="mmir.ManagerFactory.html#raise">raise</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.MediaManager.html">
+                <span class="title">
+                    <a href="mmir.MediaManager.html">mmir.MediaManager</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.MediaManager#_log"><a href="mmir.MediaManager.html#_log">_log</a></li>
+                
+                    <li data-name="mmir.MediaManager#ctx"><a href="mmir.MediaManager.html#ctx">ctx</a></li>
+                
+                    <li data-name="mmir.MediaManager#waitReadyImpl"><a href="mmir.MediaManager.html#waitReadyImpl">waitReadyImpl</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.MediaManager#_addListenerObserver"><a href="mmir.MediaManager.html#_addListenerObserver">_addListenerObserver</a></li>
+                
+                    <li data-name="mmir.MediaManager#_fireEvent"><a href="mmir.MediaManager.html#_fireEvent">_fireEvent</a></li>
+                
+                    <li data-name="mmir.MediaManager#_get_mmir"><a href="mmir.MediaManager.html#_get_mmir">_get_mmir</a></li>
+                
+                    <li data-name="mmir.MediaManager#_notifyObservers"><a href="mmir.MediaManager.html#_notifyObservers">_notifyObservers</a></li>
+                
+                    <li data-name="mmir.MediaManager#_preparing"><a href="mmir.MediaManager.html#_preparing">_preparing</a></li>
+                
+                    <li data-name="mmir.MediaManager#_ready"><a href="mmir.MediaManager.html#_ready">_ready</a></li>
+                
+                    <li data-name="mmir.MediaManager#_removeListenerObserver"><a href="mmir.MediaManager.html#_removeListenerObserver">_removeListenerObserver</a></li>
+                
+                    <li data-name="mmir.MediaManager#addListener"><a href="mmir.MediaManager.html#addListener">addListener</a></li>
+                
+                    <li data-name="mmir.MediaManager#cancelRecognition"><a href="mmir.MediaManager.html#cancelRecognition">cancelRecognition</a></li>
+                
+                    <li data-name="mmir.MediaManager#cancelSpeech"><a href="mmir.MediaManager.html#cancelSpeech">cancelSpeech</a></li>
+                
+                    <li data-name="mmir.MediaManager#createEmptyAudio"><a href="mmir.MediaManager.html#createEmptyAudio">createEmptyAudio</a></li>
+                
+                    <li data-name="mmir.MediaManager#getAudio"><a href="mmir.MediaManager.html#getAudio">getAudio</a></li>
+                
+                    <li data-name="mmir.MediaManager#getFunc"><a href="mmir.MediaManager.html#getFunc">getFunc</a></li>
+                
+                    <li data-name="mmir.MediaManager#getListeners"><a href="mmir.MediaManager.html#getListeners">getListeners</a></li>
+                
+                    <li data-name="mmir.MediaManager#getRecognitionLanguages"><a href="mmir.MediaManager.html#getRecognitionLanguages">getRecognitionLanguages</a></li>
+                
+                    <li data-name="mmir.MediaManager#getSpeechLanguages"><a href="mmir.MediaManager.html#getSpeechLanguages">getSpeechLanguages</a></li>
+                
+                    <li data-name="mmir.MediaManager#getURLAsAudio"><a href="mmir.MediaManager.html#getURLAsAudio">getURLAsAudio</a></li>
+                
+                    <li data-name="mmir.MediaManager#getVoices"><a href="mmir.MediaManager.html#getVoices">getVoices</a></li>
+                
+                    <li data-name="mmir.MediaManager#hasListeners"><a href="mmir.MediaManager.html#hasListeners">hasListeners</a></li>
+                
+                    <li data-name="mmir.MediaManager#init"><a href="mmir.MediaManager.html#init">init</a></li>
+                
+                    <li data-name="mmir.MediaManager#loadFile"><a href="mmir.MediaManager.html#loadFile">loadFile</a></li>
+                
+                    <li data-name="mmir.MediaManager#off"><a href="mmir.MediaManager.html#off">off</a></li>
+                
+                    <li data-name="mmir.MediaManager#on"><a href="mmir.MediaManager.html#on">on</a></li>
+                
+                    <li data-name="mmir.MediaManager#perform"><a href="mmir.MediaManager.html#perform">perform</a></li>
+                
+                    <li data-name="mmir.MediaManager#play"><a href="mmir.MediaManager.html#play">play</a></li>
+                
+                    <li data-name="mmir.MediaManager#playURL"><a href="mmir.MediaManager.html#playURL">playURL</a></li>
+                
+                    <li data-name="mmir.MediaManager#playWAV"><a href="mmir.MediaManager.html#playWAV">playWAV</a></li>
+                
+                    <li data-name="mmir.MediaManager#recognize"><a href="mmir.MediaManager.html#recognize">recognize</a></li>
+                
+                    <li data-name="mmir.MediaManager#removeListener"><a href="mmir.MediaManager.html#removeListener">removeListener</a></li>
+                
+                    <li data-name="mmir.MediaManager#setDefaultCtx"><a href="mmir.MediaManager.html#setDefaultCtx">setDefaultCtx</a></li>
+                
+                    <li data-name="mmir.MediaManager#setTextToSpeechVolume"><a href="mmir.MediaManager.html#setTextToSpeechVolume">setTextToSpeechVolume</a></li>
+                
+                    <li data-name="mmir.MediaManager#startRecord"><a href="mmir.MediaManager.html#startRecord">startRecord</a></li>
+                
+                    <li data-name="mmir.MediaManager#stopRecord"><a href="mmir.MediaManager.html#stopRecord">stopRecord</a></li>
+                
+                    <li data-name="mmir.MediaManager#textToSpeech"><a href="mmir.MediaManager.html#textToSpeech">textToSpeech</a></li>
+                
+                    <li data-name="mmir.MediaManager#tts"><a href="mmir.MediaManager.html#tts">tts</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.ModelManager.html">
+                <span class="title">
+                    <a href="mmir.ModelManager.html">mmir.ModelManager</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.ModelManager#get"><a href="mmir.ModelManager.html#get">get</a></li>
+                
+                    <li data-name="mmir.ModelManager#getModelNames"><a href="mmir.ModelManager.html#getModelNames">getModelNames</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.NotificationManager.html">
+                <span class="title">
+                    <a href="mmir.NotificationManager.html">mmir.NotificationManager</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.NotificationManager#alert"><a href="mmir.NotificationManager.html#alert">alert</a></li>
+                
+                    <li data-name="mmir.NotificationManager#beep"><a href="mmir.NotificationManager.html#beep">beep</a></li>
+                
+                    <li data-name="mmir.NotificationManager#confirm"><a href="mmir.NotificationManager.html#confirm">confirm</a></li>
+                
+                    <li data-name="mmir.NotificationManager#createSound"><a href="mmir.NotificationManager.html#createSound">createSound</a></li>
+                
+                    <li data-name="mmir.NotificationManager#getVolume"><a href="mmir.NotificationManager.html#getVolume">getVolume</a></li>
+                
+                    <li data-name="mmir.NotificationManager#init"><a href="mmir.NotificationManager.html#init">init</a></li>
+                
+                    <li data-name="mmir.NotificationManager#initSound"><a href="mmir.NotificationManager.html#initSound">initSound</a></li>
+                
+                    <li data-name="mmir.NotificationManager#isVibrateAvailable"><a href="mmir.NotificationManager.html#isVibrateAvailable">isVibrateAvailable</a></li>
+                
+                    <li data-name="mmir.NotificationManager#isVibrateEnabled"><a href="mmir.NotificationManager.html#isVibrateEnabled">isVibrateEnabled</a></li>
+                
+                    <li data-name="mmir.NotificationManager#playSound"><a href="mmir.NotificationManager.html#playSound">playSound</a></li>
+                
+                    <li data-name="mmir.NotificationManager#setVibrateEnabled"><a href="mmir.NotificationManager.html#setVibrateEnabled">setVibrateEnabled</a></li>
+                
+                    <li data-name="mmir.NotificationManager#setVolume"><a href="mmir.NotificationManager.html#setVolume">setVolume</a></li>
+                
+                    <li data-name="mmir.NotificationManager#stopSound"><a href="mmir.NotificationManager.html#stopSound">stopSound</a></li>
+                
+                    <li data-name="mmir.NotificationManager#vibrate"><a href="mmir.NotificationManager.html#vibrate">vibrate</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.parser.Element.html">
+                <span class="title">
+                    <a href="mmir.parser.Element.html">mmir.parser.Element</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.parser.Element.ARGUMENT_ARGUMENT_NAME"><a href="mmir.parser.Element.html#.ARGUMENT_ARGUMENT_NAME">ARGUMENT_ARGUMENT_NAME</a></li>
+                
+                    <li data-name="mmir.parser.Element.BLOCK"><a href="mmir.parser.Element.html#.BLOCK">BLOCK</a></li>
+                
+                    <li data-name="mmir.parser.Element.COMMENT"><a href="mmir.parser.Element.html#.COMMENT">COMMENT</a></li>
+                
+                    <li data-name="mmir.parser.Element.DATA_ARGUMENT_NAME"><a href="mmir.parser.Element.html#.DATA_ARGUMENT_NAME">DATA_ARGUMENT_NAME</a></li>
+                
+                    <li data-name="mmir.parser.Element.DATA_NAME"><a href="mmir.parser.Element.html#.DATA_NAME">DATA_NAME</a></li>
+                
+                    <li data-name="mmir.parser.Element.ELSE"><a href="mmir.parser.Element.html#.ELSE">ELSE</a></li>
+                
+                    <li data-name="mmir.parser.Element.ESCAPE_ENTER"><a href="mmir.parser.Element.html#.ESCAPE_ENTER">ESCAPE_ENTER</a></li>
+                
+                    <li data-name="mmir.parser.Element.ESCAPE_EXIT"><a href="mmir.parser.Element.html#.ESCAPE_EXIT">ESCAPE_EXIT</a></li>
+                
+                    <li data-name="mmir.parser.Element.FOR"><a href="mmir.parser.Element.html#.FOR">FOR</a></li>
+                
+                    <li data-name="mmir.parser.Element.FOR_TYPE_ITER"><a href="mmir.parser.Element.html#.FOR_TYPE_ITER">FOR_TYPE_ITER</a></li>
+                
+                    <li data-name="mmir.parser.Element.FOR_TYPE_STEP"><a href="mmir.parser.Element.html#.FOR_TYPE_STEP">FOR_TYPE_STEP</a></li>
+                
+                    <li data-name="mmir.parser.Element.HELPER"><a href="mmir.parser.Element.html#.HELPER">HELPER</a></li>
+                
+                    <li data-name="mmir.parser.Element.IF"><a href="mmir.parser.Element.html#.IF">IF</a></li>
+                
+                    <li data-name="mmir.parser.Element.INCLUDE_SCRIPT"><a href="mmir.parser.Element.html#.INCLUDE_SCRIPT">INCLUDE_SCRIPT</a></li>
+                
+                    <li data-name="mmir.parser.Element.INCLUDE_STYLE"><a href="mmir.parser.Element.html#.INCLUDE_STYLE">INCLUDE_STYLE</a></li>
+                
+                    <li data-name="mmir.parser.Element.LOCALIZE"><a href="mmir.parser.Element.html#.LOCALIZE">LOCALIZE</a></li>
+                
+                    <li data-name="mmir.parser.Element.RENDER"><a href="mmir.parser.Element.html#.RENDER">RENDER</a></li>
+                
+                    <li data-name="mmir.parser.Element.STATEMENT"><a href="mmir.parser.Element.html#.STATEMENT">STATEMENT</a></li>
+                
+                    <li data-name="mmir.parser.Element.VAR_DECLARATION"><a href="mmir.parser.Element.html#.VAR_DECLARATION">VAR_DECLARATION</a></li>
+                
+                    <li data-name="mmir.parser.Element.VAR_REFERENCE"><a href="mmir.parser.Element.html#.VAR_REFERENCE">VAR_REFERENCE</a></li>
+                
+                    <li data-name="mmir.parser.Element.YIELD_CONTENT"><a href="mmir.parser.Element.html#.YIELD_CONTENT">YIELD_CONTENT</a></li>
+                
+                    <li data-name="mmir.parser.Element.YIELD_DECLARATION"><a href="mmir.parser.Element.html#.YIELD_DECLARATION">YIELD_DECLARATION</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.parser.ParserUtils.html">
+                <span class="title">
+                    <a href="mmir.parser.ParserUtils.html">mmir.parser.ParserUtils</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.parser.ParserUtils#parse"><a href="mmir.parser.ParserUtils.html#parse">parse</a></li>
+                
+                    <li data-name="mmir.parser.ParserUtils#parseJS"><a href="mmir.parser.ParserUtils.html#parseJS">parseJS</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.parser.ParsingResult.html">
+                <span class="title">
+                    <a href="mmir.parser.ParsingResult.html">mmir.parser.ParsingResult</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#getCallDataEnd"><a href="mmir.parser.ParsingResult.html#.ParsingResult#getCallDataEnd">ParsingResult#getCallDataEnd</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#getCallDataStart"><a href="mmir.parser.ParsingResult.html#.ParsingResult#getCallDataStart">ParsingResult#getCallDataStart</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#getCallDataType"><a href="mmir.parser.ParsingResult.html#.ParsingResult#getCallDataType">ParsingResult#getCallDataType</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#getEnd"><a href="mmir.parser.ParsingResult.html#.ParsingResult#getEnd">ParsingResult#getEnd</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#getStart"><a href="mmir.parser.ParsingResult.html#.ParsingResult#getStart">ParsingResult#getStart</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#getType"><a href="mmir.parser.ParsingResult.html#.ParsingResult#getType">ParsingResult#getType</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#getTypeName"><a href="mmir.parser.ParsingResult.html#.ParsingResult#getTypeName">ParsingResult#getTypeName</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#getValue"><a href="mmir.parser.ParsingResult.html#.ParsingResult#getValue">ParsingResult#getValue</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#hasCallData"><a href="mmir.parser.ParsingResult.html#.ParsingResult#hasCallData">ParsingResult#hasCallData</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#hasElse"><a href="mmir.parser.ParsingResult.html#.ParsingResult#hasElse">ParsingResult#hasElse</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#hasVarReferences"><a href="mmir.parser.ParsingResult.html#.ParsingResult#hasVarReferences">ParsingResult#hasVarReferences</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isElse"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isElse">ParsingResult#isElse</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isEscape"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isEscape">ParsingResult#isEscape</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isEscapeEnter"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isEscapeEnter">ParsingResult#isEscapeEnter</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isEscapeExit"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isEscapeExit">ParsingResult#isEscapeExit</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isFor"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isFor">ParsingResult#isFor</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isHelper"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isHelper">ParsingResult#isHelper</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isIf"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isIf">ParsingResult#isIf</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isLocalize"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isLocalize">ParsingResult#isLocalize</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isRender"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isRender">ParsingResult#isRender</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isScriptBlock"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isScriptBlock">ParsingResult#isScriptBlock</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isScriptStatement"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isScriptStatement">ParsingResult#isScriptStatement</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isScriptTag"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isScriptTag">ParsingResult#isScriptTag</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isStyleTag"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isStyleTag">ParsingResult#isStyleTag</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isYield"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isYield">ParsingResult#isYield</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#isYieldContent"><a href="mmir.parser.ParsingResult.html#.ParsingResult#isYieldContent">ParsingResult#isYieldContent</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#setEndFrom"><a href="mmir.parser.ParsingResult.html#.ParsingResult#setEndFrom">ParsingResult#setEndFrom</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#setStartFrom"><a href="mmir.parser.ParsingResult.html#.ParsingResult#setStartFrom">ParsingResult#setStartFrom</a></li>
+                
+                    <li data-name="mmir.parser.ParsingResult.ParsingResult#stringify"><a href="mmir.parser.ParsingResult.html#.ParsingResult#stringify">ParsingResult#stringify</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.parser.RenderUtils.html">
+                <span class="title">
+                    <a href="mmir.parser.RenderUtils.html">mmir.parser.RenderUtils</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderContentElement"><a href="mmir.parser.RenderUtils.html#renderContentElement">renderContentElement</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderJS"><a href="mmir.parser.RenderUtils.html#renderJS">renderJS</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderLayout"><a href="mmir.parser.RenderUtils.html#renderLayout">renderLayout</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderViewContent"><a href="mmir.parser.RenderUtils.html#renderViewContent">renderViewContent</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderViewDialogs"><a href="mmir.parser.RenderUtils.html#renderViewDialogs">renderViewDialogs</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.parser.StorageUtils.html">
+                <span class="title">
+                    <a href="mmir.parser.StorageUtils.html">mmir.parser.StorageUtils</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.parser.TemplateProcessor.html">
+                <span class="title">
+                    <a href="mmir.parser.TemplateProcessor.html">mmir.parser.TemplateProcessor</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#parserModule"><a href="mmir.parser.TemplateProcessor.html#parserModule">parserModule</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.PresentationManager.html">
+                <span class="title">
+                    <a href="mmir.PresentationManager.html">mmir.PresentationManager</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.PresentationManager#_pageIndex"><a href="mmir.PresentationManager.html#_pageIndex">_pageIndex</a></li>
+                
+                    <li data-name="mmir.PresentationManager#pageIndex"><a href="mmir.PresentationManager.html#pageIndex">pageIndex</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.PresentationManager#addLayout"><a href="mmir.PresentationManager.html#addLayout">addLayout</a></li>
+                
+                    <li data-name="mmir.PresentationManager#addPartial"><a href="mmir.PresentationManager.html#addPartial">addPartial</a></li>
+                
+                    <li data-name="mmir.PresentationManager#addView"><a href="mmir.PresentationManager.html#addView">addView</a></li>
+                
+                    <li data-name="mmir.PresentationManager#callRenderEngine"><a href="mmir.PresentationManager.html#callRenderEngine">callRenderEngine</a></li>
+                
+                    <li data-name="mmir.PresentationManager#getLayout"><a href="mmir.PresentationManager.html#getLayout">getLayout</a></li>
+                
+                    <li data-name="mmir.PresentationManager#getPartial"><a href="mmir.PresentationManager.html#getPartial">getPartial</a></li>
+                
+                    <li data-name="mmir.PresentationManager#getView"><a href="mmir.PresentationManager.html#getView">getView</a></li>
+                
+                    <li data-name="mmir.PresentationManager#hideCurrentDialog"><a href="mmir.PresentationManager.html#hideCurrentDialog">hideCurrentDialog</a></li>
+                
+                    <li data-name="mmir.PresentationManager#hideWaitDialog"><a href="mmir.PresentationManager.html#hideWaitDialog">hideWaitDialog</a></li>
+                
+                    <li data-name="mmir.PresentationManager#init"><a href="mmir.PresentationManager.html#init">init</a></li>
+                
+                    <li data-name="mmir.PresentationManager#render"><a href="mmir.PresentationManager.html#render">render</a></li>
+                
+                    <li data-name="mmir.PresentationManager#setRenderEngine"><a href="mmir.PresentationManager.html#setRenderEngine">setRenderEngine</a></li>
+                
+                    <li data-name="mmir.PresentationManager#showDialog"><a href="mmir.PresentationManager.html#showDialog">showDialog</a></li>
+                
+                    <li data-name="mmir.PresentationManager#showWaitDialog"><a href="mmir.PresentationManager.html#showWaitDialog">showWaitDialog</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.Resources.html">
+                <span class="title">
+                    <a href="mmir.Resources.html">mmir.Resources</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.Resources#getBasePath"><a href="mmir.Resources.html#getBasePath">getBasePath</a></li>
+                
+                    <li data-name="mmir.Resources#getBeepUrl"><a href="mmir.Resources.html#getBeepUrl">getBeepUrl</a></li>
+                
+                    <li data-name="mmir.Resources#getCompiledLayoutPath"><a href="mmir.Resources.html#getCompiledLayoutPath">getCompiledLayoutPath</a></li>
+                
+                    <li data-name="mmir.Resources#getCompiledViewPath"><a href="mmir.Resources.html#getCompiledViewPath">getCompiledViewPath</a></li>
+                
+                    <li data-name="mmir.Resources#getConfigurationFileUrl"><a href="mmir.Resources.html#getConfigurationFileUrl">getConfigurationFileUrl</a></li>
+                
+                    <li data-name="mmir.Resources#getControllerPath"><a href="mmir.Resources.html#getControllerPath">getControllerPath</a></li>
+                
+                    <li data-name="mmir.Resources#getDictionaryFileUrl"><a href="mmir.Resources.html#getDictionaryFileUrl">getDictionaryFileUrl</a></li>
+                
+                    <li data-name="mmir.Resources#getDirectoriesFileUrl"><a href="mmir.Resources.html#getDirectoriesFileUrl">getDirectoriesFileUrl</a></li>
+                
+                    <li data-name="mmir.Resources#getEnv"><a href="mmir.Resources.html#getEnv">getEnv</a></li>
+                
+                    <li data-name="mmir.Resources#getEnvPlatform"><a href="mmir.Resources.html#getEnvPlatform">getEnvPlatform</a></li>
+                
+                    <li data-name="mmir.Resources#getExtensionsPath"><a href="mmir.Resources.html#getExtensionsPath">getExtensionsPath</a></li>
+                
+                    <li data-name="mmir.Resources#getGeneratedGrammarsPath"><a href="mmir.Resources.html#getGeneratedGrammarsPath">getGeneratedGrammarsPath</a></li>
+                
+                    <li data-name="mmir.Resources#getGeneratedStateModelsPath"><a href="mmir.Resources.html#getGeneratedStateModelsPath">getGeneratedStateModelsPath</a></li>
+                
+                    <li data-name="mmir.Resources#getGrammarFileUrl"><a href="mmir.Resources.html#getGrammarFileUrl">getGrammarFileUrl</a></li>
+                
+                    <li data-name="mmir.Resources#getGrammarPluginPath"><a href="mmir.Resources.html#getGrammarPluginPath">getGrammarPluginPath</a></li>
+                
+                    <li data-name="mmir.Resources#getHelperPath"><a href="mmir.Resources.html#getHelperPath">getHelperPath</a></li>
+                
+                    <li data-name="mmir.Resources#getHelperSuffix"><a href="mmir.Resources.html#getHelperSuffix">getHelperSuffix</a></li>
+                
+                    <li data-name="mmir.Resources#getLanguage"><a href="mmir.Resources.html#getLanguage">getLanguage</a></li>
+                
+                    <li data-name="mmir.Resources#getLanguagePath"><a href="mmir.Resources.html#getLanguagePath">getLanguagePath</a></li>
+                
+                    <li data-name="mmir.Resources#getLayoutPath"><a href="mmir.Resources.html#getLayoutPath">getLayoutPath</a></li>
+                
+                    <li data-name="mmir.Resources#getMediaPluginPath"><a href="mmir.Resources.html#getMediaPluginPath">getMediaPluginPath</a></li>
+                
+                    <li data-name="mmir.Resources#getModelPath"><a href="mmir.Resources.html#getModelPath">getModelPath</a></li>
+                
+                    <li data-name="mmir.Resources#getPartialsPrefix"><a href="mmir.Resources.html#getPartialsPrefix">getPartialsPrefix</a></li>
+                
+                    <li data-name="mmir.Resources#getSpeechConfigFileUrl"><a href="mmir.Resources.html#getSpeechConfigFileUrl">getSpeechConfigFileUrl</a></li>
+                
+                    <li data-name="mmir.Resources#getViewPath"><a href="mmir.Resources.html#getViewPath">getViewPath</a></li>
+                
+                    <li data-name="mmir.Resources#getWorkerPath"><a href="mmir.Resources.html#getWorkerPath">getWorkerPath</a></li>
+                
+                    <li data-name="mmir.Resources#init"><a href="mmir.Resources.html#init">init</a></li>
+                
+                    <li data-name="mmir.Resources#isBrowserEnv"><a href="mmir.Resources.html#isBrowserEnv">isBrowserEnv</a></li>
+                
+                    <li data-name="mmir.Resources#isCordovaEnv"><a href="mmir.Resources.html#isCordovaEnv">isCordovaEnv</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.SemanticInterpreter.html">
+                <span class="title">
+                    <a href="mmir.SemanticInterpreter.html">mmir.SemanticInterpreter</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.SemanticInterpreter#addGrammar"><a href="mmir.SemanticInterpreter.html#addGrammar">addGrammar</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#createGrammar"><a href="mmir.SemanticInterpreter.html#createGrammar">createGrammar</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#getCurrentGrammar"><a href="mmir.SemanticInterpreter.html#getCurrentGrammar">getCurrentGrammar</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#getFileVersion"><a href="mmir.SemanticInterpreter.html#getFileVersion">getFileVersion</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#getGrammarConverter"><a href="mmir.SemanticInterpreter.html#getGrammarConverter">getGrammarConverter</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#getGrammarDefinitionText"><a href="mmir.SemanticInterpreter.html#getGrammarDefinitionText">getGrammarDefinitionText</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#getGrammarEngine"><a href="mmir.SemanticInterpreter.html#getGrammarEngine">getGrammarEngine</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#getGrammarParserText"><a href="mmir.SemanticInterpreter.html#getGrammarParserText">getGrammarParserText</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#hasGrammar"><a href="mmir.SemanticInterpreter.html#hasGrammar">hasGrammar</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#interpret"><a href="mmir.SemanticInterpreter.html#interpret">interpret</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#isEnabled"><a href="mmir.SemanticInterpreter.html#isEnabled">isEnabled</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#removeGrammar"><a href="mmir.SemanticInterpreter.html#removeGrammar">removeGrammar</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#removeStopwords"><a href="mmir.SemanticInterpreter.html#removeStopwords">removeStopwords</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#setCurrentGrammar"><a href="mmir.SemanticInterpreter.html#setCurrentGrammar">setCurrentGrammar</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#setEnabled"><a href="mmir.SemanticInterpreter.html#setEnabled">setEnabled</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#setEngineCompileMode"><a href="mmir.SemanticInterpreter.html#setEngineCompileMode">setEngineCompileMode</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#setGrammarEngine"><a href="mmir.SemanticInterpreter.html#setGrammarEngine">setGrammarEngine</a></li>
+                
+                    <li data-name="mmir.SemanticInterpreter#setStopwords"><a href="mmir.SemanticInterpreter.html#setStopwords">setStopwords</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.tools.ChecksumUtils.html">
+                <span class="title">
+                    <a href="mmir.tools.ChecksumUtils.html">mmir.tools.ChecksumUtils</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.tools.ChecksumUtils#createContent"><a href="mmir.tools.ChecksumUtils.html#createContent">createContent</a></li>
+                
+                    <li data-name="mmir.tools.ChecksumUtils#getConentSeparator"><a href="mmir.tools.ChecksumUtils.html#getConentSeparator">getConentSeparator</a></li>
+                
+                    <li data-name="mmir.tools.ChecksumUtils#getFileExt"><a href="mmir.tools.ChecksumUtils.html#getFileExt">getFileExt</a></li>
+                
+                    <li data-name="mmir.tools.ChecksumUtils#init"><a href="mmir.tools.ChecksumUtils.html#init">init</a></li>
+                
+                    <li data-name="mmir.tools.ChecksumUtils#isSame"><a href="mmir.tools.ChecksumUtils.html#isSame">isSame</a></li>
+                
+                    <li data-name="mmir.tools.ChecksumUtils#parseContent"><a href="mmir.tools.ChecksumUtils.html#parseContent">parseContent</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="ParserUtils.html">
+                <span class="title">
+                    <a href="ParserUtils.html">ParserUtils</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="Partial.html">
+                <span class="title">
+                    <a href="Partial.html">Partial</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="Partial#getContentElement"><a href="Partial.html#getContentElement">getContentElement</a></li>
+                
+                    <li data-name="Partial#getController"><a href="Partial.html#getController">getController</a></li>
+                
+                    <li data-name="Partial#getDefinition"><a href="Partial.html#getDefinition">getDefinition</a></li>
+                
+                    <li data-name="Partial#getName"><a href="Partial.html#getName">getName</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="ScriptEvalError.html">
+                <span class="title">
+                    <a href="ScriptEvalError.html">ScriptEvalError</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="ScriptEvalError#getDetails"><a href="ScriptEvalError.html#getDetails">getDetails</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="SimpleViewEngine.html">
+                <span class="title">
+                    <a href="SimpleViewEngine.html">SimpleViewEngine</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="SimpleViewEngine#doRenderView"><a href="SimpleViewEngine.html#doRenderView">doRenderView</a></li>
+                
+                    <li data-name="SimpleViewEngine#hideCurrentDialog"><a href="SimpleViewEngine.html#hideCurrentDialog">hideCurrentDialog</a></li>
+                
+                    <li data-name="SimpleViewEngine#hideWaitDialog"><a href="SimpleViewEngine.html#hideWaitDialog">hideWaitDialog</a></li>
+                
+                    <li data-name="SimpleViewEngine#showDialog"><a href="SimpleViewEngine.html#showDialog">showDialog</a></li>
+                
+                    <li data-name="SimpleViewEngine#showWaitDialog"><a href="SimpleViewEngine.html#showWaitDialog">showWaitDialog</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="StateEngineDefaultImpl.html">
+                <span class="title">
+                    <a href="StateEngineDefaultImpl.html">StateEngineDefaultImpl</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="StateEngineDefaultImpl.name"><a href="StateEngineDefaultImpl.html#.name">name</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="StateEngineExtender.html">
+                <span class="title">
+                    <a href="StateEngineExtender.html">StateEngineExtender</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="StateEngineExtender.extend"><a href="StateEngineExtender.html#.extend">extend</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="StateEngineFactory.html">
+                <span class="title">
+                    <a href="StateEngineFactory.html">StateEngineFactory</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="StateEngineFactory#_browserFactory"><a href="StateEngineFactory.html#_browserFactory">_browserFactory</a></li>
+                
+                    <li data-name="StateEngineFactory#_queuePluginFactory"><a href="StateEngineFactory.html#_queuePluginFactory">_queuePluginFactory</a></li>
+                
+                    <li data-name="StateEngineFactory#_stubFactory"><a href="StateEngineFactory.html#_stubFactory">_stubFactory</a></li>
+                
+                    <li data-name="StateEngineFactory#nolog"><a href="StateEngineFactory.html#nolog">nolog</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="StateEngineFactory#_baseFactory"><a href="StateEngineFactory.html#_baseFactory">_baseFactory</a></li>
+                
+                    <li data-name="StateEngineFactory#deny"><a href="StateEngineFactory.html#deny">deny</a></li>
+                
+                    <li data-name="StateEngineFactory#getScionEnvFactory"><a href="StateEngineFactory.html#getScionEnvFactory">getScionEnvFactory</a></li>
+                
+                    <li data-name="StateEngineFactory#noop"><a href="StateEngineFactory.html#noop">noop</a></li>
+                
+                    <li data-name="StateEngineFactory#pe"><a href="StateEngineFactory.html#pe">pe</a></li>
+                
+                    <li data-name="StateEngineFactory#printDebugStates"><a href="StateEngineFactory.html#printDebugStates">printDebugStates</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="StubViewEngine.html">
+                <span class="title">
+                    <a href="StubViewEngine.html">StubViewEngine</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="StubViewEngine#doRenderView"><a href="StubViewEngine.html#doRenderView">doRenderView</a></li>
+                
+                    <li data-name="StubViewEngine#hideCurrentDialog"><a href="StubViewEngine.html#hideCurrentDialog">hideCurrentDialog</a></li>
+                
+                    <li data-name="StubViewEngine#hideWaitDialog"><a href="StubViewEngine.html#hideWaitDialog">hideWaitDialog</a></li>
+                
+                    <li data-name="StubViewEngine#showDialog"><a href="StubViewEngine.html#showDialog">showDialog</a></li>
+                
+                    <li data-name="StubViewEngine#showWaitDialog"><a href="StubViewEngine.html#showWaitDialog">showWaitDialog</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="View.html">
+                <span class="title">
+                    <a href="View.html">View</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="View#contentFors"><a href="View.html#contentFors">contentFors</a></li>
+                
+                    <li data-name="View#controller"><a href="View.html#controller">controller</a></li>
+                
+                    <li data-name="View#def"><a href="View.html#def">def</a></li>
+                
+                    <li data-name="View#helperMethods"><a href="View.html#helperMethods">helperMethods</a></li>
+                
+                    <li data-name="View#name"><a href="View.html#name">name</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="View#executeHelperMethods"><a href="View.html#executeHelperMethods">executeHelperMethods</a></li>
+                
+                    <li data-name="View#getContentElement"><a href="View.html#getContentElement">getContentElement</a></li>
+                
+                    <li data-name="View#getController"><a href="View.html#getController">getController</a></li>
+                
+                    <li data-name="View#getDefinition"><a href="View.html#getDefinition">getDefinition</a></li>
+                
+                    <li data-name="View#getHelperMethods"><a href="View.html#getHelperMethods">getHelperMethods</a></li>
+                
+                    <li data-name="View#getHelperMethods"><a href="View.html#getHelperMethods">getHelperMethods</a></li>
+                
+                    <li data-name="View#getName"><a href="View.html#getName">getName</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="ViewConstants.html">
+                <span class="title">
+                    <a href="ViewConstants.html">ViewConstants</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="WaitReadyIndicatorImpl.html">
+                <span class="title">
+                    <a href="WaitReadyIndicatorImpl.html">WaitReadyIndicatorImpl</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="WaitReadyIndicatorImpl#_id"><a href="WaitReadyIndicatorImpl.html#_id">_id</a></li>
+                
+                    <li data-name="WaitReadyIndicatorImpl#_pluginName"><a href="WaitReadyIndicatorImpl.html#_pluginName">_pluginName</a></li>
+                
+                    <li data-name="WaitReadyIndicatorImpl#caption"><a href="WaitReadyIndicatorImpl.html#caption">caption</a></li>
+                
+                    <li data-name="WaitReadyIndicatorImpl#cssUrl"><a href="WaitReadyIndicatorImpl.html#cssUrl">cssUrl</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="WaitReadyIndicatorImpl#getWaitCaption"><a href="WaitReadyIndicatorImpl.html#getWaitCaption">getWaitCaption</a></li>
+                
+                    <li data-name="WaitReadyIndicatorImpl#initialize"><a href="WaitReadyIndicatorImpl.html#initialize">initialize</a></li>
+                
+                    <li data-name="WaitReadyIndicatorImpl#preparing"><a href="WaitReadyIndicatorImpl.html#preparing">preparing</a></li>
+                
+                    <li data-name="WaitReadyIndicatorImpl#ready"><a href="WaitReadyIndicatorImpl.html#ready">ready</a></li>
+                
+                    <li data-name="WaitReadyIndicatorImpl#setWaitCaption"><a href="WaitReadyIndicatorImpl.html#setWaitCaption">setWaitCaption</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="WebAudioTextToSpeech.html">
+                <span class="title">
+                    <a href="WebAudioTextToSpeech.html">WebAudioTextToSpeech</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="WebAudioTextToSpeech#_basePluginName"><a href="WebAudioTextToSpeech.html#_basePluginName">_basePluginName</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#_defaultCtxName"><a href="WebAudioTextToSpeech.html#_defaultCtxName">_defaultCtxName</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#_defaultImplFile"><a href="WebAudioTextToSpeech.html#_defaultImplFile">_defaultImplFile</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#_instance"><a href="WebAudioTextToSpeech.html#_instance">_instance</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#_logger"><a href="WebAudioTextToSpeech.html#_logger">_logger</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#_pluginName"><a href="WebAudioTextToSpeech.html#_pluginName">_pluginName</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#audioArray"><a href="WebAudioTextToSpeech.html#audioArray">audioArray</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#bufferSize"><a href="WebAudioTextToSpeech.html#bufferSize">bufferSize</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#commandQueue"><a href="WebAudioTextToSpeech.html#commandQueue">commandQueue</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#createAudio"><a href="WebAudioTextToSpeech.html#createAudio">createAudio</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#EMPTY_SENTENCE"><a href="WebAudioTextToSpeech.html#EMPTY_SENTENCE">EMPTY_SENTENCE</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#firstSentence"><a href="WebAudioTextToSpeech.html#firstSentence">firstSentence</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#getLanguages"><a href="WebAudioTextToSpeech.html#getLanguages">getLanguages</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#getVoices"><a href="WebAudioTextToSpeech.html#getVoices">getVoices</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#isLoading"><a href="WebAudioTextToSpeech.html#isLoading">isLoading</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#isReady"><a href="WebAudioTextToSpeech.html#isReady">isReady</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#loadIndex"><a href="WebAudioTextToSpeech.html#loadIndex">loadIndex</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#pauseDuration"><a href="WebAudioTextToSpeech.html#pauseDuration">pauseDuration</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#playIndex"><a href="WebAudioTextToSpeech.html#playIndex">playIndex</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#sentenceArray"><a href="WebAudioTextToSpeech.html#sentenceArray">sentenceArray</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#ttsMedia"><a href="WebAudioTextToSpeech.html#ttsMedia">ttsMedia</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#volume"><a href="WebAudioTextToSpeech.html#volume">volume</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="WebAudioTextToSpeech#_resetCallbacks"><a href="WebAudioTextToSpeech.html#_resetCallbacks">_resetCallbacks</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#_setVolume"><a href="WebAudioTextToSpeech.html#_setVolume">_setVolume</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#addToCommandQueue"><a href="WebAudioTextToSpeech.html#addToCommandQueue">addToCommandQueue</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#cancelSpeech"><a href="WebAudioTextToSpeech.html#cancelSpeech">cancelSpeech</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#clearCommandQueue"><a href="WebAudioTextToSpeech.html#clearCommandQueue">clearCommandQueue</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#currentFailureCallback"><a href="WebAudioTextToSpeech.html#currentFailureCallback">currentFailureCallback</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#getLangParam"><a href="WebAudioTextToSpeech.html#getLangParam">getLangParam</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#getSpeechLanguages"><a href="WebAudioTextToSpeech.html#getSpeechLanguages">getSpeechLanguages</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#getVoiceParam"><a href="WebAudioTextToSpeech.html#getVoiceParam">getVoiceParam</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#getVoices"><a href="WebAudioTextToSpeech.html#getVoices">getVoices</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#initialize"><a href="WebAudioTextToSpeech.html#initialize">initialize</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#initImpl"><a href="WebAudioTextToSpeech.html#initImpl">initImpl</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#loadNext"><a href="WebAudioTextToSpeech.html#loadNext">loadNext</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#onEndCallback"><a href="WebAudioTextToSpeech.html#onEndCallback">onEndCallback</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#onReadyCallback"><a href="WebAudioTextToSpeech.html#onReadyCallback">onReadyCallback</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#playNext"><a href="WebAudioTextToSpeech.html#playNext">playNext</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#playNextAfterPause"><a href="WebAudioTextToSpeech.html#playNextAfterPause">playNextAfterPause</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#processNextInCommandQueue"><a href="WebAudioTextToSpeech.html#processNextInCommandQueue">processNextInCommandQueue</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#setTextToSpeechVolume"><a href="WebAudioTextToSpeech.html#setTextToSpeechVolume">setTextToSpeechVolume</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#textToSpeech"><a href="WebAudioTextToSpeech.html#textToSpeech">textToSpeech</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#tts"><a href="WebAudioTextToSpeech.html#tts">tts</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#ttsSentenceArray"><a href="WebAudioTextToSpeech.html#ttsSentenceArray">ttsSentenceArray</a></li>
+                
+                    <li data-name="WebAudioTextToSpeech#ttsSingleSentence"><a href="WebAudioTextToSpeech.html#ttsSingleSentence">ttsSingleSentence</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="WebspeechAudioInput.html">
+                <span class="title">
+                    <a href="WebspeechAudioInput.html">WebspeechAudioInput</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="WebspeechAudioInput#_pluginName"><a href="WebspeechAudioInput.html#_pluginName">_pluginName</a></li>
+                
+                    <li data-name="WebspeechAudioInput#_prevResult"><a href="WebspeechAudioInput.html#_prevResult">_prevResult</a></li>
+                
+                    <li data-name="WebspeechAudioInput#aborted"><a href="WebspeechAudioInput.html#aborted">aborted</a></li>
+                
+                    <li data-name="WebspeechAudioInput#active"><a href="WebspeechAudioInput.html#active">active</a></li>
+                
+                    <li data-name="WebspeechAudioInput#currentFailureCallback"><a href="WebspeechAudioInput.html#currentFailureCallback">currentFailureCallback</a></li>
+                
+                    <li data-name="WebspeechAudioInput#currentSuccessCallback"><a href="WebspeechAudioInput.html#currentSuccessCallback">currentSuccessCallback</a></li>
+                
+                    <li data-name="WebspeechAudioInput#DEFAULT_ALTERNATIVE_RESULTS"><a href="WebspeechAudioInput.html#DEFAULT_ALTERNATIVE_RESULTS">DEFAULT_ALTERNATIVE_RESULTS</a></li>
+                
+                    <li data-name="WebspeechAudioInput#default_error_function"><a href="WebspeechAudioInput.html#default_error_function">default_error_function</a></li>
+                
+                    <li data-name="WebspeechAudioInput#DEFAULT_LANGUAGE"><a href="WebspeechAudioInput.html#DEFAULT_LANGUAGE">DEFAULT_LANGUAGE</a></li>
+                
+                    <li data-name="WebspeechAudioInput#EVENT_RESULT_FIELD"><a href="WebspeechAudioInput.html#EVENT_RESULT_FIELD">EVENT_RESULT_FIELD</a></li>
+                
+                    <li data-name="WebspeechAudioInput#EVENT_SCORE_FIELD"><a href="WebspeechAudioInput.html#EVENT_SCORE_FIELD">EVENT_SCORE_FIELD</a></li>
+                
+                    <li data-name="WebspeechAudioInput#final_recognition_result"><a href="WebspeechAudioInput.html#final_recognition_result">final_recognition_result</a></li>
+                
+                    <li data-name="WebspeechAudioInput#helper_error_handler"><a href="WebspeechAudioInput.html#helper_error_handler">helper_error_handler</a></li>
+                
+                    <li data-name="WebspeechAudioInput#intermediate_results"><a href="WebspeechAudioInput.html#intermediate_results">intermediate_results</a></li>
+                
+                    <li data-name="WebspeechAudioInput#logger"><a href="WebspeechAudioInput.html#logger">logger</a></li>
+                
+                    <li data-name="WebspeechAudioInput#max_error_retry"><a href="WebspeechAudioInput.html#max_error_retry">max_error_retry</a></li>
+                
+                    <li data-name="WebspeechAudioInput#micLevelsImplFile"><a href="WebspeechAudioInput.html#micLevelsImplFile">micLevelsImplFile</a></li>
+                
+                    <li data-name="WebspeechAudioInput#pluginExports"><a href="WebspeechAudioInput.html#pluginExports">pluginExports</a></li>
+                
+                    <li data-name="WebspeechAudioInput#recognition"><a href="WebspeechAudioInput.html#recognition">recognition</a></li>
+                
+                    <li data-name="WebspeechAudioInput#recording"><a href="WebspeechAudioInput.html#recording">recording</a></li>
+                
+                    <li data-name="WebspeechAudioInput#RESULT_TYPES"><a href="WebspeechAudioInput.html#RESULT_TYPES">RESULT_TYPES</a></li>
+                
+                    <li data-name="WebspeechAudioInput#SpeechRecognitionImpl"><a href="WebspeechAudioInput.html#SpeechRecognitionImpl">SpeechRecognitionImpl</a></li>
+                
+                    <li data-name="WebspeechAudioInput#UNSTABLE_LIMIT"><a href="WebspeechAudioInput.html#UNSTABLE_LIMIT">UNSTABLE_LIMIT</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="WebspeechAudioInput#cancelRecognition"><a href="WebspeechAudioInput.html#cancelRecognition">cancelRecognition</a></li>
+                
+                    <li data-name="WebspeechAudioInput#default_error_function"><a href="WebspeechAudioInput.html#default_error_function">default_error_function</a></li>
+                
+                    <li data-name="WebspeechAudioInput#helper_error_handler"><a href="WebspeechAudioInput.html#helper_error_handler">helper_error_handler</a></li>
+                
+                    <li data-name="WebspeechAudioInput#helper_extract_results"><a href="WebspeechAudioInput.html#helper_extract_results">helper_extract_results</a></li>
+                
+                    <li data-name="WebspeechAudioInput#initialize"><a href="WebspeechAudioInput.html#initialize">initialize</a></li>
+                
+                    <li data-name="WebspeechAudioInput#recognize"><a href="WebspeechAudioInput.html#recognize">recognize</a></li>
+                
+                    <li data-name="WebspeechAudioInput#startRecord"><a href="WebspeechAudioInput.html#startRecord">startRecord</a></li>
+                
+                    <li data-name="WebspeechAudioInput#stopRecord"><a href="WebspeechAudioInput.html#stopRecord">stopRecord</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="YieldDeclaration.html">
+                <span class="title">
+                    <a href="YieldDeclaration.html">YieldDeclaration</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="YieldDeclaration#getValue"><a href="YieldDeclaration.html#getValue">getValue</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="YieldDeclaration#getAreaType"><a href="YieldDeclaration.html#getAreaType">getAreaType</a></li>
+                
+                    <li data-name="YieldDeclaration#getEnd"><a href="YieldDeclaration.html#getEnd">getEnd</a></li>
+                
+                    <li data-name="YieldDeclaration#getName"><a href="YieldDeclaration.html#getName">getName</a></li>
+                
+                    <li data-name="YieldDeclaration#getStart"><a href="YieldDeclaration.html#getStart">getStart</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+      
+        <h3 class="typeHeading">Modules</h3>
+        
+            <li class="item" data-name="module-workers_jison-compiler.html">
+                <span class="title">
+                    <a href="module-workers_jison-compiler.html">module:workers/jison-compiler</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="module-workers_jscc-compiler.html">
+                <span class="title">
+                    <a href="module-workers_jscc-compiler.html">module:workers/jscc-compiler</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="module-workers_pegjs-compiler.html">
+                <span class="title">
+                    <a href="module-workers_pegjs-compiler.html">module:workers/pegjs-compiler</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="module-workers_scionRaiseQueue.html">
+                <span class="title">
+                    <a href="module-workers_scionRaiseQueue.html">module:workers/scionRaiseQueue</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+      
+    </ul>
+</div>
+
+    <div class="main">
+        <h1 class="page-title" data-filename="ExtendedStateEngineImpl.html">Class: ExtendedStateEngineImpl</h1>
+        
+
+
+
+<section>
+    
+<header>
+    <h2>
+    ExtendedStateEngineImpl
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="ExtendedStateEngineImpl">
+            
+            new ExtendedStateEngineImpl<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_dialog_scion_scionUtil.js.html">manager/dialog/scion/scionUtil.js</a>, <a href="manager_dialog_scion_scionUtil.js.html#line113">line 113</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="._events"><span class="type-signature static">static</span>ExtendedStateEngineImpl._events</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="._scion"><span class="type-signature static">static</span>ExtendedStateEngineImpl._scion</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="._states"><span class="type-signature static">static</span>ExtendedStateEngineImpl._states</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="._transitions"><span class="type-signature static">static</span>ExtendedStateEngineImpl._transitions</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".evalScript">
+            
+            <span class="type-signature static">static</span>ExtendedStateEngineImpl.evalScript<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_dialog_scion_scionUtil.js.html">manager/dialog/scion/scionUtil.js</a>, <a href="manager_dialog_scion_scionUtil.js.html#line140">line 140</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".gen">
+            
+            <span class="type-signature static">static</span>ExtendedStateEngineImpl.gen<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_dialog_scion_scionUtil.js.html">manager/dialog/scion/scionUtil.js</a>, <a href="manager_dialog_scion_scionUtil.js.html#line145">line 145</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".getActiveEvents">
+            
+            <span class="type-signature static">static</span>ExtendedStateEngineImpl.getActiveEvents<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_dialog_scion_scionUtil.js.html">manager/dialog/scion/scionUtil.js</a>, <a href="manager_dialog_scion_scionUtil.js.html#line169">line 169</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".getActiveStates">
+            
+            <span class="type-signature static">static</span>ExtendedStateEngineImpl.getActiveStates<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_dialog_scion_scionUtil.js.html">manager/dialog/scion/scionUtil.js</a>, <a href="manager_dialog_scion_scionUtil.js.html#line155">line 155</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".getActiveTransitions">
+            
+            <span class="type-signature static">static</span>ExtendedStateEngineImpl.getActiveTransitions<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_dialog_scion_scionUtil.js.html">manager/dialog/scion/scionUtil.js</a>, <a href="manager_dialog_scion_scionUtil.js.html#line198">line 198</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".getEvents">
+            
+            <span class="type-signature static">static</span>ExtendedStateEngineImpl.getEvents<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_dialog_scion_scionUtil.js.html">manager/dialog/scion/scionUtil.js</a>, <a href="manager_dialog_scion_scionUtil.js.html#line160">line 160</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".getStates">
+            
+            <span class="type-signature static">static</span>ExtendedStateEngineImpl.getStates<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_dialog_scion_scionUtil.js.html">manager/dialog/scion/scionUtil.js</a>, <a href="manager_dialog_scion_scionUtil.js.html#line150">line 150</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".getTransitions">
+            
+            <span class="type-signature static">static</span>ExtendedStateEngineImpl.getTransitions<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_dialog_scion_scionUtil.js.html">manager/dialog/scion/scionUtil.js</a>, <a href="manager_dialog_scion_scionUtil.js.html#line181">line 181</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".ignoreScript">
+            
+            <span class="type-signature static">static</span>ExtendedStateEngineImpl.ignoreScript<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_dialog_scion_scionUtil.js.html">manager/dialog/scion/scionUtil.js</a>, <a href="manager_dialog_scion_scionUtil.js.html#line135">line 135</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".start">
+            
+            <span class="type-signature static">static</span>ExtendedStateEngineImpl.start<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="manager_dialog_scion_scionUtil.js.html">manager/dialog/scion/scionUtil.js</a>, <a href="manager_dialog_scion_scionUtil.js.html#line130">line 130</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>
