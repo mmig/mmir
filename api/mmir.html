@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a target="_blank" href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a target="_blank" href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -135,9 +137,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -146,11 +148,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -160,9 +162,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3097,7 +3099,7 @@
         <h3 class="subsection-title">Namespaces</h3>
         
         <dl>
-            <dt><a href="namespaces.html#mmir.parser"><a href="mmir.parser.html">parser</a></a></dt>
+            <dt><a href="namespaces.html#mmir.parser"><a href="mmir.html#.parser">parser</a></a></dt>
             <dd></dd>
         </dl>
     
@@ -3811,7 +3813,7 @@
 <dd>
     
     <div class="description">
-        The name of the (this) the core module:this is also the global variable by which the core module (this) can be accessed.NOTE: changing this name here will have no affect on the name of the global variable
+        The name of the (this) the core module:this is also the global variable by which the core module (this) can be accessed.NOTE: changing this name here will have no affect on the name of the global variable,      instead set global variable <code>MMIR_CORE_NAME</code> before loading mmir
     </div>
     
     
@@ -3916,6 +3918,54 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".parser"><span class="type-signature static">static</span>mmir.parser<span class="type-signature type string"><a href="String.html">String</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        the root path for stylesheets:will be prepended to file paths in <code>@style(path)</code>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>""</li></ul></dd>
     
     
     
@@ -4354,7 +4404,7 @@
     
         
         <div class="tag-source">
-            <a href="core.js.html">core.js</a>, <a href="core.js.html#line522">line 522</a>
+            <a href="core.js.html">core.js</a>, <a href="core.js.html#line524">line 524</a>
         </div>
         
     </div>
@@ -4425,7 +4475,7 @@
     
         
         <div class="tag-source">
-            <a href="core.js.html">core.js</a>, <a href="core.js.html#line469">line 469</a>
+            <a href="core.js.html">core.js</a>, <a href="core.js.html#line471">line 471</a>
         </div>
         
     </div>
@@ -4549,7 +4599,7 @@
     
         
         <div class="tag-source">
-            <a href="core.js.html">core.js</a>, <a href="core.js.html#line548">line 548</a>
+            <a href="core.js.html">core.js</a>, <a href="core.js.html#line550">line 550</a>
         </div>
         
     </div>
@@ -4732,7 +4782,7 @@
     
         
         <div class="tag-source">
-            <a href="core.js.html">core.js</a>, <a href="core.js.html#line444">line 444</a>
+            <a href="core.js.html">core.js</a>, <a href="core.js.html#line446">line 446</a>
         </div>
         
     </div>

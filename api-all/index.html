@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a target="_blank" href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a target="_blank" href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -139,9 +141,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -150,11 +152,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -164,9 +166,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3389,7 +3391,7 @@
     
 
 
-    <h3>mmir-lib 5.0.0</h3>
+    <h3>mmir-lib 5.1.0</h3>
 
 
 
@@ -3404,38 +3406,43 @@
 
 
     <section>
-        <article class="readme"><h1>mmir-lib</h1>
-<p>https://github.com/mmig/mmir-lib</p>
-<p>Source Code for the MMIR (Mobile Multimodal Interaction and Rendering) library</p>
-<p>The MMIR framework provides means to created <em>minimal</em> (client-based)
+        <article class="readme"><h1><a target="_blank" href="https://github.com/mmig/mmir-lib">mmir-lib</a></h1>
+<p><a target="_blank" href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT license"></a>
+<img src="https://img.shields.io/github/package-json/v/mmig/mmir-lib" alt="GitHub package.json version"></p>
+<p>Source Code for the <a target="_blank" href="https://github.com/mmig/mmir">mmir</a> (Mobile Multimodal Interaction and Rendering) library</p>
+<p>The <code>mmir</code> framework provides means for creating <em>minimal</em> (client-based)
 <em>dialog systems</em> for multimodal interactions:</p>
 <ul>
 <li>state-based interaction handling using SCXML (e.g. for touch/click, speech, gesture interactions)</li>
 <li>support and plugins for several speech input (Automatic Speech Recognition, ASR) engines</li>
 <li>support and plugins for several speech output/synthesis (Text To Speech, TTS) engines</li>
-<li>support for client- or sever-based NLU processing
-<ul>
-<li>built-in support for grammars (similar BNF grammars that parse input as <em>tokens</em> and <em>utterances</em>)</li>
+<li>support for client- or sever-based NLU processing</li>
+<li>built-in support for grammars (similar to BNF grammars that parse input as <em>tokens</em> and <em>utterances</em>)</li>
 </ul>
-</li>
-</ul>
-<p>See API documentation is available at <a target="_blank" href="https://github.com/mmig/mmir-lib/tree/master/docs/">/docs</a> (<code>md</code> format) or in <a target="_blank" href="https://mmig.github.io/mmir/api-ts/">HTML format</a>.
+<p>See API documentation is available at <a target="_blank" href="https://github.com/mmig/mmir-lib/tree/master/docs/">/docs</a> (<code>md</code> format) or in <a target="_blank" href="https://mmig.github.io/mmir/api-ts/">HTML format</a>
 (more details are available in <a target="_blank" href="https://mmig.github.io/mmir/api/">jsdoc-generated API documentation</a>, and further details at <a target="_blank" href="https://github.com/mmig/mmir">github.com/mmig/mmir</a>).</p>
-<p>For examples, see the <a target="_blank" href="https://github.com/mmig/mmir-starter-kit">mmir-starter-simple</a> or <a target="_blank" href="https://github.com/mmig/mmir-starter-ionic">mmir-starter-ionic</a>.</p>
-<p>--</p>
+<p>For examples, see the <a target="_blank" href="https://github.com/mmig/mmir-starter-kit">mmir-starter-kit</a> or <a target="_blank" href="https://github.com/mmig/mmir-starter-ionic">mmir-starter-ionic</a>.</p>
+<hr>
 <h1>Usage</h1>
-<h2>Building Resources (Grammars etc)</h2>
+<h2>Building Grammars, State Machines etc.</h2>
 <ul>
 <li>Prerequesites: Node.js</li>
 </ul>
-<p>Some resources (e.g. grammars) need to be build/compiled, before they can be used.</p>
-<p>This is supported e.g. via the <a target="_blank" href="https://github.com/mmig/mmir-tooling">mmir-tooling</a> project.</p>
-<p>In addition, the <a target="_blank" href="https://github.com/mmig/mmir-webpack">mmir-wepack</a> integration, provides a further automated way
-for including <code>mmir</code> in webpack-based apps / build applications.</p>
-<h2>Basic Web Page Integration</h2>
+<p>Some resources (e.g. grammars, state machines) can be built/compiled before they
+are used in the application at runtime.<br>
+Note that most of these resources can be compiled during runtime too (as in case
+of grammars and state machines).</p>
+<p>Pre-building these resources is supported e.g. via the <a target="_blank" href="https://github.com/mmig/mmir-tooling">mmir-tooling</a> project.</p>
+<p>In addition, the <a target="_blank" href="https://github.com/mmig/mmir-webpack">mmir-wepack</a> integration provides special support
+for including <code>mmir</code> in webpack-based/-built applications.</p>
+<h2>Include in Web Page</h2>
+<p>The following shows an example of including <code>mmir-lib</code> in a web page &quot;as-is&quot;, i.e. without
+any build-system (like <code>webpack</code>).</p>
+<p><code>mmir-lib</code> includes <code>requirejs</code> for (async) lazy-loading its sub-modules.</p>
 <ul>
 <li>
-<p>include <code>/lib</code> as directory <code>/mmirf</code> in your web resources directory (e.g. <code>/www/mmirf</code>)</p>
+<p>include <code>/lib</code> as directory <code>/mmirf</code> in your web resources directory, e.g. <code>/www/mmirf</code><br>
+<em>(e.g. use <a target="_blank" href="https://github.com/mmig/mmir-tooling#bare-bones-mmir-lib-integration"><code>mmirinstall</code></a> script of <code>mmir-tooling</code>: <code>mmirinstall www/mmirf</code>)</em></p>
 </li>
 <li>
 <p>load/include <code>mmir</code> in HTML page</p>
@@ -3446,36 +3453,82 @@ for including <code>mmir</code> in webpack-based apps / build applications.</p>
 &lt;script type=&quot;text/javascript&quot; src=&quot;mmirf/core.js&quot;>&lt;/script>
 
 &lt;!-- OPTIONAL: configure mmir framework before it starts loading/initializing
-               using some custom script (in this example at appjs/preinit.js)
-               for more details see the documentation at github.com/mmig/mmir
+                using some custom script (in this example at appjs/preinit.js)
+                for more details see the documentation at github.com/mmig/mmir
 -->
 &lt;script type=&quot;text/javascript&quot; src=&quot;appjs/preinit.js&quot;>&lt;/script>
 
-  &lt;!-- load mmir library -->
+&lt;!-- load mmir library -->
 &lt;script type=&quot;text/javascript&quot; src=&quot;mmirf/vendor/libs/require.min.js&quot; data-main=&quot;mmirf/mainConfig&quot; >&lt;/script>
 </code></pre>
 </li>
 <li>
-<p>use <code>mmir</code> after it's been initialized</p>
-<pre class="prettyprint source lang-javascript"><code>  mmir.ready(function(){
- 	 ...
-  })
-</code></pre>
-</li>
-</ul>
-<h2>Node</h2>
-<pre class="prettyprint source lang-javascript"><code>var mmir = require('mmir-lib');
-mmir.ready(function(){
+<p>use <code>mmir</code> in JavaScript code (after it's been initialized)</p>
+<pre class="prettyprint source lang-javascript"><code>mmir.ready(function(){
   ...
 })
 </code></pre>
+</li>
+</ul>
+<h2>Node.js</h2>
+<pre class="prettyprint source lang-javascript"><code>var mmirLib = require('mmir-lib');
+
+//optional: run some configuration before starting to initialize mmir
+var preInitFunc = function(mmir){
+  //... some custom configuration for mmir before loading the library
+};
+
+//init should only be called once:
+var mmir = mmirLib.init(preInitFunc);
+
+mmir.ready(function(){
+  ...
+});
+</code></pre>
+<h3>Node.js and WebWorker</h3>
+<p>For some functionality (e.g. async-compiling grammars, state-manager event processing), <code>mmir</code> uses <code>WebWorker</code>s.
+While most of the these functionalities do have fallback implementations, they
+may not always provide the same functionality, and run less efficiently.</p>
+<p><code>mmir</code> can use the following <code>WebWorker</code> implementations as drop-ins for
+HTML5 <code>WebWorker</code>s when running in <code>node</code>:</p>
+<ul>
+<li>
+<p>built-in <code>node</code> module <code>worker_threads</code> (recommended):</p>
+<ul>
+<li>since version 10.5.0 available as <em>experimental</em> feature:<br>
+use/enable by running <code>node</code> with command-line argument <code>--experimental-worker</code>, e.g.<pre class="prettyprint source lang-bash"><code># when using node directly
+node --experimental-worker ...
+# when using npm
+npm --node-options --experimental-worker ...
+# set as node env variable (*nix)
+export NODE_OPTIONS=$NODE_OPTIONS --experimental-worker
+# set as node env variable (Windows)
+set NODE_OPTIONS=%NODE_OPTIONS% --experimental-worker
+# add entry in npm configuration file .npmrc:
+#node-options = --experimental-worker
+</code></pre>
+</li>
+<li>since <code>node</code> version 11.x <code>worker_threads</code> is enabled by default</li>
+</ul>
+</li>
+<li>
+<p>alternative module <code>webworker-threads</code> with version &gt;= 0.8.x</p>
+<ul>
+<li>NOTE not everything may work using this package (if possible use <code>worker_threads</code>)</li>
+<li><a target="_blank" href="https://www.npmjs.com/package/webworker-threads">worker_threads at npm</a>: current version is 0.7.x</li>
+<li><a target="_blank" href="https://github.com/audreyt/node-webworker-threads">worker_threads on github</a>: current version is 0.8.x</li>
+</ul>
+</li>
+</ul>
 <h2>Additional Notes</h2>
-<p>See also the <a target="_blank" href="https://github.com/mmig/mmir-tooling">tools project</a> for scripts, resources etc. for compiling and generating resources
-(e.g. for compiling JSON grammar files from the application's <code>config/languages/[language code]/</code>
-directories into JavaScript files).</p>
-<p>NOTE: Integration with / loading of Cordova is designed to work with the <em>build process</em>
-of <strong>Cordova 5</strong> or later (see <a target="_blank" href="https://github.com/mmig/mmir-cordova">cordova example project</a> for integration / tooling of the MMIR framework
-in combination with Cordova 5 and later versions).</p>
+<p>More details, further documentation etc. are available on the <a target="_blank" href="https://github.com/mmig/mmir">mmir</a> project page.</p>
+<p>See also the <a target="_blank" href="https://github.com/mmig/mmir-tooling">tools project</a> for scripts, resources etc. for compiling and
+generating resources (e.g. for compiling JSON grammar files from the application's
+<code>config/languages/[language code]/</code> directories into JavaScript files).</p>
+<p>NOTE: Integration with / loading of Cordova is designed to work with the
+<em>build process</em> of <strong>Cordova 5 or later</strong> (see <a target="_blank" href="https://github.com/mmig/mmir-tooling">mmir-tooling</a> and
+<a target="_blank" href="https://github.com/mmig/mmir-cordova">cordova example project</a> for integration / tooling of the <code>mmir</code>
+framework in combination with Cordova 5 and later versions).</p>
 <p>--</p>
 <h4>Used Libraries</h4>
 <p>(see contents of <code>/vendor/libs/</code>)</p>
@@ -3523,7 +3576,7 @@ in combination with Cordova 5 and later versions).</p>
     
     
         
-            <div class="description">This file contains interface definitions. 		 The interface definitions are purely for documentation and 		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
+            <div class="description">This file contains interface definitions.		 The interface definitions are purely for documentation and		 should not be loaded / executed / or used in any way other		 than for reference purposes.</div>
         
         
         

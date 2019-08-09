@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -139,9 +141,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -150,11 +152,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -164,9 +166,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3437,7 +3439,7 @@ function(
 	 * @private
 	 * @memberOf Resources#
 	 */
-    var basePath = "";
+	var basePath = "";
 
 		///////////////////////////////////////////// Paths of library resources (sub-paths within library) ////////////////////////////////////////////////
 
@@ -3575,7 +3577,7 @@ function(
 	 * @private
 	 * @memberOf Resources#
 	 */
-	var directoriesFileUrl = _modConf["directories.json"]? _modConf["directories.json"] : "config/directories.json";
+	var directoriesFileUrl = _modConf["directories.json"]? _modConf["directories.json"] : "gen/directories.json";
 
 
 	////////////////////////////////////////////////// General Constant Values///////////////////////////////////////////////////
@@ -3694,8 +3696,8 @@ function(
 	 * @memberOf mmir.Resources.prototype
 	 * @private
 	 */
-    function constructor(env){
-    	envInfo = env;
+	function constructor(env){
+		envInfo = env;
 		isBrowserEnv = envInfo.isBrowserEnv;
 		setBasePath(env);
 
@@ -3994,65 +3996,65 @@ function(
 			},
 
 			/**
-	         * Initialize the Resources singleton.
-	         *
-	         * @function
-	         * @param {Boolean} forBrowserParameter &lt;tt>true&lt;/tt> for browser-environment, if &lt;tt>false&lt;/tt> ANDROID environment
-	         * @returns {Object} Object containing the instance of the class {@link mmir.Resources}
-	         * @public
+			 * Initialize the Resources singleton.
+			 *
+			 * @function
+			 * @param {Boolean} forBrowserParameter &lt;tt>true&lt;/tt> for browser-environment, if &lt;tt>false&lt;/tt> ANDROID environment
+			 * @returns {Object} Object containing the instance of the class {@link mmir.Resources}
+			 * @public
 			 *
 			 * @memberOf mmir.Resources.prototype
-	         */
+			 */
 			init: function(theForBrowserParameter){
 				if (theForBrowserParameter &amp;&amp; theForBrowserParameter != isBrowserEnv){
-    				setBasePath(theForBrowserParameter);
-    			}
+					setBasePath(theForBrowserParameter);
+				}
 				return this;
 			},
 
 			/**
-	         * @function
-	         * @returns {Boolean}
-	         * @public
+			 * @function
+			 * @returns {Boolean}
+			 * @public
 			 *
 			 * @memberOf mmir.Resources.prototype
-	         */
+			 */
 			isBrowserEnv: function(){//FIXME replace with real environment-setting/-mechanism
 				return isBrowserEnv;
 			},
 
 			/**
-	         * @function
-	         * @returns {Boolean}
-	         * @public
+			 * @function
+			 * @returns {Boolean}
+			 * @public
 			 *
 			 * @memberOf mmir.Resources.prototype
-	         */
+			 */
 			isCordovaEnv: function(){
 				return env.isCordovaEnv;
 			},
 
 
 			/**
-	         * @function
-	         * @returns {String}
-	         * @values "browser" | "cordova" | (or: VALUE set in document's query-parameter "?env=VALUE"
-	         * @public
+			 * @function
+			 * @returns {String}
+			 * @values "browser" | "cordova" | (or: VALUE set in document's query-parameter "?env=VALUE"
+			 * @public
 			 *
 			 * @memberOf mmir.Resources.prototype
-	         */
+			 */
 			getEnv: function(){
 				return envInfo.envSetting? envInfo.envSetting : 'browser';
 			},
 
 			/**
-	         * @function
-	         * @returns {String}
-	         * @values "android" | "ios" | "browser" | "default"
-	         * @public
+			 * @function
+			 * @returns {String}
+			 * @values "android" | "ios" | "browser" | "default"
+			 * @public
 			 *
 			 * @memberOf mmir.Resources.prototype
-	         */
+			 */
 			getEnvPlatform: function(){
 				return envInfo.platform;
 			}

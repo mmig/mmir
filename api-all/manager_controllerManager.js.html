@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -139,9 +141,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -150,11 +152,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -164,9 +166,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3424,7 +3426,7 @@ define(['mmirf/controller', 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/util/
 	 * Initialize ControllerManager:
 	 *
 	 * Load all Controllers from /controller
-	 * that are specified in /config/directories.json
+	 * that are specified in /gen/directories.json
 	 *
 	 * @function
 	 * @param {Function} [callback] OPTIONAL
@@ -3462,19 +3464,19 @@ define(['mmirf/controller', 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/util/
 		 * @memberOf mmir.ControllerManager#
 		 */
 		function removeFileExt(fileName){
-	    	return fileName.replace(/\.[^.]+$/g,'');
-	    }
+			return fileName.replace(/\.[^.]+$/g,'');
+		}
 		/**
 		 * HELPER FUNC: convert first letter to upper case
 		 * @private
 		 *
 		 * @memberOf mmir.ControllerManager#
 		 */
-	    function firstToUpperCase(name){
-	    	return name[0].toUpperCase()+name.substr(1);
-	    }
+		function firstToUpperCase(name){
+			return name[0].toUpperCase()+name.substr(1);
+		}
 
-	    /**
+		/**
 		 * HELPER FUNC: add file path for generated / compiled view-element
 		 *              if it exists.
 		 *
@@ -3517,7 +3519,7 @@ define(['mmirf/controller', 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/util/
 			return infoObj;
 		}
 
-			/**
+		/**
 		 * HELPER FUNC: parse file list and extract info for view/partial/layout/helper.
 		 *
 		 * @param {String} dirPath
@@ -3550,66 +3552,66 @@ define(['mmirf/controller', 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/util/
 		 *
 		 * @memberOf mmir.ControllerManager#
 		 */
-		 function processFileList(dirPath, genDirPath, queryFilter, removeNamePrefix, regExpFileFilter){
+		function processFileList(dirPath, genDirPath, queryFilter, removeNamePrefix, regExpFileFilter){
 
-					if(removeNamePrefix &amp;&amp; typeof removeNamePrefix === 'object'){
-						regExpFileFilter = removeNamePrefix;
-						removeNamePrefix = '';
-					} else {
-						removeNamePrefix = removeNamePrefix || '';
-					}
-
-					var isSourceList = true;
-					var queryFileName = queryFilter.nameStart? '^' + queryFilter.nameStart + '.*' : '';
-					var fileList = commonUtils.listDir(dirPath, new RegExp(queryFileName + '\\.' + queryFilter.ext + '$', 'i'));
-					var wpBuild = typeof WEBPACK_BUILD !== 'undefined' &amp;&amp; WEBPACK_BUILD;
-					if(!fileList){
-						// -> query gen-dir instead
-						isSourceList = false;
-						if(wpBuild){
-							//NOTE in webpack build the entry is not a file-name, but a module ID, like "mmirf/view/application/login.js"
-							queryFileName = queryFilter.nameStart? '^mmirf/view/[^/]+/' + queryFilter.nameStart + '[^/]*' : '';;
-						}
-						//NOTE file-extension in gen-dir is always .js
-						fileList = commonUtils.listDir(genDirPath, new RegExp(queryFileName+ '\\.js$', 'i'));
-					}
-
-					var infoList = [], entry, name;
-					if (fileList != null) {
-					  for (var i = 0, size = fileList.length; i &lt; size; ++i) {
-					    entry = fileList[i];
-						if(!regExpFileFilter || regExpFileFilter.test(entry)){
-							name = removeFileExt(!removeNamePrefix? entry : entry.replace(removeNamePrefix, ''));
-							infoList.push(addGenPath(genDirPath, {
-							  name: wpBuild? name.replace(/^.*\//, '') : name,													//&lt;- in webpack build: remove everything from ID (i.e. the name) except for the last segement
-							  path: isSourceList? (wpBuild? entry : dirPath + '/' + entry) : null,
-							  genPath: isSourceList? null : (wpBuild? entry : genDirPath + '/' + entry)	//&lt;- in webpack build the genPath is the module ID, otherwise it's the path to the generated file
-							}, removeNamePrefix));
-						}
-					  }
-					}
-					return infoList;
+			if(removeNamePrefix &amp;&amp; typeof removeNamePrefix === 'object'){
+				regExpFileFilter = removeNamePrefix;
+				removeNamePrefix = '';
+			} else {
+				removeNamePrefix = removeNamePrefix || '';
 			}
 
-			/**
-			 * HELPER get first entry from FileInfo list and transform its name (i.e. so that first letter is upper case)
-			 *
-			 * @param  {Array&lt;FileInfo>} infoList the list of FileInfo objects
-			 * @param  {String} type the type of resources listed in infoList, e.g. "layout" or "helper"
-			 * @return {FileInfo} the first FileInfo object or NULL
-			 */
-			function getFirstInfo(infoList, type){
-				var len = infoList.length;
-				if(len > 1){
-					logger.warn('Invalid number of '+type+': only 1 is allowed, using first of list ...');
+			var isSourceList = true;
+			var queryFileName = queryFilter.nameStart? '^' + queryFilter.nameStart + '.*' : '';
+			var fileList = commonUtils.listDir(dirPath, new RegExp(queryFileName + '\\.' + queryFilter.ext + '$', 'i'));
+			var wpBuild = typeof WEBPACK_BUILD !== 'undefined' &amp;&amp; WEBPACK_BUILD;
+			if(!fileList){
+				// -> query gen-dir instead
+				isSourceList = false;
+				if(wpBuild){
+					//NOTE in webpack build the entry is not a file-name, but a module ID, like "mmirf/view/application/login.js"
+					queryFileName = queryFilter.nameStart? '^mmirf/view/[^/]+/' + queryFilter.nameStart + '[^/]*' : '';;
 				}
-				if(len >= 1){
-					var info = infoList[0];
-					info.name = firstToUpperCase(info.name);
-					return info;
-				}
-				return null;
+				//NOTE file-extension in gen-dir is always .js
+				fileList = commonUtils.listDir(genDirPath, new RegExp(queryFileName+ '\\.js$', 'i'));
 			}
+
+			var infoList = [], entry, name;
+			if (fileList != null) {
+				for (var i = 0, size = fileList.length; i &lt; size; ++i) {
+					entry = fileList[i];
+					if(!regExpFileFilter || regExpFileFilter.test(entry)){
+						name = removeFileExt(!removeNamePrefix? entry : entry.replace(removeNamePrefix, ''));
+						infoList.push(addGenPath(genDirPath, {
+							name: wpBuild? name.replace(/^.*\//, '') : name,													//&lt;- in webpack build: remove everything from ID (i.e. the name) except for the last segement
+							path: isSourceList? (wpBuild? entry : dirPath + '/' + entry) : null,
+							genPath: isSourceList? null : (wpBuild? entry : genDirPath + '/' + entry)	//&lt;- in webpack build the genPath is the module ID, otherwise it's the path to the generated file
+						}, removeNamePrefix));
+					}
+				}
+			}
+			return infoList;
+		}
+
+		/**
+		 * HELPER get first entry from FileInfo list and transform its name (i.e. so that first letter is upper case)
+		 *
+		 * @param  {Array&lt;FileInfo>} infoList the list of FileInfo objects
+		 * @param  {String} type the type of resources listed in infoList, e.g. "layout" or "helper"
+		 * @return {FileInfo} the first FileInfo object or NULL
+		 */
+		function getFirstInfo(infoList, type){
+			var len = infoList.length;
+			if(len > 1){
+				logger.warn('Invalid number of '+type+': only 1 is allowed, using first of list ...');
+			}
+			if(len >= 1){
+				var info = infoList[0];
+				info.name = firstToUpperCase(info.name);
+				return info;
+			}
+			return null;
+		}
 
 		/**
 		 * This function gets the controller file names and builds a JSON object containing information about
@@ -3620,7 +3622,7 @@ define(['mmirf/controller', 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/util/
 		 * 					the name of the Controller (must start with an upper case letter).
 		 * @param {String} controllerPath
 		 * 					the path (URL) where the file with the Controller's implementation
-		 * 					is located (according to information in file &lt;code>/config/directories.json&lt;/code>,
+		 * 					is located (according to information in file &lt;code>/gen/directories.json&lt;/code>,
 		 * 					i.e. {@link mmir.CommonUtils#getDirectoryStructure})
 		 * @returns {JSON} JSON-Object containing information about the controller,
 		 * 				its views, partials, and paths etc.
@@ -3674,58 +3676,58 @@ define(['mmirf/controller', 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/util/
 		 *
 		 * @memberOf mmir.ControllerManager#
 		 */
-	    function getControllerResources(controllerName, controllerPath){
+		function getControllerResources(controllerName, controllerPath){
 
-				var partialsPrefix = commonUtils.getPartialsPrefix();
-			 var controllerFilePath = controllerPath + controllerName;
+			var partialsPrefix = commonUtils.getPartialsPrefix();
+			var controllerFilePath = controllerPath + controllerName;
 
-			 var rawControllerName= removeFileExt(controllerName);
-			 controllerName = rawControllerName;
+			var rawControllerName= removeFileExt(controllerName);
+			controllerName = rawControllerName;
 
-			 var viewsPath = res.getViewPath() + controllerName;
-			 var genViewsPath = res.getCompiledViewPath() + controllerName;
+			var viewsPath = res.getViewPath() + controllerName;
+			var genViewsPath = res.getCompiledViewPath() + controllerName;
 
-			 controllerName = firstToUpperCase(controllerName);
+			controllerName = firstToUpperCase(controllerName);
 
-			 var viewsList = processFileList(viewsPath, genViewsPath, {nameStart: '(?!'+partialsPrefix+')', ext: 'ehtml'});
+			var viewsList = processFileList(viewsPath, genViewsPath, {nameStart: '(?!'+partialsPrefix+')', ext: 'ehtml'});
 
-			 var partialsInfoList = processFileList(viewsPath, genViewsPath, {nameStart: partialsPrefix, ext: 'ehtml'}, partialsPrefix);
+			var partialsInfoList = processFileList(viewsPath, genViewsPath, {nameStart: partialsPrefix, ext: 'ehtml'}, partialsPrefix);
 
-			 var helpersPath = res.getHelperPath().replace(/\/$/, '');//&lt;- remove trailing slash;
-			 var helperSuffix = res.getHelperSuffix();
-			 var reStartPattern = typeof WEBPACK_BUILD !== 'undefined' &amp;&amp; WEBPACK_BUILD? '^mmirf/helper/' : '^';
-			 var reHelpersFileName = new RegExp(reStartPattern+controllerName+helperSuffix+'\.js$', 'i');
-			 var helpersList = processFileList(helpersPath, helpersPath, {nameStart: '', ext: 'js'}, reHelpersFileName);
-			 var helperInfo = getFirstInfo(helpersList, 'helper');
+			var helpersPath = res.getHelperPath().replace(/\/$/, '');//&lt;- remove trailing slash;
+			var helperSuffix = res.getHelperSuffix();
+			var reStartPattern = typeof WEBPACK_BUILD !== 'undefined' &amp;&amp; WEBPACK_BUILD? '^mmirf/helper/' : '^';
+			var reHelpersFileName = new RegExp(reStartPattern+controllerName+helperSuffix+'\.js$', 'i');
+			var helpersList = processFileList(helpersPath, helpersPath, {nameStart: '', ext: 'js'}, reHelpersFileName);
+			var helperInfo = getFirstInfo(helpersList, 'helper');
 
-			 var layoutsPath = res.getLayoutPath().replace(/\/$/, '');//&lt;- remove trailing slash
-			 var layoutGenPath = res.getCompiledLayoutPath().replace(/\/$/, '');//&lt;- remove trailing slash
- 			 var reStartsWithCtrl = new RegExp('^'+controllerName, 'i');
-			 var layoutsList = processFileList(layoutsPath, layoutGenPath, {nameStart: '(?!'+partialsPrefix+')', ext: 'ehtml'}, reStartsWithCtrl);
-			 var layoutInfo = getFirstInfo(layoutsList, 'layout');
+			var layoutsPath = res.getLayoutPath().replace(/\/$/, '');//&lt;- remove trailing slash
+			var layoutGenPath = res.getCompiledLayoutPath().replace(/\/$/, '');//&lt;- remove trailing slash
+			var reStartsWithCtrl = new RegExp('^'+controllerName, 'i');
+			var layoutsList = processFileList(layoutsPath, layoutGenPath, {nameStart: '(?!'+partialsPrefix+')', ext: 'ehtml'}, reStartsWithCtrl);
+			var layoutInfo = getFirstInfo(layoutsList, 'layout');
 
 
-			 var ctrlInfo = {
-				 fileName: rawControllerName,
-				 name:     controllerName,
-				 path:     controllerFilePath,
+			var ctrlInfo = {
+				fileName: rawControllerName,
+				name:     controllerName,
+				path:     controllerFilePath,
 
-				 views:    viewsList,
-				 partials: partialsInfoList,
-				 helper:   helperInfo,
-				 layout:   layoutInfo
-			 };
+				views:    viewsList,
+				partials: partialsInfoList,
+				helper:   helperInfo,
+				layout:   layoutInfo
+			};
 
-	    	// //TEST compare info with "reference" result from original impl.:
-	    	// var test = {
-				// 	application: '{"fileName":"application","name":"Application","path":"controllers/application","views":[{"name":"login","path":"views/application/login.ehtml"},{"name":"registration","path":"views/application/registration.ehtml"},{"name":"welcome","path":"views/application/welcome.ehtml"}],"partials":[{"name":"languageMenu","path":"views/application/~languageMenu.ehtml"}],"helper":null,"layout":null}',
-				// 	calendar: '{"fileName":"calendar","name":"Calendar","path":"controllers/calendar","views":[{"name":"create_appointment","path":"views/calendar/create_appointment.ehtml"}],"partials":[],"helper":null,"layout":null}'
-				// };
-	    	// var isEqual = (JSON.stringify(ctrlInfo) === test[ctrlInfo.fileName]);
-	    	// console[isEqual? 'info':'error']('compliance-test: isEual? '+  isEqual);
-				// console.log(' ######## ctrlInfo -> ', JSON.stringify(ctrlInfo));
+			// //TEST compare info with "reference" result from original impl.:
+			// var test = {
+			// 	application: '{"fileName":"application","name":"Application","path":"controllers/application","views":[{"name":"login","path":"views/application/login.ehtml"},{"name":"registration","path":"views/application/registration.ehtml"},{"name":"welcome","path":"views/application/welcome.ehtml"}],"partials":[{"name":"languageMenu","path":"views/application/~languageMenu.ehtml"}],"helper":null,"layout":null}',
+			// 	calendar: '{"fileName":"calendar","name":"Calendar","path":"controllers/calendar","views":[{"name":"create_appointment","path":"views/calendar/create_appointment.ehtml"}],"partials":[],"helper":null,"layout":null}'
+			// };
+			// var isEqual = (JSON.stringify(ctrlInfo) === test[ctrlInfo.fileName]);
+			// console[isEqual? 'info':'error']('compliance-test: isEual? '+  isEqual);
+			// console.log(' ######## ctrlInfo -> ', JSON.stringify(ctrlInfo));
 
-				return ctrlInfo;
+			return ctrlInfo;
 		};
 
 		/**
@@ -3765,44 +3767,44 @@ define(['mmirf/controller', 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/util/
 		commonUtils.loadImpl(
 
 
-				res.getControllerPath(),
+			res.getControllerPath(),
 
-				false,
+			false,
 
-				function () {
+			function () {
 
-					console.info( '[loadControllers] done' );
+				console.info( '[loadControllers] done' );
 
-					defer.resolve(_instance);
-				},
+				defer.resolve(_instance);
+			},
 
-				function isAlreadyLoaded (name) {
+			function isAlreadyLoaded (name) {
 
-					if(typeof ctx[name] === 'function' &amp;&amp; ctx[name].name === firstToUpperCase(name)){
-						//controller implementation was already loaded -> immediately create controller instance
-						if(logger.isVerbose()) logger.v("already loaded implementation for "+name+", creating instance...");//debug
-						createCtrlInstance(name, ctx[name]);
-						return true;
-					}
-					return false;
-
-				},
-
-				function callbackStatus(status, fileName, msg, result) {
-					if(status==='info'){
-
-						createCtrlInstance(fileName, result);
-					}
-					else if(status==='warning'){
-						logger.warn('[loadController] "'+fileName+'": '+msg);
-					}
-					else if(status==='error'){
-						logger.error('[loadController] "'+fileName+'": '+msg);
-					}
-					else{
-						logger.error('[loadController] '+status+' (UNKNOWN STATUS) -> "'+fileName+'": '+msg);
-					}
+				if(typeof ctx[name] === 'function' &amp;&amp; ctx[name].name === firstToUpperCase(name)){
+					//controller implementation was already loaded -> immediately create controller instance
+					if(logger.isVerbose()) logger.v("already loaded implementation for "+name+", creating instance...");//debug
+					createCtrlInstance(name, ctx[name]);
+					return true;
 				}
+				return false;
+
+			},
+
+			function callbackStatus(status, fileName, msg, result) {
+				if(status==='info'){
+
+					createCtrlInstance(fileName, result);
+				}
+				else if(status==='warning'){
+					logger.warn('[loadController] "'+fileName+'": '+msg);
+				}
+				else if(status==='error'){
+					logger.error('[loadController] "'+fileName+'": '+msg);
+				}
+				else{
+					logger.error('[loadController] '+status+' (UNKNOWN STATUS) -> "'+fileName+'": '+msg);
+				}
+			}
 
 		);
 
@@ -3832,13 +3834,13 @@ define(['mmirf/controller', 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/util/
 		var controllers = new Map();
 
 		/**
-	     * Object containing the instance of the class {@link mmir.ControllerManager}
-	     *
-	     * @type Object
-	     * @private
+		 * Object containing the instance of the class {@link mmir.ControllerManager}
+		 *
+		 * @type Object
+		 * @private
 		 * @augments mmir.ControllerManager
 		 * @ignore
-	     */
+		 */
 		var _instance = {
 			/** @scope mmir.ControllerManager.prototype *///for jsdoc2
 

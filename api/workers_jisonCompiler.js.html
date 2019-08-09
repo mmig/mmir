@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -135,9 +137,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -146,11 +148,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -160,9 +162,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3009,7 +3011,7 @@ self._init = function(url){
 	if(typeof WEBPACK_BUILD === 'undefined'){
 		var libUrl = self.getPath(url) +'.js';
 		try {
-			 importScripts(libUrl);
+			importScripts(libUrl);
 		} catch(err){
 			console.log('jison ansync compiler (web worker) _init ERROR: failed importScripts("'+libUrl+'") ', err.stack);
 			self.postMessage({error: 'jison ansync compiler (web worker) _init ERROR: failed importScripts("'+libUrl+'") '+ err.stack});
@@ -3050,14 +3052,14 @@ function _preparePrintImpl(_id){
 
 self.onmessage = function(e){
 
-  switch(e.data.cmd){
-    case 'init':
-      self.init(e.data);
-      break;
-    case 'parse':
-      parse(e.data.text, e.data.config, e.data.id);
-      break;
-  }
+	switch(e.data.cmd){
+		case 'init':
+			self.init(e.data);
+			break;
+		case 'parse':
+			parse(e.data.text, e.data.config, e.data.id);
+			break;
+	}
 
 };
 
@@ -3072,14 +3074,14 @@ function parse(grammarDefinition, config, id){
 	_preparePrintImpl(id);
 
 	var hasError = false;
-    var grammarParser;
+		var grammarParser;
 	try{
 
-    	var cfg = bnf.parse(grammarDefinition);
-    	var parser = jison.Generator(cfg, options);
-    	var grammarParser = parser.generate();
+			var cfg = bnf.parse(grammarDefinition);
+			var parser = jison.Generator(cfg, options);
+			var grammarParser = parser.generate();
 
-    } catch(error) {
+		} catch(error) {
 //    	"{
 //    	  "message": "Expected \"=\" or string but \"_\" found.",
 //    	  "expected": [
@@ -3099,26 +3101,26 @@ function parse(grammarDefinition, config, id){
 //    	  "column": 6,
 //    	  "name": "SyntaxError"
 //    	}"
-    	hasError = true;
-    	var msg = ' while compiling grammar "' + config.id + '": ';
-    	if(error.name === 'SyntaxError'){
-    		msg= 'SyntaxError' + msg + error.message;
-    	}
-    	else {
-    		msg = 'Error' + msg + (error &amp;&amp; error.stack? error.stack : error);
-    	}
+			hasError = true;
+			var msg = ' while compiling grammar "' + config.id + '": ';
+			if(error.name === 'SyntaxError'){
+				msg= 'SyntaxError' + msg + error.message;
+			}
+			else {
+				msg = 'Error' + msg + (error &amp;&amp; error.stack? error.stack : error);
+			}
 
-    	if(typeof error.lineNumber !== 'undefined'){
-    		msg += ' at line '+error.lineNumber;
-    	}
+			if(typeof error.lineNumber !== 'undefined'){
+				msg += ' at line '+error.lineNumber;
+			}
 
-    	if(typeof error.column !== 'undefined'){
-    		msg += ':'+error.column;
-    	}
+			if(typeof error.column !== 'undefined'){
+				msg += ':'+error.column;
+			}
 
-    	if(typeof error.index !== 'undefined'){
-    		msg += ' (offset '+error.index+')';
-    	}
+			if(typeof error.index !== 'undefined'){
+				msg += ' (offset '+error.index+')';
+			}
 
 			msg += '\n-----------------------------\n  Grammar Definition:\n-----------------------------\n' + grammarDefinition;
 
@@ -3128,11 +3130,11 @@ function parse(grammarDefinition, config, id){
 //    	else {
 //    		console.error(msg);
 //    	}
-    	self.postMessage({error: msg, id: id});
+			self.postMessage({error: msg, id: id});
 
-    	msg = '[INVALID GRAMMAR] ' + msg + (error &amp;&amp; error.name === 'SyntaxError' &amp;&amp; error.stack? error.stack : '');
-    	grammarParser = 'var parser = { parse: function(){ var msg = '+JSON.stringify(msg)+'; console.error(msg); throw msg;}, lexer: {options: {}}}';
-    }
+			msg = '[INVALID GRAMMAR] ' + msg + (error &amp;&amp; error.name === 'SyntaxError' &amp;&amp; error.stack? error.stack : '');
+			grammarParser = 'var parser = { parse: function(){ var msg = '+JSON.stringify(msg)+'; console.error(msg); throw msg;}, lexer: {options: {}}}';
+		}
 
 	self.postMessage({def: grammarParser, isError: hasError, id: id, done: true});
 }

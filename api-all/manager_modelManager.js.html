@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -139,9 +141,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -150,11 +152,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -164,9 +166,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3408,7 +3410,7 @@ define( [ 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/logger', 'mmirf/util/de
 	 *
 	 */
 	function(
-    		resources, commonUtils, Logger, deferred, module
+			resources, commonUtils, Logger, deferred, module
 ){
 	//the next comment enables JSDoc2 to map all functions etc. to the correct class description
 	/** @scope mmir.ModelManager.prototype */
@@ -3422,38 +3424,38 @@ define( [ 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/logger', 'mmirf/util/de
 	var logger = Logger.create(module);
 
 	// private members
-    /**
-     * Map of models
-     *
-     * @type Map
-     * @private
-     *
+	/**
+	 * Map of models
+	 *
+	 * @type Map
+	 * @private
+	 *
 	 * @memberOf mmir.ModelManager#
-     */
+	 */
 	var models = new Map();
 
 	/**
-     * Name of the default namespace
-     * (within the manager's space)
-     * into which Models will be loaded
-     *
-     * @constant
-     * @type String
-     * @private
-     *
+	 * Name of the default namespace
+	 * (within the manager's space)
+	 * into which Models will be loaded
+	 *
+	 * @constant
+	 * @type String
+	 * @private
+	 *
 	 * @memberOf mmir.ModelManager#
-     */
+	 */
 	var MODEL_DEFAULT_NAMESPACE_NAME = 'mmir';
 
 	/**
-     * The "global" namespace for the model manager
-     *
-     * @constant
-     * @type Object
-     * @private
-     *
+	 * The "global" namespace for the model manager
+	 *
+	 * @constant
+	 * @type Object
+	 * @private
+	 *
 	 * @memberOf mmir.ModelManager#
-     */
+	 */
 	var MODEL_MANAGER_NAMESPACE = typeof window !== 'undefined' ? window : typeof self !== 'undefined' ? self : typeof global !== 'undefined' ? global : this;
 
 	/**
@@ -3468,16 +3470,16 @@ define( [ 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/logger', 'mmirf/util/de
 	 *
 	 * @memberOf mmir.ModelManager#
 	 */
-    function getFullModelName(modelClassName){
-    	if( ! MODEL_DEFAULT_NAMESPACE_NAME){
-    		return modelClassName;
-    	}
-    	else {
-    		return MODEL_DEFAULT_NAMESPACE_NAME + '.' + modelClassName;
-    	}
-    }
+	function getFullModelName(modelClassName){
+		if( ! MODEL_DEFAULT_NAMESPACE_NAME){
+			return modelClassName;
+		}
+		else {
+			return MODEL_DEFAULT_NAMESPACE_NAME + '.' + modelClassName;
+		}
+	}
 
-    /**
+	/**
 	 *
 	 * This function returns all loaded models.
 	 *
@@ -3486,9 +3488,9 @@ define( [ 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/logger', 'mmirf/util/de
 	 * @public
 	 * @memberOf mmir.ModelManager#
 	 */
-    function getModelNames(){//TODO export this function on _instance?
-    	return Array.from(models.keys());
-    }
+	function getModelNames(){//TODO export this function on _instance?
+		return Array.from(models.keys());
+	}
 
 	/**
 	 * This function invokes the method
@@ -3542,42 +3544,42 @@ define( [ 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/logger', 'mmirf/util/de
 		 *
 		 * @memberOf mmir.ModelManager#
 		 */
-        function getModelByName(fullModelName, ctx){
+		function getModelByName(fullModelName, ctx){
 
-        	ctx = ctx || MODEL_MANAGER_NAMESPACE;
+			ctx = ctx || MODEL_MANAGER_NAMESPACE;
 
-        	var components;
-        	if(commonUtils.isArray(fullModelName)){
-        		components = fullModelName;
-        	}
-        	else {
-        		components = fullModelName.split('.');
-        	}
+			var components;
+			if(commonUtils.isArray(fullModelName)){
+				components = fullModelName;
+			}
+			else {
+				components = fullModelName.split('.');
+			}
 
-        	//try to resolve fully-qualified name (without triggering an error)
-        	var currentNameSpace = ctx;
-        	for(var i=0, size = components.length; i &lt; size; ++i){
-        		currentNameSpace = currentNameSpace[components[i]];
-    			if(typeof currentNameSpace !== 'undefined' ){
-            		if(i === size-1){
-            			return currentNameSpace;
-            		}
-    			}
-    			else {
-    				break;
-    			}
-        	}
+			//try to resolve fully-qualified name (without triggering an error)
+			var currentNameSpace = ctx;
+			for(var i=0, size = components.length; i &lt; size; ++i){
+				currentNameSpace = currentNameSpace[components[i]];
+				if(typeof currentNameSpace !== 'undefined' ){
+					if(i === size-1){
+						return currentNameSpace;
+					}
+				}
+				else {
+					break;
+				}
+			}
 
-        	if(size > 0 &amp;&amp; ctx[components[size-1]]){
-        		//try simple model name
-        		return ctx[components[size-1]];
-        	}
+			if(size > 0 &amp;&amp; ctx[components[size-1]]){
+				//try simple model name
+				return ctx[components[size-1]];
+			}
 
-        	var isReTry = ctx !== MODEL_MANAGER_NAMESPACE;
+			var isReTry = ctx !== MODEL_MANAGER_NAMESPACE;
 
-        	var logFunc = isReTry? 'info' : 'error';
-        	logger[logFunc]('ModelManager.getModelByName: could not find model'
-        			+(isReTry? ' in model context with path "&lt;modelContext>.' : ' "')
+			var logFunc = isReTry? 'info' : 'error';
+			logger[logFunc]('ModelManager.getModelByName: could not find model'
+					+(isReTry? ' in model context with path "&lt;modelContext>.' : ' "')
 					+(components.join('.'))
 					+'": '
 					+(isReTry? 'there is no' : 'invalid')
@@ -3587,46 +3589,46 @@ define( [ 'mmirf/resources', 'mmirf/commonUtils', 'mmirf/logger', 'mmirf/util/de
 					+(isReTry? ', trying to find model in global namespace ...' : '')
 			);
 
-        	return null;
-        }
+			return null;
+		}
 
-        /**
-         * Returns the instance for a model implementation:
-         *
-         * If the model-object is a constructor (i.e. a function),
-         * a new instance is created and returned.
-         *
-         * Otherwise the model-object itself is returned (e.g. for
-         * singleton pattern models).
-         *
-         * @function
-         * @private
-         *
+		/**
+		 * Returns the instance for a model implementation:
+		 *
+		 * If the model-object is a constructor (i.e. a function),
+		 * a new instance is created and returned.
+		 *
+		 * Otherwise the model-object itself is returned (e.g. for
+		 * singleton pattern models).
+		 *
+		 * @function
+		 * @private
+		 *
 		 * @see mmir.ModelManager#getModelByName
 		 *
 		 * @memberOf mmir.ModelManager#
-         */
-        function doGetModelInstance(modelImplObject){
+		 */
+		function doGetModelInstance(modelImplObject){
 
 
-        	if(typeof modelImplObject === 'function'){
-        		return new modelImplObject();
-        	}
-        	//TODO allow alternative initialization methods for models?:
+			if(typeof modelImplObject === 'function'){
+				return new modelImplObject();
+			}
+			//TODO allow alternative initialization methods for models?:
 //        	else if(typeof modelImplObject.getInstance === 'function'){
 //        		return modelImplObject.getInstance();
 //        	}
 //        	else if(typeof modelImplObject.init === 'function'){
 //        		return modelImplObject.init();
 //        	}
-        	else{
-        		return modelImplObject;
-        	}
+			else{
+				return modelImplObject;
+			}
 
-        	//TODO export to requirejs?
-        	//define(modelImplObject.toString(), function(){ return THE_MODEL_INSTANCE;});
+			//TODO export to requirejs?
+			//define(modelImplObject.toString(), function(){ return THE_MODEL_INSTANCE;});
 
-        }
+		}
 
 		var _defer = deferred();
 		if(initCallbackFunction){

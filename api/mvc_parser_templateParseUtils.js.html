@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -135,9 +137,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -146,11 +148,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -160,9 +162,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3001,23 +3003,23 @@
  * @example mmir.ParserUtils.parse(str, view)
  */
 define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
-        ,'mmirf/templateLexer','mmirf/ES3Lexer','mmirf/ES3Parser','mmirf/contentLexer','mmirf/contentParser'
-        ,'mmirf/scriptLexer','mmirf/scriptParser','mmirf/antlr3'
-    ],
+		,'mmirf/templateLexer','mmirf/ES3Lexer','mmirf/ES3Parser','mmirf/contentLexer','mmirf/contentParser'
+		,'mmirf/scriptLexer','mmirf/scriptParser','mmirf/antlr3'
+	],
 
-    /**
-     * Utility functions for parsing templates (and template elements, e.g. JS-parts of template expressions)
-     *
-     * @class
-     * @name ParserUtils
-     * @memberOf mmir.parser
-     * @static
-     *
-     * @public
-     */
-    function( parser, ParsingResult, templateProcessor
-    	, MmirTemplateLexer, ES3Lexer, ES3Parser, MmirScriptContentLexer, MmirScriptContentParser
-    	, MmirScriptLexer, MmirScriptParser, org
+	/**
+	 * Utility functions for parsing templates (and template elements, e.g. JS-parts of template expressions)
+	 *
+	 * @class
+	 * @name ParserUtils
+	 * @memberOf mmir.parser
+	 * @static
+	 *
+	 * @public
+	 */
+	function( parser, ParsingResult, templateProcessor
+		, MmirTemplateLexer, ES3Lexer, ES3Parser, MmirScriptContentLexer, MmirScriptContentParser
+		, MmirScriptLexer, MmirScriptParser, org
 ){
 
 	/**
@@ -3295,15 +3297,15 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 				var match;
 				var count = 1;
 				var isNextLineFound = false;
-	            var currentPos = -1;
-	            var lastPos = 0;
+			var currentPos = -1;
+			var lastPos = 0;
 				while(match = detectLinebreak.exec(str)){
-	                currentPos = match.index + match[1].length;
+				currentPos = match.index + match[1].length;
 					if(currentPos > index){
 						isNextLineFound = true;
 						break;
 					}
-	                lastPos = currentPos;
+				lastPos = currentPos;
 					++count;
 				}
 
@@ -3547,23 +3549,23 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 	//////////////////////////////////// END: helper for debugging, error details etc. ////////////////////////
 
 	/**
-     * Object containing the instance of the class ParserUtils
-     *
-     * @type ParserUtils
-     * @private
-     *
-     * @memberOf ParserUtils#
-     */
-    var instance = null;
-
-    /**
+	 * Object containing the instance of the class ParserUtils
+	 *
+	 * @type ParserUtils
 	 * @private
-     * @memberOf ParserUtils#
-     */
-    var isDebug = true;//TODO read/set from configuration
+	 *
+	 * @memberOf ParserUtils#
+	 */
+	var instance = null;
 
-    MmirTemplateLexer.prototype.emitErrorMessage = function(msg) {
-    	parser.parserPrintError('[ERROR] TemplateLexer: ', msg, this);
+	/**
+	 * @private
+	 * @memberOf ParserUtils#
+	 */
+	var isDebug = true;//TODO read/set from configuration
+
+	MmirTemplateLexer.prototype.emitErrorMessage = function(msg) {
+		parser.parserPrintError('[ERROR] TemplateLexer: ', msg, this);
 	};
 //		MmirTemplateParser.prototype.emitErrorMessage = function(msg) {
 //			parser.parserPrintError('[ERROR] TemplateParser: ',msg);
@@ -3593,16 +3595,16 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 
 	/**
 	 * @private
-     * @memberOf ParserUtils#
+	 * @memberOf ParserUtils#
 	 */
 	function internalParse(text) {
 
-	    var input = new org.antlr.runtime.ANTLRStringStream(text);//FIXME change, how dependency 'mmirf/antlr3' is exported?
-	  	var lexer = new MmirTemplateLexer(input);
+		var input = new org.antlr.runtime.ANTLRStringStream(text);//FIXME change, how dependency 'mmirf/antlr3' is exported?
+		var lexer = new MmirTemplateLexer(input);
 
-	  	lexer.isDebug = isDebug;
+		lexer.isDebug = isDebug;
 
-	  	var tokens = new org.antlr.runtime.CommonTokenStream(lexer);//FIXME change, how dependency 'mmirf/antlr3' is exported?
+		var tokens = new org.antlr.runtime.CommonTokenStream(lexer);//FIXME change, how dependency 'mmirf/antlr3' is exported?
 
 		var result 				= {};
 		result.rawTemplateText 	= tokens.toString();
@@ -3630,16 +3632,16 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 
 	/**
 	 * @private
-     * @memberOf ParserUtils#
+	 * @memberOf ParserUtils#
 	 */
 	function internalParseJS(text, entryRuleName, offset) {
 
-	  	var input = new org.antlr.runtime.ANTLRStringStream(text);
-	  	var lexer = new ES3Lexer(input);
-	  	lexer.isDebug = isDebug;
-	  	lexer.offset = offset;
+		var input = new org.antlr.runtime.ANTLRStringStream(text);
+		var lexer = new ES3Lexer(input);
+		lexer.isDebug = isDebug;
+		lexer.offset = offset;
 
-	  	var tokens = new org.antlr.runtime.CommonTokenStream(lexer);
+		var tokens = new org.antlr.runtime.CommonTokenStream(lexer);
 		var parser = new ES3Parser(tokens);
 		parser.offset = offset;
 
@@ -3696,7 +3698,7 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 //			return varRefs;
 //		};
 
-	    /**
+		/**
 		 * Constructor-Method of Singleton mmir.parser.ParserUtils
 		 *
 		 * @constructs ParserUtils
@@ -3705,80 +3707,80 @@ define([ 'mmirf/parserModule','mmirf/parsingResult','mmirf/templateProcessor'
 		 * @ignore
 		 *
 		 */
-	    function constructor(){
-	        //private members (currently none)
+		function constructor(){
+			//private members (currently none)
 
-	    	/** @lends mmir.parser.ParserUtils.prototype */
-	    	return {
-	        	//public members:
+			/** @lends mmir.parser.ParserUtils.prototype */
+			return {
+				//public members:
 
-	    		/**
-	    		 * Parse a text as view template (e.g. *.ehtml files).
-	    		 *
-	    		 * @param {String} rawTemplateString the text that should be parsed
-	    		 * @param {Object} [view] (optional) the view to which the &lt;tt>rawTemplateString&lt;/tt> belongs (only used for error messages)
-	    		 * @returns {mmir.parser.ParsingResult} the parsing result
-	    		 *
-	    		 * @public
-	    		 * @memberOf mmir.parser.ParserUtils.prototype
-	    		 */
-	    		parse: function(rawTemplateString, view){
+				/**
+				 * Parse a text as view template (e.g. *.ehtml files).
+				 *
+				 * @param {String} rawTemplateString the text that should be parsed
+				 * @param {Object} [view] (optional) the view to which the &lt;tt>rawTemplateString&lt;/tt> belongs (only used for error messages)
+				 * @returns {mmir.parser.ParsingResult} the parsing result
+				 *
+				 * @public
+				 * @memberOf mmir.parser.ParserUtils.prototype
+				 */
+				parse: function(rawTemplateString, view){
 
-	    			if(view){
-	    				_currentParsedView = view;
-	    			}
-	    			else {
-	    				_currentParsedView = null;
-	    			}
+					if(view){
+						_currentParsedView = view;
+					}
+					else {
+						_currentParsedView = null;
+					}
 
-	    			return internalParse(rawTemplateString);
-	    		},
+					return internalParse(rawTemplateString);
+				},
 
-	    		/**
-	    		 * Parse a text as JavaScript.
-	    		 *
-	    		 * @param {String} rawTemplateString the text that should be parsed
-	    		 * @param {String} [parseEntryRuleName] (optional) specifies the JavaScript element that should be parsed for
-	    		 * @param {Object} [view] (optional) the view to which the &lt;tt>rawTemplateString&lt;/tt> belongs (only used for error messages)
-	    		 * @returns {mmir.parser.ParsingResult} the parsing result
-	    		 *
-	    		 * @public
-	    		 * @memberOf mmir.parser.ParserUtils.prototype
-	    		 */
-	    		parseJS: function(rawTemplateString, parseEntryRuleName, view, inViewOffset){
+				/**
+				 * Parse a text as JavaScript.
+				 *
+				 * @param {String} rawTemplateString the text that should be parsed
+				 * @param {String} [parseEntryRuleName] (optional) specifies the JavaScript element that should be parsed for
+				 * @param {Object} [view] (optional) the view to which the &lt;tt>rawTemplateString&lt;/tt> belongs (only used for error messages)
+				 * @returns {mmir.parser.ParsingResult} the parsing result
+				 *
+				 * @public
+				 * @memberOf mmir.parser.ParserUtils.prototype
+				 */
+				parseJS: function(rawTemplateString, parseEntryRuleName, view, inViewOffset){
 
-	    			//in case only 2 or 3 arguments are present: is 2nd the View object?
-	    			if(!inViewOffset &amp;&amp; typeof parseEntryRuleName !== 'string' &amp;&amp; parseEntryRuleName !== null &amp;&amp; typeof parseEntryRuleName === 'object'){
+					//in case only 2 or 3 arguments are present: is 2nd the View object?
+					if(!inViewOffset &amp;&amp; typeof parseEntryRuleName !== 'string' &amp;&amp; parseEntryRuleName !== null &amp;&amp; typeof parseEntryRuleName === 'object'){
 
-	    				if(typeof view === 'number'){
-	    					inViewOffset = view;
-	    				}
+						if(typeof view === 'number'){
+							inViewOffset = view;
+						}
 
-	    				view = parseEntryRuleName;
-	    				parseEntryRuleName = null;
+						view = parseEntryRuleName;
+						parseEntryRuleName = null;
 
 
-	    			}
+					}
 
-	    			if(view){
-	    				_currentParsedView = view;
-	    			}
-	    			else {
-	    				_currentParsedView = null;
-	    			}
+					if(view){
+						_currentParsedView = view;
+					}
+					else {
+						_currentParsedView = null;
+					}
 
-	    			return internalParseJS(rawTemplateString, parseEntryRuleName, inViewOffset);
-	    		}
-	    	};//END: return{}
+					return internalParseJS(rawTemplateString, parseEntryRuleName, inViewOffset);
+				}
+			};//END: return{}
 
-	    }//END: constructor()
+		}//END: constructor()
 
-	    instance = new constructor();
+		instance = new constructor();
 
-	    //FIXME should the renderer be exported to parser.ParserUtils here?
-	    parser.ParserUtils = instance;
+		//FIXME should the renderer be exported to parser.ParserUtils here?
+		parser.ParserUtils = instance;
 
-	    return instance;
+		return instance;
 
 	});//END define(..., function(){
 </code></pre>

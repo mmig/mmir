@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -139,9 +141,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -150,11 +152,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -164,9 +166,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3484,7 +3486,7 @@ function ContentElement(group, view, parser, renderer){
 	}
 	else {
 		this.name = group[1];
-	    this.definition = group[2];
+		this.definition = group[2];
 	}
 
 	if(typeof group.start !== 'undefined' &amp;&amp; typeof group.end !== 'undefined'){
@@ -3996,9 +3998,9 @@ function ContentElement(group, view, parser, renderer){
 
 		var el;
 		var funcs = [
-		    'this.setRenderData = function('+parser_context.element.DATA_NAME+'){'+importVarValues+'};\n',
-		    'var exportRenderDataTo = function('+parser_context.element.DATA_NAME+'){'+exportVarValues+'};\n',
-		    'this.exportRenderDataTo = exportRenderDataTo;\n'
+			'this.setRenderData = function('+parser_context.element.DATA_NAME+'){'+importVarValues+'};\n',
+			'var exportRenderDataTo = function('+parser_context.element.DATA_NAME+'){'+exportVarValues+'};\n',
+			'this.exportRenderDataTo = exportRenderDataTo;\n'
 		];
 		for(var i=0,size=funcList.length; i &lt; size; ++i){
 			el = funcList[i];
@@ -4384,7 +4386,7 @@ function ContentElement(group, view, parser, renderer){
 	//3. invoke initialzer-function and set the generated functions to their ParsingResult elements
 	this.initEvalFunctions();
 
-    return this;
+	return this;
 }
 
 
@@ -4396,7 +4398,7 @@ function ContentElement(group, view, parser, renderer){
  * @public
  */
 ContentElement.prototype.getName = function(){
-    return this.name;
+	return this.name;
 };
 
 /**
@@ -4407,7 +4409,7 @@ ContentElement.prototype.getName = function(){
  * @public
  */
 ContentElement.prototype.getView = function(){
-    return this.view;
+	return this.view;
 };
 
 /**
@@ -4418,7 +4420,7 @@ ContentElement.prototype.getView = function(){
  * @public
  */
 ContentElement.prototype.getController = function(){
-    return this.getView().getController();
+	return this.getView().getController();
 };
 
 /**
@@ -4458,7 +4460,7 @@ ContentElement.prototype.toStrings = function(renderingBuffer, data){
  * @public
  */
 ContentElement.prototype.getRawText = function(){
-    return this.definition;
+	return this.definition;
 };
 /**
  * @deprecated use {@link #getRawText} instead
@@ -4468,26 +4470,26 @@ ContentElement.prototype.getRawText = function(){
  * @public
  */
 ContentElement.prototype.getDefinition = function(){
-    return this.definition;
+	return this.definition;
 };
 /**
  * @returns {Number} the start position for this content Element within {@link #getRawText}
  * @public
  */
 ContentElement.prototype.getStart = function(){
-    return this.start;
+	return this.start;
 };
 /**
  * @returns {Number} the end position for this content Element within {@link #getRawText}
  * @public
  */
 ContentElement.prototype.getEnd = function(){
-    return this.end;
+	return this.end;
 };
 
 //FIXME add to storage? (this should only be relevant for parsing, which is not necessary in case of store/restore...)
 ContentElement.prototype.getOffset = function(){
-    return this.parentOffset;
+	return this.parentOffset;
 };
 
 /**
@@ -4497,7 +4499,7 @@ ContentElement.prototype.getOffset = function(){
  * @public
  */
 ContentElement.prototype.hasDynamicContent = function(){
-    return this.internalHasDynamicContent;
+	return this.internalHasDynamicContent;
 };
 
 /**
@@ -4515,18 +4517,18 @@ ContentElement.prototype.stringify = function(){
 	//primitive-type properties:
 	// write values 'as is' for these properties
 	var propList = [
-	     'name',
-	     'definition',
-	     'start',
-	     'end',
-	     'parentOffset',
-	     'internalHasDynamicContent'
+		'name',
+		'definition',
+		'start',
+		'end',
+		'parentOffset',
+		'internalHasDynamicContent'
 	];
 
 	//Array-properties
 	var arrayPropList = [
-   	     'allContentElements' //element type: ParsingResult (stringify-able)
-   	];
+			'allContentElements' //element type: ParsingResult (stringify-able)
+		];
 
 
 //	//SPECIAL: store view by getter function initView: use the view's name view {View} -> 'viewName' {String}, 'ctrlName' {String}

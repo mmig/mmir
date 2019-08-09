@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -139,9 +141,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -150,11 +152,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -164,9 +166,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3391,47 +3393,47 @@
         <article>
             <pre class="prettyprint source linenums"><code>define(['mmirf/jsonUtils', 'mmirf/resizeToFit'],
 	/**
-     * Set to "backwards compatibility mode v1" (for pre version 2.0) for CommonUtils.
-     * NOTE: needs {@link mmir.compat.v1.CoreCompat} to be set first!
-     *
-     * This function re-adds deprecated and removed functions and
-     * properties to the CommonUtils instance.
-     *
-     * NOTE that once set to compatibility mode, it cannot be reset to
-     * non-compatibility mode.
-     *
-     * &lt;p>
-     * In addition, the following functions of CommonUtils are made accessible
-     * on the &lt;code>mmir.CommonUtils&lt;/code> instance with these additional names
-     * &lt;ul>
-     * 	&lt;li> {@link mmir.CommonUtils#regexHTMLComment} as
-     *          &lt;b>&lt;u>html_comment_regex : RegExpr&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li>
-     *  	 {@link mmir.CommonUtils#resizeFitToSourroundingBox} as
-     *          &lt;b>&lt;u>html_resize_font_to_fit_surrounding_box()&lt;/u>&lt;/b>
-     * &lt;/li>&lt;li>
-     * 		 {@link mmir.CommonUtils#toJSONStringValue} as
-     *          &lt;b>&lt;u>to_json_string_value(String: theObjectValue) : String&lt;/u>&lt;/b>
-     * &lt;/li>&lt;li>
-     * 		 {@link mmir.CommonUtils#convertJSONStringValueToHTML} as
-     *          &lt;b>&lt;u>convert_to_json_value_HTML_string(String: str) : String&lt;/u>&lt;/b>
-     * &lt;/li>&lt;li>
-     * 		 {@link mmir.CommonUtils#convertJSONStringToHTML} as
-     *          &lt;b>&lt;u>convert_json_to_HTML_string(String: str) : String&lt;/u>&lt;/b>
-     * &lt;/li>&lt;li>
-     * 		 {@link mmir.CommonUtils#parseParamsToDictionary} as
-     *          &lt;b>&lt;u>get_params_as_dict(String: str) : Object&lt;/u>&lt;/b>
-     * &lt;/li>
-     * &lt;/ul>
-     *
-     * Also, the functions of {@link mmir.extensions.JsonUtils} will be made available.
-     *
-     * @requires document (DOM element)
-     *
-     * @param {mmir.CommonUtils} compatibilitySelf
-     * 			the instance of mmir.CommonUtils to which the compatibility functions etc.
-     * 			will be attached
-     *
+	 * Set to "backwards compatibility mode v1" (for pre version 2.0) for CommonUtils.
+	 * NOTE: needs {@link mmir.compat.v1.CoreCompat} to be set first!
+	 *
+	 * This function re-adds deprecated and removed functions and
+	 * properties to the CommonUtils instance.
+	 *
+	 * NOTE that once set to compatibility mode, it cannot be reset to
+	 * non-compatibility mode.
+	 *
+	 * &lt;p>
+	 * In addition, the following functions of CommonUtils are made accessible
+	 * on the &lt;code>mmir.CommonUtils&lt;/code> instance with these additional names
+	 * &lt;ul>
+	 * 	&lt;li> {@link mmir.CommonUtils#regexHTMLComment} as
+	 *          &lt;b>&lt;u>html_comment_regex : RegExpr&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li>
+	 *  	 {@link mmir.CommonUtils#resizeFitToSourroundingBox} as
+	 *          &lt;b>&lt;u>html_resize_font_to_fit_surrounding_box()&lt;/u>&lt;/b>
+	 * &lt;/li>&lt;li>
+	 * 		 {@link mmir.CommonUtils#toJSONStringValue} as
+	 *          &lt;b>&lt;u>to_json_string_value(String: theObjectValue) : String&lt;/u>&lt;/b>
+	 * &lt;/li>&lt;li>
+	 * 		 {@link mmir.CommonUtils#convertJSONStringValueToHTML} as
+	 *          &lt;b>&lt;u>convert_to_json_value_HTML_string(String: str) : String&lt;/u>&lt;/b>
+	 * &lt;/li>&lt;li>
+	 * 		 {@link mmir.CommonUtils#convertJSONStringToHTML} as
+	 *          &lt;b>&lt;u>convert_json_to_HTML_string(String: str) : String&lt;/u>&lt;/b>
+	 * &lt;/li>&lt;li>
+	 * 		 {@link mmir.CommonUtils#parseParamsToDictionary} as
+	 *          &lt;b>&lt;u>get_params_as_dict(String: str) : Object&lt;/u>&lt;/b>
+	 * &lt;/li>
+	 * &lt;/ul>
+	 *
+	 * Also, the functions of {@link mmir.extensions.JsonUtils} will be made available.
+	 *
+	 * @requires document (DOM element)
+	 *
+	 * @param {mmir.CommonUtils} compatibilitySelf
+	 * 			the instance of mmir.CommonUtils to which the compatibility functions etc.
+	 * 			will be attached
+	 *
 	 * @class
 	 * @name mmir.compat.v1.CommonUtils
 	 * @static
@@ -3442,7 +3444,7 @@
 	 * 		setUtilsCompatibility(utils);
 	 * });
 	 *
-     * @requires document (DOM element)
+	 * @requires document (DOM element)
 	 *
 	 * @public
 	 */
@@ -3450,47 +3452,47 @@
 ) {
 
 	/**
-     * Set to "backwards compatibility mode" (for pre version 2.0).
-     *
-     * This function re-adds deprecated and removed functions and
-     * properties to the CommonUtils instance.
-     *
-     * NOTE that once set to compatibility mode, it cannot be reset to
-     * non-compatibility mode.
-     *
-     * @requires document (DOM element)
-     *
-     * @param {mmir.CommonUtils} compatibilitySelf
-     * 			the instance of mmir.CommonUtils to which the compatibility functions etc.
-     * 			will be attached
-     *
-     * @constructs mmir.compat.v1.CommonUtils
-     *
-     * @borrows mmir.CommonUtils#regexHTMLComment as
-     *          html_comment_regex
-     * @borrows mmir.CommonUtils#resizeFitToSourroundingBox as
-     *          this.html_resize_font_to_fit_surrounding_box
-     * @borrows mmir.CommonUtils#toJSONStringValue as
-     *          this.to_json_string_value
-     * @borrows mmir.CommonUtils#convertJSONStringValueToHTML as
-     *          this.convert_to_json_value_HTML_string
-     * @borrows mmir.CommonUtils#convertJSONStringToHTML as
-     *          this.convert_json_to_HTML_string
-     * @borrows mmir.CommonUtils#parseParamsToDictionary as
-     *          this.get_params_as_dict
-     * @borrows mmir.ExtendedCommonUtils#resizeFitToSourroundingBox as
-     *          this.resizeFitToSourroundingBox
-     */
-    return setToCompatibilityMode = function(compatibilitySelf) {
+	 * Set to "backwards compatibility mode" (for pre version 2.0).
+	 *
+	 * This function re-adds deprecated and removed functions and
+	 * properties to the CommonUtils instance.
+	 *
+	 * NOTE that once set to compatibility mode, it cannot be reset to
+	 * non-compatibility mode.
+	 *
+	 * @requires document (DOM element)
+	 *
+	 * @param {mmir.CommonUtils} compatibilitySelf
+	 * 			the instance of mmir.CommonUtils to which the compatibility functions etc.
+	 * 			will be attached
+	 *
+	 * @constructs mmir.compat.v1.CommonUtils
+	 *
+	 * @borrows mmir.CommonUtils#regexHTMLComment as
+	 *          html_comment_regex
+	 * @borrows mmir.CommonUtils#resizeFitToSourroundingBox as
+	 *          this.html_resize_font_to_fit_surrounding_box
+	 * @borrows mmir.CommonUtils#toJSONStringValue as
+	 *          this.to_json_string_value
+	 * @borrows mmir.CommonUtils#convertJSONStringValueToHTML as
+	 *          this.convert_to_json_value_HTML_string
+	 * @borrows mmir.CommonUtils#convertJSONStringToHTML as
+	 *          this.convert_json_to_HTML_string
+	 * @borrows mmir.CommonUtils#parseParamsToDictionary as
+	 *          this.get_params_as_dict
+	 * @borrows mmir.ExtendedCommonUtils#resizeFitToSourroundingBox as
+	 *          this.resizeFitToSourroundingBox
+	 */
+	return setToCompatibilityMode = function(compatibilitySelf) {
 
-    	/** @scope mmir.compat.v1.CommonUtils.prototype *///for jsdoc2
+		/** @scope mmir.compat.v1.CommonUtils.prototype *///for jsdoc2
 
-    	//add functions from jsonUtils
-    	for(var p in jsonUtils){
-    		if(jsonUtils.hasOwnProperty(p)){
-    			compatibilitySelf[p] = jsonUtils[p];
-    		}
-    	}
+		//add functions from jsonUtils
+		for(var p in jsonUtils){
+			if(jsonUtils.hasOwnProperty(p)){
+				compatibilitySelf[p] = jsonUtils[p];
+			}
+		}
 
 			//add function from resizeToFit:
 			compatibilitySelf.resizeFitToSourroundingBox = resizeToFit;
@@ -3502,7 +3504,7 @@
 		 * @type Object
 		 * @private
 		 */
-    	compatibilitySelf.months = {
+		compatibilitySelf.months = {
 			'01': 'January',
 			'02': 'February',
 			'03': 'March',
@@ -3515,11 +3517,11 @@
 			'10': 'October',
 			'11': 'November',
 			'12': 'December'
-    	};
-    	/**
-    	 * @private
-    	 */
-    	compatibilitySelf.months.de = {
+		};
+		/**
+		 * @private
+		 */
+		compatibilitySelf.months.de = {
 			'01': 'Januar',
 			'02': 'Februar',
 			'03': 'M\u00E4rz',//'M&amp;auml;rz',
@@ -3532,7 +3534,7 @@
 			'10': 'Oktober',
 			'11': 'November',
 			'12': 'Dezember'
-    	};
+		};
 
 //		/**
 //		 * The instance that holds the extensions for compatibility
@@ -4028,7 +4030,7 @@
 		compatibilitySelf.convert_json_to_HTML_string = compatibilitySelf.convertJSONStringToHTML;
 		compatibilitySelf.get_params_as_dict = compatibilitySelf.parseParamsToDictionary;
 
-    };// END: setToCompatibilityMode
+	};// END: setToCompatibilityMode
 
 });
 </code></pre>

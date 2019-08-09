@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -139,9 +141,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -150,11 +152,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -164,9 +166,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3391,40 +3393,40 @@
         <article>
             <pre class="prettyprint source linenums"><code>define(['mmirf/commonUtils', 'mmirf/presentationManager', 'mmirf/dialogManager'],
 	/**
-     * Set to "backwards compatibility mode v1" (for pre version 2.0) for LanguageManager.
-     * NOTE: needs {@link mmir.compat.v1.CoreCompat} to be set first!
-     *
+	 * Set to "backwards compatibility mode v1" (for pre version 2.0) for LanguageManager.
+	 * NOTE: needs {@link mmir.compat.v1.CoreCompat} to be set first!
+	 *
 	 * This function re-adds deprecated and removed functions and
-     * properties to the CommonUtils instance.
-     *
-     * NOTE that once set to compatibility mode, it cannot be reset to
-     * non-compatibility mode.
-     *
-     * &lt;p>
-     * In addition, the following functions of LanguageManager are made accessible
-     * on the &lt;code>mmir.LanguageManager&lt;/code> instance with these additional names
-     * &lt;ul>
-     * 	&lt;li> {@link mmir.LanguageManager#getLanguage} as
-     *          &lt;b>&lt;u>getCurrentLanguage() : String&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li>
-     *  	 {@link mmir.LanguageManager#existsGrammar} as
-     *          &lt;b>&lt;u>existsGrammarForLanguage(String: lang) : Boolean&lt;/u>&lt;/b>
-     * &lt;/li>&lt;li>
-     * 		 {@link mmir.LanguageManager#existsDictionary} as
-     *          &lt;b>&lt;u>existsDictionaryForLanguage(String: lang) : Boolean&lt;/u>&lt;/b>
-     * &lt;/li>&lt;li>
-     * 		 {@link mmir.LanguageManager#existsSpeechConfig} as
-     *          &lt;b>&lt;u>existsSpeakerForLanguage(String: lang) : Boolean&lt;/u>&lt;/b>
-     * &lt;/li>&lt;li>
-     * 		 {@link mmir.LanguageManager#setNextLanguage} as
-     *          &lt;b>&lt;u>cycleLanguages()&lt;/u>&lt;/b>
-     * &lt;/li>
-     * &lt;/ul>
-     *
-     * @param {mmir.LanguageManager} compatibilitySelf
-     * 			the instance of mmir.LanguageManager to which the compatibility functions etc.
-     * 			will be attached
-     *
+	 * properties to the CommonUtils instance.
+	 *
+	 * NOTE that once set to compatibility mode, it cannot be reset to
+	 * non-compatibility mode.
+	 *
+	 * &lt;p>
+	 * In addition, the following functions of LanguageManager are made accessible
+	 * on the &lt;code>mmir.LanguageManager&lt;/code> instance with these additional names
+	 * &lt;ul>
+	 * 	&lt;li> {@link mmir.LanguageManager#getLanguage} as
+	 *          &lt;b>&lt;u>getCurrentLanguage() : String&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li>
+	 *  	 {@link mmir.LanguageManager#existsGrammar} as
+	 *          &lt;b>&lt;u>existsGrammarForLanguage(String: lang) : Boolean&lt;/u>&lt;/b>
+	 * &lt;/li>&lt;li>
+	 * 		 {@link mmir.LanguageManager#existsDictionary} as
+	 *          &lt;b>&lt;u>existsDictionaryForLanguage(String: lang) : Boolean&lt;/u>&lt;/b>
+	 * &lt;/li>&lt;li>
+	 * 		 {@link mmir.LanguageManager#existsSpeechConfig} as
+	 *          &lt;b>&lt;u>existsSpeakerForLanguage(String: lang) : Boolean&lt;/u>&lt;/b>
+	 * &lt;/li>&lt;li>
+	 * 		 {@link mmir.LanguageManager#setNextLanguage} as
+	 *          &lt;b>&lt;u>cycleLanguages()&lt;/u>&lt;/b>
+	 * &lt;/li>
+	 * &lt;/ul>
+	 *
+	 * @param {mmir.LanguageManager} compatibilitySelf
+	 * 			the instance of mmir.LanguageManager to which the compatibility functions etc.
+	 * 			will be attached
+	 *
 	 *
 	 * @class
 	 * @name mmir.compat.v1.LanguageManager
@@ -3443,34 +3445,34 @@
 ) {
 
 		/**
-         * Set to "backwards compatibility mode" (for pre version 2.0).
-         *
-         * This function re-adds deprecated and removed functions and
-         * properties to the CommonUtils instance.
-         *
-         * NOTE that once set to compatibility mode, it cannot be reset to
-         * non-compatibility mode.
-         *
-         * @param {mmir.LanguageManager} compatibilitySelf
-         * 			the instance of mmir.LanguageManager to which the compatibility functions etc.
-         * 			will be attached
-         *
-         * @constructs mmir.compat.v1.LanguageManager
-         *
-         * @borrows mmir.LanguageManager#getLanguage as
-         *          this.getCurrentLanguage
-         * @borrows mmir.LanguageManager#existsGrammar as
-         *          this.existsGrammarForLanguage
-         * @borrows mmir.LanguageManager#existsDictionary as
-         *          this.existsDictionaryForLanguage
-         * @borrows mmir.LanguageManager#existsSpeechConfig as
-         *          this.existsSpeakerForLanguage
-         * @borrows mmir.LanguageManager#setNextLanguage as
-         *          this.cycleLanguages
-         */
-        return setToCompatibilityMode = function(compatibilitySelf) {
+		 * Set to "backwards compatibility mode" (for pre version 2.0).
+		 *
+		 * This function re-adds deprecated and removed functions and
+		 * properties to the CommonUtils instance.
+		 *
+		 * NOTE that once set to compatibility mode, it cannot be reset to
+		 * non-compatibility mode.
+		 *
+		 * @param {mmir.LanguageManager} compatibilitySelf
+		 * 			the instance of mmir.LanguageManager to which the compatibility functions etc.
+		 * 			will be attached
+		 *
+		 * @constructs mmir.compat.v1.LanguageManager
+		 *
+		 * @borrows mmir.LanguageManager#getLanguage as
+		 *          this.getCurrentLanguage
+		 * @borrows mmir.LanguageManager#existsGrammar as
+		 *          this.existsGrammarForLanguage
+		 * @borrows mmir.LanguageManager#existsDictionary as
+		 *          this.existsDictionaryForLanguage
+		 * @borrows mmir.LanguageManager#existsSpeechConfig as
+		 *          this.existsSpeakerForLanguage
+		 * @borrows mmir.LanguageManager#setNextLanguage as
+		 *          this.cycleLanguages
+		 */
+		return setToCompatibilityMode = function(compatibilitySelf) {
 
-        	/** @scope mmir.compat.v1.LanguageManager.prototype *///for jsdoc2
+			/** @scope mmir.compat.v1.LanguageManager.prototype *///for jsdoc2
 
 //            /**
 //             * The instance that holds the extensions for compatibility
@@ -3481,93 +3483,93 @@
 //             */
 //            var compatibilitySelf = this;
 
-            /**
-             * This function is used to localize the view description
-             * (ehtml) before they are displayed.
-             *
-             * @function
-             * @param {String}
-             *            html The (HTML) string which is to be localized
-             *            into the currently used language
-             * @returns {String} The localized (HTML) string
-             * @throws {Error} if {@link mmir.CommonUtils#getTranslationRegExp} is not
-             * 			available (i.e. commonUtils has not been set to compatibility mode)
-             *
-             * @public
-             * @deprecated used for old template format
-             *
-             *
-             * @requires mmir.CommonUtils
-             * @requires requires that CommonUtils is set to
-             *           setToCompatibilityMode:
-             *           {@link mmir.CommonUtils#setToCompatibilityMode}
-             *
-             * @memberOf mmir.compat.v1.LanguageManager#
-             */
-            var translateHTML = function(html) {
+		/**
+		 * This function is used to localize the view description
+		 * (ehtml) before they are displayed.
+		 *
+		 * @function
+		 * @param {String}
+		 *            html The (HTML) string which is to be localized
+		 *            into the currently used language
+		 * @returns {String} The localized (HTML) string
+		 * @throws {Error} if {@link mmir.CommonUtils#getTranslationRegExp} is not
+		 * 			available (i.e. commonUtils has not been set to compatibility mode)
+		 *
+		 * @public
+		 * @deprecated used for old template format
+		 *
+		 *
+		 * @requires mmir.CommonUtils
+		 * @requires requires that CommonUtils is set to
+		 *           setToCompatibilityMode:
+		 *           {@link mmir.CommonUtils#setToCompatibilityMode}
+		 *
+		 * @memberOf mmir.compat.v1.LanguageManager#
+		 */
+		var translateHTML = function(html) {
 
-            	if(commonUtils &amp;&amp; !commonUtils.getTranslationRegExp){
-            		throw new Error('No function CommonUtils.getTranslationRegExp(): need to set commonUtils to compatibility mode too!');
-            	}
+			if(commonUtils &amp;&amp; !commonUtils.getTranslationRegExp){
+				throw new Error('No function CommonUtils.getTranslationRegExp(): need to set commonUtils to compatibility mode too!');
+			}
 
-                var translationRegExp = commonUtils.getTranslationRegExp();
-                if (html.match(translationRegExp)) {
-                    while (tre = translationRegExp.exec(html)) {
-                        var translated = internalGetText(tre[1]);
-                        html = html.replace(tre[0], translated);
-                    }
-                }
-                return html;
-            };
-            compatibilitySelf.translateHTML = translateHTML;
+			var translationRegExp = commonUtils.getTranslationRegExp();
+			if (html.match(translationRegExp)) {
+				while (tre = translationRegExp.exec(html)) {
+					var translated = internalGetText(tre[1]);
+					html = html.replace(tre[0], translated);
+				}
+			}
+			return html;
+		};
+		compatibilitySelf.translateHTML = translateHTML;
 
-            /**
-             * FIXME does not work, since PresentationManager.reRenderView was removed!
-             *
-             * This function changes the application language and, if
-             * requested, renders the current view again, so that the change
-             * of the language is applied to the currently displayed view.
-             * After changing the language (and re-rendering the view) an
-             * event "language_choosen" is raised on the DialogManager.&lt;br>
-             *
-             * &lt;div class="box important"> &lt;b>Note:&lt;/b> Momentarily this
-             * function is used by 'controllers/application.js' to generate
-             * a menu to choose the application language.&lt;br>
-             * This should better be implemented as a partial. &lt;/div>
-             *
-             * @requires mmir.PresentationManager
-             * @requires mmir.DialogManager
-             *
-             * @function
-             * @param {String}
-             *            newLang The new language which is to be used
-             *            henceforth
-             * @param {Boolean}
-             *            doReRenderView Should the currently displayed view
-             *            be rendered again in the new language?
-             * @returns {String} The translation of the keyword
-             * @public
-             *
-             * @memberOf mmir.compat.v1.LanguageManager#
-             */
-            var changeLanguage = function(newLang, doReRenderView) {
+		/**
+		 * FIXME does not work, since PresentationManager.reRenderView was removed!
+		 *
+		 * This function changes the application language and, if
+		 * requested, renders the current view again, so that the change
+		 * of the language is applied to the currently displayed view.
+		 * After changing the language (and re-rendering the view) an
+		 * event "language_choosen" is raised on the DialogManager.&lt;br>
+		 *
+		 * &lt;div class="box important"> &lt;b>Note:&lt;/b> Momentarily this
+		 * function is used by 'controllers/application.js' to generate
+		 * a menu to choose the application language.&lt;br>
+		 * This should better be implemented as a partial. &lt;/div>
+		 *
+		 * @requires mmir.PresentationManager
+		 * @requires mmir.DialogManager
+		 *
+		 * @function
+		 * @param {String}
+		 *            newLang The new language which is to be used
+		 *            henceforth
+		 * @param {Boolean}
+		 *            doReRenderView Should the currently displayed view
+		 *            be rendered again in the new language?
+		 * @returns {String} The translation of the keyword
+		 * @public
+		 *
+		 * @memberOf mmir.compat.v1.LanguageManager#
+		 */
+		var changeLanguage = function(newLang, doReRenderView) {
 
-                console.debug("[Language] selected " + newLang);// debug
+			console.debug("[Language] selected " + newLang);// debug
 
-                // instance.setLanguage(newLang);
-                this.setLanguage(newLang);
+			// instance.setLanguage(newLang);
+			this.setLanguage(newLang);
 
-                if (doReRenderView == true) {
-                    presentationManager.reRenderView();
-                }
-                dialogManager.raise("language_choosen", newLang);
-            };
-            compatibilitySelf.changeLanguage = changeLanguage;
+			if (doReRenderView == true) {
+				presentationManager.reRenderView();
+			}
+			dialogManager.raise("language_choosen", newLang);
+		};
+		compatibilitySelf.changeLanguage = changeLanguage;
 
-            compatibilitySelf.getCurrentLanguage = compatibilitySelf.getLanguage;
-            compatibilitySelf.cycleLanguages = compatibilitySelf.setNextLanguage;
+		compatibilitySelf.getCurrentLanguage = compatibilitySelf.getLanguage;
+		compatibilitySelf.cycleLanguages = compatibilitySelf.setNextLanguage;
 
-        };//END: setToCompatibilityMode()
+		};//END: setToCompatibilityMode()
 
 });
 </code></pre>

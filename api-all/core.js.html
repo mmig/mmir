@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -139,9 +141,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -150,11 +152,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -164,9 +166,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3408,7 +3410,7 @@
  * @returns the module instance &lt;code>mmir&lt;/code>
  *
  */
-function initMmir(window) {
+function initMmir(globalCtx) {
 
 	var moduleConfigHelper = typeof WEBPACK_BUILD !== 'undefined' &amp;&amp; WEBPACK_BUILD? require('build-tool/module-config-helper') : null;
 
@@ -3417,15 +3419,17 @@ function initMmir(window) {
 	 * @memberOf mmir.internal
 	 * @private
 	 */
-	var CORE_NAME = typeof MMIR_CORE_NAME === 'string'? MMIR_CORE_NAME : 'mmir';
+	var coreName = typeof MMIR_CORE_NAME === 'string'? MMIR_CORE_NAME : 'mmir';
+	// temp variable for global mmir instance
+	var mmirGlobal = globalCtx[coreName];
 
-	if(window[CORE_NAME]){
+	if(mmirGlobal){
 
-		//if window[CORE_NAME] is the core-module: register it and return
+		//if globalCtx[coreName] is the core-module: register it and return
 		//(note: if it is not the core-module, its properties will be merged/copied to the core-module -> see below)
-		if(typeof window[CORE_NAME].startModule === 'string' &amp;&amp; typeof define === 'function'){
-			define(function(){ return window[CORE_NAME]; });
-			return window[CORE_NAME];
+		if(typeof mmirGlobal.startModule === 'string' &amp;&amp; typeof define === 'function'){
+			define(function(){ return mmirGlobal; });
+			return mmirGlobal;
 		}
 	}
 
@@ -3435,7 +3439,7 @@ function initMmir(window) {
 	 * @memberOf mmir.internal
 	 * @private
 	 */
-	var CORE_VERSION = "5.0.0";
+	var CORE_VERSION = "5.1.0";
 
 
 	/**
@@ -3637,7 +3641,7 @@ function initMmir(window) {
 
 				++count;
 
-			    //merge property cname into mainConfig
+				//merge property cname into mainConfig
 				if(doMergeInto(conf.config, mainConfig.config, cname)){
 					//remove merge property from conf.config
 					conf.config[cname] = void(0);
@@ -3703,71 +3707,71 @@ function initMmir(window) {
 		//-> recursively merge
 		for(var cname in conf1[name]){
 			if(conf1[name].hasOwnProperty(cname)){
-			    //merge cname into conf2
+				//merge cname into conf2
 				doMergeInto(conf1[name], conf2[name], cname, true);
 			}
 		}
 
-        return true;
+			return true;
 	}
 
 	/**
-     * Check if the version number corresponds to the most significant (right-most)
-     * part of the mmir-lib's version number, i.e. check
-     *
-     * "is &lt;code>version&lt;/code> &lt;code>comp&lt;/code> than the mmir-lib version?"
-     *
-     * &lt;br>
-     * NOTE: changing the {@link mmir.version} field will have no effect on this function
-     *       (i.e. it will use the original value of &lt;code>version&lt;/code>)
-     *
-     * @param {Number} version
-     * 			the version number to check against
-     * @param {String} [comp] OPTIONAL
-     * 			the comparison type, e.g. &lt;code> ">" | "&lt;" | ">=" | "&lt;=" | "==" | "===" | "!=" | "!==" &lt;/code>
-     * 			&lt;br>Will be used as follows: &lt;code>{mmir-lib version} {comp} {version}&lt;/code>
-     * 			&lt;br>DEFAULT: "==="
-     * 			&lt;br>NOTE: "=" will be interpreted as "=="
-     *
-     * @returns {Boolean|Void} returns the result of the comparison to most the significant part
-     *                         of the mmir-lib version number,
-     *                         or &lt;code>VOID&lt;/code> if the mmir-lib version number is not available.
-     *
+	 * Check if the version number corresponds to the most significant (right-most)
+	 * part of the mmir-lib's version number, i.e. check
+	 *
+	 * "is &lt;code>version&lt;/code> &lt;code>comp&lt;/code> than the mmir-lib version?"
+	 *
+	 * &lt;br>
+	 * NOTE: changing the {@link mmir.version} field will have no effect on this function
+	 *       (i.e. it will use the original value of &lt;code>version&lt;/code>)
+	 *
+	 * @param {Number} version
+	 * 			the version number to check against
+	 * @param {String} [comp] OPTIONAL
+	 * 			the comparison type, e.g. &lt;code> ">" | "&lt;" | ">=" | "&lt;=" | "==" | "===" | "!=" | "!==" &lt;/code>
+	 * 			&lt;br>Will be used as follows: &lt;code>{mmir-lib version} {comp} {version}&lt;/code>
+	 * 			&lt;br>DEFAULT: "==="
+	 * 			&lt;br>NOTE: "=" will be interpreted as "=="
+	 *
+	 * @returns {Boolean|Void} returns the result of the comparison to most the significant part
+	 *                         of the mmir-lib version number,
+	 *                         or &lt;code>VOID&lt;/code> if the mmir-lib version number is not available.
+	 *
 	 * @memberOf mmir.internal
 	 * @private
-     */
-    var _isVersion = function(version, comp){
+	 */
+	var _isVersion = function(version, comp){
 
-    	var ver = CORE_VERSION;
-    	if(ver){
-    		var sigNum = /^.*?(\d+)\./.exec(ver);
-    		sigNum = parseInt(sigNum[1], 10);
-    		if(isFinite(sigNum)){
+		var ver = CORE_VERSION;
+		if(ver){
+			var sigNum = /^.*?(\d+)\./.exec(ver);
+			sigNum = parseInt(sigNum[1], 10);
+			if(isFinite(sigNum)){
 
-    			switch(comp){
-    			case '>=':
-    				return sigNum >= version;
-    			case '&lt;=':
-    				return sigNum &lt;= version;
-    			case '>':
-    				return sigNum > version;
-    			case '&lt;':
-    				return sigNum &lt; version;
-    			case '!=':
-    				return sigNum != version;
-    			case '!==':
-    				return sigNum !== version;
-    			case '='://
-    			case '==':
-    				return sigNum == version;
-    			case '===':
+				switch(comp){
+				case '>=':
+					return sigNum >= version;
+				case '&lt;=':
+					return sigNum &lt;= version;
+				case '>':
+					return sigNum > version;
+				case '&lt;':
+					return sigNum &lt; version;
+				case '!=':
+					return sigNum != version;
+				case '!==':
+					return sigNum !== version;
+				case '='://
+				case '==':
+					return sigNum == version;
+				case '===':
 				default:
-    				return sigNum === version;
-    			}
-    		}
-    	}
-    	return void(0);
-    };
+					return sigNum === version;
+				}
+			}
+		}
+		return void(0);
+	};
 
 	//DISABLED: un-used for now
 //	/**
@@ -3950,8 +3954,8 @@ function initMmir(window) {
 			 * this is also the global variable by which the core module (this) can be accessed.
 			 *
 			 *
-			 * NOTE: changing this name here will have no affect on the name of the global variable
-			 *
+			 * NOTE: changing this name here will have no affect on the name of the global variable,
+			 *       instead set global variable &lt;code>MMIR_CORE_NAME&lt;/code> before loading mmir
 			 *
 			 * @memberOf mmir
 			 * @name mmirName
@@ -3960,7 +3964,7 @@ function initMmir(window) {
 			 * @readonly
 			 * @public
 			 */
-			mmirName: CORE_NAME,
+			mmirName: coreName,
 
 			/**
 			 * The version of mmir-lib.
@@ -4182,18 +4186,19 @@ function initMmir(window) {
 		define('mmirf/core', function(){ return mmir; });
 	}
 
-	//if window[CORE_NAME] already exists:
+	//if mmirGlobal, i.e. globalCtx[coreName] already exists:
 	//  copy all its properties to the new core-mmir object
-	if(window[CORE_NAME]){
-		for(var p in window[CORE_NAME]){
-			if(window[CORE_NAME].hasOwnProperty(p) &amp;&amp; typeof mmir[p] === 'undefined'){
-				mmir[p] = window[CORE_NAME][p];
+	//  (i.e. collisions will override the default impl.)
+	if(mmirGlobal){
+		for(var p in mmirGlobal){
+			if(mmirGlobal.hasOwnProperty(p) &amp;&amp; typeof mmir[p] === 'undefined'){
+				mmir[p] = mmirGlobal[p];
 			}
 		}
 	}
 
 	//export core-module into global namespace:
-	window[CORE_NAME] = mmir;
+	globalCtx[coreName] = mmir;
 
 	return mmir;
 }(typeof window !== 'undefined' ? window : typeof self !== 'undefined' ? self : typeof global !== 'undefined' ? global : this));

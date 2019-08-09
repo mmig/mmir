@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -139,9 +141,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -150,11 +152,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -164,9 +166,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3553,20 +3555,20 @@ var jisonGen = {
 		//start conversion: create grammar in jison syntax (from the JSON definition):
 		theConverterInstance.init();
 		this._preparePrintError();
-        theConverterInstance.convertJSONGrammar();
-        var grammarDefinition = theConverterInstance.getGrammarDef();
+		theConverterInstance.convertJSONGrammar();
+		var grammarDefinition = theConverterInstance.getGrammarDef();
 
-        //load options from configuration:
-        var config = configManager.get(pluginName, {});
-        //combine with default default options:
-        var options = extend({id: instanceId}, DEFAULT_OPTIONS, config);
+		//load options from configuration:
+		var config = configManager.get(pluginName, {});
+		//combine with default default options:
+		var options = extend({id: instanceId}, DEFAULT_OPTIONS, config);
 
-        //HELPER function for generating the parser-module (after parser was generated)
-        var compileParserModule = function(grammarParser, hasError){
+		//HELPER function for generating the parser-module (after parser was generated)
+		var compileParserModule = function(grammarParser, hasError){
 
-            var addGrammarParserExec = theConverterInstance.getCodeWrapPrefix(fileFormatVersion, JSON.stringify(options.execMode))
-            	+ grammarParser
-            	+ ';\n'
+			var addGrammarParserExec = theConverterInstance.getCodeWrapPrefix(fileFormatVersion, JSON.stringify(options.execMode))
+				+ grammarParser
+				+ ';\n'
 							+ 'function _printLog(){console.log.apply(console, arguments);};\n'
 							+ 'function _noopFunc(){};\n'
 							+ 'var _logDebug = _noopFunc;\n'
@@ -3577,79 +3579,79 @@ var jisonGen = {
 							+ '  parser.trace = options &amp;&amp; options.trace? typeof options.trace === "function"? options.trace : _printLog : _noopFunc;\n'
 							+ '  lexerOpt.flex =  options &amp;&amp; !!options.extensive;\n'
 							+ '  lexerOpt.backtrack_lexer = options &amp;&amp; !!options.backtrack;\n'
-            	+ '  var result;  try {\n'
-            	+ '    result = parser.parse.call(parser, inputStr);\n'
-            	+ '  } catch (err){\n'
-            	+ '    result = {error: err, phrase: inputStr, engine: "jison"};\n'//TODO warning/error messaging? -> need to handle encoded chars, if error message should be meaningful
-            	+ '  }\n'
-            	+ '  return result;\n'
-            	+ '};\n'
-            	+ theConverterInstance.getCodeWrapSuffix(theConverterInstance.getEncodedStopwords(), 'grammarFunc', instanceId);
+				+ '  var result;  try {\n'
+				+ '    result = parser.parse.call(parser, inputStr);\n'
+				+ '  } catch (err){\n'
+				+ '    result = {error: err, phrase: inputStr, engine: "jison"};\n'//TODO warning/error messaging? -> need to handle encoded chars, if error message should be meaningful
+				+ '  }\n'
+				+ '  return result;\n'
+				+ '};\n'
+				+ theConverterInstance.getCodeWrapSuffix(theConverterInstance.getEncodedStopwords(), 'grammarFunc', instanceId);
 
-            if(options.genSourceUrl){
+			if(options.genSourceUrl){
 
-            	var sourceUrlStr;
-            	if(options.genSourceUrl === true){
-            		sourceUrlStr = 'gen/grammar/_compiled_grammar_'+instanceId;
-            	} else {
-            		sourceUrlStr = options.genSourceUrl.toString().replace(/&lt;id>/g,instanceId);
-            	}
+				var sourceUrlStr;
+				if(options.genSourceUrl === true){
+					sourceUrlStr = 'gen/grammar/_compiled_grammar_'+instanceId;
+				} else {
+					sourceUrlStr = options.genSourceUrl.toString().replace(/&lt;id>/g,instanceId);
+				}
 
-            	//for Chrome / FireFox debugging: provide an URL for eval'ed code
-            	addGrammarParserExec += '//@ sourceURL='+sourceUrlStr+'\n'
-            							+'//# sourceURL='+sourceUrlStr+'\n';
+				//for Chrome / FireFox debugging: provide an URL for eval'ed code
+				addGrammarParserExec += '//@ sourceURL='+sourceUrlStr+'\n'
+										+'//# sourceURL='+sourceUrlStr+'\n';
 
-            }
+			}
 
-            theConverterInstance.setGrammarSource(addGrammarParserExec);
+			theConverterInstance.setGrammarSource(addGrammarParserExec);
 
-            try{
+			try{
 
-            	eval(addGrammarParserExec);
+				eval(addGrammarParserExec);
 
-            } catch (err) {
+			} catch (err) {
 
-            	//TODO russa: generate meaningful error message with details about error location
-            	//			  eg. use esprima (http://esprima.org) ...?
-            	//			... as optional dependency (see deferred initialization above?)
+				//TODO russa: generate meaningful error message with details about error location
+				//			  eg. use esprima (http://esprima.org) ...?
+				//			... as optional dependency (see deferred initialization above?)
 
-            	var evalMsg = 'Error during eval() for "'+ instanceId +'": ' + err;
+				var evalMsg = 'Error during eval() for "'+ instanceId +'": ' + err;
 
-            	if(jison.printError){
-            		jison.printError(evalMsg);
-            	}
-            	else {
-            		logger.error('jison', 'evalCompiled', evalMsg, err);
-            	}
+				if(jison.printError){
+					jison.printError(evalMsg);
+				}
+				else {
+					logger.error('jison', 'evalCompiled', evalMsg, err);
+				}
 
-            	if(! hasError){
-                	evalMsg = '[INVALID GRAMMAR JavaScript CODE] ' + evalMsg;
-                	var parseDummyFunc = (function(msg, error){
-                		return function(){ console.error(msg); console.error(error); throw msg;};
-                	})(evalMsg, err);
+				if(! hasError){
+					evalMsg = '[INVALID GRAMMAR JavaScript CODE] ' + evalMsg;
+					var parseDummyFunc = (function(msg, error){
+						return function(){ console.error(msg); console.error(error); throw msg;};
+					})(evalMsg, err);
 
-                	parseDummyFunc.hasErrors = true;
+					parseDummyFunc.hasErrors = true;
 
-                	theConverterInstance.setGrammarFunction(parseDummyFunc);
-            	}
+					theConverterInstance.setGrammarFunction(parseDummyFunc);
+				}
 
-            }
+			}
 
-            //invoke callback if present:
-            if(callback){
-            	callback(theConverterInstance);
-            }
-        };
+			//invoke callback if present:
+			if(callback){
+				callback(theConverterInstance);
+			}
+		};
 
-        var isPreventDefault = this._afterCompileParser(compileParserModule, callback);
-        var result = this._compileParser(grammarDefinition, options, isPreventDefault);
+		var isPreventDefault = this._afterCompileParser(compileParserModule, callback);
+		var result = this._compileParser(grammarDefinition, options, isPreventDefault);
 
-        if(!isPreventDefault){
-        	var hasError = result.hasError;
-        	compileParserModule(result.def, hasError);
-        }
+		if(!isPreventDefault){
+			var hasError = result.hasError;
+			compileParserModule(result.def, hasError);
+		}
 
-        return theConverterInstance;
+		return theConverterInstance;
 	},
 	/**
 	 * @protected
@@ -3657,12 +3659,12 @@ var jisonGen = {
 	_compileParser: function(grammarDefinition, options, afterCompileParserResult){
 
 		var hasError = false;
-        var grammarParser;
-        try{
-        	var cfg = bnf.parse(grammarDefinition);
-        	var parser = Jison.Generator(cfg, options);
-        	grammarParser = parser.generate();
-        } catch(error) {
+		var grammarParser;
+		try{
+			var cfg = bnf.parse(grammarDefinition);
+			var parser = Jison.Generator(cfg, options);
+			grammarParser = parser.generate();
+		} catch(error) {
 //        	"{
 //        	  "message": "Expected \"=\" or string but \"_\" found.",
 //        	  "expected": [
@@ -3682,40 +3684,40 @@ var jisonGen = {
 //        	  "column": 6,
 //        	  "name": "SyntaxError"
 //        	}"
-        	var msg = ' while compiling grammar "' + options.id + '": ';
-        	if(error.name === 'SyntaxError'){
-        		msg= 'SyntaxError' + msg + error.message;
-        	}
-        	else {
-        		msg = 'Error' + msg + (error &amp;&amp; error.stack? error.stack : error);
-        	}
+			var msg = ' while compiling grammar "' + options.id + '": ';
+			if(error.name === 'SyntaxError'){
+				msg= 'SyntaxError' + msg + error.message;
+			}
+			else {
+				msg = 'Error' + msg + (error &amp;&amp; error.stack? error.stack : error);
+			}
 
-        	if(typeof error.lineNumber !== 'undefined'){
-        		msg += ' at line '+error.lineNumber;
-        	}
+			if(typeof error.lineNumber !== 'undefined'){
+				msg += ' at line '+error.lineNumber;
+			}
 
-        	if(typeof error.column !== 'undefined'){
-        		msg += ':'+error.column;
-        	}
+			if(typeof error.column !== 'undefined'){
+				msg += ':'+error.column;
+			}
 
-        	if(typeof error.index !== 'undefined'){
-        		msg += ' (offset '+error.index+')';
-        	}
+			if(typeof error.index !== 'undefined'){
+				msg += ' (offset '+error.index+')';
+			}
 
 					msg += '\n-----------------------------\n  Grammar Definition:\n-----------------------------\n' + grammarDefinition;
 
-        	if(jison.printError){
-        		jison.printError(msg);
-        	}
-        	else {
-        		console.error(msg);
-        	}
-        	msg = '[INVALID GRAMMAR] ' + msg + (error &amp;&amp; error.name === 'SyntaxError' &amp;&amp; error.stack? error.stack : '');
-        	grammarParser = 'var parser = { parse: function(){ var msg = '+JSON.stringify(msg)+'; console.error(msg); throw msg;}, lexer: {options: {}}}';
-        	hasError = true;
-        }
+			if(jison.printError){
+				jison.printError(msg);
+			}
+			else {
+				console.error(msg);
+			}
+			msg = '[INVALID GRAMMAR] ' + msg + (error &amp;&amp; error.name === 'SyntaxError' &amp;&amp; error.stack? error.stack : '');
+			grammarParser = 'var parser = { parse: function(){ var msg = '+JSON.stringify(msg)+'; console.error(msg); throw msg;}, lexer: {options: {}}}';
+			hasError = true;
+		}
 
-        return {def: grammarParser, hasError: hasError};
+		return {def: grammarParser, hasError: hasError};
 	},
 	/**
 	 * @protected

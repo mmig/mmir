@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -135,9 +137,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -146,11 +148,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -160,9 +162,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -2992,21 +2994,21 @@
         <article>
             <pre class="prettyprint source linenums"><code>
 /**
- * @file This file contains interface definitions. 
- * 		 The interface definitions are purely for documentation and 
+ * @file This file contains interface definitions.
+ * 		 The interface definitions are purely for documentation and
  * 		 should not be loaded / executed / or used in any way other
  * 		 than for reference purposes.
  */
 
 /**
  * The Audio abstraction that is returned by {@link mmir.MediaManager#getURLAsAudio}.
- * 
+ *
  * &lt;p>
  * NOTE: when an audio object is not used anymore, its {@link #release} method should
  * 		 be called.
- * 
+ *
  * &lt;p>
- * 
+ *
  * @interface
  * @name IAudio
  * @memberOf mmir.env.media
@@ -3015,11 +3017,11 @@
 var IAudio = {
 	/**
 	 * The constructor.
-	 * 
+	 *
 	 * &lt;p>
 	 * NOTE that audio objects are created with a factory,
 	 * e.g. via {@link mmir.MediaManager#getURLAsAudio}.
-	 * 
+	 *
 	 * @param {String} url
 	 * 			the URL for the audio file
 	 * @param {Function} [onPlayedCallback] OPTIONAL
@@ -3030,14 +3032,14 @@ var IAudio = {
 	 * @param {Function} [onLoadedCallBack] OPTIONAL
 	 * 			callback that is triggered when audio has been initialized and is ready to be played
 	 * 			NOTE: this argument is positional (i.e. onPlayedCallback and failureCallBack must be specified, but may be &lt;code>null&lt;/code>)
-	 * 
+	 *
 	 * @protected
 	 * @function
 	 * @name _constructor
 	 * @memberOf mmir.env.media.IAudio.prototype
-	 * 
+	 *
 	 * @see mmir.MediaManager#getURLAsAudio
-	 * 
+	 *
 	 * @example
 	 *  var audio = mmir.MediaManager.getURLAsAudio(url, null, null, function onReady(){
 	 *  	audio.play();
@@ -3046,12 +3048,12 @@ var IAudio = {
 	_constructor: function(url, onPlayedCallback, failureCallBack, onLoadedCallBack){},
 	/**
 	 * Play audio.
-	 * 
+	 *
 	 * @returns {Boolean} &lt;code>true&lt;/code>, if playing was started immediately.
 	 *                    If &lt;code>false&lt;/code>, the Audio object may have been disabled,
 	 *                    or is still preparing (in which case it is auto-started, when
 	 *                    preparing completes)
-	 * 
+	 *
 	 * @public
 	 * @name play
 	 * @function
@@ -3060,9 +3062,9 @@ var IAudio = {
 	play: function(){},
 	/**
 	 * Stop playing audio.
-	 * 
+	 *
 	 * @returns {Boolean} &lt;code>true&lt;/code>, if stopping was successful.
-	 * 
+	 *
 	 * @public
 	 * @name stop
 	 * @function
@@ -3071,7 +3073,7 @@ var IAudio = {
 	stop: function(){},
 	/**
 	 * Enable audio (should only be used internally).
-	 * 
+	 *
 	 * @protected
 	 * @name enable
 	 * @function
@@ -3080,7 +3082,7 @@ var IAudio = {
 	enable: function(){},
 	/**
 	 * Disable audio (should only be used internally).
-	 * 
+	 *
 	 * @protected
 	 * @name disable
 	 * @function
@@ -3090,12 +3092,12 @@ var IAudio = {
 	/**
 	 * Release audio: should be called when the audio
 	 * file is not used any more.
-	 * 
+	 *
 	 * &lt;p>
 	 * NOTE some environments - such as Android - have limited resources available.
 	 *      Not releasing resources may result in not being able to instantiate new
 	 *      (audio) resources.
-	 * 
+	 *
 	 * @public
 	 * @name release
 	 * @function
@@ -3104,11 +3106,11 @@ var IAudio = {
 	release: function(){},
 	/**
 	 * Set the volume of this audio file
-	 * 
+	 *
 	 * @param {Number} value
 	 * 			the new value for the volume:
 	 * 			a number between [0.0, 1.0]
-	 * 
+	 *
 	 * @public
 	 * @name setVolume
 	 * @function
@@ -3117,9 +3119,9 @@ var IAudio = {
 	setVolume: function(value){},
 	/**
 	 * Get the duration of the audio file
-	 * 
+	 *
 	 * @returns {Number} the duration in MS (or &lt;code>-1&lt;/code> if unknown)
-	 * 
+	 *
 	 * @public
 	 * @name getDuration
 	 * @function
@@ -3128,12 +3130,12 @@ var IAudio = {
 	getDuration: function(){},
 	/**
 	 * Check if audio is currently paused.
-	 * 
+	 *
 	 * &lt;p>
 	 * NOTE: the state "paused" is a different status than state "stopped".
-	 * 
+	 *
 	 * @returns {Boolean} &lt;code>true&lt;/code> if paused, &lt;code>false&lt;/code> otherwise
-	 * 
+	 *
 	 * @public
 	 * @name isPaused
 	 * @function
@@ -3142,9 +3144,9 @@ var IAudio = {
 	isPaused: function(){},
 	/**
 	 * Check if audio is currently enabled
-	 * 
+	 *
 	 * @returns {Boolean} &lt;code>true&lt;/code> if enabled
-	 * 
+	 *
 	 * @public
 	 * @name isEnabled
 	 * @function
@@ -3156,7 +3158,7 @@ var IAudio = {
 /**
  * Audio object that is used for the sound notifications
  * by the {@link mmir.NotificationManager}.
- * 
+ *
  * @interface
  * @name INotificationSound
  * @augments mmir.env.media.IAudio
@@ -3165,7 +3167,7 @@ var IAudio = {
 var INotificationSound = {
 	/**
 	 * The name / identifier for the sound.
-	 * 
+	 *
 	 * @public
 	 * @type String
 	 * @name name
@@ -3174,7 +3176,7 @@ var INotificationSound = {
 	name : null,
 	/**
 	 * Flag for the play status.
-	 * 
+	 *
 	 * @protected
 	 * @type Boolean
 	 * @name isNotificationPlaying
@@ -3187,7 +3189,7 @@ var INotificationSound = {
 	 * {@link #isNotificationPlaying} is set to &lt;code>false&lt;/code>.
 	 * &lt;p>
 	 * MUST be &lt;code>>= 1&lt;/code>, otherwise the sound will not be played.
-	 * 
+	 *
 	 * @protected
 	 * @type Number
 	 * @name repeatNotification
@@ -3196,7 +3198,7 @@ var INotificationSound = {
 	repeatNotification : 0,
 	/**
 	 * The callback for "finished" events.
-	 * 
+	 *
 	 * @protected
 	 * @type Function
 	 * @name onFinishedListener
@@ -3205,7 +3207,7 @@ var INotificationSound = {
 	onFinishedListener : null,
 	/**
 	 * The callback for "error" events.
-	 * 
+	 *
 	 * @protected
 	 * @type Function
 	 * @name onErrorListener
@@ -3218,14 +3220,14 @@ var INotificationSound = {
 	 * {@link #isNotificationPlaying} is set to &lt;code>false&lt;/code>.
 	 * &lt;p>
 	 * MUST be &lt;code>>= 1&lt;/code>, otherwise the sound will not be played.
-	 * 
+	 *
 	 * @param {Number} repeatNTimes
 	 * 					specifies how many times the sound should be played, before
 	 * 					{@link #isNotificationPlaying} is set to &lt;code>false&lt;/code>.
 	 * 					&lt;br>
 	 * 					MUST be &lt;code>>= 1&lt;/code>, otherwise the sound will not be played.
-	 * 		
-	 * 
+	 *
+	 *
 	 * @public
 	 * @function
 	 * @name playNotification
@@ -3239,13 +3241,13 @@ var INotificationSound = {
 	 * The sound finishes playing, when its audio object has been played
 	 * &lt;code>repeatNTimes&lt;/code> as specified when invoking
 	 * &lt;code>function playNotification(repeatNTimes)&lt;/code>.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param {Function} onFinished
 	 * 				the callback for the finished event
 	 * @param {Function} onError
 	 * 				the callback for errors
-	 * 
+	 *
 	 * @public
 	 * @function
 	 * @name setCallbacks
@@ -3254,7 +3256,7 @@ var INotificationSound = {
 	setCallbacks : function(onFinished, onError){},
 	/**
 	 * Clears the "finished" and "error" callbacks.
-	 * 
+	 *
 	 * @public
 	 * @function
 	 * @name clearCallbacks
@@ -3263,7 +3265,7 @@ var INotificationSound = {
 	clearCallbacks : function(){},
 	/**
 	 * Fires the "finished" event for its callback (if one is set).
-	 * 
+	 *
 	 * @protected
 	 * @function
 	 * @name fireFinished
@@ -3272,10 +3274,10 @@ var INotificationSound = {
 	fireFinished : function(){},
 	/**
 	 * Fires the "error" event for its callback (if one is set).
-	 * 
+	 *
 	 * @param {any} error
 	 * 			the error that occurred
-	 * 
+	 *
 	 * @protected
 	 * @function
 	 * @name fireError
@@ -3288,48 +3290,49 @@ var INotificationSound = {
 /**
  * Audio object that is used for the sound notifications
  * by the {@link mmir.MediaManager}.
- * 
+ *
  * @interface
  * @name IWaitReadyIndicator
  * @memberOf mmir.env.media
- * 
+ *
  * @see mmir.MediaManager#readyWaitImpl
  */
 var IWaitReadyIndicator = {
 	/**
 	 * Indicates that the media plugin &lt;code>pluginName&lt;/code> is preparing
 	 * something and that the user should wait.
-	 * 
+	 *
 	 * &lt;p>
 	 * For example, an implementation could show a wait dialog / overlay when this function is called.
-	 * 
+	 *
 	 * @param {String} moduleName
 	 * 			the module name from which the function was invoked
-	 * 
+	 *
 	 * @public
 	 * @memberOf mmir.env.media.IWaitReadyIndicator.prototype
-	 * 
+	 *
 	 * @see mmir.MediaManager#_preparing
 	 */
-    preparing: function (moduleName){},
-    /**
-     * Indicates that the media plugin &lt;code>pluginName&lt;/code> is now ready
+	preparing: function (moduleName){},
+	/**
+	 * Indicates that the media plugin &lt;code>pluginName&lt;/code> is now ready
 	 * and that the user can begin interacting.
-	 * 
+	 *
 	 * &lt;p>
 	 * For example, an implementation could hide a wait dialog / overlay when this function is called
 	 * (that was previously shown with {@link #preparing}).
-	 * 
+	 *
 	 * @param {String} moduleName
 	 * 			the module name from which the function was invoked
-     * 
+	 *
 	 * @public
 	 * @memberOf mmir.env.media.IWaitReadyIndicator.prototype
-	 * 
+	 *
 	 * @see mmir.MediaManager#_ready
 	 */
 	ready: function(moduleName){}
-};</code></pre>
+};
+</code></pre>
         </article>
     </section>
 

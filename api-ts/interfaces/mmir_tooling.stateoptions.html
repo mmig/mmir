@@ -126,7 +126,7 @@
 					<div class="tsd-signature tsd-kind-icon">ignore<wbr>Errors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in mmir-tooling/index.d.ts:357</li>
+							<li>Defined in mmir-tooling/index.d.ts:376</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -150,7 +150,7 @@
 					<div class="tsd-signature tsd-kind-icon">models<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in mmir-tooling/index.d.ts:364</li>
+							<li>Defined in mmir-tooling/index.d.ts:386</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -159,6 +159,8 @@
 						</div>
 						<p>If <code>input</code> or <code>dialog</code> are missing (e.g. no resources matching them could be found),
 						default &quot;minimal&quot; state-models will be used for <code>inputManager</code> and <code>dialogManager</code>.</p>
+						<p>NOTE: for custom state-models whichs&#39; files are determined by parsing <a href="mmir_tooling.stateoptions.html#path">StateOptions.path</a>,
+						the <code>id</code> will be the file name (case sensitive, without extension).</p>
 					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
@@ -181,12 +183,12 @@
 					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in mmir-tooling/index.d.ts:347</li>
+							<li>Defined in mmir-tooling/index.d.ts:366</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>file path for searching (recursively) for SCXML files (state-engines):</p>
+							<p>file path for searching (recursively) for SCXML files (state-models):</p>
 							<pre><code class="language-bash">path/.../dialog.xml -&gt; <span class="hljs-built_in">type</span> <span class="hljs-string">"dialog"</span>
         /input.xml  -&gt; <span class="hljs-built_in">type</span> <span class="hljs-string">"input"</span></code></pre>
 						</div>
@@ -194,6 +196,7 @@
 						and mapped to their corresponding type</p>
 						<pre><code class="language-bash">        <span class="hljs-string">"dialogDescriptionSCXML.xml"</span> -&gt; <span class="hljs-string">"dialog"</span>
         <span class="hljs-string">"inputDescriptionSCXML.xml"</span> -&gt; <span class="hljs-string">"input"</span></code></pre>
+						<p>Or custom state models (SCXML definitions) with file extension <code>.xml</code>.</p>
 					</div>
 				</section>
 			</section>

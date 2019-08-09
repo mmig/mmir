@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -135,9 +137,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -146,11 +148,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -160,9 +162,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -2992,418 +2994,418 @@
         <article>
             <pre class="prettyprint source linenums"><code>
 define([ 'mmirf/controllerManager', 'mmirf/commonUtils', 'mmirf/viewLoader', 'mmirf/logger'
-         , 'mmirf/util/deferredWithState', 'mmirf/core', 'module', 'require'
-    ],
+		, 'mmirf/util/deferredWithState', 'mmirf/core', 'module', 'require'
+	],
 
-    /**
-     * @class
-     * @name mmir.PresentationManager
-     * @static
-     *
-     * @requires dialogManager if reRenderView() or renderPreviousView() are used
-     *
-     */
-    function ( controllerManager, commonUtils, viewLoader, Logger
-            , deferred, core, module, require
+	/**
+	 * @class
+	 * @name mmir.PresentationManager
+	 * @static
+	 *
+	 * @requires dialogManager if reRenderView() or renderPreviousView() are used
+	 *
+	 */
+	function ( controllerManager, commonUtils, viewLoader, Logger
+			, deferred, core, module, require
 ) {
 
 	//the next comment enables JSDoc2 to map all functions etc. to the correct class description
 	/** @scope mmir.PresentationManager.prototype */
 
 	/**
-     * Counter that keeps track of the number of times, that a view is rendered
-     *
-     * NOTE: for implementation specific reasons, jQuery Mobile requires that
-     * 		 each page has a different ID. This pageIndex is used to generating
-     * 		 such a unique ID, by increasing the number on each page-change
-     * 		 (i.e. by rendering a view) and appending it to the page's ID/name.
-     *
-     * @type Integer
-     * @public
+	 * Counter that keeps track of the number of times, that a view is rendered
+	 *
+	 * NOTE: for implementation specific reasons, jQuery Mobile requires that
+	 * 		 each page has a different ID. This pageIndex is used to generating
+	 * 		 such a unique ID, by increasing the number on each page-change
+	 * 		 (i.e. by rendering a view) and appending it to the page's ID/name.
+	 *
+	 * @type Integer
+	 * @public
 	 * @memberOf mmir.PresentationManager#
-     */
+	 */
 	var _pageIndex = 0;
 
-	 /**
-	  * Name for the default layout.
-	  *
-	  * &lt;p>
-	  * There must exist a layout definition by
-	  * this name, i.e.
-	  * &lt;pre>views/layout/&lt;DEFAULT_LAYOUT_NAME>.ehtml&lt;/pre>
-	  *
-	  * NOTE: while the name begins with an upper case
-	  *       letter, the file name for the layout must
-	  *       start with a lower case letter, e.g. for
-	  *       name &lt;code>Default&lt;/code>, the file name
-	  *       must be &lt;code>default.ehtml&lt;/code>.
-	  *
-	  * @type String
-	  * @private
-	  * @constant
-	  * @memberOf mmir.PresentationManager#
-	  *
-	  * @example var defaultLayoutName = mmir.conf.get(mmir.presentation.CONFIG_DEFAULT_LAYOUT);
-	  */
-	 var DEFAULT_LAYOUT_NAME = 'Default';
+	/**
+	 * Name for the default layout.
+	 *
+	 * &lt;p>
+	 * There must exist a layout definition by
+	 * this name, i.e.
+	 * &lt;pre>views/layout/&lt;DEFAULT_LAYOUT_NAME>.ehtml&lt;/pre>
+	 *
+	 * NOTE: while the name begins with an upper case
+	 *       letter, the file name for the layout must
+	 *       start with a lower case letter, e.g. for
+	 *       name &lt;code>Default&lt;/code>, the file name
+	 *       must be &lt;code>default.ehtml&lt;/code>.
+	 *
+	 * @type String
+	 * @private
+	 * @constant
+	 * @memberOf mmir.PresentationManager#
+	 *
+	 * @example var defaultLayoutName = mmir.conf.get(mmir.presentation.CONFIG_DEFAULT_LAYOUT);
+	 */
+	var DEFAULT_LAYOUT_NAME = 'Default';
 
-	 /**
-	  * Name of the configuration property that specifies a custom name for the default layout.
-	  *
-	  * &lt;p>
-	  * NOTE: if FALSY (other than &lt;code>undefined&lt;/code>) no default layout will be loaded.
-	  *       Rendering views may fail, if they rely on a {@link Layout}!
-	  *
-	  * @type String
-	  * @private
-	  * @constant
-	  * @memberOf mmir.PresentationManager#
-	  *
-	  * @example var defaultLayout = mmir.conf.get(mmir.presentation.CONFIG_DEFAULT_LAYOUT_NAME);
-	  *
-	  */
-	 var CONFIG_DEFAULT_LAYOUT_NAME = 'defaultLayoutName';//TODO move this to somewhere else (collected config-vars?)? this should be a public CONSTANT...
+	/**
+	 * Name of the configuration property that specifies a custom name for the default layout.
+	 *
+	 * &lt;p>
+	 * NOTE: if FALSY (other than &lt;code>undefined&lt;/code>) no default layout will be loaded.
+	 *       Rendering views may fail, if they rely on a {@link Layout}!
+	 *
+	 * @type String
+	 * @private
+	 * @constant
+	 * @memberOf mmir.PresentationManager#
+	 *
+	 * @example var defaultLayout = mmir.conf.get(mmir.presentation.CONFIG_DEFAULT_LAYOUT_NAME);
+	 *
+	 */
+	var CONFIG_DEFAULT_LAYOUT_NAME = 'defaultLayoutName';//TODO move this to somewhere else (collected config-vars?)? this should be a public CONSTANT...
 
-	 // private members
-	 /**
-	  * The logger for the PresentationManager.
-	  *
-	  * @private
-	  * @type Logger
-	  * @memberOf mmir.PresentationManager#
-	  */
+	// private members
+	/**
+	 * The logger for the PresentationManager.
+	 *
+	 * @private
+	 * @type Logger
+	 * @memberOf mmir.PresentationManager#
+	 */
 	var logger = Logger.create(module);//initialize with requirejs-module information
 
-	 /**
-	  * Array of layouts of the application
-	  *
-	  * @type Map
-	  * @private
-	  * @memberOf mmir.PresentationManager#
-	  */
-	 var _layouts = new Map();
+	/**
+	 * Array of layouts of the application
+	 *
+	 * @type Map
+	 * @private
+	 * @memberOf mmir.PresentationManager#
+	 */
+	var _layouts = new Map();
 
-	 /**
-	  * Array of all the views of the application
-	  *
-	  * @type Map
-	  * @private
-	  * @memberOf mmir.PresentationManager#
-	  */
-	 var _views = new Map();
+	/**
+	 * Array of all the views of the application
+	 *
+	 * @type Map
+	 * @private
+	 * @memberOf mmir.PresentationManager#
+	 */
+	var _views = new Map();
 
-	 /**
-	  * Array of all the partials of the application
-	  *
-	  * @type Map
-	  * @private
-	  * @memberOf mmir.PresentationManager#
-	  */
-	 var _partials = new Map();
+	/**
+	 * Array of all the partials of the application
+	 *
+	 * @type Map
+	 * @private
+	 * @memberOf mmir.PresentationManager#
+	 */
+	var _partials = new Map();
 
-	 /**
-	  * The currently displayed dialog object, if a dialog is displayed. Used
-	  * mainly to close the dialog.
-	  *
-	  * @type Object
-	  * @private
-	  * @memberOf mmir.PresentationManager#
-	  *
-	  * @see mmir.PresentationManager#showDialog
-	  * @see mmir.PresentationManager#hideCurrentDialog
-	  */
-	 var _currentDialog = null;
+	/**
+	 * The currently displayed dialog object, if a dialog is displayed. Used
+	 * mainly to close the dialog.
+	 *
+	 * @type Object
+	 * @private
+	 * @memberOf mmir.PresentationManager#
+	 *
+	 * @see mmir.PresentationManager#showDialog
+	 * @see mmir.PresentationManager#hideCurrentDialog
+	 */
+	var _currentDialog = null;
 
-	 /**
-	  * @private
-	  * @memberOf mmir.PresentationManager#
-	  */
-	 var viewSeparator 		= '#';
+	/**
+	 * @private
+	 * @memberOf mmir.PresentationManager#
+	 */
+	var viewSeparator 		= '#';
 
- 	 /**
- 	  * @private
- 	  * @memberOf mmir.PresentationManager#
- 	  */
- 	 var reHandlerName 		= /^on_/;
-	 /**
-	  * @type String
-	  * @private
-	  * @memberOf mmir.PresentationManager#
-	  */
-     var partialSeparator 	= commonUtils.getPartialsPrefix();
-     /**
-	  * @private
-	  * @memberOf mmir.PresentationManager#
-	  */
-     function createLookupKey(ctrl, viewObj, separator){
-     	if(typeof ctrl.getName !== 'undefined'){
-     		ctrl = ctrl.getName();
-     	}
-     	if(typeof viewObj.getName !== 'undefined'){
-     		viewObj = viewObj.getName();
-     	}
-     	//TODO remove all >partialSeparator&lt; from partial-string beginning
-     	return ctrl+separator+viewObj;
-     }
-     /**
-	  * @private
-	  * @memberOf mmir.PresentationManager#
-	  */
-     function createViewKey(ctrl, view){
-     	return createLookupKey(ctrl, view, viewSeparator);
-     }
-     /**
-	  * @private
-	  * @memberOf mmir.PresentationManager#
-	  */
-     function createPartialKey(ctrl, partial){
-     	return createLookupKey(ctrl, partial, partialSeparator);
-     }
+	/**
+	 * @private
+	 * @memberOf mmir.PresentationManager#
+	 */
+	var reHandlerName 		= /^on_/;
+	/**
+	 * @type String
+	 * @private
+	 * @memberOf mmir.PresentationManager#
+	 */
+	var partialSeparator 	= commonUtils.getPartialsPrefix();
+	/**
+	 * @private
+	 * @memberOf mmir.PresentationManager#
+	 */
+	function createLookupKey(ctrl, viewObj, separator){
+		if(typeof ctrl.getName !== 'undefined'){
+			ctrl = ctrl.getName();
+		}
+		if(typeof viewObj.getName !== 'undefined'){
+			viewObj = viewObj.getName();
+		}
+		//TODO remove all >partialSeparator&lt; from partial-string beginning
+		return ctrl+separator+viewObj;
+	}
+	/**
+	 * @private
+	 * @memberOf mmir.PresentationManager#
+	 */
+	function createViewKey(ctrl, view){
+		return createLookupKey(ctrl, view, viewSeparator);
+	}
+	/**
+	 * @private
+	 * @memberOf mmir.PresentationManager#
+	 */
+	function createPartialKey(ctrl, partial){
+		return createLookupKey(ctrl, partial, partialSeparator);
+	}
 
 
-	 /**
-	  * Default implementation for the rendering-engine:
-	  *
-	  * does nothing but writing an error message to the console,
-	  * if any of its functions is invoked.
-	  *
-	  * The rendering engine can be set via {@link mmir.PresentationManager#setRenderEngine}.
-	  *
-	  * @type RenderEngine
-	  * @private
-	  * @memberOf mmir.PresentationManager#
-	  */
-     var _renderEngine = {
-    		 /**
-    		  * The function that actually renders the View.&lt;br>
-    		  *
-    		  * The function will be invoked in context of the PresentationManager instance
-    		  * (i.e. the manager will be the &lt;em>this&lt;/em> context).
-    		  *
-    		  * Implementations of this function should adhere to the following procedure:
-    		  *
-    		  * &lt;br>
-    		  *
-    		  * First this function fetches the &lt;em>layout&lt;/em> for the &lt;em>controller&lt;/em>
-    		  * (or uses the &lt;code>dialogManager.DEFAULT_LAYOUT&lt;code>).
-    		  *
-    		  * Then the &lt;code>before_page_prepare&lt;/code> of the &lt;em>controller&lt;/em> is invoked (if it exists).
-    		  *
-    		  * Then renders the &lt;em>view&lt;/em> into the
-    		  * layout-template; &lt;em>partials&lt;/em>, &lt;em>helpers&lt;/em> etc.
-    		  * that are referenced in the &lt;em>view&lt;/em> will be processed,
-    		  * executed etc.; during this, localized Strings should be processed and rendered by
-    		  * {@link mmir.LanguageManager#getText}.
-    		  *
-    		  * Then &lt;em>dialogs&lt;/em> are created and the &lt;code>dialogManager.pageIndex&lt;/code> is updated.
-    		  *
-    		  * The new content is inserted into the document/page (invisibly).
-    		  *
-    		  * Then the &lt;code>before_page_load&lt;/code> of the &lt;em>controller&lt;/em> is invoked (if it exists).
-    		  *
-    		  * The new content/page is made visible, and the old one invisible and / or is removed.
-    		  *
-    		  * At the end the &lt;b>on_page_load&lt;/b> action of the &lt;em>controller&lt;/em> is performed.
-    		  *
-    		  * @function
-    		  * @memberOf mmir.PresentationManager._renderingEngine
-    		  *
-    		  * @param {String}
-    		  *            ctrlName Name of the controller
-    		  * @param {String}
-    		  *            viewName Name of the view to render
-    		  * @param {Object}
-    		  *            view View object that is to be rendered
-    		  * @param {Object}
-    		  *            ctrl Controller object of the view to render
-    		  * @param {Object}
-    		  *            [data] optional data for the view.
-    		  * @returns {void|Promise}
-    		  * 			if void/undefined is returned, the view is rendered synchronously, i.e.
-			  * 			the view is rendered, when this method returns.
-			  * 			If a Promise is returned, the view is rendered asynchronously
-			  * 			(rendering is finished, when the promise is resolved)
-    		  */
-    		 render: function(ctrlName, viewName, view, ctrl, data){
-    			 logger.error('PresentationManager.render: no rendering engine set!');
-    		 },
-    		 showDialog: function(ctrlName, dialogId, data) {
-    			 logger.error('PresentationManager.showDialog: no rendering engine set!');
-    		 },
-    		 hideCurrentDialog: function(){
-    			 logger.error('PresentationManager.hideCurrentDialog: no rendering engine set!');
-    		 },
-    		 showWaitDialog: function(text, data) {
-    			 logger.error('PresentationManager.showWaitDialog: no rendering engine set!');
-    		 },
-    		 hideWaitDialog: function() {
-    			 logger.error('PresentationManager.hideWaitDialog: no rendering engine set!');
-    		 }
-     };
-	 /**
-	  * Reference to the rendering-engine implementation / instance.
-	  *
-	  * This reference should not be accessed directly.
-	  * Custom functions of the rendering implementation can be
-	  * invoked via {@link mmir.PresentationManager#callRenderEngine}.
-	  *
-	  * @type Object
-	  * @private
-	  */
-     _renderEngine._engine = _renderEngine;
+	/**
+	 * Default implementation for the rendering-engine:
+	 *
+	 * does nothing but writing an error message to the console,
+	 * if any of its functions is invoked.
+	 *
+	 * The rendering engine can be set via {@link mmir.PresentationManager#setRenderEngine}.
+	 *
+	 * @type RenderEngine
+	 * @private
+	 * @memberOf mmir.PresentationManager#
+	 */
+	var _renderEngine = {
+			/**
+			 * The function that actually renders the View.&lt;br>
+			 *
+			 * The function will be invoked in context of the PresentationManager instance
+			 * (i.e. the manager will be the &lt;em>this&lt;/em> context).
+			 *
+			 * Implementations of this function should adhere to the following procedure:
+			 *
+			 * &lt;br>
+			 *
+			 * First this function fetches the &lt;em>layout&lt;/em> for the &lt;em>controller&lt;/em>
+			 * (or uses the &lt;code>dialogManager.DEFAULT_LAYOUT&lt;code>).
+			 *
+			 * Then the &lt;code>before_page_prepare&lt;/code> of the &lt;em>controller&lt;/em> is invoked (if it exists).
+			 *
+			 * Then renders the &lt;em>view&lt;/em> into the
+			 * layout-template; &lt;em>partials&lt;/em>, &lt;em>helpers&lt;/em> etc.
+			 * that are referenced in the &lt;em>view&lt;/em> will be processed,
+			 * executed etc.; during this, localized Strings should be processed and rendered by
+			 * {@link mmir.LanguageManager#getText}.
+			 *
+			 * Then &lt;em>dialogs&lt;/em> are created and the &lt;code>dialogManager.pageIndex&lt;/code> is updated.
+			 *
+			 * The new content is inserted into the document/page (invisibly).
+			 *
+			 * Then the &lt;code>before_page_load&lt;/code> of the &lt;em>controller&lt;/em> is invoked (if it exists).
+			 *
+			 * The new content/page is made visible, and the old one invisible and / or is removed.
+			 *
+			 * At the end the &lt;b>on_page_load&lt;/b> action of the &lt;em>controller&lt;/em> is performed.
+			 *
+			 * @function
+			 * @memberOf mmir.PresentationManager._renderingEngine
+			 *
+			 * @param {String}
+			 *            ctrlName Name of the controller
+			 * @param {String}
+			 *            viewName Name of the view to render
+			 * @param {Object}
+			 *            view View object that is to be rendered
+			 * @param {Object}
+			 *            ctrl Controller object of the view to render
+			 * @param {Object}
+			 *            [data] optional data for the view.
+			 * @returns {void|Promise}
+			 * 			if void/undefined is returned, the view is rendered synchronously, i.e.
+			 * 			the view is rendered, when this method returns.
+			 * 			If a Promise is returned, the view is rendered asynchronously
+			 * 			(rendering is finished, when the promise is resolved)
+			 */
+			render: function(ctrlName, viewName, view, ctrl, data){
+				logger.error('PresentationManager.render: no rendering engine set!');
+			},
+			showDialog: function(ctrlName, dialogId, data) {
+				logger.error('PresentationManager.showDialog: no rendering engine set!');
+			},
+			hideCurrentDialog: function(){
+				logger.error('PresentationManager.hideCurrentDialog: no rendering engine set!');
+			},
+			showWaitDialog: function(text, data) {
+				logger.error('PresentationManager.showWaitDialog: no rendering engine set!');
+			},
+			hideWaitDialog: function() {
+				logger.error('PresentationManager.hideWaitDialog: no rendering engine set!');
+			}
+	};
+	/**
+	 * Reference to the rendering-engine implementation / instance.
+	 *
+	 * This reference should not be accessed directly.
+	 * Custom functions of the rendering implementation can be
+	 * invoked via {@link mmir.PresentationManager#callRenderEngine}.
+	 *
+	 * @type Object
+	 * @private
+	 */
+	_renderEngine._engine = _renderEngine;
 
-	 var _instance = {
+	var _instance = {
 			/** @scope mmir.PresentationManager.prototype  */
 
-           // public members
+			// public members
 			/**
 			 * @param {Layout} layout
 			 * 			the layout to add
 			 * @memberOf mmir.PresentationManager.prototype
 			 */
-            addLayout : function(layout) {
-                _layouts.set(layout.getName(), layout);
-            },
-            /**
-             * This function returns a layout object by name.&lt;br>
-             *
-             * @function
-             * @param {String}
-             *            layoutName Name of the layout which should be returned
-             * @param {Boolean}
-             *            [doUseDefaultIfMissing] if supplied and
-             *            &lt;code>true&lt;/code>, the default controller's layout
-             *            will be used as a fallback, in case no corresponding
-             *            layout could be found
-             * @returns {Object} The requested layout, "false" if not found
-             * @public
+			addLayout : function(layout) {
+				_layouts.set(layout.getName(), layout);
+			},
+			/**
+			 * This function returns a layout object by name.&lt;br>
+			 *
+			 * @function
+			 * @param {String}
+			 *            layoutName Name of the layout which should be returned
+			 * @param {Boolean}
+			 *            [doUseDefaultIfMissing] if supplied and
+			 *            &lt;code>true&lt;/code>, the default controller's layout
+			 *            will be used as a fallback, in case no corresponding
+			 *            layout could be found
+			 * @returns {Object} The requested layout, "false" if not found
+			 * @public
 			 * @memberOf mmir.PresentationManager.prototype
-             */
-            getLayout : function(layoutName, doUseDefaultIfMissing) {
-                var layout = false;
-                layout = _layouts.get(layoutName);
-                if (!layout) {
-                    if (doUseDefaultIfMissing) {
-                        layout = _instance.getLayout(DEFAULT_LAYOUT_NAME, false);
-                    }
-                    else {
-                        logger.error('[PresentationManager.getLayout]: could not find layout "' + layoutName +'"')
-                        return false;
-                    }
-                }
-                return layout;
-            },
+			 */
+			getLayout : function(layoutName, doUseDefaultIfMissing) {
+				var layout = false;
+				layout = _layouts.get(layoutName);
+				if (!layout) {
+					if (doUseDefaultIfMissing) {
+						layout = _instance.getLayout(DEFAULT_LAYOUT_NAME, false);
+					}
+					else {
+						logger.error('[PresentationManager.getLayout]: could not find layout "' + layoutName +'"')
+						return false;
+					}
+				}
+				return layout;
+			},
 
-            /**
-             *
-             * @param {String|Controller} ctrlName
-             * @param {String|View} view
-             * @public
+			/**
+			 *
+			 * @param {String|Controller} ctrlName
+			 * @param {String|View} view
+			 * @public
 			 * @memberOf mmir.PresentationManager.prototype
-             */
-            addView : function(ctrlName, view) {
-                _views.set(createViewKey(ctrlName, view), view);
-            },
-            /**
-             * This function returns a view object by name.&lt;br>
-             *
-             * @function
-             * @param {String}
-             *            controllerName Name of the controller for the view
-             * @param {String}
-             *            viewName Name of the view which should be returned
-             * @returns {Object} The requested view, &lt;tt>false&lt;/tt> if not
-             *          found
-             * @public
+			 */
+			addView : function(ctrlName, view) {
+				_views.set(createViewKey(ctrlName, view), view);
+			},
+			/**
+			 * This function returns a view object by name.&lt;br>
+			 *
+			 * @function
+			 * @param {String}
+			 *            controllerName Name of the controller for the view
+			 * @param {String}
+			 *            viewName Name of the view which should be returned
+			 * @returns {Object} The requested view, &lt;tt>false&lt;/tt> if not
+			 *          found
+			 * @public
 			 * @memberOf mmir.PresentationManager.prototype
-             */
-            getView : function(controllerName, viewName) {
-                viewName = createViewKey(controllerName, viewName);
-                var view = false;
-                view = _views.get(viewName);
+			 */
+			getView : function(controllerName, viewName) {
+				viewName = createViewKey(controllerName, viewName);
+				var view = false;
+				view = _views.get(viewName);
 
-                if (!view) {
-                    logger.error('[PresentationManager.getView]: could not find view "' + viewName + '"');
-                    return false;
-                }
-                return view;
-            },
-            /**
-             *
-             * @param {String|Controller} ctrlName
-             * @param {String|Partial} partial
-             *
-             * @public
+				if (!view) {
+					logger.error('[PresentationManager.getView]: could not find view "' + viewName + '"');
+					return false;
+				}
+				return view;
+			},
+			/**
+			 *
+			 * @param {String|Controller} ctrlName
+			 * @param {String|Partial} partial
+			 *
+			 * @public
 			 * @memberOf mmir.PresentationManager.prototype
-             */
-            addPartial: function(ctrlName, partial){
-            	_partials.set(createPartialKey(ctrlName, partial), partial);
-            },
+			 */
+			addPartial: function(ctrlName, partial){
+				_partials.set(createPartialKey(ctrlName, partial), partial);
+			},
 
-            /**
-             * This function returns a partial object by name.&lt;br>
-             *
-             * @function
-             * @param {String}
-             *            controllerName Name of the controller for the view
-             * @param {String}
-             *            viewName Name of the partial which should be returned
-             * @returns {Object} The requested partial, "false" if not found
-             * @public
+			/**
+			 * This function returns a partial object by name.&lt;br>
+			 *
+			 * @function
+			 * @param {String}
+			 *            controllerName Name of the controller for the view
+			 * @param {String}
+			 *            viewName Name of the partial which should be returned
+			 * @returns {Object} The requested partial, "false" if not found
+			 * @public
 			 * @memberOf mmir.PresentationManager.prototype
-             */
-            getPartial : function(controllerName, partialName) {
-                var partial = false;
+			 */
+			getPartial : function(controllerName, partialName) {
+				var partial = false;
 
-                var partialKey = null;
-                if (controllerName) {
-                    partialKey = createPartialKey(controllerName, partialName);
-                }
-                else {
-                    logger.error('[PresentationManager.getPartial]: requested partial "' + partialName + '" for unknown controller: "' + (controllerName ? (controllerName.getName? controllerName.getName(): controllerName) : 'undefined')
-                            + '"');
-                    return false;
-                }
+				var partialKey = null;
+				if (controllerName) {
+					partialKey = createPartialKey(controllerName, partialName);
+				}
+				else {
+					logger.error('[PresentationManager.getPartial]: requested partial "' + partialName + '" for unknown controller: "' + (controllerName ? (controllerName.getName? controllerName.getName(): controllerName) : 'undefined')
+							+ '"');
+					return false;
+				}
 
-                partial = _partials.get(partialKey);
-                if (!partial) {
-                    logger.error('[PresentationManager.getPartial]: could not find partial "' + partialName + '" for controller "' + (controllerName ? (controllerName.getName? controllerName.getName(): controllerName) : 'undefined') + '"!');
-                    return false;
-                }
-                return partial;
-            },
+				partial = _partials.get(partialKey);
+				if (!partial) {
+					logger.error('[PresentationManager.getPartial]: could not find partial "' + partialName + '" for controller "' + (controllerName ? (controllerName.getName? controllerName.getName(): controllerName) : 'undefined') + '"!');
+					return false;
+				}
+				return partial;
+			},
 
-            /**
-             * Closes a modal window / dialog (if one is open).
-             * &lt;br>
-             *
-             * @function
-             * @public
+			/**
+			 * Closes a modal window / dialog (if one is open).
+			 * &lt;br>
+			 *
+			 * @function
+			 * @public
 			 * @memberOf mmir.PresentationManager.prototype
-             */
-            hideCurrentDialog : function() {
+			 */
+			hideCurrentDialog : function() {
 				_renderEngine.hideCurrentDialog.apply(this,arguments);
-            },
+			},
 
-            /**
-             * Opens the dialog for ID &lt;code>dialogId&lt;/code>.
-             * &lt;br>
-             *
-             * @function
-             * @param {String} ctrlName
-             *            the Name of the controller
-             * @param {String} dialogId
-             *            the ID of the dialog
-             * @param {Object} [data] OPTIONAL
-             *            a data / options object
-             *
-             * @returns {Object} the instance of the opened dialog (void or falsy if dialog was not opened)
-             *
-             * @public
+			/**
+			 * Opens the dialog for ID &lt;code>dialogId&lt;/code>.
+			 * &lt;br>
+			 *
+			 * @function
+			 * @param {String} ctrlName
+			 *            the Name of the controller
+			 * @param {String} dialogId
+			 *            the ID of the dialog
+			 * @param {Object} [data] OPTIONAL
+			 *            a data / options object
+			 *
+			 * @returns {Object} the instance of the opened dialog (void or falsy if dialog was not opened)
+			 *
+			 * @public
 			 * @memberOf mmir.PresentationManager.prototype
-             */
-            showDialog : function(ctrlName, dialogId, data) {
-            	_currentDialog = _renderEngine.showDialog.apply(this,arguments);
+			 */
+			showDialog : function(ctrlName, dialogId, data) {
+				_currentDialog = _renderEngine.showDialog.apply(this,arguments);
 				return _currentDialog;
 			},
 
@@ -3463,29 +3465,29 @@ define([ 'mmirf/controllerManager', 'mmirf/commonUtils', 'mmirf/viewLoader', 'mm
 			 * @public
 			 * @memberOf mmir.PresentationManager.prototype
 			 */
-            render : function(ctrlName, viewName, data) {
+			render : function(ctrlName, viewName, data) {
 
-                var ctrl = controllerManager.get(ctrlName);
-                var renderResult;
+				var ctrl = controllerManager.get(ctrlName);
+				var renderResult;
 
-                if (ctrl != null) {
+				if (ctrl != null) {
 
-                    var view = this.getView(ctrlName, viewName);
+					var view = this.getView(ctrlName, viewName);
 
-                    if(!view){
-                    	logger.error('PresentationManager.renderView: could not find view "'+viewName+'" for controller "'+ctrlName+'"');
-                    	return;
-                    }
+					if(!view){
+						logger.error('PresentationManager.renderView: could not find view "'+viewName+'" for controller "'+ctrlName+'"');
+						return;
+					}
 
-                    renderResult = _renderEngine.render.call(this, ctrlName, viewName, view, ctrl, data);
+					renderResult = _renderEngine.render.call(this, ctrlName, viewName, view, ctrl, data);
 
-                }
-                else {
-                	logger.error('PresentationManager.renderView: could not retrieve controller "'+ctrlName+'"');
-                }
+				}
+				else {
+					logger.error('PresentationManager.renderView: could not retrieve controller "'+ctrlName+'"');
+				}
 
-                return renderResult;
-            },
+				return renderResult;
+			},
 						/**
 						 * Helper for emitting pre-/post-render events on controller instance and/or
 						 * PresentationManager instance.
@@ -3521,154 +3523,154 @@ define([ 'mmirf/controllerManager', 'mmirf/commonUtils', 'mmirf/viewLoader', 'mm
 							return isContinue;
 						},
 
-            /**
-             * @function
+			/**
+			 * @function
 			 * @memberOf mmir.PresentationManager.prototype
-             */
-            init: function(){
+			 */
+			init: function(){
 
-            	var defer = deferred();
+				var defer = deferred();
 
-            	var isViewEngineLoaded = false;//MOD modularize view-engine
-            	var isViewsLoaded = false;//MOD modularize view-loading &amp; -compiling
+				var isViewEngineLoaded = false;//MOD modularize view-engine
+				var isViewsLoaded = false;//MOD modularize view-loading &amp; -compiling
 
-            	var checkResolved = function(){
-            		if(isViewEngineLoaded &amp;&amp; isViewsLoaded){
-            			defer.resolve(_instance);
-            		}
-            	};
+				var checkResolved = function(){
+					if(isViewEngineLoaded &amp;&amp; isViewsLoaded){
+						defer.resolve(_instance);
+					}
+				};
 
-            	var failPromise = function(msg){
-        			defer.reject(msg);
-        		};
+				var failPromise = function(msg){
+					defer.reject(msg);
+				};
 
-        		//MOD modularize view-engine: load viewEngine (default uses standard HTML document API)
-        		require([typeof WEBPACK_BUILD !== 'undefined' &amp;&amp; WEBPACK_BUILD? 'mmirf/simpleViewEngine' : core.viewEngine], function(viewEngineInit){//FIXME
-        			viewEngineInit.then(
-        				function(viewEngine){
-        					_instance.setRenderEngine(viewEngine);
-        					isViewEngineLoaded = true;
-        					checkResolved();
-        				}, failPromise
-        			);
-        		});
+				//MOD modularize view-engine: load viewEngine (default uses standard HTML document API)
+				require([typeof WEBPACK_BUILD !== 'undefined' &amp;&amp; WEBPACK_BUILD? 'mmirf/simpleViewEngine' : core.viewEngine], function(viewEngineInit){//FIXME
+					viewEngineInit.then(
+						function(viewEngine){
+							_instance.setRenderEngine(viewEngine);
+							isViewEngineLoaded = true;
+							checkResolved();
+						}, failPromise
+					);
+				});
 
-            	viewLoader(
-        			_instance, _layouts, _views, _partials, createViewKey, createPartialKey
-            	).then(function(){
-            		isViewsLoaded = true;
-            		checkResolved();
-            	}, failPromise);
+				viewLoader(
+					_instance, _layouts, _views, _partials, createViewKey, createPartialKey
+				).then(function(){
+					isViewsLoaded = true;
+					checkResolved();
+				}, failPromise);
 
-            	return defer;
-            },// init,
+				return defer;
+			},// init,
 
-            /**
-             * Sets the &lt;em>rendering engine&lt;/em> for the views.
-             *
-             * The render engine &lt;b>must&lt;/b> implement a function &lt;em>render&lt;/em>
-             * and &lt;i>may&lt;/i> implement functions &lt;em>showDialog&lt;/em>,
-             * &lt;em>hideCurrentDialog&lt;/em>, &lt;em>showWaitDialog&lt;/em>, and &lt;em>hideWaitDialog&lt;/em>:
-             *
-             * &lt;ul>
-             * 	&lt;li>&lt;b>theRenderEngine.&lt;code>render(ctrlName : String, viewName : String, view : View, ctrl : Controller, data : Object) : void|Promise&lt;/code>&lt;/b>&lt;/li>
-             * 	&lt;li>theRenderEngine.&lt;code>showDialog(ctrlName : String, dialogId : String, data : Object) : Dialog&lt;/code>&lt;/li>
-             * 	&lt;li>theRenderEngine.&lt;code>hideCurrentDialog(): void&lt;/code>&lt;/li>
-             * 	&lt;li>theRenderEngine.&lt;code>showWaitDialog(text : String, data : Object): void&lt;/code>&lt;/li>
-             * 	&lt;li>theRenderEngine.&lt;code>hideWaitDialog(): void&lt;/code>&lt;/li>
-             * &lt;/ul>
-             *
-             * The functions of &lt;code>theRenderEngine&lt;/code> will be called in
-             * context of the PresentationManager.
-             *
-             * Custom functions of the specific rendering engine implementation
-             * (i.e. non-standard functions) can be call via {@link #callRenderEngine}.
-             *
-             *
-             * &lt;br>
-             * By default, the rendering-engine as defined by the module ID/path in
-             * &lt;code>core.viewEngine&lt;/code> will be loaded and set during initialization
-             * of the DialogManager.
-             *
-             * &lt;br>
-             * The implementation of the default view-engine is at
-             * &lt;code>mmirf/env/view/presentation/simpleViewEngine.js&lt;/code>.
-             *
-             * @param {Object} theRenderEngine
-             * 			the render-engine for views
-             *
-             * @function
-             * @public
+			/**
+			 * Sets the &lt;em>rendering engine&lt;/em> for the views.
+			 *
+			 * The render engine &lt;b>must&lt;/b> implement a function &lt;em>render&lt;/em>
+			 * and &lt;i>may&lt;/i> implement functions &lt;em>showDialog&lt;/em>,
+			 * &lt;em>hideCurrentDialog&lt;/em>, &lt;em>showWaitDialog&lt;/em>, and &lt;em>hideWaitDialog&lt;/em>:
+			 *
+			 * &lt;ul>
+			 * 	&lt;li>&lt;b>theRenderEngine.&lt;code>render(ctrlName : String, viewName : String, view : View, ctrl : Controller, data : Object) : void|Promise&lt;/code>&lt;/b>&lt;/li>
+			 * 	&lt;li>theRenderEngine.&lt;code>showDialog(ctrlName : String, dialogId : String, data : Object) : Dialog&lt;/code>&lt;/li>
+			 * 	&lt;li>theRenderEngine.&lt;code>hideCurrentDialog(): void&lt;/code>&lt;/li>
+			 * 	&lt;li>theRenderEngine.&lt;code>showWaitDialog(text : String, data : Object): void&lt;/code>&lt;/li>
+			 * 	&lt;li>theRenderEngine.&lt;code>hideWaitDialog(): void&lt;/code>&lt;/li>
+			 * &lt;/ul>
+			 *
+			 * The functions of &lt;code>theRenderEngine&lt;/code> will be called in
+			 * context of the PresentationManager.
+			 *
+			 * Custom functions of the specific rendering engine implementation
+			 * (i.e. non-standard functions) can be call via {@link #callRenderEngine}.
+			 *
+			 *
+			 * &lt;br>
+			 * By default, the rendering-engine as defined by the module ID/path in
+			 * &lt;code>core.viewEngine&lt;/code> will be loaded and set during initialization
+			 * of the DialogManager.
+			 *
+			 * &lt;br>
+			 * The implementation of the default view-engine is at
+			 * &lt;code>mmirf/env/view/presentation/simpleViewEngine.js&lt;/code>.
+			 *
+			 * @param {Object} theRenderEngine
+			 * 			the render-engine for views
+			 *
+			 * @function
+			 * @public
 			 * @memberOf mmir.PresentationManager.prototype
-             *
-             * @see mmir.PresentationManager#renderView
-             * @see mmir.PresentationManager#showDialog
-             * @see mmir.PresentationManager#hideCurrentDialog
-             * @see mmir.PresentationManager#showWaitDialog
-             * @see mmir.PresentationManager#hideWaitDialog
-             *
-             * @see mmir.PresentationManager#callRenderEngine
-             *
-             */
-            setRenderEngine: function(theRenderEngine){
-            	_renderEngine.render 			= theRenderEngine.render;
-            	_renderEngine.showDialog		= theRenderEngine.showDialog;
-            	_renderEngine.hideCurrentDialog	= theRenderEngine.hideCurrentDialog;
-            	_renderEngine.showWaitDialog	= theRenderEngine.showWaitDialog;
-            	_renderEngine.hideWaitDialog	= theRenderEngine.hideWaitDialog;
-            	_renderEngine._engine			= theRenderEngine;
-            },
-            /**
-             * This function allows to call custom functions of the rendering-engine
-             * that was set via {@link #setRenderEngine}.
-             *
-             * IMPORTANT:
-             * note that the function will be invoked in context of rendering-engine
-             * (i.e. &lt;code>this&lt;/code> references will refer to rendering-engine
-             * and not to the PresentationManager instance.
-             * For example, when &lt;code>mmir.PresentationManager.callRenderEngine('hideWaitDialog')&lt;/code>
-             * is called, any &lt;code>this&lt;/code> references within the &lt;code>hideWaitDialog&lt;/code>
-             * implementation would refer to object, that was set in &lt;code>setRenderEngine(object)&lt;/code>.
-             * In comparison, when called as &lt;code>mmir.PresentationManager.hideWaitDialog()&lt;/code> the
-             * &lt;code>this&lt;/code> references refer to the mmir.PresentationManager instance.
-             *
-             * &lt;br>
-             * NOTE that calling non-existing functions on the rendering-engine
-             *      will cause an error.
-             *
-             * @param {String} funcName
-             * 			the name of the function, that should be invoked on the rendering
-             * 			engine.
-             * @param {Array&lt;any>} [args] OPTIONAL
-             * 			the arguments for &lt;code>funcName&lt;/code> invoked
-             *          via &lt;code>Function.apply(renderingEngine, args)&lt;/code>, e.g.
-             * 			for &lt;code>args = [param1, param2, param3]&lt;/code> the
-             * 			function will be called with
-             * 			&lt;code>funcName(param1, param2, param3)&lt;/code>
-             * 			(note that the function receives 3 arguments, and
-             *           not 1 Array-argument).
-             *
-             * @function
-             * @public
+			 *
+			 * @see mmir.PresentationManager#renderView
+			 * @see mmir.PresentationManager#showDialog
+			 * @see mmir.PresentationManager#hideCurrentDialog
+			 * @see mmir.PresentationManager#showWaitDialog
+			 * @see mmir.PresentationManager#hideWaitDialog
+			 *
+			 * @see mmir.PresentationManager#callRenderEngine
+			 *
+			 */
+			setRenderEngine: function(theRenderEngine){
+				_renderEngine.render 			= theRenderEngine.render;
+				_renderEngine.showDialog		= theRenderEngine.showDialog;
+				_renderEngine.hideCurrentDialog	= theRenderEngine.hideCurrentDialog;
+				_renderEngine.showWaitDialog	= theRenderEngine.showWaitDialog;
+				_renderEngine.hideWaitDialog	= theRenderEngine.hideWaitDialog;
+				_renderEngine._engine			= theRenderEngine;
+			},
+			/**
+			 * This function allows to call custom functions of the rendering-engine
+			 * that was set via {@link #setRenderEngine}.
+			 *
+			 * IMPORTANT:
+			 * note that the function will be invoked in context of rendering-engine
+			 * (i.e. &lt;code>this&lt;/code> references will refer to rendering-engine
+			 * and not to the PresentationManager instance.
+			 * For example, when &lt;code>mmir.PresentationManager.callRenderEngine('hideWaitDialog')&lt;/code>
+			 * is called, any &lt;code>this&lt;/code> references within the &lt;code>hideWaitDialog&lt;/code>
+			 * implementation would refer to object, that was set in &lt;code>setRenderEngine(object)&lt;/code>.
+			 * In comparison, when called as &lt;code>mmir.PresentationManager.hideWaitDialog()&lt;/code> the
+			 * &lt;code>this&lt;/code> references refer to the mmir.PresentationManager instance.
+			 *
+			 * &lt;br>
+			 * NOTE that calling non-existing functions on the rendering-engine
+			 *      will cause an error.
+			 *
+			 * @param {String} funcName
+			 * 			the name of the function, that should be invoked on the rendering
+			 * 			engine.
+			 * @param {Array&lt;any>} [args] OPTIONAL
+			 * 			the arguments for &lt;code>funcName&lt;/code> invoked
+			 *          via &lt;code>Function.apply(renderingEngine, args)&lt;/code>, e.g.
+			 * 			for &lt;code>args = [param1, param2, param3]&lt;/code> the
+			 * 			function will be called with
+			 * 			&lt;code>funcName(param1, param2, param3)&lt;/code>
+			 * 			(note that the function receives 3 arguments, and
+			 *           not 1 Array-argument).
+			 *
+			 * @function
+			 * @public
 			 * @memberOf mmir.PresentationManager.prototype
-             */
-            callRenderEngine: function(funcName, args){
-            	return _renderEngine._engine[funcName].apply(_renderEngine._engine, args);
-            },
+			 */
+			callRenderEngine: function(funcName, args){
+				return _renderEngine._engine[funcName].apply(_renderEngine._engine, args);
+			},
 
-            //exported properties / constants:
-            /**
-             * @public
-             * @type Integer
-             * @constant
+			//exported properties / constants:
+			/**
+			 * @public
+			 * @type Integer
+			 * @constant
 			 * @memberOf mmir.PresentationManager.prototype
-             */
-            pageIndex:		_pageIndex
-	 };//END:  _instance = {...
+			 */
+			pageIndex:		_pageIndex
+	};//END:  _instance = {...
 
-	 //export constants:
-	 _instance.DEFAULT_LAYOUT_NAME = DEFAULT_LAYOUT_NAME;
-	 _instance.CONFIG_DEFAULT_LAYOUT_NAME = CONFIG_DEFAULT_LAYOUT_NAME;
+	//export constants:
+	_instance.DEFAULT_LAYOUT_NAME = DEFAULT_LAYOUT_NAME;
+	_instance.CONFIG_DEFAULT_LAYOUT_NAME = CONFIG_DEFAULT_LAYOUT_NAME;
 
 
 	return _instance;

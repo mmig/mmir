@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -139,9 +141,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -150,11 +152,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -164,9 +166,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3390,155 +3392,155 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>define(['require', 'mmirf/semanticInterpreterCompatibility',
-    'mmirf/configurationManager','mmirf/controllerManager','mmirf/dialogManager','mmirf/dialogEngine',
-    'mmirf/inputManager','mmirf/inputEngine','mmirf/commonUtils','mmirf/languageManager','mmirf/mediaManager','mmirf/presentationManager',
-    'mmirf/semanticInterpreter','mmirf/modelManager','mmirf/resources','mmirf/notificationManager','mmirf/grammarConverter', 'mmirf/util/deferred',
-    'mmirf/parseUtils', 'mmirf/renderUtils', 'mmirf/scionEngine',
-    //only loaded, not used as argument:
-    'mmirf/stringExtension'
+	'mmirf/configurationManager','mmirf/controllerManager','mmirf/dialogManager','mmirf/dialogEngine',
+	'mmirf/inputManager','mmirf/inputEngine','mmirf/commonUtils','mmirf/languageManager','mmirf/mediaManager','mmirf/presentationManager',
+	'mmirf/semanticInterpreter','mmirf/modelManager','mmirf/resources','mmirf/notificationManager','mmirf/grammarConverter', 'mmirf/util/deferred',
+	'mmirf/parseUtils', 'mmirf/renderUtils', 'mmirf/scionEngine',
+	//only loaded, not used as argument:
+	'mmirf/stringExtension'
 ],
 	/**
-     * Set to "backwards compatibility mode v3" (for pre version 4.0) for module names and method names.
-     *
+	 * Set to "backwards compatibility mode v3" (for pre version 4.0) for module names and method names.
+	 *
 	 * This function adds old names/synonyms for modules names (on &lt;code>mmir&lt;/code> object/namespace):
-     * &lt;ul>
-     * 	&lt;li> {@link mmir.CommonUtils} as
-     *          &lt;b>&lt;u>mmir.util&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li> {@link mmir.ConfigurationManager} as
-     *          &lt;b>&lt;u>mmir.conf&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li> {@link mmir.ControllerManager} as
-     *          &lt;b>&lt;u>mmir.ctrl&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li> {@link mmir.Resources } as
-     *          &lt;b>&lt;u>mmir.const&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li> {@link mmir.DialogManager} as
-     *          &lt;b>&lt;u>mmir.dialog&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li> {@link mmir.InputManager } as
-     *          &lt;b>&lt;u>mmir.input&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li> {@link mmir.LanguageManager} as
-     *          &lt;b>&lt;u>mmir.lang&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li> {@link mmir.MediaManager} as
-     *          &lt;b>&lt;u>mmir.media&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li> {@link mmir.ModelManager} as
-     *          &lt;b>&lt;u>mmir.model&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li> {@link mmir.NotificationManager} as
-     *          &lt;b>&lt;u>mmir.notifier&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li> {@link mmir.PresentationManager} as
-     *          &lt;b>&lt;u>mmir.presentation&lt;/u>&lt;/b>
-     *  &lt;/li>&lt;li> {@link mmir.SemanticInterpreter} as
-     *          &lt;b>&lt;u>mmir.semantic&lt;/u>&lt;/b>
-     *  &lt;/li>
-     * &lt;/ul>
-     *
-     * In addition, old method names will be added as synonyms:
-     * &lt;ul>
-     * 	 &lt;li> {@link mmir.ConfigurationManager}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.ConfigurationManager}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>&lt;li> {@link mmir.Resources}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.Resources}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>&lt;li> {@link mmir.ControllerManager}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>get&lt;/u>&lt;/b> for {@link mmir.ControllerManager#getController}&lt;/li>
-     * 			&lt;li>&lt;b>&lt;u>getNames&lt;/u>&lt;/b> for {@link mmir.ControllerManager#getControllerNames}&lt;/li>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.ControllerManager}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>&lt;li> {@link mmir.DialogManager}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.DialogManager}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>&lt;li> {@link mmir.InputManager}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.InputManager}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>&lt;li> {@link mmir.LanguageManager}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.LanguageManager}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>&lt;li> {@link mmir.ModelManager}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>get&lt;/u>&lt;/b> for {@link mmir.ModelManager#getController}&lt;/li>
-     * 			&lt;li>&lt;b>&lt;u>getNames&lt;/u>&lt;/b> for {@link mmir.ModelManager#getControllerNames}&lt;/li>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.ModelManager}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>&lt;li> {@link mmir.ModelManager}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>get&lt;/u>&lt;/b> for {@link mmir.ModelManager#getController}&lt;/li>
-     * 			&lt;li>&lt;b>&lt;u>getNames&lt;/u>&lt;/b> for {@link mmir.ModelManager#getControllerNames}&lt;/li>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.ModelManager}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>
-     *  &lt;li> {@link mmir.NotificationManager}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.NotificationManager}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>
-     *  &lt;li> {@link mmir.PresentationManager}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>renderView&lt;/u>&lt;/b> for {@link mmir.PresentationManager#render}&lt;/li>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.PresentationManager}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>&lt;li> {@link mmir.parser.ParserUtils}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.parser.ParserUtils}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>&lt;li> {@link mmir.parser.RenderUtils}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.parser.RenderUtils}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>&lt;li> {@link mmir.SemanticInterpreter}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>getASRSemantic&lt;/u>&lt;/b> for {@link mmir.SemanticInterpreter#interpret}&lt;/li>
-     * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.SemanticInterpreter}&lt;/li>
-     * 		&lt;/ul>
-     *  &lt;/li>
-     * &lt;/ul>
-     *
-     * Methods with changed signature will be re-mapped to match their old signature
-     * &lt;ul>
-     * 	 &lt;li> {@link mmir.ConfigurationManager}
-     * 		&lt;ul>
-     * 			&lt;li>map &lt;b>&lt;u>get(propertyName, defaultValue, useSafeAccess)&lt;/u>&lt;/b> back to &lt;br>
-     * 				get(propertyName, useSafeAccess, defaultValue)&lt;br>
-     * 				the original function will be available via &lt;em>_get(propertyName, useSafeAccess, defaultValue)&lt;/em>
-     * 			&lt;/li>
-     * 			&lt;li>map &lt;b>&lt;u>getBoolean(propertyName, defaultValue, useSafeAccess)&lt;/u>&lt;/b> back to &lt;br>
-     * 				getBoolean(propertyName, useSafeAccess, defaultValue)&lt;br>
-     * 				the original function will be available via &lt;em>_getBoolean(propertyName, useSafeAccess, defaultValue)&lt;/em>
-     * 			&lt;/li>
-     * 			&lt;li>map &lt;b>&lt;u>getString(propertyName, defaultValue, useSafeAccess)&lt;/u>&lt;/b> back to &lt;br>
-     * 				getString(propertyName, useSafeAccess, defaultValue)&lt;br>
-     * 				the original function will be available via &lt;em>_getString(propertyName, useSafeAccess, defaultValue)&lt;/em>
-     * 			&lt;/li>
-     * 		&lt;/ul>
-     *   &lt;/li>
-     * &lt;/ul>
-     *
-     * Lastly, removed methods will be added:
-     * &lt;ul>
-     * 	&lt;li> {@link mmir.Resources}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>getPluginsPath&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> to {@link mmir.CommonUtils}&lt;/li>
-     * 		&lt;/ul>
-     *   &lt;/li>
-     * 	 &lt;li> {@link mmir.CommonUtils}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>loadAllCordovaPlugins&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> to {@link mmir.CommonUtils}&lt;/li>
-     * 			&lt;li>&lt;b>&lt;u>setToCompatibilityMode&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> to {@link mmir.CommonUtils}&lt;/li>
-     * 		&lt;/ul>
-     *   &lt;/li>
-     * 	 &lt;li> {@link mmir.LanguageManager}
-     * 		&lt;ul>
-     * 			&lt;li>&lt;b>&lt;u>setToCompatibilityMode&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> to {@link mmir.LanguageManager}&lt;/li>
-     * 		&lt;/ul>
-     *   &lt;/li>
-     * &lt;/ul>
-     *
-     * @param {mmir} mmir
-     * 			the (core) instance/namespace for MMIR
-     *
+	 * &lt;ul>
+	 * 	&lt;li> {@link mmir.CommonUtils} as
+	 *          &lt;b>&lt;u>mmir.util&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li> {@link mmir.ConfigurationManager} as
+	 *          &lt;b>&lt;u>mmir.conf&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li> {@link mmir.ControllerManager} as
+	 *          &lt;b>&lt;u>mmir.ctrl&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li> {@link mmir.Resources } as
+	 *          &lt;b>&lt;u>mmir.const&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li> {@link mmir.DialogManager} as
+	 *          &lt;b>&lt;u>mmir.dialog&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li> {@link mmir.InputManager } as
+	 *          &lt;b>&lt;u>mmir.input&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li> {@link mmir.LanguageManager} as
+	 *          &lt;b>&lt;u>mmir.lang&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li> {@link mmir.MediaManager} as
+	 *          &lt;b>&lt;u>mmir.media&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li> {@link mmir.ModelManager} as
+	 *          &lt;b>&lt;u>mmir.model&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li> {@link mmir.NotificationManager} as
+	 *          &lt;b>&lt;u>mmir.notifier&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li> {@link mmir.PresentationManager} as
+	 *          &lt;b>&lt;u>mmir.presentation&lt;/u>&lt;/b>
+	 *  &lt;/li>&lt;li> {@link mmir.SemanticInterpreter} as
+	 *          &lt;b>&lt;u>mmir.semantic&lt;/u>&lt;/b>
+	 *  &lt;/li>
+	 * &lt;/ul>
+	 *
+	 * In addition, old method names will be added as synonyms:
+	 * &lt;ul>
+	 * 	 &lt;li> {@link mmir.ConfigurationManager}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.ConfigurationManager}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>&lt;li> {@link mmir.Resources}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.Resources}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>&lt;li> {@link mmir.ControllerManager}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>get&lt;/u>&lt;/b> for {@link mmir.ControllerManager#getController}&lt;/li>
+	 * 			&lt;li>&lt;b>&lt;u>getNames&lt;/u>&lt;/b> for {@link mmir.ControllerManager#getControllerNames}&lt;/li>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.ControllerManager}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>&lt;li> {@link mmir.DialogManager}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.DialogManager}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>&lt;li> {@link mmir.InputManager}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.InputManager}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>&lt;li> {@link mmir.LanguageManager}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.LanguageManager}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>&lt;li> {@link mmir.ModelManager}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>get&lt;/u>&lt;/b> for {@link mmir.ModelManager#getController}&lt;/li>
+	 * 			&lt;li>&lt;b>&lt;u>getNames&lt;/u>&lt;/b> for {@link mmir.ModelManager#getControllerNames}&lt;/li>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.ModelManager}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>&lt;li> {@link mmir.ModelManager}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>get&lt;/u>&lt;/b> for {@link mmir.ModelManager#getController}&lt;/li>
+	 * 			&lt;li>&lt;b>&lt;u>getNames&lt;/u>&lt;/b> for {@link mmir.ModelManager#getControllerNames}&lt;/li>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.ModelManager}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>
+	 *  &lt;li> {@link mmir.NotificationManager}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.NotificationManager}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>
+	 *  &lt;li> {@link mmir.PresentationManager}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>renderView&lt;/u>&lt;/b> for {@link mmir.PresentationManager#render}&lt;/li>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.PresentationManager}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>&lt;li> {@link mmir.parser.ParserUtils}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.parser.ParserUtils}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>&lt;li> {@link mmir.parser.RenderUtils}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.parser.RenderUtils}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>&lt;li> {@link mmir.SemanticInterpreter}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>getASRSemantic&lt;/u>&lt;/b> for {@link mmir.SemanticInterpreter#interpret}&lt;/li>
+	 * 			&lt;li>&lt;b>&lt;u>getInstance&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> for {@link mmir.SemanticInterpreter}&lt;/li>
+	 * 		&lt;/ul>
+	 *  &lt;/li>
+	 * &lt;/ul>
+	 *
+	 * Methods with changed signature will be re-mapped to match their old signature
+	 * &lt;ul>
+	 * 	 &lt;li> {@link mmir.ConfigurationManager}
+	 * 		&lt;ul>
+	 * 			&lt;li>map &lt;b>&lt;u>get(propertyName, defaultValue, useSafeAccess)&lt;/u>&lt;/b> back to &lt;br>
+	 * 				get(propertyName, useSafeAccess, defaultValue)&lt;br>
+	 * 				the original function will be available via &lt;em>_get(propertyName, useSafeAccess, defaultValue)&lt;/em>
+	 * 			&lt;/li>
+	 * 			&lt;li>map &lt;b>&lt;u>getBoolean(propertyName, defaultValue, useSafeAccess)&lt;/u>&lt;/b> back to &lt;br>
+	 * 				getBoolean(propertyName, useSafeAccess, defaultValue)&lt;br>
+	 * 				the original function will be available via &lt;em>_getBoolean(propertyName, useSafeAccess, defaultValue)&lt;/em>
+	 * 			&lt;/li>
+	 * 			&lt;li>map &lt;b>&lt;u>getString(propertyName, defaultValue, useSafeAccess)&lt;/u>&lt;/b> back to &lt;br>
+	 * 				getString(propertyName, useSafeAccess, defaultValue)&lt;br>
+	 * 				the original function will be available via &lt;em>_getString(propertyName, useSafeAccess, defaultValue)&lt;/em>
+	 * 			&lt;/li>
+	 * 		&lt;/ul>
+	 *   &lt;/li>
+	 * &lt;/ul>
+	 *
+	 * Lastly, removed methods will be added:
+	 * &lt;ul>
+	 * 	&lt;li> {@link mmir.Resources}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>getPluginsPath&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> to {@link mmir.CommonUtils}&lt;/li>
+	 * 		&lt;/ul>
+	 *   &lt;/li>
+	 * 	 &lt;li> {@link mmir.CommonUtils}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>loadAllCordovaPlugins&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> to {@link mmir.CommonUtils}&lt;/li>
+	 * 			&lt;li>&lt;b>&lt;u>setToCompatibilityMode&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> to {@link mmir.CommonUtils}&lt;/li>
+	 * 		&lt;/ul>
+	 *   &lt;/li>
+	 * 	 &lt;li> {@link mmir.LanguageManager}
+	 * 		&lt;ul>
+	 * 			&lt;li>&lt;b>&lt;u>setToCompatibilityMode&lt;/u>&lt;/b> &lt;em>(removed)&lt;/em> to {@link mmir.LanguageManager}&lt;/li>
+	 * 		&lt;/ul>
+	 *   &lt;/li>
+	 * &lt;/ul>
+	 *
+	 * @param {mmir} mmir
+	 * 			the (core) instance/namespace for MMIR
+	 *
 	 *
 	 * @class
 	 * @name mmir.compat.v3.CoreCompat
@@ -3571,74 +3573,74 @@
 	){
 
 	/**
-     * Set to "backwards compatibility mode" (for pre version 4.0).
-     *
-     * This function re-adds deprecated and removed functions and
-     * properties to the (core) mmir namespace.
-     *
-     * NOTE that once set to compatibility mode, it cannot be reset to
-     * non-compatibility mode.
-     *
-     *
-     * @param {mmir} mmir
-     * 			the (core) instance/namespace for MMIR
-     *
-     * @constructs mmir.compat.v3.CoreCompat
-     */
-    return setToCompatibilityMode = function(mmir) {
+	 * Set to "backwards compatibility mode" (for pre version 4.0).
+	 *
+	 * This function re-adds deprecated and removed functions and
+	 * properties to the (core) mmir namespace.
+	 *
+	 * NOTE that once set to compatibility mode, it cannot be reset to
+	 * non-compatibility mode.
+	 *
+	 *
+	 * @param {mmir} mmir
+	 * 			the (core) instance/namespace for MMIR
+	 *
+	 * @constructs mmir.compat.v3.CoreCompat
+	 */
+	return setToCompatibilityMode = function(mmir) {
 
-    	mmir.ConfigurationManager = configurationManager;
-    	mmir.ControllerManager = controllerManager;
-    	mmir.PresentationManager = presentationManager;
-    	mmir.DialogManager = dialogManager;
-    	mmir.DialogEngine = dialogEngine;
-    	mmir.InputManager = inputManager;
-    	mmir.InputEngine = inputEngine;
-    	mmir.CommonUtils = commonUtils;
-    	mmir.LanguageManager = languageManager;
-    	mmir.MediaManager = mediaManager;
-    	mmir.SemanticInterpreter = semanticInterpreter;
-    	mmir.ModelManager = modelManager;
-    	mmir.Constants = constants;
-    	mmir.NotificationManager = notificationManager;
+		mmir.ConfigurationManager = configurationManager;
+		mmir.ControllerManager = controllerManager;
+		mmir.PresentationManager = presentationManager;
+		mmir.DialogManager = dialogManager;
+		mmir.DialogEngine = dialogEngine;
+		mmir.InputManager = inputManager;
+		mmir.InputEngine = inputEngine;
+		mmir.CommonUtils = commonUtils;
+		mmir.LanguageManager = languageManager;
+		mmir.MediaManager = mediaManager;
+		mmir.SemanticInterpreter = semanticInterpreter;
+		mmir.ModelManager = modelManager;
+		mmir.Constants = constants;
+		mmir.NotificationManager = notificationManager;
 
 //    	mediaManager.textToSpech = mediaManager.tts;
 //    	mediaManager.setTextToSpeechVolume = mediaManager.ttsVolume;
 
-    	presentationManager.renderView = presentationManager.render;
-    	controllerManager.getController = controllerManager.get;
-    	controllerManager.getControllerNames = controllerManager.getNames;
-    	modelManager.getModel = modelManager.get;
-    	modelManager.getModels = modelManager.getNames;
+		presentationManager.renderView = presentationManager.render;
+		controllerManager.getController = controllerManager.get;
+		controllerManager.getControllerNames = controllerManager.getNames;
+		modelManager.getModel = modelManager.get;
+		modelManager.getModels = modelManager.getNames;
 
-    	//set backwards-compatibility mode for semanticInterpreter and GrammarConverter
-        semanticInterpreterCompatibility(semanticInterpreter, GrammarConverter);
+		//set backwards-compatibility mode for semanticInterpreter and GrammarConverter
+		semanticInterpreterCompatibility(semanticInterpreter, GrammarConverter);
 
-    	var getInstance = function(){return this;};
-    	var getInstanceAsInit = function(){return this.init.apply(this, arguments);};
+		var getInstance = function(){return this;};
+		var getInstanceAsInit = function(){return this.init.apply(this, arguments);};
 
-    	constants.getInstance = getInstanceAsInit;
-    	controllerManager.getInstance = getInstance;
-    	dialogManager.getInstance = getInstance;
-    	inputManager.getInstance = getInstance;
-    	languageManager.getInstance = function(lang){
-    		if(lang) {
-    			setLanguage(lang);
-    		}
+		constants.getInstance = getInstanceAsInit;
+		controllerManager.getInstance = getInstance;
+		dialogManager.getInstance = getInstance;
+		inputManager.getInstance = getInstance;
+		languageManager.getInstance = function(lang){
+			if(lang) {
+				setLanguage(lang);
+			}
 
-    		return this;
-    	};
-    	mediaManager.getInstance = function(){
-            return this.init(null, null);
-        };
-        modelManager.getInstance = getInstanceAsInit;
-        notificationManager.getInstance = getInstance;
-        presentationManager.getInstance = getInstance;
+			return this;
+		};
+		mediaManager.getInstance = function(){
+		return this.init(null, null);
+		};
+		modelManager.getInstance = getInstanceAsInit;
+		notificationManager.getInstance = getInstance;
+		presentationManager.getInstance = getInstance;
 
-        parseUtils.getInstance = getInstance;
+		parseUtils.getInstance = getInstance;
 
-        //DISABLED would not effect scionEngine instances, that were already created
-        //         ... and scionEninge (and created instance) are only internally used, so application code should be not effected...
+		//DISABLED would not effect scionEngine instances, that were already created
+		//         ... and scionEninge (and created instance) are only internally used, so application code should be not effected...
 //        requirejs.undef('mmirf/scionEngine');
 //        define('mmirf/scionEngine', function(){
 //        	return function(configuration , context){
@@ -3649,247 +3651,247 @@
 //        });
 //        require(['mmirf/scionEngine']);
 
-        renderUtils.getInstance = getInstance;
+		renderUtils.getInstance = getInstance;
 
-        configurationManager.getLanguage = function(){ return languageManager.getLanguage(); };
-        configurationManager.setLanguage = function(lang){ languageManager.setLanguage(lang); };
+		configurationManager.getLanguage = function(){ return languageManager.getLanguage(); };
+		configurationManager.setLanguage = function(lang){ languageManager.setLanguage(lang); };
 
-        configurationManager._get = configurationManager.get;
-        configurationManager.get = function(propertyName, useSafeAccess, defaultValue){
-        	return this._get(propertyName, defaultValue, useSafeAccess);
-        };
-        configurationManager._getBoolean = configurationManager.getBoolean;
-        configurationManager.getBoolean = function(propertyName, useSafeAccess, defaultValue){
-        	return this._getBoolean(propertyName, defaultValue, useSafeAccess);
-        };
-        configurationManager._getString = configurationManager.getString;
-        configurationManager.getString = function(propertyName, useSafeAccess, defaultValue){
-        	return this._getString(propertyName, defaultValue, useSafeAccess);
-        };
-
-
-        /**
-	     * Set to "backwards compatibility mode" (for pre version 2.0).
-	     *
-	     * This function re-adds deprecated and removed functions and
-	     * properties to the CommonUtils instance.
-	     *
-	     * NOTE that once set to compatibility mode, it cannot be reset to
-	     * non-compatibility mode.
-	     *
-         * NOTE: Requires jQuery to be present.
-         *
-	     * @deprecated use only for backwards compatibility
-	     *
-	     * @async
-	     * @requires jQuery
-	     * @requires mmir.compat.v1.CommonUtils
-	     *
-	     * @param {Function} [success]
-	     * 				a callback function that is invoked, after compatibility mode
-	     * 				was set (alternatively the returned promise can be used).
-	     * @param {Function} [requireFunction]
-	     * 				the require-function that is configured for loading the compatibility module/file.
-	     * 				Normally, this would be the function &lt;code>mmir.require&lt;/code>.
-	     * 				If omitted, the default (local dependency) &lt;code>require&lt;/code> function will be used.
-	     * 				NOTE: this argument is positional, i.e. argument &lt;code>success&lt;/code> must be present, if
-	     * 				      you want to specify this argument
-	     * @returns {Promise}
-	     * 				a deferred promise that is resolved, after compatibility mode
-	     * 				was set
-	     *
-    	 * @memberOf mmir.compat.v3.CommonUtils#
-	     */
-	    commonUtils.setToCompatibilityMode = function(success, requireFunction) {
-
-	    	var defer = deferred();
-	    	if(success){
-	    		defer.then(success, success);
-	    	}
-
-	    	requireFunction = requireFunction || require;
-	    	requireFunction(['mmirf/commonUtilsCompatibility'],function(setCompatibility){
-
-	    		setCompatibility(commonUtils);
-
-	    		defer.resolve();
-	    	});
-
-	    	return defer;
-	    };
-
-	    /**
-         * Set to "backwards compatibility mode" (for pre version 2.0).
-         *
-         * This function re-adds deprecated and removed functions and
-         * properties to the CommonUtils instance.
-         *
-         * NOTE that once set to compatibility mode, it cannot be reset to
-         * non-compatibility mode.
-         *
-         * NOTE: Requires jQuery to be present.
-         *
-         * @deprecated use only for backwards compatibility
-         *
-         * @public
-         * @async
-	     * @requires jQuery
-	     * @requires mmir.compat.v1.LanguageManager
-	     *
-	     * @param {Function} [success]
-	     * 				a callback function that is invoked, after compatibility mode
-	     * 				was set (alternatively the returned promise can be used).
-	     * @param {Function} [requireFunction]
-	     * 				the require-function that is configured for loading the compatibility module/file.
-	     * 				Normally, this would be the function &lt;code>mmir.require&lt;/code>.
-	     * 				If omitted, the global &lt;code>require&lt;/code> function will be used.
-	     * 				NOTE: this argument is positional, i.e. argument &lt;code>success&lt;/code> must be present, if
-	     * 				      you want to specify this argument
-	     * @returns {Promise}
-	     * 				a deferred promise that is resolved, after compatibility mode
-	     * 				was set
-	     *
-    	 * @memberOf mmir.compat.v3.LanguageManager#
-         */
-        languageManager.setToCompatibilityMode = function(success, requireFunction) {
-
-        	var defer = deferred();
-	    	if(success){
-	    		defer.then(success, success);
-	    	}
-	    	requireFunction = requireFunction || require;
-	    	requireFunction(['mmirf/languageManagerCompatibility'],function(setCompatibility){
-
-	    		setCompatibility(languageManager);
-
-	    		defer.resolve();
-	    	});
-
-	    	return defer;
-
-        };
+		configurationManager._get = configurationManager.get;
+		configurationManager.get = function(propertyName, useSafeAccess, defaultValue){
+			return this._get(propertyName, defaultValue, useSafeAccess);
+		};
+		configurationManager._getBoolean = configurationManager.getBoolean;
+		configurationManager.getBoolean = function(propertyName, useSafeAccess, defaultValue){
+			return this._getBoolean(propertyName, defaultValue, useSafeAccess);
+		};
+		configurationManager._getString = configurationManager.getString;
+		configurationManager.getString = function(propertyName, useSafeAccess, defaultValue){
+			return this._getString(propertyName, defaultValue, useSafeAccess);
+		};
 
 
+		/**
+		 * Set to "backwards compatibility mode" (for pre version 2.0).
+		 *
+		 * This function re-adds deprecated and removed functions and
+		 * properties to the CommonUtils instance.
+		 *
+		 * NOTE that once set to compatibility mode, it cannot be reset to
+		 * non-compatibility mode.
+		 *
+		 * NOTE: Requires jQuery to be present.
+		 *
+		 * @deprecated use only for backwards compatibility
+		 *
+		 * @async
+		 * @requires jQuery
+		 * @requires mmir.compat.v1.CommonUtils
+		 *
+		 * @param {Function} [success]
+		 * 				a callback function that is invoked, after compatibility mode
+		 * 				was set (alternatively the returned promise can be used).
+		 * @param {Function} [requireFunction]
+		 * 				the require-function that is configured for loading the compatibility module/file.
+		 * 				Normally, this would be the function &lt;code>mmir.require&lt;/code>.
+		 * 				If omitted, the default (local dependency) &lt;code>require&lt;/code> function will be used.
+		 * 				NOTE: this argument is positional, i.e. argument &lt;code>success&lt;/code> must be present, if
+		 * 				      you want to specify this argument
+		 * @returns {Promise}
+		 * 				a deferred promise that is resolved, after compatibility mode
+		 * 				was set
+		 *
+		 * @memberOf mmir.compat.v3.CommonUtils#
+		 */
+		commonUtils.setToCompatibilityMode = function(success, requireFunction) {
 
-        /**
-         * Cycles through the available languages.
-         *
-         * @function
-         * @returns {String} The (new) current language
-         * @public
-         *
-    	 * @memberOf mmir.compat.v3.LanguageManager#
-         */
-        languageManager.setNextLanguage = function() {
-        	var languages = languageManager.getLanguages();
-        	var currentLanguage = languageManager.getLanguage();
-            var indexCurrentLanguage = languages.indexOf(currentLanguage);
+			var defer = deferred();
+			if(success){
+				defer.then(success, success);
+			}
+
+			requireFunction = requireFunction || require;
+			requireFunction(['mmirf/commonUtilsCompatibility'],function(setCompatibility){
+
+				setCompatibility(commonUtils);
+
+				defer.resolve();
+			});
+
+			return defer;
+		};
+
+		/**
+		 * Set to "backwards compatibility mode" (for pre version 2.0).
+		 *
+		 * This function re-adds deprecated and removed functions and
+		 * properties to the CommonUtils instance.
+		 *
+		 * NOTE that once set to compatibility mode, it cannot be reset to
+		 * non-compatibility mode.
+		 *
+		 * NOTE: Requires jQuery to be present.
+		 *
+		 * @deprecated use only for backwards compatibility
+		 *
+		 * @public
+		 * @async
+		 * @requires jQuery
+		 * @requires mmir.compat.v1.LanguageManager
+		 *
+		 * @param {Function} [success]
+		 * 				a callback function that is invoked, after compatibility mode
+		 * 				was set (alternatively the returned promise can be used).
+		 * @param {Function} [requireFunction]
+		 * 				the require-function that is configured for loading the compatibility module/file.
+		 * 				Normally, this would be the function &lt;code>mmir.require&lt;/code>.
+		 * 				If omitted, the global &lt;code>require&lt;/code> function will be used.
+		 * 				NOTE: this argument is positional, i.e. argument &lt;code>success&lt;/code> must be present, if
+		 * 				      you want to specify this argument
+		 * @returns {Promise}
+		 * 				a deferred promise that is resolved, after compatibility mode
+		 * 				was set
+		 *
+		 * @memberOf mmir.compat.v3.LanguageManager#
+		 */
+		languageManager.setToCompatibilityMode = function(success, requireFunction) {
+
+			var defer = deferred();
+			if(success){
+				defer.then(success, success);
+			}
+			requireFunction = requireFunction || require;
+			requireFunction(['mmirf/languageManagerCompatibility'],function(setCompatibility){
+
+				setCompatibility(languageManager);
+
+				defer.resolve();
+			});
+
+			return defer;
+
+		};
+
+
+
+		/**
+		 * Cycles through the available languages.
+		 *
+		 * @function
+		 * @returns {String} The (new) current language
+		 * @public
+		 *
+		 * @memberOf mmir.compat.v3.LanguageManager#
+		 */
+		languageManager.setNextLanguage = function() {
+			var languages = languageManager.getLanguages();
+			var currentLanguage = languageManager.getLanguage();
+		var indexCurrentLanguage = languages.indexOf(currentLanguage);
 
 //            if (logger.isVerbose()) logger.v("[LanguageManager] Current language is " + currentLanguage);
 
-            if (indexCurrentLanguage > -1) {
-                indexCurrentLanguage = indexCurrentLanguage + 1;
-                if (indexCurrentLanguage > languages.length - 1) {
-                    indexCurrentLanguage = 0;
-                }
-                currentLanguage = languages[indexCurrentLanguage];
+		if (indexCurrentLanguage > -1) {
+			indexCurrentLanguage = indexCurrentLanguage + 1;
+			if (indexCurrentLanguage > languages.length - 1) {
+				indexCurrentLanguage = 0;
+			}
+			currentLanguage = languages[indexCurrentLanguage];
 
 //                if (logger.isVerbose()) logger.v("[LanguageManager] Next language is " + currentLanguage);
 
-                return languageManager.setLanguage(currentLanguage);
-            }
-            return currentLanguage;
-        };
+			return languageManager.setLanguage(currentLanguage);
+		}
+		return currentLanguage;
+		};
 
-        /**
+		/**
 		 * Returns a string with the path to the (Cordova v2.x) plugins directory.
 		 * @function
 		 * @public
 		 * @returns {String} plugins directory path
 		 *
-    	 * @memberOf mmir.compat.v3.Constants#
+		 * @memberOf mmir.compat.v3.Constants#
 		 */
-        constants.getPluginsPath = function(){
+		constants.getPluginsPath = function(){
 			return constants.getBasePath()+'mmirf/plugins/';
 		};
 
 
-	    /**
-	     * Load all plugins (i.e. JavaScript interfaces for
-	     * Cordova v2 / JavaScript-impl. plugins).
-	     *
-	     * @function
-	     * @param {String} [pluginsPath] OPTIONAL
-	     *            Path of the plugins which should be
-	     *            loaded, e.g.
-	     *            &lt;b>mmirf/plugins/&lt;/b>
-	     *
-	     *            If omitted: the default plugin-path is used
-	     *            (see {@link mmir.compat.v3.Constants#getPluginsPath})
-	     *
-	     * @param {Function} [cbFunction] OPTIONAL
-	     *            The function that should be executed after
-	     *            the plugins are loaded. If the execution of following
-	     *            functions is dependent on the present of plugins, they
-	     *            should be triggered from inside the callback-function
-	     *
-	     * @returns {Promise} a Deferred.promise (see loadImpl())
-	     *
-	     * @async
-	     * @public
-    	 * @memberOf mmir.compat.v3.CommonUtils#
-	     */
-	    commonUtils.loadAllCordovaPlugins = function(pluginsPath, cbFunction) {
+		/**
+		 * Load all plugins (i.e. JavaScript interfaces for
+		 * Cordova v2 / JavaScript-impl. plugins).
+		 *
+		 * @function
+		 * @param {String} [pluginsPath] OPTIONAL
+		 *            Path of the plugins which should be
+		 *            loaded, e.g.
+		 *            &lt;b>mmirf/plugins/&lt;/b>
+		 *
+		 *            If omitted: the default plugin-path is used
+		 *            (see {@link mmir.compat.v3.Constants#getPluginsPath})
+		 *
+		 * @param {Function} [cbFunction] OPTIONAL
+		 *            The function that should be executed after
+		 *            the plugins are loaded. If the execution of following
+		 *            functions is dependent on the present of plugins, they
+		 *            should be triggered from inside the callback-function
+		 *
+		 * @returns {Promise} a Deferred.promise (see loadImpl())
+		 *
+		 * @async
+		 * @public
+		 * @memberOf mmir.compat.v3.CommonUtils#
+		 */
+		commonUtils.loadAllCordovaPlugins = function(pluginsPath, cbFunction) {
 
-	    	if(typeof pluginsPath === 'function'){
-	    		cbFunction = pluginsPath;
-	    		pluginsPath = null;
-	    	}
+			if(typeof pluginsPath === 'function'){
+				cbFunction = pluginsPath;
+				pluginsPath = null;
+			}
 
-	    	if(typeof pluginsPath !== 'string'){
-	    		pluginsPath = constants.getPluginsPath();
-	    	}
+			if(typeof pluginsPath !== 'string'){
+				pluginsPath = constants.getPluginsPath();
+			}
 
-	    	// reads all *.js files in www/mmirf/plugins/
-        	// and loads them dynamically
-        	// IMPORTANT: /assets/www/config/directories.json must be up-to-date!
-        	//				(it contains the list of JS-files for the plugins)
-        	//				-> use "cordova prepare" for updating
+			// reads all *.js files in www/mmirf/plugins/
+			// and loads them dynamically
+			// IMPORTANT: /assets/www/config/directories.json must be up-to-date!
+			//				(it contains the list of JS-files for the plugins)
+			//				-> use "cordova prepare" for updating
 
 
-	    	//FIXME: Cordova 2.x mechanism!!! (remove when switching to 3.x ?)
-	    	window.plugins = window.plugins || {};
+			//FIXME: Cordova 2.x mechanism!!! (remove when switching to 3.x ?)
+			window.plugins = window.plugins || {};
 
 
 			return commonUtils.loadImpl(
-            	  pluginsPath,
-            	  false,
-            	  cbFunction,
-				  function isPluginAlreadyLoaded(pluginFileName) {
-				      if (window.plugins[pluginFileName.replace(/\.[^.]+$/g, "")]) {//&lt;- regexpr for removing file extension
-				    	  return true;
-				      }
-					  else {
-						  return false;
-				      }
-				  },
-				  function(status, fileName, msg){
-				      if (status === 'info') {
-				    	  if(logger.isInfo()) logger.info('CommonUtils', 'loadAllCordovaPlugins', 'loaded "'+ fileName + '": ' + msg);
-				      }
-					  else if (status === 'warning') {
-						  if(logger.isWarn()) logger.warn('CommonUtils', 'loadAllCordovaPlugins', 'loading "'+ fileName + '": ' + msg);
-				      }
-					  else if (status === 'error') {
-						  logger.error('CommonUtils', 'loadAllCordovaPlugins', 'loading "'+ fileName + '": ' + msg);
-				      }
-					  else {
-						  logger.error('CommonUtils', 'loadAllCordovaPlugins', status + ' (UNKNOWN STATUS) -> "'+ fileName + '": ' + msg);
-				      }
-				  }
+				pluginsPath,
+				false,
+				cbFunction,
+				function isPluginAlreadyLoaded(pluginFileName) {
+					if (window.plugins[pluginFileName.replace(/\.[^.]+$/g, "")]) {//&lt;- regexpr for removing file extension
+						return true;
+					}
+					else {
+						return false;
+					}
+				},
+				function(status, fileName, msg){
+					if (status === 'info') {
+						if(logger.isInfo()) logger.info('CommonUtils', 'loadAllCordovaPlugins', 'loaded "'+ fileName + '": ' + msg);
+					}
+					else if (status === 'warning') {
+						if(logger.isWarn()) logger.warn('CommonUtils', 'loadAllCordovaPlugins', 'loading "'+ fileName + '": ' + msg);
+					}
+					else if (status === 'error') {
+						logger.error('CommonUtils', 'loadAllCordovaPlugins', 'loading "'+ fileName + '": ' + msg);
+					}
+					else {
+						logger.error('CommonUtils', 'loadAllCordovaPlugins', status + ' (UNKNOWN STATUS) -> "'+ fileName + '": ' + msg);
+					}
+				}
 			);
-	    }
-    };
+		}
+	};
 
 });
 </code></pre>

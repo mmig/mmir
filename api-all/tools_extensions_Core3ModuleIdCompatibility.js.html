@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.0.0</title>
+    <title>MMIR Framework API 5.1.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.0.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.0.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.0.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -95,6 +95,8 @@
                 
                     <li data-name="mmir.notifier"><a href="mmir.html#.notifier">notifier</a></li>
                 
+                    <li data-name="mmir.parser"><a href="mmir.html#.parser">parser</a></li>
+                
                     <li data-name="mmir.present"><a href="mmir.html#.present">present</a></li>
                 
                     <li data-name="mmir.require"><a href="mmir.html#.require">require</a></li>
@@ -139,9 +141,9 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.parser.html">
+            <li class="item" data-name="mmir.html#.parser">
                 <span class="title">
-                    <a href="mmir.parser.html">mmir.parser</a>
+                    <a href="mmir.html#.parser">mmir.parser</a>
                     
                     <span class="static">static</span>
                     
@@ -150,11 +152,11 @@
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_PREFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_PREFIX">STORAGE_CODE_WRAP_PREFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.parser.html#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
+                    <li data-name="mmir.parser.STORAGE_CODE_WRAP_SUFFIX"><a href="mmir.html#.parser#.STORAGE_CODE_WRAP_SUFFIX">STORAGE_CODE_WRAP_SUFFIX</a></li>
                 
-                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.parser.html#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
+                    <li data-name="mmir.parser.STORAGE_FILE_FORMAT_NUMBER"><a href="mmir.html#.parser#.STORAGE_FILE_FORMAT_NUMBER">STORAGE_FILE_FORMAT_NUMBER</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -164,9 +166,9 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.parser.appendStringified"><a href="mmir.parser.html#.appendStringified">appendStringified</a></li>
+                    <li data-name="mmir.parser.appendStringified"><a href="mmir.html#.parser#.appendStringified">appendStringified</a></li>
                 
-                    <li data-name="mmir.parser.restoreObject"><a href="mmir.parser.html#.restoreObject">restoreObject</a></li>
+                    <li data-name="mmir.parser.restoreObject"><a href="mmir.html#.parser#.restoreObject">restoreObject</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3391,9 +3393,9 @@
         <article>
             <pre class="prettyprint source linenums"><code>define(['mmirf/util/isArray'],
 	/**
-     * Maps requirejs module IDs from mmir-lib v3 (and earlier) to module IDs used in mmir-lib version >= 4.
-     *
-     *
+	 * Maps requirejs module IDs from mmir-lib v3 (and earlier) to module IDs used in mmir-lib version >= 4.
+	 *
+	 *
 	 *
 	 * @class
 	 * @name mmir.compat.v3.ModuleIdCompat
@@ -3415,59 +3417,59 @@
 	 */
 	var core3Ids = {
 
-		  'core': 'mmirf/core'
- 	    , 'main': 'mmirf/main'
- 	    , 'scion': 'mmirf/scion'
- 	    , 'constants': 'mmirf/resources'
- 	    , 'commonUtils': 'mmirf/commonUtils'
-	    , 'stringExtension': 'mmirf/stringExtensions'
-	    , 'dictionary': 'mmirf/dictionary'
-	    , 'paramsParseFunc': 'mmirf/paramsParseFunc'
+		'core': 'mmirf/core'
+		, 'main': 'mmirf/main'
+		, 'scion': 'mmirf/scion'
+		, 'constants': 'mmirf/resources'
+		, 'commonUtils': 'mmirf/commonUtils'
+		, 'stringExtension': 'mmirf/stringExtensions'
+		, 'dictionary': 'mmirf/dictionary'
+		, 'paramsParseFunc': 'mmirf/paramsParseFunc'
 		, 'env': 'mmirf/env'
-	    , 'inputManager': 'mmirf/inputManager'
-	    , 'inputEngine': 'mmirf/inputEngine'
-	    , 'dialogManager': 'mmirf/dialogManager'
-	    , 'dialogEngine': 'mmirf/dialogEngine'
-	    , 'engineConfig': 'mmirf/engineConfig'
-	    , 'scionEngine': 'mmirf/scionEngine'
-	    , 'scionUtil': 'mmirf/scionUtil'
+		, 'inputManager': 'mmirf/inputManager'
+		, 'inputEngine': 'mmirf/inputEngine'
+		, 'dialogManager': 'mmirf/dialogManager'
+		, 'dialogEngine': 'mmirf/dialogEngine'
+		, 'engineConfig': 'mmirf/engineConfig'
+		, 'scionEngine': 'mmirf/scionEngine'
+		, 'scionUtil': 'mmirf/scionUtil'
 
-	    , 'controllerManager': 'mmirf/controllerManager'
-	    , 'controller': 'mmirf/controller'
-	    , 'helper': 'mmirf/helper'
-	    , 'modelManager': 'mmirf/modelManager'
-	    , 'presentationManager': 'mmirf/presentationManager'
-	    , 'jqmViewEngine': 'mmirf/jqmViewEngine'
+		, 'controllerManager': 'mmirf/controllerManager'
+		, 'controller': 'mmirf/controller'
+		, 'helper': 'mmirf/helper'
+		, 'modelManager': 'mmirf/modelManager'
+		, 'presentationManager': 'mmirf/presentationManager'
+		, 'jqmViewEngine': 'mmirf/jqmViewEngine'
 		, 'waitDialog': 'mmirf/waitDialog'
 
-	    , 'configurationManager': 'mmirf/configurationManager'
-	    , 'languageManager': 'mmirf/languageManager'
-	    , 'mediaManager': 'mmirf/mediaManager'
+		, 'configurationManager': 'mmirf/configurationManager'
+		, 'languageManager': 'mmirf/languageManager'
+		, 'mediaManager': 'mmirf/mediaManager'
 		, 'notificationManager': 'mmirf/notificationManager'
 
 		, 'viewConstants': 'mmirf/viewConstants'
-	    , 'layout': 'mmirf/layout'
-	    , 'view': 'mmirf/view'
-	    , 'partial': 'mmirf/partial'
-	    , 'contentElement': 'mmirf/contentElement'
-	    , 'yield': 'mmirf/yield'
-	    , 'viewLoader': 'mmirf/viewLoader'
+		, 'layout': 'mmirf/layout'
+		, 'view': 'mmirf/view'
+		, 'partial': 'mmirf/partial'
+		, 'contentElement': 'mmirf/contentElement'
+		, 'yield': 'mmirf/yield'
+		, 'viewLoader': 'mmirf/viewLoader'
 
-	    , 'antlr3': 'mmirf/antlr3'
-	    , 'renderUtils': 'mmirf/renderUtils'
-	    , 'parserModule': 'mmirf/parserModule'
+		, 'antlr3': 'mmirf/antlr3'
+		, 'renderUtils': 'mmirf/renderUtils'
+		, 'parserModule': 'mmirf/parserModule'
 		, 'storageUtils': 'mmirf/storageUtils'
-	    , 'parseUtils': 'mmirf/parseUtils'
-	    , 'ES3Lexer': 'mmirf/ES3Lexer'
-	    , 'ES3Parser': 'mmirf/ES3Parser'
-	    , 'scriptLexer': 'mmirf/scriptLexer'
-	    , 'scriptParser': 'mmirf/scriptParser'
-	    , 'contentLexer': 'mmirf/contentLexer'
-	    , 'contentParser': 'mmirf/contentParser'
-	    , 'templateLexer': 'mmirf/templateLexer'
-	    , 'templateParser': 'mmirf/templateParser'
-	    , 'templateProcessor': 'mmirf/templateProcessor'
-	    , 'parsingResult': 'mmirf/parsingResult'
+		, 'parseUtils': 'mmirf/parseUtils'
+		, 'ES3Lexer': 'mmirf/ES3Lexer'
+		, 'ES3Parser': 'mmirf/ES3Parser'
+		, 'scriptLexer': 'mmirf/scriptLexer'
+		, 'scriptParser': 'mmirf/scriptParser'
+		, 'contentLexer': 'mmirf/contentLexer'
+		, 'contentParser': 'mmirf/contentParser'
+		, 'templateLexer': 'mmirf/templateLexer'
+		, 'templateParser': 'mmirf/templateParser'
+		, 'templateProcessor': 'mmirf/templateProcessor'
+		, 'parsingResult': 'mmirf/parsingResult'
 
 		, 'grammarConverter': 'mmirf/grammarConverter'
 		, 'semanticInterpreter': 'mmirf/semanticInterpreter'
@@ -3490,19 +3492,19 @@
 
 		, 'encodeUtils': 'mmirf/encodeUtils'
 		, 'jsonUtils': 'mmirf/jsonUtils'
-	    , 'commonUtilsCompatibility': 'mmirf/commonUtilsCompatibility'
-	    , 'languageManagerCompatibility': 'mmirf/languageManagerCompatibility'
-	    , 'core3Compatibility' : 'mmirf/core3Compatibility'
-	    , 'semanticInterpreterCompatibility' : 'mmirf/semanticInterpreterCompatibility'
-    	, 'tools/resizeFitToSourroundingBox' : 'mmirf/resizeToFit'
+		, 'commonUtilsCompatibility': 'mmirf/commonUtilsCompatibility'
+		, 'languageManagerCompatibility': 'mmirf/languageManagerCompatibility'
+		, 'core3Compatibility' : 'mmirf/core3Compatibility'
+		, 'semanticInterpreterCompatibility' : 'mmirf/semanticInterpreterCompatibility'
+		, 'tools/resizeFitToSourroundingBox' : 'mmirf/resizeToFit'
 
 		, 'logger': 'mmirf/logger'
-    	, 'loggerEnabled': 'mmirf/logger'
-    	, 'loggerDisabled': 'mmirf/loggerDisabled'
-	    , 'stacktrace': 'mmirf/stacktrace'
+		, 'loggerEnabled': 'mmirf/logger'
+		, 'loggerDisabled': 'mmirf/loggerDisabled'
+		, 'stacktrace': 'mmirf/stacktrace'
 
-	    //external libraries:
-	    , 'jquery': 'jquery'
+		//external libraries:
+		, 'jquery': 'jquery'
 		, 'jqm': 'jqm'
 		, 'jqmSimpleModal': 'jqmSimpleModal'
 	};
@@ -3515,92 +3517,92 @@
 	var core3Shims = {
 		shim: {
 			//dependencies for jqmViewEngine (may not be loaded if jqmViewEngine is not loaded)
-	    	'jqm': ['jquery'],
-	    	'jqmSimpleModal': ['jqm']
+			'jqm': ['jquery'],
+			'jqmSimpleModal': ['jqm']
 		}
 	};
 
 	/**
-     *
-     * Maps requirejs module IDs from mmir-lib v3 (and earlier) to module IDs used in mmir-lib version >= 4.
-     *
-     * @param {String} id
-     * 			the v3 module ID
-     * @returns {String}
-     * 			the corresponding v4 module ID
-     *
+	 *
+	 * Maps requirejs module IDs from mmir-lib v3 (and earlier) to module IDs used in mmir-lib version >= 4.
+	 *
+	 * @param {String} id
+	 * 			the v3 module ID
+	 * @returns {String}
+	 * 			the corresponding v4 module ID
+	 *
 	 * @memberOf mmir.compat.v3.ModuleIdCompat#
-     */
-    var getId = function(id) {
+	 */
+	var getId = function(id) {
 
-    	var nid = core3Ids[id];
-    	return nid? nid : id;
+		var nid = core3Ids[id];
+		return nid? nid : id;
 
-    };
+	};
 
-    /**
-     * Get the requirejs shim configuration for v3 modules (that are no longer used in v4).
-     *
-     * @returns {PlainObject}
-     * 			the requirejs configuration for v3 module shims
-     *
-     * @example
-     * mmir.config(compat.getLegacyConfig());
-     *
+	/**
+	 * Get the requirejs shim configuration for v3 modules (that are no longer used in v4).
+	 *
+	 * @returns {PlainObject}
+	 * 			the requirejs configuration for v3 module shims
+	 *
+	 * @example
+	 * mmir.config(compat.getLegacyConfig());
+	 *
 	 * @memberOf mmir.compat.v3.ModuleIdCompat#
-     */
-    var getLegacyConfig = function() {
+	 */
+	var getLegacyConfig = function() {
 
-    	return core3Shims;
+		return core3Shims;
 
-    };
+	};
 
-    /**
-     * Set to "backwards compatibility mode" (for pre version 4.0).
-     *
-     * This function re-adds deprecated and removed functions and
-     * properties to the (core) mmir namespace.
-     *
-     * NOTE that once set to compatibility mode, it cannot be reset to
-     * non-compatibility mode.
-     *
-     *
-     * @param {mmir} mmir
-     * 			the (core) instance/namespace for MMIR
-     *
+	/**
+	 * Set to "backwards compatibility mode" (for pre version 4.0).
+	 *
+	 * This function re-adds deprecated and removed functions and
+	 * properties to the (core) mmir namespace.
+	 *
+	 * NOTE that once set to compatibility mode, it cannot be reset to
+	 * non-compatibility mode.
+	 *
+	 *
+	 * @param {mmir} mmir
+	 * 			the (core) instance/namespace for MMIR
+	 *
 	 * @memberOf mmir.compat.v3.ModuleIdCompat#
-     */
-    var setToCompatibilityMode = function(requirejs, context, isSetJsOnly) {
+	 */
+	var setToCompatibilityMode = function(requirejs, context, isSetJsOnly) {
 
-    	context = context || window;
+		context = context || window;
 
-    	context['__requirejs'] = context['requirejs'];
+		context['__requirejs'] = context['requirejs'];
 
-    	var _id = getId;
-    	//helper function that maps module IDs to v3 module names, if necessary
-    	var req = function(){
-    		var len = arguments.length;
-    		if(len > 0){
-    			var dep = arguments[0];
-    			if(isArray(dep)){
-    				for(var i=dep.length - 1; i >= 0; --i){
-    					dep[i] = _id(dep[i]);
-    				}
-    			} else if(typeof dep === 'string') {
-    				dep = _id(dep);
-    			}
-    			arguments[0] = dep;
-    		}
-    		return context['__requirejs'].apply(context, arguments);
-    	};
+		var _id = getId;
+		//helper function that maps module IDs to v3 module names, if necessary
+		var req = function(){
+			var len = arguments.length;
+			if(len > 0){
+				var dep = arguments[0];
+				if(isArray(dep)){
+					for(var i=dep.length - 1; i >= 0; --i){
+						dep[i] = _id(dep[i]);
+					}
+				} else if(typeof dep === 'string') {
+					dep = _id(dep);
+				}
+				arguments[0] = dep;
+			}
+			return context['__requirejs'].apply(context, arguments);
+		};
 
-    	if(!isSetJsOnly){
-    		context['require'] = req;
-    	}
-    	context['requirejs'] = req;
-    };
+		if(!isSetJsOnly){
+			context['require'] = req;
+		}
+		context['requirejs'] = req;
+	};
 
-    return setToCompatibilityMode;
+	return setToCompatibilityMode;
 
 });
 </code></pre>
