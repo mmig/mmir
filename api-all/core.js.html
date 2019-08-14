@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.1.0</title>
+    <title>MMIR Framework API 5.2.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.2.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.2.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.2.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -1130,9 +1130,11 @@
                 
                     <li data-name="mmir.CommonUtils#regexHTMLComment"><a href="mmir.html#.CommonUtils#regexHTMLComment">regexHTMLComment</a></li>
                 
-                    <li data-name="mmir.CommonUtils~directoriesToParse"><a href="mmir.html#.CommonUtils#~directoriesToParse">directoriesToParse</a></li>
-                
                     <li data-name="mmir.CommonUtils~partialsPrefix"><a href="mmir.html#.CommonUtils#~partialsPrefix">partialsPrefix</a></li>
+                
+                    <li data-name="mmir.CommonUtils~reqProtocol"><a href="mmir.html#.CommonUtils#~reqProtocol">reqProtocol</a></li>
+                
+                    <li data-name="mmir.CommonUtils~testReq"><a href="mmir.html#.CommonUtils#~testReq">testReq</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -1147,10 +1149,6 @@
                     <li data-name="mmir.CommonUtils#concatArray"><a href="mmir.html#.CommonUtils#concatArray">concatArray</a></li>
                 
                     <li data-name="mmir.CommonUtils#getCompiledGrammarPath"><a href="mmir.html#.CommonUtils#getCompiledGrammarPath">getCompiledGrammarPath</a></li>
-                
-                    <li data-name="mmir.CommonUtils#getDirectoryContents"><a href="mmir.html#.CommonUtils#getDirectoryContents">getDirectoryContents</a></li>
-                
-                    <li data-name="mmir.CommonUtils#getDirectoryContentsWithFilter"><a href="mmir.html#.CommonUtils#getDirectoryContentsWithFilter">getDirectoryContentsWithFilter</a></li>
                 
                     <li data-name="mmir.CommonUtils#getDirectoryStructure"><a href="mmir.html#.CommonUtils#getDirectoryStructure">getDirectoryStructure</a></li>
                 
@@ -1179,6 +1177,29 @@
                     <li data-name="mmir.CommonUtils#parseParamsToDictionary"><a href="mmir.html#.CommonUtils#parseParamsToDictionary">parseParamsToDictionary</a></li>
                 
                     <li data-name="mmir.CommonUtils#stripPathName"><a href="mmir.html#.CommonUtils#stripPathName">stripPathName</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.ModuleIdCompatFunc.html">
+                <span class="title">
+                    <a href="mmir.compat.ModuleIdCompatFunc.html">mmir.compat.ModuleIdCompatFunc</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.compat.ModuleIdCompatFunc#createModuleMapRequire"><a href="mmir.compat.ModuleIdCompatFunc.html#createModuleMapRequire">createModuleMapRequire</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -1343,6 +1364,25 @@
                 </ul>
             </li>
         
+            <li class="item" data-name="mmir.compat.v4.CoreCompat.html">
+                <span class="title">
+                    <a href="mmir.compat.v4.CoreCompat.html">mmir.compat.v4.CoreCompat</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
             <li class="item" data-name="mmir.compat.v4.DialogManager.html">
                 <span class="title">
                     <a href="mmir.compat.v4.DialogManager.html">mmir.compat.v4.DialogManager</a>
@@ -1383,6 +1423,37 @@
                     <li data-name="mmir.compat.v4.DialogManager#showDialog"><a href="mmir.compat.v4.DialogManager.html#showDialog">showDialog</a></li>
                 
                     <li data-name="mmir.compat.v4.DialogManager#showWaitDialog"><a href="mmir.compat.v4.DialogManager.html#showWaitDialog">showWaitDialog</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.v4.ModuleIdCompat.html">
+                <span class="title">
+                    <a href="mmir.compat.v4.ModuleIdCompat.html">mmir.compat.v4.ModuleIdCompat</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.compat.v4.ModuleIdCompat#core4Ids"><a href="mmir.compat.v4.ModuleIdCompat.html#core4Ids">core4Ids</a></li>
+                
+                    <li data-name="mmir.compat.v4.ModuleIdCompat#core4Ids"><a href="mmir.compat.v4.ModuleIdCompat.html#core4Ids">core4Ids</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.compat.v4.ModuleIdCompat#getId"><a href="mmir.compat.v4.ModuleIdCompat.html#getId">getId</a></li>
+                
+                    <li data-name="mmir.compat.v4.ModuleIdCompat#setToCompatibilityMode"><a href="mmir.compat.v4.ModuleIdCompat.html#setToCompatibilityMode">setToCompatibilityMode</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -3439,7 +3510,7 @@ function initMmir(globalCtx) {
 	 * @memberOf mmir.internal
 	 * @private
 	 */
-	var CORE_VERSION = "5.1.0";
+	var CORE_VERSION = "5.2.0";
 
 
 	/**

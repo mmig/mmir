@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MMIR Framework API 5.1.0</title>
+    <title>MMIR Framework API 5.2.0</title>
     
     
     
@@ -11,7 +11,7 @@
     
     
     
-    <meta property="og:title" content="MMIR Framework API 5.1.0"/>
+    <meta property="og:title" content="MMIR Framework API 5.2.0"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png"/>
     <meta property="og:site_name" content="DFKI (C) MMIR Framework"/>
@@ -29,7 +29,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.1.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.1.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true,"includeDate":false,"displayNavLong":true},"navType ":"inline","linenums":true,"theme":"cerulean","copyright":"<a target="_blank" href='https://github.com/mmig/mmir'>MMIR Framework</a>, MIT License, Copyright (C) DFKI GmbH, COS Berlin, www.dfki.de","applicationName":"MMIR Framework","disqus":"","googleAnalytics":"","openGraph":{"title":"MMIR Framework API 5.2.0","type":"website","image":"https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png","site_name":"DFKI (C) MMIR Framework","url":"https://github.com/mmig/mmir"},"meta":{"title":"MMIR Framework API 5.2.0","description":"","keyword":"multimodal,dialog system,speech,recognition,synthesis"}};
     </script>
     
 
@@ -123,11 +123,15 @@
                 
                     <li data-name="mmir.applyConfigs"><a href="mmir.html#.applyConfigs">applyConfigs</a></li>
                 
+                    <li data-name="mmir.CommonUtils"><a href="mmir.html#.CommonUtils">CommonUtils</a></li>
+                
                     <li data-name="mmir.config"><a href="mmir.html#.config">config</a></li>
                 
                     <li data-name="mmir.isVersion"><a href="mmir.html#.isVersion">isVersion</a></li>
                 
                     <li data-name="mmir.ready"><a href="mmir.html#.ready">ready</a></li>
+                
+                    <li data-name="mmir.setInitialized"><a href="mmir.html#.setInitialized">setInitialized</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -247,6 +251,18 @@
                 </span>
                 <ul class="members itemMembers">
                 
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="ContentElement#_parent"><a href="ContentElement.html#_parent">_parent</a></li>
+                
+                    <li data-name="ContentElement#all"><a href="ContentElement.html#all">all</a></li>
+                
+                    <li data-name="ContentElement#parentOffset"><a href="ContentElement.html#parentOffset">parentOffset</a></li>
+                
+                    <li data-name="ContentElement#parsingResult"><a href="ContentElement.html#parsingResult">parsingResult</a></li>
+                
+                    <li data-name="ContentElement#SUB_ELEMENT_NAME"><a href="ContentElement.html#SUB_ELEMENT_NAME">SUB_ELEMENT_NAME</a></li>
+                
                 </ul>
                 <ul class="typedefs itemMembers">
                 
@@ -254,6 +270,14 @@
                 <ul class="methods itemMembers">
                 
                 <span class="subtitle">Methods</span>
+                
+                    <li data-name="ContentElement#checkHasDynamicContent"><a href="ContentElement.html#checkHasDynamicContent">checkHasDynamicContent</a></li>
+                
+                    <li data-name="ContentElement#createJSEvalCode"><a href="ContentElement.html#createJSEvalCode">createJSEvalCode</a></li>
+                
+                    <li data-name="ContentElement#createJSEvalFunction"><a href="ContentElement.html#createJSEvalFunction">createJSEvalFunction</a></li>
+                
+                    <li data-name="ContentElement#getAllVars"><a href="ContentElement.html#getAllVars">getAllVars</a></li>
                 
                     <li data-name="ContentElement#getController"><a href="ContentElement.html#getController">getController</a></li>
                 
@@ -271,11 +295,17 @@
                 
                     <li data-name="ContentElement#hasDynamicContent"><a href="ContentElement.html#hasDynamicContent">hasDynamicContent</a></li>
                 
+                    <li data-name="ContentElement#isVarInList"><a href="ContentElement.html#isVarInList">isVarInList</a></li>
+                
+                    <li data-name="ContentElement#sortAscByStart"><a href="ContentElement.html#sortAscByStart">sortAscByStart</a></li>
+                
                     <li data-name="ContentElement#stringify"><a href="ContentElement.html#stringify">stringify</a></li>
                 
                     <li data-name="ContentElement#toHtml"><a href="ContentElement.html#toHtml">toHtml</a></li>
                 
                     <li data-name="ContentElement#toStrings"><a href="ContentElement.html#toStrings">toStrings</a></li>
+                
+                    <li data-name="ContentElement#unifyVarList"><a href="ContentElement.html#unifyVarList">unifyVarList</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -299,6 +329,8 @@
                     <li data-name="Controller#impl"><a href="Controller.html#impl">impl</a></li>
                 
                     <li data-name="Controller#layout"><a href="Controller.html#layout">layout</a></li>
+                
+                    <li data-name="Controller#logger"><a href="Controller.html#logger">logger</a></li>
                 
                     <li data-name="Controller#name"><a href="Controller.html#name">name</a></li>
                 
@@ -398,6 +430,14 @@
                 </span>
                 <ul class="members itemMembers">
                 
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="Dictionary#KEY_PREFIX"><a href="Dictionary.html#KEY_PREFIX">KEY_PREFIX</a></li>
+                
+                    <li data-name="Dictionary#keyList"><a href="Dictionary.html#keyList">keyList</a></li>
+                
+                    <li data-name="Dictionary#map"><a href="Dictionary.html#map">map</a></li>
+                
                 </ul>
                 <ul class="typedefs itemMembers">
                 
@@ -415,6 +455,8 @@
                     <li data-name="Dictionary#get"><a href="Dictionary.html#get">get</a></li>
                 
                     <li data-name="Dictionary#getKeys"><a href="Dictionary.html#getKeys">getKeys</a></li>
+                
+                    <li data-name="Dictionary#lookupKey"><a href="Dictionary.html#lookupKey">lookupKey</a></li>
                 
                     <li data-name="Dictionary#put"><a href="Dictionary.html#put">put</a></li>
                 
@@ -830,6 +872,8 @@
                 
                 <span class="subtitle">Methods</span>
                 
+                    <li data-name="Layout.getTagAttr"><a href="Layout.html#.getTagAttr">getTagAttr</a></li>
+                
                     <li data-name="Layout#_extHeaderElements"><a href="Layout.html#_extHeaderElements">_extHeaderElements</a></li>
                 
                     <li data-name="Layout#getBodyContents"><a href="Layout.html#getBodyContents">getBodyContents</a></li>
@@ -908,6 +952,8 @@
                 
                     <li data-name="Logger#ise"><a href="Logger.html#ise">ise</a></li>
                 
+                    <li data-name="Logger#isFullStackDepth"><a href="Logger.html#isFullStackDepth">isFullStackDepth</a></li>
+                
                     <li data-name="Logger#isi"><a href="Logger.html#isi">isi</a></li>
                 
                     <li data-name="Logger#isv"><a href="Logger.html#isv">isv</a></li>
@@ -915,6 +961,12 @@
                     <li data-name="Logger#isw"><a href="Logger.html#isw">isw</a></li>
                 
                     <li data-name="Logger#l"><a href="Logger.html#l">l</a></li>
+                
+                    <li data-name="Logger#pnOriginal"><a href="Logger.html#pnOriginal">pnOriginal</a></li>
+                
+                    <li data-name="Logger#pnTraceOptions"><a href="Logger.html#pnTraceOptions">pnTraceOptions</a></li>
+                
+                    <li data-name="Logger#tmpTraceConfig"><a href="Logger.html#tmpTraceConfig">tmpTraceConfig</a></li>
                 
                     <li data-name="Logger#v"><a href="Logger.html#v">v</a></li>
                 
@@ -928,11 +980,17 @@
                 
                 <span class="subtitle">Methods</span>
                 
+                    <li data-name="Logger#createErr"><a href="Logger.html#createErr">createErr</a></li>
+                
+                    <li data-name="Logger#createMsg"><a href="Logger.html#createMsg">createMsg</a></li>
+                
                     <li data-name="Logger#critical"><a href="Logger.html#critical">critical</a></li>
                 
                     <li data-name="Logger#debug"><a href="Logger.html#debug">debug</a></li>
                 
                     <li data-name="Logger#error"><a href="Logger.html#error">error</a></li>
+                
+                    <li data-name="Logger#getAsLevel"><a href="Logger.html#getAsLevel">getAsLevel</a></li>
                 
                     <li data-name="Logger#getLevel"><a href="Logger.html#getLevel">getLevel</a></li>
                 
@@ -944,6 +1002,8 @@
                 
                     <li data-name="Logger#isDisabled"><a href="Logger.html#isDisabled">isDisabled</a></li>
                 
+                    <li data-name="Logger#isErr"><a href="Logger.html#isErr">isErr</a></li>
+                
                     <li data-name="Logger#isError"><a href="Logger.html#isError">isError</a></li>
                 
                     <li data-name="Logger#isInfo"><a href="Logger.html#isInfo">isInfo</a></li>
@@ -953,6 +1013,14 @@
                     <li data-name="Logger#isWarn"><a href="Logger.html#isWarn">isWarn</a></li>
                 
                     <li data-name="Logger#log"><a href="Logger.html#log">log</a></li>
+                
+                    <li data-name="Logger#print"><a href="Logger.html#print">print</a></li>
+                
+                    <li data-name="Logger#printe"><a href="Logger.html#printe">printe</a></li>
+                
+                    <li data-name="Logger#printFullStack"><a href="Logger.html#printFullStack">printFullStack</a></li>
+                
+                    <li data-name="Logger#printStack"><a href="Logger.html#printStack">printStack</a></li>
                 
                     <li data-name="Logger#setLevel"><a href="Logger.html#setLevel">setLevel</a></li>
                 
@@ -991,6 +1059,8 @@
                 
                     <li data-name="MicLevelsAnalysis#LEVEL_CHANGED_THRESHOLD"><a href="MicLevelsAnalysis.html#LEVEL_CHANGED_THRESHOLD">LEVEL_CHANGED_THRESHOLD</a></li>
                 
+                    <li data-name="MicLevelsAnalysis#MIC_CHANGED_EVT_NAME"><a href="MicLevelsAnalysis.html#MIC_CHANGED_EVT_NAME">MIC_CHANGED_EVT_NAME</a></li>
+                
                     <li data-name="MicLevelsAnalysis#MIC_MAX_NORM_VAL"><a href="MicLevelsAnalysis.html#MIC_MAX_NORM_VAL">MIC_MAX_NORM_VAL</a></li>
                 
                     <li data-name="MicLevelsAnalysis#MIC_MAX_VAL"><a href="MicLevelsAnalysis.html#MIC_MAX_VAL">MIC_MAX_VAL</a></li>
@@ -1000,6 +1070,8 @@
                     <li data-name="MicLevelsAnalysis#MIC_QUERY_INTERVALL"><a href="MicLevelsAnalysis.html#MIC_QUERY_INTERVALL">MIC_QUERY_INTERVALL</a></li>
                 
                     <li data-name="MicLevelsAnalysis#recording"><a href="MicLevelsAnalysis.html#recording">recording</a></li>
+                
+                    <li data-name="MicLevelsAnalysis#STREAM_STARTED_EVT_NAME"><a href="MicLevelsAnalysis.html#STREAM_STARTED_EVT_NAME">STREAM_STARTED_EVT_NAME</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -1041,16 +1113,28 @@
                 </ul>
             </li>
         
-            <li class="item" data-name="mmir.CommonUtils.html">
+            <li class="item" data-name="mmir.html#.CommonUtils">
                 <span class="title">
-                    <a href="mmir.CommonUtils.html">mmir.CommonUtils</a>
+                    <a href="mmir.html#.CommonUtils">mmir.CommonUtils</a>
                     
                 </span>
                 <ul class="members itemMembers">
                 
                 <span class="subtitle">Members</span>
                 
-                    <li data-name="mmir.CommonUtils#regexHTMLComment"><a href="mmir.CommonUtils.html#regexHTMLComment">regexHTMLComment</a></li>
+                    <li data-name="mmir.CommonUtils#_conf"><a href="mmir.html#.CommonUtils#_conf">_conf</a></li>
+                
+                    <li data-name="mmir.CommonUtils#instance"><a href="mmir.html#.CommonUtils#instance">instance</a></li>
+                
+                    <li data-name="mmir.CommonUtils#logger"><a href="mmir.html#.CommonUtils#logger">logger</a></li>
+                
+                    <li data-name="mmir.CommonUtils#regexHTMLComment"><a href="mmir.html#.CommonUtils#regexHTMLComment">regexHTMLComment</a></li>
+                
+                    <li data-name="mmir.CommonUtils~partialsPrefix"><a href="mmir.html#.CommonUtils#~partialsPrefix">partialsPrefix</a></li>
+                
+                    <li data-name="mmir.CommonUtils~reqProtocol"><a href="mmir.html#.CommonUtils#~reqProtocol">reqProtocol</a></li>
+                
+                    <li data-name="mmir.CommonUtils~testReq"><a href="mmir.html#.CommonUtils#~testReq">testReq</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -1060,41 +1144,62 @@
                 
                 <span class="subtitle">Methods</span>
                 
-                    <li data-name="mmir.CommonUtils#checkNetworkConnection"><a href="mmir.CommonUtils.html#checkNetworkConnection">checkNetworkConnection</a></li>
+                    <li data-name="mmir.CommonUtils#checkNetworkConnection"><a href="mmir.html#.CommonUtils#checkNetworkConnection">checkNetworkConnection</a></li>
                 
-                    <li data-name="mmir.CommonUtils#concatArray"><a href="mmir.CommonUtils.html#concatArray">concatArray</a></li>
+                    <li data-name="mmir.CommonUtils#concatArray"><a href="mmir.html#.CommonUtils#concatArray">concatArray</a></li>
                 
-                    <li data-name="mmir.CommonUtils#getCompiledGrammarPath"><a href="mmir.CommonUtils.html#getCompiledGrammarPath">getCompiledGrammarPath</a></li>
+                    <li data-name="mmir.CommonUtils#getCompiledGrammarPath"><a href="mmir.html#.CommonUtils#getCompiledGrammarPath">getCompiledGrammarPath</a></li>
                 
-                    <li data-name="mmir.CommonUtils#getDirectoryContents"><a href="mmir.CommonUtils.html#getDirectoryContents">getDirectoryContents</a></li>
+                    <li data-name="mmir.CommonUtils#getDirectoryStructure"><a href="mmir.html#.CommonUtils#getDirectoryStructure">getDirectoryStructure</a></li>
                 
-                    <li data-name="mmir.CommonUtils#getDirectoryContentsWithFilter"><a href="mmir.CommonUtils.html#getDirectoryContentsWithFilter">getDirectoryContentsWithFilter</a></li>
+                    <li data-name="mmir.CommonUtils#getLocalScript"><a href="mmir.html#.CommonUtils#getLocalScript">getLocalScript</a></li>
                 
-                    <li data-name="mmir.CommonUtils#getDirectoryStructure"><a href="mmir.CommonUtils.html#getDirectoryStructure">getDirectoryStructure</a></li>
+                    <li data-name="mmir.CommonUtils#getPartialsPrefix"><a href="mmir.html#.CommonUtils#getPartialsPrefix">getPartialsPrefix</a></li>
                 
-                    <li data-name="mmir.CommonUtils#getLocalScript"><a href="mmir.CommonUtils.html#getLocalScript">getLocalScript</a></li>
+                    <li data-name="mmir.CommonUtils#isArray"><a href="mmir.html#.CommonUtils#isArray">isArray</a></li>
                 
-                    <li data-name="mmir.CommonUtils#getPartialsPrefix"><a href="mmir.CommonUtils.html#getPartialsPrefix">getPartialsPrefix</a></li>
+                    <li data-name="mmir.CommonUtils#isRunningOnAndroid"><a href="mmir.html#.CommonUtils#isRunningOnAndroid">isRunningOnAndroid</a></li>
                 
-                    <li data-name="mmir.CommonUtils#isArray"><a href="mmir.CommonUtils.html#isArray">isArray</a></li>
+                    <li data-name="mmir.CommonUtils#isRunningOnSmartphone"><a href="mmir.html#.CommonUtils#isRunningOnSmartphone">isRunningOnSmartphone</a></li>
                 
-                    <li data-name="mmir.CommonUtils#isRunningOnAndroid"><a href="mmir.CommonUtils.html#isRunningOnAndroid">isRunningOnAndroid</a></li>
+                    <li data-name="mmir.CommonUtils#listDir"><a href="mmir.html#.CommonUtils#listDir">listDir</a></li>
                 
-                    <li data-name="mmir.CommonUtils#isRunningOnSmartphone"><a href="mmir.CommonUtils.html#isRunningOnSmartphone">isRunningOnSmartphone</a></li>
+                    <li data-name="mmir.CommonUtils#loadCompiledGrammars"><a href="mmir.html#.CommonUtils#loadCompiledGrammars">loadCompiledGrammars</a></li>
                 
-                    <li data-name="mmir.CommonUtils#listDir"><a href="mmir.CommonUtils.html#listDir">listDir</a></li>
+                    <li data-name="mmir.CommonUtils#loadDirectoryStructure"><a href="mmir.html#.CommonUtils#loadDirectoryStructure">loadDirectoryStructure</a></li>
                 
-                    <li data-name="mmir.CommonUtils#loadCompiledGrammars"><a href="mmir.CommonUtils.html#loadCompiledGrammars">loadCompiledGrammars</a></li>
+                    <li data-name="mmir.CommonUtils#loadImpl"><a href="mmir.html#.CommonUtils#loadImpl">loadImpl</a></li>
                 
-                    <li data-name="mmir.CommonUtils#loadDirectoryStructure"><a href="mmir.CommonUtils.html#loadDirectoryStructure">loadDirectoryStructure</a></li>
+                    <li data-name="mmir.CommonUtils#loadScript"><a href="mmir.html#.CommonUtils#loadScript">loadScript</a></li>
                 
-                    <li data-name="mmir.CommonUtils#loadImpl"><a href="mmir.CommonUtils.html#loadImpl">loadImpl</a></li>
+                    <li data-name="mmir.CommonUtils#parseParamsToDictionary"><a href="mmir.html#.CommonUtils#parseParamsToDictionary">parseParamsToDictionary</a></li>
                 
-                    <li data-name="mmir.CommonUtils#loadScript"><a href="mmir.CommonUtils.html#loadScript">loadScript</a></li>
+                    <li data-name="mmir.CommonUtils#parseParamsToDictionary"><a href="mmir.html#.CommonUtils#parseParamsToDictionary">parseParamsToDictionary</a></li>
                 
-                    <li data-name="mmir.CommonUtils#parseParamsToDictionary"><a href="mmir.CommonUtils.html#parseParamsToDictionary">parseParamsToDictionary</a></li>
+                    <li data-name="mmir.CommonUtils#stripPathName"><a href="mmir.html#.CommonUtils#stripPathName">stripPathName</a></li>
                 
-                    <li data-name="mmir.CommonUtils#parseParamsToDictionary"><a href="mmir.CommonUtils.html#parseParamsToDictionary">parseParamsToDictionary</a></li>
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.ModuleIdCompatFunc.html">
+                <span class="title">
+                    <a href="mmir.compat.ModuleIdCompatFunc.html">mmir.compat.ModuleIdCompatFunc</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.compat.ModuleIdCompatFunc#createModuleMapRequire"><a href="mmir.compat.ModuleIdCompatFunc.html#createModuleMapRequire">createModuleMapRequire</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -1249,6 +1354,29 @@
                 </ul>
                 <ul class="methods itemMembers">
                 
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.compat.v3.SemanticInterpreter#removeStopwordsAltFunc"><a href="mmir.compat.v3.SemanticInterpreter.html#removeStopwordsAltFunc">removeStopwordsAltFunc</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.v4.CoreCompat.html">
+                <span class="title">
+                    <a href="mmir.compat.v4.CoreCompat.html">mmir.compat.v4.CoreCompat</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
                 </ul>
                 <ul class="events itemMembers">
                 
@@ -1261,6 +1389,10 @@
                     
                 </span>
                 <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.compat.v4.DialogManager#onPageRenderedFunc"><a href="mmir.compat.v4.DialogManager.html#onPageRenderedFunc">onPageRenderedFunc</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -1291,6 +1423,37 @@
                     <li data-name="mmir.compat.v4.DialogManager#showDialog"><a href="mmir.compat.v4.DialogManager.html#showDialog">showDialog</a></li>
                 
                     <li data-name="mmir.compat.v4.DialogManager#showWaitDialog"><a href="mmir.compat.v4.DialogManager.html#showWaitDialog">showWaitDialog</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.compat.v4.ModuleIdCompat.html">
+                <span class="title">
+                    <a href="mmir.compat.v4.ModuleIdCompat.html">mmir.compat.v4.ModuleIdCompat</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.compat.v4.ModuleIdCompat#core4Ids"><a href="mmir.compat.v4.ModuleIdCompat.html#core4Ids">core4Ids</a></li>
+                
+                    <li data-name="mmir.compat.v4.ModuleIdCompat#core4Ids"><a href="mmir.compat.v4.ModuleIdCompat.html#core4Ids">core4Ids</a></li>
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.compat.v4.ModuleIdCompat#getId"><a href="mmir.compat.v4.ModuleIdCompat.html#getId">getId</a></li>
+                
+                    <li data-name="mmir.compat.v4.ModuleIdCompat#setToCompatibilityMode"><a href="mmir.compat.v4.ModuleIdCompat.html#setToCompatibilityMode">setToCompatibilityMode</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -1334,6 +1497,12 @@
                 </span>
                 <ul class="members itemMembers">
                 
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.ControllerManager.logger"><a href="mmir.ControllerManager.html#.logger">logger</a></li>
+                
+                    <li data-name="mmir.ControllerManager#controllers"><a href="mmir.ControllerManager.html#controllers">controllers</a></li>
+                
                 </ul>
                 <ul class="typedefs itemMembers">
                 
@@ -1342,9 +1511,19 @@
                 
                 <span class="subtitle">Methods</span>
                 
+                    <li data-name="mmir.ControllerManager#_create"><a href="mmir.ControllerManager.html#_create">_create</a></li>
+                
+                    <li data-name="mmir.ControllerManager#_init"><a href="mmir.ControllerManager.html#_init">_init</a></li>
+                
+                    <li data-name="mmir.ControllerManager#addGenPath"><a href="mmir.ControllerManager.html#addGenPath">addGenPath</a></li>
+                
                     <li data-name="mmir.ControllerManager#createCtrlInstance"><a href="mmir.ControllerManager.html#createCtrlInstance">createCtrlInstance</a></li>
                 
+                    <li data-name="mmir.ControllerManager#firstToUpperCase"><a href="mmir.ControllerManager.html#firstToUpperCase">firstToUpperCase</a></li>
+                
                     <li data-name="mmir.ControllerManager#get"><a href="mmir.ControllerManager.html#get">get</a></li>
+                
+                    <li data-name="mmir.ControllerManager#getControllerResources"><a href="mmir.ControllerManager.html#getControllerResources">getControllerResources</a></li>
                 
                     <li data-name="mmir.ControllerManager#getNames"><a href="mmir.ControllerManager.html#getNames">getNames</a></li>
                 
@@ -1353,6 +1532,10 @@
                     <li data-name="mmir.ControllerManager#perform"><a href="mmir.ControllerManager.html#perform">perform</a></li>
                 
                     <li data-name="mmir.ControllerManager#performHelper"><a href="mmir.ControllerManager.html#performHelper">performHelper</a></li>
+                
+                    <li data-name="mmir.ControllerManager#processFileList"><a href="mmir.ControllerManager.html#processFileList">processFileList</a></li>
+                
+                    <li data-name="mmir.ControllerManager#removeFileExt"><a href="mmir.ControllerManager.html#removeFileExt">removeFileExt</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -1397,6 +1580,8 @@
                 <ul class="members itemMembers">
                 
                 <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.DisabledLogging#_defaultLogger"><a href="mmir.DisabledLogging.html#_defaultLogger">_defaultLogger</a></li>
                 
                     <li data-name="mmir.DisabledLogging#isDisabledLogger"><a href="mmir.DisabledLogging.html#isDisabledLogger">isDisabledLogger</a></li>
                 
@@ -1639,7 +1824,11 @@
                 
                 <span class="subtitle">Members</span>
                 
+                    <li data-name="mmir.Logging#_defaultLogger"><a href="mmir.Logging.html#_defaultLogger">_defaultLogger</a></li>
+                
                     <li data-name="mmir.Logging#_level"><a href="mmir.Logging.html#_level">_level</a></li>
+                
+                    <li data-name="mmir.Logging#tmpLogLevel"><a href="mmir.Logging.html#tmpLogLevel">tmpLogLevel</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -1666,6 +1855,25 @@
                     <li data-name="mmir.Logging#verbose"><a href="mmir.Logging.html#verbose">verbose</a></li>
                 
                     <li data-name="mmir.Logging#warn"><a href="mmir.Logging.html#warn">warn</a></li>
+                
+                </ul>
+                <ul class="events itemMembers">
+                
+                </ul>
+            </li>
+        
+            <li class="item" data-name="mmir.main.html">
+                <span class="title">
+                    <a href="mmir.main.html">mmir.main</a>
+                    
+                </span>
+                <ul class="members itemMembers">
+                
+                </ul>
+                <ul class="typedefs itemMembers">
+                
+                </ul>
+                <ul class="methods itemMembers">
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -1753,7 +1961,11 @@
                 
                     <li data-name="mmir.MediaManager#getListeners"><a href="mmir.MediaManager.html#getListeners">getListeners</a></li>
                 
+                    <li data-name="mmir.MediaManager#getPluginsToLoad"><a href="mmir.MediaManager.html#getPluginsToLoad">getPluginsToLoad</a></li>
+                
                     <li data-name="mmir.MediaManager#getRecognitionLanguages"><a href="mmir.MediaManager.html#getRecognitionLanguages">getRecognitionLanguages</a></li>
+                
+                    <li data-name="mmir.MediaManager#getRequiredPlugins"><a href="mmir.MediaManager.html#getRequiredPlugins">getRequiredPlugins</a></li>
                 
                     <li data-name="mmir.MediaManager#getSpeechLanguages"><a href="mmir.MediaManager.html#getSpeechLanguages">getSpeechLanguages</a></li>
                 
@@ -1764,6 +1976,8 @@
                     <li data-name="mmir.MediaManager#hasListeners"><a href="mmir.MediaManager.html#hasListeners">hasListeners</a></li>
                 
                     <li data-name="mmir.MediaManager#init"><a href="mmir.MediaManager.html#init">init</a></li>
+                
+                    <li data-name="mmir.MediaManager#loadAllPlugins"><a href="mmir.MediaManager.html#loadAllPlugins">loadAllPlugins</a></li>
                 
                     <li data-name="mmir.MediaManager#loadFile"><a href="mmir.MediaManager.html#loadFile">loadFile</a></li>
                 
@@ -1783,6 +1997,8 @@
                 
                     <li data-name="mmir.MediaManager#removeListener"><a href="mmir.MediaManager.html#removeListener">removeListener</a></li>
                 
+                    <li data-name="mmir.MediaManager#removePlugin"><a href="mmir.MediaManager.html#removePlugin">removePlugin</a></li>
+                
                     <li data-name="mmir.MediaManager#setDefaultCtx"><a href="mmir.MediaManager.html#setDefaultCtx">setDefaultCtx</a></li>
                 
                     <li data-name="mmir.MediaManager#setTextToSpeechVolume"><a href="mmir.MediaManager.html#setTextToSpeechVolume">setTextToSpeechVolume</a></li>
@@ -1794,6 +2010,8 @@
                     <li data-name="mmir.MediaManager#textToSpeech"><a href="mmir.MediaManager.html#textToSpeech">textToSpeech</a></li>
                 
                     <li data-name="mmir.MediaManager#tts"><a href="mmir.MediaManager.html#tts">tts</a></li>
+                
+                    <li data-name="mmir.MediaManager#verifyRequiredPlugins"><a href="mmir.MediaManager.html#verifyRequiredPlugins">verifyRequiredPlugins</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -1808,6 +2026,16 @@
                 </span>
                 <ul class="members itemMembers">
                 
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.ModelManager#logger"><a href="mmir.ModelManager.html#logger">logger</a></li>
+                
+                    <li data-name="mmir.ModelManager#MODEL_DEFAULT_NAMESPACE_NAME"><a href="mmir.ModelManager.html#MODEL_DEFAULT_NAMESPACE_NAME">MODEL_DEFAULT_NAMESPACE_NAME</a></li>
+                
+                    <li data-name="mmir.ModelManager#MODEL_MANAGER_NAMESPACE"><a href="mmir.ModelManager.html#MODEL_MANAGER_NAMESPACE">MODEL_MANAGER_NAMESPACE</a></li>
+                
+                    <li data-name="mmir.ModelManager#models"><a href="mmir.ModelManager.html#models">models</a></li>
+                
                 </ul>
                 <ul class="typedefs itemMembers">
                 
@@ -1816,7 +2044,15 @@
                 
                 <span class="subtitle">Methods</span>
                 
+                    <li data-name="mmir.ModelManager#_init"><a href="mmir.ModelManager.html#_init">_init</a></li>
+                
+                    <li data-name="mmir.ModelManager#doGetModelInstance"><a href="mmir.ModelManager.html#doGetModelInstance">doGetModelInstance</a></li>
+                
                     <li data-name="mmir.ModelManager#get"><a href="mmir.ModelManager.html#get">get</a></li>
+                
+                    <li data-name="mmir.ModelManager#getFullModelName"><a href="mmir.ModelManager.html#getFullModelName">getFullModelName</a></li>
+                
+                    <li data-name="mmir.ModelManager#getModelByName"><a href="mmir.ModelManager.html#getModelByName">getModelByName</a></li>
                 
                     <li data-name="mmir.ModelManager#getModelNames"><a href="mmir.ModelManager.html#getModelNames">getModelNames</a></li>
                 
@@ -1852,6 +2088,8 @@
                     <li data-name="mmir.NotificationManager#getVolume"><a href="mmir.NotificationManager.html#getVolume">getVolume</a></li>
                 
                     <li data-name="mmir.NotificationManager#init"><a href="mmir.NotificationManager.html#init">init</a></li>
+                
+                    <li data-name="mmir.NotificationManager#initBeep"><a href="mmir.NotificationManager.html#initBeep">initBeep</a></li>
                 
                     <li data-name="mmir.NotificationManager#initSound"><a href="mmir.NotificationManager.html#initSound">initSound</a></li>
                 
@@ -2051,6 +2289,38 @@
                 </span>
                 <ul class="members itemMembers">
                 
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="mmir.parser.RenderUtils#DATA_NAME"><a href="mmir.parser.RenderUtils.html#DATA_NAME">DATA_NAME</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#instance"><a href="mmir.parser.RenderUtils.html#instance">instance</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#localizer"><a href="mmir.parser.RenderUtils.html#localizer">localizer</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#logger"><a href="mmir.parser.RenderUtils.html#logger">logger</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#PARAM_ARGS_NAME"><a href="mmir.parser.RenderUtils.html#PARAM_ARGS_NAME">PARAM_ARGS_NAME</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#PARAM_DATA_NAME"><a href="mmir.parser.RenderUtils.html#PARAM_DATA_NAME">PARAM_DATA_NAME</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#RENDER_MODE_JS_SOURCE"><a href="mmir.parser.RenderUtils.html#RENDER_MODE_JS_SOURCE">RENDER_MODE_JS_SOURCE</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#RENDER_MODE_JS_SOURCE_FORCE_VAR_PREFIX"><a href="mmir.parser.RenderUtils.html#RENDER_MODE_JS_SOURCE_FORCE_VAR_PREFIX">RENDER_MODE_JS_SOURCE_FORCE_VAR_PREFIX</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#RENDER_MODE_LAYOUT"><a href="mmir.parser.RenderUtils.html#RENDER_MODE_LAYOUT">RENDER_MODE_LAYOUT</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#RENDER_MODE_PARTIAL"><a href="mmir.parser.RenderUtils.html#RENDER_MODE_PARTIAL">RENDER_MODE_PARTIAL</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#RENDER_MODE_VIEW_CONTENT"><a href="mmir.parser.RenderUtils.html#RENDER_MODE_VIEW_CONTENT">RENDER_MODE_VIEW_CONTENT</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#RENDER_MODE_VIEW_DIALOGS"><a href="mmir.parser.RenderUtils.html#RENDER_MODE_VIEW_DIALOGS">RENDER_MODE_VIEW_DIALOGS</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderContentElementImpl"><a href="mmir.parser.RenderUtils.html#renderContentElementImpl">renderContentElementImpl</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderJSSourceImpl"><a href="mmir.parser.RenderUtils.html#renderJSSourceImpl">renderJSSourceImpl</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderLayoutImpl"><a href="mmir.parser.RenderUtils.html#renderLayoutImpl">renderLayoutImpl</a></li>
+                
                 </ul>
                 <ul class="typedefs itemMembers">
                 
@@ -2059,15 +2329,61 @@
                 
                 <span class="subtitle">Methods</span>
                 
+                    <li data-name="mmir.parser.RenderUtils#createInternalData"><a href="mmir.parser.RenderUtils.html#createInternalData">createInternalData</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#evaluate"><a href="mmir.parser.RenderUtils.html#evaluate">evaluate</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#getContentForYield"><a href="mmir.parser.RenderUtils.html#getContentForYield">getContentForYield</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#getRenderingBuffer"><a href="mmir.parser.RenderUtils.html#getRenderingBuffer">getRenderingBuffer</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#isArray"><a href="mmir.parser.RenderUtils.html#isArray">isArray</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderComment"><a href="mmir.parser.RenderUtils.html#renderComment">renderComment</a></li>
+                
                     <li data-name="mmir.parser.RenderUtils#renderContentElement"><a href="mmir.parser.RenderUtils.html#renderContentElement">renderContentElement</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderContentImpl"><a href="mmir.parser.RenderUtils.html#renderContentImpl">renderContentImpl</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderElement"><a href="mmir.parser.RenderUtils.html#renderElement">renderElement</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderEscape"><a href="mmir.parser.RenderUtils.html#renderEscape">renderEscape</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderFor"><a href="mmir.parser.RenderUtils.html#renderFor">renderFor</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderHelper"><a href="mmir.parser.RenderUtils.html#renderHelper">renderHelper</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderIf"><a href="mmir.parser.RenderUtils.html#renderIf">renderIf</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderIncludeScript"><a href="mmir.parser.RenderUtils.html#renderIncludeScript">renderIncludeScript</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderIncludeStyle"><a href="mmir.parser.RenderUtils.html#renderIncludeStyle">renderIncludeStyle</a></li>
                 
                     <li data-name="mmir.parser.RenderUtils#renderJS"><a href="mmir.parser.RenderUtils.html#renderJS">renderJS</a></li>
                 
                     <li data-name="mmir.parser.RenderUtils#renderLayout"><a href="mmir.parser.RenderUtils.html#renderLayout">renderLayout</a></li>
                 
+                    <li data-name="mmir.parser.RenderUtils#renderLocalize"><a href="mmir.parser.RenderUtils.html#renderLocalize">renderLocalize</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderPartial"><a href="mmir.parser.RenderUtils.html#renderPartial">renderPartial</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderRaw"><a href="mmir.parser.RenderUtils.html#renderRaw">renderRaw</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderScriptBlock"><a href="mmir.parser.RenderUtils.html#renderScriptBlock">renderScriptBlock</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderScriptStatement"><a href="mmir.parser.RenderUtils.html#renderScriptStatement">renderScriptStatement</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderVarDeclaration"><a href="mmir.parser.RenderUtils.html#renderVarDeclaration">renderVarDeclaration</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderVarReference"><a href="mmir.parser.RenderUtils.html#renderVarReference">renderVarReference</a></li>
+                
                     <li data-name="mmir.parser.RenderUtils#renderViewContent"><a href="mmir.parser.RenderUtils.html#renderViewContent">renderViewContent</a></li>
                 
                     <li data-name="mmir.parser.RenderUtils#renderViewDialogs"><a href="mmir.parser.RenderUtils.html#renderViewDialogs">renderViewDialogs</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#renderYield"><a href="mmir.parser.RenderUtils.html#renderYield">renderYield</a></li>
+                
+                    <li data-name="mmir.parser.RenderUtils#sortAscByStart"><a href="mmir.parser.RenderUtils.html#sortAscByStart">sortAscByStart</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -2103,13 +2419,95 @@
                 
                 <span class="subtitle">Members</span>
                 
+                    <li data-name="mmir.parser.TemplateProcessor#consts"><a href="mmir.parser.TemplateProcessor.html#consts">consts</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#getTokenName"><a href="mmir.parser.TemplateProcessor.html#getTokenName">getTokenName</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#isDebug"><a href="mmir.parser.TemplateProcessor.html#isDebug">isDebug</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#PARSER_JS_CODE"><a href="mmir.parser.TemplateProcessor.html#PARSER_JS_CODE">PARSER_JS_CODE</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#PARSER_SCRIPT_BLOCK"><a href="mmir.parser.TemplateProcessor.html#PARSER_SCRIPT_BLOCK">PARSER_SCRIPT_BLOCK</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#PARSER_SCRIPT_CONTENT"><a href="mmir.parser.TemplateProcessor.html#PARSER_SCRIPT_CONTENT">PARSER_SCRIPT_CONTENT</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#PARSER_SCRIPT_STATMENT"><a href="mmir.parser.TemplateProcessor.html#PARSER_SCRIPT_STATMENT">PARSER_SCRIPT_STATMENT</a></li>
+                
                     <li data-name="mmir.parser.TemplateProcessor#parserModule"><a href="mmir.parser.TemplateProcessor.html#parserModule">parserModule</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#SCRIPT_CHANNEL"><a href="mmir.parser.TemplateProcessor.html#SCRIPT_CHANNEL">SCRIPT_CHANNEL</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
                 
                 </ul>
                 <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#createJSObjectFrom"><a href="mmir.parser.TemplateProcessor.html#createJSObjectFrom">createJSObjectFrom</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#doEnter"><a href="mmir.parser.TemplateProcessor.html#doEnter">doEnter</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#enterBlock"><a href="mmir.parser.TemplateProcessor.html#enterBlock">enterBlock</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#enterContent"><a href="mmir.parser.TemplateProcessor.html#enterContent">enterContent</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#enterJavaScript"><a href="mmir.parser.TemplateProcessor.html#enterJavaScript">enterJavaScript</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#enterScript"><a href="mmir.parser.TemplateProcessor.html#enterScript">enterScript</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#extractBoundries"><a href="mmir.parser.TemplateProcessor.html#extractBoundries">extractBoundries</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#getBoundries"><a href="mmir.parser.TemplateProcessor.html#getBoundries">getBoundries</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#getFirstChild"><a href="mmir.parser.TemplateProcessor.html#getFirstChild">getFirstChild</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#getLexerFor"><a href="mmir.parser.TemplateProcessor.html#getLexerFor">getLexerFor</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#getParserFor"><a href="mmir.parser.TemplateProcessor.html#getParserFor">getParserFor</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#getStringFor"><a href="mmir.parser.TemplateProcessor.html#getStringFor">getStringFor</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#getStringForSubTree"><a href="mmir.parser.TemplateProcessor.html#getStringForSubTree">getStringForSubTree</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#isArray"><a href="mmir.parser.TemplateProcessor.html#isArray">isArray</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processBlock"><a href="mmir.parser.TemplateProcessor.html#processBlock">processBlock</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processComment"><a href="mmir.parser.TemplateProcessor.html#processComment">processComment</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processDeclareVar"><a href="mmir.parser.TemplateProcessor.html#processDeclareVar">processDeclareVar</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processElse"><a href="mmir.parser.TemplateProcessor.html#processElse">processElse</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processEscape"><a href="mmir.parser.TemplateProcessor.html#processEscape">processEscape</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processForContent"><a href="mmir.parser.TemplateProcessor.html#processForContent">processForContent</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processForControl"><a href="mmir.parser.TemplateProcessor.html#processForControl">processForControl</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processHelperFunction"><a href="mmir.parser.TemplateProcessor.html#processHelperFunction">processHelperFunction</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processIfContent"><a href="mmir.parser.TemplateProcessor.html#processIfContent">processIfContent</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processIfExpr"><a href="mmir.parser.TemplateProcessor.html#processIfExpr">processIfExpr</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processIncludeScript"><a href="mmir.parser.TemplateProcessor.html#processIncludeScript">processIncludeScript</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processIncludeStyle"><a href="mmir.parser.TemplateProcessor.html#processIncludeStyle">processIncludeStyle</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processLocalize"><a href="mmir.parser.TemplateProcessor.html#processLocalize">processLocalize</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processRenderPartial"><a href="mmir.parser.TemplateProcessor.html#processRenderPartial">processRenderPartial</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processStatement"><a href="mmir.parser.TemplateProcessor.html#processStatement">processStatement</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processYieldContent"><a href="mmir.parser.TemplateProcessor.html#processYieldContent">processYieldContent</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processYieldContentParam"><a href="mmir.parser.TemplateProcessor.html#processYieldContentParam">processYieldContentParam</a></li>
+                
+                    <li data-name="mmir.parser.TemplateProcessor#processYieldDeclaration"><a href="mmir.parser.TemplateProcessor.html#processYieldDeclaration">processYieldDeclaration</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -2126,9 +2524,31 @@
                 
                 <span class="subtitle">Members</span>
                 
+                    <li data-name="mmir.PresentationManager#_currentDialog"><a href="mmir.PresentationManager.html#_currentDialog">_currentDialog</a></li>
+                
+                    <li data-name="mmir.PresentationManager#_layouts"><a href="mmir.PresentationManager.html#_layouts">_layouts</a></li>
+                
                     <li data-name="mmir.PresentationManager#_pageIndex"><a href="mmir.PresentationManager.html#_pageIndex">_pageIndex</a></li>
                 
+                    <li data-name="mmir.PresentationManager#_partials"><a href="mmir.PresentationManager.html#_partials">_partials</a></li>
+                
+                    <li data-name="mmir.PresentationManager#_renderEngine"><a href="mmir.PresentationManager.html#_renderEngine">_renderEngine</a></li>
+                
+                    <li data-name="mmir.PresentationManager#_views"><a href="mmir.PresentationManager.html#_views">_views</a></li>
+                
+                    <li data-name="mmir.PresentationManager#CONFIG_DEFAULT_LAYOUT_NAME"><a href="mmir.PresentationManager.html#CONFIG_DEFAULT_LAYOUT_NAME">CONFIG_DEFAULT_LAYOUT_NAME</a></li>
+                
+                    <li data-name="mmir.PresentationManager#DEFAULT_LAYOUT_NAME"><a href="mmir.PresentationManager.html#DEFAULT_LAYOUT_NAME">DEFAULT_LAYOUT_NAME</a></li>
+                
+                    <li data-name="mmir.PresentationManager#logger"><a href="mmir.PresentationManager.html#logger">logger</a></li>
+                
                     <li data-name="mmir.PresentationManager#pageIndex"><a href="mmir.PresentationManager.html#pageIndex">pageIndex</a></li>
+                
+                    <li data-name="mmir.PresentationManager#partialSeparator"><a href="mmir.PresentationManager.html#partialSeparator">partialSeparator</a></li>
+                
+                    <li data-name="mmir.PresentationManager#reHandlerName"><a href="mmir.PresentationManager.html#reHandlerName">reHandlerName</a></li>
+                
+                    <li data-name="mmir.PresentationManager#viewSeparator"><a href="mmir.PresentationManager.html#viewSeparator">viewSeparator</a></li>
                 
                 </ul>
                 <ul class="typedefs itemMembers">
@@ -2145,6 +2565,12 @@
                     <li data-name="mmir.PresentationManager#addView"><a href="mmir.PresentationManager.html#addView">addView</a></li>
                 
                     <li data-name="mmir.PresentationManager#callRenderEngine"><a href="mmir.PresentationManager.html#callRenderEngine">callRenderEngine</a></li>
+                
+                    <li data-name="mmir.PresentationManager#createLookupKey"><a href="mmir.PresentationManager.html#createLookupKey">createLookupKey</a></li>
+                
+                    <li data-name="mmir.PresentationManager#createPartialKey"><a href="mmir.PresentationManager.html#createPartialKey">createPartialKey</a></li>
+                
+                    <li data-name="mmir.PresentationManager#createViewKey"><a href="mmir.PresentationManager.html#createViewKey">createViewKey</a></li>
                 
                     <li data-name="mmir.PresentationManager#getLayout"><a href="mmir.PresentationManager.html#getLayout">getLayout</a></li>
                 
@@ -2348,11 +2774,43 @@
                 </span>
                 <ul class="members itemMembers">
                 
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="ParserUtils#_currentParsedView"><a href="ParserUtils.html#_currentParsedView">_currentParsedView</a></li>
+                
+                    <li data-name="ParserUtils#errorLevel"><a href="ParserUtils.html#errorLevel">errorLevel</a></li>
+                
+                    <li data-name="ParserUtils#instance"><a href="ParserUtils.html#instance">instance</a></li>
+                
+                    <li data-name="ParserUtils#isDebug"><a href="ParserUtils.html#isDebug">isDebug</a></li>
+                
                 </ul>
                 <ul class="typedefs itemMembers">
                 
                 </ul>
                 <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="ParserUtils#_attachInternalPrintFunc"><a href="ParserUtils.html#_attachInternalPrintFunc">_attachInternalPrintFunc</a></li>
+                
+                    <li data-name="ParserUtils#_parserPrintDebug"><a href="ParserUtils.html#_parserPrintDebug">_parserPrintDebug</a></li>
+                
+                    <li data-name="ParserUtils#_parserPrintError"><a href="ParserUtils.html#_parserPrintError">_parserPrintError</a></li>
+                
+                    <li data-name="ParserUtils#_parserPrintInfo"><a href="ParserUtils.html#_parserPrintInfo">_parserPrintInfo</a></li>
+                
+                    <li data-name="ParserUtils#_parserPrintWarning"><a href="ParserUtils.html#_parserPrintWarning">_parserPrintWarning</a></li>
+                
+                    <li data-name="ParserUtils#_print"><a href="ParserUtils.html#_print">_print</a></li>
+                
+                    <li data-name="ParserUtils#_printInfo"><a href="ParserUtils.html#_printInfo">_printInfo</a></li>
+                
+                    <li data-name="ParserUtils#internalParse"><a href="ParserUtils.html#internalParse">internalParse</a></li>
+                
+                    <li data-name="ParserUtils#internalParseJS"><a href="ParserUtils.html#internalParseJS">internalParseJS</a></li>
+                
+                    <li data-name="ParserUtils#parserCreatePrintMessage"><a href="ParserUtils.html#parserCreatePrintMessage">parserCreatePrintMessage</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -2850,6 +3308,8 @@
                 
                     <li data-name="WebspeechAudioInput#default_error_function"><a href="WebspeechAudioInput.html#default_error_function">default_error_function</a></li>
                 
+                    <li data-name="WebspeechAudioInput#getLoglevel"><a href="WebspeechAudioInput.html#getLoglevel">getLoglevel</a></li>
+                
                     <li data-name="WebspeechAudioInput#helper_error_handler"><a href="WebspeechAudioInput.html#helper_error_handler">helper_error_handler</a></li>
                 
                     <li data-name="WebspeechAudioInput#helper_extract_results"><a href="WebspeechAudioInput.html#helper_extract_results">helper_extract_results</a></li>
@@ -2857,6 +3317,8 @@
                     <li data-name="WebspeechAudioInput#initialize"><a href="WebspeechAudioInput.html#initialize">initialize</a></li>
                 
                     <li data-name="WebspeechAudioInput#recognize"><a href="WebspeechAudioInput.html#recognize">recognize</a></li>
+                
+                    <li data-name="WebspeechAudioInput#setLoglevel"><a href="WebspeechAudioInput.html#setLoglevel">setLoglevel</a></li>
                 
                     <li data-name="WebspeechAudioInput#startRecord"><a href="WebspeechAudioInput.html#startRecord">startRecord</a></li>
                 
@@ -2968,11 +3430,19 @@
                 </span>
                 <ul class="members itemMembers">
                 
+                <span class="subtitle">Members</span>
+                
+                    <li data-name="module:workers/scionRaiseQueue~queue"><a href="module-workers_scionRaiseQueue.html#~queue">queue</a></li>
+                
                 </ul>
                 <ul class="typedefs itemMembers">
                 
                 </ul>
                 <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="module:workers/scionRaiseQueue~distributeJobs"><a href="module-workers_scionRaiseQueue.html#~distributeJobs">distributeJobs</a></li>
                 
                 </ul>
                 <ul class="events itemMembers">
@@ -2985,330 +3455,269 @@
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="tools_extensions_DialogManager4Compatiblity.js.html">Source: tools/extensions/DialogManager4Compatiblity.js</h1>
+        <h1 class="page-title" data-filename="mmir.compat.ModuleIdCompatFunc.html">Class: ModuleIdCompatFunc</h1>
         
 
 
+
+<section>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>
-define(['mmirf/util/extend','mmirf/controllerManager','mmirf/presentationManager'
-],
-	/**
-	 * Backwards compatibility for DialogManager (&lt;= version 4.x):
-	 *
-	 * (re-)adds the following methods/functionality to the DialogManager instance:
-	 *  * perform(ctrlName, actionName, data)
-	 *  * performHelper(ctrlName, helperActionName, data)
-	 *  * showDialog(ctrlName, dialogId, data)
-	 *  * hideCurrentDialog()
-	 *  * showWaitDialog(text, theme)
-	 *  * hideWaitDialog()
-	 *  * render(ctrlName, viewName, data)
-	 *  * getOnPageRenderedHandler()
-	 *  * setOnPageRenderedHandler(handlerFunction)
-	 *
-	 *  * _setControllerManager(controllerManager)
-	 *  * _setPresentationManager(presentationManager)
-	 *
-	 * @example
-	 * //extend DialogManager with helper/shortcut functions (e.g for &lt;= v4.x backwards compatibility):
-	 * var dialogManager = require('mmirf/dialogManager');
-	 * //or: var dialogManager = mmir.dialog;
-	 * require('mmirf/dialogManager4Compatiblity')(dialogManager);
-	 * dialogManager.render('Application', 'welcome').then(function(){ console.log('rendered welcome view') })
-	 *
-	 * @name mmir.compat.v4.DialogManager
-	 * @static
-	 * @class
-	 *
-	 * @requires mmir.ControllerManager
-	 * @requires mmir.PresentationManager
-	 *
-	 */
-	function(extend, controllerManager, presentationManager
-) {
+<header>
+    <h2>
+    ModuleIdCompatFunc
+    </h2>
+    
+</header>  
 
-	var _extend = function(dialogManager){
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="ModuleIdCompatFunc">
+            
+            new mmir.compat.ModuleIdCompatFunc<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_ModuleIdCompatibilityFunc.js.html">tools/extensions/ModuleIdCompatibilityFunc.js</a>, <a href="tools_extensions_ModuleIdCompatibilityFunc.js.html#line2">line 2</a>
+        </div>
+        
+    </div>
 
-		//the next comment enables JSDoc2 to map all functions etc. to the correct class description
-		/** @scope mmir.compat.v4.DialogManager.prototype */
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Maps requirejs module IDs from mmir-lib v3 (and earlier) to module IDs used in mmir-lib version >= 4.
+    </div>
+    
 
-		/**
-		 * @private
-		 * @type Function
-		 *
-		 * @see {@link mmir.compat.v4.DialogManager#getOnPageRenderedHandler}
-		 * @see {@link mmir.compat.v4.DialogManager#setOnPageRenderedHandler}
-		 *
-		 * @memberOf mmir.compat.v4.DialogManager.prototype
-		 */
-		var onPageRenderedFunc;
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
 
-		var ctrlManager = controllerManager;
-		var presentManager = presentationManager;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
 
+    
+    
 
-		extend(dialogManager,
-			/**
-			 * @memberOf mmir.compat.v4.DialogManager#
-			 */
-			{
+    
 
-			/** @scope mmir.compat.v4.DialogManager.prototype */
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
 
+    
+    <pre class="prettyprint"><code>mmir.require(['mmirf/moduleIdCompatibilityFunc', 'mmirf/core'], function(moduleIdCompatibilityFunc, mmir){		function moduleMapFunc(id){			return if(isOldId(id)) return 'mmirf/'+id;			return id;		}		var req = moduleIdCompatibilityFunc(mmir.require, moduleMapFunc);		mmir.require = req;});</code></pre>
+    
 
-			/**
-			 * This function performs an action of a controller by calling
-			 * the method {@link mmir.ControllerManager#perform} of the
-			 * {@link mmir.ControllerManager}
-			 *
-			 * @function
-			 * @param {String}
-			 *            ctrlName Name of the controller to which the
-			 *            action belongs
-			 * @param {String}
-			 *            actionName Name of the action that should be
-			 *            performed
-			 * @param {Object}
-			 *            data optional data that can be submitted to the
-			 *            action
-			 * @returns {Object} the return object of the performed action
-			 * @public
-			 * @memberOf mmir.compat.v4.DialogManager.prototype
-			 */
-			perform: function(ctrlName, actionName, data) {
+    
+</dd>
 
-				// if(logger.isDebug()) logger.debug("going to perform ('" + ctrlName + "','" + actionName + "')");//debug
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="createModuleMapRequire">
+            
+            createModuleMapRequire<span class="signature">(requirejs, getIdFunc)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="tools_extensions_ModuleIdCompatibilityFunc.js.html">tools/extensions/ModuleIdCompatibilityFunc.js</a>, <a href="tools_extensions_ModuleIdCompatibilityFunc.js.html#line38">line 38</a>
+        </div>
+        
+    </div>
 
-				return ctrlManager.perform(ctrlName, actionName, data);
-			},
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        HELPER for creating require() function that maps old module IDs to new ones.
+    </div>
+    
 
-			/**
-			 * This function performs an action of a helper-class for a
-			 * controller by calling the method
-			 * {@link mmir.ControllerManager#performHelper} of the
-			 * {@link mmir.ControllerManager}
-			 *
-			 * @function
-			 * @param {String}
-			 *            ctrlName Name of the controller to which the
-			 *            helper action belongs
-			 * @param {String}
-			 *            helper_method_name Name of the action that should
-			 *            be performed by the helper
-			 * @param {Object}
-			 *            data optional data that can be submitted to the
-			 *            action
-			 * @returns {Object} the return object of the performed action
-			 * @public
-			 * @memberOf mmir.compat.v4.DialogManager.prototype
-			 */
-			performHelper : function(ctrlName, helper_method_name, data) {
+    
+    
+    
+    
+    
+        
 
-				if (arguments.length > 3) {
-
-					return ctrlManager.performHelper(
-							ctrlName, helper_method_name, data, arguments[3]
-					);
-				}
-				else {
-
-					return ctrlManager.performHelper(
-							ctrlName, helper_method_name, data
-					);
-				}
-			},
-
-			/**
-			 * This function displays a dialog of a controller by calling
-			 * the method {@link mmir.PresentationManager#showDialog} of the
-			 * {@link mmir.PresentationManager}
-			 *
-			 * @function
-			 * @param {String}
-			 *            ctrlName Name of the controller to which the
-			 *            dialog belongs
-			 * @param {String}
-			 *            dialogId Id of the dialog that should be displayed
-			 * @param {Object}
-			 *            data Optional data that can be submitted to the
-			 *            dialog
-			 * @public
-			 * @memberOf mmir.compat.v4.DialogManager.prototype
-			 */
-			showDialog : function(ctrlName, dialogId, data) {
-				presentManager.showDialog.apply(presentManager, arguments);
-			},
-
-			/**
-			 * This function closes a dialog of a controller by calling the
-			 * method {@link mmir.PresentationManager#hideCurrentDialog} of
-			 * the {@link mmir.PresentationManager}
-			 *
-			 * @function
-			 * @public
-			 * @memberOf mmir.compat.v4.DialogManager.prototype
-			 */
-			hideCurrentDialog : function() {
-				presentManager.hideCurrentDialog.apply(presentManager, arguments);
-			},
-			/**
-			 * Shows a "wait" dialog, indicating work-in-progress.
-			 *
-			 * This is a shortcut for calling
-			 * {@link mmir.PresentationManager#showWaitDialog}
-			 * (see documentation in &lt;code>PresentationManager&lt;/code>
-			 *  for parameters).
-			 *
-			 * @function
-			 *
-			 * @public
-			 *
-			 * @see mmir.PresentationManager#showWaitDialog
-			 * @see mmir.PresentationManager#hideWaitDialog
-			 *
-			 * @memberOf mmir.compat.v4.DialogManager.prototype
-			 */
-			showWaitDialog : function(text, theme) {
-				presentManager.showWaitDialog.apply(presentManager, arguments);
-			},
-
-			/**
-			 * Hides / closes the "wait" dialog.
-			 *
-			 *
-			 * This is a shortcut for calling
-			 * {@link mmir.PresentationManager#hideWaitDialog}
-			 * (see documentation in &lt;code>PresentationManager&lt;/code>
-			 *  for parameters).
-			 *
-			 * @function
-			 * @public
-			 *
-			 * @see mmir.PresentationManager#hideWaitDialog
-			 * @see mmir.PresentationManager#showWaitDialog
-			 *
-			 * @memberOf mmir.compat.v4.DialogManager.prototype
-			 */
-			hideWaitDialog : function() {
-				presentManager.hideWaitDialog.apply(presentManager, arguments);
-			},
-
-			/**
-			 * This function displays a view of a controller by calling the
-			 * method {@link mmir.PresentationManager#renderView} of the
-			 * {@link mmir.PresentationManager}.
-			 * &lt;br>
-			 * And after rendering, the function set via #setOnPageRenderedHandler will
-			 * called in context of the controller instance with arguments:
-			 * &lt;code>Controller.onPageRenderedFunc(ctrlName, viewName, data)&lt;/code>
-			 *
-			 *
-			 * @function
-			 * @param {String}
-			 *            ctrlName Name of the controller to which the view
-			 *            belongs
-			 * @param {String}
-			 *            viewName Name of the view that should be rendered
-			 * @param {Object}
-			 *            data Optional data that can be submitted to the
-			 *            generation of the view
-			 * @returns {void|Promise}
-			 * 			if void/undefined is returned, the view is rendered synchronously, i.e.
-			 * 			the view is rendered, when this method returns.
-			 * 			If a Promise is returned, the view is rendered asynchronously
-			 * 			(rendering is finished, when the promise is resolved)
-			 *
-			 * @public
-			 * @memberOf mmir.compat.v4.DialogManager.prototype
-			 */
-			render : function(ctrlName, viewName, data) {
-
-				var defer = presentManager.render(ctrlName, viewName, data);
-
-				if (typeof onPageRenderedFunc === 'function') {
-					var ctrl = ctrlManager.get(ctrlName);
-					if(defer){
-						defer.then(function(){
-							onPageRenderedFunc.call(ctrl, ctrlName, viewName, data);
-						});
-					} else {
-						onPageRenderedFunc.call(ctrl, ctrlName, viewName, data);
-					}
-				}
-
-				return defer;
-			},
-			/**
-			 * Get the current on-page-rendered hook function (if it was
-			 * set).
-			 *
-			 * @function
-			 * @param {Function}
-			 *            the onPageRendered handler (NOTE: this may not be
-			 *            set, i.e. &lt;tt>undefined&lt;/tt>)
-			 *
-			 * @memberOf mmir.compat.v4.DialogManager.prototype
-			 */
-			getOnPageRenderedHandler : function() {
-				return onPageRenderedFunc;
-			},
-			/**
-			 * Set the on_page_loaded callback function.
-			 *
-			 * If &lt;code>onPageRenderedHook&lt;/code> is a function object, it
-			 * will be executed after a view is rendered and after the
-			 * view's controller on_page_load function(s) has/have been
-			 * executed.
-			 *
-			 * &lt;p>
-			 * This function will be executed after the view's
-			 * on_page_load()-function.&lt;br>
-			 * The &lt;code>onPageRenderedHook&lt;/code> function takes 3
-			 * arguments that refer to the parameters with which the
-			 * render-function was invoked: &lt;br>
-			 * &lt;code>{String} ctrlName &lt;/code> Name of the controller to
-			 * which the view belongs &lt;br>
-			 * &lt;code>{String} viewName&lt;/code> Name of the view that should
-			 * be rendered &lt;br>
-			 * &lt;code>{Object} [data]&lt;/code> &lt;em>Optional&lt;/em> data that
-			 * can be submitted to the generation of the view
-			 *
-			 * @function
-			 * @param {Function}
-			 *            onPageRenderedHook a callback function that will
-			 *            be executed after a view was rendered i.e. after a
-			 *            page was loaded.
-			 *
-			 * @memberOf mmir.compat.v4.DialogManager.prototype
-			 */
-			setOnPageRenderedHandler : function(onPageRenderedHook) {
-				onPageRenderedFunc = onPageRenderedHook;
-			},
-			/** @memberOf mmir.compat.v4.DialogManager.prototype */
-			_setControllerManager: function(ctrlManager){
-				ctrlManager = ctrlManager;
-			},
-			/** @memberOf mmir.compat.v4.DialogManager.prototype */
-			_setPresentationManager: function(presentManager){
-				presentManager = presentManager;
-			}
-
-		});//END: extend(dialogManager, {...
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>requirejs</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
 
 
-		return dialogManager;
-	};
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the require function, e.g. <code>mmir.require</code></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>getIdFunc</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
 
-	return _extend;
 
-});//END: define(...
-</code></pre>
-        </article>
-    </section>
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                function for mapping module IDs:			takes a string (module ID) as input, and returns a string (the new/valid module ID)			<code>getIdFunc(id: string): string</code></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
 
 
 
@@ -3317,7 +3726,7 @@ define(['mmirf/util/extend','mmirf/controllerManager','mmirf/presentationManager
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
         </footer>
     </div>
 </div>
