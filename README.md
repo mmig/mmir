@@ -1,19 +1,23 @@
 [mmir][11]
 ====
 
+[![MIT license](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![API](https://img.shields.io/badge/docs-API%20reference-orange.svg?style=flat)](https://mmig.github.io/mmir/api)
+[![Guides](https://img.shields.io/badge/docs-guides-orange.svg?style=flat)](https://github.com/mmig/mmir/wiki)
+
 <p align="center">
 <img width="10%" src="https://raw.githubusercontent.com/wiki/mmig/mmir/images/logo.png">
 </p>
 
-Overview for the MMIR (Mobile Multimodal Interaction and Rendering) Framework.
+Overview for the _open source_ `mmir` (Mobile Multimodal Interaction and Relay) Framework*.
 
 
 ##### Related repositories
 
 - core:
-  * [mmir-lib][4]: the core library _(this is usually included in the directory `mmirf/` of MMIR-based applications)_
-  * [mmir-tooling][5]: scripts and resources for building and generating resources _(e.g. compiling JSON grammars)_
-  * [mmir-webpack][25]: extended tooling for integrating `mmir-lib` in [webpack][26]-based apps
+  * [mmir-lib][4] [![npm](https://img.shields.io/npm/v/mmir-lib)](https://www.npmjs.com/package/mmir-lib): the core library _(this is usually included in the directory `mmirf/` of MMIR-based applications)_
+  * [mmir-tooling][5] [![npm](https://img.shields.io/npm/v/mmir-tooling)](https://www.npmjs.com/package/mmir-tooling): scripts and resources for building and generating resources _(e.g. compiling JSON grammars)_
+  * [mmir-webpack][25] [![npm](https://img.shields.io/npm/v/mmir-webpack)](https://www.npmjs.com/package/mmir-webpack): extended tooling for integrating `mmir-lib` in [webpack][26]-based apps
 - plugins (e.g. for different speech recognition/synthesis engines):
   * [mmir-plugins-*][20]: multiple speech input (ASR) and speech oupt (TTS) plugins that use various web services
   * [mmir-plugin-speech-android][14]: a Cordova 5.x plugin that integrates Android's default speech recognizer and text-to-speech engines
@@ -37,13 +41,14 @@ See the README in [mmir-cordova][9] for step-by-step instruction on how to (1) c
 
 
 Older Documenation:
+ * [API mmir-lib v5.x][27] (and [private-visibility][28])
  * [API mmir-lib v4.x][23] (and [private-visibility][24])
  * [API mmir-lib v3.x][17] (and [private-visibility][18])
 
 
 ## Introduction
 
-The MMIR (Mobile Multimodal Interaction and Rendering) framework aims to provide a
+The MMIR (Mobile Multimodal Interaction and Relay) framework* aims to provide a
 lightweight multimodal dialog manager that -- for instance -- can run on mobile devices.
 The base technology is HTML5 (JavaScript).
 
@@ -84,6 +89,11 @@ the framework's `DialogManager` and/or `InputManager`) within an environment tha
 support HTML5 `WebWorkers`, you need the [Queue Plugin][6] for extending the framework's SCION  
 integration with an event queue.
 
+----
+_*:_ _previously " Mobile Multimodal Interaction and **Rendering** "_, this has been changed
+      since version 6 of the framework, to account for the changed focus in that regard,
+      namely that (graphical) _rendering_ is not a major focus of the framework anymore,
+      but only considered an optional/add-on feature.
 
 
 [0]: https://cordova.apache.org/
@@ -113,3 +123,5 @@ integration with an event queue.
 [24]: https://mmig.github.io/mmir/api-all-v4
 [25]: https://github.com/mmig/mmir-webpack
 [26]: https://webpack.js.org/
+[27]: https://mmig.github.io/mmir/api-v5
+[28]: https://mmig.github.io/mmir/api-all-v5
