@@ -41,6 +41,7 @@ See the README in [mmir-cordova][9] for step-by-step instruction on how to (1) c
 
 
 Older Documenation:
+ * [API mmir-lib v6.x][29] (and [private-visibility][30])
  * [API mmir-lib v5.x][27] (and [private-visibility][28])
  * [API mmir-lib v4.x][23] (and [private-visibility][24])
  * [API mmir-lib v3.x][17] (and [private-visibility][18])
@@ -125,3 +126,5 @@ _*:_ _previously " Mobile Multimodal Interaction and **Rendering** "_, this has 
 [26]: https://webpack.js.org/
 [27]: https://mmig.github.io/mmir/api-v5
 [28]: https://mmig.github.io/mmir/api-all-v5
+[29]: https://mmig.github.io/mmir/api-v6
+[30]: https://mmig.github.io/mmir/api-all-v6
