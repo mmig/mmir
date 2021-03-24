@@ -1,0 +1,410 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>GrammarOptions | mmir Tools and Plugins v7.0.0-beta1</title>
+	<meta name="description" content="Documentation for mmir Tools and Plugins v7.0.0-beta1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">mmir Tools and Plugins v7.0.0-beta1</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../index.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/mmir_tooling.html">mmir-tooling</a>
+				</li>
+				<li>
+					<a href="mmir_tooling.grammaroptions-1.html">GrammarOptions</a>
+				</li>
+			</ul>
+			<h1>Interface GrammarOptions</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>example</dt>
+						<dd><pre><code><span class="hljs-string">var</span> <span class="hljs-string">grammarOptions</span> <span class="hljs-string">=</span> {
+    <span class="hljs-attr">path:</span> <span class="hljs-string">&#x27;./grammars&#x27;</span>,
+    <span class="hljs-attr">engine:</span> <span class="hljs-string">&#x27;pegjs&#x27;</span>,
+    <span class="hljs-attr">asyncCompile:</span> <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">grammars:</span> {
+        <span class="hljs-attr">ja:</span> {<span class="hljs-attr">ignore:</span> <span class="hljs-literal">true</span>},
+        <span class="hljs-attr">de:</span> {<span class="hljs-attr">exclude:</span> <span class="hljs-literal">true</span>},
+        <span class="hljs-attr">en:</span> {<span class="hljs-attr">engine:</span> <span class="hljs-string">&#x27;jscc&#x27;</span>, <span class="hljs-attr">asyncCompile:</span> <span class="hljs-literal">true</span>},
+
+        <span class="hljs-string">//specifying</span> <span class="hljs-string">JSON</span> <span class="hljs-string">grammar</span> <span class="hljs-string">files</span> <span class="hljs-string">directly</span>
+        <span class="hljs-attr">testing:</span> {<span class="hljs-attr">engine:</span> <span class="hljs-string">&#x27;jscc&#x27;</span>, <span class="hljs-attr">file:</span> <span class="hljs-string">path.resolve(&#x27;./grammar-test/en/grammar.json&#x27;)</span>},
+        <span class="hljs-attr">testing2:</span> {<span class="hljs-attr">id:</span> <span class="hljs-string">&#x27;!id warning!&#x27;</span>, <span class="hljs-attr">engine:</span> <span class="hljs-string">&#x27;jison&#x27;</span>, <span class="hljs-attr">file:</span> <span class="hljs-string">path.resolve(&#x27;./grammar-test/de/grammar.json_large-example&#x27;)</span>}
+    }
+}<span class="hljs-string">;</span>
+</code></pre>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="mmir_tooling.grammaroption-1.html" class="tsd-signature-type">GrammarOption</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">GrammarOptions</span>
+								<ul class="tsd-hierarchy">
+									<li>
+										<a href="mmir_tooling.grammarbuildoptions-1.html" class="tsd-signature-type">GrammarBuildOptions</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_tooling.grammaroptions-1.html#async" class="tsd-kind-icon">async</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_tooling.grammaroptions-1.html#asynccompile" class="tsd-kind-icon">async<wbr>Compile</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_tooling.grammaroptions-1.html#engine" class="tsd-kind-icon">engine</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_tooling.grammaroptions-1.html#exclude" class="tsd-kind-icon">exclude</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_tooling.grammaroptions-1.html#grammars" class="tsd-kind-icon">grammars</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_tooling.grammaroptions-1.html#ignore" class="tsd-kind-icon">ignore</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_tooling.grammaroptions-1.html#initphrase" class="tsd-kind-icon">init<wbr>Phrase</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_tooling.grammaroptions-1.html#path" class="tsd-kind-icon">path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_tooling.grammaroptions-1.html#strict" class="tsd-kind-icon">strict</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="async" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> async</h3>
+					<div class="tsd-signature tsd-kind-icon">async<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.grammaroptions-1.html">GrammarOptions</a>.<a href="mmir_tooling.grammaroptions-1.html#async">async</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L387">mmir-tooling/assets/index.d.ts:387</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>grammar-execution (during runtime) will be asynchronous in a WebWorker/thread</p>
+						</div>
+						<p>NOTE: invocations must always provide a callback, for async-exec grammars</p>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><p>mmir.semantic.interpret(&#39;this is my test phrase&#39;, function(result){
+									// do something with grammar execution result
+								})</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="asynccompile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> async<wbr>Compile</h3>
+					<div class="tsd-signature tsd-kind-icon">async<wbr>Compile<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.grammaroptions-1.html">GrammarOptions</a>.<a href="mmir_tooling.grammaroptions-1.html#asynccompile">asyncCompile</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L365">mmir-tooling/assets/index.d.ts:365</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>if <code>true</code>, and thread-webworker is available, grammar will be compiled paralelized / in a separate thread</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>true</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="engine" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> engine</h3>
+					<div class="tsd-signature tsd-kind-icon">engine<span class="tsd-signature-symbol">:</span> <a href="../modules/mmir_lib.html#grammarenginetype" class="tsd-signature-type">GrammarEngineType</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.grammaroptions-1.html">GrammarOptions</a>.<a href="mmir_tooling.grammaroptions-1.html#engine">engine</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L360">mmir-tooling/assets/index.d.ts:360</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>the Grammar engine that will be used to compile the executable grammar.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>&quot;jscc&quot;</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="exclude" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> exclude</h3>
+					<div class="tsd-signature tsd-kind-icon">exclude<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.grammaroptions-1.html">GrammarOptions</a>.<a href="mmir_tooling.grammaroptions-1.html#exclude">exclude</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L370">mmir-tooling/assets/index.d.ts:370</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>if <code>true</code>, the corresponding grammar will be completely excluded, i.e. no executable grammar will be compiled
+							from the corresponding JSON grammar</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="grammars" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> grammars</h3>
+					<div class="tsd-signature tsd-kind-icon">grammars<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L200">mmir-tooling/assets/index.d.ts:200</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>options for handling found or specified JSON grammars</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>grammarId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="mmir_tooling.grammarentry-1.html" class="tsd-signature-type">GrammarEntry</a></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="ignore" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> ignore</h3>
+					<div class="tsd-signature tsd-kind-icon">ignore<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.grammaroptions-1.html">GrammarOptions</a>.<a href="mmir_tooling.grammaroptions-1.html#ignore">ignore</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L377">mmir-tooling/assets/index.d.ts:377</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>if <code>true</code>, the grammar will not be loaded (and registered) when the the app is initialized, i.e. needs to be
+								&quot;manually&quot; loaded/initialized by app implementation and/or other mechanisms.
+								If omitted or <code>false</code>, the grammar will be loaded on start-up of the app,
+							and then will be available e.g. via <code>mmir.semantic.interprest(&lt;input phrase string&gt;, &lt;grammar-id&gt;)</code></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="initphrase" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> init<wbr>Phrase</h3>
+					<div class="tsd-signature tsd-kind-icon">init<wbr>Phrase<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.grammaroptions-1.html">GrammarOptions</a>.<a href="mmir_tooling.grammaroptions-1.html#initphrase">initPhrase</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L400">mmir-tooling/assets/index.d.ts:400</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>An &quot;initialization phrase&quot; for the grammar, in case of async-exection:
+								this phrase will be immediately interpreted, after grammar has been loaded for async-execution in the WebWorkers
+							(for large grammars, this may reduce delays for subsequent calls, by fully initializing the grammar)</p>
+						</div>
+						<p>NOTE will have no effect, if option <a href="mmir_tooling.grammaroptions-1.html#async">async</a> is not <code>true</code></p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="path" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> path</h3>
+					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L198">mmir-tooling/assets/index.d.ts:198</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>file path for searching (recursively) JSON grammars within languages-subdirectory:
+							<code>path/.../&lt;grammar ID&gt;/grammar.json</code></p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="strict" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> strict</h3>
+					<div class="tsd-signature tsd-kind-icon">strict<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.grammaroptions-1.html">GrammarOptions</a>.<a href="mmir_tooling.grammaroptions-1.html#strict">strict</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L392">mmir-tooling/assets/index.d.ts:392</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>set or disable strict-mode for generated JavaScript code</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>true</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../index.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-not-exported">
+						<a href="../modules/reflection-7646.html">&lt;em&gt;<wbr>Module&lt;/em&gt;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/mmir_lib.html">mmir-<wbr>lib</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/mmir_tooling.html">mmir-<wbr>tooling</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/mmir_webpack.html">mmir-<wbr>webpack</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="../modules/mmir_webpack.html">mmir-<wbr>webpack</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module">
+						<a href="mmir_tooling.grammaroptions-1.html" class="tsd-kind-icon">Grammar<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_tooling.grammaroptions-1.html#async" class="tsd-kind-icon">async</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_tooling.grammaroptions-1.html#asynccompile" class="tsd-kind-icon">async<wbr>Compile</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_tooling.grammaroptions-1.html#engine" class="tsd-kind-icon">engine</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_tooling.grammaroptions-1.html#exclude" class="tsd-kind-icon">exclude</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_tooling.grammaroptions-1.html#grammars" class="tsd-kind-icon">grammars</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_tooling.grammaroptions-1.html#ignore" class="tsd-kind-icon">ignore</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_tooling.grammaroptions-1.html#initphrase" class="tsd-kind-icon">init<wbr>Phrase</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_tooling.grammaroptions-1.html#path" class="tsd-kind-icon">path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_tooling.grammaroptions-1.html#strict" class="tsd-kind-icon">strict</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

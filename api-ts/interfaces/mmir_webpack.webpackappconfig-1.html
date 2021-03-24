@@ -1,0 +1,734 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>WebpackAppConfig | mmir Tools and Plugins v7.0.0-beta1</title>
+	<meta name="description" content="Documentation for mmir Tools and Plugins v7.0.0-beta1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">mmir Tools and Plugins v7.0.0-beta1</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../index.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/mmir_webpack.html">mmir-webpack</a>
+				</li>
+				<li>
+					<a href="mmir_webpack.webpackappconfig-1.html">WebpackAppConfig</a>
+				</li>
+			</ul>
+			<h1>Interface WebpackAppConfig</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>example</dt>
+						<dd><pre><code>var appConfig = {
+    <span class="hljs-regexp">//</span>path to directory that contains classic mmir directory structure
+    resourcesPath: <span class="hljs-string">&#x27;src/mmir&#x27;</span>,
+    resourcesPathOptions: {
+        <span class="hljs-regexp">//</span><span class="hljs-keyword">for</span> included models, controllers, helpers: convert old-style
+        <span class="hljs-regexp">//</span> implementations by adding an export statement
+        addModuleExport: true,
+        <span class="hljs-regexp">//</span>exlude model implementations, and <span class="hljs-keyword">do</span> not include JSON grammar resources
+        exclude: [<span class="hljs-string">&#x27;models&#x27;</span>, <span class="hljs-string">&#x27;settings/grammar&#x27;</span>]
+    },
+    <span class="hljs-regexp">//u</span>tilize jQuery <span class="hljs-keyword">in</span> mmir instead of (less backwards compatible)
+    <span class="hljs-regexp">//</span> alternative implementations (npm package jquery needs to be installed!)
+    jquery: true,
+    <span class="hljs-regexp">//</span>specify language <span class="hljs-keyword">for</span> runtime configuration (== configuration.json)
+    configuration: {language: <span class="hljs-string">&#x27;en&#x27;</span>},
+    <span class="hljs-regexp">//</span><span class="hljs-keyword">do</span> include controller implementation found within resourcesPath
+    <span class="hljs-regexp">//</span> (NOTE: this is the default behavior)
+    controllers: true,
+    <span class="hljs-regexp">//</span><span class="hljs-keyword">do</span> NOT include helper implemenations found within resourcesPath
+    helpers: false,
+    <span class="hljs-regexp">//</span>...
+}
+</code></pre>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="mmir_tooling.appconfig-1.html" class="tsd-signature-type">AppConfig</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">WebpackAppConfig</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#config" class="tsd-kind-icon">config</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_webpack.webpackappconfig-1.html#configuration" class="tsd-kind-icon">configuration</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#controllers" class="tsd-kind-icon">controllers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#disablelogging" class="tsd-kind-icon">disable<wbr>Logging</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#fixwebpack4defaultrulesforwasm" class="tsd-kind-icon">fix<wbr>Webpack4<wbr>Default<wbr>Rules<wbr>ForWASM</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_webpack.webpackappconfig-1.html#grammars" class="tsd-kind-icon">grammars</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#helpers" class="tsd-kind-icon">helpers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#includemodules" class="tsd-kind-icon">include<wbr>Modules</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#includeplugins" class="tsd-kind-icon">include<wbr>Plugins</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#jquery" class="tsd-kind-icon">jquery</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#loadafterinit" class="tsd-kind-icon">load<wbr>After<wbr>Init</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#loadbeforeinit" class="tsd-kind-icon">load<wbr>Before<wbr>Init</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#models" class="tsd-kind-icon">models</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#paths" class="tsd-kind-icon">paths</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_webpack.webpackappconfig-1.html#resourcespath" class="tsd-kind-icon">resources<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_webpack.webpackappconfig-1.html#resourcespathoptions" class="tsd-kind-icon">resources<wbr>Path<wbr>Options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_webpack.webpackappconfig-1.html#rootpath" class="tsd-kind-icon">root<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#runtimesettings" class="tsd-kind-icon">runtime<wbr>Settings</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_webpack.webpackappconfig-1.html#settings" class="tsd-kind-icon">settings</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_webpack.webpackappconfig-1.html#states" class="tsd-kind-icon">states</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="mmir_webpack.webpackappconfig-1.html#views" class="tsd-kind-icon">views</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_webpack.webpackappconfig-1.html#webpackplugins" class="tsd-kind-icon">webpack<wbr>Plugins</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="config" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> config</h3>
+					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <a href="../modules/mmir_tooling.html#moduleconfigoptions" class="tsd-signature-type">ModuleConfigOptions</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L91">mmir-tooling/assets/index-webpack.d.ts:91</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Configuration for mmir modules (analogous to requirejs&#39; module config entries)</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="configuration" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> configuration</h3>
+					<div class="tsd-signature tsd-kind-icon">configuration<span class="tsd-signature-symbol">:</span> <a href="mmir_tooling.runtimeconfiguration-1.html" class="tsd-signature-type">RuntimeConfiguration</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.appconfig-1.html">AppConfig</a>.<a href="mmir_tooling.appconfig-1.html#configuration">configuration</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L155">mmir-tooling/assets/index.d.ts:155</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specify additional (mmir) runtime configuration values,
+							e.g. in addition to <code>config/configuration.json</code>.</p>
+						</div>
+						<p>In case of conflicts, these settings will override settings in
+						<code>config/configuration.json</code>,</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="controllers" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> controllers</h3>
+					<div class="tsd-signature tsd-kind-icon">controllers<span class="tsd-signature-symbol">:</span> <a href="mmir_tooling.controlleroptions-1.html" class="tsd-signature-type">ControllerOptions</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L114">mmir-tooling/assets/index-webpack.d.ts:114</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specify how (mmir) controller implementations should be parsed/included,
+							and/or specify additional controllers that should be included.</p>
+						</div>
+						<p>If <code>false</code>, (mmir) controllers will be excluded/ignored.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="disablelogging" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> disable<wbr>Logging</h3>
+					<div class="tsd-signature tsd-kind-icon">disable<wbr>Logging<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L51">mmir-tooling/assets/index-webpack.d.ts:51</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>disable logging in mmir runtime:
+							suppresses all logging-output by replacing mmirf/logger with an empty logger implementation</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="fixwebpack4defaultrulesforwasm" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> fix<wbr>Webpack4<wbr>Default<wbr>Rules<wbr>ForWASM</h3>
+					<div class="tsd-signature tsd-kind-icon">fix<wbr>Webpack4<wbr>Default<wbr>Rules<wbr>ForWASM<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L159">mmir-tooling/assets/index-webpack.d.ts:159</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>HACK:
+								<code>webpack</code> version 4 does include a default rule for loading WASM files
+							that will cause errors due to the fact, that it will try to load mmir-integrated WASM files again.</p>
+						</div>
+						<p>Enabling this option will overwrite the <code>webpackConfig.module.defaultRules</code> option omitting the
+						default rule for WASM files.</p>
+						<p>If you do not need the default rules, this can be enabled as a quick-fix for dealing with
+						errors due to loading WASM files.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="grammars" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> grammars</h3>
+					<div class="tsd-signature tsd-kind-icon">grammars<span class="tsd-signature-symbol">:</span> <a href="mmir_tooling.grammaroptions-1.html" class="tsd-signature-type">GrammarOptions</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.appconfig-1.html">AppConfig</a>.<a href="mmir_tooling.appconfig-1.html#grammars">grammars</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L105">mmir-tooling/assets/index.d.ts:105</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specify how (JSON) grammars should be parsed/included, and/or
+							specify additional grammars that should be included.</p>
+						</div>
+						<p>Compiled grammars will be available via the <a href="mmir_lib.semanticinterpreter.html">SemanticInterpreter</a>.</p>
+						<p>If <code>false</code>, grammars will be excluded/ignored.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="helpers" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> helpers</h3>
+					<div class="tsd-signature tsd-kind-icon">helpers<span class="tsd-signature-symbol">:</span> <a href="mmir_tooling.helperoptions-1.html" class="tsd-signature-type">HelperOptions</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L122">mmir-tooling/assets/index-webpack.d.ts:122</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specify how (mmir) helper implementations (for mmir controllers)
+								should be parsed/included, and/or specify additional helpers that
+							should be included.</p>
+						</div>
+						<p>If <code>false</code>, helpers will be excluded/ignored.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="includemodules" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> include<wbr>Modules</h3>
+					<div class="tsd-signature tsd-kind-icon">include<wbr>Modules<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/mmir_tooling.html#moduleid" class="tsd-signature-type">ModuleId</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L64">mmir-tooling/assets/index-webpack.d.ts:64</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>include a (optional) module, e.g. will be available via
+							<code>mmir.require()</code>.</p>
+						</div>
+						<p>The prefix &quot;mmirf/&quot; can be omitted.</p>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><pre><code>includeModules: [<span class="hljs-string">&#x27;jsccGen&#x27;</span>, <span class="hljs-string">&#x27;mmirf/jisonGen&#x27;</span>],
+</code></pre>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="includeplugins" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> include<wbr>Plugins</h3>
+					<div class="tsd-signature tsd-kind-icon">include<wbr>Plugins<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="mmir_tooling.pluginoptions-1.html" class="tsd-signature-type">PluginOptions</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L106">mmir-tooling/assets/index-webpack.d.ts:106</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specify and configure mmir-plugins that should be included.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="jquery" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> jquery</h3>
+					<div class="tsd-signature tsd-kind-icon">jquery<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L101">mmir-tooling/assets/index-webpack.d.ts:101</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If <code>jquery</code> is included:
+								<code>mmir</code> will automatically use <code>jquery</code> utililities instead of alternative
+							implementations.</p>
+						</div>
+						<p>NOTE: the <code>jquery</code> library must be loaded/included separately; this will
+						only configure <code>mmir</code> to use <code>jquery</code>, but not include the library itself.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="loadafterinit" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> load<wbr>After<wbr>Init</h3>
+					<div class="tsd-signature tsd-kind-icon">load<wbr>After<wbr>Init<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/mmir_tooling.html#moduleid" class="tsd-signature-type">ModuleId</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L86">mmir-tooling/assets/index-webpack.d.ts:86</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>include module AND do load it AFTER initializing the mmir library;
+							the module will also be available via <code>mmir.require()</code>.</p>
+						</div>
+						<p>The prefix &quot;mmirf/&quot; can be omitted.</p>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><pre><code>loadAfterInit: [<span class="hljs-string">&#x27;mmirf/grammar/testing&#x27;</span>],
+</code></pre>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="loadbeforeinit" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> load<wbr>Before<wbr>Init</h3>
+					<div class="tsd-signature tsd-kind-icon">load<wbr>Before<wbr>Init<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/mmir_tooling.html#moduleid" class="tsd-signature-type">ModuleId</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L74">mmir-tooling/assets/index-webpack.d.ts:74</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>include module AND do load it BEFORE initializing the mmir library;
+							the module will also be available via <code>mmir.require()</code>.</p>
+						</div>
+						<p>The prefix &quot;mmirf/&quot; can be omitted.</p>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><p>loadBeforeInit: [&#39;mmirf/polyfill&#39;],</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="models" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> models</h3>
+					<div class="tsd-signature tsd-kind-icon">models<span class="tsd-signature-symbol">:</span> <a href="mmir_tooling.modeloptions-1.html" class="tsd-signature-type">ModelOptions</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L129">mmir-tooling/assets/index-webpack.d.ts:129</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specify how (mmir) data model implementations should be parsed/included,
+							and/or specify additional data models that should be included.</p>
+						</div>
+						<p>If <code>false</code>, data models will be excluded/ignored.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="paths" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> paths</h3>
+					<div class="tsd-signature tsd-kind-icon">paths<span class="tsd-signature-symbol">:</span> <a href="../modules/mmir_tooling.html#modulepaths" class="tsd-signature-type">ModulePaths</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L45">mmir-tooling/assets/index-webpack.d.ts:45</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>specifying additional (or replacing) module paths</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="resourcespath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> resources<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">resources<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.appconfig-1.html">AppConfig</a>.<a href="mmir_tooling.appconfig-1.html#resourcespath">resourcesPath</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L94">mmir-tooling/assets/index.d.ts:94</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>specify the path to the MMIR resources directory with the default structure:</p>
+							<pre><code class="language-bash">config/
+      /languages/
+                /&lt;lang&gt;/
+                       /grammar.json
+                       /dictionary.json
+                       /speech.json
+      /states/
+             /input.xml
+             /dialog.xml
+      /configuration.json
+controllers/*
+helpers/*
+models/*
+views/*
+</code></pre>
+						</div>
+						<p>The path will be used to collect all available resources and create the correspondig
+						options for including them.</p>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>&quot;www&quot;</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="resourcespathoptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> resources<wbr>Path<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">resources<wbr>Path<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="mmir_tooling.resourcesoptions-1.html" class="tsd-signature-type">ResourcesOptions</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.appconfig-1.html">AppConfig</a>.<a href="mmir_tooling.appconfig-1.html#resourcespathoptions">resourcesPathOptions</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L95">mmir-tooling/assets/index.d.ts:95</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="rootpath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> root<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">root<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.appconfig-1.html">AppConfig</a>.<a href="mmir_tooling.appconfig-1.html#rootpath">rootPath</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L69">mmir-tooling/assets/index.d.ts:69</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>used for resolving non-absolute paths: the absolute path to the app&#39;s root/sources directory (if omitted the current working directory is used for resolving non-absolute paths)</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="runtimesettings" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> runtime<wbr>Settings</h3>
+					<div class="tsd-signature tsd-kind-icon">runtime<wbr>Settings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L145">mmir-tooling/assets/index-webpack.d.ts:145</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>(for internal use: will be filled/set by compiler)</p>
+						</div>
+						<p>dictionary for mmir runtime settings:</p>
+						<ul>
+							<li><code>&quot;mmirf/settings/configuration&quot;</code>: the (normalized/merged) <code>RuntimeConfiguration</code> for the mmir app (~ <code>configuration.json</code>)</li>
+							<li><code>&quot;mmirf/settings/directories&quot;</code>: the directories/files/URI information for loading/accessing speech-configuration, controllers, views etc. (~ <code>directories.json</code>)</li>
+							<li><code>&quot;mmirf/settings/speech/{lang}&quot;</code>: the speech (input/output) configuration for language code <code>lang</code> (~ <code>lang/speech.json</code>)</li>
+							<li><code>&quot;mmirf/settings/dictionary/{lang}&quot;</code>: the dictionary (internat. labels) for language code <code>lang</code> (~ <code>lang/dictionary.json</code>)</li>
+							<li><code>&quot;mmirf/settings/grammar/{lang}&quot;</code>: the JSON definition for the grammar of language code <code>lang</code> (~ <code>lang/grammar.json</code>)</li>
+						</ul>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>settingsId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="settings" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> settings</h3>
+					<div class="tsd-signature tsd-kind-icon">settings<span class="tsd-signature-symbol">:</span> <a href="mmir_tooling.settingsoptions-1.html" class="tsd-signature-type">SettingsOptions</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.appconfig-1.html">AppConfig</a>.<a href="mmir_tooling.appconfig-1.html#settings">settings</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L147">mmir-tooling/assets/index.d.ts:147</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specify how (mmir) configuration and settings should be parsed/included,
+							and/or specify additional settings that should be included.</p>
+						</div>
+						<p>The <code>mmir</code> configuration/settings are the resources that are by default
+							located in the mmir <code>config/</code> directory
+						(with exception of the <code>states</code> sub-directory; for those instead use <a href="mmir_webpack.webpackappconfig.html#states">WebpackAppConfig.states</a>):</p>
+						<pre><code class="language-bash">config/
+      /languages/
+                /&lt;lang&gt;/
+                       /grammar.json
+                       /dictionary.json
+                       /speech.json
+      /states/
+             /input.xml
+             /dialog.xml
+      /configuration.json
+</code></pre>
+						<p>(NOTE the <code>config/states/</code> sub-directory is handled/configured via the the <a href="mmir_webpack.webpackappconfig-1.html#states">states</a> option)</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="states" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> states</h3>
+					<div class="tsd-signature tsd-kind-icon">states<span class="tsd-signature-symbol">:</span> <a href="mmir_tooling.stateoptions-1.html" class="tsd-signature-type">StateOptions</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.appconfig-1.html">AppConfig</a>.<a href="mmir_tooling.appconfig-1.html#states">states</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L116">mmir-tooling/assets/index.d.ts:116</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specify how (SCXML) state-machines/-models should be parsed/included, and/or
+							specify additional state-models that should be included.</p>
+						</div>
+						<p>If <code>false</code>, state-models will be excluded/ignored.</p>
+						<p>By default, if no state-models are include, &quot;minimal&quot; state-models
+							for the <a href="mmir_lib.inputmanager.html">InputManager</a> and the <a href="mmir_lib.dialogmanager.html">DialogManager</a> will be included,
+						see <a href="https://github.com/mmig/mmir-tooling/tree/master/defaultValues">mmir-tooling/defaultValues</a>.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="views" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> views</h3>
+					<div class="tsd-signature tsd-kind-icon">views<span class="tsd-signature-symbol">:</span> <a href="mmir_tooling.viewoptions-1.html" class="tsd-signature-type">ViewOptions</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="mmir_tooling.appconfig-1.html">AppConfig</a>.<a href="mmir_tooling.appconfig-1.html#views">views</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index.d.ts#L124">mmir-tooling/assets/index.d.ts:124</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specify how (mmir) views should be parsed/included, and/or
+							specify additional views that should be included.</p>
+						</div>
+						<p>If <code>false</code>, views will be excluded/ignored.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="webpackplugins" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> webpack<wbr>Plugins</h3>
+					<div class="tsd-signature tsd-kind-icon">webpack<wbr>Plugins<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/assets/index-webpack.d.ts#L132">mmir-tooling/assets/index-webpack.d.ts:132</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>configuration for webpack plugins (for internal use)</p>
+						</div>
+					</div>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../index.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-not-exported">
+						<a href="../modules/reflection-7646.html">&lt;em&gt;<wbr>Module&lt;/em&gt;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/mmir_lib.html">mmir-<wbr>lib</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/mmir_tooling.html">mmir-<wbr>tooling</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/mmir_webpack.html">mmir-<wbr>webpack</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="../modules/mmir_webpack.html">mmir-<wbr>webpack</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="mmir_webpack.webpackappconfig.html" class="tsd-kind-icon">Webpack<wbr>App<wbr>Config</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module">
+						<a href="mmir_webpack.webpackappconfig-1.html" class="tsd-kind-icon">Webpack<wbr>App<wbr>Config</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#config" class="tsd-kind-icon">config</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_webpack.webpackappconfig-1.html#configuration" class="tsd-kind-icon">configuration</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#controllers" class="tsd-kind-icon">controllers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#disablelogging" class="tsd-kind-icon">disable<wbr>Logging</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#fixwebpack4defaultrulesforwasm" class="tsd-kind-icon">fix<wbr>Webpack4<wbr>Default<wbr>Rules<wbr>ForWASM</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_webpack.webpackappconfig-1.html#grammars" class="tsd-kind-icon">grammars</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#helpers" class="tsd-kind-icon">helpers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#includemodules" class="tsd-kind-icon">include<wbr>Modules</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#includeplugins" class="tsd-kind-icon">include<wbr>Plugins</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#jquery" class="tsd-kind-icon">jquery</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#loadafterinit" class="tsd-kind-icon">load<wbr>After<wbr>Init</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#loadbeforeinit" class="tsd-kind-icon">load<wbr>Before<wbr>Init</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#models" class="tsd-kind-icon">models</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#paths" class="tsd-kind-icon">paths</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_webpack.webpackappconfig-1.html#resourcespath" class="tsd-kind-icon">resources<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_webpack.webpackappconfig-1.html#resourcespathoptions" class="tsd-kind-icon">resources<wbr>Path<wbr>Options</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_webpack.webpackappconfig-1.html#rootpath" class="tsd-kind-icon">root<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#runtimesettings" class="tsd-kind-icon">runtime<wbr>Settings</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_webpack.webpackappconfig-1.html#settings" class="tsd-kind-icon">settings</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_webpack.webpackappconfig-1.html#states" class="tsd-kind-icon">states</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="mmir_webpack.webpackappconfig-1.html#views" class="tsd-kind-icon">views</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_webpack.webpackappconfig-1.html#webpackplugins" class="tsd-kind-icon">webpack<wbr>Plugins</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="mmir_webpack.webpackappconfig-2.html" class="tsd-kind-icon">Webpack<wbr>App<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="mmir_webpack.webpackappconfig-3.html" class="tsd-kind-icon">Webpack<wbr>App<wbr>Config</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PluginOptions | mmir Tools and Plugins v7.0.0-beta1</title>
+	<meta name="description" content="Documentation for mmir Tools and Plugins v7.0.0-beta1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">mmir Tools and Plugins v7.0.0-beta1</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../index.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/mmir_tooling.html">mmir-tooling</a>
+				</li>
+				<li>
+					<a href="mmir_tooling.pluginoptions-2.html">PluginOptions</a>
+				</li>
+			</ul>
+			<h1>Interface PluginOptions</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>example</dt>
+						<dd><pre><code>var includePlugins = [
+    {id: <span class="hljs-string">&#x27;mmir-plugin-asr-nuance-xhr&#x27;</span>, config: {
+   <span class="hljs-regexp">//</span> ctx: <span class="hljs-string">&#x27;nuance&#x27;</span>,<span class="hljs-regexp">//</span>OPTIONAL install into <span class="hljs-function"><span class="hljs-keyword">sub</span>-<span class="hljs-title">context</span> &quot;<span class="hljs-title">nuance</span>&quot;
+     <span class="hljs-title">appKey</span>: &quot;9...&quot;,
+     <span class="hljs-title">appId</span>: &quot;<span class="hljs-title">NMDPTRIAL</span>....&quot;,
+    }},
+ </span>{id: <span class="hljs-string">&#x27;mmir-plugin-asr-google-xhr&#x27;</span>,
+   mode: <span class="hljs-string">&#x27;wasm&#x27;</span>,
+   config: {
+     appKey: <span class="hljs-string">&#x27;A....&#x27;</span>,
+     results: <span class="hljs-number">5</span>
+ }},
+ {id: <span class="hljs-string">&#x27;mmir-plugin-tts-nuance-xhr&#x27;</span>, config: {
+   appKey: <span class="hljs-string">&quot;9....&quot;</span>,
+   appId: <span class="hljs-string">&quot;NMDPTRIAL_...&quot;</span>,
+   voice: {fr: <span class="hljs-string">&#x27;Samantha&#x27;</span>},
+   language: {ja: <span class="hljs-string">&#x27;jpn-JPN&#x27;</span>}
+ }},
+ {id: <span class="hljs-string">&#x27;mmir-plugin-tts-speakjs&#x27;</span>, config: {
+   env: <span class="hljs-string">&#x27;browser&#x27;</span>,
+   ctx: <span class="hljs-string">&#x27;local&#x27;</span> //OPTIONAL install into <span class="hljs-function"><span class="hljs-keyword">sub</span>-<span class="hljs-title">context</span> &quot;<span class="hljs-title">local</span>&quot;
+ }},
+ </span>{id: <span class="hljs-string">&#x27;mmir-plugin-speech-android&#x27;</span>, config: {
+   <span class="hljs-regexp">//</span> ctx: <span class="hljs-string">&#x27;android&#x27;</span>,<span class="hljs-regexp">//</span>OPTIONAL install into <span class="hljs-function"><span class="hljs-keyword">sub</span>-<span class="hljs-title">context</span> &quot;<span class="hljs-title">android</span>&quot;
+   <span class="hljs-title">voice</span>: </span>{de: <span class="hljs-string">&#x27;male&#x27;</span>},
+   language: {en: <span class="hljs-string">&#x27;eng-IND&#x27;</span>}
+ }},
+];
+</code></pre>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">PluginOptions</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_tooling.pluginoptions-2.html#build" class="tsd-kind-icon">build</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_tooling.pluginoptions-2.html#config" class="tsd-kind-icon">config</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_tooling.pluginoptions-2.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="mmir_tooling.pluginoptions-2.html#mode" class="tsd-kind-icon">mode</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="build" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> build</h3>
+					<div class="tsd-signature tsd-kind-icon">build<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="mmir_tooling.pluginexportconfiginfo-2.html" class="tsd-signature-type">PluginExportConfigInfo</a><span class="tsd-signature-symbol"> | </span><a href="mmir_tooling.pluginexportconfiginfomultiple-2.html" class="tsd-signature-type">PluginExportConfigInfoMultiple</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/src/index.d.ts#L927">mmir-tooling/src/index.d.ts:927</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>if supported by plugin:
+							custom build options.</p>
+						</div>
+						<p>NOTE if the plugin does not support custom build configuration, this
+						will be ignored.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="config" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> config</h3>
+					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <a href="../modules/mmir_tooling.html#pluginconfig" class="tsd-signature-type">PluginConfig</a><span class="tsd-signature-symbol"> | </span><a href="mmir_tooling.ttspluginspeechconfig-2.html" class="tsd-signature-type">TTSPluginSpeechConfig</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/src/index.d.ts#L919">mmir-tooling/src/index.d.ts:919</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>configuration for the plugin: specific fields/values depending on the plugin
+							NOTE some plugins require credentials, e.g. &quot;appId&quot; and &quot;appKey&quot;</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/src/index.d.ts#L912">mmir-tooling/src/index.d.ts:912</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>the (package) ID of the plugin
+							NOTE: the plugin needs to be installed, i.e. &quot;npm install ...&quot;</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="mode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> mode</h3>
+					<div class="tsd-signature tsd-kind-icon">mode<span class="tsd-signature-symbol">:</span> <a href="../modules/mmir_tooling.html#pluginmodeoption" class="tsd-signature-type">PluginModeOption</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mmig/mmir-tooling/blob/7.0.0-beta1/src/index.d.ts#L914">mmir-tooling/src/index.d.ts:914</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>mode for including the plugin: if the plugin does not support the specified mode, will automatically use &quot;default&quot; mode</p>
+						</div>
+					</div>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../index.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-not-exported">
+						<a href="../modules/reflection-7646.html">&lt;em&gt;<wbr>Module&lt;/em&gt;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/mmir_lib.html">mmir-<wbr>lib</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/mmir_tooling.html">mmir-<wbr>tooling</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/mmir_webpack.html">mmir-<wbr>webpack</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="../modules/mmir_webpack.html">mmir-<wbr>webpack</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module">
+						<a href="mmir_tooling.pluginoptions-2.html" class="tsd-kind-icon">Plugin<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_tooling.pluginoptions-2.html#build" class="tsd-kind-icon">build</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_tooling.pluginoptions-2.html#config" class="tsd-kind-icon">config</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_tooling.pluginoptions-2.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="mmir_tooling.pluginoptions-2.html#mode" class="tsd-kind-icon">mode</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
